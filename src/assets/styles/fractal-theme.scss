@@ -1,0 +1,12 @@
+// Theme for Fractal
+
+@import 'setup/vam_colors';
+
+.Header {
+  background-color: map-get($site_colors, vam-black);
+  color: map-get($site-colors, vam-white);
+}
+
+.Header-navToggle svg {
+  fill: map-get($site-colors, vam-white);
+}

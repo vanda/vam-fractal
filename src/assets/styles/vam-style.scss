@@ -1,5 +1,8 @@
 // V&A site styles
 
-// @import 'setup/**/*.scss'
+// Vars
+@import 'setup/vam_colors.scss';
 
+
+// Modules
 @import '../../components/blocks/alert/alert';

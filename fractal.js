@@ -9,7 +9,7 @@ const fractal = require('@frctl/fractal').create();
 // Theme for the page
 const mandelbrot = require('@frctl/mandelbrot')({
   lang: 'en-gb',
-  skin: 'lime',
+  styles: ['default', '/assets/styles/fractal-theme.css'],
   nav: ['docs', 'components'],
   panels: ['notes', 'html', 'context', 'resources', 'info'],
   static: {

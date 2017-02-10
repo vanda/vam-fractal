@@ -1,5 +1,34 @@
 context:
   title: "Oh hai!"
-  body: "This is an alert... hello there."
-title: "Alert!"
+  body: "This is a standard alert. Nothing special here."
+title: "Alert"
+label: "Alert"
 status: wip
+variants: [
+  {
+    "name": "positive",
+    "label": "Primary",
+    "context": {
+      "class": "positive",
+      "title": "Success",
+      "body": "The form has been submitted"
+    }
+  },
+  {
+    "name": "warn",
+    "label": "Warning",
+    "context": {
+      "class": "warn",
+      "title": "Warning",
+      "body": "FYI: This will update all the things..."
+    }
+  },
+  {
+    "name": "danger",
+    "context": {
+      "class": "danger",
+      "title": "DANGER DANGER!",
+      "body": "This will delete all the things."
+    }
+  }
+]

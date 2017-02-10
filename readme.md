@@ -8,17 +8,29 @@ This visual style guide is built on top of [Fractal](https://github.com/frctl/fr
 
 The [documentation for Fractal](http://fractal.build/guide) is *super* useful. Have a read through the *Core Concept* documentation before modifying.
 
-## Get going...
+## Including in your project
 
-1. `$ npm install`
-2. `$ npm run dev`
-3. Open your browser to [localhost:8000](http://localhost:8000)
+Add the following to your `package.json` file, replacing the version number with the version that you want to use:
+
+```
+"vam-fractal": "vanda/vam-fractal#2017.0.0"
+```
+
+You can then import the Sass directly into your stylesheet either by directly referencing the `node_modules` folder or by creating a symlink.
+
+```sass
+@import 'vam-fractal/src/assets/styles/vam-style';
+```
 
 ## Development
 
 If you haven't read the [documentation for Fractal](http://fractal.build/guide) yet, get over there now.
 
 Each time you create a new Fractal [component](http://fractal.build/guide/components) with a `SCSS` file in it, you will need to also include that within `src/assets/styles/vam-style.scss`.
+
+1. `$ npm install`
+2. `$ npm run dev`
+3. Open your browser to [localhost:8000](http://localhost:8000)
 
 ## Deployment
 

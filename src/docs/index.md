@@ -1,3 +1,3 @@
-# V&A Visual Style Guide
+## V&A Visual Style Guide
 
 Status: Work in Progress

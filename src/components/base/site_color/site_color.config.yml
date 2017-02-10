@@ -1,0 +1,21 @@
+context:
+  colors: [
+      {
+          name: "vam-black",
+          hex: "#1d1e20"
+      },
+      {
+          name: "alert-red",
+          hex: "#fd6060"
+      },
+      {
+          name: "primary-green",
+          hex: "#50e3c2"
+      },
+      {
+          name: "vam-white",
+          hex: "#ffffff"
+      }
+  ]
+title: "Site Colors"
+status: wip

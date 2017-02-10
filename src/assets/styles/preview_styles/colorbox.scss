@@ -1,0 +1,23 @@
+.fr_colorbox {
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+.fr_colorbox__color {
+  height: 0;
+  padding-bottom: 100%;
+  width: 100%;
+
+  // This is only needed for showing $site-colors in Fractal
+  @each $color in map-keys($site_colors) {
+    .theme-#{$color} & {
+      background-color: map-get($site-colors, $color);
+    }
+  }
+}
+
+.fr_colorbox__colorcode {
+  font-family: monospace;
+}
