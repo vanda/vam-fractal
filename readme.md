@@ -14,6 +14,12 @@ The [documentation for Fractal](http://fractal.build/guide) is *super* useful. H
 2. `$ npm run dev`
 3. Open your browser to [localhost:8000](http://localhost:8000)
 
+## Development
+
+If you haven't read the [documentation for Fractal](http://fractal.build/guide) yet, get over there now.
+
+Each time you create a new Fractal [component](http://fractal.build/guide/components) with a `SCSS` file in it, you will need to also include that within `src/assets/styles/vam-style.scss`.
+
 ## Deployment
 
 Ensure that you have access to deploy to Surge first.

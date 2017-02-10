@@ -9,7 +9,6 @@ const sourcemaps    = require('gulp-sourcemaps');
 const autoprefixer  = require('gulp-autoprefixer');
 const surge         = require('gulp-surge');
 const del           = require('del');
-const sassGlob      = require('node-sass-globbing');
 
 // Paths
 const paths = {
@@ -69,7 +68,6 @@ function styles() {
   return gulp.src(`${paths.src}/assets/styles/*.scss`)
     .pipe(sourcemaps.init())
     .pipe(sass({
-      importer: sassGlob,
       outputStyle: 'compressed'
     }).on('error', sass.logError))
     .pipe(autoprefixer())
