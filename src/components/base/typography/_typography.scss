@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'The Sans';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/TheSans_LP_500_Regular.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_500_Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../fonts/TheSans_LP_500_Regular-Italic.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_500_Regular-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: italic;
+  font-weight: 500;
+  unicode-range: U+0030-0039; // Gets just the numbers from this font
+  src: url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/TheSans_LP_600_SemiBold.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_600_SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/TheSans_LP_700_Bold.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_700_Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../fonts/TheSans_LP_700_Bold-Italic.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_700_Bold-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: italic;
+  font-weight: 700;
+  unicode-range: U+0030-0039; // Gets just the numbers from this font
+  src: url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff2') format('woff2'),
+       url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff') format('woff');
+}
+
+$font-families: (
+  text: ('The Sans', Arial, Helvetica, sans-serif),
+  code: (Consolas, Menlo, Monaco, 'Courier New', monospace)
+);
+
+$font-sizes: (
+  1: 56,
+  2: 44,
+  3: 32,
+  4: 26,
+  5: 24,
+  6: 18,
+  7: 16,
+  8: 14,
+  9: 13
+);
+
+$font-weights: (
+  light: 200,
+  regular: 500,
+  semi-bold: 600,
+  bold: 700
+);
+
+$base-font-size: 16;
+$base-font-weight: map-get($font-weights, regular);
+
+@mixin font-size($sizeValue: $base-font-size) {
+	font-size: $sizeValue + px; // Old browser fallback
+	font-size: (0.0625 * $sizeValue) + rem; // Base fontsize is 16px
+}
+
+@mixin line-height($heightValue: $base-font-size){
+	line-height: $heightValue + px; // Old browser fallback
+	line-height: (0.0625 * $heightValue) + rem;
+}
+
+@mixin type-rhythm($size) {
+  @include font-size(map-get($font-sizes, $size));
+	@include line-height(map-get($font-sizes, $size) + 4); // <- Not correct
+}

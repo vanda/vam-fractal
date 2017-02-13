@@ -1,6 +1,11 @@
 // Theme for Fractal
 
-@import 'setup/vam_colors';
+@import '../../components/base/site_color/site_color';
+@import '../../components/base/typography/typography';
+
+html, body {
+  font-family: map-get($font-families, text);
+}
 
 .Header {
   background-color: map-get($site_colors, vam-black);
@@ -9,4 +14,15 @@
 
 .Header-navToggle svg {
   fill: map-get($site-colors, vam-white);
+}
+
+.Prose,
+.Prose h1,
+.Prose h2,
+.Prose h3, {
+  font-family: map-get($font-families, text);
+}
+
+code, pre {
+  font-family: map-get($font-families, code);
 }

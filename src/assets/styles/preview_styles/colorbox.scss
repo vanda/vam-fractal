@@ -1,23 +1,62 @@
+.fr-colorbox-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
 .fr_colorbox {
+  border-radius: 4px;
+  border: 1px solid;
   float: left;
-  margin-left: 10px;
   margin-bottom: 10px;
-  width: 100px;
+  min-width: 120px;
+  text-align: center;
+  width: 15%;
+
+  @each $color in map-keys($site-colors) {
+    &.theme-#{$color} {
+      border-color: map-get($site-colors, $color);
+    }
+  }
+
+  @each $color in map-keys($theme-colors) {
+    &.theme-#{$color} {
+      @if $color in $pale-themes {
+        border-color: darken(map-get($theme-colors, $color), 30);
+      } @else {
+        border-color: map-get($theme-colors, $color);
+      }
+    }
+  }
+  // @each $color in $pale-themes {
+  //   &.theme-#{$color} {
+  //     border-color: darken(map-get($theme-colors, $color), 30);
+  //   }
+  // }
 }
 
 .fr_colorbox__color {
+  border-radius: 4px 4px 0 0;
   height: 0;
-  padding-bottom: 100%;
+  padding-bottom: 50%;
   width: 100%;
 
   // This is only needed for showing $site-colors in Fractal
-  @each $color in map-keys($site_colors) {
+  @each $color in map-keys($site-colors) {
     .theme-#{$color} & {
       background-color: map-get($site-colors, $color);
+    }
+  }
+  @each $color in map-keys($theme-colors) {
+    .theme-#{$color} & {
+      background-color: map-get($theme-colors, $color);
     }
   }
 }
 
 .fr_colorbox__colorcode {
-  font-family: monospace;
+  font-family: map-get($font-families, code);
+  margin-bottom: 0;
 }

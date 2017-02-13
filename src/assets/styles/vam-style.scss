@@ -1,8 +1,10 @@
 // V&A site styles
 
-// Vars
-@import 'setup/vam_colors.scss';
-
+// Base
+@import '../../components/base/site_color/site_color';
+@import '../../components/base/theme_color/theme_color';
+@import '../../components/base/typography/typography';
+@import '../../components/base/reset/reset'; // Must come after colour and type
 
 // Modules
-@import '../../components/blocks/alert/alert';
+

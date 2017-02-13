@@ -2,7 +2,10 @@
 // Not part of the code vam-style.scss
 
 // Vars
-@import 'setup/vam_colors.scss';
+@import '../../components/base/site_color/site_color';
+@import '../../components/base/theme_color/theme_color';
+@import '../../components/base/typography/typography';
 
 // Modules
 @import 'preview_styles/colorbox';
+@import 'preview_styles/type';

@@ -1,0 +1,25 @@
+.fr-font-size--1 { @include type-rhythm(1); }
+.fr-font-size--2 { @include type-rhythm(2); }
+.fr-font-size--3 { @include type-rhythm(3); }
+.fr-font-size--4 { @include type-rhythm(4); }
+.fr-font-size--5 { @include type-rhythm(5); }
+.fr-font-size--6 { @include type-rhythm(6); }
+.fr-font-size--7 { @include type-rhythm(7); }
+.fr-font-size--8 { @include type-rhythm(8); }
+.fr-font-size--9 { @include type-rhythm(9); }
+
+.fr-font-weight--bold {
+  font-weight: map-get($font-weights, bold);
+}
+
+.fr-font-weight--semi-bold {
+  font-weight: map-get($font-weights, semi-bold);
+}
+
+.fr-font-weight--regular {
+  font-weight: map-get($font-weights, regular);
+}
+
+.fr-font-weight--light {
+  font-weight: map-get($font-weights, light);
+}

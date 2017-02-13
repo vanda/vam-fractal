@@ -75,15 +75,23 @@ function styles() {
     .pipe(gulp.dest(`${paths.dest}/assets/styles`));
 }
 
+//---
+// Fonts
+function fonts() {
+  return gulp.src(`${paths.src}/assets/fonts/**/*`)
+    .pipe(gulp.dest(`${paths.dest}/assets/fonts`));
+}
+
 
 //---
 // Watch
 function watch() {
   serve();
   gulp.watch(`${paths.src}/**/*.scss`, styles);
+  gulp.watch(`${paths.src}/assets/fonts`, fonts);
 }
 
-const compile = gulp.series(clean, gulp.parallel(styles));
+const compile = gulp.series(clean, gulp.parallel(fonts, styles));
 
 gulp.task('dev', gulp.series(compile, watch));
 gulp.task('deploy', gulp.series(compile, staticBuild, deploy));
