@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>fulltriangle-right</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="fulltriangle-right" fill-rule="nonzero" fill="currentColor">
+            <polygon transform="translate(50.000000, 50.000000) scale(1, -1) rotate(-270.000000) translate(-50.000000, -50.000000) " points="50 25 100 75 1.42108547e-14 75"></polygon>
+        </g>
+    </g>
+</svg>

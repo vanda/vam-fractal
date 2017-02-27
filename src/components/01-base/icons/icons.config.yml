@@ -1,0 +1,137 @@
+context:
+  icons: [
+    valogo,
+    valogo-clipped,
+    facebook,
+    instagram,
+    pinterest,
+    twitter,
+    youtube,
+    tumblr,
+    googleplus,
+    flickr,
+    tfl,
+    walk,
+    cycle,
+    drive,
+    link,
+    calendar,
+    clock,
+    ticket,
+    search,
+    download,
+    download-2,
+    phone,
+    signpost,
+    map,
+    pin,
+    price,
+    label,
+    close,
+    close-menu,
+    menu-hamburger,
+    fullscreen,
+    plus,
+    plus-thin,
+    minus,
+    minus-thin,
+    quote,
+    interact,
+    listen,
+    play,
+    pause,
+    point-up,
+    point-right,
+    point-down,
+    point-left,
+    fulltriangle-up,
+    fulltriangle-right,
+    fulltriangle-down,
+    fulltriangle-right,
+    arrow-up,
+    arrow-right,
+    arrow-down,
+    arrow-right
+  ]
+default: "all"
+status: wip
+variants: [
+  {
+    "name": "all",
+    "label": "All"
+  },
+  {
+    "name": "social-media",
+    "label": "Social Media",
+    "context": {
+      "icons": [
+        facebook,
+        instagram,
+        pinterest,
+        twitter,
+        youtube,
+        tumblr,
+        googleplus,
+        flickr,
+      ]
+    }
+  },
+  {
+    "name": "site-icons",
+    "label": "Site Icons",
+    "context": {
+      "icons": [
+        tfl,
+        walk,
+        cycle,
+        drive,
+        link,
+        calendar,
+        clock,
+        ticket,
+        search,
+        download,
+        download-2,
+        phone,
+        signpost,
+        map,
+        pin,
+        price,
+        label,
+        fullscreen,
+        quote,
+        interact,
+        listen,
+        play,
+        pause,
+      ]
+    }
+  },
+  {
+    "name": "interface",
+    "label": "Interface",
+    "context": {
+      "icons": [
+        close,
+        close-menu,
+        menu-hamburger,
+        plus,
+        plus-thin,
+        minus,
+        minus-thin,
+        point-up,
+        point-right,
+        point-down,
+        point-left,
+        fulltriangle-up,
+        fulltriangle-right,
+        fulltriangle-down,
+        fulltriangle-right,
+        arrow-up,
+        arrow-right,
+        arrow-down,
+        arrow-right
+      ]
+    }
+  }
+]

@@ -1,10 +1,17 @@
 // V&A site styles
 
+// Mixins
+@import '../../components/00-mixins/visually_hidden/visually_hidden';
+
 // Base
-@import '../../components/base/site_color/site_color';
-@import '../../components/base/theme_color/theme_color';
-@import '../../components/base/typography/typography';
-@import '../../components/base/reset/reset'; // Must come after colour and type
+@import '../../components/01-base/site_color/site_color';
+@import '../../components/01-base/theme_color/theme_color';
+@import '../../components/01-base/typography/typography';
+@import '../../components/01-base/reset/reset'; // Must come after colour and type
 
 // Modules
 
+
+
+// Utilities
+@import '../../components/utilities/svg_icon/svg_icon'; // Must come after colour and type

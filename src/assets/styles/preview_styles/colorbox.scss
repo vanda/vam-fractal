@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px;
 }
 
@@ -23,18 +23,13 @@
 
   @each $color in map-keys($theme-colors) {
     &.theme-#{$color} {
-      @if $color in $pale-themes {
+      @if index($pale-theme-colors, $color) {
         border-color: darken(map-get($theme-colors, $color), 30);
       } @else {
         border-color: map-get($theme-colors, $color);
       }
     }
   }
-  // @each $color in $pale-themes {
-  //   &.theme-#{$color} {
-  //     border-color: darken(map-get($theme-colors, $color), 30);
-  //   }
-  // }
 }
 
 .fr_colorbox__color {

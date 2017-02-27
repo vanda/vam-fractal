@@ -1,11 +1,19 @@
 // Helper classes to preview things like the color swatches
 // Not part of the code vam-style.scss
 
+// Mixins
+@import '../../components/00-mixins/visually_hidden/visually_hidden';
+
 // Vars
-@import '../../components/base/site_color/site_color';
-@import '../../components/base/theme_color/theme_color';
-@import '../../components/base/typography/typography';
+@import '../../components/01-base/site_color/site_color';
+@import '../../components/01-base/theme_color/theme_color';
+@import '../../components/01-base/typography/typography';
 
 // Modules
 @import 'preview_styles/colorbox';
+@import 'preview_styles/iconbox';
 @import 'preview_styles/type';
+
+.fr-visually-hidden {
+  @include visually-hidden;
+}

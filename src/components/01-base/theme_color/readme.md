@@ -1,5 +1,11 @@
 # Theme colors
 
+## Background and usage
+
+Coming soon...
+
+## Implementation
+
 The theme color is defined in the body of a page and then sets the color scheme on a page:
 
 ```html
@@ -37,12 +43,12 @@ You may _need_ to loop through each of the theme colors to generate specifically
 }
 ```
 
-In the `theme-color` Sass file is also map of the pale colors which can cause accessibility issues on light backgrounds. This is accessed through `$pale-colors`, it can be used to loop through or to check if the color appears in the list:
+The `_theme_color.scss` Sass file also contains a [list](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#lists) of the `$pale-theme-colors` which can cause accessibility issues on light backgrounds. It can be used to override or adjust the theme color:
 
 ```sass
   @each $color in map-keys($theme-colors) {
     &.theme-#{$color} {
-      @if $color in $pale-themes {
+      @if index($pale-themes, $color) {
         border-color: darken(map-get($theme-colors, $color), 30);
       } @else {
         border-color: map-get($theme-colors, $color);
@@ -62,3 +68,9 @@ In the `theme-color` Sass file is also map of the pale colors which can cause ac
 ```
 
 **Nb:** Be aware the removing items from this list would cause themed elements to revert back to the default colour.
+
+## References
+
+- [Sass lists](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#lists)
+- [Sass maps](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps)
+- [Sass index function](http://sass-lang.com/documentation/Sass/Script/Functions.html#index-instance_method)

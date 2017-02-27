@@ -1,7 +1,7 @@
 // Theme for Fractal
 
-@import '../../components/base/site_color/site_color';
-@import '../../components/base/typography/typography';
+@import '../../components/01-base/site_color/site_color';
+@import '../../components/01-base/typography/typography';
 
 html, body {
   font-family: map-get($font-families, text);

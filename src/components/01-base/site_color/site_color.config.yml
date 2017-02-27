@@ -15,6 +15,26 @@ context:
       {
           name: "vam-white",
           hex: "#ffffff"
+      },
+      {
+          name: "vam-grey-1",
+          hex: "#ccc"
+      },
+      {
+          name: "vam-grey-2",
+          hex: "#ccc"
+      },
+      {
+          name: "vam-grey-3",
+          hex: "#ccc"
+      },
+      {
+          name: "vam-grey-4",
+          hex: "#ccc"
+      },
+      {
+          name: "vam-grey-5",
+          hex: "#ccc"
       }
   ]
 title: "Site Colors"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>transport for london</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tfl" fill-rule="nonzero" fill="currentColor">
+            <path d="M50.5,10 C28.1428129,10 10,28.1431178 10,50.5 C10,72.854536 28.1428129,91 50.5,91 C72.8549042,91 91,72.854536 91,50.5 C91,28.1407716 72.8549042,10 50.5,10 L50.5,10 Z M50.5,24.0349322 C65.1041995,24.0349322 76.9665445,35.8949426 76.9665445,50.5 C76.9665445,65.1027112 65.1041995,76.9650678 50.5,76.9650678 C35.8958005,76.9650678 24.0311725,65.1027112 24.0311725,50.5 C24.0311725,35.8949426 35.8958005,24.0349322 50.5,24.0349322 Z" id="Shape"></path>
+            <polygon id="Shape" points="0 58 100 58 100 43 0 43"></polygon>
+        </g>
+    </g>
+</svg>

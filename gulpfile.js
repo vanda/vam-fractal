@@ -6,6 +6,8 @@ const logger        = fractal.cli.console;
 const gulp          = require('gulp');
 const sass          = require('gulp-sass');
 const sourcemaps    = require('gulp-sourcemaps');
+const svgsymbols    = require('gulp-svg-symbols');
+const svgmin        = require('gulp-svgmin');
 const autoprefixer  = require('gulp-autoprefixer');
 const surge         = require('gulp-surge');
 const del           = require('del');
@@ -20,10 +22,14 @@ const paths = {
 // Deploy location:
 const surgeURL = 'https://vam-design-guide.surge.sh';
 
+
+//---
+// Empty temp folders
 function clean() {
   return del(`${paths.dest}/assets/`);
   return del(`${paths.build}`);
 }
+
 
 //---
 // Setup a local server
@@ -75,6 +81,7 @@ function styles() {
     .pipe(gulp.dest(`${paths.dest}/assets/styles`));
 }
 
+
 //---
 // Fonts
 function fonts() {
@@ -84,14 +91,28 @@ function fonts() {
 
 
 //---
+// SVG Icons
+function svg() {
+  return gulp.src(`${paths.src}/assets/svg/*.svg`)
+    .pipe(svgmin())
+    .pipe(svgsymbols({
+      svgClassname: 'u-svg-icon',
+      templates: [`${paths.src}/assets/templates/svg-template.svg`]
+    }))
+    .pipe(gulp.dest(`${paths.dest}/assets/svg`));
+}
+
+
+//---
 // Watch
 function watch() {
   serve();
   gulp.watch(`${paths.src}/**/*.scss`, styles);
+  gulp.watch(`${paths.src}/assets/svg/*.svg`, svg);
   gulp.watch(`${paths.src}/assets/fonts`, fonts);
 }
 
-const compile = gulp.series(clean, gulp.parallel(fonts, styles));
+const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles));
 
 gulp.task('dev', gulp.series(compile, watch));
 gulp.task('deploy', gulp.series(compile, staticBuild, deploy));

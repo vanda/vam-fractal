@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>fullscreen</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="fullscreen" fill="currentColor">
+            <path d="M12.3462857,22.5721429 L29.9645714,40.1837143 L40.1837143,29.9645714 L22.5721429,12.3462857 L31.9251429,3 L3,3 L3,31.9251429 L12.3462857,22.5721429 Z M22.5721429,87.6537143 L40.1837143,70.0354286 L29.9645714,59.8162857 L12.3462857,77.4278571 L3,68.0748571 L3,97 L31.9251429,97 L22.5721429,87.6537143 Z M77.4278571,12.3462857 L59.8162857,29.9645714 L70.0354286,40.1837143 L87.6537143,22.5721429 L97,31.9251429 L97,3 L68.0748571,3 L77.4278571,12.3462857 L77.4278571,12.3462857 Z M87.6537143,77.4278571 L70.0354286,59.8162857 L59.8162857,70.0354286 L77.4278571,87.6537143 L68.0748571,97 L97,97 L97,68.0748571 L87.6537143,77.4278571 Z"></path>
+        </g>
+    </g>
+</svg>
