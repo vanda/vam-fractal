@@ -1,6 +1,6 @@
 {
   "name": "vam-fractal",
-  "version": "2017.0.0",
+  "version": "0.0.1",
   "description": "Visual Style Guide for the V&A's website(s)",
   "keywords": [
     "styleguide",
@@ -18,7 +18,9 @@
   "main": "fractal.js",
   "scripts": {
     "deploy": "node_modules/.bin/gulp deploy",
-    "dev": "node_modules/.bin/gulp dev"
+    "dev": "node_modules/.bin/gulp dev",
+    "dist": "node_modules/.bin/gulp dist",
+    "version": "npm run dist && git add -A dist"
   },
   "devDependencies": {
     "@frctl/fractal": "latest",
@@ -27,6 +29,7 @@
     "del": "^2.2.2",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-surge": "^0.1.0",

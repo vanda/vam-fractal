@@ -4,19 +4,21 @@ const logger        = fractal.cli.console;
 
 // Gulpy gulp
 const gulp          = require('gulp');
+const autoprefixer  = require('gulp-autoprefixer');
+const rename        = require('gulp-rename');
 const sass          = require('gulp-sass');
 const sourcemaps    = require('gulp-sourcemaps');
 const svgsymbols    = require('gulp-svg-symbols');
 const svgmin        = require('gulp-svgmin');
-const autoprefixer  = require('gulp-autoprefixer');
 const surge         = require('gulp-surge');
 const del           = require('del');
 
 // Paths
 const paths = {
-  src: `${__dirname}/src`,
-  dest: `${__dirname}/tmp`,
-  build: `${__dirname}/www`
+  src: `${__dirname}/src/`,
+  dest: `${__dirname}/tmp/`,
+  build: `${__dirname}/www/`,
+  dist: `${__dirname}/dist/`
 };
 
 // Deploy location:
@@ -26,8 +28,9 @@ const surgeURL = 'https://vam-design-guide.surge.sh';
 //---
 // Empty temp folders
 function clean() {
-  return del(`${paths.dest}/assets/`);
-  return del(`${paths.build}`);
+  return del([`${paths.dest}/assets/`,
+              `${paths.build}`,
+              `${paths.dist}`]);
 }
 
 
@@ -104,6 +107,15 @@ function svg() {
 
 
 //---
+// Prepare for release
+function releaseAssets() {
+  gulp.src(`${paths.dest}/assets/svg/*.svg`)
+    .pipe(rename('vamicons.svg'))
+    .pipe(gulp.dest(`${paths.dist}/svg`));
+}
+
+
+//---
 // Watch
 function watch() {
   serve();
@@ -116,3 +128,4 @@ const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles));
 
 gulp.task('dev', gulp.series(compile, watch));
 gulp.task('deploy', gulp.series(compile, staticBuild, deploy));
+gulp.task('dist', gulp.series(clean, gulp.parallel(svg), releaseAssets));
