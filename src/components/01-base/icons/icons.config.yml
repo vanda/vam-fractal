@@ -30,6 +30,7 @@ context:
     close,
     close-menu,
     menu-hamburger,
+    bag,
     fullscreen,
     plus,
     plus-thin,
@@ -40,6 +41,7 @@ context:
     listen,
     play,
     pause,
+    event-none,
     point-up,
     point-right,
     point-down,
@@ -104,6 +106,7 @@ variants: [
         listen,
         play,
         pause,
+        event-none,
       ]
     }
   },
@@ -115,6 +118,7 @@ variants: [
         close,
         close-menu,
         menu-hamburger,
+        bag,
         plus,
         plus-thin,
         minus,

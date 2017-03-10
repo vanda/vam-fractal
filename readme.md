@@ -13,7 +13,7 @@ The [documentation for Fractal](http://fractal.build/guide) is *super* useful. H
 Add the following to your `package.json` file, replacing the version number with the version that you want to use:
 
 ```
-"vam-fractal": "vanda/vam-fractal#2017.0.0"
+"vam-fractal": "vanda/vam-fractal#0.1.0"
 ```
 
 You can then import the Sass directly into your stylesheet either by directly referencing the `node_modules` folder or by creating a symlink.

@@ -13,14 +13,15 @@
   "author": "James Docherty <j.docherty@vam.ac.uk> (https://vam.ac.uk)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/24ways/vam-fractal.git"
+    "url": "https://github.com/vanda/vam-fractal.git"
   },
   "main": "fractal.js",
   "scripts": {
     "deploy": "node_modules/.bin/gulp deploy",
     "dev": "node_modules/.bin/gulp dev",
     "dist": "node_modules/.bin/gulp dist",
-    "version": "npm run dist && git add -A dist"
+    "version": "npm run dist && git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@frctl/fractal": "latest",

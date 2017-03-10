@@ -29,8 +29,7 @@ const surgeURL = 'https://vam-design-guide.surge.sh';
 // Empty temp folders
 function clean() {
   return del([`${paths.dest}/assets/`,
-              `${paths.build}`,
-              `${paths.dist}`]);
+              `${paths.build}`]);
 }
 
 
@@ -109,7 +108,7 @@ function svg() {
 //---
 // Prepare for release
 function releaseAssets() {
-  gulp.src(`${paths.dest}/assets/svg/*.svg`)
+  return gulp.src(`${paths.dest}/assets/svg/*.svg`)
     .pipe(rename('vamicons.svg'))
     .pipe(gulp.dest(`${paths.dist}/svg`));
 }
