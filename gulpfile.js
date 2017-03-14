@@ -127,4 +127,4 @@ const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles));
 
 gulp.task('dev', gulp.series(compile, watch));
 gulp.task('deploy', gulp.series(compile, staticBuild, deploy));
-gulp.task('dist', gulp.series(clean, gulp.parallel(svg), releaseAssets));
+gulp.task('dist', gulp.series(clean, gulp.parallel(svg), releaseAssets, deploy));
