@@ -28,8 +28,7 @@ const surgeURL = 'https://vam-design-guide.surge.sh';
 //---
 // Empty temp folders
 function clean() {
-  return del([`${paths.dest}/assets/`,
-              `${paths.build}`]);
+  return del([`${paths.dest}`, `${paths.build}`]);
 }
 
 
@@ -118,7 +117,7 @@ function releaseAssets() {
 // Watch
 function watch() {
   serve();
-  gulp.watch(`${paths.src}/**/*.scss`, styles);
+  gulp.watch([`${paths.src}/assets/**/*.scss`, `${paths.src}/components/**/*.scss`], styles);
   gulp.watch(`${paths.src}/assets/svg/*.svg`, svg);
   gulp.watch(`${paths.src}/assets/fonts`, fonts);
 }
@@ -127,4 +126,4 @@ const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles));
 
 gulp.task('dev', gulp.series(compile, watch));
 gulp.task('deploy', gulp.series(compile, staticBuild, deploy));
-gulp.task('dist', gulp.series(clean, gulp.parallel(svg), releaseAssets, deploy));
+gulp.task('dist', gulp.series(compile, releaseAssets, staticBuild, deploy, clean));
