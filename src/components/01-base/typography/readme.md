@@ -2,39 +2,43 @@
 
 ## Font family
 
-The V&A font is a modified version of The Sans. The font family can be referenced with by the `$font-families` Sass map:
+The V&A font is a modified version of The Sans. The font family can be referenced by the Sass function `fontFamily()`:
 
 ```sass
 .foo {
-  font-family: map-get($font-families, text);
+  font-family: fontFamily(text);
 }
 ```
 
-The `$font-families` map also includes a monospaced family, however it isn't expected that it will be used often (if at all) outside of this document:
+The `fontFamily()` map also includes a monospaced family, however it isn't expected that it will be used often (if at all) outside of this document:
 
 ```sass
 .bar {
-  font-family: map-get($font-families, code);
+  font-family: fontFamily(code);
 }
 ```
 
 ## Font weight
 
-There are four weights avalible to use: `light`, `regular`, `semi-bold` and `bold`. They are accessed through to Sass map `$font-weights`:
+There are four weights avalible to use: `light`, `regular`, `semi-bold` and `bold`. These can be accessed through the Sass function `fontWeight()`:
 
 ```sass
 .foo {
-  font-weight: map-get($font-weights, semi-bold);
+  font-weight: fontWeight(semi-bold);
 }
 ```
 
-## Font size and line height
+## Font weight, size and line height
 
-Font size and line height can be set using the `type-rhythm` mixin.
+These three can all be set at the same time using the Sass mixin `type-setting()`. You must provide both a size and weight for the correct line-height to be set. If no weight is provided the default is regular.
 
 ```sass
 .foo {
-  @include type-rhythm(3);
+  @include type-setting(3);
+}
+
+.bar {
+  @include type-setting(7, semi-bold);
 }
 ```
 

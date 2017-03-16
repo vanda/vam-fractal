@@ -37,5 +37,6 @@ context:
           hex: "#ccc"
       }
   ]
-title: "Site Colors"
+title: "Site colors"
+label: "Site color"
 status: wip

@@ -64,7 +64,7 @@ variants: [
   },
   {
     "name": "social-media",
-    "label": "Social Media",
+    "label": "Social media",
     "context": {
       "icons": [
         facebook,
@@ -80,7 +80,7 @@ variants: [
   },
   {
     "name": "site-icons",
-    "label": "Site Icons",
+    "label": "Site icons",
     "context": {
       "icons": [
         tfl,

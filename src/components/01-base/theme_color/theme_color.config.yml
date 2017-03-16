@@ -201,5 +201,6 @@ context:
           hex: "#87c3d6"
       },
   ]
-title: "Theme Colors"
+title: "Theme colors"
+label: "Theme color"
 status: wip

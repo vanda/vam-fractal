@@ -52,6 +52,6 @@
 }
 
 .fr_colorbox__colorcode {
-  font-family: map-get($font-families, code);
+  font-family: fontFamily(code);
   margin-bottom: 0;
 }

@@ -1,5 +1,5 @@
 context:
-  heading: "This is some text..."
+  heading: "The quick brown fox jumps over the lazy dog."
 default: "regular"
 title: "Typography - V&A Sans"
 status: wip
@@ -9,7 +9,7 @@ variants: [
     "label": "Light",
     "context": {
       "name": "light",
-      "sizes": [2,3,5]
+      "sizes": ['5', '6', '7']
     }
   },
   {
@@ -17,7 +17,7 @@ variants: [
     "label": "Regular",
     "context": {
       "name": "regular",
-      "sizes": [5,6,7,8,9]
+      "sizes": ['0', '1', '2', '3', '4', '5']
     }
   },
   {
@@ -25,7 +25,7 @@ variants: [
     "label": "Bold",
     "context": {
       "name": "bold",
-      "sizes": [3,4,5,6,8]
+      "sizes": ['0', '1', '2', '3', '4', '5', '6']
     }
   },
   {
@@ -33,7 +33,7 @@ variants: [
     "label": "Semi-bold",
     "context": {
       "name": "semi-bold",
-      "sizes": [1,2,3]
+      "sizes": ['1', '5', '6', '7', '8', '9']
     }
   }
 ]

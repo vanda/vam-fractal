@@ -72,44 +72,99 @@
        url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff') format('woff');
 }
 
-$font-families: (
+$font-family: (
   text: ('The Sans', Arial, Helvetica, sans-serif),
   code: (Consolas, Menlo, Monaco, 'Courier New', monospace)
 );
 
-$font-sizes: (
-  1: 56,
-  2: 44,
-  3: 32,
-  4: 26,
+$font-size: (
+  0: 12,
+  1: 13,
+  2: 14,
+  3: 16,
+  4: 18,
   5: 24,
-  6: 18,
-  7: 16,
-  8: 14,
-  9: 13
+  6: 32,
+  7: 44,
+  8: 56,
+  9: 68
 );
 
-$font-weights: (
+$line-height: (
+  0: 16,
+  1: 20,
+  2: 24,
+  3: 32,
+  4: 44,
+  5: 48,
+  6: 56,
+  7: 60,
+  8: 72
+);
+
+$font-weight: (
   light: 200,
   regular: 500,
   semi-bold: 600,
   bold: 700
 );
 
-$base-font-size: 16;
-$base-font-weight: map-get($font-weights, regular);
+$base-font-size: 3;
+$base-font-weight: 'regular';
+
+@function fontFamily($type: text) {
+  @return map-get($font-family, $type);
+}
+
+@function fontSize($size: $base-font-size) {
+  @return map-get($font-size, $size);
+}
+
+@function fontWeight($w: $base-font-weight) {
+  @return map-get($font-weight, $w);
+}
+
+@function lineHeight($size: $base-font-size, $weight: $base-font-weight) {
+
+  @if $weight == "light" {
+    @if $size == 5 {
+      @return map-get($line-height, 4);
+    }
+
+    @if $size == 7 {
+      @return map-get($line-height, 6);
+    }
+  }
+
+  @if $size < 2 {
+    @return map-get($line-height, 0);
+  } @else if $size < 3 {
+    @return map-get($line-height, 1);
+  } @else if $size < 4 {
+    @return map-get($line-height, 2);
+  } @else if $size < 6 {
+    @return map-get($line-height, 3);
+  } @else if $size < 8  {
+    @return map-get($line-height, 5);
+  } @else if $size < 9 {
+    @return map-get($line-height, 7);
+  } @else {
+    @return map-get($line-height, 8);
+  }
+}
 
 @mixin font-size($sizeValue: $base-font-size) {
-	font-size: $sizeValue + px; // Old browser fallback
-	font-size: (0.0625 * $sizeValue) + rem; // Base fontsize is 16px
+	font-size: fontSize($sizeValue) + px; // Old browser fallback
+	font-size: (fontSize($sizeValue) / fontSize($base-font-size)) + rem; // Base fontsize is 16px
 }
 
-@mixin line-height($heightValue: $base-font-size){
-	line-height: $heightValue + px; // Old browser fallback
-	line-height: (0.0625 * $heightValue) + rem;
+@mixin line-height($heightValue: $base-font-size, $weight: $base-font-weight) {
+	line-height: lineHeight($heightValue, $weight) + px; // Old browser fallback
+	line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
 }
 
-@mixin type-rhythm($size) {
-  @include font-size(map-get($font-sizes, $size));
-	@include line-height(map-get($font-sizes, $size) + 4); // <- Not correct
+@mixin type-setting($size: $base-font-size, $weight: $base-font-weight) {
+  @include font-size($size);
+  @include line-height($size, $weight);
+  font-weight: fontWeight($weight);
 }

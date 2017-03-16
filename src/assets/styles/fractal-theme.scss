@@ -4,7 +4,8 @@
 @import '../../components/01-base/typography/typography';
 
 html, body {
-  font-family: map-get($font-families, text);
+  font-family: fontFamily(text);
+  @include type-setting(3);
 }
 
 .Header {
@@ -20,9 +21,9 @@ html, body {
 .Prose h1,
 .Prose h2,
 .Prose h3, {
-  font-family: map-get($font-families, text);
+  font-family: fontFamily(text);
 }
 
 code, pre {
-  font-family: map-get($font-families, code);
+  font-family: fontFamily(code);
 }
