@@ -102,6 +102,15 @@ $line-height: (
   8: 72
 );
 
+$letter-spacing: (
+  0: normal,
+  1: 1,
+  2: 2.5,
+  3: 3,
+  4: 5,
+  5: 8
+);
+
 $font-weight: (
   light: 200,
   regular: 500,
@@ -110,6 +119,7 @@ $font-weight: (
 );
 
 $base-font-size: 3;
+$base-letter-spacing: 0;
 $base-font-weight: 'regular';
 
 @function fontFamily($type: text) {
@@ -122,6 +132,21 @@ $base-font-weight: 'regular';
 
 @function fontWeight($w: $base-font-weight) {
   @return map-get($font-weight, $w);
+}
+
+@function letterSpace($size: $base-font-size, $w: $base-font-weight) {
+  @if $w == 'bold' {
+
+    @if $size < 2      { @return map-get($letter-spacing, 2); }
+    @else if $size < 4 { @return map-get($letter-spacing, 3); }
+    @else              { @return map-get($letter-spacing, 5); }
+
+  } @else if $w = 'semi-bold' {
+
+    @return map-get($letter-spacing, 3);
+
+  }
+  @return map-get($letter-spacing, 0);
 }
 
 @function lineHeight($size: $base-font-size, $weight: $base-font-weight) {
@@ -163,8 +188,20 @@ $base-font-weight: 'regular';
 	line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
 }
 
-@mixin type-setting($size: $base-font-size, $weight: $base-font-weight) {
+@mixin letter-spacing($size: $base-font-size, $weight: $base-font-weight) {
+  letter-spacing: letterSpace($size, $weight) + px;
+  letter-spacing: (letterSpace($size, $weight) / fontSize($base-font-size)) + rem;
+}
+
+@mixin type-setting($size: $base-font-size, $weight: $base-font-weight, $transform: none) {
   @include font-size($size);
   @include line-height($size, $weight);
   font-weight: fontWeight($weight);
+
+  @if $transform == 'uppercase'
+      and $weight != 'regular'
+      and $weight != 'semi-light' {
+    @include letter-spacing($size, $weight);
+    text-transform: uppercase;
+  }
 }

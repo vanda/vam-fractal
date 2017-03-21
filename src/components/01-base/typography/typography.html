@@ -1,6 +1,10 @@
 {% for s in sizes %}
-  <p class="fr-font-{{ name }}-{{ s }}">
-    {{ heading }} (Size: {{ s }})
-  </p>
+  <div class="fr-type-block">
+    <span class="fr-type-block__label">
+      Size: {{ s }}
+    </span>
+    <div class="fr-font-{{ name }}-{{ s }}">
+      {{ heading }}
+    </div>
+  </div>
 {% endfor %}
-

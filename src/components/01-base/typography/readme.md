@@ -43,3 +43,13 @@ These three can all be set at the same time using the Sass mixin `type-setting()
 ```
 
 There are nine different `font-sizes` with corresponding `line-height` values. The mixin will set the both as well as defining the value in `rem` units as well as `px` units as fallback.
+
+## Uppercase
+
+Uppercase typography is used for headings, navigation text and buttons. It is only used in a semi-bold and bold weight. This is also accessible through the `type-setting()` mixin:
+
+```sass
+.foo {
+  @include type-setting(5, bold, uppercase);
+}
+```

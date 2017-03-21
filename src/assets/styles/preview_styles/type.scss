@@ -1,5 +1,12 @@
-@each $weight in map-keys($font-weight) {
+.fr-type-block {
+  margin-bottom: 1em;
 
+  &__label {
+    @include type-setting(0, bold, uppercase);
+  }
+}
+
+@each $weight in map-keys($font-weight) {
   .fr-font-weight--#{$weight} {
     font-weight: fontWeight(#{$weight});
   }
@@ -7,6 +14,12 @@
   @for $i from 0 through 9 {
     .fr-font-#{$weight}-#{$i} {
       @include type-setting($i, $weight);
+    }
+  }
+
+  @for $i from 0 through 5 {
+    .fr-font-#{$weight}-#{$i}-uppercase {
+      @include type-setting($i, $weight, 'uppercase');
     }
   }
 }
