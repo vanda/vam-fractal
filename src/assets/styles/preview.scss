@@ -2,6 +2,7 @@
 // Not part of the code vam-style.scss
 
 // Mixins
+@import '../../components/00-mixins/breakpoints/breakpoints';
 @import '../../components/00-mixins/visually_hidden/visually_hidden';
 
 // Vars
@@ -13,6 +14,7 @@
 @import 'preview_styles/colorbox';
 @import 'preview_styles/iconbox';
 @import 'preview_styles/type';
+@import 'preview_styles/breakpoints';
 
 .fr-visually-hidden {
   @include visually-hidden;

@@ -1,0 +1,41 @@
+.fr-breakpoint {
+  @include type-setting(3, regular);
+  background-color: theme-color(angry-blue);
+  padding: 1rem;
+
+  &:after {
+    content: '(default)';
+  }
+
+  @include bp-min-x-small {
+    background-color: theme-color(angry-yellow);
+    &:after {
+      content: '(x-small)';
+    }
+  }
+
+  @include bp-min-small {
+    @include type-setting(4, regular);
+    background-color: theme-color(blue-green);
+    &:after {
+      content: '(small)';
+    }
+  }
+
+  @include bp-min-medium {
+    @include type-setting(5, regular);
+    background-color: theme-color(cyan);
+    &:after {
+      content: '(medium)';
+    }
+  }
+
+  @include bp-min-large {
+    @include type-setting(6, regular);
+    background-color: theme-color(dark-pink);
+    &:after {
+      content: '(large)';
+    }
+  }
+
+}

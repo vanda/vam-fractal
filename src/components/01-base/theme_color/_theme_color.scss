@@ -73,3 +73,7 @@ $pale-theme-colors: (
   sky-purple,
   soft-pink
 );
+
+@function theme-color($c) {
+  @return map-get($theme-colors, $c);
+}
