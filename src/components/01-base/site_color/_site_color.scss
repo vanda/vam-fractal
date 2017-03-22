@@ -10,3 +10,7 @@ $site_colors: (
   vam-grey-4: #ccc,
   vam-grey-5: #ccc
 );
+
+@function site-color($c) {
+  @return map-get($site_colors, $c);
+}

@@ -4,6 +4,7 @@
 // Mixins
 @import '../../components/00-mixins/breakpoints/breakpoints';
 @import '../../components/00-mixins/visually_hidden/visually_hidden';
+@import '../../components/00-mixins/unstyled_list/unstyled_list';
 
 // Vars
 @import '../../components/01-base/site_color/site_color';
@@ -18,4 +19,12 @@
 
 .fr-visually-hidden {
   @include visually-hidden;
+}
+
+.fr-unstyled-list {
+  @include unstyled-list;
+}
+
+.fr-bg--dark {
+  background-color: rgba(site-color('vam-black'), .7);
 }

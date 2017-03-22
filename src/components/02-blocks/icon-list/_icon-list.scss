@@ -1,0 +1,44 @@
+$icon-width: 30px;
+
+.b-iconlist {
+  @include type-setting(2, regular);
+  @include unstyled-list;
+  display: flex;
+  flex-wrap: wrap;
+  color: map-get($site-colors, vam-black);
+
+  &--dark {
+    color: map-get($site-colors, vam-white);
+  }
+
+  &__item {
+    margin-left: $icon-width;
+    margin-bottom: 20px;
+    width: calc(100% - #{$icon-width});
+
+    @include bp-min-x-small {
+      float: left;
+      margin-right: 2%;
+      width: calc(48% - #{$icon-width});
+    }
+
+    @include bp-min-small {
+      float: none;
+      margin-bottom: 25px;
+      width: 100%;
+    }
+
+    &__icon {
+      float: left;
+      height: 20px;
+      margin-left: -$icon-width;
+      margin-top: 5px;
+      width: 20px;
+    }
+
+    &__heading {
+      @include type-setting(4, regular);
+      margin: 0;
+    }
+  }
+}
