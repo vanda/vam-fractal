@@ -2,74 +2,65 @@
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 200;
-  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'), url('../fonts/TheSans_LP_300_Light.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 300;
-  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'), url('../fonts/TheSans_LP_300_Light.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_500_Regular.woff') format('woff');
+  src: url('../fonts/TheSans_LP_500_Regular.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular-Italic.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_500_Regular-Italic.woff') format('woff');
+  src: url('../fonts/TheSans_LP_500_Regular-Italic.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular-Italic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 500;
+  src: url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff') format('woff');
   unicode-range: U+0030-0039; // Gets just the numbers from this font
-  src: url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/TheSans_LP_600_SemiBold.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_600_SemiBold.woff') format('woff');
+  src: url('../fonts/TheSans_LP_600_SemiBold.woff2') format('woff2'), url('../fonts/TheSans_LP_600_SemiBold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_700_Bold.woff') format('woff');
+  src: url('../fonts/TheSans_LP_700_Bold.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold-Italic.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_700_Bold-Italic.woff') format('woff');
+  src: url('../fonts/TheSans_LP_700_Bold-Italic.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold-Italic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 700;
+  src: url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff') format('woff');
   unicode-range: U+0030-0039; // Gets just the numbers from this font
-  src: url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff2') format('woff2'),
-       url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff') format('woff');
 }
 
 $font-family: (
@@ -137,14 +128,16 @@ $base-font-weight: 'regular';
 @function letterSpace($size: $base-font-size, $w: $base-font-weight) {
   @if $w == 'bold' {
 
-    @if $size < 2      { @return map-get($letter-spacing, 2); }
-    @else if $size < 4 { @return map-get($letter-spacing, 3); }
-    @else              { @return map-get($letter-spacing, 5); }
+    @if $size < 2 {
+      @return map-get($letter-spacing, 2);
+    } @else if $size < 4 {
+      @return map-get($letter-spacing, 3);
+    } @else {
+      @return map-get($letter-spacing, 5);
+    }
 
   } @else if $w = 'semi-bold' {
-
     @return map-get($letter-spacing, 3);
-
   }
   @return map-get($letter-spacing, 0);
 }
@@ -178,30 +171,28 @@ $base-font-weight: 'regular';
   }
 }
 
-@mixin font-size($sizeValue: $base-font-size) {
-	font-size: fontSize($sizeValue) + px; // Old browser fallback
-	font-size: (fontSize($sizeValue) / fontSize($base-font-size)) + rem; // Base fontsize is 16px
+@mixin fontSize($sizeValue: $base-font-size) {
+  font-size: fontSize($sizeValue) + px; // Old browser fallback
+  font-size: (fontSize($sizeValue) / fontSize($base-font-size)) + rem; // Base fontsize is 16px
 }
 
-@mixin line-height($heightValue: $base-font-size, $weight: $base-font-weight) {
-	line-height: lineHeight($heightValue, $weight) + px; // Old browser fallback
-	line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
+@mixin lineHeight($heightValue: $base-font-size, $weight: $base-font-weight) {
+  line-height: lineHeight($heightValue, $weight) + px; // Old browser fallback
+  line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
 }
 
-@mixin letter-spacing($size: $base-font-size, $weight: $base-font-weight) {
+@mixin letterSpacing($size: $base-font-size, $weight: $base-font-weight) {
   letter-spacing: letterSpace($size, $weight) + px;
   letter-spacing: (letterSpace($size, $weight) / fontSize($base-font-size)) + rem;
 }
 
-@mixin type-setting($size: $base-font-size, $weight: $base-font-weight, $transform: none) {
-  @include font-size($size);
-  @include line-height($size, $weight);
+@mixin typeSetting($size: $base-font-size, $weight: $base-font-weight, $transform: none) {
+  @include fontSize($size);
+  @include lineHeight($size, $weight);
   font-weight: fontWeight($weight);
 
-  @if $transform == 'uppercase'
-      and $weight != 'regular'
-      and $weight != 'semi-light' {
-    @include letter-spacing($size, $weight);
+  @if $transform == 'uppercase' and $weight != 'regular' and $weight != 'semi-light' {
+    @include letterSpacing($size, $weight);
     text-transform: uppercase;
   }
 }

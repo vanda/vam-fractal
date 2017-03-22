@@ -1,26 +1,28 @@
+// sass-lint:disable class-name-format
 // Theme for Fractal
 
-@import '../../components/01-base/site_color/site_color';
+@import '../../components/01-base/site-color/site-color';
+@import '../../components/01-base/theme-color/theme-color';
 @import '../../components/01-base/typography/typography';
 
 html, body {
+  @include typeSetting(3);
   font-family: fontFamily(text);
-  @include type-setting(3);
 }
 
 .Header {
-  background-color: map-get($site_colors, vam-black);
-  color: map-get($site-colors, vam-white);
+  background-color: siteColor(vam-black);
+  color: siteColor(vam-white);
 }
 
 .Header-navToggle svg {
-  fill: map-get($site-colors, vam-white);
+  fill: siteColor(vam-white);
 }
 
 .Prose,
 .Prose h1,
 .Prose h2,
-.Prose h3, {
+.Prose h3 {
   font-family: fontFamily(text);
 }
 

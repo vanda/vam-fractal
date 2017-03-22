@@ -3,28 +3,28 @@
 
 // Mixins
 @import '../../components/00-mixins/breakpoints/breakpoints';
-@import '../../components/00-mixins/visually_hidden/visually_hidden';
-@import '../../components/00-mixins/unstyled_list/unstyled_list';
+@import '../../components/00-mixins/visually-hidden/visually-hidden';
+@import '../../components/00-mixins/unstyled-list/unstyled-list';
 
 // Vars
-@import '../../components/01-base/site_color/site_color';
-@import '../../components/01-base/theme_color/theme_color';
+@import '../../components/01-base/site-color/site-color';
+@import '../../components/01-base/theme-color/theme-color';
 @import '../../components/01-base/typography/typography';
 
 // Modules
-@import 'preview_styles/colorbox';
-@import 'preview_styles/iconbox';
+@import 'preview_styles/color-box';
+@import 'preview_styles/icon-box';
 @import 'preview_styles/type';
 @import 'preview_styles/breakpoints';
 
 .fr-visually-hidden {
-  @include visually-hidden;
+  @include visuallyHidden;
 }
 
 .fr-unstyled-list {
-  @include unstyled-list;
+  @include unstyledList;
 }
 
 .fr-bg--dark {
-  background-color: rgba(site-color('vam-black'), .7);
+  background-color: rgba(siteColor(vam-black), .7);
 }

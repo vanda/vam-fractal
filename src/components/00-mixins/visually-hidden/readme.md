@@ -8,7 +8,7 @@ Visually hides elements without hiding them from screen readers or crawlers.
 
 ```sass
 .foo{
-  @include visually-hidden;
+  @include visuallyHidden;
 }
 ```
 

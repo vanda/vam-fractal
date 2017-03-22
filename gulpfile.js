@@ -7,6 +7,7 @@ const gulp          = require('gulp');
 const autoprefixer  = require('gulp-autoprefixer');
 const rename        = require('gulp-rename');
 const sass          = require('gulp-sass');
+const sassLint      = require('gulp-sass-lint');
 const sourcemaps    = require('gulp-sourcemaps');
 const svgsymbols    = require('gulp-svg-symbols');
 const svgmin        = require('gulp-svgmin');
@@ -112,6 +113,14 @@ function releaseAssets() {
     .pipe(gulp.dest(`${paths.dist}/svg`));
 }
 
+//---
+// Linter
+function sassLinter() {
+  return gulp.src(`${paths.src}/**/*.scss`)
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError());
+}
 
 //---
 // Watch
@@ -123,7 +132,9 @@ function watch() {
 }
 
 const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles));
+const linter = gulp.series(sassLinter);
 
 gulp.task('dev', gulp.series(compile, watch));
-gulp.task('deploy', gulp.series(compile, staticBuild, deploy));
-gulp.task('dist', gulp.series(compile, releaseAssets, staticBuild, deploy, clean));
+gulp.task('deploy', gulp.series(linter, compile, staticBuild, deploy));
+gulp.task('dist', gulp.series(linter, compile, releaseAssets, staticBuild, deploy, clean));
+gulp.task('lint', gulp.series(linter));

@@ -1,4 +1,4 @@
-.fr-icon-group{
+.fr-icon-group {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -6,10 +6,10 @@
   padding: 10px;
 }
 
-.fr_iconbox {
+.fr-icon-box {
   border-radius: 4px;
-  padding: 5px;
   max-width: 100px;
+  padding: 5px;
   text-align: center;
   transition: .2s background-color;
   width: 15%;
@@ -17,19 +17,20 @@
   &:hover {
     background-color: map-get($site_colors, vam-grey-1);
 
-    .fr_iconbox__icon{
+    &__icon {
       color: map-get($site_colors, primary-green);
     }
   }
-}
 
-.fr_iconbox__icon {
-  color: map-get($site_colors, vam-black);
-  max-height: 50px;
-  transition: .2s color;
-  width: 50%;
-}
+  &__icon {
+    color: map-get($site_colors, vam-black);
+    max-height: 50px;
+    transition: .2s color;
+    width: 50%;
+  }
 
-.fr_iconbox__name {
-  font-size: .825em;
+  &__name {
+    font-size: .825em;
+  }
+
 }

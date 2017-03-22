@@ -1,6 +1,6 @@
 // http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, hr, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  border: 0;
+  border: none;
   font: inherit;
   margin: 0;
   outline: 0;
@@ -24,12 +24,19 @@ section {
 }
 
 body {
-  line-height: 1;
+  background-color: siteColor(vam-white);
+  color: siteColor(vam-black);
+  font-family: fontFamily(text);
+  font-smoothing: antialiased;
+  line-height: 1.7;
+  margin-bottom: 1px;
 }
 
 ol,
 ul {
   list-style: none;
+  list-style-position: outside;
+  margin-left: 30px;
 }
 
 blockquote,
@@ -58,15 +65,6 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
-}
-
-body {
-  background-color: map-get($site-colors, vam-white);
-  color: map-get($site-colors, vam-black);
-  font-family: fontFamily(text);
-  font-smoothing: antialiased;
-  line-height: 1.7;
-  margin-bottom: 1px;
 }
 
 input {
@@ -111,7 +109,7 @@ hr {
 
 abbr,
 acronym {
-  border-bottom: 1px dotted lightgrey;
+  border-bottom: 1px dotted siteColor(vam-grey-5);
 }
 
 i,
@@ -137,12 +135,6 @@ sub {
 
 sup {
   top: -.3em;
-}
-
-ol,
-ul {
-  list-style-position: outside;
-  margin-left: 30px;
 }
 
 ol {

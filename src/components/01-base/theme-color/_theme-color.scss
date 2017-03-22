@@ -74,6 +74,6 @@ $pale-theme-colors: (
   soft-pink
 );
 
-@function theme-color($c) {
+@function themeColor($c) {
   @return map-get($theme-colors, $c);
 }

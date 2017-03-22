@@ -11,6 +11,6 @@ $site_colors: (
   vam-grey-5: #ccc
 );
 
-@function site-color($c) {
+@function siteColor($c) {
   @return map-get($site_colors, $c);
 }
