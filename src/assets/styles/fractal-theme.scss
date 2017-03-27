@@ -1,9 +1,9 @@
 // sass-lint:disable class-name-format
 // Theme for Fractal
 
-@import '../../components/01-base/site-color/site-color';
-@import '../../components/01-base/theme-color/theme-color';
-@import '../../components/01-base/typography/typography';
+@import '../../components/base/site-color/site-color';
+@import '../../components/base/theme-color/theme-color';
+@import '../../components/base/typography/typography';
 
 html, body {
   @include typeSetting(3);

@@ -1,19 +1,24 @@
 // V&A site styles
 
-// Mixins
-@import '../../components/00-mixins/breakpoints/breakpoints';
-@import '../../components/00-mixins/visually-hidden/visually-hidden';
-@import '../../components/00-mixins/unstyled-list/unstyled-list';
+// Mixin
+@import '../../components/mixins/breakpoints/breakpoints';
+@import '../../components/mixins/visually-hidden/visually-hidden';
+@import '../../components/mixins/unstyled-list/unstyled-list';
 
 // Base
-@import '../../components/01-base/site-color/site-color';
-@import '../../components/01-base/theme-color/theme-color';
-@import '../../components/01-base/typography/typography';
-@import '../../components/01-base/reset/reset'; // Must come after colour and type
+@import '../../components/base/site-color/site-color';
+@import '../../components/base/theme-color/theme-color';
+@import '../../components/base/typography/typography';
+@import '../../components/base/reset/reset'; // Must come after colour and type
 
-// Modules
-@import '../../components/02-blocks/icon-list/icon-list';
-
-
-// Utilities
+// Utility
 @import '../../components/utilities/svg_icon/svg_icon'; // Must come after colour and type
+
+// Unit
+@import '../../components/units/link/link';
+@import '../../components/units/button/button';
+
+// Block
+@import '../../components/blocks/icon-list/icon-list';
+
+

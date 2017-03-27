@@ -11,8 +11,9 @@ The deploy and distribution will fail if the Sass linting fails.
 
 ## Namespacing
 
-- `b- `: A _block_ of user interface such as an `icon-list`
-- `is-`, `has-:`
+- `b- `: A _block_ of user interface such as the icon list (`b-icon-list`)
+- `u- `: A _unit_ of user interface such as a button (`.u-btn`)
+- `is-`, `has-`: Temporary state of the UI such as `.is-open`, `.is-updating` or `.has-dropdown`
 - `js-`: Reserved hook for JavaScript
 - `qa-`: Reserved hook for automated tests
 - `fr-`: This is an additional namespace used solely within this documentation - it is used to indicate that the style is for the layout and presentation of this guide and is therefore _not_ in the main V&A stylesheet.

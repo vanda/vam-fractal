@@ -1,6 +1,5 @@
 context:
   heading: "The quick brown fox jumps over the lazy dog."
-  transform: ['none']
 default: "regular"
 title: "Typography - V&A Sans"
 status: wip

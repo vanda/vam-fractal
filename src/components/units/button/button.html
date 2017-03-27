@@ -1,0 +1,11 @@
+<a href="#" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}">
+  {{ text }}
+</a>
+
+{% for v in variants %}
+<div>
+  <a href="#" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
+    {{ text }}
+  </a>
+</div>
+{% endfor %}

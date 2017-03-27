@@ -1,0 +1,7 @@
+{% for c in colors %}
+<div class="theme-{{ c.name }}">
+  <a href="#" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}">
+    {{ text }}
+  </a>
+</div>
+{% endfor %}

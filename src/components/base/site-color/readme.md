@@ -2,10 +2,10 @@
 
 These are the colours that are used across the site for core modules. This is distinct from theme colours.
 
-Site colors are referenced using a Sass map:
+Site colours are referenced using a Sass function:
 
 ```sass
 .foobar {
-  background-color: map-get($site_colors, vam-black);
+  background-color: siteColor(primary-green);
 }
 ```

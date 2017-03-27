@@ -1,0 +1,21 @@
+.u-link {
+
+  &--arrow {
+    display: block;
+
+    &::after {
+      // If CSS triangles are used then the arrow
+      //  can become orphaned from the main link.
+      // Also ensure that your HTML has no white-
+      //  space in it either.
+      content: ' ▸';
+    }
+  }
+
+}
+
+@media print {
+  a[href]::after {
+    content: " (" attr(href) ") ";
+  }
+}

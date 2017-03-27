@@ -1,0 +1,98 @@
+.u-btn {
+  @include typeSetting(1, semi-bold, uppercase);
+  appearance: none;
+  background-color: siteColor(primary-green);
+  border: 1px solid siteColor(primary-green);
+  border-radius: 2px;
+  color: siteColor(vam-black);
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px 0;
+  outline: 0;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  transition: border .2s, background-color .2s, color .2s;
+
+  &:hover {
+    background-color: darken(siteColor(primary-green), 10);
+    border-color: darken(siteColor(primary-green), 10);
+  }
+
+  &--arrowed {
+    padding-right: 35px;
+    position: relative;
+
+    &::after {
+      border: 4px solid transparent;
+      border-left-color: currentColor;
+      content: '';
+      display: inline-block;
+      margin-top: -5px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+    }
+  }
+
+  &--black {
+    background-color: siteColor(vam-black);
+    border: 1px solid siteColor(vam-black);
+    color: siteColor(vam-white);
+
+    &:hover {
+      background-color: lighten(siteColor(vam-black), 10);
+      border: 1px solid siteColor(vam-black);
+    }
+  }
+
+  &--micro {
+    padding: 6px 10px;
+
+    &.u-btn--arrowed {
+      padding-right: 20px;
+
+      &::after {
+        right: 8px;
+      }
+    }
+  }
+
+  &--themed {
+    @each $color in map-keys($theme-colors) {
+      .theme-#{$color} & {
+        background-color: themeColor($color);
+        border-color: themeColor($color);
+
+        &:hover {
+          background-color: darken(themeColor($color), 10);
+          border-color: darken(themeColor($color), 10);
+        }
+      }
+    }
+  }
+
+  &--outlined {
+    background-color: rgba(siteColor(vam-white), .8);
+    border-color: rgba(siteColor(primary-green), .35);
+    color: siteColor(vam-black);
+
+    &:hover {
+      background-color: transparent;
+      border-color: siteColor(primary-green);
+      color: siteColor(primary-green);
+    }
+    &.u-btn--black {
+      background-color: rgba(siteColor(vam-black), .8);
+      border-color: siteColor(primary-green);
+      color: siteColor(vam-white);
+
+      &:hover {
+        background-color: rgba(siteColor(vam-black), .8);
+        color: siteColor(primary-green);
+      }
+    }
+
+  }
+}

@@ -2,7 +2,13 @@
 
 ## Background and usage
 
-Coming soon...
+Theme colours can be referenced with the Sass function `themeColor()`:
+
+```sass
+.foobar {
+  color: themeColor(strawberry);
+}
+```
 
 ## Implementation
 
@@ -26,8 +32,8 @@ As with `site_color`, `theme_color` exists as a Sass map and can be accessed via
 
 ```sass
 .foobar {
-  background-color: map-get($theme_colors, strawberry);
-  border-color: map-get($theme_colors, strawberry);
+  background-color: themeColor(strawberry);
+  border-color: themeColor(strawberry);
 }
 ```
 
@@ -37,7 +43,7 @@ You may _need_ to loop through each of the theme colors to generate specifically
 .foobar {
   @each $color in map-keys($theme-colors) {
     .theme-#{$color} & {
-      background-color: map-get($theme-colors, $color);
+      background-color: themeColor($color);
     }
   }
 }
@@ -49,9 +55,9 @@ The `_theme_color.scss` Sass file also contains a [list](http://sass-lang.com/do
   @each $color in map-keys($theme-colors) {
     &.theme-#{$color} {
       @if index($pale-themes, $color) {
-        border-color: darken(map-get($theme-colors, $color), 30);
+        border-color: darken(themeColor($color), 30);
       } @else {
-        border-color: map-get($theme-colors, $color);
+        border-color: themeColor($color);
       }
     }
   }
@@ -61,7 +67,7 @@ The `_theme_color.scss` Sass file also contains a [list](http://sass-lang.com/do
 .foobar {
   @each $color in $pale-themes {
     .theme-#{$color} & {
-      border-color: darken(map-get($theme-colors, $color), 30);
+      border-color: darken(themeColor($color), 30);
     }
   }
 }
