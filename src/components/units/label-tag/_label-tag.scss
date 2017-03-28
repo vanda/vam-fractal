@@ -1,0 +1,44 @@
+.u-label-tag {
+  @include typeSetting(2, semi-bold, uppercase);
+  background-color: siteColor(primary-green);
+  border-radius: 2px;
+  bottom: initial;
+  color: siteColor(vam-white);
+  margin: 12px;
+  padding: 4px 12px 2px;
+  position: absolute;
+  top: 0;
+
+  &--sold-out,
+  &--ending-soon {
+    background: themeColor(strawberry);
+  }
+
+  &--selling-fast {
+    background: themeColor(cyan);
+  }
+
+  &--family-friendly {
+    background: themeColor(blue-green);
+  }
+
+  &--members-only {
+    background: themeColor(velvet);
+  }
+
+  &--more-tickets-added {
+    background: themeColor(teal-blue);
+  }
+
+  &--last-few-tickets {
+    background: themeColor(blue);
+  }
+
+  &--last-few-days {
+    background: themeColor(orange);
+  }
+
+  &--book-soon {
+    background: themeColor(salmon);
+  }
+}

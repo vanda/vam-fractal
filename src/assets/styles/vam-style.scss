@@ -2,8 +2,9 @@
 
 // Mixin
 @import '../../components/mixins/breakpoints/breakpoints';
-@import '../../components/mixins/visually-hidden/visually-hidden';
+@import '../../components/mixins/tiles/tiles';
 @import '../../components/mixins/unstyled-list/unstyled-list';
+@import '../../components/mixins/visually-hidden/visually-hidden';
 
 // Base
 @import '../../components/base/site-color/site-color';
@@ -17,8 +18,12 @@
 // Unit
 @import '../../components/units/link/link';
 @import '../../components/units/button/button';
+@import '../../components/units/label-tag/label-tag';
 
 // Block
 @import '../../components/blocks/icon-list/icon-list';
+@import '../../components/blocks/event-teaser/event-teaser';
 
+// Group
+@import '../../components/groups/event-grid/event-grid';
 

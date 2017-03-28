@@ -1,0 +1,69 @@
+<article class="b-event-teaser" itemscope itemprop="event" itemtype="http://schema.org/Event">
+
+  <a class="b-event-teaser__link" itemprop="url" content="{{ eventUrl }}" href="{{ eventUrl }}">
+
+    {% if eventTag %}
+    {%- render "@label-tag--book-soon" -%}
+    {% endif %}
+
+    <div class="b-event-teaser__media js-objectFit_container">
+      <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
+        <link itemprop="url" href="{{ eventImage[960] }}">
+        <img srcset="{{ eventImage[220] }} 220w,
+                     {{ eventImage[320] }} 320w,
+                     {{ eventImage[380] }} 380w,
+                     {{ eventImage[480] }} 480w"
+             sizes="(max-width: 499px) calc(100vw - 20px),
+                    (min-width: 500px) calc(50vw - 40px),
+                    (min-width: 992px) calc(33vw - 40px)" alt="{{ eventTitle }}" class="b-event-teaser__media-image" itemprop="contentUrl" src="{{ eventImage[480] }}">
+      </span>
+
+      {% if eventSponsorText %}
+      <div class="b-event-teaser__sponsor" itemprop="sponsor" itemtype="http://schema.org/Organization">
+        <span itemprop="name">
+          {{ eventSponsorText }}
+        </span>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="b-event-teaser__description">
+      <span itemprop="description" content="{{ eventDescription }}"></span>
+      <span itemprop="location" itemscope itemtype="http://schema.org/Place">
+        <span itemprop="name" content="Victoria and Albert Museum"></span>
+        <span itemprop="address" content="Victoria and Albert Museum, Cromwell Road, London SW7 2RL, UK"></span>
+      </span>
+
+      <div class="b-event-teaser__label">
+        {{ eventType }}
+      </div>
+
+      <h1 class="b-event-teaser__title" aria-label="{{ eventTitle }}" itemprop="name" content="{{ eventTitle }}">
+        {{ eventTitle }}
+      </h1>
+
+      <div class="b-event-teaser__data">
+        <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <link itemprop="url" href="#">
+          <span itemprop="priceCurrency" content="GBP"></span>
+          <span class="b-event-teaser__price" itemprop="price" content="2360">
+            {{ eventPrice }}
+          </span>
+        </span>
+        <span class="b-event-teaser__date">
+          {{ eventHumanDates }}
+        </span>
+        <span itemprop="startDate" content="{{ eventMachineStartDate }}"></span>
+        <span itemprop="endDate" content="{{ eventMachineEndDate }}"></span>
+      </div>
+
+      <footer class="b-event-teaser__footer">
+        {% for action in actions %}
+        <div class="u-btn u-btn--micro u-btn--outlined">
+          {{ action }}
+        </div>
+        {% endfor %}
+      </footer>
+    </div>
+  </a>
+</article>

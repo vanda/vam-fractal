@@ -3,8 +3,9 @@
 
 // Mixins
 @import '../../components/mixins/breakpoints/breakpoints';
-@import '../../components/mixins/visually-hidden/visually-hidden';
 @import '../../components/mixins/unstyled-list/unstyled-list';
+@import '../../components/mixins/visually-hidden/visually-hidden';
+@import '../../components/mixins/tiles/tiles';
 
 // Vars
 @import '../../components/base/site-color/site-color';
@@ -12,10 +13,11 @@
 @import '../../components/base/typography/typography';
 
 // Modules
+@import 'preview_styles/breakpoints';
 @import 'preview_styles/color-box';
 @import 'preview_styles/icon-box';
 @import 'preview_styles/type';
-@import 'preview_styles/breakpoints';
+@import 'preview_styles/tiles';
 
 .fr-visually-hidden {
   @include visuallyHidden;
