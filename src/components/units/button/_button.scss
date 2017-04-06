@@ -59,20 +59,6 @@
     }
   }
 
-  &--themed {
-    @each $color in map-keys($theme-colors) {
-      .theme-#{$color} & {
-        background-color: themeColor($color);
-        border-color: themeColor($color);
-
-        &:hover {
-          background-color: darken(themeColor($color), 10);
-          border-color: darken(themeColor($color), 10);
-        }
-      }
-    }
-  }
-
   &--outlined {
     background-color: rgba(siteColor(vam-white), .8);
     border-color: rgba(siteColor(primary-green), .35);

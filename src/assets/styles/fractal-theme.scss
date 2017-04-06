@@ -4,6 +4,7 @@
 @import '../../components/base/site-color/site-color';
 @import '../../components/base/theme-color/theme-color';
 @import '../../components/base/typography/typography';
+@import '../../components/base/spacing/spacing';
 
 html, body {
   @include typeSetting(3);

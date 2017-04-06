@@ -1,0 +1,64 @@
+.b-icon-badge {
+  &__icon {
+    background-color: siteColor(vam-black);
+    border-radius: 100%;
+    color: siteColor(vam-white);
+    display: flex;
+    height: 60px;
+    margin: 0 auto 5px;
+    width: 60px;
+
+    @include bpMinSmall {
+      height: 70px;
+      width: 70px;
+    }
+
+    @include bpMinMedium {
+      height: 80px;
+      width: 80px;
+    }
+
+    .b-icon-badge--small & {
+      height: 60px;
+      width: 60px;
+    }
+
+    &.u-themed {
+      color: siteColor(vam-black);
+    }
+
+    svg {
+      height: 16px;
+      margin: auto;
+      width: 16px;
+
+      @include bpMinSmall {
+        height: 22px;
+        width: 22px;
+      }
+    }
+  }
+
+  &__label {
+    @include typeSetting(0, bold, uppercase);
+    color: siteColor(vam-white);
+    display: block;
+    letter-spacing: .25em;
+    text-align: center;
+    text-indent: .25em; // Fixes misalignment caused by letter-spacing
+    text-shadow: siteColor(vam-black) 1px 0 2px;
+
+    @include bpMinSmall {
+      @include typeSetting(1, bold);
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(2, bold);
+      margin-top: $spacing-small;
+    }
+
+    .b-icon-badge--small & {
+      @include typeSetting(1, bold);
+    }
+  }
+}

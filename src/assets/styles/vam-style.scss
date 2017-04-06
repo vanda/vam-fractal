@@ -10,10 +10,12 @@
 @import '../../components/base/site-color/site-color';
 @import '../../components/base/theme-color/theme-color';
 @import '../../components/base/typography/typography';
+@import '../../components/base/spacing/spacing';
 @import '../../components/base/reset/reset'; // Must come after colour and type
 
 // Utility
 @import '../../components/utilities/svg_icon/svg_icon'; // Must come after colour and type
+@import '../../components/utilities/themed/themed'; // Must come after colour and type
 
 // Unit
 @import '../../components/units/link/link';
@@ -21,9 +23,12 @@
 @import '../../components/units/label-tag/label-tag';
 
 // Block
+@import '../../components/blocks/icon-badge/icon-badge';
 @import '../../components/blocks/icon-list/icon-list';
 @import '../../components/blocks/event-teaser/event-teaser';
+@import '../../components/blocks/promo/promo';
 
 // Group
 @import '../../components/groups/event-grid/event-grid';
+@import '../../components/groups/promo-grid/promo-grid';
 

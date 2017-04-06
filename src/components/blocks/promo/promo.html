@@ -1,0 +1,64 @@
+{% if grouped !== true %}
+<section class="b-promo{% for m in modifiers %} b-promo--{{ m }}{% endfor %}">
+{% endif %}
+  <article class="b-promo__item js-objectFit_container">
+
+    <img srcset="{{ image['320'] }} 320w, {{ image['640'] }} 640w, {{ image['960'] }} 960w, {{ image['1280'] }} 1280w, {{ image['1920'] }} 1920w, {{ image['2560'] }} 2560w"
+         sizes="(min-width: 1200px) 1200px, 100vw"
+         class="b-promo__image"
+         src="{{ image['960'] }}"
+         alt="{{ title }}">
+
+    <a class="b-promo__anchor" data-tracking="promobox-{{ title | slugify }}" href="{{ url }}">
+
+      <div class="b-promo__content">
+
+
+        {% if icon === true %}
+          {%- render "@icon-badge" -%}
+        {% else %}
+          <h1 class="b-promo__type">
+            {{ title }}
+          </h1>
+        {% endif %}
+
+        <p class="b-promo__title">
+          {{ body }}
+        </p>
+
+        {% if description %}
+          <p class="b-promo__description">
+            {{ description }}
+          </p>
+        {% endif %}
+
+        {% if sponsor %}
+          <p class="b-promo__sponsor">
+            {{ sponsor }}
+          </p>
+        {% elif quote %}
+          <blockquote class="b-promo__quote">
+            <p class="b-promo__quote__body">
+              {{ quote.body}}
+            </p>
+
+            <cite class="b-promo__quote__citation">
+              {{ quote.cite }}
+            </cite>
+          </blockquote>
+        {% endif %}
+
+        {% if cta %}
+        <div class="u-btn u-btn--arrowed">
+          {{ cta }}
+        </div>
+        {% endif %}
+
+      </div>
+
+    </a>
+  </article>
+
+{% if grouped !== true %}
+</section>
+{% endif %}

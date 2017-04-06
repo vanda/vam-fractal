@@ -1,0 +1,36 @@
+.u-themed {
+  @each $color in map-keys($theme-colors) {
+    .theme-#{$color} &--color {
+      color: map-get($theme-colors, $color);
+      transition: all .2s;
+
+      &--hover { // sass-lint:disable-line class-name-format
+        &:hover {
+          color: darken(map-get($theme-colors, $color), 10%);
+        }
+      }
+    }
+
+    .theme-#{$color} &--background-color {
+      background-color: map-get($theme-colors, $color);
+      transition: all .2s;
+
+      &--hover { // sass-lint:disable-line class-name-format
+        &:hover {
+          background-color: darken(map-get($theme-colors, $color), 10%);
+        }
+      }
+    }
+
+    .theme-#{$color} &--border-color {
+      border-color: map-get($theme-colors, $color);
+      transition: all .2s;
+
+      &--hover { // sass-lint:disable-line class-name-format
+        &:hover {
+          border-color: darken(map-get($theme-colors, $color), 10%);
+        }
+      }
+    }
+  }
+}

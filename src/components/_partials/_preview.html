@@ -14,7 +14,7 @@
 
   </head>
 
-  <body>
+  <body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%}">
     {{ yield }}
   </body>
 </html>

@@ -1,0 +1,43 @@
+.b-promo-grid {
+  background-color: siteColor(vam-white);
+  margin: 0 0 10px;
+
+  @include bpMinMedium {
+    background-color: transparent;
+  }
+
+  &__header {
+    padding: $spacing-medium $spacing-small $spacing-small;
+    width: 100%;
+
+    @include bpMinSmall {
+      padding: $spacing-xlarge $spacing-small $spacing-medium;
+    }
+
+    @include bpMinMedium {
+      background-color: transparent;
+    }
+  }
+
+  &__title {
+    @include typeSetting(4, bold, uppercase);
+    color: siteColor(vam-black);
+    display: block;
+    text-align: center;
+
+    @include bpMinSmall {
+      @include typeSetting(5, bold, uppercase);
+    }
+
+    @include bpMinMedium {
+      color: siteColor(vam-white);
+      text-shadow: siteColor(vam-black) 0 1px 2px;
+    }
+  }
+
+  &__footer {
+    background-color: siteColor(vam-black);
+    padding: $spacing-small * 2;
+  }
+
+}

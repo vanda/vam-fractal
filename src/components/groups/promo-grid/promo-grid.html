@@ -1,0 +1,17 @@
+<section class="b-promo-grid">
+  <header class="b-promo-grid__header">
+    <h1 class="b-promo-grid__title">{{ title }}</h1>
+  </header>
+
+  <div class="b-promo b-promo--big">
+    {% for a in articles %}
+      {%- render "@promo--big", a -%}
+    {% endfor %}
+  </div>
+
+  <footer class="b-promo-grid__footer">
+    <a href="#">
+      {%- render "@icon-badge", more -%}
+    </a>
+  </footer>
+</section>

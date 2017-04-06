@@ -40,9 +40,10 @@ variants: [
   {
     "name": "themed",
     "context": {
-      "colors": '@theme-color.colors',
+      "title": "themed button",
       "text": "Become a V&A member",
-      "modifiers": ['arrowed', 'themed']
+      "modifiers": ['arrowed'],
+      "themed": ['background-color', 'border-color', 'background-color--hover', 'border-color--hover'],
     }
   },
   {
