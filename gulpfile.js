@@ -108,10 +108,15 @@ function svg() {
 
 //---
 // Prepare for release
-function releaseAssets() {
+function releaseSVG() {
   return gulp.src(`${paths.dest}/assets/svg/*.svg`)
     .pipe(rename('vamicons.svg'))
     .pipe(gulp.dest(`${paths.dist}/svg`));
+}
+
+function releaseCSS() {
+  return gulp.src(`${paths.dest}/assets/styles/vam-style.css`)
+    .pipe(gulp.dest(`${paths.dist}/css`));
 }
 
 //---
@@ -133,9 +138,10 @@ function watch() {
 }
 
 const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles));
+const buildDistAssets = gulp.parallel(releaseSVG, releaseCSS);
 const linter = gulp.series(sassLinter);
 
 gulp.task('dev', gulp.series(compile, watch));
 gulp.task('deploy', gulp.series(linter, compile, staticBuild, deploy));
-gulp.task('dist', gulp.series(linter, compile, releaseAssets, staticBuild, deploy, clean));
+gulp.task('dist', gulp.series(linter, compile, buildDistAssets, staticBuild, deploy, clean));
 gulp.task('lint', gulp.series(linter));
