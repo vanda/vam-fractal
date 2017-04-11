@@ -49,11 +49,11 @@ context:
     fulltriangle-up,
     fulltriangle-right,
     fulltriangle-down,
-    fulltriangle-right,
+    fulltriangle-left,
     arrow-up,
     arrow-right,
     arrow-down,
-    arrow-right
+    arrow-left
   ]
 default: "all"
 status: wip
@@ -130,11 +130,11 @@ variants: [
         fulltriangle-up,
         fulltriangle-right,
         fulltriangle-down,
-        fulltriangle-right,
+        fulltriangle-left,
         arrow-up,
         arrow-right,
         arrow-down,
-        arrow-right
+        arrow-left
       ]
     }
   }
