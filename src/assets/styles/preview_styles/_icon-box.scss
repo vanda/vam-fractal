@@ -21,7 +21,7 @@
   }
 
   &__icon {
-    color: map-get($site_colors, alert-red);
+    color: map-get($site_colors, vam-black);
     max-height: 50px;
     transition: .2s color;
     width: 50%;
