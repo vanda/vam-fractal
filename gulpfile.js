@@ -99,7 +99,8 @@ function svg() {
     .pipe(svgmin())
     .pipe(svgsymbols({
       svgClassname: 'u-svg-icon',
-      templates: [`${paths.src}/assets/templates/svg-template.svg`]
+      templates: [`${paths.src}/assets/templates/svg-template.svg`],
+      title: false,
     }))
     .pipe(gulp.dest(`${paths.dest}/assets/svg`));
 }

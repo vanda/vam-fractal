@@ -1,29 +1,27 @@
 .fr-icon-group {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 10px;
+  background-color: #fff;
+  color: #444;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
 
 .fr-icon-box {
   border-radius: 4px;
-  max-width: 100px;
   padding: 5px;
   text-align: center;
   transition: .2s background-color;
-  width: 15%;
 
   &:hover {
     background-color: map-get($site_colors, vam-grey-1);
 
-    &__icon {
+    .fr-icon-box__icon {
       color: map-get($site_colors, primary-green);
     }
   }
 
   &__icon {
-    color: map-get($site_colors, vam-black);
+    color: map-get($site_colors, alert-red);
     max-height: 50px;
     transition: .2s color;
     width: 50%;
