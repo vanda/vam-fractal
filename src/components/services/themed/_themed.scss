@@ -1,4 +1,4 @@
-.u-themed {
+.s-themed {
   @each $color in map-keys($theme-colors) {
     .theme-#{$color} &--color {
       color: map-get($theme-colors, $color);

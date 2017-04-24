@@ -98,7 +98,7 @@ function svg() {
   return gulp.src(`${paths.src}/assets/svg/*.svg`)
     .pipe(svgmin())
     .pipe(svgsymbols({
-      svgClassname: 'u-svg-icon',
+      svgClassname: 's-svg-icon',
       templates: [`${paths.src}/assets/templates/svg-template.svg`],
       title: false,
     }))

@@ -7,7 +7,7 @@ It is added to the top of the SVG icon set to ensure that it does not appear on 
 ## Implementation
 
 ```svg
-<svg class="u-svg-icon">
+<svg class="s-svg-icon">
   ...
 </svg>
 ```
