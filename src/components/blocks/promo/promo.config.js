@@ -18,6 +18,25 @@ module.exports = {
   },
   variants: [
     {
+      name: "White",
+      label: "White",
+      context: {
+        title: "Shop",
+        body: "Find inspiration in our range of jewellery, books, fashion, prints & posters and much more...",
+        cta: "Explore the range",
+        url: "https://www.vam.ac.uk/shop",
+        image: {
+          "320": "https://vanda-production-assets.s3.amazonaws.com/2017/01/03/09/43/shop/generic_shop_promo_320.jpg",
+          "640": "https://vanda-production-assets.s3.amazonaws.com/2017/01/03/09/43/shop/generic_shop_promo_640.jpg",
+          "960": "https://vanda-production-assets.s3.amazonaws.com/2017/01/03/09/43/shop/generic_shop_promo_960.jpg",
+          "1280": "https://vanda-production-assets.s3.amazonaws.com/2017/01/03/09/43/shop/generic_shop_promo_1280.jpg",
+          "1920": "https://vanda-production-assets.s3.amazonaws.com/2017/01/03/09/43/shop/generic_shop_promo_1920.jpg",
+          "2560": "https://vanda-production-assets.s3.amazonaws.com/2017/01/03/09/43/shop/generic_shop_promo_2560.jpg"
+        },
+        modifiers: ["white"],
+      }
+    },
+    {
       name: "With sponsor line",
       label: "With sponsor line",
       context: {

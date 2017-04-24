@@ -45,7 +45,7 @@
 
   &__anchor {
     background-color: rgba(siteColor(vam-black), .3);
-    background-image: linear-gradient(rgba(siteColor(vam-black), 0), rgba(siteColor(vam-black), .5));
+    background-image: linear-gradient(rgba(siteColor(vam-white), 0), rgba(siteColor(vam-black), .5));
     display: block;
     height: 100%;
     position: relative;
@@ -54,6 +54,28 @@
     &:hover,
     &:focus {
       background-color: transparent;
+    }
+
+    .b-promo--white & {
+      background-color: transparent;
+      background-image: none;
+
+      &::after {
+        background-image: linear-gradient(rgba(siteColor(vam-white), 0), rgba(siteColor(vam-black), .5));
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        transition: opacity .3s;
+        width: 100%;
+      }
+
+      &:hover::after,
+      &:focus:after {
+        opacity: 0;
+      }
     }
   }
 
@@ -65,13 +87,24 @@
     height: 100%;
     justify-content: center;
     margin: auto;
-    max-width: 800px;
+    max-width: 470px;
     min-height: 230px;
     padding: $spacing-small;
+    position: relative;
     text-align: center;
+    z-index: 1;
+
+    @include bpMinSmall {
+      max-width: 670px;
+    }
 
     @include bpMinMedium {
+      max-width: 800px;
       min-height: 280px;
+    }
+
+    .b-promo--white & {
+      color:siteColor(vam-black);
     }
   }
 
@@ -82,6 +115,10 @@
 
     @include bpMinSmall {
       @include typeSetting(3, semi-bold, uppercase);
+    }
+
+    .b-promo--white & {
+      text-shadow: none;
     }
   }
 
@@ -94,6 +131,10 @@
 
     @include bpMinSmall {
       @include typeSetting(6);
+    }
+
+    .b-promo--white & {
+      text-shadow: siteColor(vam-white) 1px 0 2px;
     }
   }
 
