@@ -136,7 +136,7 @@ $base-font-weight: 'regular';
       @return map-get($letter-spacing, 5);
     }
 
-  } @else if $w = 'semi-bold' {
+  } @else if $w == 'semi-bold' {
     @return map-get($letter-spacing, 3);
   }
   @return map-get($letter-spacing, 0);
