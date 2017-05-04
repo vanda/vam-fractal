@@ -1,6 +1,6 @@
 .b-block-grid {
   background-color: siteColor(vam-white);
-  margin: 0 0 10px;
+  margin: 0 0 $spacing-small;
 
   @include bpMinMedium {
     background-color: transparent;

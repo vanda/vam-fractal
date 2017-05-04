@@ -1,0 +1,33 @@
+<section class="b-collection-grid">
+
+  <header class="b-collection-grid__header">
+    <h2 class="b-collection-grid__title">{{ title_1 }}</h2>
+  </header>
+  
+  <ul class="b-collection-grid__items">
+
+  {% for card in collectionsLatest %}
+    <li class="b-collection-grid__item--featured">
+      {%- render "@collection-card", card -%}
+    </li>
+  {% endfor %}
+  </ul>
+
+</section>
+
+<section class="b-collection-grid">
+
+  <header class="b-collection-grid__header">
+    <h2 class="b-collection-grid__title">{{ title_2 }}</h2>
+  </header>
+  
+  <ul class="b-collection-grid__items">
+
+  {% for card in collections %}
+    <li class="b-collection-grid__item">
+      {%- render "@collection-card", card -%}
+    </li>
+  {% endfor %}
+  </ul>
+
+</section>

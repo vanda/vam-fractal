@@ -4,17 +4,22 @@
   @include bpMinXSmall {
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
+    margin: 0 -12px;
 
     .no-flexbox & {
       overflow: hidden;
     }
   }
+
+  @include bpMinMedium {
+    margin: 0 -27px;
+  }
 }
 
-@mixin tilesItem {
+@mixin tilesItem($columns: 3) {
   box-sizing: border-box;
   flex: 0 1 auto;
+  margin-bottom: 16px;
 
   .no-flexbox & {
     float: left;
@@ -22,8 +27,9 @@
 
   @include bpMinXSmall {
     flex-basis: 50%;
+    margin-bottom: 23px;
     max-width: 50%;
-    padding: 16px;
+    padding: 0 12px;
 
     .no-flexbox & {
       width: 50%;
@@ -31,11 +37,13 @@
   }
 
   @include bpMinMedium {
-    flex-basis: 33.333%;
-    max-width: 33.333%;
+    flex-basis: percentage(1 / $columns);
+    margin-bottom: 16px;
+    max-width: percentage(1 / $columns);
+    padding: 0 27px;
 
     .no-flexbox & {
-      width: 33.333%;
+      width: percentage(1 / $columns);
     }
   }
 }

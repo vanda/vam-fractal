@@ -10,7 +10,7 @@
   "homepage": "https://vam-design-guide.surge.sh",
   "bugs": "https://github.com/vanda/vam-fractal/issues",
   "license": "MIT",
-  "author": "James Docherty <j.docherty@vam.ac.uk> (https://vam.ac.uk)",
+  "author": "Luca Carini <l.carini@vam.ac.uk> (https://vam.ac.uk)",
   "repository": {
     "type": "git",
     "url": "https://github.com/vanda/vam-fractal.git"

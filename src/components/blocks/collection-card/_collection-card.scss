@@ -1,0 +1,59 @@
+.b-collection-card {
+
+  &__media {
+    @include constrainedImage(7 4);
+  }
+
+  &__media-inner {
+    @include constrainedImageInner;
+    overflow: hidden;
+  }
+
+  &__media-image {
+    @include constrainedImageImage;
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 1px 2px 0 rgba(siteColor(vam-black), .5);
+    height: auto;
+  }
+
+  &__overlay {
+    align-items: center;
+    background-color: rgba(siteColor(vam-black), .5);
+    border-radius: 2px 2px 0 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 200ms;
+    z-index: 1;
+
+    .b-collection-card__anchor:hover &,
+    .b-collection-card__anchor:focus & {
+      opacity: 1;
+    }
+  }
+
+  &__overlay-text {
+    @include typeSetting(2, semi-bold, uppercase);
+    color: siteColor(vam-white);
+    text-shadow: 0 1px 2px rgba(siteColor(vam-black), .5);
+  }
+
+  &__name {
+    @include typeSetting(5, bold);
+    background-color: siteColor(vam-white);
+    color: siteColor(vam-black);
+    min-height: 84px;
+    padding: 5px 10px;
+
+    .b-collection-card--transparent & {
+      background-color: transparent;
+      padding: 5px 0;
+    }
+  }
+}
