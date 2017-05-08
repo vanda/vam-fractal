@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
     <title>point-up</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="point-up" fill-rule="nonzero" fill="currentColor">
-            <polygon transform="translate(50.000000, 50.000000) scale(1, -1) translate(-50.000000, -50.000000) " points="0 26.9190044 6.88469322 20.0418309 50 66.3312126 93.0859109 20 100 26.9065373 49.9900831 80"></polygon>
+            <polygon transform="translate(50.003048, 50.174999) scale(1, -1) translate(-50.003048, -50.174999) " points="12.1219506 20 0 32.7280482 50.0030481 80.3499985 100.006096 32.7280482 87.8841457 20 50.0030481 56.0772361"></polygon>
         </g>
     </g>
 </svg>
