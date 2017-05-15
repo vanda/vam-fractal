@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 
 <html lang="en-gb" dir="ltr" prefix="og: http://ogp.me/ns#">
-
   <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>V&amp;A</title>
 
-    <link rel="stylesheet" href="{{ '/assets/styles/vam-style.css' | path }}"/>
-    <link rel="stylesheet" href="{{ '/assets/styles/preview.css' | path }}"/>
+    <link rel="stylesheet" href="{{ '/assets/styles/vam-style.css' | path }}" />
+    <link rel="stylesheet" href="{{ '/assets/styles/preview.css' | path }}" />
 
+    <script src="https://cdn.polyfill.io/v2/polyfill.js?features=Element.prototype.classList,es6,HTMLPictureElement,Element.prototype.remove,Element.prototype.dataset"></script>
+    <script src="{{ '/assets/scripts/modernizr.custom.min.js' | path }}"></script>
   </head>
 
   <body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%}">
     {{ yield }}
+
+    <!--[if lte IE 8]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{{ '/assets/scripts/vamscript.js' | path }}"></script>
   </body>
 </html>

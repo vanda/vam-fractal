@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "document": false,
+    "Modernizr": false
+  },
+  "extends": "airbnb-base",
+  "rules": {
+    "strict": 0,
+    "comma-dangle": [2, "never"],
+    "no-param-reassign": [2, {"props": false}],
+    "space-before-function-paren": [2, "always"]
+  }
+}

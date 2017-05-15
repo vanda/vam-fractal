@@ -1,14 +1,14 @@
 module.exports = {
-  title: "Icon badge",
-  label: "Icon badge",
-  status: "wip",
+  title: 'Icon badge',
+  label: 'Icon badge',
+  status: 'wip',
   context: {
     action: 'Read',
     icon: 'quote'
   },
   variants: [
     {
-      name: "small",
+      name: 'small',
       context: {
         action: 'Show more',
         icon: 'plus-thin',
@@ -16,12 +16,12 @@ module.exports = {
       }
     },
     {
-      name: "themed",
+      name: 'themed',
       context: {
         action: 'Show more',
         icon: 'plus',
-        themed: ['background-color', 'background-color--hover'],
+        themed: ['background-color', 'background-color--hover']
       }
     }
   ]
-}
+};

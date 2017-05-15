@@ -68,6 +68,6 @@ module.exports = {
         text: 'Book soon',
         modifier: ['book-soon']
       }
-    },
+    }
   ]
-}
+};

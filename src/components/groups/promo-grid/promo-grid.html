@@ -3,15 +3,10 @@
     <h1 class="b-promo-grid__title">{{ title }}</h1>
   </header>
 
-  <div class="b-promo b-promo--big">
+  <div class="b-promo b-promo--big js-grid-reveal-more" data-reveal-more-counter="2" data-icon-url="/assets/svg/svg-template.svg">
     {% for a in articles %}
       {%- render "@promo--big", a -%}
     {% endfor %}
   </div>
 
-  <footer class="b-promo-grid__footer">
-    <a href="#">
-      {%- render "@icon-badge", more -%}
-    </a>
-  </footer>
 </section>

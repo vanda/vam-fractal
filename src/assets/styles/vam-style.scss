@@ -16,6 +16,7 @@
 // Utility
 @import '../../components/services/svg_icon/svg_icon'; // Must come after colour and type
 @import '../../components/services/themed/themed'; // Must come after colour and type
+@import '../../components/services/object_fit_polyfill/object_fit';
 
 // Unit
 @import '../../components/units/link/link';
@@ -31,4 +32,3 @@
 // Group
 @import '../../components/groups/event-grid/event-grid';
 @import '../../components/groups/promo-grid/promo-grid';
-

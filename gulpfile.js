@@ -5,14 +5,22 @@ const logger        = fractal.cli.console;
 // Gulpy gulp
 const gulp          = require('gulp');
 const autoprefixer  = require('gulp-autoprefixer');
+const babel         = require('gulp-babel');
+const buffer        = require('vinyl-buffer');
+const browserify    = require('browserify');
+const concat        = require('gulp-concat');
+const del           = require('del');
+const eslint        = require('gulp-eslint');
+const glob          = require('glob');
 const rename        = require('gulp-rename');
 const sass          = require('gulp-sass');
 const sassLint      = require('gulp-sass-lint');
+const source        = require('vinyl-source-stream');
 const sourcemaps    = require('gulp-sourcemaps');
-const svgsymbols    = require('gulp-svg-symbols');
-const svgmin        = require('gulp-svgmin');
 const surge         = require('gulp-surge');
-const del           = require('del');
+const svgmin        = require('gulp-svgmin');
+const svgsymbols    = require('gulp-svg-symbols');
+const uglify        = require('gulp-uglify');
 
 // Paths
 const paths = {
@@ -93,6 +101,55 @@ function fonts() {
 
 
 //---
+// Scripts
+const opts = {
+  transform: [
+        ["babelify", { presets: ["es2015"],
+                        plugins: ["transform-class-properties"]
+                      }
+        ],
+      ],
+  debug: true
+};
+
+const newBundle = entry => {
+  opts.entries = entry;
+  let b = browserify(opts);
+
+  const rebundle = () => {
+    b.bundle()
+    .on('error', swallowError)
+    .pipe(source(entry))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(rename('vamscript.js'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(`${paths.dest}/assets/scripts`));
+  }
+
+  return rebundle();
+}
+
+function scripts() {
+  gulp.src(`${paths.src}/assets/scripts/precompiled/*.js`)
+    .pipe(gulp.dest(`${paths.dest}/assets/scripts`));
+
+  return glob(`${paths.src}/assets/scripts/*.js`, function(err, files) {
+    var tasks = files.map(function(entry) {
+      newBundle(entry);
+    });
+  });
+}
+
+
+function swallowError (error) {
+  console.log(error.toString())
+  this.emit('end')
+}
+
+
+//---
 // SVG Icons
 function svg() {
   return gulp.src(`${paths.src}/assets/svg/*.svg`)
@@ -119,8 +176,13 @@ function releaseCSS() {
     .pipe(gulp.dest(`${paths.dist}/css`));
 }
 
+function releaseJS() {
+  return gulp.src(`${paths.dest}/assets/scripts/*.js`)
+    .pipe(gulp.dest(`${paths.dist}/scripts`));
+}
+
 //---
-// Linter
+// Linters
 function sassLinter() {
   return gulp.src(`${paths.src}/**/*.scss`)
     .pipe(sassLint())
@@ -128,18 +190,26 @@ function sassLinter() {
     .pipe(sassLint.failOnError());
 }
 
+function jsLinter() {
+  return gulp.src(`${paths.src}/**/*.js`)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
+}
+
 //---
 // Watch
 function watch() {
   serve();
   gulp.watch([`${paths.src}/assets/**/*.scss`, `${paths.src}/components/**/*.scss`], styles);
+  gulp.watch([`${paths.src}/assets/**/*.js`, `${paths.src}/components/**/_*.js`], scripts);
   gulp.watch(`${paths.src}/assets/svg/*.svg`, svg);
   gulp.watch(`${paths.src}/assets/fonts`, fonts);
 }
 
-const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles));
-const buildDistAssets = gulp.parallel(releaseSVG, releaseCSS);
-const linter = gulp.series(sassLinter);
+const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles, scripts));
+const buildDistAssets = gulp.parallel(releaseSVG, releaseCSS, releaseJS);
+const linter = gulp.series(sassLinter, jsLinter);
 
 gulp.task('dev', gulp.series(compile, watch));
 gulp.task('deploy', gulp.series(linter, compile, staticBuild, deploy));

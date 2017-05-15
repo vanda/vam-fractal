@@ -1,0 +1,10 @@
+.js-object-fit-container {
+  &--fallback {
+    background-position: center center;
+    background-size: cover;
+
+    img {
+      display: none;
+    }
+  }
+}
