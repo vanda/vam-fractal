@@ -16,6 +16,14 @@ module.exports = {
       }
     },
     {
+      name: 'light',
+      context: {
+        action: 'More events',
+        icon: 'plus-thin',
+        modifiers: ['light']
+      }
+    },
+    {
       name: 'themed',
       context: {
         action: 'Show more',

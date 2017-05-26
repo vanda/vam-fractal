@@ -11,6 +11,10 @@
     float: left;
   }
 
+  &.is-hidden {
+    @include visuallyHidden;
+  }
+
   @include bpMinXSmall {
     flex-basis: 50%;
     margin-bottom: 32px;
@@ -30,6 +34,10 @@
     }
   }
 
+  .u-label-tag {
+    z-index: 1;
+  }
+
   &__link {
     display: block;
     position: relative;
@@ -39,6 +47,7 @@
         border-bottom: 1px solid siteColor(vam-grey-1);
       }
     }
+
   }
 
   &__media {

@@ -62,5 +62,10 @@
     .b-icon-badge--small & {
       @include typeSetting(1, bold);
     }
+
+    .b-icon-badge--light & {
+      color: siteColor(vam-black);
+      text-shadow: none;
+    }
   }
 }

@@ -9,13 +9,14 @@
     <div class="b-event-teaser__media js-objectFit_container">
       <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
         <link itemprop="url" href="{{ eventImage[960] }}">
-        <img srcset="{{ eventImage[220] }} 220w,
-                     {{ eventImage[320] }} 320w,
-                     {{ eventImage[380] }} 380w,
-                     {{ eventImage[480] }} 480w"
+        <img alt="{{ eventTitle }}"
+             class="b-event-teaser__media-image"
+             itemprop="contentUrl"
              sizes="(max-width: 499px) calc(100vw - 20px),
                     (min-width: 500px) calc(50vw - 40px),
-                    (min-width: 992px) calc(33vw - 40px)" alt="{{ eventTitle }}" class="b-event-teaser__media-image" itemprop="contentUrl" src="{{ eventImage[480] }}">
+                    (min-width: 992px) calc(33vw - 40px)"
+             srcset="{% for k, img in eventImage %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+             src="{{ eventImage[640] }}">
       </span>
 
       {% if eventSponsorText %}

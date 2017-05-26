@@ -9,16 +9,17 @@ if (gridRevealMore) {
       const svgURL = gridBlock.dataset.iconUrl;
       const gridChildren = gridBlock.children;
       const gridItems = Object.keys(gridChildren).map(key => gridChildren[key]);
+      const theme = gridBlock.dataset.revealMoreTheme || 'dark';
 
       // Hide all but the first `noOfItemsToShow`
       gridItems.slice(noOfItemsToShow).forEach(el => el.classList.add('is-hidden'));
 
       // Add in a show more button at the bottom
       const gridFooterMarkup = document.createElement('footer');
-      gridFooterMarkup.setAttribute('class', 'b-promo-grid__footer');
+      gridFooterMarkup.setAttribute('class', `b-promo-grid__footer b-promo-grid__footer--${theme}`);
       gridFooterMarkup.innerHTML = `
         <a href="#">
-          <div class="b-icon-badge b-icon-badge--small">
+          <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">
             <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
               <svg role="img">
                 <use xlink:href="${svgURL}#plus"></use>

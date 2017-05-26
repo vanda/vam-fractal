@@ -40,6 +40,10 @@
     clear: both;
     padding: $spacing-small * 2;
 
+    &--light {
+      background-color: siteColor(vam-white);
+    }
+
     svg {
       color: siteColor(vam-black);
     }
