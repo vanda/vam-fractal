@@ -13,6 +13,7 @@ The deploy and distribution will fail if the Sass linting fails.
 
 - `b- `: A _block_ of user interface such as the icon list (`b-icon-list`)
 - `u- `: A _unit_ of user interface such as a button (`.u-btn`)
+- `s- `: A _service_ class (sometimes called a utility class).
 - `is-`, `has-`: Temporary state of the UI such as `.is-open`, `.is-updating` or `.has-dropdown`
 - `js-`: Reserved hook for JavaScript
 - `qa-`: Reserved hook for automated tests

@@ -45,7 +45,7 @@ module.exports = {
         title: 'themed button',
         text: 'Become a V&A member',
         modifiers: ['arrowed'],
-        themed: ['background-color', 'border-color', 'background-color--hover', 'border-color--hover'],
+        themed: ['background-color', 'border-color', 'background-color--hover', 'border-color--hover']
       }
     },
     {
@@ -57,9 +57,9 @@ module.exports = {
           ['outlined', 'arrowed'],
           ['outlined', 'black'],
           ['outlined', 'arrowed', 'black'],
-          ['outlined', 'micro'],
+          ['outlined', 'micro']
         ]
       }
     }
   ]
-}
+};

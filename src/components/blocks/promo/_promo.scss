@@ -26,10 +26,18 @@
     @include bpMinMedium {
       min-height: 300px;
       width: 50%;
+
+      .no-flexbox & {
+        float: left;
+      }
     }
 
     &:last-of-type:nth-of-type(odd) {
       width: 100%;
+    }
+
+    &.is-hidden {
+      @include visuallyHidden;
     }
   }
 
@@ -140,10 +148,11 @@
 
   &__description {
     @include typeSetting(4);
-
     @include bpMaxSmall {
       @include visuallyHidden;
     }
+
+    width: 100%;
   }
 
   &__sponsor {
@@ -154,6 +163,8 @@
   }
 
   &__quote {
+    width: 100%;
+
     &__body {
       @include typeSetting(2);
       font-style: italic;

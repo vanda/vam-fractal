@@ -45,8 +45,8 @@ module.exports = {
       context: {
         name: 'uppercase',
         weights: ['bold', 'semi-bold'],
-        sizes: ['0','1', '2', '3', '4', '5']
+        sizes: ['0', '1', '2', '3', '4', '5']
       }
     }
   ]
-}
+};

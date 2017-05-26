@@ -37,7 +37,11 @@
 
   &__footer {
     background-color: siteColor(vam-black);
+    clear: both;
     padding: $spacing-small * 2;
-  }
 
+    svg {
+      color: siteColor(vam-black);
+    }
+  }
 }

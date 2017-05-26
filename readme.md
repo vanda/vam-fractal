@@ -19,8 +19,21 @@ Add the following to your `package.json` file, replacing the version number with
 You can then import the Sass directly into your stylesheet either by directly referencing the `node_modules` folder or by creating a symlink.
 
 ```sass
-@import 'vam-fractal/src/assets/styles/vam-style';
+@import 'vam-fractal/dist/css/vam-style';
 ```
+
+Create a symlink:
+```bash
+ln -s node_modules/vam-fractal/dist/css/vam-style.css assets/css
+ln -s node_modules/vam-fractal/dist/svg/vamicons.svg assets/svg
+```
+
+Fonts are also included in this project too but in a different location:
+```bash
+ln -s node_modules/vam-fractal/src/fonts assets/
+```
+
+TODO: Get gulp to create a relative symlink from fonts in the the `dist` folder
 
 ## Development
 

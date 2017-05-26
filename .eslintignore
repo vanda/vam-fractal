@@ -1,0 +1,2 @@
+src/assets/scripts/precompiled/*.js
+dist/**/*.js
