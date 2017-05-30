@@ -3,7 +3,7 @@ const gridRevealMore = document.querySelectorAll('.js-grid-reveal-more');
 if (gridRevealMore) {
   for (let i = 0; i < gridRevealMore.length; i += 1) {
     const gridBlock = gridRevealMore[i];
-    const noOfItemsToShow = gridBlock.dataset.revealMoreCounter;
+    const noOfItemsToShow = gridBlock.dataset.revealMoreCounter || 4;
 
     if (noOfItemsToShow < gridBlock.childElementCount) {
       const svgURL = gridBlock.dataset.iconUrl;
@@ -16,7 +16,7 @@ if (gridRevealMore) {
 
       // Add in a show more button at the bottom
       const gridFooterMarkup = document.createElement('footer');
-      gridFooterMarkup.setAttribute('class', `b-promo-grid__footer b-promo-grid__footer--${theme}`);
+      gridFooterMarkup.setAttribute('class', `b-block-grid__footer b-block-grid__footer--${theme}`);
       gridFooterMarkup.innerHTML = `
         <a href="#">
           <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">

@@ -1,0 +1,20 @@
+<section class="b-block-grid">
+  <header class="b-block-grid__header">
+    <h1 class="b-block-grid__title">{{ title }}</h1>
+  </header>
+
+  <div class="b-block-grid__content {% for c in additionalClasses %} {{ c }}{% endfor %}{%if revealMoreCount %} js-grid-reveal-more{% endif %}" {%if revealMoreCount %}data-reveal-more-theme="{{ revealMoreTheme }}" data-reveal-more-counter="{{ revealMoreCount }}" data-icon-url="/assets/svg/svg-template.svg"{% endif %}>
+    {% if articles %}
+      {% for a in articles %}
+        {%- render "@promo--big", a -%}
+      {% endfor %}
+    {% endif %}
+
+    {% if events %}
+      {% for e in events %}
+        {%- render "@event-teaser", e -%}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+</section>
