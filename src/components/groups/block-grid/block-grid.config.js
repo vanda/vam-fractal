@@ -113,6 +113,7 @@ module.exports = {
       label: 'Event',
       context: {
         title: 'More to do',
+        theme: 'light',
         revealMoreCount: '6',
         revealMoreTheme: 'light',
         events: [
@@ -140,12 +141,12 @@ module.exports = {
             eventType: 'Exhibition',
             eventTitle: 'Balenciaga: Shaping Fashion',
             eventImage: {
-              320: 'https://vanda-production-assets.s3.amazonaws.com/2017/01/17/17/11/04/fcbb24eb-789d-459d-b051-637b35bc7591/Silk-hat.jpg',
-              640: 'https://vanda-production-assets.s3.amazonaws.com/2017/01/17/17/11/04/01df0131-b5f4-4d35-ba12-b6b101891112/Silk-hat.jpg',
-              960: 'https://vanda-production-assets.s3.amazonaws.com/2017/01/17/17/11/04/4a9aea3b-c465-46d8-b9b6-1c931c63eaf0/Silk-hat.jpg',
-              1280: 'https://vanda-production-assets.s3.amazonaws.com/2017/01/17/17/11/05/dcbae1a2-362e-4a43-80f9-a54c6c8509d7/Silk-hat.jpg',
-              1920: 'https://vanda-production-assets.s3.amazonaws.com/2017/01/17/17/11/05/00ebc180-2fec-418c-995e-a4092ee19416/Silk-hat.jpg',
-              2560: 'https://vanda-production-assets.s3.amazonaws.com/2017/01/17/17/11/05/5fe60e33-3ad4-4bf9-a845-d548123d33b0/Silk-hat.jpg'
+              320: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/30/14/24/38/9a628c65-56b7-4bff-875a-3fddc1a479cc/320.jpg',
+              640: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/30/14/24/39/28392dba-304b-4e4f-b00b-66be4bc811a4/640.jpg',
+              960: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/30/14/24/39/7d9a9f8a-80da-4e9d-90c3-61de04e11126/960.jpg',
+              1280: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/30/14/24/39/785fb5cf-5386-48e6-a92a-8a1d7d8af570/1280.jpg',
+              1920: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/30/14/24/39/116e7672-5c9d-4a52-b1d1-1aef943195df/1920.jpg',
+              2560: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/30/14/24/39/d877ce2b-a6e9-46f4-a39b-13993e9f0a7b/2560.jpg'
             },
             eventPrice: '£12',
             eventHumanDates: 'From 27 May until 18 Feb 2018',
