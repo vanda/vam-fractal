@@ -4,11 +4,13 @@ $site_colors: (
   primary-green: #50e3c2,
   vam-white: #fff,
 
-  vam-grey-1: #eaeaeb,
-  vam-grey-2: #ccc,
-  vam-grey-3: #ccc,
-  vam-grey-4: #ccc,
-  vam-grey-5: #ccc
+  vam-grey-2: #505354,
+  vam-grey-3: #747c80,
+  vam-grey-4: #b7b8bd,
+  vam-grey-5: #dee0e2,
+  vam-grey-6: #eaeaea,
+  vam-grey-7: #efefed,
+  vam-grey-8: #f6f6f6,
 );
 
 @function siteColor($c) {

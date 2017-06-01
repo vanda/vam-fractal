@@ -22,24 +22,32 @@ module.exports = {
         hex: '#ffffff'
       },
       {
-        name: 'vam-grey-1',
-        hex: '#ccc'
-      },
-      {
         name: 'vam-grey-2',
-        hex: '#ccc'
+        hex: '#505354'
       },
       {
         name: 'vam-grey-3',
-        hex: '#ccc'
+        hex: '#747c80'
       },
       {
         name: 'vam-grey-4',
-        hex: '#ccc'
+        hex: '#b7b8bd'
       },
       {
         name: 'vam-grey-5',
-        hex: '#ccc'
+        hex: '#dee0e2'
+      },
+      {
+        name: 'vam-grey-6',
+        hex: '#eaeaea'
+      },
+      {
+        name: 'vam-grey-7',
+        hex: '#efefed'
+      },
+      {
+        name: 'vam-grey-8',
+        hex: '#f6f6f6'
       }
     ]
   }

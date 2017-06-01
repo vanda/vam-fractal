@@ -13,7 +13,7 @@
   transition: .2s background-color;
 
   &:hover {
-    background-color: map-get($site_colors, vam-grey-1);
+    background-color: map-get($site_colors, vam-grey-6);
 
     .fr-icon-box__icon {
       color: map-get($site_colors, primary-green);
