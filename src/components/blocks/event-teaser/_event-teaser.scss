@@ -44,7 +44,7 @@
 
     &:hover {
       .b-event-teaser__description {
-        border-bottom: 1px solid siteColor(vam-grey-6);
+        border-bottom: 1px solid siteColor(vam-grey-2);
       }
     }
 
@@ -116,7 +116,7 @@
   }
 
   &__description {
-    border-bottom: 1px solid siteColor(vam-grey-2);
+    border-bottom: 1px solid siteColor(vam-grey-6);
     color: siteColor(vam-black);
     padding-bottom: 20px;
     position: relative;
@@ -140,7 +140,9 @@
   }
 
   &__title {
-    @include typeSetting(5, regular);
+    @include bpMinSmall {
+      @include typeSetting(5, regular);
+    }
   }
 
   &__data {
