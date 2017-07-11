@@ -1,0 +1,11 @@
+<nav class="b-toggle-nav js-toggle-nav" data-toggle-type-default="type-3">
+  <ol class="b-toggle-nav__list">
+    {% for toggle in toggles %}
+      <li class="b-toggle-nav__item">
+        <button class="b-toggle-nav__button js-toggle-nav-btn{% for t in themed %} s-themed--{{ t }}{% endfor %}" data-toggle-type="type-{{ loop.index }}" data-toggees-selector=".my-toggleables-common-class" aria-label="Only show: {{ toggle }}">
+          {{ toggle }}
+        </button>
+      </li>
+    {% endfor %}
+  </ol>
+</nav>
