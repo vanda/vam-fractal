@@ -31,3 +31,16 @@
 .fr-bg--dark {
   background-color: rgba(siteColor(vam-black), .7);
 }
+
+.fr-bg--light {
+  background-color: siteColor(vam-white);
+}
+
+.fr-content-wrapper {
+  margin: auto;
+  max-width: 1200px;
+}
+
+.fr-fullheight {
+  height: 100%;
+}

@@ -10,10 +10,6 @@
       overflow: hidden;
     }
   }
-
-  @include bpMinMedium {
-    margin: 0 -27px;
-  }
 }
 
 @mixin tilesItem($columns: 3) {
@@ -40,10 +36,10 @@
     flex-basis: percentage(1 / $columns);
     margin-bottom: 16px;
     max-width: percentage(1 / $columns);
-    padding: 0 27px;
 
     .no-flexbox & {
       width: percentage(1 / $columns);
     }
   }
 }
+ 

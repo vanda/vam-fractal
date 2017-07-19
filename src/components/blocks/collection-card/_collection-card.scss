@@ -1,7 +1,10 @@
 .b-collection-card {
-
   &__media {
     @include constrainedImage(7 4);
+
+    .b-collection-card--transparent & {
+      box-shadow: 0 1px 2px 0 rgba(siteColor(vam-black), .5);
+    }
   }
 
   &__media-inner {
@@ -12,7 +15,6 @@
   &__media-image {
     @include constrainedImageImage;
     border-radius: 2px 2px 0 0;
-    box-shadow: 0 1px 2px 0 rgba(siteColor(vam-black), .5);
     height: auto;
   }
 
@@ -47,6 +49,7 @@
   &__name {
     @include typeSetting(5, bold);
     background-color: siteColor(vam-white);
+    border-radius: 0 0 2px 2px;
     color: siteColor(vam-black);
     min-height: 84px;
     padding: 5px 10px;

@@ -1,33 +1,43 @@
-<section class="b-collection-grid">
+<div class="fr-bg--dark fr-collection-grid">
+  <div class="fr-content-wrapper">
 
-  <header class="b-collection-grid__header">
-    <h2 class="b-collection-grid__title">{{ title_1 }}</h2>
-  </header>
-  
-  <ul class="b-collection-grid__items">
+    <section class="b-collection-grid">
 
-  {% for card in collectionsLatest %}
-    <li class="b-collection-grid__item--featured">
-      {%- render "@collection-card", card -%}
-    </li>
-  {% endfor %}
-  </ul>
+      <header class="b-collection-grid__header">
+        <h2 class="b-collection-grid__title">{{ title_1 }}</h2>
+      </header>
+      
+      <ul class="b-collection-grid__items">
 
-</section>
+      {% for card in collectionsLatest %}
+        <li class="b-collection-grid__item--featured">
+          {%- render "@collection-card", card -%}
+        </li>
+      {% endfor %}
+      </ul>
 
-<section class="b-collection-grid">
+    </section>
 
-  <header class="b-collection-grid__header">
-    <h2 class="b-collection-grid__title">{{ title_2 }}</h2>
-  </header>
-  
-  <ul class="b-collection-grid__items">
+    <section class="b-collection-grid">
 
-  {% for card in collections %}
-    <li class="b-collection-grid__item">
-      {%- render "@collection-card", card -%}
-    </li>
-  {% endfor %}
-  </ul>
+      <header class="b-collection-grid__header">
+        <h2 class="b-collection-grid__title">{{ title_2 }}</h2>
+      </header>
+      
+      <div class="b-collection-grid__3after4 fr-bg--light">
 
-</section>
+        <ul class="b-collection-grid__items">
+
+        {% for card in collections %}
+          <li class="b-collection-grid__item">
+            {%- render "@collection-card", card -%}
+          </li>
+        {% endfor %}
+        </ul>
+        
+      </div>
+
+    </section>
+
+  </div>
+</div>

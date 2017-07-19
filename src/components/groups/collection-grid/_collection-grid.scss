@@ -1,5 +1,4 @@
 .b-collection-grid {
-
   &__header {
     padding: $spacing-medium $spacing-small $spacing-medium;
 
@@ -27,11 +26,15 @@
 
   &__item {
     @include tilesItem(3);
+
+    &--featured {
+      @include tilesItem(4);
+    }
   }
 
-  &__item--featured {
-    @include tilesItem(4);
+  &__3after4 {
+    margin: auto;
+    max-width: 950px;
   }
-
 }
 
