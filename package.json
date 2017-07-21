@@ -10,7 +10,7 @@
   "homepage": "https://vam-design-guide.surge.sh",
   "bugs": "https://github.com/vanda/vam-fractal/issues",
   "license": "MIT",
-  "author": "James Docherty <j.docherty@vam.ac.uk> (https://vam.ac.uk)",
+  "author": "Luca Carini <l.carini@vam.ac.uk> (https://vam.ac.uk)",
   "repository": {
     "type": "git",
     "url": "https://github.com/vanda/vam-fractal.git"
@@ -52,6 +52,7 @@
     "gulp-svg-symbols": "^2.0.2",
     "gulp-svgmin": "^1.2.3",
     "gulp-uglify": "^2.1.2",
+    "querystring": "^0.2.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },

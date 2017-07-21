@@ -1,0 +1,70 @@
+.b-toggle-nav {
+  background-color: siteColor(vam-white);
+  box-shadow: 0 1px 2px siteColor(vam-grey-4);
+  margin: 0 0 32px;
+  overflow: hidden;
+  position: relative;
+
+  @include bpMinSmall {
+    margin: 0 0 64px;
+  }
+
+  @include bpMinLarge {
+    padding: 0 40px;
+  }
+
+  &::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 23px);
+    content: ' ';
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+  }
+
+  &__list {
+    @include unstyledList;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cssscrollbar & {
+      overflow: auto;
+      white-space: nowrap;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  &__button {
+    @include unstyledInput;
+    border-bottom: 3px solid transparent;
+    color: siteColor(vam-black);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    padding: 15px 10px 12px;
+    text-transform: uppercase;
+
+    @include bpMinXSmall {
+      font-size: 14px;
+      padding: 25px 15px 22px;
+    }
+
+    &:hover {
+      color: siteColor(vam-grey-2);
+    }
+  }
+
+  &-target--hidden {
+    display: none !important; // sass-lint:disable-line no-important
+  }
+}

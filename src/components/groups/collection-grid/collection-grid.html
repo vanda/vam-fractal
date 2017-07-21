@@ -1,0 +1,43 @@
+<div class="fr-bg--dark fr-collection-grid">
+  <div class="fr-content-wrapper">
+
+    <section class="b-collection-grid">
+
+      <header class="b-collection-grid__header">
+        <h2 class="b-collection-grid__title">{{ title_1 }}</h2>
+      </header>
+      
+      <ul class="b-collection-grid__items">
+
+      {% for card in collectionsLatest %}
+        <li class="b-collection-grid__item--featured">
+          {%- render "@collection-card", card -%}
+        </li>
+      {% endfor %}
+      </ul>
+
+    </section>
+
+    <section class="b-collection-grid">
+
+      <header class="b-collection-grid__header">
+        <h2 class="b-collection-grid__title">{{ title_2 }}</h2>
+      </header>
+      
+      <div class="b-collection-grid__3after4 fr-bg--light">
+
+        <ul class="b-collection-grid__items">
+
+        {% for card in collections %}
+          <li class="b-collection-grid__item">
+            {%- render "@collection-card", card -%}
+          </li>
+        {% endfor %}
+        </ul>
+        
+      </div>
+
+    </section>
+
+  </div>
+</div>
