@@ -41,13 +41,6 @@
   &__link {
     display: block;
     position: relative;
-
-    &:hover {
-      .b-event-teaser__description {
-        border-bottom: 1px solid siteColor(vam-grey-2);
-      }
-    }
-
   }
 
   &__media {
@@ -132,6 +125,10 @@
     @include bpMinMedium {
       min-height: 210px;
       padding-bottom: 60px;
+    }
+
+    .b-event-teaser__link:hover & {
+      border-bottom: 1px solid siteColor(vam-grey-4);
     }
   }
 
