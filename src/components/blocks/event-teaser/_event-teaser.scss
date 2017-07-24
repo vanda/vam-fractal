@@ -137,6 +137,8 @@
   }
 
   &__title {
+    margin: 1px 0 10px;
+
     @include bpMinSmall {
       @include typeSetting(5, regular);
     }
