@@ -1,20 +1,28 @@
 .b-collection-grid {
   &__header {
-    padding: $spacing-medium $spacing-small $spacing-medium;
+    padding: 21px $spacing-small 33px;
 
-    @include bpMinSmall {
-      padding: $spacing-xlarge $spacing-small $spacing-medium;
+    @include bpMinXSmall {
+      padding: 28px $spacing-small 32px;
+    }
+
+    @include bpMinMedium {
+      padding: 47px $spacing-small $spacing-medium;
     }
   }
 
   &__title {
-    @include typeSetting(4, bold, uppercase);
+    @include typeSetting(2, bold, uppercase);
     color: siteColor(vam-white);
     display: block;
     text-align: center;
     text-shadow: siteColor(vam-black) 0 1px 2px;
 
-    @include bpMinSmall {
+    @include bpMinXSmall {
+      @include typeSetting(3, bold, uppercase);
+    }
+
+    @include bpMinMedium {
       @include typeSetting(5, bold, uppercase);
     }
   }
