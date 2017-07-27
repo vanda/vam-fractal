@@ -10,32 +10,32 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/architecture',
         collectionTitle: 'Architecture',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2016/04/06/10/36/37/04d16cd0-a70e-40d8-89a7-7783bea528ff/eden.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2016/04/06/10/36/37/087c11b1-dbc0-4313-a4a0-308bdb35ae6d/eden.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/e92586b0-19a5-4c8f-b314-989d4d97f2c3/HERO_2006AF0735.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/049f223c-92da-4a2d-843a-12ae46d45805/HERO_2006AF0735.jpg'
         }
       },
       {
         collectionUrl: '//www.vam.ac.uk/collections/jewellery',
         collectionTitle: 'Jewellery',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2016/04/11/14/54/33/07dce556-663a-443f-901d-429c3f2e94d6/thistles.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2016/04/11/14/54/33/f6e3f0af-9d9b-48cd-879f-86a6fc20949d/thistles.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/10/26/d235d626-f89e-4fbb-8ba3-7fb3d00ffaad/poster-iamge.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/10/26/4e09bc0d-6dd7-4594-9580-0c509bc9428c/poster-iamge.jpg'
         }
       },
       {
         collectionUrl: '//www.vam.ac.uk/collections/glass',
         collectionTitle: 'Glass',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2017/04/13/14/47/17/91ed0b5c-dbe3-4359-8a12-19d2cb650b58/glass-poster_blue.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2017/04/13/14/47/17/d382395d-d5b4-4190-b5c2-a041bccebdd6/glass-poster_blue.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/02684fc6-58a6-4e4f-aeaf-d944e5f9e1fc/jellyfish-2560.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/1a4f7191-1765-42c7-9e5e-fa23634ca951/jellyfish-2560.jpg'
         }
       },
       {
-        collectionUrl: '//www.vam.ac.uk/collections/gilbert-collection',
-        collectionTitle: 'The Gilbert Collection',
+        collectionUrl: '//www.vam.ac.uk/collections/ceramics',
+        collectionTitle: 'Ceramics',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2016/12/22/15/13/52/f52e5b82-55a4-4bce-8720-ad914e3e0b9f/2009CR4310_poster.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2016/12/22/15/13/52/093a0d4b-ef61-4a3a-8124-c1d6ca993dc0/2009CR4310_poster.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/40/48/74e471e8-5ed0-4c54-87a4-44699b1f2a5b/Slee-hippo-hero.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/40/48/e04e019d-7a6d-45b7-8d86-47ef6207396f/Slee-hippo-hero.jpg'
         }
       }
     ],
@@ -54,8 +54,8 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/glass',
         collectionTitle: 'Glass',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2017/04/13/14/47/17/91ed0b5c-dbe3-4359-8a12-19d2cb650b58/glass-poster_blue.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2017/04/13/14/47/17/d382395d-d5b4-4190-b5c2-a041bccebdd6/glass-poster_blue.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/02684fc6-58a6-4e4f-aeaf-d944e5f9e1fc/jellyfish-2560.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/1a4f7191-1765-42c7-9e5e-fa23634ca951/jellyfish-2560.jpg'
         }
       },
       {
@@ -63,8 +63,8 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/jewellery',
         collectionTitle: 'Jewellery',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2016/04/11/14/54/33/07dce556-663a-443f-901d-429c3f2e94d6/thistles.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2016/04/11/14/54/33/f6e3f0af-9d9b-48cd-879f-86a6fc20949d/thistles.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/10/26/d235d626-f89e-4fbb-8ba3-7fb3d00ffaad/poster-iamge.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/10/26/4e09bc0d-6dd7-4594-9580-0c509bc9428c/poster-iamge.jpg'
         }
       },
       {
@@ -81,8 +81,16 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/architecture',
         collectionTitle: 'Architecture',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2016/04/06/10/36/37/04d16cd0-a70e-40d8-89a7-7783bea528ff/eden.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2016/04/06/10/36/37/087c11b1-dbc0-4313-a4a0-308bdb35ae6d/eden.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/e92586b0-19a5-4c8f-b314-989d4d97f2c3/HERO_2006AF0735.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/049f223c-92da-4a2d-843a-12ae46d45805/HERO_2006AF0735.jpg'
+        }
+      },
+      {
+        collectionUrl: '//www.vam.ac.uk/collections/ceramics',
+        collectionTitle: 'Ceramics',
+        collectionImage: {
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/40/48/74e471e8-5ed0-4c54-87a4-44699b1f2a5b/Slee-hippo-hero.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/40/48/e04e019d-7a6d-45b7-8d86-47ef6207396f/Slee-hippo-hero.jpg'
         }
       }
     ]
