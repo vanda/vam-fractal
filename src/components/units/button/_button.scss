@@ -61,24 +61,12 @@
 
   &--outlined {
     background-color: rgba(siteColor(vam-white), .8);
-    border-color: rgba(siteColor(primary-green), .35);
+    border-color: siteColor(vam-grey-6);
     color: siteColor(vam-black);
 
     &:hover {
       background-color: transparent;
-      border-color: siteColor(primary-green);
-      color: siteColor(primary-green);
+      border-color: siteColor(vam-grey-4);
     }
-    &.u-btn--black {
-      background-color: rgba(siteColor(vam-black), .8);
-      border-color: siteColor(primary-green);
-      color: siteColor(vam-white);
-
-      &:hover {
-        background-color: rgba(siteColor(vam-black), .8);
-        color: siteColor(primary-green);
-      }
-    }
-
   }
 }
