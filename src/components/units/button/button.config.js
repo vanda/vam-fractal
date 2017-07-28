@@ -34,7 +34,7 @@ module.exports = {
           ['micro', 'arrowed'],
           ['micro', 'black'],
           ['micro', 'outlined'],
-          ['micro', 'outlined', 'arrowed'],
+          ['micro', 'outlined', 'arrowed']
         ]
       }
     },
