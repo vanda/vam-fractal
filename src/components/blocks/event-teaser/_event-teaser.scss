@@ -11,10 +11,6 @@
     float: left;
   }
 
-  &.is-hidden {
-    @include visuallyHidden;
-  }
-
   @include bpMinXSmall {
     flex-basis: 50%;
     margin-bottom: 32px;

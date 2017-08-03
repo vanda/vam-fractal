@@ -65,6 +65,6 @@
   }
 
   &-target--hidden {
-    display: none !important; // sass-lint:disable-line no-important
+    @include visuallyHidden;
   }
 }

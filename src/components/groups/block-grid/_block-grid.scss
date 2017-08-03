@@ -59,4 +59,8 @@
       color: siteColor(vam-black);
     }
   }
+
+  &__item--hidden {
+    @include visuallyHidden;
+  }
 }

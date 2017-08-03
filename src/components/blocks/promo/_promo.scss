@@ -35,10 +35,6 @@
     &:last-of-type:nth-of-type(odd) {
       width: 100%;
     }
-
-    &.is-hidden {
-      @include visuallyHidden;
-    }
   }
 
   &__image {

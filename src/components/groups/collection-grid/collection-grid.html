@@ -8,7 +8,6 @@
       </header>
       
       <ul class="b-collection-grid__items">
-
       {% for card in collectionsLatest %}
         <li class="b-collection-grid__item--featured">
           {%- render "@collection-card", card -%}
@@ -27,7 +26,6 @@
       <div class="b-collection-grid__3after4 fr-bg--light">
 
         <ul class="b-collection-grid__items">
-
         {% for card in collections %}
           <li class="b-collection-grid__item">
             {%- render "@collection-card", card -%}
