@@ -172,12 +172,12 @@ function releaseSVG() {
 }
 
 function releaseCSS() {
-  return gulp.src(`${paths.dest}/assets/styles/vam-style.css`)
+  return gulp.src(`${paths.dest}/assets/styles/vam-style.css*`)
     .pipe(gulp.dest(`${paths.dist}/css`));
 }
 
 function releaseJS() {
-  return gulp.src(`${paths.dest}/assets/scripts/*.js`)
+  return gulp.src(`${paths.dest}/assets/scripts/*.js*`)
     .pipe(gulp.dest(`${paths.dist}/scripts`));
 }
 
