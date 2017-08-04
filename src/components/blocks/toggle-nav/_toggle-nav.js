@@ -20,9 +20,9 @@ if (toggleNav) {
       }
       tog.preventHistoryPush = false;
       Array.from(tnToggees, (el) => {
-        el.classList.add('b-toggle-nav-target--hidden');
+        el.classList.add('s-visually-hidden');
         if (el.dataset.toggleType === togType) {
-          el.classList.remove('b-toggle-nav-target--hidden');
+          el.classList.remove('s-visually-hidden');
         }
         return true;
       });
@@ -42,8 +42,8 @@ if (toggleNav) {
   });
 
   window.addEventListener('popstate', (e) => {
-    Array.from(document.querySelectorAll('b-toggle-nav-target--hidden'), (el) => {
-      el.classList.remove('b-toggle-nav-target--hidden');
+    Array.from(document.querySelectorAll('s-visually-hidden'), (el) => {
+      el.classList.remove('s-visually-hidden');
       return true;
     });
     if (e.state && e.state.toggleNavType) {

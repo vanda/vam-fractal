@@ -63,8 +63,4 @@
       color: siteColor(vam-grey-2);
     }
   }
-
-  &-target--hidden {
-    @include visuallyHidden;
-  }
 }

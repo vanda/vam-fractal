@@ -7,12 +7,11 @@ if (gridRevealMore) {
 
     if (noOfItemsToShow < gridBlock.childElementCount) {
       const svgURL = gridBlock.dataset.iconUrl;
-      const gridChildren = gridBlock.children;
-      const gridItems = Object.keys(gridChildren).map(key => gridChildren[key]);
+      const gridItems = [...gridBlock.children];
       const theme = gridBlock.dataset.revealMoreTheme || 'dark';
 
       // Hide all but the first `noOfItemsToShow`
-      gridItems.slice(noOfItemsToShow).forEach(el => el.classList.add('b-block-grid__item--hidden'));
+      gridItems.slice(noOfItemsToShow).forEach(el => el.classList.add('s-visually-hidden'));
 
       // Add in a show more button at the bottom
       const gridFooterMarkup = document.createElement('footer');
@@ -38,8 +37,8 @@ if (gridRevealMore) {
         e.preventDefault();
 
         // Filter down to just the hidden items
-        const hiddenItems = gridItems.filter(el => el.classList.contains('b-block-grid__item--hidden'));
-        hiddenItems.slice(0, noOfItemsToShow).forEach(el => el.classList.remove('b-block-grid__item--hidden'));
+        const hiddenItems = gridItems.filter(el => el.classList.contains('s-visually-hidden'));
+        hiddenItems.slice(0, noOfItemsToShow).forEach(el => el.classList.remove('s-visually-hidden'));
 
         // Remove the footer if we're not going to need the button after this
         if (hiddenItems.length <= noOfItemsToShow) gridFooterMarkup.remove();
