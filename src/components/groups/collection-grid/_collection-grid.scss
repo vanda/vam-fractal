@@ -1,32 +1,4 @@
 .b-collection-grid {
-  &__header {
-    padding: 21px $spacing-small 33px;
-
-    @include bpMinXSmall {
-      padding: 28px $spacing-small 32px;
-    }
-
-    @include bpMinMedium {
-      padding: 47px $spacing-small $spacing-medium;
-    }
-  }
-
-  &__title {
-    @include typeSetting(2, bold, uppercase);
-    color: siteColor(vam-white);
-    display: block;
-    text-align: center;
-    text-shadow: siteColor(vam-black) 0 1px 2px;
-
-    @include bpMinXSmall {
-      @include typeSetting(3, bold, uppercase);
-    }
-
-    @include bpMinMedium {
-      @include typeSetting(5, bold, uppercase);
-    }
-  }
-
   &__items {
     @include unstyledList;
     @include tiles;

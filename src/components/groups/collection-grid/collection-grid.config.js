@@ -10,8 +10,8 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/architecture',
         collectionTitle: 'Architecture',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/e92586b0-19a5-4c8f-b314-989d4d97f2c3/HERO_2006AF0735.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/049f223c-92da-4a2d-843a-12ae46d45805/HERO_2006AF0735.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/47/37/978393e8-7831-49a3-95f5-582081d674cd/Architecture-thumbnail.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/47/37/d635211e-b323-4f3d-9036-e0883dc995c0/Architecture-thumbnail.jpg'
         }
       },
       {
@@ -26,8 +26,8 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/glass',
         collectionTitle: 'Glass',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/02684fc6-58a6-4e4f-aeaf-d944e5f9e1fc/jellyfish-2560.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/1a4f7191-1765-42c7-9e5e-fa23634ca951/jellyfish-2560.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/31/53/c2fc23c4-2c46-4a51-9090-afb3353f31a5/Glass-thumbnail.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/31/54/911b20b7-23fc-4cf7-a23c-44b4fbe8d181/Glass-thumbnail.jpg'
         }
       },
       {
@@ -54,8 +54,8 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/glass',
         collectionTitle: 'Glass',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/02684fc6-58a6-4e4f-aeaf-d944e5f9e1fc/jellyfish-2560.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/10/09/45/1a4f7191-1765-42c7-9e5e-fa23634ca951/jellyfish-2560.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/31/53/c2fc23c4-2c46-4a51-9090-afb3353f31a5/Glass-thumbnail.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/31/54/911b20b7-23fc-4cf7-a23c-44b4fbe8d181/Glass-thumbnail.jpg'
         }
       },
       {
@@ -69,11 +69,11 @@ module.exports = {
       },
       {
         modifiers: ['transparent'],
-        collectionUrl: '//www.vam.ac.uk/collections/auguste-rodin',
-        collectionTitle: 'Auguste Rodin (1840 – 1917)',
+        collectionUrl: '//www.vam.ac.uk/collections/ceramics',
+        collectionTitle: 'Ceramics',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2016/11/28/11/47/14/10a5f499-02df-4c57-b86d-3c58e7eacadc/rodin_poster.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2016/11/28/11/47/14/d94cf6f8-283e-4176-83d8-4f3e147d4994/rodin_poster.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/40/48/74e471e8-5ed0-4c54-87a4-44699b1f2a5b/Slee-hippo-hero.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/40/48/e04e019d-7a6d-45b7-8d86-47ef6207396f/Slee-hippo-hero.jpg'
         }
       },
       {
@@ -81,8 +81,8 @@ module.exports = {
         collectionUrl: '//www.vam.ac.uk/collections/architecture',
         collectionTitle: 'Architecture',
         collectionImage: {
-          240: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/e92586b0-19a5-4c8f-b314-989d4d97f2c3/HERO_2006AF0735.jpg',
-          500: '//vanda-production-assets.s3.amazonaws.com/2017/07/26/11/03/52/049f223c-92da-4a2d-843a-12ae46d45805/HERO_2006AF0735.jpg'
+          240: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/47/37/978393e8-7831-49a3-95f5-582081d674cd/Architecture-thumbnail.jpg',
+          500: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/47/37/d635211e-b323-4f3d-9036-e0883dc995c0/Architecture-thumbnail.jpg'
         }
       },
       {

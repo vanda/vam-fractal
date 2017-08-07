@@ -1,0 +1,36 @@
+.b-section-header {
+  background: siteColor(vam-white);
+  padding: 21px $spacing-small 33px;
+
+  @include bpMinXSmall {
+    padding: 28px $spacing-small 32px;
+  }
+
+  @include bpMinMedium {
+    padding: 47px $spacing-small $spacing-medium;
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
+  &__title {
+    @include typeSetting(2, bold, uppercase);
+    color: siteColor(vam-black);
+    display: block;
+    text-align: center;
+
+    @include bpMinXSmall {
+      @include typeSetting(3, bold, uppercase);
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(5, bold, uppercase);
+    }
+    
+    .b-section-header--transparent & {
+      color: siteColor(vam-white);
+      text-shadow: siteColor(vam-black) 0 1px 2px;
+    }
+  }
+}
