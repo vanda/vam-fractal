@@ -6,7 +6,7 @@
     padding: 28px $spacing-small 32px;
   }
 
-  @include bpMinMedium {
+  @include bpMinSmall {
     padding: 47px $spacing-small $spacing-medium;
   }
 
@@ -24,7 +24,7 @@
       @include typeSetting(3, bold, uppercase);
     }
 
-    @include bpMinMedium {
+    @include bpMinSmall {
       @include typeSetting(5, bold, uppercase);
     }
     
