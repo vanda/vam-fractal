@@ -19,6 +19,7 @@ module.exports = {
       context: {
         revealMoreCount: '2',
         revealMoreTheme: 'dark',
+        revealMoreTracking: 'articles',
         additionalClasses: ['b-promo', 'b-promo--big'],
         articles: [
           {
@@ -116,6 +117,7 @@ module.exports = {
         theme: 'light',
         revealMoreCount: '6',
         revealMoreTheme: 'light',
+        revealMoreTracking: 'events',
         events: [
           {
             eventUrl: 'https://www.vam.ac.uk/exhibitions/pink-floyd',
