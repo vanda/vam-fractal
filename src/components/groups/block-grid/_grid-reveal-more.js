@@ -9,6 +9,7 @@ if (gridRevealMore) {
       const svgURL = gridBlock.dataset.iconUrl;
       const gridItems = [...gridBlock.children];
       const theme = gridBlock.dataset.revealMoreTheme || 'dark';
+      const tracking = gridBlock.dataset.revealMoreTracking || '';
 
       // Hide all but the first `noOfItemsToShow`
       gridItems.slice(noOfItemsToShow).forEach(el => el.classList.add('s-visually-hidden'));
@@ -17,7 +18,7 @@ if (gridRevealMore) {
       const gridFooterMarkup = document.createElement('footer');
       gridFooterMarkup.setAttribute('class', `b-block-grid__footer b-block-grid__footer--${theme}`);
       gridFooterMarkup.innerHTML = `
-        <a href="#">
+        <a href="#" data-tracking-showmorebutton="${tracking}">
           <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">
             <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
               <svg role="img">
