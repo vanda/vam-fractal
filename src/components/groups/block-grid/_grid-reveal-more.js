@@ -34,8 +34,10 @@ if (gridRevealMore) {
       gridBlock.parentNode.insertBefore(gridFooterMarkup, gridBlock.nextSibling);
 
       // Hook up an event listener on that button
+      let revealMoreClicks = 0;
       gridFooterMarkup.addEventListener('click', (e) => {
         e.preventDefault();
+        revealMoreClicks += 1;
 
         // Filter down to just the hidden items
         const hiddenItems = gridItems.filter(el => el.classList.contains('s-visually-hidden'));
@@ -43,6 +45,18 @@ if (gridRevealMore) {
 
         // Remove the footer if we're not going to need the button after this
         if (hiddenItems.length <= noOfItemsToShow) gridFooterMarkup.remove();
+      }, false);
+
+      window.addEventListener('beforeunload', () => {
+        history.replaceState({ revealMoreClicks }, 'revealMoreClicks');
+      }, false);
+
+      window.addEventListener('load', () => {
+        let c = 0;
+        while (c < history.state.revealMoreClicks) {
+          gridFooterMarkup.click();
+          c += 1;
+        }
       }, false);
     }
   }
