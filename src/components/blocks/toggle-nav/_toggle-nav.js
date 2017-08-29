@@ -5,7 +5,7 @@ const toggleNav = document.querySelector('.js-toggle-nav');
 if (toggleNav) {
   const toggleNavBtns = toggleNav.querySelectorAll('.js-toggle-nav-btn');
   const qs = querystring.parse(window.location.search.replace('?', ''));
-  const qsToggleType = qs.toggleType;
+  const qsToggleType = qs.type;
 
   Array.from(toggleNavBtns, (tog) => {
     const tnToggees = document.querySelectorAll(tog.dataset.toggeesSelector);
@@ -16,7 +16,7 @@ if (toggleNav) {
       toggleNav.scrollLeft = tog.offsetLeft
         - ((toggleNav.getBoundingClientRect().width - tog.getBoundingClientRect().width) / 2);
       if (!tog.preventHistoryPush) {
-        window.history.pushState({ toggleNavType: togType }, '', `?toggleType=${togType}`);
+        window.history.pushState({ toggleNavType: togType }, '', `?type=${togType}`);
       }
       tog.preventHistoryPush = false;
       Array.from(tnToggees, (el) => {
