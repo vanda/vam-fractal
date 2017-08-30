@@ -9,7 +9,7 @@ if (gridRevealMore.length) {
       const gridItems = [...gridBlock.children];
       const theme = gridBlock.dataset.revealMoreTheme || 'dark';
       const tracking = gridBlock.dataset.revealMoreTracking || '';
-      let putAfter = gridBlock.parentNode;
+      let putAfter = gridBlock;
       if (gridBlock.dataset.revealMorePutAfter) {
         putAfter = document.querySelector(gridBlock.dataset.revealMorePutAfter);
       }
