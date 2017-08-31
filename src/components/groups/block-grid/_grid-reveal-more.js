@@ -63,12 +63,12 @@ if (gridRevealMore.length) {
   }, false);
 
   window.addEventListener('load', () => {
-    if (history.state.revealMoreClicks) {
+    if (history.state && history.state.revealMoreClicks) {
+      const buttons = document.querySelectorAll('.js-reveal-more-btn');
       for (let r = 0; r < history.state.revealMoreClicks.length; r += 1) {
-        const btn = document.querySelectorAll('.js-reveal-more-btn')[r];
         let c = 0;
         while (c < history.state.revealMoreClicks[r]) {
-          btn.click();
+          buttons[r].click();
           c += 1;
         }
       }
