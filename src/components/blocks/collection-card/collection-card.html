@@ -5,13 +5,14 @@
         <span class="b-collection-card__overlay-text">View collection</span>
       </div>
 
-      <div class="b-collection-card__media-inner">
+      <div class="b-collection-card__media-inner js-object-fit-container">
         <img srcset="{{ collectionImage[240] }} 240w,
                      {{ collectionImage[500] }} 500w"
             sizes="(max-width: 499px) calc(100vw - 24px),
                    (min-width: 500px) calc(50vw - 28px),
-                   (min-width: 992px) calc(25vw - 78px)"
-            alt="{{ collectionTitle }}" class="b-collection-card__media-image js-object-fit-container" itemprop="contentUrl" src="{{ collectionImage[320] }}">
+                   (min-width: 992px) calc(25vw - 78px),
+                   (min-width: 1200px) 280px"
+            alt="{{ collectionTitle }}" class="b-collection-card__media-image" itemprop="contentUrl" src="{{ collectionImage[320] }}">
       </div>
     </div>
 

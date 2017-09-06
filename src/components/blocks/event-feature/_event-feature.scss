@@ -1,0 +1,197 @@
+.b-event-feature {
+  box-sizing: border-box;
+  margin: 0 10px 10px;
+  overflow: hidden;
+  position: relative;
+
+  @include bpMinSmall {
+    margin-bottom: 20px;
+
+    &--half-width-fixed,
+    &--third-width:nth-of-type(n+2) {
+      float: left;
+      width: calc(50% - 20px);
+    }
+  }
+
+  @include bpMinMedium {
+    &--half-width {
+      float: left;
+      width: calc(50% - 20px);
+    }
+    &--third-width:nth-of-type(n+0) {
+      float: left;
+      width: calc(33.33% - 20px);
+    }
+  }
+
+  &__media {
+    @include constrainedImage(344 300);
+  }
+
+  &__media-inner {
+    @include constrainedImageInner;
+
+    &:after {
+      background-image: linear-gradient(rgba(siteColor(vam-black), .35), rgba(siteColor(vam-black), 0));
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: opacity .35s ease;
+      width: 100%;
+      z-index: 0;
+
+      .b-event-feature__link:hover &,
+      .b-event-feature__link:focus & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__media-image {
+    @include constrainedImageImage;
+  }
+
+  &__content {
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+    @include bpMinSmall {
+      margin: 14px 10px;
+    }
+  }
+
+  &__info {
+    bottom: 0;
+    color: siteColor(vam-white);
+    left: 0;
+    margin: 10px 10px 0;
+    position: absolute;
+    text-shadow: 0 1px 2px rgba(siteColor(vam-black), .5);
+  }
+
+  &__type {
+    @include typeSetting(1, bold, uppercase);
+
+    @include bpMinSmall {
+      @include typeSetting(3, bold, uppercase);
+
+      .b-event-feature--half-width-fixed &,
+      .b-event-feature--half-width:nth-of-type(n+2) &,
+      .b-event-feature--third-width:nth-of-type(n+2) & {
+        @include typeSetting(1, bold, uppercase);
+      }
+    }
+
+    @include bpMinMedium {
+      .b-event-feature--half-width:nth-of-type(1) &,
+      .b-event-feature--third-width:nth-of-type(1) & {
+        @include typeSetting(1, bold, uppercase);
+      }
+    }
+  }
+
+  &__date {
+    @include typeSetting(1, bold, initial);
+
+    &::before {
+      margin-left: 2px;
+    }
+
+    .b-event-feature__type & {
+      display: none;
+    }
+
+    @include bpMinSmall {
+      @include typeSetting(3, bold, initial);
+
+      &::before {
+        margin-left: -1px;
+      }
+
+      .b-event-feature__type & {
+        display: inline-block;
+      }
+
+      .b-event-feature__name & {
+        display: none;
+      }
+
+      .b-event-feature--half-width-fixed &,
+      .b-event-feature--half-width:nth-of-type(n+2) &,
+      .b-event-feature--third-width:nth-of-type(n+2) & {
+        @include typeSetting(1, bold, initial);
+        &::before {
+          margin-left: 2px;
+        }
+      }
+
+      .b-event-feature--half-width-fixed .b-event-feature__type &,
+      .b-event-feature--half-width:nth-of-type(n+2) .b-event-feature__type &,
+      .b-event-feature--third-width:nth-of-type(n+2) .b-event-feature__type & {
+        display: none;
+      }
+
+      .b-event-feature--half-width-fixed .b-event-feature__name &,
+      .b-event-feature--half-width:nth-of-type(n+2) .b-event-feature__name &,
+      .b-event-feature--third-width:nth-of-type(n+2) .b-event-feature__name & {
+        display: block;
+      }
+    }
+
+    @include bpMinMedium {
+      .b-event-feature--half-width:nth-of-type(1) &,
+      .b-event-feature--third-width:nth-of-type(1) & {
+        @include typeSetting(1, bold, initial);
+        &::before {
+          margin-left: 2px;
+        }
+      }
+
+      .b-event-feature--half-width:nth-of-type(1) .b-event-feature__type &,
+      .b-event-feature--third-width:nth-of-type(1) .b-event-feature__type & {
+        display: none;
+      }
+
+      .b-event-feature--half-width:nth-of-type(1) .b-event-feature__name &,
+      .b-event-feature--third-width:nth-of-type(1) .b-event-feature__name & {
+        display: block;
+      }
+    }
+  }
+
+  &__name {
+    @include typeSetting(5, bold);
+
+    @include bpMinSmall {
+      @include typeSetting(6, bold);
+
+      .b-event-feature--half-width-fixed &,
+      .b-event-feature--half-width:nth-of-type(n+2) &,
+      .b-event-feature--third-width:nth-of-type(n+2) & {
+        @include typeSetting(5, bold);
+      }
+    }
+
+    @include bpMinMedium {
+      .b-event-feature--half-width:nth-of-type(1) &,
+      .b-event-feature--third-width:nth-of-type(1) & {
+        @include typeSetting(5, bold);
+      }
+    }
+  }
+
+  &__cta {
+    margin: 10px 0 0;
+  }
+}
