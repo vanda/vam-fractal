@@ -44,7 +44,7 @@ module.exports = {
       'quote',
       'interact',
       'listen',
-      'play',
+      'watch',
       'pause',
       'event-none',
       'point-up',
@@ -108,7 +108,7 @@ module.exports = {
           'quote',
           'interact',
           'listen',
-          'play',
+          'watch',
           'pause',
           'event-none'
         ]
