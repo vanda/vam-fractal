@@ -194,5 +194,8 @@ $base-font-weight: 'regular';
   @if $transform == 'uppercase' and $weight != 'regular' and $weight != 'semi-light' {
     @include letterSpacing($size, $weight);
     text-transform: uppercase;
+  } @else {
+    letter-spacing: initial;
+    text-transform: initial;
   }
 }
