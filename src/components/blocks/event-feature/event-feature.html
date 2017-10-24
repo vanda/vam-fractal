@@ -1,0 +1,41 @@
+<div class="b-event-feature{% for m in modifiers %} b-event-feature--{{ m }}{% endfor %}" itemscope itemprop="event" itemtype="http://schema.org/Event" aria-label="{{ eventTitle }}">
+  <a class="b-event-feature__link" href="{{ eventUrl }}" itemprop="url" content="{{ eventUrl }}">
+
+    <div class="b-event-feature__media">
+      <div class="b-event-feature__media-inner js-objectFit_container">
+        <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
+          <link itemprop="url" href="{{ eventImage[960] }}">
+          <img alt="{{ eventTitle }}"
+               class="b-event-feature__media-image"
+               itemprop="contentUrl"
+               sizes="{{ eventImageSizes }}"
+               srcset="{% for k, img in eventImageSrcs %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+               src="{{ eventImage[640] }}">
+        </span>
+      </div>
+    </div>
+
+    <div class="b-event-feature__content">
+      {%- render "@label-tag--book-soon" -%}
+      <div class="b-event-feature__info">
+        <div class="b-event-feature__type">
+          {{ eventType }}
+          <span class="b-event-feature__date s-separated">{{ eventHumanDates }}</span>
+          <span itemprop="startDate" content="{{ eventMachineStartDate }}"></span>
+          <span itemprop="endDate" content="{{ eventMachineEndDate }}"></span>
+        </div>
+        <div class="b-event-feature__name" itemprop="name" content="{{ eventTitle }}">
+          {{ eventTitle }}
+          <div class="b-event-feature__date">{{ eventHumanDates }}</div>
+        </div>
+        <div class="b-event-feature__cta">
+          {% for action in actions %}
+          <div class="u-btn u-btn--micro u-btn--black s-themed--border-color">
+            {{ action }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

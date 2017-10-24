@@ -20,6 +20,7 @@
 @import '../../components/services/svg_icon/svg_icon'; // Must come after colour and type
 @import '../../components/services/themed/themed'; // Must come after colour and type
 @import '../../components/services/object_fit_polyfill/object_fit';
+@import '../../components/services/separated/separated';
 
 // Unit
 @import '../../components/units/link/link';
@@ -30,11 +31,14 @@
 @import '../../components/blocks/collection-card/collection-card';
 @import '../../components/blocks/icon-badge/icon-badge';
 @import '../../components/blocks/icon-list/icon-list';
+@import '../../components/blocks/event-feature/event-feature';
 @import '../../components/blocks/event-teaser/event-teaser';
 @import '../../components/blocks/promo/promo';
 @import '../../components/blocks/section-header/section-header';
 @import '../../components/blocks/toggle-nav/toggle-nav';
+@import '../../components/blocks/video-thumbnail/video-thumbnail';
 
 // Group
 @import '../../components/groups/block-grid/block-grid';
 @import '../../components/groups/collection-grid/collection-grid';
+@import '../../components/groups/event-feature-grid/event-feature-grid';

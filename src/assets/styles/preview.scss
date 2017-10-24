@@ -20,6 +20,15 @@
 @import 'preview_styles/type';
 @import 'preview_styles/tiles';
 
+h1 {
+  @include typeSetting(5, bold);
+  margin: 1rem 0;
+
+  @include bpMinSmall {
+    @include typeSetting(6, bold);
+  }
+}
+
 .fr-visually-hidden {
   @include visuallyHidden;
 }

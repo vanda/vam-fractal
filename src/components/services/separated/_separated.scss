@@ -1,0 +1,12 @@
+.s-separated {
+  &::before {
+    content: '\\ \00a0 \\';
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin: 0 10px 0 8px;
+    position: relative;
+    top: -1px;
+    transform: scale(1, 1.2);
+  }
+}
