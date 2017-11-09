@@ -11,10 +11,7 @@ Array.from(videoThumbs, (vidThumb) => {
       popup.remove();
     });
     popupClose.className = 'b-video-thumbnail__popup-close';
-    popupClose.innerHTML = `
-      <svg role="img">
-        <use xlink:href="/assets/svg/svg-template.svg#close"></use>
-      </svg>`;
+    popupClose.innerHTML = vidThumb.querySelector('svg').outerHTML.replace(/\.svg#[^'"]+/i, '.svg#close');
     popup.appendChild(popupClose);
     document.body.appendChild(popup);
   });
