@@ -6,6 +6,18 @@
     background-color: transparent;
   }
 
+  &--padded {
+    overflow: hidden;
+
+    @include bpMinSmall {
+      margin: 0 (32px - 10px);
+    }
+
+    @include bpMinMedium {
+      margin: 0 (64px - 10px);
+    }
+  }
+
   &__header {
     padding: $spacing-medium $spacing-small;
     width: 100%;
