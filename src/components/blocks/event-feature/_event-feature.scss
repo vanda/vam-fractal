@@ -33,12 +33,12 @@
     @include constrainedImageInner;
 
     &:after {
-      background-image: linear-gradient(rgba(siteColor(vam-black), .35), rgba(siteColor(vam-black), 0));
+      background-image: linear-gradient(rgba(siteColor(vam-black), .15), rgba(siteColor(vam-black), .35));
       bottom: 0;
       content: '';
       display: block;
       left: 0;
-      opacity: 0;
+      opacity: 1;
       position: absolute;
       right: 0;
       top: 0;
@@ -48,7 +48,7 @@
 
       .b-event-feature__link:hover &,
       .b-event-feature__link:focus & {
-        opacity: 1;
+        opacity: 0;
       }
     }
   }
