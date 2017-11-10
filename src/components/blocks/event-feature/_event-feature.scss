@@ -33,7 +33,7 @@
     @include constrainedImageInner;
 
     &:after {
-      background-image: linear-gradient(rgba(siteColor(vam-black), .15), rgba(siteColor(vam-black), .35));
+      background-image: linear-gradient(rgba(62, 64, 67, 0), rgba(29, 30, 32, .8));
       bottom: 0;
       content: '';
       display: block;
