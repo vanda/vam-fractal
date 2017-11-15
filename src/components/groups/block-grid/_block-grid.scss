@@ -10,11 +10,11 @@
     overflow: hidden;
 
     @include bpMinSmall {
-      padding: 0 (32px - 10px);
+      padding: 0 (32px - 10px) (48px - 10px);
     }
 
     @include bpMinMedium {
-      padding: 0 (64px - 10px);
+      padding: 0 (64px - 10px) (64px - 10px);
     }
   }
 
@@ -23,7 +23,7 @@
     width: 100%;
 
     @include bpMinSmall {
-      padding: $spacing-xlarge $spacing-small $spacing-medium;
+      padding: 54px $spacing-small;
     }
 
     @include bpMinMedium {
@@ -32,7 +32,7 @@
   }
 
   &__title {
-    @include typeSetting(4, bold, uppercase);
+    @include typeSetting(3, bold, uppercase);
     color: siteColor(vam-black);
     display: block;
     text-align: center;

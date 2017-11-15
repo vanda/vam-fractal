@@ -1,11 +1,11 @@
 .u-label-tag {
   @include typeSetting(2, semi-bold, uppercase);
-  background-color: siteColor(primary-green);
+  background: siteColor(primary-green);
   border-radius: 2px;
   bottom: initial;
   color: siteColor(vam-white);
   margin: 12px;
-  padding: 4px 12px 2px;
+  padding: 5px 12px 4px;
   position: absolute;
   top: 0;
 
@@ -40,5 +40,9 @@
 
   &--book-soon {
     background: themeColor(salmon);
+  }
+
+  &--closed {
+    background: siteColor(vam-grey-2);
   }
 }
