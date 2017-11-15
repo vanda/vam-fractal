@@ -8,6 +8,7 @@
 
   &--padded {
     overflow: hidden;
+    padding: 0 0 (48px - 10px);
 
     @include bpMinSmall {
       padding: 0 (32px - 10px) (48px - 10px);
