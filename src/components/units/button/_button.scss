@@ -43,7 +43,7 @@
 
     &:hover {
       background-color: lighten(siteColor(vam-black), 10);
-      border: 1px solid siteColor(vam-black);
+      border: 1px solid lighten(siteColor(vam-black), 10);
     }
   }
 
