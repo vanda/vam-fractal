@@ -1,15 +1,20 @@
 .b-event-feature {
   box-sizing: border-box;
+  height: 344px;
   margin: 0 10px 10px;
   overflow: hidden;
   position: relative;
+  width: calc(100% - 20px);
 
   @include bpMinSmall {
+    height: 545px;
     margin-bottom: 20px;
+    max-height: 545px;
 
     &--half-width-fixed,
     &--third-width:nth-of-type(n+2) {
       float: left;
+      height: 400px;
       width: calc(50% - 20px);
     }
   }
@@ -17,39 +22,27 @@
   @include bpMinMedium {
     &--half-width {
       float: left;
+      height: 400px;
       width: calc(50% - 20px);
     }
     &--third-width:nth-of-type(n+0) {
       float: left;
+      height: 400px;
       width: calc(33.33% - 20px);
     }
   }
 
   &__media {
-    @include constrainedImage(300 344);
-    min-height: 300px;
-
-    @include bpMinSmall {
-      min-height: 545px;
-
-      .b-event-feature--half &,
-      .b-event-feature--half-width-fixed &,
-      .b-event-feature--third-width & {
-        min-height: 400px;
-      }
-    }
-  }
-
-  &__media-inner {
-    @include constrainedImageInner;
+    height: 100%;
+    width: 100%;
 
     &:after {
-      background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, .8), rgba(0, 0, 0, .9));
+      background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, .8), rgba(0, 0, 0, 1));
       bottom: 0;
       content: '';
       display: block;
       left: 0;
-      opacity: .7;
+      opacity: .8;
       position: absolute;
       right: 0;
       top: 0;
@@ -65,7 +58,9 @@
   }
 
   &__media-image {
-    @include constrainedImageImage;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 
   &__content {
@@ -191,14 +186,14 @@
       .b-event-feature--half-width-fixed &,
       .b-event-feature--half-width:nth-of-type(n+2) &,
       .b-event-feature--third-width:nth-of-type(n+2) & {
-        @include typeSetting(5, bold);
+        @include typeSetting(5);
       }
     }
 
     @include bpMinMedium {
       .b-event-feature--half-width:nth-of-type(1) &,
       .b-event-feature--third-width:nth-of-type(1) & {
-        @include typeSetting(5, bold);
+        @include typeSetting(5);
       }
     }
 
@@ -206,11 +201,15 @@
   }
 
   &__cta {
-    margin: 10px 0 0;
+    margin: 20px 0 0;
 
-    & :nth-child(n+2) {
-      @include bpMaxXSmall {
-        display: none;
+    .u-btn {
+      margin-top: 0;
+
+      &:nth-child(n+2) {
+        @include bpMaxXSmall {
+          display: none;
+        }
       }
     }
   }
