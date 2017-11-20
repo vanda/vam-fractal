@@ -51,16 +51,16 @@
     text-shadow: siteColor(vam-black) 1px 0 2px;
 
     @include bpMinSmall {
-      @include typeSetting(1, bold);
+      @include typeSetting(1, bold, uppercase);
     }
 
     @include bpMinMedium {
-      @include typeSetting(2, bold);
+      @include typeSetting(2, bold, uppercase);
       margin-top: $spacing-small;
     }
 
     .b-icon-badge--small & {
-      @include typeSetting(1, bold);
+      @include typeSetting(1, bold, uppercase);
     }
 
     .b-icon-badge--light & {
