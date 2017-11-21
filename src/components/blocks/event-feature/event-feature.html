@@ -3,13 +3,13 @@
 
     <div class="b-event-feature__media js-object-fit-container"
       itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
-        <link itemprop="url" href="{{ eventImage[960] }}">
-        <img alt="{{ eventTitle }}"
-             class="b-event-feature__media-image"
-             itemprop="contentUrl"
-             sizes="{{ eventImageSizes }}"
-             srcset="{% for k, img in eventImageSrcs %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
-             src="{{ eventImage[640] }}">
+      <link itemprop="url" href="{{ eventImage[960] }}">
+      <img alt="{{ eventTitle }}"
+           class="b-event-feature__media-image"
+           itemprop="contentUrl"
+           sizes="{{ eventImageSizes }}"
+           srcset="{% for k, img in eventImageSrcs %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+           src="{{ eventImage[640] }}">
     </div>
 
     <div class="b-event-feature__content">
