@@ -196,6 +196,6 @@ $base-font-weight: 'regular';
     text-transform: uppercase;
   } @else {
     letter-spacing: initial;
-    text-transform: initial;
+    text-transform: $transform;
   }
 }
