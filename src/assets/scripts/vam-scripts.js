@@ -5,5 +5,6 @@ require('../../components/groups/block-grid/_grid-reveal-more.js');
 require('../../components/blocks/toggle-nav/_toggle-nav.js');
 require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/search-result/_search-result.js');
+require('../../components/blocks/search-field/_search-field.js');
 
 svg4everybody();
