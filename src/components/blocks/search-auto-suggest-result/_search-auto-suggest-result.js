@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 // TODO Currently this script doesn't behave correctly
 // Sometimes it truncates after the cutoff
 const textElements = document.querySelectorAll('.js-truncate-text');
@@ -33,6 +31,7 @@ const overflowPosition = (textElement) => {
 
 const truncateText = () => {
     textElements.forEach((textElement, index) => {
+        console.log(hasOverflown(textElement))
         if (hasOverflown (textElement)) {
             textElement.innerHTML = `${originalText[index].substring(0, (overflowPosition(textElement) - 3))}...`;
         } else {
