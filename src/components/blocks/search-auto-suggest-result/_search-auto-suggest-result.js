@@ -1,3 +1,5 @@
+// TODO Currently this script doesn't behave correctly
+// Sometimes it truncates after the cutoff
 const textElements = document.querySelectorAll('.js-truncate-text');
 const originalText = {}
 for(const key in textElements) {
@@ -39,7 +41,7 @@ const truncateText = () => {
 };
 
 if (textElements.length > 0) {
-    // Behaviour on dynamic resize isn't working properly, Currently only run on page load
+    // TODO Behaviour on dynamic resize isn't working properly, Currently only run on page load
     window.onload = truncateText()
     // window.addEventListener('resize', truncateText);
 };

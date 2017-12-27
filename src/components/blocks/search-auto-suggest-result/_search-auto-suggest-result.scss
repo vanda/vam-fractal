@@ -1,7 +1,7 @@
-.b-search-result {
-	width: 100%;
-    height: 140px;
-	background-color: #ffffff;
+.b-search-auto-suggest-result {
+    width: 100%;
+    height: 124px;
+	background-color: #1d1e20;
 
 	&:hover {
 		background-color: #000000;
@@ -12,17 +12,16 @@
 	}
 }
 
-.b-search-result-content-type {
+.b-search-auto-suggest-result-content-type {
 	height: 13px;
-	font-weight: 600;
-	text-transform: uppercase;
-	height: 18px;
-	font-size: 13px;
-	line-height: 1.38;
-	letter-spacing: 1.1px;
+	margin-bottom: 4px;
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 0.93;
+	letter-spacing: 1.5px;
 	text-align: left;
-	color: #56575b;
-	margin-top: 20px;
+	color: #12d2a0;
+	text-transform: uppercase;
 
 	@include bpMaxLarge {
 		font-size: 13px;
@@ -37,20 +36,15 @@
 	}
 }
 
-.b-search-result-title {
+.b-search-auto-suggest-result-title {
 	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	width: 90%;
-	font-weight: 600;
+	height: 58px;
+	font-size: 24px;
+	font-weight: 100;
+	line-height: 1.33;
 	letter-spacing: 1.2px;
-	height: 31px;
-	font-size: 22px;
-	line-height: 1.36;
 	text-align: left;
-	color: #1d1e20;
-	margin-bottom: 4px;
-
+	color: #ffffff;
 
 	@include bpMaxLarge {
 		height: 48px;
@@ -65,19 +59,10 @@
 
 }
 
-.b-search-result-description {
-	width: 90%;
-	height: 39px;
-	font-size: 13px;
-	line-height: 1.38;
-	text-align: left;
-	color: #505054;
-}
-
-.b-search-result-text {
+.b-search-auto-suggest-result-text {
 	display: inline;
 	position: relative;
-	bottom: 22px;
+	bottom: 8px;
 	margin-left: 4px;
 
 	@include bpMaxLarge {
@@ -91,12 +76,11 @@
 	}
 }
 
-.b-search-result-image {
+.b-search-auto-suggest-result-image {
 	float: left;
 	width: 100px;
 	height: 100px;
-	margin: 20px 0px;
-	margin-right: 20px;
+	margin: 12px;
 
 	@include bpMaxLarge {
 		width: 72px;
