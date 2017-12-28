@@ -31,7 +31,6 @@ const overflowPosition = (textElement) => {
 
 const truncateText = () => {
     textElements.forEach((textElement, index) => {
-        console.log(hasOverflown(textElement))
         if (hasOverflown (textElement)) {
             textElement.innerHTML = `${originalText[index].substring(0, (overflowPosition(textElement) - 3))}...`;
         } else {
