@@ -3,12 +3,8 @@
     height: 140px;
 	background-color: #ffffff;
 
-	&:hover {
-		background-color: #000000;
-	}
-
-	@include bpMaxLarge {
-		height: 92px;
+	@include bpMaxSmall {
+		height: 194px;
 	}
 }
 
@@ -22,18 +18,14 @@
 	letter-spacing: 1.1px;
 	text-align: left;
 	color: #56575b;
-	margin-top: 20px;
-
-	@include bpMaxLarge {
-		font-size: 13px;
-		line-height: 1.0;
-		letter-spacing: 1.1px;
-	}
+	position: relative;
+	top: 26px;
 
 	@include bpMaxSmall {
 		font-size: 12px;
 		line-height: 1.08;
 		letter-spacing: 1px;
+		left: 14px;
 	}
 }
 
@@ -41,7 +33,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	width: 90%;
+	width: 80%;
 	font-weight: 600;
 	letter-spacing: 1.2px;
 	height: 31px;
@@ -49,45 +41,43 @@
 	line-height: 1.36;
 	text-align: left;
 	color: #1d1e20;
-	margin-bottom: 4px;
-
-
-	@include bpMaxLarge {
-		height: 48px;
-		font-size: 18px;
-		line-height: 1.2;
-	}
+	position: relative;
+	top: 26px;
 
 	@include bpMaxSmall {
-		height: 40px;
-		font-size: 16px;
+		height: 48px;
+		font-size: 18px;
+		line-height: 1.33;
+		left: 14px;
+		white-space: normal;
+		text-overflow: clip;
+		width: 95%;
+		// TODO I don't understand why Top -30px works but bottom 30px doesn't
+		top: -30px;
 	}
 
 }
 
 .b-search-result-description {
-	width: 90%;
-	height: 39px;
+	width: 80%;
+	height: 34px;
+	overflow: hidden;
 	font-size: 13px;
 	line-height: 1.38;
 	text-align: left;
 	color: #505054;
-}
-
-.b-search-result-text {
-	display: inline;
 	position: relative;
-	bottom: 22px;
-	margin-left: 4px;
-
-	@include bpMaxLarge {
-		bottom: 12px;
-		margin-left: 4px;
-	}
+	top: 30px;
 
 	@include bpMaxSmall {
-		margin-left: -2px;
-		bottom: 10px;
+		height: 72px;
+		left: 14px;
+		top: -24px;
+		width: 75%;
+	}
+
+	@include bpMaxXSmall {
+		width: 65%;
 	}
 }
 
@@ -97,10 +87,12 @@
 	height: 100px;
 	margin: 20px 0px;
 	margin-right: 20px;
-
-	@include bpMaxLarge {
+	@include bpMaxSmall {
 		width: 72px;
 		height: 72px;
-		margin: 10px;
+		float: right;
+		top: 94px;
+		position: relative;
+		margin: 0px 16px;
 	}
 }
