@@ -132,7 +132,7 @@ const newBundle = entry => {
 }
 
 function scripts() {
-  gulp.src(`${paths.src}/assets/scripts/precompiled/*.js`)
+  return gulp.src(`${paths.src}/assets/scripts/precompiled/*.js`)
     .pipe(gulp.dest(`${paths.dest}/assets/scripts`));
 
   return glob(`${paths.src}/assets/scripts/*.js`, function(err, files) {
