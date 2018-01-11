@@ -1,0 +1,28 @@
+.b-search-form {
+  width: 100%;
+	height: 160px;
+	background-color: #000000;
+}
+
+.b-search-form__input {
+  background-color: #000000;
+  border: none;
+  border-bottom: 0.5px solid #dee0e2;
+  color: #ffffff;
+	font-size: 44px;
+	height: 86px;
+	line-height: 1.27;
+  margin: 37px 48px;
+	text-align: left;
+  text-decoration: underline;
+  text-decoration-color: #12d2a0;
+  width: 88%;
+
+  &:focus {
+      outline: none;
+  }
+}
+
+.b-search-form__input::selection {
+  background-color: #b5b5bb;
+}
