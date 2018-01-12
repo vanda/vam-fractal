@@ -18,6 +18,11 @@
 
 .b-search-form__inner {
   border-bottom: .5px solid siteColor(vam-grey-5);
+  position: relative;
+}
+
+.b-search-form__inner,
+.b-search-form__underscore {
   max-width: 769px;
 }
 
@@ -25,10 +30,8 @@
   background-color: transparent;
   border: none;
   color: siteColor(vam-white);
-  font-size: 28px;
   line-height: 1.27;
   margin: 0 0 13px;
-  text-align: left;
   width: 100%;
 
   &:focus {
@@ -36,14 +39,32 @@
   }
 
   @include bpMinSmall {
-    font-size: 44px;
     margin: 0 0 18px;
     width: 88%;
   }
 }
 
+.b-search-form__input,
+.b-search-form__underscore {
+  font-size: 28px;
+
+  @include bpMinSmall {
+    font-size: 44px;
+  }
+}
+
 .b-search-form__input::selection {
   background-color: siteColor(vam-grey-4);
+}
+
+.b-search-form__underscore {
+  border-bottom: 2px solid siteColor(primary-green);
+  bottom: 0;
+  display: inline-block;
+  height: 2px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
 }
 
 .b-search-form__submit {

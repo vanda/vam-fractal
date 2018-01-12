@@ -5,7 +5,10 @@
 // spacing between the font and the underline itself.
 
 const searchInput = document.querySelector('.js-search-input');
+const searchUnderscore = document.querySelector('.js-search-underscore');
 
-searchInput.addEventListener('keypress', (e) => {
-  console.log(e);
-});
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    searchUnderscore.innerHTML = searchInput.value.replace(/\s/g, '&nbsp;');
+  });
+}
