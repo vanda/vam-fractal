@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // TODO Currently this script doesn't behave correctly
 // Sometimes it truncates after the cutoff
 const textElements = document.querySelectorAll('.js-truncate-text');

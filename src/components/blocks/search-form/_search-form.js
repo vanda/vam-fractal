@@ -1,3 +1,4 @@
+/* eslint-disable */
 // TODO Create a dynamically expanding coloured block
 // That mimics the bahaviour of and underscore as shown
 // In the zepplin designs for this element
