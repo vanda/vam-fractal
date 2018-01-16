@@ -29,6 +29,7 @@
 .b-search-form__input {
   background-color: transparent;
   border: none;
+  caret-color: siteColor(primary-green);
   color: siteColor(vam-white);
   line-height: 1.27;
   margin: 0 0 13px;
