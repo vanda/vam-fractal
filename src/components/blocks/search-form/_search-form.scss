@@ -1,19 +1,5 @@
 .b-search-form {
-  background-color: #000;
-  padding: 42px 20px 88px;
   width: 100%;
-
-  @include bpMinSmall {
-    padding: 39px 61px 46px;
-  }
-
-  @include bpMinMedium {
-    padding: 39px 70px 46px;
-  }
-
-  @include bpMinLarge {
-    padding: 39px 70px 46px;
-  }
 }
 
 .b-search-form__inner {
