@@ -16,10 +16,10 @@
 .b-search-result-auto-suggest-content-type {
 	height: 13px;
 	margin-bottom: 4px;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 100;
-	line-height: 0.93;
-	letter-spacing: 1.5px;
+	line-height: 1.08;
+	letter-spacing: 1px;
 	text-align: left;
 	color: #12d2a0;
 	text-transform: uppercase;
@@ -30,17 +30,17 @@
 		letter-spacing: 1.1px;
 	}
 
-	@include bpMaxSmall {
-		font-size: 12px;
-		line-height: 1.08;
-		letter-spacing: 1px;
+	@include bpMinSmall {
+		font-size: 14px;
+		line-height: 0.93;
+		letter-spacing: 1.5px;
 	}
 }
 
 .b-search-result-auto-suggest-title {
 	overflow: hidden;
-	height: 58px;
-	font-size: 24px;
+	height: 40px;
+	font-size: 16px;
 	font-weight: 100;
 	line-height: 1.33;
 	letter-spacing: 1.2px;
@@ -53,9 +53,9 @@
 		line-height: 1.2;
 	}
 
-	@include bpMaxSmall {
-		height: 40px;
-		font-size: 16px;
+	@include bpMinSmall {
+		height: 58px;
+		font-size: 24px;
 	}
 
 }
@@ -63,17 +63,17 @@
 .b-search-result-auto-suggest-text {
 	display: inline;
 	position: relative;
-	bottom: 8px;
-	margin-left: 4px;
+	bottom: 10px;
+	margin-left: -2px;
 
 	@include bpMaxLarge {
 		bottom: 12px;
 		margin-left: 4px;
 	}
 
-	@include bpMaxSmall {
-		margin-left: -2px;
-		bottom: 10px;
+	@include bpMinSmall {
+		margin-left: 2px;
+		bottom: 8px;
 	}
 }
 
