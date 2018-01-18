@@ -1,11 +1,11 @@
 // sass-lint:disable-all
 .b-search-result {
 	width: 100%;
-  height: 140px;
+	height: 194px;
 	background-color: #ffffff;
 
-	@include bpMaxSmall {
-		height: 194px;
+	@include bpMinSmall {
+		height: 140px;
 	}
 }
 
@@ -14,67 +14,70 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	height: 18px;
-	font-size: 13px;
-	line-height: 1.38;
-	letter-spacing: 1.1px;
+	font-size: 12px;
+	line-height: 1.08;
+	letter-spacing: 1px;
+	left: 14px;
 	text-align: left;
 	color: #56575b;
 	position: relative;
 	top: 26px;
 
-	@include bpMaxSmall {
-		font-size: 12px;
-		line-height: 1.08;
-		letter-spacing: 1px;
-		left: 14px;
+	@include bpMinSmall {
+		font-size: 13px;
+		line-height: 1.38;
+		letter-spacing: 1.1px;
+		left: auto;
 	}
 }
 
 .b-search-result-title {
 	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	width: 80%;
+	white-space: normal;
+	text-overflow: clip;
+	width: 95%;
 	font-weight: 600;
 	letter-spacing: 1.2px;
-	height: 31px;
-	font-size: 22px;
-	line-height: 1.36;
+	height: 50px;
+	font-size: 18px;
+	line-height: 1.33;
 	text-align: left;
 	color: #1d1e20;
 	position: relative;
-	top: 26px;
+	// TODO I don't understand why Top -30px works but bottom 30px doesn't
+	top: -30px;
+	left: 14px;
 
-	@include bpMaxSmall {
-		height: 48px;
-		font-size: 18px;
-		line-height: 1.33;
-		left: 14px;
-		white-space: normal;
-		text-overflow: clip;
-		width: 95%;
-		// TODO I don't understand why Top -30px works but bottom 30px doesn't
-		top: -30px;
+	@include bpMinSmall {
+		height: 31px;
+		font-size: 22px;
+		line-height: 1.36;
+		left: auto;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: 80%;
+		top: 26px;
 	}
 
 }
 
 .b-search-result-description {
-	width: 80%;
-	height: 34px;
+	width: 75%;
+	height: 72px;
 	overflow: hidden;
 	font-size: 13px;
 	line-height: 1.38;
 	text-align: left;
 	color: #505054;
 	position: relative;
-	top: 30px;
+	top: -24px;
+	left: 14px;
 
-	@include bpMaxSmall {
-		height: 72px;
-		left: 14px;
-		top: -24px;
-		width: 75%;
+	@include bpMinSmall {
+		height: 34px;
+		left: auto;
+		top: 30px;
+		width: 80%;
 	}
 
 	@include bpMaxXSmall {
@@ -83,17 +86,20 @@
 }
 
 .b-search-result-image {
-	float: left;
-	width: 100px;
-	height: 100px;
-	margin: 20px 0px;
-	margin-right: 20px;
-	@include bpMaxSmall {
-		width: 72px;
-		height: 72px;
-		float: right;
-		top: 94px;
-		position: relative;
-		margin: 0px 16px;
+	float: right;
+	width: 72px;
+	height: 72px;
+	margin: 0px 16px;
+	top: 98px;
+	position: relative;
+
+	@include bpMinSmall {
+		width: 100px;
+		height: 100px;
+		float: left;
+		top: auto;
+		position: static;
+		margin: 20px 0px;
+		margin-right: 20px;
 	}
 }
