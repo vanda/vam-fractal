@@ -1,5 +1,5 @@
 // sass-lint:disable-all
-.b-search-auto-suggest-result {
+.b-search-result-auto-suggest {
   width: 100%;
   height: 124px;
 	background-color: #1d1e20;
@@ -13,7 +13,7 @@
 	}
 }
 
-.b-search-auto-suggest-result-content-type {
+.b-search-result-auto-suggest-content-type {
 	height: 13px;
 	margin-bottom: 4px;
 	font-size: 14px;
@@ -37,7 +37,7 @@
 	}
 }
 
-.b-search-auto-suggest-result-title {
+.b-search-result-auto-suggest-title {
 	overflow: hidden;
 	height: 58px;
 	font-size: 24px;
@@ -60,7 +60,7 @@
 
 }
 
-.b-search-auto-suggest-result-text {
+.b-search-result-auto-suggest-text {
 	display: inline;
 	position: relative;
 	bottom: 8px;
@@ -77,7 +77,7 @@
 	}
 }
 
-.b-search-auto-suggest-result-image {
+.b-search-result-auto-suggest-image {
 	float: left;
 	width: 100px;
 	height: 100px;
