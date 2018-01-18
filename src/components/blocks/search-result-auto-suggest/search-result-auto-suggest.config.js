@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Search Auto Suggest Result',
-  label: 'Search Auto Suggest Result',
+  title: 'Search Result Auto Suggest',
+  label: 'Search Result Auto Suggest',
   status: 'wip',
   context: {
     content_type: 'Display',
