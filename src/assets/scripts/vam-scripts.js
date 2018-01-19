@@ -6,7 +6,5 @@ require('../../components/blocks/toggle-nav/_toggle-nav.js');
 require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/search-result-auto-suggest/_search-result-auto-suggest.js');
 require('../../components/blocks/search-form/_search-form.js');
-require('../../components/blocks/search-result/_search-result.js');
-require('../../components/blocks/search-field/_search-field.js');
 
 svg4everybody();
