@@ -1,0 +1,36 @@
+.b-input-select {
+  background: siteColor(vam-white);
+  display: inline-block;
+  position: relative;
+  width: auto;
+
+  &::after {
+    border: 5px solid transparent;
+    border-top: 7px solid currentColor;
+    content: '';
+    display: inline-block;
+    margin-top: -4px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+  }
+}
+
+.b-input-select-field {
+  @include typeSetting(3, normal);
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid siteColor(vam-black);
+  border-radius: 2px;
+  color: siteColor(vam-black);
+  display: block;
+  margin: 0;
+  outline: none;
+  padding: 12px 41px 12px 17px;
+  position: relative;
+  width: 100%;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
