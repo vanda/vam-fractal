@@ -1,3 +1,8 @@
 module.exports = {
-  placeholder: 'Search'
+  title: 'Search Form',
+  label: 'Search Form',
+  status: 'wip',
+  context: {
+    placeholder: 'Search'
+  }
 };
