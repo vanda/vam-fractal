@@ -1,0 +1,82 @@
+.b-search-form {
+  width: 100%;
+}
+
+.b-search-form__inner {
+  border-bottom: .5px solid siteColor(vam-grey-5);
+  position: relative;
+}
+
+.b-search-form__inner,
+.b-search-form__underscore {
+  max-width: 769px;
+}
+
+.b-search-form__input {
+  background-color: transparent;
+  border: none;
+  caret-color: siteColor(primary-green);
+  color: siteColor(vam-white);
+  line-height: 1.27;
+  margin: 0 0 13px;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include bpMinSmall {
+    margin: 0 0 18px;
+    width: 88%;
+  }
+}
+
+.b-search-form__input,
+.b-search-form__underscore {
+  font-size: 28px;
+
+  @include bpMinSmall {
+    @include typeSetting(7, normal);
+  }
+}
+
+.b-search-form__input::selection {
+  background-color: siteColor(vam-grey-4);
+}
+
+.b-search-form__underscore {
+  border-bottom: 2px solid siteColor(primary-green);
+  bottom: 0;
+  display: inline-block;
+  height: 2px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.b-search-form__submit {
+  @include typeSetting(3, normal);
+  background-color: transparent;
+  border: none;
+  color: siteColor(vam-white);
+  cursor: pointer;
+  float: right;
+  outline: none;
+  padding-right: 16px;
+  position: relative;
+  top: 25px;
+
+  &::after {
+    border: 4px solid transparent;
+    border-left-color: currentColor;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 8px;
+  }
+
+  @include bpMinSmall {
+    top: 30px;
+  }
+}

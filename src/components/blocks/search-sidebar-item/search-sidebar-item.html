@@ -1,0 +1,31 @@
+{% if default %}
+  <div class= "b-search-sidebar-item">
+{% else %}
+  <div class="b-search-sidebar-item b-search-sidebar-item--{{modifier}}">
+{% endif %}
+  <div class="b-search-sidebar-item__media">
+    <link itemprop="url" href="">
+    <img srcset="//vanda-production-assets.s3.amazonaws.com/2016/12/22/15/13/52/f52e5b82-55a4-4bce-8720-ad914e3e0b9f/2009CR4310_poster.jpg 240w,
+    //vanda-production-assets.s3.amazonaws.com/2016/12/22/15/13/52/093a0d4b-ef61-4a3a-8124-c1d6ca993dc0/2009CR4310_poster.jpg 500w"
+    sizes="(max-width: 499px) calc(100vw - 24px),
+    (min-width: 500px) calc(50vw - 28px),
+    (min-width: 992px) calc(25vw - 78px),
+    (min-width: 1200px) 280px" 
+    alt="" 
+    class="b-search-sidebar-item__media-image" 
+    itemprop="contentUrl"
+    src="">
+  </div>
+  <div class="b-search-sidebar-item__content">
+    {% if default %}
+      <div class="fr-icon-box">
+        <svg role="img" class="b-search-sidebar-item__content-icon">
+          <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
+        </svg>
+      </div>
+    {% endif %}
+    <p class="b-search-sidebar-item__content-text">
+        {{ title }}
+    </p>
+  </div>
+</div>

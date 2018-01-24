@@ -1,0 +1,94 @@
+.b-search-result-auto-suggest {
+  @include bpMaxLarge {
+    height: 92px;
+  }
+  
+  background-color: siteColor(vam-black);
+  height: 124px;
+  width: 100%;
+
+  &:hover {
+    background-color: #000000;
+  }
+
+}
+
+.b-search-result-auto-suggest-content-type {
+  @include bpMinSmall {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    line-height: .93;
+  }
+
+  @include bpMaxLarge {
+    font-size: 13px;
+    letter-spacing: 1.1px;
+    line-height: 1.0;
+  }
+
+  color: siteColor(primary-green);
+  font-size: 12px;
+  font-weight: 100;
+  height: 13px;
+  letter-spacing: 1px;
+  line-height: 1.08;
+  margin-bottom: 4px;
+  text-align: left;
+  text-transform: uppercase;
+    
+}
+
+.b-search-result-auto-suggest-title {
+  @include bpMinSmall {
+    font-size: 18px;
+    height: 48px;
+    line-height: 1.2;
+  }
+
+  @include bpMinLarge {
+    font-size: 24px;
+    height: 58px;
+  }
+
+  color: siteColor(vam-white);
+  font-size: 16px;
+  font-weight: 100;
+  height: 40px;
+  letter-spacing: 1.2px;
+  line-height: 1.33;
+  overflow: hidden;
+  text-align: left;
+
+}
+
+.b-search-result-auto-suggest-text {
+  @include bpMaxLarge {
+    bottom: 12px;
+    margin-left: 4px;
+  }
+
+  @include bpMinSmall {
+    bottom: 8px;
+    margin-left: 2px;
+  }
+
+  bottom: 10px;
+  display: inline;
+  margin-left: -2px;
+  position: relative;
+
+}
+
+.b-search-result-auto-suggest-image {
+  @include bpMaxLarge {
+    height: 72px;
+    margin: 10px;
+    width: 72px;
+  }
+
+  float: left;
+  height: 100px;
+  margin: 12px;
+  width: 100px;
+
+}
