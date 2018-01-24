@@ -17,8 +17,7 @@
   border: none;
   caret-color: siteColor(primary-green);
   color: siteColor(vam-white);
-  line-height: 1.27;
-  margin: 0 0 13px;
+  margin: 0 0 10px;
   width: 100%;
 
   &:focus {
@@ -26,7 +25,7 @@
   }
 
   @include bpMinSmall {
-    margin: 0 0 18px;
+    margin: 0 0 12px;
     width: 88%;
   }
 }
@@ -34,9 +33,9 @@
 .b-search-form__input,
 .b-search-form__underscore {
   font-size: 28px;
-
+  
   @include bpMinSmall {
-    @include typeSetting(7, normal);
+    font-size: 44px;
   }
 }
 
