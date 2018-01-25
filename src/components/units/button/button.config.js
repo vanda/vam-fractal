@@ -54,7 +54,8 @@ module.exports = {
         modifiers: ['outlined'],
         variants: [
           ['outlined', 'arrowed'],
-          ['outlined', 'micro']
+          ['outlined', 'micro'],
+          ['outlined--primary', 'arrowed']
         ]
       }
     }
