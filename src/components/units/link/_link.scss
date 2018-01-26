@@ -1,7 +1,13 @@
 .u-link {
+  text-decoration: underline;
+
+  &--border {
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
 
   &--arrow {
-    display: block;
+    display: inline-block;
 
     &::after {
       // If CSS triangles are used then the arrow

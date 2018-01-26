@@ -17,6 +17,14 @@ module.exports = {
         text: 'Exhibitions are free for V&A members',
         modifiers: ['arrow']
       }
+    },
+    {
+      name: 'border',
+      label: 'With border',
+      context: {
+        text: 'Exhibitions are free for V&A members',
+        modifiers: ['border']
+      }
     }
   ]
 };

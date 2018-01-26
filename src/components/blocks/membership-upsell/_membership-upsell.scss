@@ -1,0 +1,47 @@
+.b-membership-upsell {
+  width: 300px;
+  margin: 20px;
+
+  &__promo {
+    background-color: siteColor(vam-white);
+    height: 370px;
+  }
+
+  &__content {
+    margin: 20px;
+    position: absolute;
+    width: 260px;
+  }
+
+  &__description {
+    @include typeSetting(1, normal);
+    margin-bottom: 40px;
+    width: 264px;
+    text-align: left;
+    color: siteColor(vam-black);
+  }
+
+  &__list {
+    margin-bottom: 22px;
+    margin-left: 20px;
+    width: 200px;
+    &--item{
+      @include typeSetting(2, normal);
+      color: siteColor(vam-black);
+      margin-bottom: 12px;
+    }
+  }
+
+  &__navigation {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    top: 60px;
+  }
+
+  &__title {
+    @include typeSetting(6, normal);
+    text-align: left;
+    color: siteColor(vam-black);
+  }
+}
