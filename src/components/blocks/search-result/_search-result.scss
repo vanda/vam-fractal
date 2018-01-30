@@ -85,6 +85,11 @@
   @include bpMaxXSmall {
     width: 65%;
   }
+
+  & em {
+    font-style: normal;
+    font-weight: 700;
+  }
 }
 
 .b-search-result-image {
