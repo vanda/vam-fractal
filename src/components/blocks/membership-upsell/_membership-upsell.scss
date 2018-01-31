@@ -1,8 +1,6 @@
 .b-membership-upsell {
-  height: 100%;
   margin: auto;
   max-width: 300px;
-  width: 100%;
 
   @include bpMinSmall {
     max-width: 670px;
@@ -27,6 +25,11 @@
       display: inline-block;
     }
 
+  }
+
+  &__center {
+    display: table-cell;
+    vertical-align: middle;
   }
 
   &__content {
@@ -108,6 +111,20 @@
         right: 40px;
       }
     }
+  }
+
+  &__overlay {
+    background-color: rgba(0, 0, 0, .5);
+    bottom: 0;
+    cursor: pointer;
+    display: table;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0; 
+    width: 100%;
+    z-index: 2;
   }
 
   &__promo {
