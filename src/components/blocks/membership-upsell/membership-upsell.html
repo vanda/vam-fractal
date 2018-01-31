@@ -3,10 +3,10 @@
     <section class="b-membership-upsell__promo">
       <div class="b-membership-upsell__content">
         <p class="b-membership-upsell__title">
-          Members go free
+          {{title}}
         </p>
         <p class="b-membership-upsell__description">
-          Enjoy unlimited free entry to all our exhibitions from as little as £57
+          {{body}}
         </p>
   
         <ul class="b-membership-upsell__list">
@@ -14,27 +14,27 @@
             <svg role="img" class="b-membership-upsell__list--item-point">
               <use xlink:href="/assets/svg/svg-template.svg#tick-circle"></use>
             </svg>
-            No booking necessary
+            {{listItems.first}}
           </li>
           <li class="b-membership-upsell__list--item">
             <svg role="img" class="b-membership-upsell__list--item-point">
               <use xlink:href="/assets/svg/svg-template.svg#tick-circle"></use>
             </svg>
-            Access to our stunning members' room with restaurant and bar
+            {{listItems.second}}
           </li>
           <li class="b-membership-upsell__list--item">
             <svg role="img" class="b-membership-upsell__list--item-point">
               <use xlink:href="/assets/svg/svg-template.svg#tick-circle"></use>
             </svg>
-            Members’ Previews of major exhibitions and new galleries
+            {{listItems.third}}
           </li>
         </ul>
           <a href="#" class="u-btn u-btn--outlined u-btn--arrowed b-membership-upsell__button">
-            Become a Member
+            {{cta}}
           </a>
           <a href="#" class="b-membership-upsell__link">
             <span class="u-link--border">
-              Become a Member
+              {{cta}}
             </span>
             <span class="u-link--arrow">
             </span>
@@ -43,7 +43,7 @@
     </section>
     <div class="b-membership-upsell__navigation">
       <a href="#" class="u-btn u-btn--arrowed b-membership-upsell__navigation--button">
-          continue to booking
+          {{continue}}
       </a>
     </div>
   </div>

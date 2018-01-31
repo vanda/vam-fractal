@@ -3,18 +3,22 @@ module.exports = {
   label: 'Membership Upsell',
   status: 'wip',
   context: {
-    title: 'Membership',
-    body: 'Join today and enjoy unlimited free entry to all V&A exhibitions, Members-only previews and more',
-    cta: 'Become a member',
+    title: 'Members go free',
+    body: 'Enjoy unlimited free entry to all our exhibitions from as little as £57',
+    cta: 'Become a Member',
+    continue: 'Continue to booking',
     image: {
-      320: 'https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_320.jpg',
-      640: 'https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_640.jpg',
-      960: 'https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_960.jpg',
-      1280: 'https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_1280.jpg',
-      1920: 'https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_1920.jpg',
-      2560: 'https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_2560.jpg'
+      default: 'https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background.png',
+      mobile: 'https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background_mobile.png'
     },
-    url: 'http://www.vam.ac.uk/membership/'
+    url: 'http://www.vam.ac.uk/membership/',
+    listItems: {
+      first: 'No booking necessary',
+      /* eslint-disable quotes */
+      second: "Access to our stunning members' room with restaurant and bar",
+      third: "Members’ Previews of major exhibitions and new galleries"
+      /* eslint-enable quotes */
+    }
   },
   variants: [
 
