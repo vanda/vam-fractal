@@ -1,0 +1,142 @@
+.b-membership-upsell {
+  height: 100%;
+  margin: auto;
+  max-width: 300px;
+  width: 100%;
+
+  @include bpMinSmall {
+    max-width: 670px;
+  }
+
+  @include bpMinMedium {
+    max-width: 820px;
+  }
+
+  &__button {
+    border: solid 1px #1d1e20;
+    display: none;
+    height: 56px;
+    padding-top: 19px;
+    width: 256px;
+
+    &::after {
+      right: 35px;
+    }
+
+    @include bpMinSmall {
+      display: inline-block;
+    }
+
+  }
+
+  &__content {
+    margin: 20px;
+    max-width: 260px;
+    position: absolute;
+
+    @include bpMinSmall {
+      margin: 55px;
+      max-width: 450px;
+    }
+  }
+
+  &__description {
+    @include typeSetting(1, normal);
+    color: siteColor(vam-black);
+    margin-bottom: 40px;
+    max-width: 264px;
+    text-align: left;
+
+    @include bpMinSmall {
+      @include typeSetting(4, normal);
+      color: siteColor(vam-grey-2);
+      margin-bottom: 30px;
+      max-width: 360px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+
+    @include bpMinSmall {
+      display: none;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin-bottom: 22px;
+    margin-left: 20px;
+    max-width: 220px;
+
+    @include bpMinSmall {
+      max-width: 100%;
+    }
+    &--item {
+      @include typeSetting(2, normal);
+      color: siteColor(vam-black);
+      margin-bottom: 12px;
+      margin-left: 6px;
+      &-point {
+        float: left;
+        height: 17px;
+        left: 0;
+        position: absolute;
+        width: 17px;
+      }
+    }
+  }
+  
+  &__navigation {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 14px;
+    width: 100%;
+
+    @include bpMinSmall {
+      margin-top: 35px;
+      width: 300px;
+    }
+
+    &--button {
+      height: 62px;
+      line-height: 30px;
+      margin: auto;
+      width: 100%;
+
+      &::after {
+        right: 40px;
+      }
+    }
+  }
+
+  &__promo {
+    background-color: siteColor(vam-white);
+    background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background_mobile.png");
+    background-position: 155px 50px; 
+    background-repeat: no-repeat;
+    height: 370px;
+
+    @include bpMinSmall {
+      background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background.png");
+      background-position: 465px 30px; 
+      background-size: 305px;
+      height: 435px;
+    }
+
+    @include bpMinMedium {
+      background-position: 510px 10px;
+      background-size: 315px;
+    }
+  }
+
+  &__title {
+    @include typeSetting(6, normal);
+    color: siteColor(vam-black);
+    white-space: nowrap;
+
+    @include bpMinSmall {
+      @include typeSetting(7, normal);
+    }
+  }
+}

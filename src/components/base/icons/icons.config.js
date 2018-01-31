@@ -60,7 +60,8 @@ module.exports = {
       'arrow-up',
       'arrow-right',
       'arrow-down',
-      'arrow-left'
+      'arrow-left',
+      'tick-circle'
     ]
   },
   variants: [
@@ -140,7 +141,8 @@ module.exports = {
           'arrow-up',
           'arrow-right',
           'arrow-down',
-          'arrow-left'
+          'arrow-left',
+          'tick-circle'
         ]
       }
     }

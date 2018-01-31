@@ -8,14 +8,26 @@ module.exports = {
   variants: [
     {
       name: 'link',
-      label: 'Link'
+      label: 'Link',
+      context: {
+        inBody: true
+      }
+    },
+    {
+      name: 'border',
+      label: 'With border',
+      context: {
+        text: 'The following link is for use as a stand alone element',
+        modifiers: ['border']
+      }
     },
     {
       name: 'arrow',
       label: 'With arrow',
       context: {
-        text: 'Exhibitions are free for V&A members',
-        modifiers: ['arrow']
+        arrowed: true,
+        text: 'The following link is for use as a stand alone element',
+        modifiers: ['arrow', 'border']
       }
     }
   ]

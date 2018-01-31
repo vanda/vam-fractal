@@ -1,7 +1,13 @@
 .u-link {
+  text-decoration: underline;
+
+  &--border {
+    border-bottom: 1px solid currentColor;
+    text-decoration: none;
+  }
 
   &--arrow {
-    display: block;
+    display: inline-block;
 
     &::after {
       // If CSS triangles are used then the arrow
@@ -9,6 +15,8 @@
       // Also ensure that your HTML has no white-
       //  space in it either.
       content: ' ▸';
+      display: inline-block;
+      text-decoration: none;
     }
   }
 
