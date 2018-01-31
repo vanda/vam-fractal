@@ -2,8 +2,8 @@
   text-decoration: underline;
 
   &--border {
-    text-decoration: none;
     border-bottom: 1px solid currentColor;
+    text-decoration: none;
   }
 
   &--arrow {
@@ -15,6 +15,8 @@
       // Also ensure that your HTML has no white-
       //  space in it either.
       content: ' ▸';
+      display: inline-block;
+      text-decoration: none;
     }
   }
 

@@ -1,3 +1,23 @@
-<p>
-  Welcome to the V&A – the world’s leading museum of art and design. <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}">{{ text }}</a>
-</p>
+{% if inBody %}
+  <p>
+    This <a href="#" class="u-link">link</a> is for use inside a body of text 
+  </p>
+{% else %}
+  <p>
+    {{text}}
+  </p>
+    {% if arrowed %}
+      <a href="#">
+        <span class="u-link--border">
+          Link
+        </span>
+        <span class="u-link--arrow">
+        </span>
+      </a>
+    {% else %}
+      <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}">
+        Link
+      </a>
+    {% endif %}
+{% endif %}
+
