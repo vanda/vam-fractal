@@ -1,7 +1,7 @@
 .b-membership-upsell {
+  height: 100%;
   margin: auto;
   max-width: 300px;
-  height: 100%;
   width: 100%;
 
   @include bpMinSmall {
@@ -24,19 +24,19 @@
     }
 
     @include bpMinSmall {
-      display: inline-block
+      display: inline-block;
     }
 
   }
 
   &__content {
     margin: 20px;
-    position: absolute;
     max-width: 260px;
+    position: absolute;
 
     @include bpMinSmall {
-      max-width: 450px;
       margin: 55px;
+      max-width: 450px;
     }
   }
 
@@ -44,8 +44,8 @@
     @include typeSetting(1, normal);
     color: siteColor(vam-black);
     margin-bottom: 40px;
-    text-align: left;
     max-width: 264px;
+    text-align: left;
 
     @include bpMinSmall {
       @include typeSetting(4, normal);
@@ -111,10 +111,10 @@
   }
 
   &__promo {
-    background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background_mobile.png");
-    background-repeat: no-repeat;
-    background-position: 155px 50px; 
     background-color: siteColor(vam-white);
+    background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background_mobile.png");
+    background-position: 155px 50px; 
+    background-repeat: no-repeat;
     height: 370px;
 
     @include bpMinSmall {
