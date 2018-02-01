@@ -16,7 +16,6 @@
   font-size: 12px;
   font-weight: 600;
   height: 18px;
-  left: 14px;
   letter-spacing: 1px;
   line-height: 1.08;
   position: relative;
@@ -26,7 +25,6 @@
 
   @include bpMinSmall {
     font-size: 13px;
-    left: auto;
     letter-spacing: 1.1px;
     line-height: 1.38;
   }
@@ -38,8 +36,7 @@
   font-size: 18px;
   font-weight: 600;
   height: 50px;
-  left: 14px;
-  letter-spacing: 1.2px;
+  letter-spacing: .7px;
   line-height: 1.33;
   overflow: hidden;
   position: relative;
@@ -53,7 +50,6 @@
   @include bpMinSmall {
     font-size: 22px;
     height: 31px;
-    left: auto;
     line-height: 1.36;
     text-overflow: ellipsis;
     top: 26px;
@@ -67,7 +63,6 @@
   color: siteColor(vam-grey-2);
   font-size: 13px;
   height: 70px;
-  left: 14px;
   line-height: 1.38;
   overflow: hidden;
   position: relative;
@@ -77,7 +72,6 @@
 
   @include bpMinSmall {
     height: 34px;
-    left: auto;
     top: 30px;
     width: 80%;
   }
