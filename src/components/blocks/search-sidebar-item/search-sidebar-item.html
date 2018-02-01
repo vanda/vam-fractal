@@ -1,8 +1,4 @@
-{% if default %}
-  <div class= "b-search-sidebar-item">
-{% else %}
-  <div class="b-search-sidebar-item b-search-sidebar-item--{{modifier}}">
-{% endif %}
+<div class="b-search-sidebar-item {% for m in modifiers %} b-search-sidebar-item--{{ m }}{% endfor %}">
   <div class="b-search-sidebar-item__media">
     <link itemprop="url" href="">
     <img srcset="//vanda-production-assets.s3.amazonaws.com/2016/12/22/15/13/52/f52e5b82-55a4-4bce-8720-ad914e3e0b9f/2009CR4310_poster.jpg 240w,
@@ -17,7 +13,7 @@
     src="">
   </div>
   <div class="b-search-sidebar-item__content">
-    {% if default %}
+    {% if not modifiers %}
       <svg role="img" class="b-search-sidebar-item__content-icon">
         <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
       </svg>
