@@ -1,0 +1,112 @@
+.b-search-result {
+  background-color: siteColor(vam-white);
+  border-bottom: 1px solid siteColor(vam-grey-5);
+  display: block;
+  height: 194px;
+  width: 100%;
+
+  @include bpMinSmall {
+    height: 140px;
+  }
+
+}
+
+.b-search-result-content-type {
+  color: siteColor(vam-grey-3);
+  font-size: 12px;
+  font-weight: 600;
+  height: 18px;
+  left: 14px;
+  letter-spacing: 1px;
+  line-height: 1.08;
+  position: relative;
+  text-align: left;
+  text-transform: uppercase;
+  top: 26px;
+
+  @include bpMinSmall {
+    font-size: 13px;
+    left: auto;
+    letter-spacing: 1.1px;
+    line-height: 1.38;
+  }
+
+}
+
+.b-search-result-title {
+  color: siteColor(vam-black);
+  font-size: 18px;
+  font-weight: 600;
+  height: 50px;
+  left: 14px;
+  letter-spacing: 1.2px;
+  line-height: 1.33;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  text-overflow: clip;
+  // TODO I don't understand why Top -30px works but bottom 30px doesn't
+  top: -30px;
+  white-space: normal;
+  width: 95%;
+
+  @include bpMinSmall {
+    font-size: 22px;
+    height: 31px;
+    left: auto;
+    line-height: 1.36;
+    text-overflow: ellipsis;
+    top: 26px;
+    white-space: nowrap;
+    width: 80%;
+  }
+
+}
+
+.b-search-result-description {
+  color: siteColor(vam-grey-2);
+  font-size: 13px;
+  height: 70px;
+  left: 14px;
+  line-height: 1.38;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  top: -24px;
+  width: 75%;
+
+  @include bpMinSmall {
+    height: 34px;
+    left: auto;
+    top: 30px;
+    width: 80%;
+  }
+
+  @include bpMaxXSmall {
+    width: 65%;
+  }
+
+  & em {
+    font-style: normal;
+    font-weight: 700;
+  }
+}
+
+.b-search-result-image {
+  float: right;
+  height: 72px;
+  margin: 0 16px;
+  position: relative;
+  top: 98px;
+  width: 72px;
+
+  @include bpMinSmall {
+    float: left;
+    height: 100px;
+    margin: 20px 0;
+    margin-right: 20px;
+    position: static;
+    top: auto;
+    width: 100px;
+  }
+}

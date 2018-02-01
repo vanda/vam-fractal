@@ -1,0 +1,97 @@
+.b-search-result-auto-suggest {
+  background-color: siteColor(vam-black);
+  border-bottom: 1px solid siteColor(vam-grey-5);
+  display: block;
+  height: 124px;
+  width: 100%;
+
+  @include bpMaxLarge {
+    height: 92px;
+  }
+ 
+  &:hover {
+    background-color: #000000;
+  }
+
+}
+
+.b-search-result-auto-suggest-content-type {
+  color: siteColor(primary-green);
+  font-size: 12px;
+  font-weight: 100;
+  height: 13px;
+  letter-spacing: 1px;
+  line-height: 1.08;
+  margin-bottom: 4px;
+  text-align: left;
+  text-transform: uppercase;
+  
+  @include bpMinSmall {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    line-height: .93;
+  }
+
+  @include bpMaxLarge {
+    font-size: 13px;
+    letter-spacing: 1.1px;
+    line-height: 1.0;
+  }
+}
+
+.b-search-result-auto-suggest-title {
+  color: siteColor(vam-white);
+  font-size: 16px;
+  font-weight: 100;
+  height: 42px;
+  letter-spacing: 1.2px;
+  line-height: 1.33;
+  overflow: hidden;
+  text-align: left;
+
+  @include bpMinSmall {
+    font-size: 18px;
+    height: 48px;
+    line-height: 1.2;
+  }
+
+  @include bpMinLarge {
+    font-size: 24px;
+    height: 58px;
+  }
+}
+
+.b-search-result-auto-suggest-text {
+  bottom: 10px;
+  display: inline;
+  margin-left: -2px;
+  position: relative;
+
+  @include bpMaxLarge {
+    bottom: 14px;
+    margin-left: 4px;
+  }
+
+  @include bpMinSmall {
+    bottom: 8px;
+    margin-left: 2px;
+  }
+
+  & em {
+    font-style: normal;
+    font-weight: 700;
+  }
+}
+
+.b-search-result-auto-suggest-image {
+  float: left;
+  height: 100px;
+  margin: 12px;
+  width: 100px;
+
+  @include bpMaxLarge {
+    height: 72px;
+    margin: 10px;
+    width: 72px;
+  }
+}
