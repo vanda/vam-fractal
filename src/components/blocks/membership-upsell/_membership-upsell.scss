@@ -114,13 +114,14 @@
   }
 
   &__overlay {
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(siteColor(vam-black), .5);
     bottom: 0;
     cursor: pointer;
     display: table;
     height: 100%;
     left: 0;
-    position: absolute;
+    margin: auto;
+    position: fixed;
     right: 0;
     top: 0; 
     width: 100%;
