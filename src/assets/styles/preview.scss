@@ -40,14 +40,14 @@ h1 {
 .fr-bg--dark {
   background-color: rgba(siteColor(vam-black), .7);
   height: 100%;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 
 .fr-bg--light {
   background-color: siteColor(vam-white);
   height: 100%;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 
