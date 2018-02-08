@@ -16,47 +16,46 @@
 }
 
 .b-search-result-auto-suggest-content-type {
+  @include typeSetting(0, normal);
   color: siteColor(primary-green);
-  font-size: 12px;
-  font-weight: 100;
   height: 13px;
-  letter-spacing: 1px;
-  line-height: 1.08;
   margin-bottom: 4px;
   text-align: left;
   text-transform: uppercase;
   
   @include bpMinSmall {
+    @include typeSetting(2, normal);
     font-size: 14px;
     letter-spacing: 1.5px;
     line-height: .93;
+    text-transform: uppercase;
   }
 
   @include bpMaxLarge {
+    @include typeSetting(1, normal);
     font-size: 13px;
     letter-spacing: 1.1px;
     line-height: 1.0;
+    text-transform: uppercase;
   }
 }
 
 .b-search-result-auto-suggest-title {
+  @include typeSetting(3, light);
   color: siteColor(vam-white);
-  font-size: 16px;
-  font-weight: 100;
   height: 42px;
-  letter-spacing: 1.2px;
   line-height: 1.33;
   overflow: hidden;
   text-align: left;
 
   @include bpMinSmall {
-    font-size: 18px;
+    @include typeSetting(4, light);
     height: 48px;
     line-height: 1.2;
   }
 
   @include bpMinLarge {
-    font-size: 24px;
+    @include typeSetting(5, light);
     height: 58px;
   }
 }

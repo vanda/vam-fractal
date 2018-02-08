@@ -20,7 +20,7 @@
 }
 
 .b-input-select-field {
-  @include typeSetting(3, normal);
+  @include typeSetting(2, normal);
   appearance: none;
   background-color: transparent;
   border: 1px solid siteColor(vam-black);
