@@ -8,6 +8,7 @@ function doSearchUnderscore () {
 }
 
 if (searchInput) {
-  window.addEventListener('load', doSearchUnderscore);
+  searchInput.focus();
+  doSearchUnderscore();
   searchInput.addEventListener('input', doSearchUnderscore);
 }
