@@ -12,31 +12,24 @@
 }
 
 .b-search-result-content-type {
+  @include typeSetting(0, normal);
   color: siteColor(vam-grey-3);
-  font-size: 12px;
-  font-weight: 600;
   height: 18px;
-  letter-spacing: 1px;
-  line-height: 1.08;
   position: relative;
   text-align: left;
   text-transform: uppercase;
   top: 26px;
 
   @include bpMinSmall {
-    font-size: 13px;
-    letter-spacing: 1.1px;
-    line-height: 1.38;
+    @include typeSetting(1, normal);
   }
 
 }
 
 .b-search-result-title {
+  @include typeSetting(4, normal);
   color: siteColor(vam-black);
-  font-size: 18px;
-  font-weight: 600;
   height: 50px;
-  letter-spacing: .7px;
   line-height: 1.33;
   overflow: hidden;
   position: relative;
@@ -48,9 +41,8 @@
   width: 95%;
 
   @include bpMinSmall {
-    font-size: 22px;
+    @include typeSetting(5, normal);
     height: 31px;
-    line-height: 1.36;
     text-overflow: ellipsis;
     top: 26px;
     white-space: nowrap;
@@ -60,10 +52,9 @@
 }
 
 .b-search-result-description {
+  @include typeSetting(1, normal);
   color: siteColor(vam-grey-2);
-  font-size: 13px;
-  height: 70px;
-  line-height: 1.38;
+  height: 62px;
   overflow: hidden;
   position: relative;
   text-align: left;
