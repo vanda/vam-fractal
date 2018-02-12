@@ -9,89 +9,78 @@
     height: 140px;
   }
 
-}
+  &__content {
+    padding: 16px 0;
+    &--text {
+      margin: auto;
+    }
 
-.b-search-result-content-type {
-  @include typeSetting(0, normal);
-  color: siteColor(vam-grey-3);
-  height: 18px;
-  position: relative;
-  text-align: left;
-  text-transform: uppercase;
-  top: 26px;
+    &--type {
+      @include typeSetting(0, normal);
+      color: siteColor(vam-grey-2);
+      margin-bottom: 4px;
+      text-transform: uppercase;
 
-  @include bpMinSmall {
-    @include typeSetting(1, normal);
-  }
+      @include bpMinSmall {
+        @include typeSetting(4, normal);
+        height: 28px;
+        margin-bottom: 0;
+        text-transform: uppercase;
+      }
+    }
 
-}
+    &--title {
+      @include typeSetting(4, normal);
+      color: siteColor(vam-black);
+      height: 44px;
+      line-height: 1.33rem;
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: clip;
+      white-space: normal;
+      
+      @include bpMinSmall {
+        @include typeSetting(5, normal);
+        height: 32px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
 
-.b-search-result-title {
-  @include typeSetting(4, normal);
-  color: siteColor(vam-black);
-  height: 50px;
-  line-height: 1.33;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
-  text-overflow: clip;
-  // TODO I don't understand why Top -30px works but bottom 30px doesn't
-  top: -30px;
-  white-space: normal;
-  width: 95%;
+    &--description {
+      @include typeSetting(1, normal);
+      color: siteColor(vam-grey-2);
+      height: 72px;
+      line-height: 18px;
+      overflow: hidden;
+      position: relative;
+      width: 75%;
+      
+      @include bpMinSmall {
+        height: 34px;
+      }
 
-  @include bpMinSmall {
-    @include typeSetting(5, normal);
-    height: 31px;
-    text-overflow: ellipsis;
-    top: 26px;
-    white-space: nowrap;
-    width: 80%;
-  }
+      & em {
+        font-style: normal;
+        font-weight: 700;
+      }
+    }
 
-}
+    &--image {
+      float: right;
+      height: 72px;
+      position: relative;
+      top: 76px;
+      width: 72px;
 
-.b-search-result-description {
-  @include typeSetting(1, normal);
-  color: siteColor(vam-grey-2);
-  height: 62px;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
-  top: -24px;
-  width: 75%;
-
-  @include bpMinSmall {
-    height: 34px;
-    top: 30px;
-    width: 80%;
-  }
-
-  @include bpMaxXSmall {
-    width: 65%;
-  }
-
-  & em {
-    font-style: normal;
-    font-weight: 700;
-  }
-}
-
-.b-search-result-image {
-  float: right;
-  height: 72px;
-  margin: 0 16px;
-  position: relative;
-  top: 98px;
-  width: 72px;
-
-  @include bpMinSmall {
-    float: left;
-    height: 100px;
-    margin: 20px 0;
-    margin-right: 20px;
-    position: static;
-    top: auto;
-    width: 100px;
+      @include bpMinSmall {
+        float: left;
+        height: 100px;
+        margin: 20px 0;
+        margin-right: 20px;
+        top: -16px;
+        width: 100px;
+      }
+    }
   }
 }
