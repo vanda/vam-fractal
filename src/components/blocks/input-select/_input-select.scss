@@ -17,6 +17,17 @@
     top: 50%;
     z-index: -1;
   }
+
+  &::before {
+    background: siteColor(vam-grey-5);
+    content: '';
+    display: inline-block;
+    height: 60%;
+    position: absolute;
+    width: 1px;
+    right: 48px;
+    top: 20%;
+  }
 }
 
 .b-input-select-field {
@@ -43,4 +54,5 @@
     line-height: 50px;
     outline: none;
   }
+
 }
