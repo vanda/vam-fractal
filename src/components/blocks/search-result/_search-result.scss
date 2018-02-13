@@ -5,7 +5,7 @@
   height: 194px;
   width: 100%;
 
-  @include bpMinSmall {
+  @include bpMinXSmall {
     height: 140px;
   }
 
@@ -21,7 +21,7 @@
       margin-bottom: 4px;
       text-transform: uppercase;
 
-      @include bpMinSmall {
+      @include bpMinXSmall {
         @include typeSetting(1, normal);
         height: 28px;
         line-height: 2rem;
@@ -40,7 +40,7 @@
       text-overflow: clip;
       white-space: normal;
       
-      @include bpMinSmall {
+      @include bpMinXSmall {
         @include typeSetting(5, normal);
         height: 32px;
         text-overflow: ellipsis;
@@ -57,7 +57,7 @@
       position: relative;
       width: 75%;
       
-      @include bpMinSmall {
+      @include bpMinXSmall {
         height: 34px;
       }
 
@@ -74,7 +74,7 @@
       top: 76px;
       width: 72px;
 
-      @include bpMinSmall {
+      @include bpMinXSmall {
         float: left;
         height: 100px;
         margin: 20px 0;
