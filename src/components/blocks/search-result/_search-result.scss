@@ -22,8 +22,9 @@
       text-transform: uppercase;
 
       @include bpMinSmall {
-        @include typeSetting(4, normal);
+        @include typeSetting(1, normal);
         height: 28px;
+        line-height: 2rem;
         margin-bottom: 0;
         text-transform: uppercase;
       }
