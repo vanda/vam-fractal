@@ -1,0 +1,9 @@
+<div class="fr-bg--light fr-fullheight">
+  <div class="b-horizontal-scroll-grid">
+    <div class="b-horizontal-scroll-grid__content">
+      {% for object in objects %}
+        {%- render "@search-result-objects", object -%}
+      {% endfor %}
+    </div>
+  </div>
+</div>

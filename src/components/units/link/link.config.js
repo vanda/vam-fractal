@@ -29,6 +29,15 @@ module.exports = {
         text: 'The following link is for use as a stand alone element',
         modifiers: ['arrow', 'border']
       }
+    },
+    {
+      name: 'external',
+      label: 'External',
+      context: {
+        external: true,
+        text: 'The following link is for use as a stand alone element',
+        modifiers: ['border']
+      }
     }
   ]
 };

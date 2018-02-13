@@ -5,7 +5,7 @@
   &__content {
     width: 100px;
 
-    &--credit {
+    &-credit {
       @include typeSetting(1, normal);
       color: siteColor(vam-grey-2);
       overflow: hidden;
@@ -13,16 +13,16 @@
       white-space: nowrap;
     }
 
-    &--image {
+    &-image {
       height: 100px;
       margin-bottom: 8px;
       width: 100%;
     }
 
-    &--title {
+    &-title {
       @include typeSetting(1, bold);
       color: siteColor(vam-grey-2);
-      height: 32px;
+      max-height: 32px;
       overflow: hidden;
       text-overflow: clip;
       white-space: normal;
