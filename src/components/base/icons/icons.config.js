@@ -20,6 +20,7 @@ module.exports = {
       'cycle',
       'drive',
       'link',
+      'link-external',
       'calendar',
       'clock',
       'ticket',
@@ -142,7 +143,8 @@ module.exports = {
           'arrow-right',
           'arrow-down',
           'arrow-left',
-          'tick-circle'
+          'tick-circle',
+          'link-external'
         ]
       }
     }
