@@ -54,11 +54,12 @@
       height: 72px;
       line-height: 18px;
       overflow: hidden;
+      padding-right: 100px;
       position: relative;
-      width: 75%;
       
       @include bpMinXSmall {
         height: 34px;
+        padding-right: 0;
       }
 
       & em {
