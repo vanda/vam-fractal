@@ -34,9 +34,9 @@
     &--title {
       @include typeSetting(4, normal);
       color: siteColor(vam-black);
-      max-height: 44px;
       line-height: 1.33rem;
       margin-bottom: 12px;
+      max-height: 42px;
       overflow: hidden;
       text-overflow: clip;
       white-space: normal;
@@ -62,8 +62,8 @@
       
       @include bpMinXSmall {
         height: 34px;
-        padding-right: 0;
         padding-left: 120px;
+        padding-right: 0;
       }
 
       & em {
