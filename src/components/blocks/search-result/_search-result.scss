@@ -16,17 +16,16 @@
     }
 
     &--type {
-      @include typeSetting(0, normal);
+      @include typeSetting(0, semi-bold, uppercase);
       color: siteColor(vam-grey-2);
       margin-bottom: 4px;
-      text-transform: uppercase;
+
 
       @include bpMinXSmall {
-        @include typeSetting(1, normal);
+        @include typeSetting(1, semi-bold, uppercase);
         height: 28px;
         line-height: 2rem;
         margin-bottom: 0;
-        text-transform: uppercase;
       }
     }
 
