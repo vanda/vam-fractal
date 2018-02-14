@@ -2,19 +2,20 @@
 
   <a class="b-search-result" href="#">
     <div class="b-search-result__content">
-      <img sizes="(max-width: 100px) 100px, 100vw" 
-        class="b-search-result__content--image" 
-        src="{{ image }}" 
-        alt="{{ title }}">
       <div class="b-search-result__content--text" >
         <div class="b-search-result__content--type">
           {{ content_type }}
         </div>
         <div class="b-search-result__content--title js-search-result-text">
           {{ title }}
-        </div>      
-        <div class="b-search-result__content--description js-search-result-text">
-          {{ description }}
+        </div>
+        <div>
+          <img sizes="(max-width: 100px) 100px, 100vw" 
+               class="b-search-result__content--image"
+               src="{{ image }}" alt="{{ title }}">
+          <div class="b-search-result__content--description js-search-result-text">
+            {{ description }}
+          </div>
         </div>
       </div>
     </div>

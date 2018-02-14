@@ -2,7 +2,8 @@
   background-color: siteColor(vam-white);
   border-bottom: 1px solid siteColor(vam-grey-5);
   display: block;
-  height: 194px;
+  max-height: 194px;
+  position: relative;
   width: 100%;
 
   @include bpMinXSmall {
@@ -26,15 +27,16 @@
         height: 28px;
         line-height: 2rem;
         margin-bottom: 0;
+        padding-left: 120px;
       }
     }
 
     &--title {
       @include typeSetting(4, normal);
       color: siteColor(vam-black);
-      height: 44px;
+      max-height: 44px;
       line-height: 1.33rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       overflow: hidden;
       text-overflow: clip;
       white-space: normal;
@@ -43,6 +45,7 @@
         @include typeSetting(5, normal);
         height: 32px;
         margin-bottom: 4px;
+        padding-left: 120px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
@@ -54,12 +57,13 @@
       height: 72px;
       line-height: 18px;
       overflow: hidden;
-      padding-right: 100px;
+      padding-right: 5px;
       position: relative;
       
       @include bpMinXSmall {
         height: 34px;
         padding-right: 0;
+        padding-left: 120px;
       }
 
       & em {
@@ -71,16 +75,14 @@
     &--image {
       float: right;
       height: 72px;
-      position: relative;
-      top: 76px;
       width: 72px;
 
       @include bpMinXSmall {
         float: left;
         height: 100px;
         margin: 20px 0;
-        margin-right: 20px;
-        top: -16px;
+        position: absolute;
+        top: 0;
         width: 100px;
       }
     }
