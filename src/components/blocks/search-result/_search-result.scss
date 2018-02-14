@@ -34,7 +34,7 @@
       color: siteColor(vam-black);
       height: 44px;
       line-height: 1.33rem;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
       overflow: hidden;
       text-overflow: clip;
       white-space: normal;
@@ -42,6 +42,7 @@
       @include bpMinXSmall {
         @include typeSetting(5, normal);
         height: 32px;
+        margin-bottom: 4px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
