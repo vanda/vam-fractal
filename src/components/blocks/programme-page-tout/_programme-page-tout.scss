@@ -1,24 +1,54 @@
 .b-programme-page-tout {
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 2px;
+  min-height: 182px;
+  min-width: 152px;
   width: 100%;
-  max-width: 200px;
+
+  @include bpMinSmall {
+    margin: 0;
+    max-width: 200px;
+    width: calc(20% - 8px);
+  }
 
   &__content {
     position: relative;
-
+    
     &-image {
       height: 100%;
       max-height: 244px;
+      width: 100%;
+    }
+    
+    &-overlay {
+      &:after {
+        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, .8), rgba(0, 0, 0, 1));
+        bottom: 0;
+        content: '';
+        display: block;
+        left: 0;
+        opacity: .8;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: opacity .35s ease;
+        width: 100%;
+        z-index: 0;
+      }
     }
 
     &-title {
-      @include typeSetting(5, bold);
+      @include typeSetting(4, bold);
       bottom: 0;
       color: siteColor(vam-white);
-      margin: 6px 12px;
+      line-height: 24px;
+      margin: 14px 16px;
       position: absolute;
       white-space: normal;
+
+      @include bpMinSmall {
+        @include typeSetting(5, bold);
+      }
     }
   }
 }

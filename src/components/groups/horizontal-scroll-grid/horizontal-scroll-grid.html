@@ -2,7 +2,11 @@
   <div class="b-horizontal-scroll-grid">
     <div class="b-horizontal-scroll-grid__content">
       {% for object in objects %}
-        {%- render "@search-result-objects", object -%}
+        {% if tout %}
+          {%- render "@programme-page-tout", object -%}
+        {% else %}
+          {%- render "@search-result-objects", object -%}
+        {% endif %}
       {% endfor %}
     </div>
   </div>

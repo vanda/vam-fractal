@@ -1,4 +1,5 @@
 module.exports = {
+  default: 'With Search Object Reults',
   title: 'Horizontal Scroll Grid',
   label: 'Horizontal Scroll Grid',
   status: 'wip',
@@ -30,5 +31,37 @@ module.exports = {
         image: '//vanda-production-assets.s3.amazonaws.com/2017/08/01/15/31/53/c2fc23c4-2c46-4a51-9090-afb3353f31a5/Glass-thumbnail.jpg'
       }
     ]
-  }
+  },
+  variants: [
+    {
+      name: 'With Programme Page Touts',
+      label: 'With Programme Page Touts',
+      status: 'wip',
+      context: {
+        tout: true,
+        objects: [
+          {
+            title: 'Exhibitions',
+            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Exhibitions.jpg'
+          },
+          {
+            title: 'Courses',
+            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Courses.jpg'
+          },
+          {
+            title: 'Membership events',
+            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Events.jpg'
+          },
+          {
+            title: 'Family events',
+            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_FamilyEvents.jpg'
+          },
+          {
+            title: 'Professional development',
+            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_ProfDevelopment.jpg'
+          }
+        ]
+      }
+    }
+  ]
 };
