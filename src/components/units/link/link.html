@@ -16,8 +16,12 @@
       </a>
     {% else %}
       <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}">
+        {% if external %}
+          <svg role="img" class="u-link--external-icon">
+            <use xlink:href="/assets/svg/svg-template.svg#link-external"></use>
+          </svg>
+        {% endif %}
         Link
       </a>
     {% endif %}
 {% endif %}
-

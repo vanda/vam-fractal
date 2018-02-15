@@ -36,11 +36,13 @@
 @import '../../components/blocks/event-teaser/event-teaser';
 @import '../../components/blocks/membership-upsell/membership-upsell';
 @import '../../components/blocks/pagination/pagination';
+@import '../../components/blocks/programme-page-tout/programme-page-tout';
 @import '../../components/blocks/promo/promo';
 @import '../../components/blocks/section-header/section-header';
 @import '../../components/blocks/search-form/search-form';
-@import '../../components/blocks/search-result-auto-suggest/search-result-auto-suggest';
 @import '../../components/blocks/search-result/search-result';
+@import '../../components/blocks/search-result-auto-suggest/search-result-auto-suggest';
+@import '../../components/blocks/search-result-objects/search-result-objects';
 @import '../../components/blocks/search-sidebar-item/search-sidebar-item';
 @import '../../components/blocks/toggle-nav/toggle-nav';
 @import '../../components/blocks/video-thumbnail/video-thumbnail';
@@ -48,3 +50,4 @@
 // Group
 @import '../../components/groups/block-grid/block-grid';
 @import '../../components/groups/collection-grid/collection-grid';
+@import '../../components/groups/horizontal-scroll-grid/horizontal-scroll-grid';
