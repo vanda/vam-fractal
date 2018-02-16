@@ -31,7 +31,7 @@ if (searchInput) {
   searchInput.addEventListener('input', searchDecorate);
   searchInput.addEventListener('input', searchActivate);
   searchClear.addEventListener('click', () => {
-    searchInput.value = "";
+    searchInput.value = '';
     searchDecorate();
   });
 }
