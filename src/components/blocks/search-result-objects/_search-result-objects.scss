@@ -1,21 +1,27 @@
 .b-search-result-object {
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 2px;
+  max-width: 200px;
+  min-width: 100px;
+  width: calc(20% - 4px);
 
   &__content {
-    width: 100px;
-
     &-credit {
       @include typeSetting(1, normal);
       color: siteColor(vam-grey-2);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      @include bpMinSmall {
+        @include typeSetting(3, normal);
+      }
     }
 
     &-image {
-      height: 100px;
       margin-bottom: 8px;
+      max-height: 200px;
+      min-height: 100px;
       object-fit: cover;
       width: 100%;
     }
@@ -27,6 +33,11 @@
       overflow: hidden;
       text-overflow: clip;
       white-space: normal;
+
+      @include bpMinSmall {
+        @include typeSetting(3, bold);
+        max-height: 44px;
+      }
     }
   }
 }
