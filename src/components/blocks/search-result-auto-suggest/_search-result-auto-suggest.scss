@@ -86,6 +86,7 @@
   float: left;
   height: 100px;
   margin: 12px;
+  object-fit: cover;
   width: 100px;
 
   @include bpMaxLarge {
