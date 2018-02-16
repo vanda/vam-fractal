@@ -24,14 +24,17 @@ function searchActivate () {
   }
 }
 
+function searchReset () {
+  searchClear.classList.add('b-search-form__clear--hidden');
+  searchInput.value = '';
+  searchDecorate();
+}
+
 if (searchInput) {
   searchInput.focus();
   searchInit();
   searchDecorate();
   searchInput.addEventListener('input', searchDecorate);
   searchInput.addEventListener('input', searchActivate);
-  searchClear.addEventListener('click', () => {
-    searchInput.value = '';
-    searchDecorate();
-  });
+  searchClear.addEventListener('click', searchReset);
 }

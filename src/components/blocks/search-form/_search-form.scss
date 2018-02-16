@@ -74,11 +74,16 @@
   @include bpMinSmall {
     display: block;
     height: 19px;
-    top: 15px;
+    top: 30px;
     width: 19px;
 
     &#{&}--hidden {
       display: none;
+    }
+
+    svg {
+      height: 100%;
+      width: 100%;
     }
   }
 }
