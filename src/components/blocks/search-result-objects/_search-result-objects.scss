@@ -14,7 +14,7 @@
       white-space: nowrap;
 
       @include bpMinSmall {
-        @include typeSetting(3, normal);
+        @include typeSetting(2, normal);
       }
     }
 
@@ -35,8 +35,8 @@
       white-space: normal;
 
       @include bpMinSmall {
-        @include typeSetting(3, bold);
-        max-height: 44px;
+        @include typeSetting(2, bold);
+        max-height: 38px;
       }
     }
   }
