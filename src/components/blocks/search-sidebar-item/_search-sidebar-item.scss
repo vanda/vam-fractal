@@ -2,11 +2,11 @@
   box-sizing: border-box;
   display: inline-block;
   height: 256px;
+  max-width: 256px;
+  min-width: 200px;
   overflow: hidden;
   position: relative;
   text-align: center;
-  max-width: 256px;
-  min-width: 200px;
 
   &--short {
     height: 100px;
