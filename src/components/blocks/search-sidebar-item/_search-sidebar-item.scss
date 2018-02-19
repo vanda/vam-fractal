@@ -5,7 +5,8 @@
   overflow: hidden;
   position: relative;
   text-align: center;
-  width: 256px;
+  max-width: 256px;
+  min-width: 200px;
 
   &--short {
     height: 100px;
@@ -39,11 +40,9 @@
   }
 
   &__content {
-    bottom: 0;
-    left: 0;
-    margin: 10px 10px 0;
+    margin: 10px 0 10px 10px;
     position: absolute;
-    right: 0;
+    text-align: left;
     top: 0;
 
     .b-search-sidebar-item--short & {
@@ -56,19 +55,17 @@
 
 .b-search-sidebar-item__content-icon {
   color: #ffffff;
-  float: left;
-  height: 70.3px;
-  object-fit: contain;
-  width: 122px;
+  display: inline-block;
+  max-height: 70.3px;
+  max-width: 122px;
 }
 
 .b-search-sidebar-item__content-text {
   @include typeSetting(5, normal);
   color: white;
+  display: inline-block;
   position: relative;
-  right: 25px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
-  top: 45px;
 
   .b-search-sidebar-item--short & {
     bottom: 14px;
