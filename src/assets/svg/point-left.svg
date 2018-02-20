@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
-    <title>point-left</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="point-left" fill-rule="nonzero" fill="currentColor">
-            <polygon transform="translate(50.003048, 50.174999) rotate(90.000000) translate(-50.003048, -50.174999) " points="12.1219506 20 0 32.7280482 50.0030481 80.3499985 100.006096 32.7280482 87.8841457 20 50.0030481 56.0772361"></polygon>
-        </g>
-    </g>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+ <title>point-right</title>
+ <desc>Created with Sketch.</desc>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g transform="rotate(180 40.00007629394531,50.17315673828125) " fill-rule="evenodd" fill="none" id="Page-1">
+   <g fill="currentColor" fill-rule="nonzero" id="point-right">
+    <polygon id="svg_1" points="52.12128281593323,70.17316436767578 40.00007081031799,82.90043640136719 90.00015473365784,130.5194854736328 139.99999451637268,82.90043640136719 127.87879395484924,70.17316436767578 90.00015473365784,106.24819946289062 " transform="rotate(270 40.00007247924803,50.1731605529785) translate(-50,-50.173160552978516) "/>
+   </g>
+  </g>
+ </g>
 </svg>

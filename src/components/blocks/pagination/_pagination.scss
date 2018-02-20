@@ -1,21 +1,22 @@
 .b-pagination {
-  margin-bottom: 70px;
+  text-align: center;
 
   &__option {
-    display: list-item;
+    display: inline-block;
 
-    &--content {
-      @include typeSetting(1, normal);
-      color: siteColor(vam-grey-3);
-      display: flex;
-      justify-content: center;
-      letter-spacing: 3px;
-      margin: 0 auto;
-      padding: 20px;
-      text-decoration: none;
-      text-transform: uppercase;
+    &-content {
+      @include typeSetting(4, normal);
+      color: siteColor(vam-grey-2);
+      margin: 0 4px;
+      text-decoration: underline;
       transition: color .2s;
-      white-space: nowrap;
+
+      &--active {
+        @include typeSetting(4, normal);
+        color: siteColor(vam-grey-2);
+        margin: 0 4px;
+        transition: color .2s;
+      }
 
       &:hover {
         color: siteColor(vam-grey-4);
@@ -24,11 +25,42 @@
   }
 
   &__options {
-    border-bottom: 1px solid siteColor(vam-white);
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    display: inline-block;
+  }
+
+  &__pointer {
+    display: inline-block;
+    height: 52px;
+    margin: 0 20px;
+    position: relative;
+    top: 4px;
+    width: 52px;
+
+    &-arrow {
+      -webkit-transition: all .5s;
+      color: siteColor(vam-white);
+      height: 40%;
+      margin-left: 1px;
+      margin-top: 15px;
+      position: relative;
+      transition: all .5s;
+      width: 100%;
+      z-index: 1;
+    }
+
+    &:before {
+      -webkit-transition: all .2s;
+      background-color: siteColor(vam-grey-2);
+      border: none;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      transition: all .2s;
+      width: 100%;
+      z-index: -1;
+    }
   }
 }
+

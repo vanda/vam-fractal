@@ -1,16 +1,23 @@
-<div class="fr-bg--light">
-  <div class="b-pagination">
-    <ul class="b-pagination__options">
-      <li class="b-pagination__option"></li>
-      <li class="b-pagination__option">
-        <span class="b-pagination__option--content">1</span>
-      </li>
-      <li class="b-pagination__option">
-        <a class="b-pagination__option--content" href="/admin/events?page=2">2</a>
-      </li>
-      <li class="b-pagination__option">
-        <a class="b-pagination__option--content" href="/admin/events?page=2">Next</a>
-      </li>
-    </ul>
-  </div>
+<div class="b-pagination">
+  <a class="b-pagination__pointer" href="/admin/events?page=2">
+    <svg role="img" class="b-pagination__pointer-arrow">
+      <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
+    </svg>
+  </a>
+  <ul class="b-pagination__options">
+    <li class="b-pagination__option">
+      <a class="b-pagination__option-content" href="/admin/events?page=2">1</a>
+    </li>
+    <li class="b-pagination__option">
+      <span class="b-pagination__option-content--active">2</span>
+    </li>
+    <li class="b-pagination__option">
+      <a class="b-pagination__option-content" href="/admin/events?page=2">3</a>
+    </li>
+  </ul>
+  <a class="b-pagination__pointer" href="/admin/events?page=2">
+    <svg role="img" class="b-pagination__pointer-arrow">
+      <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
+    </svg>
+  </a>
 </div>
