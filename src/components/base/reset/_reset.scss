@@ -67,7 +67,9 @@ body {
   box-sizing: inherit;
 }
 
-input {
+input,
+select,
+option {
   font-family: fontFamily(text);
 }
 

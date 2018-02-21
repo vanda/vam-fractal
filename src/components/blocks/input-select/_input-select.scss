@@ -31,7 +31,7 @@
 }
 
 .b-input-select-field {
-  @include typeSetting(2, normal);
+  @include typeSetting(3, normal);
   appearance: none;
   background-color: transparent;
   border: 1px solid siteColor(vam-black);
