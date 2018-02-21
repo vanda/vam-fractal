@@ -1,21 +1,20 @@
 <div class="b-pagination">
-  <a class="b-pagination__pointer--deactivated" href="/admin/events?page=2">
+  <div class="b-pagination__pointer--deactivated">
     <svg role="img" class="b-pagination__pointer--deactivated-arrow">
       <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
     </svg>
-  </a>
+  </div>
   <ul class="b-pagination__options">
     <li class="b-pagination__option">
-      <span class="b-pagination__option-content--active">1</span>
+      <span class="b-pagination__option-content--active">{{currentPage}}</span>
     </li>
-    <li class="b-pagination__option">
-      <a class="b-pagination__option-content" href="/admin/events?page=2">2</a>
-    </li>
-    <li class="b-pagination__option">
-      <a class="b-pagination__option-content" href="/admin/events?page=2">3</a>
-    </li>
+    {% for page in pages %}
+      <li class="b-pagination__option">
+        <a class="b-pagination__option-content" href={{link}}>{{page}}</a>
+      </li>
+    {% endfor %}
   </ul>
-  <a class="b-pagination__pointer" href="/admin/events?page=2">
+  <a class="b-pagination__pointer" href={{link}}>
     <svg role="img" class="b-pagination__pointer-arrow">
       <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
     </svg>

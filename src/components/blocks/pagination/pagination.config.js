@@ -3,9 +3,8 @@ module.exports = {
   label: 'Pagination',
   status: 'wip',
   context: {
-
-  },
-  variants: [
-
-  ]
+    currentPage: '1',
+    pages: ['2', '3'],
+    link: '#GNDN'
+  }
 };
