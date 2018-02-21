@@ -17,6 +17,7 @@ function searchInit () {
 }
 
 function searchActivate () {
+  searchClear.classList.add('b-search-form__clear--hidden');
   if (searchInput.value.length) {
     searchSubmit.classList.remove('b-search-form__submit--hidden');
   } else {
