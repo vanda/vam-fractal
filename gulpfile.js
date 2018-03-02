@@ -135,11 +135,13 @@ function scripts() {
   gulp.src(`${paths.src}/assets/scripts/precompiled/*.js`)
     .pipe(gulp.dest(`${paths.dest}/assets/scripts`));
 
-  return glob(`${paths.src}/assets/scripts/*.js`, function(err, files) {
+  glob(`${paths.src}/assets/scripts/*.js`, function(err, files) {
     var tasks = files.map(function(entry) {
       newBundle(entry);
     });
   });
+
+  return gulp.src('package.json');
 }
 
 
