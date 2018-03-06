@@ -10,9 +10,10 @@
           {{ title }}
         </div>
         <div>
-          <img sizes="(max-width: 100px) 100px, 100vw" 
-               class="b-search-result__content-image"
-               src="{{ image }}" alt="{{ title }}">
+          <img class="b-search-result__content-image"
+               src="{{ image }}"
+               alt=""
+               aria-hidden="true">
           <div class="b-search-result__content-description js-search-result-text">
             {{ description }}
           </div>

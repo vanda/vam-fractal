@@ -1,17 +1,17 @@
-<a href="#" class="b-search-sidebar-item {% for m in modifiers %} b-search-sidebar-item--{{ m }}{% endfor %}">
-  <div class="b-search-sidebar-item__media">
+<a href="#" class="b-search-sidebar-item {% for m in modifiers %} b-search-sidebar-item--{{ m }}{% endfor %}" title="Search {{ title }}" aria-label="Search {{ title }}">
+  <div class="b-search-sidebar-item__media" aria-hidden="true">
     <img class="b-search-sidebar-item__media-image"
       src="https://vanda-production-assets.s3.amazonaws.com/2016/12/22/15/13/52/093a0d4b-ef61-4a3a-8124-c1d6ca993dc0/2009CR4310_poster.jpg"
       alt="">
   </div>
-  <div class="b-search-sidebar-item__content">
+  <div class="b-search-sidebar-item__content" aria-hidden="true">
     {% if not modifiers %}
       <svg role="img" class="b-search-sidebar-item__content-icon">
         <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
       </svg>
     {% endif %}
     <p class="b-search-sidebar-item__content-text">
-        {{ title }}
+      {{ title }}
     </p>
   </div>
 </a>
