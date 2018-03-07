@@ -12,6 +12,15 @@
   max-width: 769px;
 }
 
+.b-search-form__input,
+.b-search-form__underscore {
+  font-size: 28px;
+  
+  @include bpMinSmall {
+    font-size: 44px;
+  }
+}
+
 .b-search-form__input {
   background-color: transparent;
   border: none;
@@ -24,23 +33,18 @@
     outline: none;
   }
 
+  &::selection {
+    background-color: siteColor(vam-grey-4);
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+
   @include bpMinSmall {
     margin: 8px 0;
     width: 88%;
   }
-}
-
-.b-search-form__input,
-.b-search-form__underscore {
-  font-size: 28px;
-  
-  @include bpMinSmall {
-    font-size: 44px;
-  }
-}
-
-.b-search-form__input::selection {
-  background-color: siteColor(vam-grey-4);
 }
 
 .b-search-form__underscore {
