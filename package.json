@@ -1,6 +1,6 @@
 {
   "name": "vam-fractal",
-  "version": "0.3.69",
+  "version": "0.3.70",
   "description": "Visual Style Guide for the V&A's website(s)",
   "keywords": [
     "styleguide",
@@ -37,27 +37,27 @@
     "browserify": "^16.1.0",
     "del": "^3.0.0",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.2.0",
-    "glob": "^7.1.1",
-    "gulp": "gulpjs/gulp#4.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.9.0",
+    "glob": "^7.1.2",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-eslint": "^3.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
-    "gulp-sass-lint": "^1.3.2",
+    "gulp-sass-lint": "^1.3.4",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-surge": "^0.1.0",
     "gulp-svg-symbols": "^2.0.2",
-    "gulp-svgmin": "^1.2.3",
+    "gulp-svgmin": "^1.2.4",
     "gulp-uglify": "^2.1.2",
     "querystring": "^0.2.0",
-    "vinyl-buffer": "^1.0.0",
+    "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "svg4everybody": "^2.1.8"
+    "svg4everybody": "^2.1.9"
   }
 }
