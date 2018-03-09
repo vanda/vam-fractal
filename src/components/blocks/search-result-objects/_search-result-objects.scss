@@ -6,6 +6,8 @@
   width: calc(20% - 4px);
 
   &__content {
+    max-width: 130px;
+    min-width: 100px;
     &-credit {
       @include typeSetting(1, normal);
       color: siteColor(vam-grey-2);
