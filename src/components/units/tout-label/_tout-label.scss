@@ -1,19 +1,17 @@
 .tout-label {
   @include typeSetting(1, semi-bold, uppercase);
-  bottom: 0;
-  display: inline-block;
-  height: 2.4em;
-  position: absolute;
-  line-height: inherit;
-  z-index: 1;
   background: orange;
   border-radius: 2px;
   bottom: initial;
   color: white;
+  display: inline-block;
+  height: 2.4em;
+  line-height: inherit;
   margin: 12px;
   padding: 4px 12px 2px;
   position: absolute;
   top: 0;
+  z-index: 1;
 
   &--sold-out,
   &--ending-soon {
