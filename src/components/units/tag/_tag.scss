@@ -1,5 +1,5 @@
 .u-tag {
-  @include typeSetting(2, semi-bold, uppercase);
+  @include typeSetting(1, bold, uppercase);
   appearance: none;
   background-color: siteColor(vam-grey-2);
   border-radius: 2px;
@@ -8,11 +8,16 @@
   display: inline-block;
   margin: 0 10px 10px 0;
   outline: 0;
-  padding: 7px 15px;
+  padding: 7px 12px;
   text-align: center;
   text-decoration: none;
   text-shadow: none;
   transition: background-color .2s, color .2s;
+
+  @include bpMinLarge {
+    @include typeSetting(2, bold, uppercase);
+    padding: 7px 15px;
+  }
 
   &:hover,
   &:focus,
