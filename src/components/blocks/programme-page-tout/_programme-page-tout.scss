@@ -45,10 +45,6 @@
       margin: 14px 16px;
       position: absolute;
       white-space: normal;
-
-      @include bpMinLarge {
-        @include typeSetting(5, bold);
-      }
     }
   }
 }
