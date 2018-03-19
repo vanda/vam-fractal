@@ -6,7 +6,7 @@
   width: 100%;
 
   @include bpMinSmall {
-    margin: 0;
+    margin: 2px;
     max-width: 200px;
     width: calc(20% - 4px);
   }
@@ -46,7 +46,7 @@
       position: absolute;
       white-space: normal;
 
-      @include bpMinSmall {
+      @include bpMinMedium {
         @include typeSetting(5, bold);
       }
     }
