@@ -11,11 +11,14 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
-    overflow-x: scroll;
-    white-space: nowrap;
 
     &--noflex {
       display: inline-flex;
+    }
+
+    .cssscrollbar & {
+      overflow-x: auto;
+      white-space: nowrap;
     }
   }
 }
