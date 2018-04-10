@@ -1,10 +1,11 @@
 .b-search-form {
+  display: block;
+  overflow: hidden;
   width: 100%;
 }
 
 .b-search-form__inner {
-  border-bottom: .5px solid siteColor(vam-grey-5);
-  overflow: visible;
+  border-bottom: 1px solid siteColor(vam-grey-5);
   position: relative;
 }
 
@@ -23,6 +24,7 @@
   caret-color: siteColor(primary-green);
   color: siteColor(vam-white);
   margin: 4px 0;
+  padding: 0;
   width: 100%;
 
   &:focus {
@@ -74,7 +76,7 @@
   @include bpMinSmall {
     display: block;
     height: 19px;
-    top: 30px;
+    margin-top: 30px;
     width: 19px;
 
     &#{&}--hidden {
@@ -92,11 +94,11 @@
   @include typeSetting(3, normal);
   background-color: transparent;
   font-family: 'The Sans';
+  margin-top: 15px;
   padding-right: 16px;
-  top: 15px;  
 
   @include bpMinSmall {
-    top: 28px;
+    margin-top: 28px;
 
     &#{&}--hidden {
       display: none;
