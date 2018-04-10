@@ -41,24 +41,24 @@ module.exports = {
         tout: true,
         objects: [
           {
-            title: 'Exhibitions',
-            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Exhibitions.jpg'
-          },
-          {
             title: 'Courses',
             image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Courses.jpg'
           },
           {
-            title: 'Membership events',
-            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Events.jpg'
-          },
-          {
-            title: 'Family events',
+            title: 'Family',
             image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_FamilyEvents.jpg'
           },
           {
-            title: 'Professional development',
+            title: 'Workshops',
             image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_ProfDevelopment.jpg'
+          },
+          {
+            title: 'Talks',
+            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Exhibitions.jpg'
+          },
+          {
+            title: 'Free events',
+            image: 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/promo_Events.jpg'
           }
         ]
       }
