@@ -9,6 +9,34 @@
   position: relative;
 }
 
+.b-search-form__icon,
+.b-search-form__input-wrapper {
+  display: inline-block;
+}
+
+.b-search-form__icon {
+  color: siteColor(vam-white);
+  height: 25px;
+  margin: 0 2px -4px 0;
+  opacity: .5;
+  width: 25px;
+
+  @include bpMinSmall {
+    height: 34px;
+    margin: 0 4px -5px 0;
+    width: 34px;
+  }
+}
+
+.b-search-form__input-wrapper {
+  position: relative;
+  width: calc(100% - 42px);
+
+  @include bpMinSmall {
+    width: calc(100% - 140px);
+  }
+}
+
 .b-search-form__input,
 .b-search-form__underscore {
   font-size: 28px;
@@ -41,7 +69,6 @@
 
   @include bpMinSmall {
     margin: 8px 0;
-    width: 88%;
   }
 }
 
@@ -81,11 +108,6 @@
 
     &#{&}--hidden {
       display: none;
-    }
-
-    svg {
-      height: 100%;
-      width: 100%;
     }
   }
 }
