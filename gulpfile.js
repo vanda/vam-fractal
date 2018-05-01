@@ -4,6 +4,7 @@ const logger        = fractal.cli.console;
 
 // Gulpy gulp
 const gulp          = require('gulp');
+const deploy        = require('gulp-gh-pages');
 const autoprefixer  = require('gulp-autoprefixer');
 const babel         = require('gulp-babel');
 const buffer        = require('vinyl-buffer');
@@ -66,16 +67,22 @@ function staticBuild() {
   });
 }
 
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./dist/**/*")
+    .pipe(deploy())
+});
 
 //---
 // Deploy to surge
-function deploy() {
-  return surge({
-    project: paths.build,
-    domain: surgeURL
-  });
-}
-
+// function deploy() {
+//   return surge({
+//     project: paths.build,
+//     domain: surgeURL
+//   });
+// }
 
 //---
 // Style
