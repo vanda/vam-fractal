@@ -4,7 +4,7 @@ const logger        = fractal.cli.console;
 
 // Gulpy gulp
 const gulp          = require('gulp');
-const deploy        = require('gulp-gh-pages');
+const ghPages       = require('gulp-gh-pages');
 const autoprefixer  = require('gulp-autoprefixer');
 const babel         = require('gulp-babel');
 const buffer        = require('vinyl-buffer');
@@ -58,7 +58,7 @@ function serve() {
 //---
 // Create a static build of fractal
 // Build location defined in `fractal.js`
-function staticBuild() {
+function staticBuild () {
   const builder = fractal.web.builder();
   builder.on('progress', (completed, total) => logger.update(`Exported ${completed} of ${total} items`, 'info'));
   builder.on('error', err => logger.error(err.message));
@@ -70,19 +70,11 @@ function staticBuild() {
 /**
  * Push build to gh-pages
  */
-gulp.task('deploy', function () {
-  return gulp.src("./dist/**/*")
-    .pipe(deploy())
-});
 
-//---
-// Deploy to surge
-// function deploy() {
-//   return surge({
-//     project: paths.build,
-//     domain: surgeURL
-//   });
-// }
+function deploy() {
+  return gulp.src("./dist/**/*")
+    .pipe(ghPages());
+}
 
 //---
 // Style
