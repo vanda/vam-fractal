@@ -3,6 +3,6 @@ module.exports = {
   label: 'Search Form',
   status: 'wip',
   context: {
-    placeholder: 'Search'
+    placeholder: 'Type your search here'
   }
 };
