@@ -18,6 +18,14 @@
     }
   }
 
+  &--overlay {
+    margin: 10px;
+    padding-left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   &__icon {
     border: 2px solid siteColor(vam-white);
     border-radius: 50%;
@@ -27,18 +35,30 @@
     margin-right: 6px;
     position: relative;
     width: 28px;
-    
 
-    &--stop {
-      background-color: siteColor(vam-white);
+    &--overlay {
+      margin-right: 0;
+    }
+
+    &-graphic {
       box-shadow: none;
-      height: 8px;
       left: 50%;
       margin: auto;
       position: absolute;
       top: 50%; 
       transform: translate(-50%, -50%);
-      width: 8px;
+
+      &--stop {
+        background-color: siteColor(vam-white);
+        height: 8px;
+        width: 8px;
+      }
+
+      &--close {
+        color: siteColor(vam-white);
+        height: 12px;
+        width: 12px;
+      }
     }
   }
 

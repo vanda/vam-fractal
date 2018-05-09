@@ -1,0 +1,17 @@
+<div class="fr-bg--dark">
+  <a href="#" class="u-media-btn {% for m in modifiers %} u-media-btn--{{ m }}{% endfor %}">
+    <div class="u-media-btn__icon {% for m in modifiers %} u-media-btn__icon--{{ m }}{% endfor %}">
+      {% if svg %}
+        <svg role="img" class="u-media-btn__icon-graphic u-media-btn__icon-graphic--{{svg}}">
+          <use xlink:href="/assets/svg/svg-template.svg#{{svg}}"></use>
+        </svg>
+      {% else %}
+        <div class="u-media-btn__icon-graphic u-media-btn__icon-graphic--stop">
+        </div>
+      {% endif %}
+    </div>
+    {% if text %}
+      <div class="u-media-btn__text">{{text}}</div>
+    {% endif %}
+  </a>
+</div>
