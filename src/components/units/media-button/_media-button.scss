@@ -18,31 +18,32 @@
   &__icon {
     border: 2px solid siteColor(vam-white);
     border-radius: 50%;
+    box-shadow: none;
     display: inline-block;
+    height: 28px;
     margin-right: 6px;
     position: relative;
-    height: 28px;
     width: 28px;
-    box-shadow: none;
     
 
     &--stop {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
       background-color: siteColor(vam-white);
-      height: 8px;
-      margin: auto;
-      width: 8px;
       box-shadow: none;
+      height: 8px;
+      left: 50%;
+      margin: auto;
+      position: absolute;
+      top: 50%; 
+      transform: translate(-50%, -50%);
+      width: 8px;
     }
   }
 
   &__text {
     @include typeSetting(1, normal);
     color: siteColor(vam-white);
-    line-height: 24px;
     display: table-cell;
+    line-height: 24px;
     text-align: center;
     text-decoration: none;
     text-shadow: none;
