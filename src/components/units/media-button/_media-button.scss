@@ -1,7 +1,8 @@
 .u-media-btn {
   cursor: pointer;
   outline: 0;
-  
+  height: 28px;
+  vertical-align: middle;
 
   &:hover {
     .u-media-btn__icon {
@@ -42,9 +43,9 @@
   &__text {
     @include typeSetting(1, normal);
     color: siteColor(vam-white);
-    display: table-cell;
-    line-height: 24px;
-    text-align: center;
+    display: inline-block;
+    height: 28px;
+    line-height: 10px;
     text-decoration: none;
     text-shadow: none;
     vertical-align: middle;
