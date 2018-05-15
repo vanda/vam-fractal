@@ -30,6 +30,14 @@ module.exports = {
         icon: 'plus',
         themed: ['background-color', 'background-color--hover']
       }
+    },
+    {
+      name: 'short icon',
+      context: {
+        action: 'view',
+        icon: 'view',
+        modifiers: ['short']
+      }
     }
   ]
 };

@@ -68,4 +68,17 @@
       text-shadow: none;
     }
   }
+
+  &--short {
+    svg {
+      height: 24px;
+      margin: auto;
+      width: 24px;
+
+      @include bpMinSmall {
+        height: 34px;
+        width: 34px;
+      }
+    }
+  }
 }
