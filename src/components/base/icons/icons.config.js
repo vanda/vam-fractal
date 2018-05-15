@@ -49,6 +49,7 @@ module.exports = {
       'listen',
       'watch',
       'pause',
+      'view',
       'event-none',
       'point-up',
       'point-right',
@@ -113,6 +114,7 @@ module.exports = {
           'interact',
           'listen',
           'watch',
+          'view',
           'pause',
           'event-none'
         ]
