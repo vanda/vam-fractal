@@ -1,0 +1,7 @@
+.b-image-credit {
+  @include typeSetting(2, regular);
+  color: siteColor(vam-grey-6);
+  margin: 50px auto;
+  text-align: center;
+  text-shadow: 1px 1px siteColor(vam-black);
+}
