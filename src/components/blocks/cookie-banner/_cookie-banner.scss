@@ -13,6 +13,7 @@
 
   &__content {
     @include typeSetting(2, regular);
+    color: siteColor(vam-black);
     line-height: 24px;
     margin: auto;
     max-width: 1200px;
