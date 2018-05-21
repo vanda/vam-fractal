@@ -1,0 +1,65 @@
+.b-cookie-banner {
+  background-color: siteColor(vam-white);
+  border-top: solid 2px siteColor(vam-grey-4); 
+  bottom: 0;
+  height: 90px;
+  padding-top: 8px;
+  position: fixed;
+  width: 100%;
+
+  @include bpMinLarge {
+    height: 50px;
+  }
+
+  &__content {
+    @include typeSetting(2, regular);
+    line-height: 24px;
+    margin: auto;
+    max-width: 1200px;
+    padding: 0 10px;
+
+    strong {
+      @include typeSetting(2, bold);
+    }
+    
+    @include bpMinSmall {
+      @include typeSetting(4, regular);
+      padding: 0 65px;
+
+      strong {
+        @include typeSetting(4, bold);
+      }
+    }
+  }
+
+  &__close {
+    border: none;
+    bottom: 8px;
+    cursor: pointer;
+    height: 18px;
+    position: absolute;
+    right: 8px;
+    width: 18px;
+
+    @include bpMinLarge {
+      bottom: 14px;
+      height: 20px;
+      right: 18px;
+      width: 20px;
+    }
+
+    &-icon {
+      bottom: 0;
+      color: siteColor(vam-black);
+      height: 18px;
+      position: absolute;
+      right: 0;
+      width: 18px;
+
+      @include bpMinLarge {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+}
