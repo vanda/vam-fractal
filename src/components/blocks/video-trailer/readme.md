@@ -1,4 +1,4 @@
-# Video Thumbnail
+# Video Trailer
 
 ## Background
 
