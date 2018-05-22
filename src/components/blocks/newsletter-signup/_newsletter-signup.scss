@@ -94,6 +94,7 @@
 
   &__headline {
     @include typeSetting(4, bold);
+    color: siteColor(vam-black);
     margin: 0;
     text-align: center;
 
@@ -110,6 +111,7 @@
 
   &__descriptor {
     @include typeSetting(3, regular);
+    color: siteColor(vam-black);
     margin: 0 25px 15px 25px;
     text-align: center;
 
