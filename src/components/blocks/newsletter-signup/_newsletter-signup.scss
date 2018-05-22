@@ -1,0 +1,233 @@
+.b-newsletter {
+  background-color: siteColor(vam-grey-5);
+  margin: 25px 0;
+  overflow: hidden;
+  padding: 30px 10px;
+  position: relative;
+  width: 100%;
+
+  @include bpMinXSmall {
+    background-color: siteColor(vam-grey-5);
+    flex-direction: row;
+    height: 300px;
+    padding: 30px 10px;
+  }
+
+  @include bpMinSmall {
+    background-color: siteColor(vam-grey-5);
+    flex-direction: row;
+    height: 300px;
+    padding: 30px 65px;
+  }
+
+  &__info {
+    @include typeSetting(1, regular);
+    color: siteColor(vam-grey-3);
+    text-align: center;
+
+    @include bpMinXSmall {
+      max-width: 500px;
+      text-align: left;
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: 37px;
+    margin-bottom: 18px;
+    text-align: center;
+
+    svg {
+      color: siteColor(vam-grey-3);
+      height: 100%;
+      width: 100%;
+    }
+
+    .no-flexbox & {
+      display: none;
+    } 
+
+    @include bpMinXSmall {
+      margin-top: -50px;
+      min-width: 540px;
+      width: 168%;
+
+      .no-flexbox & {
+        display: block;
+      }
+
+      svg {
+        bottom: 0;
+        color: siteColor(vam-grey-4);
+        height: 370px;
+        margin: -17px 0 0 -15%;
+        width: 130%;
+      }
+
+      // @include bpMinLarge {
+      //   position: absolute;
+      //   svg {
+      //     -webkit-filter: invert(100%);
+      //     filter: invert(100%);
+      //   }
+
+      //   @supports (mask-repeat: repeat) {
+      //     mask-image: url(image-path('/assets/svg/svg-template.svg#valogo'));
+      //     mask-position: 40% 65%;
+      //     mask-repeat: no-repeat;
+      //     mask-size: 133%;
+
+      // svg {
+      //   display: none;
+      // }
+      // }
+    }
+
+    @include bpMinLarge {
+      svg {
+        height: 420px;
+        margin: -17px 0 0 -15%;
+        width: 130%;
+      }
+     }
+  }
+
+  &__headline {
+    @include typeSetting(4, bold);
+    margin: 0;
+    text-align: center;
+
+    @include bpMinXSmall {
+      @include typeSetting(6, bold);
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    // @include bpMinSmall {
+    //   @include typeSetting(6, bold);
+    // }
+  }
+
+  &__descriptor {
+    @include typeSetting(3, regular);
+    margin: 0 25px 15px 25px;
+    text-align: center;
+
+    @include bpMinXSmall {
+      @include typeSetting(4, regular);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 26px;
+      margin: 0 0 15px 0;
+      max-width: 450px;
+      text-align: left;
+    }
+
+    .invalid &,
+    .sent & {
+      color: siteColor(alert-red);
+      font-style: normal;
+      padding: 20px 0 0;
+    }
+
+    .sent & {
+      color: siteColor(vam-black);
+      font-style: 700;
+    }
+  }
+
+  &__form {
+    z-index: 2;
+
+    @include bpMinXSmall {
+      background-color: transparent;
+      margin: 0 auto;
+      max-width: 650px;
+      width: 100%;
+    }
+
+    @include bpMinSmall {
+      max-width: 100%;
+    }
+
+    &-fields {
+      @include bpMinXSmall {
+        display: flex;
+        flex-direction: row;
+      }
+
+      &-field {
+        @include typeSetting(3, regular);
+        border: 1px solid white;
+        border-radius: 2px;
+        padding: 15px;
+        text-align: center;
+        width: 100%;
+
+        &::placeholder {
+          color: siteColor(vam-grey-4);
+        }
+
+        @include bpMinXSmall {
+          flex-grow: 1;
+          height: 50px;
+          margin-right: 15px;
+          max-width: 380px;
+          text-align: left;
+          width: 330px;
+        }
+
+        &:focus {
+          border: 1px solid map-get($theme-colors, $theme-color-default);
+          outline: none;
+
+          @each $color in map-keys($theme-colors) {
+            .theme-#{$color} & {
+              border: 1px solid map-get($theme-colors, $color);
+            }
+          }
+        }
+      }
+    }
+
+    &-submit {
+      margin-bottom: 14px;
+      margin-top: 8px;
+      padding: 15px;
+      width: 100%;
+
+      @include bpMinXSmall {
+        font-size: 13px;
+        margin-top: 0;
+        width: 150px;
+      }
+
+      &:hover,
+      .sent & {
+        background-color: map-get($theme-colors, $theme-color-default);
+        border: 1px solid map-get($theme-colors, $theme-color-default);
+        color: siteColor(vam-black);
+
+        @each $color in map-keys($theme-colors) {
+          .theme-#{$color} & {
+            background-color: map-get($theme-colors, $color);
+            border: 1px solid map-get($theme-colors, $color);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+// Sort order here is important to ensure the logo is displayed correctly
+// scss-lint:disable PropertySortOrder DeclarationOrder
+
+// scss-lint:enable PropertySortOrder DeclarationOrder
