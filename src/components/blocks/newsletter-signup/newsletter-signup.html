@@ -8,22 +8,26 @@
   </div>
 
   
-  <form name="signup" id="signup" action="https://r1-t.trackedlink.net/signup.ashx" class="b-newsletter__form js-b-newsletter_form"
-    method="POST" data-tracking="form-emailSignup">
+  <form name="signup" id="signup" action="http://email-vam.org.uk/signup.ashx" method="POST" onsubmit="return validate_signup(this)" class="b-newsletter__form js-b-newsletter_form">
     <h1 class="b-newsletter__headline">Sign up to get the latest V&A news</h1>
     <p class="b-newsletter__descriptor js-b-newsletter__descriptor">Hear about exhibitions, events, offers and opportunities from the V&A and the V&A Museum of Childhood.</p>
     
     <div class="b-newsletter__form-fields">
-      <input type="hidden" name="addressbookid" value="17853">
+      <input type="hidden" name="addressbookid" value="3410112">
+      <input type="hidden" name="ci_isconsentform" value="true">
       <input type="hidden" name="userid" value="193690">
-      <input type="hidden" name="ReturnURL" value="//www.vam.ac.uk/content/email/confirmation/">
+      <input type="hidden" name="SIG111c61b9060bb903d4d00273e56ca0b7f2a5008ddd91799cf706ed2bbe35672f" value="">
+      <!-- ReturnURL - when the user hits submit, they'll get sent here -->
+      <input type="hidden" name="ReturnURL" value="http://www.vam.ac.uk/content/email/confirmation/?result=success">
+      <!-- Email - the user's email address -->
+
       <input type="text" placeholder="Enter your email address" name="Email" class="js-emailValidation b-newsletter__form-fields-field">
       <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit js-b-newsletter__submit">
+      
     </div>
     <div class="b-newsletter__info">
       You can opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy policy.</a>
     </div>
   </form>
-
 
 </div>
