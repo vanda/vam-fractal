@@ -2,51 +2,53 @@
   background-color: siteColor(vam-white);
   border-top: solid 2px siteColor(vam-grey-4); 
   bottom: 0;
-  height: 90px;
   padding-top: 8px;
   position: fixed;
   width: 100%;
 
-  @include bpMinLarge {
-    height: 50px;
-  }
-
   &__content {
-    @include typeSetting(2, regular);
-    color: siteColor(vam-black);
-    line-height: 24px;
-    margin: auto;
-    max-width: 1200px;
-    padding: 0 10px;
+    width: 100%;
 
-    strong {
-      @include typeSetting(2, bold);
-    }
-    
-    @include bpMinSmall {
-      @include typeSetting(4, regular);
-      padding: 0 65px;
-
-      strong {
-        @include typeSetting(4, bold);
+    &-text {
+      @include typeSetting(2, regular);
+      color: siteColor(vam-black);
+      display: inline-block;
+      height: 100%;
+      line-height: 24px;
+      margin: auto;
+      max-height: 68px;
+      max-width: 1200px;
+      overflow: auto;
+      padding-left: 10px;
+      width: calc(100% - 50px);
+      
+      @include bpMinSmall {
+        @include typeSetting(4, regular);
+        padding-left: 65px;
       }
     }
   }
 
   &__close {
-    border: none;
-    bottom: 8px;
-    cursor: pointer;
-    height: 18px;
-    position: absolute;
-    right: 8px;
-    width: 18px;
+    display: inline-block;
+    height: 100%;
+    width: 22px;
 
-    @include bpMinLarge {
-      bottom: 14px;
-      height: 20px;
-      right: 18px;
-      width: 20px;
+    &-button {
+      border: none;
+      bottom: 10px;
+      cursor: pointer;
+      height: 18px;
+      position: absolute;
+      right: 8px;
+      width: 18px;
+  
+      @include bpMinSmall {
+        bottom: calc(50% - 10px);
+        height: 20px;
+        right: 18px;
+        width: 20px;
+      }
     }
 
     &-icon {
@@ -57,7 +59,7 @@
       right: 0;
       width: 18px;
 
-      @include bpMinLarge {
+      @include bpMinSmall {
         height: 20px;
         width: 20px;
       }
