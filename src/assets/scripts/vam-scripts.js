@@ -7,6 +7,7 @@ require('../../components/blocks/video-trailer/_video-trailer.js');
 require('../../components/blocks/search-result/_search-result.js');
 require('../../components/blocks/search-form/_search-form.js');
 require('../../components/blocks/cookie-banner/_cookie-banner.js');
+require('../../components/blocks/background-video/_background-video.js');
 
 
 svg4everybody();
