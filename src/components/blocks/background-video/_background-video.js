@@ -3,7 +3,7 @@ const backgroundVideo = document.querySelector('.js-background-video');
 if (backgroundVideo) {
   const backgroundVideoContainer = document.querySelector('.js-background-video-container');
   const stopButton = document.querySelector('.js-stop-button');
-  const timesToLoop = 1;
+  const timesToLoop = 20;
   const videoCredit = document.querySelector('.js-background-video-credit');
   const imageCredit = document.querySelector('.js-background-image-credit');
   let playCounter = 0;
