@@ -14,3 +14,7 @@
 .s-visually-hidden {
   @include visuallyHidden;
 }
+
+.s-hidden {
+  display: none;
+}

@@ -13,21 +13,23 @@
          aria-label="Play {{ title }} video clip"
          title="Play {{ title }} clip"
          href="https://www.youtube.com/embed/{{ youtubeID }}/?autoplay=1&playsinline=0">
-        <img alt=""
-             class="b-video-trailer__image"
-             itemprop="contentUrl"
-             sizes="100vw"
-             srcset="https://img.youtube.com/vi/{{ youtubeID }}/default.jpg 120w,
-                     https://img.youtube.com/vi/{{ youtubeID }}/mqdefault.jpg 320w,
-                     https://img.youtube.com/vi/{{ youtubeID }}/hqdefault.jpg 480w,
-                     https://img.youtube.com/vi/{{ youtubeID }}/sddefault.jpg 640w,
-                     https://img.youtube.com/vi/{{ youtubeID }}/maxresdefault.jpg 1280w"
-             src="https://img.youtube.com/vi/{{ youtubeID }}/sddefault.jpg">
-        <div class="b-video-trailer__icon s-themed--background-color" aria-hidden="true">
-          <svg role="img" class="b-video-trailer__icon-arrow">
-            <use xlink:href="/assets/svg/svg-template.svg#watch"></use>
-          </svg>
-        </div>
+         <div class="js-video-trailer-preview">
+           <img alt=""
+                class="b-video-trailer__image"
+                itemprop="contentUrl"
+                sizes="100vw"
+                srcset="https://img.youtube.com/vi/{{ youtubeID }}/default.jpg 120w,
+                        https://img.youtube.com/vi/{{ youtubeID }}/mqdefault.jpg 320w,
+                        https://img.youtube.com/vi/{{ youtubeID }}/hqdefault.jpg 480w,
+                        https://img.youtube.com/vi/{{ youtubeID }}/sddefault.jpg 640w,
+                        https://img.youtube.com/vi/{{ youtubeID }}/maxresdefault.jpg 1280w"
+                src="https://img.youtube.com/vi/{{ youtubeID }}/sddefault.jpg">
+           <div class="b-video-trailer__icon s-themed--background-color" aria-hidden="true">
+             <svg role="img" class="b-video-trailer__icon-arrow">
+               <use xlink:href="/assets/svg/svg-template.svg#watch"></use>
+             </svg>
+           </div>
+         </div>
       </a>
     </div>
 
