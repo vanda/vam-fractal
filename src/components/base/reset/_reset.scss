@@ -97,6 +97,19 @@ a {
   text-decoration: none;
 }
 
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  user-select: none;
+  width: auto;
+  margin: 0;
+}
+
 hr {
   background-color: transparent;
   clear: both;
