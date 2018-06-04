@@ -9,5 +9,4 @@ require('../../components/blocks/cookie-banner/_cookie-banner.js');
 require('../../components/blocks/background-video/_background-video.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');
 
-
 svg4everybody();
