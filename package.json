@@ -26,7 +26,6 @@
     "version": "npm run dist && git add -A dist",
     "postversion": "git push && git push --tags",
     "audit": "npm-audit",
-    "postinstall": "npm-audit",
     "pretest": "npm-audit"
   },
   "devDependencies": {
