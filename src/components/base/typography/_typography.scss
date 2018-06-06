@@ -2,49 +2,56 @@
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 200;
-  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'), url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+  src: url('../fonts/TheSansA6-4SemiLight.woff2') format('woff2'),
+  url('../fonts/TheSansA6-4SemiLight.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 300;
-  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'), url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'),
+  url('../fonts/TheSans_LP_300_Light.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular.woff') format('woff');
+  src: url('../fonts/TheSansA6-5Plain.woff2') format('woff2'),
+  url('../fonts/TheSansA6-5Plain.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular-Italic.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular-Italic.woff') format('woff');
+  src: url('../fonts/TheSansA6-5PlainItalic.woff2') format('woff2'),
+  url('../fonts/TheSansA6-5PlainItalic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/TheSans_LP_600_SemiBold.woff2') format('woff2'), url('../fonts/TheSans_LP_600_SemiBold.woff') format('woff');
+  src: url('../fonts/TheSansA6-6SemiBold.woff2') format('woff2'),
+  url('../fonts/TheSansA6-6SemiBold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold.woff') format('woff');
+  src: url('../fonts/TheSansA6-7Bold.woff2') format('woff2'),
+  url('../fonts/TheSansA6-7Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold-Italic.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold-Italic.woff') format('woff');
+  src: url('../fonts/TheSansA6-7BoldItalic.woff2') format('woff2'),
+  url('../fonts/TheSansA6-7BoldItalic.woff') format('woff');
 }
 
 $font-family: (
