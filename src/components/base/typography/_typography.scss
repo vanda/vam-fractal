@@ -28,14 +28,6 @@
 
 @font-face {
   font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff') format('woff');
-  unicode-range: U+0030-0039; // Gets just the numbers from this font
-}
-
-@font-face {
-  font-family: 'The Sans';
   font-style: normal;
   font-weight: 600;
   src: url('../fonts/TheSans_LP_600_SemiBold.woff2') format('woff2'), url('../fonts/TheSans_LP_600_SemiBold.woff') format('woff');
@@ -53,14 +45,6 @@
   font-style: italic;
   font-weight: 700;
   src: url('../fonts/TheSans_LP_700_Bold-Italic.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold-Italic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff') format('woff');
-  unicode-range: U+0030-0039; // Gets just the numbers from this font
 }
 
 $font-family: (
