@@ -4,7 +4,7 @@ module.exports = {
   status: 'wip',
   default: 'regular',
   context: {
-    heading: 'The quick brown fox jumps over the lazy dog.'
+    heading: 'The quick brown fox jumps over the lazy dog 1234567890.'
   },
   variants: [
     {
