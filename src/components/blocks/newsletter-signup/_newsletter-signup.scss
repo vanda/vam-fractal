@@ -2,154 +2,81 @@
   background-color: siteColor(vam-grey-5);
   margin: 25px 0;
   overflow: hidden;
-  padding: 30px 10px;
   position: relative;
   width: 100%;
 
   @include bpMinXSmall {
-    background-color: siteColor(vam-grey-5);
     flex-direction: row;
-    height: 300px;
-    padding: 30px 10px;
   }
 
-  @include bpMinSmall {
-    background-color: siteColor(vam-grey-5);
-    flex-direction: row;
-    height: 300px;
-    padding: 30px 65px;
-  }
-
-  &__info {
-    @include typeSetting(1, regular);
-    color: siteColor(vam-grey-3);
-    text-align: center;
-
-    @include bpMinXSmall {
-      max-width: 500px;
-      text-align: left;
-    }
+  @include bpMinLarge {
+    background-color: transparent;
   }
 
   &__logo {
-    display: block;
-    height: 37px;
-    margin-bottom: 18px;
-    text-align: center;
-
-    svg {
-      color: siteColor(vam-grey-3);
-      height: 100%;
-      width: 100%;
-    }
-
-    .no-flexbox & {
-      display: none;
-    } 
+    color: siteColor(vam-grey-4);
+    height: 200px;
+    opacity: .35;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 280px;
 
     @include bpMinXSmall {
-      margin-top: -50px;
-      min-width: 540px;
-      width: 168%;
+      height: 450px;
+      right: -80px;
+      top: -80px;
+      width: calc(450px * 1.58);
 
-      .no-flexbox & {
-        display: block;
+      & svg {
+        height: 100%;
+        width: 100%;
       }
-
-      svg {
-        bottom: 0;
-        color: siteColor(vam-grey-4);
-        height: 370px;
-        margin: -17px 0 0 -15%;
-        width: 130%;
-      }
-
-      // @include bpMinLarge {
-      //   position: absolute;
-      //   svg {
-      //     -webkit-filter: invert(100%);
-      //     filter: invert(100%);
-      //   }
-
-      //   @supports (mask-repeat: repeat) {
-      //     mask-image: url(image-path('/assets/svg/svg-template.svg#valogo'));
-      //     mask-position: 40% 65%;
-      //     mask-repeat: no-repeat;
-      //     mask-size: 133%;
-
-      // svg {
-      //   display: none;
-      // }
-      // }
     }
-
     @include bpMinLarge {
+      background-color: siteColor(vam-grey-5);
+      opacity: 1;
+      right: 0;
+      width: 50%;
+
       svg {
-        height: 420px;
-        margin: -17px 0 0 -15%;
-        width: 130%;
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+        height: 120%;
+        margin-top: -5%;
       }
-     }
-  }
 
-  &__headline {
-    @include typeSetting(4, bold);
-    color: siteColor(vam-black);
-    margin: 0;
-    text-align: center;
+      @supports (mask-repeat: repeat) {
+        height: 100%;
+        mask-image: url('https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/valogo_mask.svg');
+        mask-position: 20% 73%;
+        mask-repeat: no-repeat;
+        mask-size: 131%;
+        top: 0;
 
-    @include bpMinXSmall {
-      @include typeSetting(6, bold);
-      margin-bottom: 10px;
-      text-align: left;
-    }
-
-    // @include bpMinSmall {
-    //   @include typeSetting(6, bold);
-    // }
-  }
-
-  &__descriptor {
-    @include typeSetting(3, regular);
-    color: siteColor(vam-black);
-    margin: 0 25px 15px 25px;
-    text-align: center;
-
-    @include bpMinXSmall {
-      @include typeSetting(4, regular);
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 26px;
-      margin: 0 0 15px 0;
-      max-width: 450px;
-      text-align: left;
-    }
-
-    .invalid &,
-    .sent & {
-      color: siteColor(alert-red);
-      font-style: normal;
-      padding: 20px 0 0;
-    }
-
-    .sent & {
-      color: siteColor(vam-black);
-      font-style: 700;
+        svg {
+          display: none;
+        }
+      }
     }
   }
 
   &__form {
-    z-index: 2;
-
-    @include bpMinXSmall {
-      background-color: transparent;
-      margin: 0 auto;
-      max-width: 650px;
-      width: 100%;
-    }
+    margin: auto;
+    max-width: 650px;
+    padding: 30px 10px;
+    position: relative;
+    width: 100%;
 
     @include bpMinSmall {
       max-width: 100%;
+      padding: 30px 0 30px 55px;
+    }
+
+    @include bpMinLarge {
+      background-color: siteColor(vam-grey-5);
+      margin: 0;
+      width: 50%;
     }
 
     &-fields {
@@ -165,7 +92,6 @@
         padding: 15px;
         text-align: center;
         width: 100%;
-        z-index: 2;
 
         &::placeholder {
           color: siteColor(vam-grey-4);
@@ -221,17 +147,66 @@
       }
     }
   }
+
+  &__headline {
+    @include typeSetting(4, bold);
+    color: siteColor(vam-black);
+    margin: 0;
+    text-align: center;
+
+    @include bpMinXSmall {
+      @include typeSetting(5, bold);
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    @include bpMinSmall {
+      @include typeSetting(6, bold);
+    }
+  }
+
+  &__descriptor {
+    @include typeSetting(3, regular);
+    color: siteColor(vam-black);
+    margin: 0 15px 15px 15px;
+    text-align: center;
+
+    @include bpMinXSmall {
+      @include typeSetting(4, regular);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 26px;
+      margin: 0 0 15px 0;
+      max-width: 450px;
+      text-align: left;
+    }
+
+    & input {
+      display: none;
+    }
+
+    .invalid &,
+    .sent & {
+      color: siteColor(alert-red);
+      font-style: normal;
+      padding: 20px 0 0;
+    }
+
+    .sent & {
+      color: siteColor(vam-black);
+      font-style: 700;
+    }
+  }
+
+  &__info {
+    @include typeSetting(1, regular);
+    color: siteColor(vam-grey-3);
+    text-align: center;
+
+    @include bpMinXSmall {
+      max-width: 500px;
+      text-align: left;
+    }
+  }
 }
 
-
-
-
-
-
-
-
-
-// Sort order here is important to ensure the logo is displayed correctly
-// scss-lint:disable PropertySortOrder DeclarationOrder
-
-// scss-lint:enable PropertySortOrder DeclarationOrder
