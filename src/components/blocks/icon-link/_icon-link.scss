@@ -1,0 +1,36 @@
+.b-icon-link {
+  color: siteColor(vam-black);
+  cursor: pointer;
+  display: inline-block;
+  height: 45px;
+  position: relative;
+  width: 45px;
+  
+  &__container {
+    &::after {
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      content: '';
+      display: inline-block;
+      height: 100%;
+      opacity: .25;
+      position: absolute;
+      transition: opacity .2s;
+      width: 100%;
+
+      .b-icon-link:hover & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__icon {
+    bottom: 27%;
+    height: 46%;
+    left: 27%;
+    position: absolute;
+    right: 27%;
+    top: 27%;
+    width: 46%;
+  }
+}
