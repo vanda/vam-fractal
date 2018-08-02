@@ -60,6 +60,8 @@
   }
 
   &__info-block {
+    margin-bottom: 45px;
+
     @include bpMinSmall {
       float: left;
       width: 33%;
