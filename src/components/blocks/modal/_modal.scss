@@ -1,0 +1,96 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.b-modal {
+  background-color: rgba(29, 30, 32, .85);
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0; 
+  width: 100%;
+  z-index: 1;
+
+  &--active {
+    animation: fadeIn 1s;
+    display: block;
+  }
+
+  &__content {
+    background-color: siteColor(vam-white);
+    border-radius: 2px;
+    color: siteColor(vam-black);
+    left: 50%;
+    margin: auto;
+    max-width: 300px;
+    padding: 30px 20px 24px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    @include bpMinSmall {
+      max-width: 670px;
+      padding: 55px 65px 55px;
+    }
+
+    @include bpMinMedium {
+      max-width: 820px;
+    }
+
+    a,
+    &::after {
+      pointer-events: all;
+    }
+
+    &::after {
+      color: #fff;
+      content: '\00d7';
+      cursor: pointer;
+      font-size: 32px;
+      line-height: 0;
+      position: absolute;
+      right: 0;
+      top: -23px;
+    }
+  }
+
+  &__title {
+    @include typeSetting(5, bold);
+    margin: 0 0 12px;
+    white-space: nowrap;
+
+    @include bpMinSmall {
+      @include typeSetting(7, regular);
+      margin: 0 0 14px;
+    }
+  }
+
+  &__description,
+  &__dismiss {
+    @include typeSetting(1, regular);
+    line-height: 1.35rem;
+    margin: 0 0 16px;
+
+    @include bpMinSmall {
+      @include typeSetting(4, regular);
+      color: siteColor(vam-grey-2);
+      margin: 0 0 18px;
+    }
+  }
+
+
+  &__dismiss {
+    line-height: 1rem;
+    margin-top: 13px;
+  }
+}
