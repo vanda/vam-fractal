@@ -65,6 +65,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "svg4everybody": "^2.1.9"
+    "svg4everybody": "^2.1.9",
+    "browser-cookies": "^1.2.0"
   }
 }
