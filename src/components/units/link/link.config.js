@@ -31,6 +31,14 @@ module.exports = {
       }
     },
     {
+      name: 'arrowed',
+      label: 'arrowed',
+      context: {
+        text: 'The following link is for use as a stand alone element',
+        modifiers: ['arrowed']
+      }
+    },
+    {
       name: 'external',
       label: 'External',
       context: {

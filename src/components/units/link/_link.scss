@@ -20,6 +20,22 @@
     }
   }
 
+  &--arrowed {
+    border-bottom: 1px solid currentColor;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+      bottom: 1%;
+      content: '▸';
+      display: inline-block;
+      position: absolute;
+      right: -14px;
+      transform: scale(.6, 1.25);
+    }
+  }
+
   &--external-icon {
     height: 16px;
     margin-right: 2px;
