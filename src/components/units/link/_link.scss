@@ -1,5 +1,10 @@
 .u-link {
+  color: inherit;
   text-decoration: underline;
+
+  &:hover {
+    color: inherit;
+  }
 
   &--border {
     border-bottom: 1px solid currentColor;
@@ -33,6 +38,10 @@
       position: absolute;
       right: -14px;
       transform: scale(.6, 1.25);
+    }
+
+    &:hover {
+      text-decoration: none;
     }
   }
 
