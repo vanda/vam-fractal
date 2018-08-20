@@ -1,0 +1,17 @@
+.b-image-background {
+  background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://vanda-production-assets.s3.amazonaws.com/2017/06/29/09/52/23/33145ffd-90e8-4a0f-abc9-074121eb662a/2560.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  will-change: transform;
+  z-index: -3;
+
+  &--darker {
+    background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("https://vanda-production-assets.s3.amazonaws.com/2017/06/29/09/52/23/33145ffd-90e8-4a0f-abc9-074121eb662a/2560.jpg");
+  }
+}

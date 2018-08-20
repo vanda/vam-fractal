@@ -1,0 +1,41 @@
+.b-holding-page {
+  margin: auto;
+  max-width: 1440px;
+  padding: 0 50px;
+  width: 100%;
+
+  &-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-icon {
+    color: white;
+    height: 120px;
+    margin-bottom: 20px;
+    width: 200px;
+  }
+
+  &-heading {
+    @include typeSetting(8, regular);
+    color: white;
+  }
+
+  &-message {
+    @include typeSetting(5, light);
+    color: white;
+    line-height: 2.25rem;
+    margin-bottom: 10px;
+    max-width: 700px;
+  }
+
+  &-return {
+    @include typeSetting(4, light);
+    color: white;
+  }
+
+  &-info {
+    margin-bottom: 60px;
+  }
+}
