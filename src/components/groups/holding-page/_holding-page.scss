@@ -1,10 +1,10 @@
 .b-holding-page {
   margin: auto;
   max-width: 1440px;
-  padding: 0 50px;
   width: 100%;
 
   &-content {
+    margin: 0 50px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -12,27 +12,44 @@
 
   &-icon {
     color: white;
-    height: 120px;
+    height: 72px;
     margin-bottom: 20px;
-    width: 200px;
+    width: 128px;
+
+    @include bpMinSmall {
+      height: 120px;
+      width: 200px;
+    }
   }
 
   &-heading {
-    @include typeSetting(8, regular);
+    @include typeSetting(6, regular);
     color: white;
+
+    @include bpMinSmall {
+      @include typeSetting(8, regular);
+    }
   }
 
   &-message {
-    @include typeSetting(5, light);
+    @include typeSetting(3, regular);
     color: white;
     line-height: 2.25rem;
     margin-bottom: 10px;
     max-width: 700px;
+
+    @include bpMinSmall {
+      @include typeSetting(5, light);
+    }
   }
 
   &-return {
-    @include typeSetting(4, light);
+    @include typeSetting(3, light);
     color: white;
+
+    @include bpMinSmall {
+      @include typeSetting(4, light);
+    }
   }
 
   &-info {
