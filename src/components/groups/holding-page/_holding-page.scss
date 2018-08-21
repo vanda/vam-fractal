@@ -4,10 +4,14 @@
   width: 100%;
 
   &-content {
-    margin: 0 50px;
+    margin: 0 20px;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 50px;
+
+    @include bpMinSmall {
+      margin: 0 50px;
+      top: 100px;
+    }
   }
 
   &-icon {
@@ -30,7 +34,7 @@
 
     @include bpMinSmall {
       @include typeSetting(8, regular);
-      line-height: 3rem;
+      line-height: 4rem;
     }
   }
 
