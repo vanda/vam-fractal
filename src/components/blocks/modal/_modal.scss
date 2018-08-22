@@ -66,6 +66,7 @@
 
   &__title {
     @include typeSetting(5, bold);
+    color: siteColor(vam-black);
     margin: 0 0 12px;
     white-space: nowrap;
 
