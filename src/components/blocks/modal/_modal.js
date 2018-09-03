@@ -22,7 +22,7 @@ Array.from(modals, (modal) => {
 
   modal.addEventListener('click', (e) => {
     if (modal.dataset.modalOnceOnly) {
-      cookies.set(modalCampaign, 'seen', { domain: modal.dataset.modalDomain });
+      cookies.set(modalCampaign, 'seen', { domain: modal.dataset.modalDomain, expires: 365 });
     }
     if (e.target !== modal) {
       const modalAction = modal.querySelector('.js-modal-action');
