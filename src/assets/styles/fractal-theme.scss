@@ -11,6 +11,10 @@ html, body {
   font-family: fontFamily(text);
 }
 
+code, pre {
+  font-family: fontFamily(code);
+}
+
 .Header {
   background-color: siteColor(vam-black);
   color: siteColor(vam-white);
@@ -27,6 +31,16 @@ html, body {
   font-family: fontFamily(text);
 }
 
-code, pre {
-  font-family: fontFamily(code);
+.Navigation {
+  &__collapser {
+    &::before {
+      content: '×';
+      cursor: pointer;
+      font-size: 14px;
+      margin: -13px 0 0 -4px;
+      opacity: .9;
+      padding: 10px;
+      position: absolute;
+    }
+  }
 }
