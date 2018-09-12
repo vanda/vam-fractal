@@ -3,8 +3,8 @@ function isEmail (t) {
   return e.test(t);
 }
 
-Array.from(document.querySelectorAll('.js-newsletter_form'), signupForm => {
-  signupForm.addEventListener('submit', e => {
+Array.from(document.querySelectorAll('.js-newsletter_form'), (signupForm) => {
+  signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const emailField = signupForm.querySelector('.js-emailValidation');
     const emailDescriptor = signupForm.querySelector('.js-newsletter__descriptor');
@@ -16,8 +16,9 @@ Array.from(document.querySelectorAll('.js-newsletter_form'), signupForm => {
       if (!httpRequest) {
         signupForm.submit();
       }
-      Array.from(signupForm.querySelectorAll('input'), ip => {
-        formInputs += ip.name + '=' + encodeURIComponent(ip.value) + '&';
+      Array.from(signupForm.querySelectorAll('input'), (ip) => {
+        formInputs += `${ip.name}=${encodeURIComponent(ip.value)}&`;
+        return true;
       });
       httpRequest.onreadystatechange = () => {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -40,4 +41,5 @@ Array.from(document.querySelectorAll('.js-newsletter_form'), signupForm => {
       signupForm.classList.add('invalid');
     }
   });
+  return true;
 });
