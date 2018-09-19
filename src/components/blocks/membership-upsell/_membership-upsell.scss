@@ -18,17 +18,20 @@
 
   &__button {
     border: solid 1px #1d1e20;
-    display: none;
+    display: inline-block;
     height: 56px;
-    padding-top: 19px;
-    width: 256px;
+    padding: 19px;
+    width: 210px;
 
     &::after {
-      right: 35px;
+      right: 10px;
+      @include bpMinSmall {
+        right: 35px;
+      }
     }
 
     @include bpMinSmall {
-      display: inline-block;
+      width: 256px;
     }
 
   }
@@ -106,10 +109,20 @@
       height: 62px;
       line-height: 30px;
       margin: auto;
+      max-width: 245px;
+      padding: 15px;
       width: 100%;
 
+      @include bpMinSmall {
+        max-width: 300px;
+      }
+
       &::after {
-        right: 40px;
+        right: 10px;
+
+        @include bpMinSmall {
+          right: 40px;
+        }
       }
     }
   }
@@ -132,20 +145,21 @@
   &__promo {
     background-color: siteColor(vam-white);
     background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background_mobile.png");
-    background-position: 155px 50px; 
+    background-position: 120px 50px; 
     background-repeat: no-repeat;
-    height: 370px;
+    background-size: 300px;
+    height: 470px;
 
     @include bpMinSmall {
       background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background.png");
-      background-position: 465px 30px; 
-      background-size: 305px;
-      height: 435px;
+      background-position: 450px 60px;
+      background-size: 315px;
+      height: 500px;
     }
 
     @include bpMinMedium {
-      background-position: 510px 10px;
-      background-size: 315px;
+      background-position: 500px 22px;
+      background-size: 340px;
     }
   }
 
