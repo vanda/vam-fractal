@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Membership Upsell',
   label: 'Membership Upsell',
-  status: 'wip',
   context: {
     title: 'Members go free',
     body: 'Enjoy unlimited free entry to all our exhibitions from as little as £57',

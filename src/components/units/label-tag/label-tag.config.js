@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Label tag',
   label: 'Label tag',
-  status: 'wip',
   context: {
     text: 'Label'
   },

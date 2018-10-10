@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Search Result Objects',
   label: 'Search Result Objects',
-  status: 'wip',
   context: {
     title: 'title that flows on for more than 2 lines',
     credit: 'A name that is, very very long',

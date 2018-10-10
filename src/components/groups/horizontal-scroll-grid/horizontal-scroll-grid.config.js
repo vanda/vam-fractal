@@ -2,7 +2,6 @@ module.exports = {
   default: 'With Search Object Reults',
   title: 'Horizontal Scroll Grid',
   label: 'Horizontal Scroll Grid',
-  status: 'wip',
   context: {
     objects: [
       {
@@ -36,7 +35,6 @@ module.exports = {
     {
       name: 'With Programme Page Touts',
       label: 'With Programme Page Touts',
-      status: 'wip',
       context: {
         tout: true,
         objects: [

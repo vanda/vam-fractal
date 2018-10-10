@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Search Result Auto Suggest',
   label: 'Search Result Auto Suggest',
-  status: 'wip',
   context: {
     content_type: 'Display',
     title: 'Juree Kim & Neil Brownsword: V&A Korea UK Ceramics with an exceptionally long <em>title</em> to show to the user',

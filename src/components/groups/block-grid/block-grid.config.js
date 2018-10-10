@@ -2,7 +2,6 @@ module.exports = {
   default: 'promo',
   title: 'Block grid',
   label: 'Block grid',
-  status: 'wip',
   context: {
     title: 'Featured',
     more: {

@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Icon badge',
   label: 'Icon badge',
-  status: 'wip',
   context: {
     action: 'Read',
     icon: 'quote'

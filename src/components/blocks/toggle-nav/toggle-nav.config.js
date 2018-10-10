@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Toggle Nav',
   label: 'Toggle Nav',
-  status: 'wip',
   context: {
     themed: ['border-color--hover'],
     toggles: [

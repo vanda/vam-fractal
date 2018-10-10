@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Input Select',
   label: 'Input Select',
-  status: 'wip',
   context: {
     input_name: 'my_input',
     input_tooltip: 'Select an option',
