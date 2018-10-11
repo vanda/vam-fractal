@@ -1,5 +1,5 @@
 module.exports = {
   title: 'Blocks',
   label: 'Blocks',
-  order: 3
+  order: 2
 };

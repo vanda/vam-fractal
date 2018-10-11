@@ -1,5 +1,5 @@
 module.exports = {
   title: 'Base',
   label: 'Base Styles',
-  order: 1
+  order: 4
 };
