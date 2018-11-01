@@ -1,0 +1,57 @@
+.b-annotated-tour-preview {
+  background-color: siteColor(vam-black);
+  height: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  position: relative;
+
+  &__content  {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__overlay {
+    background-color: rgba(siteColor(vam-black), .5);
+    height: 100%;
+    width: 100%;
+
+    &-container {
+      height: 100%;
+      padding: 10px;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  &__btn {
+    display: block;
+    margin: -24px auto 0 auto;
+    max-width: 178px;
+    top: 50%;
+
+    &-container {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+
+  &__image {
+    display: block;
+    height: 100%;
+    margin: auto;
+
+    @include bpMinXSmall {
+      bottom: -100%;
+      height: auto;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: -100%;
+      width: 100%;
+      z-index: 0;
+    }
+  }
+}
