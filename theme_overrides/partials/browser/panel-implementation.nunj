@@ -1,0 +1,9 @@
+<div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-{{ entity.id }}-panel-implementation">
+    <div class="Prose Prose--condensed">
+        {% if entity.notes %}
+        {{ frctl.docs.renderString(entity.implementation, renderEnv) | async }}
+        {% else %}
+        <p class="Browser-isEmptyNote">There are no notes for this item.</p>
+        {% endif %}
+    </div>
+</div>
