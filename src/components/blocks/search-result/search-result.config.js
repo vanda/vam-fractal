@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Search Result',
   label: 'Search Result',
-  status: 'wip',
   context: {
     content_type: 'Display',
     title: 'Lunchtime Lecture: Ceramics, Speedos truncates after 1 line when > 768 and 2 lines otherwise',

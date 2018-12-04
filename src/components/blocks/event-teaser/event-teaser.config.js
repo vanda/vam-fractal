@@ -1,6 +1,5 @@
 module.exports = {
   title: 'Event teaser',
-  status: 'wip',
   default: 'simple',
   context: {
     eventUrl: 'https://www.vam.ac.uk/exhibitions/pink-floyd',

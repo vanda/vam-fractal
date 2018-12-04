@@ -1,7 +1,6 @@
 module.exports = {
   default: 'default',
   title: 'Media Buttons',
-  status: 'wip',
   context: {
     text: 'Stop Video'
   },

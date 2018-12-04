@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Collection grid',
   label: 'Collection grid',
-  status: 'wip',
   context: {
     title_1: 'Latest',
     title_2: 'Explore the Collections',

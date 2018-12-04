@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Event feature',
   label: 'Event feature',
-  status: 'wip',
   context: {
     eventUrl: 'https://www.vam.ac.uk/exhibitions/pink-floyd',
     eventType: 'Exhibition',

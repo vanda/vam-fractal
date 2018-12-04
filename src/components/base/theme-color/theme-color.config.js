@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Theme colors',
   label: 'Theme color',
-  status: 'wip',
   context: {
     ignore_global_theme: true,
     colors: [

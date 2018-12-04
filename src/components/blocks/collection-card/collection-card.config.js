@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Collection card',
   label: 'Collection card',
-  status: 'wip',
   context: {
     collectionUrl: '//www.vam.ac.uk/collections/gilbert-collection',
     collectionTitle: 'The Gilbert Collection',

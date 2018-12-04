@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Typography - V&A Sans',
   label: 'Typography',
-  status: 'wip',
   default: 'regular',
   context: {
     heading: 'The quick brown fox jumps over the lazy dog.'

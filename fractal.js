@@ -10,12 +10,15 @@ const fractal = require('@frctl/fractal').create();
 const mandelbrot = require('@frctl/mandelbrot')({
   lang: 'en-gb',
   styles: ['default', '/assets/styles/fractal-theme.css'],
+  scripts: ['default', '/assets/scripts/fractal-theme.js'],
   nav: ['docs', 'components'],
-  panels: ['notes', 'html', 'context', 'resources', 'info'],
+  panels: ['notes', 'html'],
   static: {
     mount: 'fractal',
   },
 });
+
+mandelbrot.addLoadPath(`${__dirname}/theme_overrides`);  
 
 // Nunjucks setup (Templating like Jinja2)
 const nunjucks = require('@frctl/nunjucks')({

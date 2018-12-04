@@ -1,5 +1,5 @@
 module.exports = {
   title: 'Mixins',
   label: 'Mixins',
-  order: 0
+  order: 5
 };

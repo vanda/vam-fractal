@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Promo',
   label: 'Promo',
-  status: 'wip',
   context: {
     title: 'Membership',
     body: 'Join today and enjoy unlimited free entry to all V&A exhibitions, Members-only previews and more',

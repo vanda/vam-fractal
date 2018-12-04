@@ -2,7 +2,6 @@ module.exports = {
   default: 'promo',
   title: 'Holding Page',
   label: 'Holding Page',
-  status: 'wip',
   context: {
     heading: 'Please try again later to book your tickets',
     explaination: 'We are temporarily undergoing maintenance on our ticketing site.',

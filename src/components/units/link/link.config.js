@@ -1,7 +1,6 @@
 module.exports = {
   default: 'link',
   title: 'Links',
-  status: 'wip',
   context: {
     text: 'Link'
   },

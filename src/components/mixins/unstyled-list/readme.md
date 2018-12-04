@@ -8,7 +8,7 @@ Resets a list (`ol` or `ul`) to appeared unstyled
 
 ```sass
 .foo{
-  @include unstyled-list;
+  @include unstyledList;
 }
 ```
 
