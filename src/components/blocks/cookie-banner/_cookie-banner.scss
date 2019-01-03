@@ -6,6 +6,7 @@
   position: fixed;
   transition: transform .2s;
   width: 100%;
+  z-index: 10;
 
   &--hidden {
     transform: translateY(100%);
