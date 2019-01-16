@@ -35,7 +35,6 @@ module.exports = {
       'price',
       'label',
       'close',
-      'close-menu',
       'menu-hamburger',
       'bibliography',
       'bag',
@@ -126,7 +125,6 @@ module.exports = {
       context: {
         icons: [
           'close',
-          'close-menu',
           'menu-hamburger',
           'bag',
           'plus',
