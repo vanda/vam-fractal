@@ -59,6 +59,11 @@
       padding: 25px 15px 22px;
     }
 
+    &--active,
+    &:hover {
+      border-color: siteColor(vam-grey-2);
+    }
+
     &:hover {
       color: siteColor(vam-grey-2);
     }
