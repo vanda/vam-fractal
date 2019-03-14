@@ -27,10 +27,10 @@ if (toggleNav) {
         return true;
       });
       Array.from(toggleNavBtns, (el) => {
-        el.classList.remove('s-themed--border-color');
+        el.classList.remove('b-toggle-nav__button--active');
         return true;
       });
-      tog.classList.add('s-themed--border-color');
+      tog.classList.add('b-toggle-nav__button--active');
     }, false);
 
     if (tog.dataset.toggleType === qsToggleType) {
