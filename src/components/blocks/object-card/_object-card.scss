@@ -1,0 +1,17 @@
+.b-object-card {
+  padding: 10px 10px 20px;
+
+  &__image {
+    border-radius: 2px 2px 0 0;
+    height: auto;
+    width: 100%;
+  }
+
+  &__caption {
+    @include typeSetting(2, bold);
+    background-color: siteColor(vam-white);
+    border-radius: 0 0 2px 2px;
+    color: siteColor(vam-black);
+    margin: 10px 0 0;
+  }
+}

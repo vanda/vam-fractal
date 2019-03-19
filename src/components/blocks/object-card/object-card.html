@@ -1,0 +1,21 @@
+<figure class="b-object-card{% if lightboxItem %} js-lightbox-item{% endif %}"
+        {% if lightboxData %} data-lightbox="{{ lightboxData | dump | replace('"', '`') }}"{% endif %}
+        itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+  <link itemprop="url" href="{{image[960]}}">
+  <a class="b-object-card__anchor" href="{{ href }}">
+
+    <img class="b-object-card__image"
+         itemprop="contentUrl"
+         alt="{{ physicalDescription }}" 
+         sizes="(max-width: 499px) calc(100vw - 24px),
+                (min-width: 500px) calc(50vw - 28px),
+                (min-width: 992px) calc(25vw - 78px),
+                (min-width: 1200px) 280px"
+         srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+         src="{{ image[640] }}">
+
+    <figcaption class="b-object-card__caption">
+      {{ caption }}
+    </figcaption>
+  </a>
+</figure>
