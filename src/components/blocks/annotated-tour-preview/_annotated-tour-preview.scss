@@ -42,16 +42,7 @@
     display: block;
     height: 100%;
     margin: auto;
-
-    @include bpMinXSmall {
-      bottom: -100%;
-      height: auto;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: -100%;
-      width: 100%;
-      z-index: 0;
-    }
+    object-fit: cover;
+    width: 100%;
   }
 }
