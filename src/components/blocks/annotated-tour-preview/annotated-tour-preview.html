@@ -11,10 +11,12 @@
       <div class="b-annotated-tour-preview__overlay">
       </div>
     </div>
-      <img alt=""
-      class="b-annotated-tour-preview__image"
-      itemprop="contentUrl"
-      src="{{image}}">
+      <img srcset="{{ image[320] }} 320w,
+                   {{ image[640] }} 640w,
+                   {{ image[960] }} 960w,
+                   {{ image[1200] }} 1200w"
+            sizes="(min-width: 1200px) 1200px"
+            alt="" class="b-annotated-tour-preview__image" src="{{ image[640] }}">
     </div>
 </section>
 
