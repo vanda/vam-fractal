@@ -42,7 +42,10 @@
     display: block;
     height: 100%;
     margin: auto;
-    object-fit: cover;
-    width: 100%;
+    
+    .objectfit & {
+      object-fit: cover;
+      width: 100%;
+    }
   }
 }
