@@ -17,7 +17,7 @@ module.exports = {
         physicalDescription: 'Cartoon for a tapestry.',
         href: 'https://collections.vam.ac.uk/item/O102006/the-miraculous-draught-of-fishes-cartoon-for-a-raphael',
         lightboxData: {
-          credit: 'ROYAL LOANS.2',
+          museumNumber: 'ROYAL LOANS.2',
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: true,
           locationSite: 'V&A South Kensington',
@@ -38,7 +38,7 @@ module.exports = {
         physicalDescription: 'An abstract form sculpted from blue glass.',
         href: 'http://collections.vam.ac.uk/item/O8905/form-roubicek-rene',
         lightboxData: {
-          credit: 'C.21-1998',
+          museumNumber: 'C.21-1998',
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: false
         }
@@ -70,7 +70,7 @@ module.exports = {
         physicalDescription: 'A Research Institute made of Lego.',
         href: 'http://collections.vam.ac.uk/item/O1298864/the-research-institute-lego-set-kooijman-ellen',
         lightboxData: {
-          credit: 'CD.51:1 to 6-2014',
+          museumNumber: 'CD.51:1 to 6-2014',
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: true,
           locationSite: 'V&A South Kensington',

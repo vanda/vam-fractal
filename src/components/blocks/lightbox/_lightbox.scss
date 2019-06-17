@@ -69,7 +69,6 @@
 
   &__content {
     color: #fff;
-    flex-grow: 1;
     height: 100%;
     margin: auto;
     overflow: auto;
@@ -77,6 +76,7 @@
 
     @include bpMinMedium {
       display: flex;
+      flex-grow: 1;
       height: auto;
       max-width: 1200px;
       min-height: 50%;

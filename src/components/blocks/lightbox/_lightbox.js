@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 (() => {
   const lightboxSeeds = Array.from(document.querySelectorAll('.js-lightbox-item'));
 
@@ -7,24 +8,24 @@
     lightbox.classList.add('b-lightbox');
     lightbox.innerHTML = `
       <a class="b-lightbox__dismiss" title="Close" aria-label="Close"></a>
-      <div class="b-lightbox__items">
-      </div>
+      <div class="b-lightbox__items"></div>
     `;
     const items = lightbox.querySelector('.b-lightbox__items');
 
-    lightbox.addItem = (seed, prepend = false) => {
+    lightbox.addItem = (index, prepend = false) => {
+      const seed = lightboxSeeds[index] || lightboxSeeds[0];
       const data = seed.dataset.lightbox ?
-        JSON.parse(seed.dataset.lightbox.replace(/`/g, '"'))
+        JSON.parse(seed.dataset.lightbox)
         : null;
-      const credit = data && data.credit ?
-        `Museum number: <span itemprop="identifier">${data.credit}</span>`
+      const museumNumber = data && data.museumNumber ?
+        `Museum number: <span itemprop="identifier">${data.museumNumber}</span>`
         : '';
       const copyright = data && data.copyright ?
         `<br/><span itemprop="copyrightHolder">${data.copyright}</span>`
         : '';
-      const creditcopyright = credit || copyright ?
-        `<div class="b-lightbox__creditcopyright">
-          ${credit}
+      const numberCopyright = museumNumber || copyright ?
+        `<div class="b-lightbox__numbercopyright">
+          ${museumNumber}
           ${copyright}
         </div>`
         : '';
@@ -41,7 +42,6 @@
       const hyperlink = seed.querySelector('a').href.length > 1 ?
         `<br/><a class="b-lightbox__link" href="${seed.querySelector('a').href}">Explore object in more depth</a>`
         : '';
-
       const item = document.createElement('div');
       item.classList.add('b-lightbox__item');
       item.innerHTML += `
@@ -56,7 +56,7 @@
                  srcset="${seed.querySelector('img').srcset}"
                  src="${seed.querySelector('img').src}">
             <figcaption class="b-lightbox__figcaption">
-              ${creditcopyright}
+              ${numberCopyright}
               <div class="b-lightbox__prevnext">
                 <a class="b-lightbox__prev b-lightbox__prev--disabled" title="Previous" aria-label="Previous"></a>
                 <a class="b-lightbox__next b-lightbox__next--disabled" title="Next" aria-label="Next"></a>
@@ -74,18 +74,13 @@
       `;
 
       if (prepend) {
-        items.insertBefore(item, items.firstChild);
+        items.insertBefore(item, items.firstElementChild);
       } else {
         items.appendChild(item);
       }
 
-      const index = lightbox.index(seed);
-      const seedPrev = lightboxSeeds[index - 2] || seed;
-      const seedNext = lightboxSeeds[index + 2] || seed;
       const itemPrev = item.querySelector('.b-lightbox__prev');
       const itemNext = item.querySelector('.b-lightbox__next');
-      itemPrev.lightboxSeed = seedPrev;
-      itemNext.lightboxSeed = seedNext;
       if (index > 0) {
         itemPrev.classList.remove('b-lightbox__prev--disabled');
       }
@@ -94,7 +89,7 @@
       }
     };
 
-    lightbox.index = (seed) => {
+    lightbox.getIndex = (seed) => {
       const index = lightboxSeeds.findIndex((el) => {
         const match = (el === seed);
         return match;
@@ -104,38 +99,78 @@
 
     lightbox.clipItem = (last = false) => {
       if (last) {
-        lightbox.querySelector('.b-lightbox__item:last-child').remove();
+        items.lastElementChild.remove();
       } else {
-        lightbox.querySelector('.b-lightbox__item:first-child').remove();
+        items.firstElementChild.remove();
       }
+    };
+
+    lightbox.advance = (rewind = false) => {
+      lightbox.clipItem(rewind);
+      lightbox.addItem(lightbox._index + (2 * (rewind ? -1 : 1)), rewind);
+      lightbox._index += (1 * (rewind ? -1 : 1));
     };
 
     document.addEventListener('click', (e) => {
       if (e.target.closest('.js-lightbox-item')) {
         e.preventDefault();
         const seed = e.target.closest('.js-lightbox-item');
+        lightbox._index = lightbox.getIndex(seed);
+        lightbox.addItem(lightbox._index);
         lightbox.classList.add('b-lightbox--active');
-        lightbox.addItem(seed);
-        lightbox.addItem(lightboxSeeds[lightbox.index(seed) + 1] || seed);
-        lightbox.addItem(lightboxSeeds[lightbox.index(seed) - 1] || seed, true);
+        lightbox.addItem(lightbox._index + 1);
+        lightbox.addItem(lightbox._index - 1, true);
+        lightbox._width = lightbox.getBoundingClientRect().width;
 
-        lightbox.addEventListener('click', (e) => {
-          if (e.target.matches('.b-lightbox__dismiss')) {
-            e.preventDefault();
+        lightbox.onclick = (e2) => {
+          if (e2.target.matches('.b-lightbox__dismiss')) {
+            e2.preventDefault();
             lightbox.classList.remove('b-lightbox--active');
             items.innerHTML = '';
-            items.classList.remove('b-lightbox__items--reverse');
-          } else if (e.target.matches('.b-lightbox__prev')) {
-            e.preventDefault();
-            lightbox.clipItem(true);
-            lightbox.addItem(e.target.lightboxSeed, true);
-          } else if (e.target.matches('.b-lightbox__next')) {
-            e.preventDefault();
-            lightbox.clipItem();
-            lightbox.addItem(e.target.lightboxSeed);
+            lightbox.onclick = null;
+          } else if (e2.target.matches('.b-lightbox__next')) {
+            e2.preventDefault();
+            lightbox.advance();
+          } else if (e2.target.matches('.b-lightbox__prev')) {
+            e2.preventDefault();
+            lightbox.advance(true);
           }
-        });
+        };
+
+        lightbox.ontouchstart = (e2) => {
+          const startX = e2.touches[0].pageX;
+          lightbox.ontouchmove = (e3) => {
+            const deltaX = e3.touches[0].pageX - startX;
+            if ((deltaX < 0 && lightbox._index < lightboxSeeds.length - 1)
+              || (deltaX > 0 && lightbox._index > 0)) {
+              if (Math.abs(deltaX) < 0.2 * lightbox._width) {
+                window.requestAnimationFrame(() => {
+                  items.style.marginLeft = `${deltaX}px`;
+                  items.style.transition = null;
+                });
+              } else {
+                window.requestAnimationFrame(() => {
+                  items.style.marginLeft = 0;
+                  items.style.transition = 'all .35s';
+                });
+                lightbox.ontouchmove = null;
+                if (deltaX < 0) {
+                  lightbox.advance();
+                } else {
+                  lightbox.advance(true);
+                }
+              }
+            }
+          };
+          lightbox.ontouchend = () => {
+            window.requestAnimationFrame(() => {
+              items.style.marginLeft = 0;
+              items.style.transition = 'all .35s';
+            });
+          };
+        };
       }
     }, false);
   }
 })();
+/* eslint-enable no-underscore-dangle */

@@ -1,5 +1,5 @@
 <figure class="b-object-card{% if lightboxItem %} js-lightbox-item{% endif %}"
-        {% if lightboxData %} data-lightbox="{{ lightboxData | dump | replace('"', '`') }}"{% endif %}
+        {% if lightboxData %} data-lightbox="{{ lightboxData | dump | escape }}"{% endif %}
         itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
   <link itemprop="url" href="{{image[960]}}">
   <a class="b-object-card__anchor" href="{{ href }}">
