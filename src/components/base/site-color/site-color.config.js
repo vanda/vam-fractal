@@ -21,6 +21,10 @@ module.exports = {
         hex: '#ffffff'
       },
       {
+        name: 'vam-grey-1',
+        hex: '#393b3f'
+      },
+      {
         name: 'vam-grey-2',
         hex: '#505354'
       },
