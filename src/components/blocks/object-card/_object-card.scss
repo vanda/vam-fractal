@@ -1,8 +1,30 @@
 .b-object-card {
-  padding: 10px 10px 20px;
+  margin: 0 0 40px;
+
+  &__anchor {
+    display: block;
+    position: relative;
+
+    &::after {
+      background-image: linear-gradient(black, transparent 80%);
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: opacity .1s;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      opacity: .3;
+    }
+  }
 
   &__image {
-    border-radius: 2px 2px 0 0;
     height: auto;
     width: 100%;
   }
@@ -10,7 +32,6 @@
   &__caption {
     @include typeSetting(2, bold);
     background-color: siteColor(vam-white);
-    border-radius: 0 0 2px 2px;
     color: siteColor(vam-black);
     margin: 10px 0 0;
   }
