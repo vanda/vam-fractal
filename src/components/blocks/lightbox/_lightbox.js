@@ -32,11 +32,17 @@
       const onDisplay = data && data.onDisplay ?
         '<div class="b-lightbox__location-status">On display</div>'
         : '';
-      const location = data && (data.locationSite || data.locationRoom) ?
+      const locationSite = data && data.locationSite ?
+        `<div class="b-lightbox__location-site">${data.locationSite}</div>`
+        : '';
+      const locationRoom = data && data.locationRoom ?
+        `<div class="b-lightbox__location-room">${data.locationRoom}</div>`
+        : '';
+      const location = locationSite || locationRoom ?
         `<div class="b-lightbox__location">
           ${onDisplay}
-          <div class="b-lightbox__location-site">${data.locationSite}</div>
-          <div class="b-lightbox__location-room">${data.locationRoom}</div>
+          ${locationSite}
+          ${locationRoom}
         </div>
         ` : '';
       const hyperlink = seed.querySelector('a').href.length > 1 ?
