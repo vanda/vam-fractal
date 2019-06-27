@@ -141,10 +141,10 @@
       border-bottom: 1px solid #fff;
       border-left: 1px solid #fff;
       content: '';
-      height: 35%;
+      height: 30%;
       margin: auto;
-      transform: translate(25%, 0) rotate(45deg);
-      width: 35%;
+      transform: translate(20%, 4%) rotate(45deg);
+      width: 30%;
     }
 
     &--disabled {
@@ -157,7 +157,7 @@
     margin-left: 10px;
 
     &::after {
-      transform: translate(-25%, 0) rotate(-135deg);
+      transform: translate(-8%, 0) rotate(-135deg);
     }
   }
 
