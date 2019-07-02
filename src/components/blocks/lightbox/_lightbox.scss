@@ -131,10 +131,11 @@
     border: 1px solid #fff;
     border-radius: 100%;
     color: #fff;
-    cursor: pointer;
+    cursor: default;
     display: inline-flex;
     height: 30px;
     margin: 10px 0 10px 10px;
+    opacity: .4;
     width: 30px;
 
     &::after {
@@ -147,9 +148,9 @@
       width: 30%;
     }
 
-    &--disabled {
-      cursor: default;
-      opacity: .4;
+    &--enabled {
+      cursor: pointer;
+      opacity: 1;
     }
   }
 

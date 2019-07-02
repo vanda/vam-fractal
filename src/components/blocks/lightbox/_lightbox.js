@@ -88,10 +88,10 @@
       const itemPrev = item.querySelector('.b-lightbox__prev');
       const itemNext = item.querySelector('.b-lightbox__next');
       if (index > 0) {
-        itemPrev.classList.remove('b-lightbox__prev--disabled');
+        itemPrev.classList.add('b-lightbox__prev--enabled');
       }
       if (index < lightboxSeeds.length - 1) {
-        itemNext.classList.remove('b-lightbox__next--disabled');
+        itemNext.classList.add('b-lightbox__next--enabled');
       }
     };
 
@@ -134,10 +134,10 @@
             lightbox.classList.remove('b-lightbox--active');
             items.innerHTML = '';
             lightbox.onclick = null;
-          } else if (e2.target.matches('.b-lightbox__next')) {
+          } else if (e2.target.matches('.b-lightbox__next--enabled')) {
             e2.preventDefault();
             lightbox.advance();
-          } else if (e2.target.matches('.b-lightbox__prev')) {
+          } else if (e2.target.matches('.b-lightbox__prev--enabled')) {
             e2.preventDefault();
             lightbox.advance(true);
           }
