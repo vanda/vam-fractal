@@ -30,9 +30,14 @@
   }
 
   &__caption {
-    @include typeSetting(2, bold);
-    background-color: siteColor(vam-white);
-    color: siteColor(vam-black);
-    margin: 10px 0 0;
+    display: none;
+
+    @include bpMinSmall {
+      @include typeSetting(2, bold);
+      background-color: siteColor(vam-white);
+      color: siteColor(vam-black);
+      display: block;
+      margin: 10px 0 0;
+    }
   }
 }
