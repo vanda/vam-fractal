@@ -129,7 +129,7 @@
         lightbox._width = lightbox.getBoundingClientRect().width;
 
         lightbox.onclick = (e2) => {
-          if (e2.target.matches('.b-lightbox__dismiss')) {
+          if (e2.target.matches('.b-lightbox__item, .b-lightbox__dismiss')) {
             e2.preventDefault();
             lightbox.classList.remove('b-lightbox--active');
             items.innerHTML = '';
