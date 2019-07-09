@@ -2,7 +2,7 @@
   display: none;
   
   &--active {
-    animation: opacityFadeIn 1s;
+    animation: opacityFadeIn .2s;
     background-color: rgba(29, 30, 32, .98);
     display: block;
     height: 100%;
