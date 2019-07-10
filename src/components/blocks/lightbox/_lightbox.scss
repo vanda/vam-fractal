@@ -236,10 +236,19 @@
       @include typeSetting(0, bold, uppercase);
       background-color: siteColor(vam-grey-5);
       color: siteColor(vam-black);
+      display: flex;
       left: 0;
-      padding: 2px 10px 1px;
+      letter-spacing: 1px;
+      line-height: 16px;
+      padding: 3px 10px 2px 7px;
       position: absolute;
       top: 0;
+
+      svg {
+        height: 16px;
+        margin-right: 6px;
+        width: 16px;
+      }
     }
   }    
 
