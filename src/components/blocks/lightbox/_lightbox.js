@@ -30,7 +30,12 @@
         </div>`
         : '';
       const onDisplay = data && data.onDisplay ?
-        '<div class="b-lightbox__location-status">On display</div>'
+        `<div class="b-lightbox__location-status">
+          <svg role="img">
+            <use xlink:href="/assets/svg/svg-template.svg#on-display"></use>
+          </svg>
+          On display
+        </div>`
         : '';
       const locationSite = data && data.locationSite ?
         `<div class="b-lightbox__location-site">${data.locationSite}</div>`
@@ -64,8 +69,16 @@
             <figcaption class="b-lightbox__figcaption">
               ${numberCopyright}
               <div class="b-lightbox__prevnext">
-                <a class="b-lightbox__prev b-lightbox__prev--disabled" title="Previous" aria-label="Previous"></a>
-                <a class="b-lightbox__next b-lightbox__next--disabled" title="Next" aria-label="Next"></a>
+                <a class="b-lightbox__prev b-lightbox__prev--disabled" title="Previous" aria-label="Previous">
+                  <svg role="img">
+                    <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
+                  </svg>
+                </a>
+                <a class="b-lightbox__next b-lightbox__next--disabled" title="Next" aria-label="Next">
+                  <svg role="img">
+                    <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
+                  </svg>
+                </a>
               </div>
             </figcaption>
           </figure>
@@ -134,10 +147,10 @@
             lightbox.classList.remove('b-lightbox--active');
             items.innerHTML = '';
             lightbox.onclick = null;
-          } else if (e2.target.matches('.b-lightbox__next--enabled')) {
+          } else if (e2.target.closest('.b-lightbox__next--enabled')) {
             e2.preventDefault();
             lightbox.advance();
-          } else if (e2.target.matches('.b-lightbox__prev--enabled')) {
+          } else if (e2.target.closest('.b-lightbox__prev--enabled')) {
             e2.preventDefault();
             lightbox.advance(true);
           }
