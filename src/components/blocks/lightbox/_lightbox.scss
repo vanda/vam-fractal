@@ -147,6 +147,11 @@
     &--enabled {
       cursor: pointer;
       opacity: 1;
+
+      &:hover,
+      &:focus {
+        background: #ffffff1a;
+      }
     }
   }
 
