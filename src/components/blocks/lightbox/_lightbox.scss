@@ -237,6 +237,10 @@
   }    
 
   &__location-status {
+    svg {
+      display: none;
+    }
+
     @include bpMinMedium {
       @include typeSetting(0, bold, uppercase);
       background-color: siteColor(vam-grey-5);
@@ -250,6 +254,7 @@
       top: 0;
 
       svg {
+        display: block;
         height: 16px;
         margin-right: 6px;
         width: 16px;
