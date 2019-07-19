@@ -155,39 +155,6 @@
             lightbox.advance(true);
           }
         };
-
-        lightbox.ontouchstart = (e2) => {
-          const startX = e2.touches[0].pageX;
-          lightbox.ontouchmove = (e3) => {
-            const deltaX = e3.touches[0].pageX - startX;
-            if ((deltaX < 0 && lightbox._index < lightboxSeeds.length - 1)
-              || (deltaX > 0 && lightbox._index > 0)) {
-              if (Math.abs(deltaX) < 0.2 * lightbox._width) {
-                window.requestAnimationFrame(() => {
-                  items.style.marginLeft = `${deltaX}px`;
-                  items.style.transition = null;
-                });
-              } else {
-                window.requestAnimationFrame(() => {
-                  items.style.marginLeft = 0;
-                  items.style.transition = 'all .35s';
-                });
-                lightbox.ontouchmove = null;
-                if (deltaX < 0) {
-                  lightbox.advance();
-                } else {
-                  lightbox.advance(true);
-                }
-              }
-            }
-          };
-          lightbox.ontouchend = () => {
-            window.requestAnimationFrame(() => {
-              items.style.marginLeft = 0;
-              items.style.transition = 'all .35s';
-            });
-          };
-        };
       }
     }, false);
   }
