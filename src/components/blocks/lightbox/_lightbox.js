@@ -50,8 +50,11 @@
           ${locationRoom}
         </div>
         ` : '';
-      const hyperlink = seed.querySelector('a').href.length > 1 ?
-        `<br/><a class="b-lightbox__link" href="${seed.querySelector('a').href}">Explore object in more depth</a>`
+      const ctaScreen = seed.querySelector('a').href.length > 1 ?
+        `<br/><a class="b-lightbox__cta b-lightbox__cta--screen" href="${seed.querySelector('a').href}">Explore object in more depth</a>`
+        : '';
+      const ctaMobile = seed.querySelector('a').href.length > 1 ?
+        `<a class="b-lightbox__cta b-lightbox__cta--mobile" href="${seed.querySelector('a').href}">Explore object in more depth</a>`
         : '';
       const item = document.createElement('div');
       item.classList.add('b-lightbox__item');
@@ -85,9 +88,10 @@
           <div class="b-lightbox__details">
             <div class="b-lightbox__caption">
               ${seed.querySelector('figcaption').textContent}
-              ${hyperlink}
+              ${ctaScreen}
             </div>
             ${location}
+            ${ctaMobile}
           </div>
         </div>
       `;
