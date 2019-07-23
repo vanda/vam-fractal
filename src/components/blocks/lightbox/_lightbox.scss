@@ -76,10 +76,10 @@
     @include bpMinMedium {
       display: flex;
       flex-grow: 1;
-      height: auto;
+      height: 100%;
       margin: auto;
+      max-height: 800px;
       max-width: 1200px;
-      min-height: 50%;
     }
   }
 
@@ -99,6 +99,10 @@
     margin: auto;
     max-height: calc(100vh - 200px);
     max-width: 100%;
+
+    @include bpMinMedium {
+      max-height: 85%;
+    }
   }
 
   &__figcaption {
