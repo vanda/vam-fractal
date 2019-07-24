@@ -230,12 +230,12 @@
     }
 
     &::after {
-      content: '▸';
+      content: '►';
       display: inline-block;
       position: absolute;
       right: 10px;
       top: 25%;
-      transform: scale(.55, 1.2);
+      transform: scale(.5, .9);
 
       @include bpMinMedium {
         margin: 3px 0 0 6px;
