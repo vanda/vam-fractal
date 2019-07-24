@@ -165,12 +165,11 @@
   }
 
   &__details {
-    //display: none;
-
     @include bpMinMedium {
       background: #393b3f;
       display: inline-flex;
       flex-direction: column;
+      flex-grow: 1;
       height: 100%;
       justify-content: space-between;
       position: absolute;
