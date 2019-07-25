@@ -6,6 +6,7 @@
     const lightbox = document.querySelector('.b-lightbox') || document.createElement('div');
     document.body.appendChild(lightbox);
     lightbox.classList.add('b-lightbox');
+    lightbox.setAttribute('tabindex', 0);
     lightbox.innerHTML = `
       <a class="b-lightbox__dismiss" title="Close" aria-label="Close"></a>
       <div class="b-lightbox__items"></div>
@@ -72,12 +73,12 @@
             <figcaption class="b-lightbox__figcaption">
               ${numberCopyright}
               <div class="b-lightbox__prevnext">
-                <a class="b-lightbox__prev b-lightbox__prev--disabled" title="Previous" aria-label="Previous">
+                <a class="b-lightbox__prev b-lightbox__prev--disabled" href="#" title="Previous" aria-label="Previous">
                   <svg role="img">
                     <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
                   </svg>
                 </a>
-                <a class="b-lightbox__next b-lightbox__next--disabled" title="Next" aria-label="Next">
+                <a class="b-lightbox__next b-lightbox__next--disabled" href="#" title="Next" aria-label="Next">
                   <svg role="img">
                     <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
                   </svg>
@@ -129,9 +130,12 @@
     };
 
     lightbox.advance = (rewind = false) => {
-      lightbox.clipItem(rewind);
-      lightbox.addItem(lightbox._index + (2 * (rewind ? -1 : 1)), rewind);
-      lightbox._index += (1 * (rewind ? -1 : 1));
+      if ((!rewind && lightbox._index < lightboxSeeds.length - 1)
+        || (rewind && lightbox._index > 0)) {
+        lightbox.clipItem(rewind);
+        lightbox.addItem(lightbox._index + (2 * (rewind ? -1 : 1)), rewind);
+        lightbox._index += (1 * (rewind ? -1 : 1));
+      }
     };
 
     document.addEventListener('click', (e) => {
@@ -144,6 +148,18 @@
         lightbox.addItem(lightbox._index + 1);
         lightbox.addItem(lightbox._index - 1, true);
         lightbox._width = lightbox.getBoundingClientRect().width;
+        lightbox.focus();
+
+        const keyHandle = (e3) => {
+          if (e3.key === 'ArrowLeft') {
+            e3.preventDefault();
+            lightbox.advance(true);
+          } else if (e3.key === 'ArrowRight') {
+            e3.preventDefault();
+            lightbox.advance();
+          }
+        };
+        document.addEventListener('keydown', keyHandle, false);
 
         lightbox.onclick = (e2) => {
           if (e2.target.matches('.b-lightbox__item, .b-lightbox__dismiss')) {
@@ -151,6 +167,7 @@
             lightbox.classList.remove('b-lightbox--active');
             items.innerHTML = '';
             lightbox.onclick = null;
+            document.removeEventListener('keydown', keyHandle, false);
           } else if (e2.target.closest('.b-lightbox__next--enabled')) {
             e2.preventDefault();
             lightbox.advance();
