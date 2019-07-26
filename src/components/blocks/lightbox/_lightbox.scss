@@ -234,13 +234,14 @@
     &::after {
       content: '►';
       display: inline-block;
+      font-size: 11px;
       position: absolute;
       right: 10px;
       top: 26%;
       transform: scale(.5, .9);
 
       @include bpMinMedium {
-        margin: 3px 0 0 6px;
+        margin: 4px 0 0 6px;
         right: auto;
       }
     }
@@ -319,6 +320,5 @@
     @include bpMinMedium {
       @include typeSetting(3, regular);
     }
-  }    
-
+  }
 }
