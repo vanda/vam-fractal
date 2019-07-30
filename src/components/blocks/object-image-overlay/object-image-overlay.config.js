@@ -1,10 +1,10 @@
 module.exports = {
-  title: 'Lightbox',
-  label: 'Lightbox',
+  title: 'Object Image Overlay',
+  label: 'Object Image Overlay',
   context: {
     objectCards: [
       {
-        lightboxItem: true,
+        objectImageOverlayItem: true,
         image: {
           320: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/09/f0ae845e-d304-46be-b836-f8520d211df2/320.jpg',
           640: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/09/877ba61d-fabc-40ac-afd1-51a6902e8a49/640.jpg',
@@ -16,7 +16,7 @@ module.exports = {
         caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11, by Raphael, 1515 – 16, Italy.',
         physicalDescription: 'Cartoon for a tapestry.',
         href: 'https://collections.vam.ac.uk/item/O102006/the-miraculous-draught-of-fishes-cartoon-for-a-raphael',
-        lightboxData: {
+        objectImageOverlayData: {
           museumNumber: 'ROYAL LOANS.2',
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: true,
@@ -25,7 +25,7 @@ module.exports = {
         }
       },
       {
-        lightboxItem: true,
+        objectImageOverlayItem: true,
         image: {
           320: 'https://vanda-production-assets.s3.amazonaws.com/2016/04/29/10/51/59/e2d419a2-bf64-4fa6-92e1-01cca82a835e/Blue-glass-form-2560.jpg',
           640: 'https://vanda-production-assets.s3.amazonaws.com/2016/04/29/10/52/00/dd2b8dff-3285-44c9-bc73-f33e16d071ab/Blue-glass-form-2560.jpg',
@@ -37,14 +37,14 @@ module.exports = {
         caption: 'Blue glass form, René Roubicek, 1959, Czechoslovakia.',
         physicalDescription: 'An abstract form sculpted from blue glass.',
         href: 'http://collections.vam.ac.uk/item/O8905/form-roubicek-rene',
-        lightboxData: {
+        objectImageOverlayData: {
           museumNumber: 'C.21-1998',
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: false
         }
       },
       {
-        lightboxItem: true,
+        objectImageOverlayItem: true,
         image: {
           320: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/ef8b1e1a-c8e9-420a-b278-a80fe2010c83/320.jpg',
           640: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/d63b33f5-9500-416a-9d5d-1714015fc097/640.jpg',
@@ -57,7 +57,7 @@ module.exports = {
         physicalDescription: 'A wallpaper print design.'
       },
       {
-        lightboxItem: true,
+        objectImageOverlayItem: true,
         image: {
           320: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/00e4d6c7-df8a-4bac-928e-002837524fe1/320.jpg',
           640: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/ce6a17c4-dfb2-4dad-9d36-9e92187e2ad1/640.jpg',
@@ -69,7 +69,7 @@ module.exports = {
         caption: 'The Research Institute, Lego set, designed by Ellen Kooijman, 2015, Denmark.',
         physicalDescription: 'A Research Institute made of Lego.',
         href: 'http://collections.vam.ac.uk/item/O1298864/the-research-institute-lego-set-kooijman-ellen',
-        lightboxData: {
+        objectImageOverlayData: {
           museumNumber: 'CD.51:1 to 6-2014',
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: true,
