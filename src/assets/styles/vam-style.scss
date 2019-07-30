@@ -17,6 +17,7 @@
 @import '../../components/base/reset/reset'; // Must come after colour and type
 
 // Utility
+@import '../../components/services/animation/animation'; // Must come after colour and type
 @import '../../components/services/svg_icon/svg_icon'; // Must come after colour and type
 @import '../../components/services/themed/themed'; // Must come after colour and type
 @import '../../components/services/object_fit_polyfill/object_fit';
@@ -43,9 +44,11 @@
 @import '../../components/blocks/icon-list/icon-list';
 @import '../../components/blocks/image-credit/image-credit';
 @import '../../components/blocks/input-select/input-select';
+@import '../../components/blocks/object-image-overlay/object-image-overlay';
 @import '../../components/blocks/membership-upsell/membership-upsell';
 @import '../../components/blocks/modal/modal';
 @import '../../components/blocks/newsletter-signup/newsletter-signup';
+@import '../../components/blocks/object-card/object-card';
 @import '../../components/blocks/pagination/pagination';
 @import '../../components/blocks/programme-page-tout/programme-page-tout';
 @import '../../components/blocks/promo/promo';
@@ -58,6 +61,7 @@
 @import '../../components/blocks/search-sidebar-item/search-sidebar-item';
 @import '../../components/blocks/site-footer/site-footer';
 @import '../../components/blocks/toggle-nav/toggle-nav';
+@import '../../components/blocks/video-thumbnail/video-thumbnail';
 @import '../../components/blocks/video-trailer/video-trailer';
 
 // Group

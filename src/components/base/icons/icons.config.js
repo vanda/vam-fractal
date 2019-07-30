@@ -31,6 +31,7 @@ module.exports = {
       'signpost',
       'map',
       'pin',
+      'on-display',
       'price',
       'label',
       'close',
@@ -80,65 +81,6 @@ module.exports = {
           'tumblr',
           'googleplus',
           'flickr'
-        ]
-      }
-    },
-    {
-      name: 'site-icons',
-      label: 'Site icons',
-      context: {
-        icons: [
-          'tfl',
-          'walk',
-          'cycle',
-          'drive',
-          'link',
-          'calendar',
-          'clock',
-          'ticket',
-          'search',
-          'download',
-          'phone',
-          'signpost',
-          'map',
-          'pin',
-          'price',
-          'label',
-          'fullscreen',
-          'quote',
-          'interact',
-          'listen',
-          'watch',
-          'view',
-          'pause',
-          'event-none'
-        ]
-      }
-    },
-    {
-      name: 'interface',
-      label: 'Interface',
-      context: {
-        icons: [
-          'close',
-          'menu-hamburger',
-          'bag',
-          'plus',
-          'minus',
-          'point-up',
-          'point-right',
-          'point-down',
-          'point-left',
-          'fulltriangle-up',
-          'fulltriangle-right',
-          'fulltriangle-down',
-          'fulltriangle-left',
-          'arrow-up',
-          'arrow-right',
-          'arrow-down',
-          'arrow-left',
-          'tick-circle',
-          'link-external'
         ]
       }
     }
