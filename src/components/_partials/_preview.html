@@ -17,7 +17,7 @@
   </head>
 
   <body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%}">
-    {{ yield }}
+    {{ yield | safe }}
 
     <!--[if lte IE 8]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
