@@ -73,6 +73,12 @@
       color: siteColor(vam-white);
     }
 
+    &--black {
+      background-color: rgba(siteColor(vam-black), .8);
+      color: siteColor(vam-grey-8);
+      border-color: siteColor(vam-grey-8);
+    }
+
     &:hover {
       background-color: transparent;
       border-color: siteColor(vam-grey-4);
