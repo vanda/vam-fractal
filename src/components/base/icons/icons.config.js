@@ -60,7 +60,12 @@ module.exports = {
       'arrow-right',
       'arrow-down',
       'arrow-left',
-      'tick-circle'
+      'tick-circle',
+      'account',
+      'card',
+      'gift',
+      'shop-bag',
+      'tick'
     ]
   },
   variants: [
