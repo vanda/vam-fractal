@@ -77,6 +77,12 @@
       background-color: rgba(siteColor(vam-black), .8);
       border-color: siteColor(vam-grey-8);
       color: siteColor(vam-grey-8);
+
+      &:hover {
+        background-color: siteColor(vam-grey-8);
+        border-color: siteColor(vam-black);
+        color: siteColor(vam-black);
+      }
     }
 
     &:hover {
