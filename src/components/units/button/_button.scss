@@ -78,7 +78,7 @@
       border-color: siteColor(vam-grey-8);
       color: siteColor(vam-grey-8);
 
-      &:hover {
+      &#{&}:hover {
         background-color: siteColor(vam-grey-8);
         border-color: siteColor(vam-black);
         color: siteColor(vam-black);
