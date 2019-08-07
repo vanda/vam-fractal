@@ -47,6 +47,10 @@
     &:hover {
       background-color: lighten(siteColor(vam-black), 10);
       border: 1px solid lighten(siteColor(vam-black), 10);
+
+      &.s-themed--color--hover {
+        background-color: siteColor(vam-black);
+      }
     }
   }
 
@@ -71,18 +75,6 @@
       background-color: rgba(siteColor(vam-black), .8);
       border-color: siteColor(primary-green);
       color: siteColor(vam-white);
-    }
-
-    &--black {
-      background-color: rgba(siteColor(vam-black), .8);
-      border-color: siteColor(vam-grey-8);
-      color: siteColor(vam-grey-8);
-
-      &#{&}:hover {
-        background-color: siteColor(vam-grey-8);
-        border-color: siteColor(vam-black);
-        color: siteColor(vam-black);
-      }
     }
 
     &:hover {

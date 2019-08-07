@@ -47,6 +47,15 @@ module.exports = {
       }
     },
     {
+      name: 'themed-black',
+      context: {
+        title: 'themed black button',
+        text: 'Find out more',
+        modifiers: ['black', 'arrowed'],
+        themed: ['border-color', 'border-color--hover', 'color--hover']
+      }
+    },
+    {
       name: 'outlined',
       context: {
         text: 'Book now',
@@ -54,8 +63,7 @@ module.exports = {
         variants: [
           ['outlined', 'arrowed'],
           ['outlined', 'micro'],
-          ['outlined--primary', 'arrowed'],
-          ['outlined', 'outlined--black', 'arrowed']
+          ['outlined--primary', 'arrowed']
         ]
       }
     }
