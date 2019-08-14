@@ -15,8 +15,8 @@
 
     oic.addItem = (index, prepend = false) => {
       const seed = oicSeeds[index] || oicSeeds[0];
-      const data = seed.dataset.oic ?
-        JSON.parse(seed.dataset.oic)
+      const data = seed.dataset.objectImageOverlay ?
+        JSON.parse(seed.dataset.objectImageOverlay)
         : null;
       const museumNumber = data && data.museumNumber ?
         `Museum number: <span itemprop="identifier">${data.museumNumber}</span>`
