@@ -10,7 +10,7 @@ module.exports = {
       name: 'small',
       context: {
         action: 'Show more',
-        icon: 'plus-thin',
+        icon: 'plus',
         modifiers: ['small']
       }
     },
@@ -18,7 +18,7 @@ module.exports = {
       name: 'light',
       context: {
         action: 'More events',
-        icon: 'plus-thin',
+        icon: 'plus',
         modifiers: ['light']
       }
     },
