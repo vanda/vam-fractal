@@ -2,66 +2,58 @@
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 200;
-  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'), url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+  src: url('../fonts/V&A TheSansA6-4SemiLight.woff2') format('woff2'), url('../fonts/V&A TheSansA6-4SemiLight.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: url('../fonts/TheSans_LP_300_Light.woff2') format('woff2'), url('../fonts/TheSans_LP_300_Light.woff') format('woff');
+  font-style: italic;
+  font-weight: 200;
+  src: url('../fonts/V&A TheSansA6-4SemiLightItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-4SemiLightItalic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular.woff') format('woff');
+  src: url('../fonts/V&A TheSansA6-5Plain.woff2') format('woff2'), url('../fonts/V&A TheSansA6-5Plain.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular-Italic.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular-Italic.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 500;
-  src: url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff2') format('woff2'), url('../fonts/TheSans_LP_500_Regular-Italic-Numbers.woff') format('woff');
-  unicode-range: U+0030-0039; // Gets just the numbers from this font
+  src: url('../fonts/V&A TheSansA6-5PlainItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-5PlainItalic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/TheSans_LP_600_SemiBold.woff2') format('woff2'), url('../fonts/TheSans_LP_600_SemiBold.woff') format('woff');
+  src: url('../fonts/V&A TheSansA6-6SemiBold.woff2') format('woff2'), url('../fonts/V&A TheSansA6-6SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'The Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../fonts/V&A TheSansA6-6SemiBoldItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-6SemiBoldItalic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold.woff') format('woff');
+  src: url('../fonts/V&A TheSansA6-7Bold.woff2') format('woff2'), url('../fonts/V&A TheSansA6-7Bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'The Sans';
   font-style: italic;
   font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold-Italic.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold-Italic.woff') format('woff');
+  src: url('../fonts/V&A TheSansA6-7BoldItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-7BoldItalic.woff') format('woff');
 }
 
-@font-face {
-  font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 700;
-  src: url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff2') format('woff2'), url('../fonts/TheSans_LP_700_Bold-Italic-Numbers.woff') format('woff');
-  unicode-range: U+0030-0039; // Gets just the numbers from this font
-}
 
 $font-family: (
   text: ('The Sans', Arial, Helvetica, sans-serif),
