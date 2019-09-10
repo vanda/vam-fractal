@@ -321,4 +321,12 @@
       @include typeSetting(3, regular);
     }
   }
+
+  &__visit {
+    @include typeSetting(3, regular);
+    display: block;
+    line-height: 1.56;
+    margin: 10px 0 0;
+    text-decoration: underline;
+  }
 }

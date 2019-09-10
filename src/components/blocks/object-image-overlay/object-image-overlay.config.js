@@ -74,7 +74,8 @@ module.exports = {
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: true,
           locationSite: 'V&A South Kensington',
-          locationRoom: 'Room 74a, Rapid Response Collecting'
+          locationRoom: 'Room 74a, Rapid Response Collecting',
+          visitUrl: 'https://www.bangoid.co.uk'
         }
       }
     ]

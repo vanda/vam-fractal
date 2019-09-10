@@ -44,18 +44,23 @@
       const locationRoom = data && data.locationRoom ?
         `<div class="b-object-image-overlay__location-room">${data.locationRoom}</div>`
         : '';
-      const location = locationSite || locationRoom ?
+      const visitUrl = data && data.visitUrl ?
+        `<a class="b-object-image-overlay__visit" href="${data.visitUrl}">Find out how to visit this object</a>`
+        : '';
+      const location = locationSite || locationRoom || visitUrl ?
         `<div class="b-object-image-overlay__location">
           ${onDisplay}
           ${locationSite}
           ${locationRoom}
+          ${visitUrl}
         </div>
         ` : '';
-      const ctaScreen = seed.querySelector('a').href.length > 1 ?
-        `<br/><a class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${seed.querySelector('a').href}">Explore object in more depth</a>`
+      const alink = seed.querySelector('a');
+      const ctaScreen = alink.getAttribute('href').length > 1 ?
+        `<br/><a class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${alink.href}">Explore object in more depth</a>`
         : '';
-      const ctaMobile = seed.querySelector('a').href.length > 1 ?
-        `<a class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${seed.querySelector('a').href}">Explore object in more depth</a>`
+      const ctaMobile = alink.getAttribute('href').length > 1 ?
+        `<a class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${alink.href}">Explore object in more depth</a>`
         : '';
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
