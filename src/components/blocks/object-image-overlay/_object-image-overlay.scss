@@ -258,7 +258,6 @@
   &__location-status {
     @include typeSetting(3, regular);
     display: inline;
-    line-height: 1.56;
 
     &::after {
       content: ' at';
@@ -274,8 +273,6 @@
       color: siteColor(vam-black);
       display: flex;
       left: 0;
-      letter-spacing: 1px;
-      line-height: 16px;
       padding: 3px 10px 2px 7px;
       position: absolute;
       top: 0;
@@ -296,7 +293,6 @@
   &__location-site {
     @include typeSetting(3, regular);
     display: inline;
-    line-height: 1.56;
 
     &::after {
       content: ', ';
@@ -305,6 +301,7 @@
     @include bpMinMedium {
       @include typeSetting(3, bold);
       display: block;
+      margin: 0 0 7px;
 
       &::after {
         display: none;
@@ -314,19 +311,18 @@
 
   &__location-room {
     @include typeSetting(3, regular);
-    display: inline;
-    line-height: 1.56;
+    display: inline-block;
+    margin: 0 0 14px;
 
     @include bpMinMedium {
       @include typeSetting(3, regular);
+      margin: 0 0 7px;
     }
   }
 
   &__visit {
     @include typeSetting(3, regular);
     display: block;
-    line-height: 1.56;
-    margin: 10px 0 0;
     text-decoration: underline;
   }
 }
