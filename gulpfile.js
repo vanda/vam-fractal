@@ -11,7 +11,9 @@ const browserify    = require('browserify');
 const concat        = require('gulp-concat');
 const del           = require('del');
 const eslint        = require('gulp-eslint');
+const fs            = require('fs');
 const glob          = require('glob');
+const replace       = require('gulp-replace');
 const rename        = require('gulp-rename');
 const sass          = require('gulp-sass');
 const sassLint      = require('gulp-sass-lint');
@@ -25,7 +27,7 @@ const uglify        = require('gulp-uglify');
 // Paths
 const paths = {
   src: `${__dirname}/src/`,
-  dest: `${__dirname}/tmp/`,
+  tmp: `${__dirname}/tmp/`,
   build: `${__dirname}/www/`,
   dist: `${__dirname}/dist/`
 };
@@ -34,14 +36,12 @@ const paths = {
 const surgeURL = 'https://vam-design-guide.surge.sh';
 
 
-//---
 // Empty temp folders
 function clean() {
-  return del([`${paths.dest}`, `${paths.build}`]);
+  return del([`${paths.tmp}`, `${paths.build}`]);
 }
 
 
-//---
 // Setup a local server
 function serve() {
   const server = fractal.web.server({
@@ -54,7 +54,6 @@ function serve() {
 }
 
 
-//---
 // Create a static build of fractal
 // Build location defined in `fractal.js`
 function staticBuild() {
@@ -67,7 +66,6 @@ function staticBuild() {
 }
 
 
-//---
 // Deploy to surge
 function deploy() {
   return surge({
@@ -77,7 +75,6 @@ function deploy() {
 }
 
 
-//---
 // Style
 function styles() {
   // Look at replacing a lot of this with postCSS
@@ -88,19 +85,17 @@ function styles() {
     }).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(`${paths.dest}/assets/styles`));
+    .pipe(gulp.dest(`${paths.tmp}/assets/styles`));
 }
 
 
-//---
 // Fonts
 function fonts() {
   return gulp.src(`${paths.src}/assets/fonts/**/*`)
-    .pipe(gulp.dest(`${paths.dest}/assets/fonts`));
+    .pipe(gulp.dest(`${paths.tmp}/assets/fonts`));
 }
 
 
-//---
 // Scripts
 const opts = {
   transform: [
@@ -125,7 +120,7 @@ const newBundle = entry => {
     .pipe(uglify())
     .pipe(rename('vamscript.js'))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(`${paths.dest}/assets/scripts`));
+    .pipe(gulp.dest(`${paths.tmp}/assets/scripts`));
   }
 
   return rebundle();
@@ -133,7 +128,7 @@ const newBundle = entry => {
 
 function scripts() {
   gulp.src(`${paths.src}/assets/scripts/precompiled/*.js`)
-    .pipe(gulp.dest(`${paths.dest}/assets/scripts`));
+    .pipe(gulp.dest(`${paths.tmp}/assets/scripts`));
 
   glob(`${paths.src}/assets/scripts/*.js`, function(err, files) {
     var tasks = files.map(function(entry) {
@@ -151,7 +146,6 @@ function swallowError (error) {
 }
 
 
-//---
 // SVG Icons
 function svg() {
   return gulp.src(`${paths.src}/assets/svg/*.svg`)
@@ -161,29 +155,44 @@ function svg() {
       templates: [`${paths.src}/assets/templates/svg-template.svg`],
       title: false,
     }))
-    .pipe(gulp.dest(`${paths.dest}/assets/svg`));
+    .pipe(gulp.dest(`${paths.tmp}/assets/svg`));
 }
 
+function releaseCSS() {
+  return gulp.src(`${paths.tmp}/assets/styles/vam-style.css*`)
+    .pipe(gulp.dest(`${paths.dist}/css`));
+}
 
-//---
 // Prepare for release
 function releaseSVG() {
-  return gulp.src(`${paths.dest}/assets/svg/*.svg`)
+  return gulp.src(`${paths.tmp}/assets/svg/*.svg`)
     .pipe(rename('vamicons.svg'))
     .pipe(gulp.dest(`${paths.dist}/svg`));
 }
 
-function releaseCSS() {
-  return gulp.src(`${paths.dest}/assets/styles/vam-style.css*`)
-    .pipe(gulp.dest(`${paths.dist}/css`));
+let vamIcons = '';
+function readVamIcons() {
+  fs.readFile(`${paths.dist}/svg/vamicons.svg`, 'utf8', (err, data) => {
+    vamIcons = data;
+  });
+
+  return gulp.src('package.json');
 }
 
 function releaseJS() {
-  return gulp.src(`${paths.dest}/assets/scripts/*.js*`)
+  return gulp.src(`${paths.tmp}/assets/scripts/*.js*`)
+    .pipe(replace(/\\n\s*/g, ''))
+    .pipe(replace(/\>\<use [^#]+\/svg-template.svg#([^"]+)"\>\<\/use\>\<\//g, (match, p1, offset, string) => {
+      const re = new RegExp(`\<symbol( id="${p1}".+)symbol\>`);
+      const match2 = vamIcons.match(re);
+      if (match2) {
+        const svg = match2[1];
+        return svg.replace(/\<title[^\<]+\<\/title\>/g, '');
+      }
+    }))
     .pipe(gulp.dest(`${paths.dist}/scripts`));
 }
 
-//---
 // Linters
 function sassLinter() {
   return gulp.src(`${paths.src}/**/*.scss`)
@@ -199,7 +208,6 @@ function jsLinter() {
     .pipe(eslint.failOnError());
 }
 
-//---
 // Watch
 function watch() {
   serve();
@@ -210,10 +218,10 @@ function watch() {
 }
 
 const compile = gulp.series(clean, gulp.parallel(fonts, svg, styles, scripts));
-const buildDistAssets = gulp.parallel(releaseSVG, releaseCSS, releaseJS);
+const buildDistAssets = gulp.parallel(releaseCSS, gulp.series(releaseSVG, readVamIcons, releaseJS));
 const linter = gulp.series(sassLinter, jsLinter);
 
 gulp.task('dev', gulp.series(compile, watch));
-gulp.task('deploy', gulp.series(linter, compile, staticBuild, deploy));
+gulp.task('build', gulp.series(linter, compile, buildDistAssets, staticBuild));
 gulp.task('dist', gulp.series(linter, compile, buildDistAssets, staticBuild, deploy, clean));
 gulp.task('lint', gulp.series(linter));
