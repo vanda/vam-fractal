@@ -19,6 +19,7 @@
   "scripts": {
     "deploy": "node_modules/.bin/gulp deploy",
     "dev": "node_modules/.bin/gulp dev",
+    "build": "node_modules/.bin/gulp build",
     "dist": "node_modules/.bin/gulp dist",
     "lint": "node_modules/.bin/gulp lint || true",
     "sasslint": "node_modules/.bin/sass-lint -c .sass-lint.yml 'src/**/*.scss' -v -q || true",
@@ -51,6 +52,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-eslint": "^3.0.1",
     "gulp-rename": "^1.2.3",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^3.2.1",
     "gulp-sass-lint": "^1.4.0",
     "gulp-sourcemaps": "^2.6.4",
