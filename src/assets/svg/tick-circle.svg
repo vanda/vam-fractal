@@ -6,8 +6,8 @@
   <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
  </g>
  <g>
-  <g fill-rule="evenodd" fill="none" id="Membership-upsell-(mobile)">
-   <g stroke="null" fill="#6F777B" id="Member-promo-Copy">
+  <g fill-rule="evenodd" fill="currentColor" id="Membership-upsell-(mobile)">
+   <g stroke="null" id="Member-promo-Copy">
     <g stroke="null" id="Group-6">
      <g stroke="null" id="Group-5">
       <g stroke="null" id="Group">
