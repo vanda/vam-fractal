@@ -65,7 +65,8 @@ module.exports = {
       'card',
       'gift',
       'shop-bag',
-      'tick'
+      'tick',
+      'delivery'
     ]
   },
   variants: [
