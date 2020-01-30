@@ -1,0 +1,11 @@
+<div class="stc-lead-image" aria-label="{{ collectionTitle }}">
+  <a class="stc-lead-image__anchor" href="{{ collectionUrl }}">
+    <div class="stc-lead-image__media">
+      <div class="stc-lead-image__media-inner js-object-fit-container">
+        <img srcset="{{ collectionImage[240] }} 240w,
+                     {{ collectionImage[500] }} 500w"
+            alt="{{ collectionTitle }}" class="stc-lead-image__media-image" itemprop="contentUrl" src="{{ collectionImage[240] }}">
+      </div>
+    </div>
+  </a>
+</div>
