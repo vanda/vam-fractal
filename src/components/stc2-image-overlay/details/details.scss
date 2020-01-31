@@ -22,77 +22,9 @@
     &__copyright-holder {
       @include typeSetting(2, regular);
     }
-  
-    &__prevnext-container {
-      @include bpMinMedium {
-        display: block;
-        flex: 1 0 auto;
-        text-align: right;
-      }
-      max-width: 660px;
-    }
 
-    &__prevnext {
-      display: flex;
-      flex-direction: row;
-    }
-
-    &__prev-container, &__next-container {
+    &__carosel-container {
       flex: 1 0 auto;
-      align-self: center;
-      text-align: center;
-    }
-
-    &__image-carosel {
-      display: flex;
-      flex-direction: row;
-    }
- 
-    &__image-preview-container {
-      width: 100px;
-      height: 86px;
-      margin: 0px 6px 0px 6px;
-      background-color: gray;
-      &--selected {
-        outline: solid 5px #ffffff;
-        &:after {
-          content: '';
-          width: 448px;
-          height: 86px;
-          background-color: black;
-          opacity: 0.9;
-          margin-left: 12px;
-          position: absolute;          
-        }
-      }
-    }
-
-    &__prev,
-    &__next {
-      border: 1px solid #fff;
-      border-radius: 100%;
-      color: #fff;
-      cursor: default;
-      display: inline-flex;
-      height: 30px;
-      opacity: .4;
-      width: 30px;
-  
-      svg {
-        height: 12px;
-        margin: auto;
-        width: 12px;
-      }
-  
-      &--enabled {
-        cursor: pointer;
-        opacity: 1;
-  
-        &:hover,
-        &:focus {
-          background: #ffffff1a;
-        }
-      }
     }
   
     &__details {
