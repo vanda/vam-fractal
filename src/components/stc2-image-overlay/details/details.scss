@@ -23,7 +23,7 @@
       @include typeSetting(2, regular);
     }
 
-    &__carosel-container {
+    &__carosel-container, &__caption-container, &__zoom-container {
       flex: 1 0 auto;
     }
   
