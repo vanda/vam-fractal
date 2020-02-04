@@ -11,33 +11,33 @@
       flex-direction: row;
     }
 
-    &__prev-container, &__next-container {
+    &__navigation-container {
       flex: 1 0 auto;
+      visibility: hidden;
       align-self: center;
       text-align: center;
+      margin: 0px 12px 0px 12px;
     }
 
     &__image-carosel {
       display: flex;
+      max-width: 580px;
       flex-direction: row;
+      align-items: center;
+      overflow: scroll;
     }
  
     &__image-preview-container {
-      width: 100px;
+      min-width: 100px;
       height: 86px;
-      margin: 0px 6px 0px 6px;
-      background-color: gray;
+      margin: 0px 12px 0px 0px;
+      background-color: siteColor(vam-grey-5);      
+      &:hover {
+        border: solid 5px #b7b8bd;
+        cursor: pointer;
+      }      
       &--selected {
-        outline: solid 5px #ffffff;
-        &:after {
-          content: '';
-          width: 448px;
-          height: 86px;
-          background-color: black;
-          opacity: 0.9;
-          margin-left: 12px;
-          position: absolute;          
-        }
+        border: solid 5px #ffffff;
       }
     }
 
