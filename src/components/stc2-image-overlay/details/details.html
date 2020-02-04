@@ -1,7 +1,7 @@
 <div class="image-overlay-detail">
     <div class="image-overlay-detail__caption-container">
         <div class="image-overlay-detail__image-counter">
-            Image xx out of xx
+            Image <span class="image-overlay-detail__current-image"></span> out of <span class="image-overlay-detail__total-number-of-images"></span>
         </div> 
         <div class="image-overlay-detail__copyright-holder">
             © Victoria and Albert Museum, London
@@ -13,9 +13,15 @@
         </div>
     </div>
     <div class="image-overlay-detail__carosel-container">
-            {%- render "@image-carosel" -%}
+            {% if not more_than_five_images %}
+                {%- render "@image-carosel" -%}
+            {% endif %}
+
+            {% if more_than_five_images %}
+                {%- render "@image-carosel--more-than-five-images" -%}
+            {% endif %}
     </div>
     <div class="image-overlay-detail__zoom-container">
-        
-    </div>         
+        {%- render "@zoom" -%}
+    </div>
 </div>

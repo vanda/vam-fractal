@@ -13,4 +13,7 @@ require('../../components/blocks/toggle-nav/_toggle-nav.js');
 require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');
 
+require('../../components/stc2-image-overlay/image-carosel/_image-carosel.js');
+require('../../components/stc2-image-overlay/details/details.js');
+
 svg4everybody();
