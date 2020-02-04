@@ -12,4 +12,18 @@
 
 	document.querySelector(".image-carosel__next").onclick = function(){scrollCarosel(140);};
 	document.querySelector(".image-carosel__prev").onclick = function(){scrollCarosel(-140);};
+
+	document.querySelector(".image-carosel__image-carosel").addEventListener("scroll", function(e){
+		var scrollLeft = e.target.scrollLeft;
+		var scrollWidth = e.target.scrollWidth;
+		var width = e.target.offsetWidth;
+		if (scrollLeft <= 120) {
+			document.querySelector(".image-carosel__conceal-left").style.width = scrollLeft.toString() + 'px';
+		} 
+		if (scrollWidth - (scrollLeft + width) <= 120) {
+			document.querySelector(".image-carosel__conceal-right").style.width = (scrollWidth - (scrollLeft + width)).toString() + 'px';
+		}
+	});
+
+
 })()
