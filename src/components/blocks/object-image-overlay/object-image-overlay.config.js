@@ -21,7 +21,8 @@ module.exports = {
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: true,
           locationSite: 'V&A South Kensington',
-          locationRoom: 'Room 48a, The Raphael Cartoons'
+          locationRoom: 'Room 48a, The Raphael Cartoons',
+          visitUrl: 'https://www.bangoid.co.uk'
         }
       },
       {
@@ -54,7 +55,11 @@ module.exports = {
           2560: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/41/7dfc2083-58d3-4928-ba07-3cf428eadad6/2560.jpg'
         },
         caption: 'Fruits from the Garden and the Field, rainbow wallpaper (detail). © Fallen Fruit, 2019.',
-        physicalDescription: 'A wallpaper print design.'
+        physicalDescription: 'A wallpaper print design.',
+        objectImageOverlayData: {
+          onDisplay: false,
+          storageMessage: 'Some storage message'
+        }
       },
       {
         objectImageOverlayItem: true,
@@ -73,6 +78,7 @@ module.exports = {
           museumNumber: 'CD.51:1 to 6-2014',
           copyright: '&copy; Victoria and Albert Museum, London',
           onDisplay: true,
+          displayOverride: 'You can see this somewhere else',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 74a, Rapid Response Collecting',
           visitUrl: 'https://www.bangoid.co.uk'

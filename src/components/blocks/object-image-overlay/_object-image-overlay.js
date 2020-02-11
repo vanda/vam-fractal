@@ -38,20 +38,28 @@
           On display
         </div>`
         : '';
-      const locationSite = data && data.locationSite ?
-        `<div class="b-object-image-overlay__location-site">${data.locationSite}</div>`
-        : '';
-      const locationRoom = data && data.locationRoom ?
-        `<div class="b-object-image-overlay__location-room">${data.locationRoom}</div>`
-        : '';
+      let locationCopy = '';
+      if (data && data.onDisplay) {
+        locationCopy = data.displayOverride;
+        if (!locationCopy) {
+          const locationSite = data.locationSite ?
+            `<div class="b-object-image-overlay__location-site">${data.locationSite}</div>`
+            : '';
+          const locationRoom = data.locationRoom ?
+            data.locationRoom
+            : '';
+          locationCopy = locationSite + locationRoom;
+        }
+      } else if (data && data.onDisplay !== null && !data.onDisplay) {
+        locationCopy = data.storageOverride || 'This object is currently not on display';
+      }
       const visitUrl = data && data.visitUrl ?
         `<a class="b-object-image-overlay__visit" href="${data.visitUrl}">Find out how to visit this object</a>`
         : '';
-      const location = locationSite || locationRoom || visitUrl ?
+      const location = locationCopy || visitUrl ?
         `<div class="b-object-image-overlay__location">
           ${onDisplay}
-          ${locationSite}
-          ${locationRoom}
+          <div class="b-object-image-overlay__location-copy">${locationCopy}</div>
           ${visitUrl}
         </div>
         ` : '';

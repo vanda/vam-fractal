@@ -260,7 +260,7 @@
     display: inline;
 
     &::after {
-      content: ' at';
+      content: ' at ';
     }
       
     svg {
@@ -290,8 +290,18 @@
     }
   }    
 
-  &__location-site {
+  &__location-copy {
     @include typeSetting(3, regular);
+    display: inline-block;
+    margin: 0 0 14px;
+
+    @include bpMinMedium {
+      display: block;
+      margin: 0 0 7px;
+    }
+  }
+
+  &__location-site {
     display: inline;
 
     &::after {
@@ -306,17 +316,6 @@
       &::after {
         display: none;
       }
-    }
-  }    
-
-  &__location-room {
-    @include typeSetting(3, regular);
-    display: inline-block;
-    margin: 0 0 14px;
-
-    @include bpMinMedium {
-      @include typeSetting(3, regular);
-      margin: 0 0 7px;
     }
   }
 
