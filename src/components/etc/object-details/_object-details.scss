@@ -1,40 +1,43 @@
 .etc-background {
-	background-color: siteColor(vam-grey-1);
+    background-color: siteColor(vam-grey-1);
 }
 
 .etc-details {
-	color: siteColor(vam-white);
-	&__row {
-		border-style: dashed;
-		border-color: siteColor(vam-grey-4);
-		border-width: 1px 0px 1px 0px;
-		min-height: 46px;
-	}
-	&__cell {
-		padding: 10px 10px 10px 0px;
-	}
-	&__cell-name {
-		padding-left: 0px;
-        @include typeSetting(3, semi-bold, uppercase);
-		width: 165px; 
-	}
-	&__cell-data {
-		height: 50px;
-		padding-left: 20px;
-		@include typeSetting(3, light);
-		color: siteColor(vam-grey-4);
-	}
-	&__controlled-vocab {
-		@include typeSetting(1, light);
-		border: solid themeColor(silent-green) 1px;
-		border-radius: 4px;
-		color: siteColor(vam-white);
-		padding: 2px 7px 2px 7px;
-		margin-right: 10px;
-		&:hover {
-			background-color: themeColor(silent-green);
-			color: siteColor(vam-grey-1);
-			cursor: pointer;
-		}
-	}
+    color: siteColor(vam-white);
+    &__row {
+        border-style: dashed;
+        border-color: siteColor(vam-grey-4);
+        border-width: 1px 0px 1px 0px;
+        min-height: 46px;
+    }
+    &__cell {
+        padding: 12px 10px 10px 0px;
+    }
+    &__cell-name {
+        padding-left: 0px;
+        @include typeSetting(3, bold, uppercase);
+        width: 165px;
+    }
+    &__cell-data {
+        height: 50px;
+        padding-left: 20px;
+        @include typeSetting(3, light);
+        color: siteColor(vam-grey-4);
+    }
+    &__controlled-vocab-string-container {
+        padding-bottom: 10px;
+    }
+    &__controlled-vocab {
+        @include typeSetting(1, light);
+        border: solid themeColor(silent-green) 1px;
+        border-radius: 4px;
+        color: siteColor(vam-white);
+        padding: 2px 7px 2px 7px;
+        margin-right: 10px;
+        &:hover {
+            background-color: themeColor(silent-green);
+            color: siteColor(vam-grey-1);
+            cursor: pointer;
+        }
+    }
 }
