@@ -4,6 +4,12 @@
 
 .etc-details {
     color: siteColor(vam-white);
+    &__title {
+        color: siteColor(vam-white);
+        text-align: center;
+        @include typeSetting(5, bold, uppercase);
+        padding-bottom: 35px;
+    }
     &__row {
         border-style: dashed;
         border-color: siteColor(vam-grey-4);
