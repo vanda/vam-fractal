@@ -3,7 +3,7 @@
 }
 
 .etc-details {
-    color: siteColor(vam-white);
+    color: siteColor(vam-grey-4);
     &__title {
         color: siteColor(vam-white);
         text-align: center;
@@ -24,13 +24,13 @@
     &__cell-name {
         padding-left: 0px;
         @include typeSetting(3, bold, uppercase);
+        color: siteColor(vam-white);
         width: 165px;
     }
     &__cell-data {
         height: 50px;
         padding-left: 20px;
         @include typeSetting(3, light);
-        color: siteColor(vam-grey-4);
     }
     &__controlled-vocab-string-container {
         padding-bottom: 10px;
