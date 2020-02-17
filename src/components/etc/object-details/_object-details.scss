@@ -7,7 +7,9 @@
     &__title {
         color: siteColor(vam-white);
         text-align: center;
-        @include typeSetting(5, bold, uppercase);
+        @include typeSetting(4, bold);
+        letter-spacing: 3.38px;
+        text-transform: uppercase;
         padding-bottom: 35px;
     }
     &__row {
