@@ -1,6 +1,4 @@
-.b-object-image-overlay {
-  display: none;
-  
+.etc-image-overlay {
   &--active {
     animation: opacityFadeIn .2s;
     background-color: rgba(29, 30, 32, .98);
@@ -27,7 +25,6 @@
 
     &::before,
     &::after {
-      background: #fff;
       content: '';
       height: 100%;
       margin: auto;
@@ -64,6 +61,7 @@
   }
 
   &__content {
+    background: #292a2b;
     color: #fff;
     height: 100%;
     margin: auto 10px;
@@ -75,8 +73,6 @@
       flex-grow: 1;
       height: 100%;
       margin: auto;
-      max-height: 800px;
-      max-width: 1200px;
     }
   }
 
@@ -86,9 +82,7 @@
     justify-content: space-between;
 
     @include bpMinMedium {
-      background: #292a2b;
-      padding: 32px 60px;
-      width: 65%;
+      width: 100%;
     }
   }    
 
@@ -104,8 +98,6 @@
 
   &__figcaption {
     @include typeSetting(2, regular);
-    border: solid siteColor(vam-grey-3);
-    border-width: 0 0 1px;
     display: flex;
     line-height: 1.7;
     padding: 8px 60px 8px 0;
