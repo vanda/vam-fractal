@@ -7,6 +7,7 @@
     width: 100%;
     color: siteColor(vam-grey-4);
     &__cell-concealer-button {
+        pointer-events: none;
         background-color: #ceffd6;
         width: 16px;
         height: 16px;
@@ -56,9 +57,10 @@
         padding-bottom: 10px;
     }
     &__cell-concealer-text {
+        pointer-events: none;
         color: siteColor(vam-white);
     }
-    &__cell-concealer {
+    &__cell-concealer, &__cell-revealer {
         padding: 10px;
         height: 40px;
         position: relative;
@@ -67,6 +69,8 @@
             text-decoration: underline;
             cursor: pointer;
         }
+    }
+    &__cell-concealer {
         &::before {
             position: absolute;
             content: '';
@@ -75,7 +79,7 @@
             width: 100%;
             top: -100px;
             background-image: linear-gradient(to bottom, rgba(255,0,0,0), #393b3f);
-        }
+        }    
     }
     &__controlled-vocab {
         @include typeSetting(1, light);
