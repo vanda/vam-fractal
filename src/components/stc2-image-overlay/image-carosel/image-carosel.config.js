@@ -42,7 +42,13 @@ module.exports = {
       				},
       				{
       					src: ''
-      				}      				
+      				},
+                              {
+                                    src: ''
+                              },
+                              {
+                                    src: ''
+                              }                                  
       			]
 	    	}
 	    }

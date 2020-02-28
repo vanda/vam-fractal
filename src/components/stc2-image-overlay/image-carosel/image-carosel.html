@@ -1,4 +1,4 @@
-<div class="image-carosel{% for m in modifiers %} image-carosel--{{ m }}{% endfor %} ">
+<div class="image-carosel">
     <div class="image-carosel__prevnext">
         <div class="image-carosel__navigation-container">
            <a class="image-carosel__prev" href="#" title="Previous" aria-label="Previous">
@@ -8,15 +8,15 @@
             </a>
         </div>
         <div class="image-carosel__image-carosel">
-            <div class="image-carosel__conceal-left"></div>
             {% for i in images %}
-                <div class="image-carosel__image-preview-container image-carosel__image-preview-container{% if i.selected === true %}--selected{% endif %}"
+                <div class="image-carosel__image-preview-container"
                 data-image-index={{loop.index0}}>
                     <div class="image-carosel__image-preview"></div>
                 </div>     
             {% endfor %}
-            <div class="image-carosel__conceal-right"></div>
         </div>
+        <div class="image-carosel__conceal-left"></div>        
+        <div class="image-carosel__conceal-right"></div>
         <div class="image-carosel__navigation-container">
             <a class="image-carosel__next image-carosel__next--enabled" href="#" title="Next" aria-label="Next">
                 <svg role="img">
