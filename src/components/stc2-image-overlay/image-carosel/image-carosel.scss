@@ -24,10 +24,8 @@
     background-image: linear-gradient(to right, rgba(29,30,32,0), #1d1e20);
   }
 
-  @include bpMinMedium {
-      display: block;
-      text-align: right;
-  }
+  display: block;
+  text-align: right;
   max-width: 660px;
   background: siteColor(vam-black);
 
@@ -46,12 +44,16 @@
   }
 
   &__image-carosel {
-    display: flex;
-    max-width: 580px;
-    flex-direction: row;
-    position: relative;
-    align-items: center;
-    overflow: hidden;
+    display: none;
+
+    @include bpMinMedium {
+      display: flex;
+      max-width: 580px;
+      flex-direction: row;
+      position: relative;
+      align-items: center;
+      overflow: hidden;
+    }
   }
 
   &__image-preview-container {

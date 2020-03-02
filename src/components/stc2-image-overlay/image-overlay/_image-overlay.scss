@@ -1,4 +1,10 @@
 .etc-image-overlay {
+  @include bpMinMedium {
+    height: 718px;
+  }
+
+  height: 100%;
+
   &--active {
     animation: opacityFadeIn .2s;
     background-color: rgba(29, 30, 32, .98);
@@ -46,10 +52,8 @@
     position: relative;
     width: 300vw;
 
-    @include bpMinMedium {
       padding: 0;
-    }
-
+   
   }
 
   &__item {
@@ -61,39 +65,45 @@
   }
 
   &__content {
-    background: #292a2b;
+    background: rgba(41, 42, 43, 0.8);
     color: #fff;
     height: 100%;
     margin: auto 10px;
     overflow: auto;
     position: relative;
-
-    @include bpMinMedium {
-      display: flex;
-      flex-grow: 1;
-      height: 100%;
-      margin: auto;
-    }
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    margin: auto;
   }
 
   &__figure {
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-
-    @include bpMinMedium {
-      width: 100%;
-    }
+    height: 570px;
+    position: relative;
   }    
 
   &__image {
-    margin: auto;
-    max-height: calc(100vh - 200px);
-    max-width: 100%;
+    display: none;
+    &--active {
+      display: block;
+    }
+
+    width: 100%;
 
     @include bpMinMedium {
-      max-height: 85%;
+      max-height: 535px;
+      max-width: 735px;
     }
+
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
   }
 
   &__figcaption {
@@ -101,22 +111,19 @@
     display: flex;
     line-height: 1.7;
     padding: 8px 60px 8px 0;
-
-    @include bpMinMedium {
-      border-width: 1px 0 0;
-      margin-top: 50px;
-      padding: 4px 0 0;
-    }
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    border-width: 1px 0 0;
+    padding: 4px 0 0;
   }    
 
   &__prevnext {
     display: none;
 
-    @include bpMinMedium {
       display: block;
       flex: 1 0 auto;
       text-align: right;
-    }
   }
 
   &__prev,
@@ -154,7 +161,7 @@
   }
 
   &__details {
-    @include bpMinMedium {
+
       background: #393b3f;
       display: inline-flex;
       flex-direction: column;
@@ -165,7 +172,6 @@
       right: 0;
       top: 0;
       width: 35%;
-    }
   }    
 
   &__caption {
@@ -175,11 +181,9 @@
     max-width: 600px;
     padding: 15px 0 12px;
 
-    @include bpMinMedium {
       @include typeSetting(4, regular);
       line-height: 1.56;
       padding: 30px;
-    }
   }
 
   &__cta {
@@ -195,9 +199,7 @@
       margin: 22px 0;
       padding: 8px 24px 6px 12px;
 
-      @include bpMinMedium {
-        display: none;
-      }
+      display: none;
     }
 
     &--screen {
@@ -208,9 +210,7 @@
       margin: 0;
       padding: 15px 0 10px;
 
-      @include bpMaxMedium {
-        display: none;
-      }
+      display: none;
     }
 
     &:hover,
@@ -228,88 +228,8 @@
       top: 26%;
       transform: scale(.5, .9);
 
-      @include bpMinMedium {
-        margin: 4px 0 0 6px;
-        right: auto;
-      }
+      margin: 4px 0 0 6px;
+      right: auto;
     }
-  }
-
-  &__location {
-    @include bpMinMedium {
-      background: #505054;
-      padding: 35px 30px;
-      position: relative;
-    }
-  }    
-
-  &__location-status {
-    @include typeSetting(3, regular);
-    display: inline;
-
-    &::after {
-      content: ' at ';
-    }
-      
-    svg {
-      display: none;
-    }
-
-    @include bpMinMedium {
-      @include typeSetting(0, bold, uppercase);
-      background-color: siteColor(vam-grey-5);
-      color: siteColor(vam-black);
-      display: flex;
-      left: 0;
-      padding: 3px 10px 2px 7px;
-      position: absolute;
-      top: 0;
-
-      &::after {
-        display: none;
-      }
-
-      svg {
-        display: block;
-        height: 16px;
-        margin-right: 6px;
-        width: 16px;
-      }
-    }
-  }    
-
-  &__location-copy {
-    @include typeSetting(3, regular);
-    display: inline-block;
-    margin: 0 0 14px;
-
-    @include bpMinMedium {
-      display: block;
-      margin: 0 0 7px;
-    }
-  }
-
-  &__location-site {
-    display: inline;
-
-    &::after {
-      content: ', ';
-    }
-
-    @include bpMinMedium {
-      @include typeSetting(3, bold);
-      display: block;
-      margin: 0 0 7px;
-
-      &::after {
-        display: none;
-      }
-    }
-  }
-
-  &__visit {
-    @include typeSetting(3, regular);
-    display: block;
-    text-decoration: underline;
-  }
+  }      
 }

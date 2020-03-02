@@ -1,9 +1,12 @@
 .zoom-container {
-	display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin: 16px 40px 24px 0px;
-    
+    display: none;
+
+    @include bpMinMedium {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin: 16px 40px 24px 0px;
+    }
     &__zoom-controls-container {
       display: flex;
       flex-direction: column-reverse;
