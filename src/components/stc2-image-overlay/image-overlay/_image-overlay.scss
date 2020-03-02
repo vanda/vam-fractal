@@ -65,7 +65,10 @@
   }
 
   &__content {
-    background: rgba(41, 42, 43, 0.8);
+    background: #1d1e20;
+    @include bpMinMedium {
+      background: rgba(41, 42, 43, 0.8);
+    }
     color: #fff;
     height: 100%;
     margin: auto 10px;
@@ -82,7 +85,10 @@
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 570px;
+    height: 85%;
+    @include bpMinMedium {
+      height: 570px;
+    }
     position: relative;
   }    
 
