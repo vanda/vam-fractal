@@ -1,5 +1,18 @@
 <div class="image-overlay-detail">
     <div class="image-overlay-detail__caption-container">
+        <div class="image-overlay-detail__navigation-container">
+           <a class="image-overlay-detail__prev" href="#" title="Previous" aria-label="Previous">
+                <svg role="img">
+                    <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
+                </svg>
+            </a>
+
+            <a class="image-overlay-detail__next image-overlay-detail__next--enabled" href="#" title="Next" aria-label="Next">
+                <svg role="img">
+                    <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
+                </svg>
+            </a>
+        </div>        
         <div class="image-overlay-detail__image-counter">
             Image <span class="image-overlay-detail__current-image"></span> out of <span class="image-overlay-detail__total-number-of-images"></span>
         </div> 
@@ -12,6 +25,7 @@
             </a>                
         </div>
     </div>
+
     <div class="image-overlay-detail__carosel-container">
             {% if not more_than_five_images %}
                 {%- render "@image-carosel" -%}
@@ -21,7 +35,8 @@
                 {%- render "@image-carosel--more-than-five-images" -%}
             {% endif %}
     </div>
+
     <div class="image-overlay-detail__zoom-container">
         {%- render "@zoom" -%}
     </div>
-</div>
+</div>  
