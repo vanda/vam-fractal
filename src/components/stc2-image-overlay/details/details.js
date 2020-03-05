@@ -30,19 +30,19 @@ function updateImageAndCounter(e) {
 		var classSelected = "image-carosel__image-preview-container--selected";
 		document.querySelector("." + classSelected).classList.remove(classSelected);
 		document.querySelector('div[data-image-index="' + String(newIndex) + '"]').classList.add(classSelected);
-	
-		if (newIndex === document.querySelectorAll(".image-carosel__image-preview-container").length - 1) {
-			document.querySelector(".image-overlay-detail__next").classList.remove("image-overlay-detail__next--enabled");
-		} else {
-			document.querySelector(".image-overlay-detail__next").classList.add("image-overlay-detail__next--enabled");
-		}
-
-		if (newIndex === 0) {
-			document.querySelector(".image-overlay-detail__prev").classList.remove("image-overlay-detail__prev--enabled");
-		} else {
-			document.querySelector(".image-overlay-detail__prev").classList.add("image-overlay-detail__prev--enabled");
-		}
 	}
+
+	if (newIndex === document.querySelectorAll(".image-carosel__image-preview-container").length - 1) {
+		document.querySelector(".image-overlay-detail__next").classList.remove("image-overlay-detail__next--enabled");
+	} else {
+		document.querySelector(".image-overlay-detail__next").classList.add("image-overlay-detail__next--enabled");
+	}
+
+	if (newIndex === 0) {
+		document.querySelector(".image-overlay-detail__prev").classList.remove("image-overlay-detail__prev--enabled");
+	} else {
+		document.querySelector(".image-overlay-detail__prev").classList.add("image-overlay-detail__prev--enabled");
+	}	
 
 	document.querySelector("img[data-image-index='"+ String(newIndex) +"']").classList.add(classActive);
 	updateCounter();
