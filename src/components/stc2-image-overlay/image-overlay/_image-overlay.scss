@@ -1,4 +1,5 @@
 .etc-image-overlay {
+  height: 100%;
 
   &--active {
 /*    @include bpMinMedium {
@@ -6,36 +7,34 @@
     }*/
   }
 
-  height: 100%;
 
   &__content {
 
     background: #1d1e20;
-    
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;    
+
     @include bpMinMedium {
       background: rgba(41, 42, 43, 0.8);
     }
 
-    height: 100vh;
-
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column-reverse;
+    @include bpMinSmall {
+      flex-direction: column-reverse;
+    }
   }
 
   &__figure {
     position: relative;
-    
-/*    flex-grow: 1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-*/
     width: 100%;
-
+    flex-grow: 4;
+    display: flex;
+    align-items: center;
+    
     @include bpMinSmall {
+      display: block;
+      flex-grow: none;
       width: auto;
       margin-top: 0px;
       flex-grow: 1;
@@ -45,12 +44,13 @@
       transform: translate(-50%, -50%);
 
     }
-  }    
+  }
 
   &__image {
     display: none;
     &--active {
       display: block;
+      width: inherit;
     }
 
     @include bpMinMedium {
@@ -66,16 +66,14 @@
 
   &__figcaption {
     display: none;
-    &--active {
-      display: flex;
-    }
     @include typeSetting(2, regular);
     line-height: 1.7;
-    padding: 8px 60px 8px 0;
     width: 100%;
-    bottom: 0px;
-    border-width: 1px 0 0;
     padding: 4px 0 0;
+
+    &--active {
+      display: flex;
+    }    
   }    
 
   &__prevnext {
@@ -134,7 +132,6 @@
   &__caption {
     @include typeSetting(3, regular);
     display: block;
-    line-height: 1.56;
     max-width: 600px;
     padding: 15px 0 12px;
     @include typeSetting(4, regular);

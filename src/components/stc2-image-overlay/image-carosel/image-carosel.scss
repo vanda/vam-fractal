@@ -2,21 +2,21 @@
   position: relative;
 
   &__conceal-left {
-    content: '';
-    position: absolute;
-    visibility: hidden;
-    top: 0px;
     left: 54px;
     height: 88px;
     width: 0px;
     background-image: linear-gradient(to left, rgba(29,30,32,0), #1d1e20);
   }
 
-  &__conceal-right {
+  &__conceal-left, &__conceal-right {
     content: '';
     position: absolute;
     visibility: hidden;
-    top: 0px;
+    top: 0px; 
+  }
+
+
+  &__conceal-right {
     right: 0px;
     height: 88px;
     margin-right: 50px;
