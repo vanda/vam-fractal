@@ -69,7 +69,8 @@ module.exports = {
       'delivery',
       'tick-mark',
       'person-one',
-      'person-two'
+      'person-two',
+      'padlock'
     ]
   },
   variants: [
