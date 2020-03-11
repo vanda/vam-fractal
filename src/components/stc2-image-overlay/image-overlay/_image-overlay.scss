@@ -1,15 +1,36 @@
 .etc-image-overlay {
-  height: 100%;
-
-  &--active {
-/*    @include bpMinMedium {
-      background: rgba(41, 42, 43, 0.8);
-    }*/
+  &__preview {
+    max-width: 735px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  &__container {
+    display: none;
+    &--active {
+      height: 100%;
+      top: 0px;
+      display: block;
+      position: absolute;
+    }    
   }
 
+  &__close-container {
+    position: absolute;
+    right: 0;
+  }
+
+  &__close {
+    color: white;
+    height: 30px;
+    width: 30px;
+    transform: rotate(45deg);
+    color: white;
+    margin: 20px;
+    cursor: pointer;
+  }
 
   &__content {
-
     background: #1d1e20;
     height: 100vh;
     width: 100vw;
@@ -53,13 +74,13 @@
       width: inherit;
     }
 
-    @include bpMinMedium {
+    @include bpMinSmall {
       width: auto;
+      margin-bottom: 146px;
     }
 
     @include bpMinSmall {
       max-width: 735px;
-      margin-bottom: 146px;
       margin-top: 0px;
     }
   }
