@@ -103,8 +103,12 @@
     }
 
     &__carosel-container {
+      display: none;
       margin-top: 33px;
       margin-bottom: 24px;
+      @include bpMinMedium {
+        display: block;
+      }
     }
 }
   

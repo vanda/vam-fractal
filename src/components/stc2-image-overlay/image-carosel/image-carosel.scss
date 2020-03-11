@@ -5,28 +5,44 @@
     left: 54px;
     height: 88px;
     width: 0px;
+    visibility: hidden;
     background-image: linear-gradient(to left, rgba(29,30,32,0), #1d1e20);
+
   }
 
   &__conceal-left, &__conceal-right {
     content: '';
     position: absolute;
-    visibility: hidden;
     top: 0px; 
+    width: 80px;
+    @includeMinLarge {
+      width: 140px;
+    }        
   }
 
 
   &__conceal-right {
-    right: 0px;
+    right: 4px;
     height: 88px;
     margin-right: 50px;
-    width: 140px;
+    visibility: visible;
+    width: 80px;
+    @includeMinLarge {
+      width: 140px;
+    }
     background-image: linear-gradient(to right, rgba(29,30,32,0), #1d1e20);
   }
 
   display: block;
   text-align: right;
-  max-width: 660px;
+
+  width: 400px;
+
+  @include bpMinLarge {
+    width: 660px;
+  }
+
+
   background: siteColor(vam-black);
 
   &__prevnext {
