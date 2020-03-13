@@ -77,12 +77,8 @@
 
     @include bpMinSmall {
       width: auto;
-      margin-bottom: 146px;
-    }
-
-    @include bpMinSmall {
+      margin-top: -146px;
       max-width: 735px;
-      margin-top: 0px;
     }
   }
 

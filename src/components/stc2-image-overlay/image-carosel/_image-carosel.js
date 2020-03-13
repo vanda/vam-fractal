@@ -58,14 +58,19 @@
 
 		function scrollCarosel(px) {
 			var currentScroll = document.querySelector('.image-carosel__image-carosel').scrollLeft;
+			var currentY = window.scrollY;
+			console.log(currentY);
 			document.querySelector(".image-carosel__image-carosel").scrollLeft = currentScroll + px;
+			window.scrollY = currentY;
 		}
 
-		window.scrollCarosel = scrollCarosel;
-
 		if (document.querySelector('.image-carosel__image-carosel')) {
-			document.querySelector(".image-carosel__next").onclick = function(){scrollCarosel(scrollPx);};
-			document.querySelector(".image-carosel__prev").onclick = function(){scrollCarosel(-scrollPx);};
+			document.querySelector(".image-carosel__next").onclick = function(){
+				scrollCarosel(scrollPx);
+			};
+			document.querySelector(".image-carosel__prev").onclick = function(){
+				scrollCarosel(-scrollPx);
+			};
 		}
 
 		var concealCarosel = document.querySelector(".image-carosel--conceal .image-carosel__image-carosel");
