@@ -14,7 +14,6 @@
 		document.querySelector(".etc-image-overlay__container").style.top = String(scrollY) + "px";
 	}
 
-	console.log(document.querySelector(".etc-image-overlay__container"));
 	document.querySelector(".etc-image-overlay").addEventListener("openObjectOverlay", openObjectOverlay);
 
 	Array.from(document.querySelectorAll(".etc-image-overlay__preview")).forEach(function(e) {
