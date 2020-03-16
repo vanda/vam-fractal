@@ -5,6 +5,7 @@ require('../../components/blocks/background-video/_background-video.js');
 require('../../components/groups/block-grid/_grid-reveal-more.js');
 require('../../components/blocks/cookie-banner/_cookie-banner.js');
 require('../../components/blocks/object-image-overlay/_object-image-overlay.js');
+require('../../components/blocks/object-shuffler/_object-shuffler.js');
 require('../../components/blocks/modal/_modal.js');
 require('../../components/blocks/newsletter-signup/_newsletter-signup.js');
 require('../../components/blocks/search-form/_search-form.js');

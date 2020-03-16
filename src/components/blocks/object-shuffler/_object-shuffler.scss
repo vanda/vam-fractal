@@ -1,0 +1,61 @@
+.b-object-shuffler {
+  background-color: siteColor(vam-black);
+  color: siteColor(vam-white);
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+
+  &__heading {
+    @include typeSetting(4, bold, uppercase);
+    margin-bottom: 57px;
+  }
+
+  &__viewer {
+    height: 640px;
+    margin-bottom: 40px;
+    position: relative;
+    width: 100%;
+  }
+
+  &__slide {
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-between;
+    margin: 0 2%;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    width: 96%;
+
+    &:nth-child(n+2) {
+      left: 100%;
+      top: -100%;
+    }
+
+    @media (min-width: 1000px) {
+      margin: 0 auto;
+      width: 990px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex: 0 1 auto;
+    height: 50%;
+    width: 50%;
+
+    @include bpMinSmall {
+      width: 33%;
+    }
+  }
+
+  &__image {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .5));
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+  }
+}
