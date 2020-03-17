@@ -6,6 +6,11 @@
     color: siteColor(vam-white);
     background: siteColor(vam-black);
     width: 100%;
+    padding-bottom: 20px;
+
+    @include bpMinMedium {
+      padding-bottom: 0px;
+    }
 
     &__navigation-container {
       @include bpMinMedium {
