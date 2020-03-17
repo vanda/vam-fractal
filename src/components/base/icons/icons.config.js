@@ -70,7 +70,9 @@ module.exports = {
       'tick-mark',
       'person-one',
       'person-two',
-      'padlock'
+      'padlock',
+      'eye-striked',
+      'eye'
     ]
   },
   variants: [
