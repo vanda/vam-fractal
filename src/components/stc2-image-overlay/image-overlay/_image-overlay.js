@@ -18,6 +18,7 @@
 
 	Array.from(document.querySelectorAll(".etc-image-overlay__preview")).forEach(function(e) {
 		e.onclick = function(e) {
+		    e.preventDefault();
 			e.target.dispatchEvent(new CustomEvent("openObjectOverlay", {bubbles: true}));
 		}
 	})

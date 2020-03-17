@@ -42,6 +42,7 @@
 		Array.from(document.querySelectorAll(".image-carosel__image-preview-container")).forEach(
 			function(el, i) {
 				el.onclick = function(e) {
+				    e.preventDefault();
 					e.target.dispatchEvent(updateImageAndCounterEvent(i));
 				}
 
@@ -82,9 +83,11 @@
 			var buttonRight = document.querySelector(".image-carosel__next");
 
 			concealLeft.onclick = function(e){
+			    e.preventDefault();
 				scrollCarosel(-scrollPx);
 			};
 			concealRight.onclick = function(e){
+			    e.preventDefault();
 				scrollCarosel(scrollPx);
 			};
 
