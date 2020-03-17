@@ -16,6 +16,8 @@ require('../../components/blocks/video-trailer/_video-trailer.js');
 require('../../components/stc2-image-overlay/details/details.js');
 require('../../components/stc2-image-overlay/image-carosel/_image-carosel.js');
 require('../../components/stc2-image-overlay/image-overlay/_image-overlay.js');
+require('../../components/stc2-image-overlay/download-button/_download-button.js');
+
 
 
 require('../../components/etc/object-details/object-details.js');

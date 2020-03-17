@@ -1,0 +1,98 @@
+.download-button {
+	&__title {
+		@include typeSetting(5, bold);
+	}
+
+	&__modal-content {
+	    @include bpMinSmall {
+	    	max-width: 670px !important;
+	    	padding: 45px 30px !important;
+	    }
+
+	    @include bpMinMedium {
+	    	max-width: 670px !important;
+	    }
+	}
+
+	&__description-container {
+		padding: 22px;
+		@include typeSetting(4, light);
+		background-color: #efefed;
+	}
+
+	&__footer-content {
+		margin-top: 10px;
+	}
+
+	&__description {
+		font-weight: 100;
+	}
+
+	&__download-container {
+		margin: 0px 25px;
+	}
+
+	&__download-link-text {
+		margin-left: 15px;
+	}
+
+	&__download-icon-link {
+		height: 50px;
+		width: 50px;
+		border-radius: 50px;
+		background-color: siteColor(vam-grey-5);
+		border-color: siteColor(vam-grey-5);
+	}
+
+	&__download-link {
+		display: flex;
+	    align-items: center;
+	}
+
+	&__download-link a {
+	    text-underline-position: under;
+	}
+
+	&__download-info {
+		font-style: italic;
+		color: siteColor(vam-grey-2);
+	}
+
+	&__download-size {
+		color: siteColor(vam-grey-3);
+	}
+
+	&__title-section, &__footer-section {
+		margin: 0px 25px;
+		font-weight: 300 !important;
+	}
+
+	&__footer-section {
+		margin-top: 30px;
+		border-top: 1px solid rgba(0, 0, 0, 0.3);
+	}	
+
+	&__agree-checkbox {
+		display: none;
+	}
+
+	&__checkbox-container {
+		position: relative;
+	}
+
+	&__agree-to-terms {
+		margin-left: 40px;
+		@include typeSetting(4, regular);
+		&:before {
+			cursor: pointer;
+			left: 0px;
+			top: 3px;
+			content: '';
+			width: 25px;
+			height: 25px;
+			background-color: siteColor(vam-white);
+			position: absolute;
+			border: 1px black solid;
+		}
+	}
+}
