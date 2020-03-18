@@ -1,3 +1,12 @@
+.js-modal-action.b-icon-link:hover .b-icon-link__container::after {
+    opacity: 1;
+}
+
+.b-icon-link__container.download-button__icon-link-container--active.js-modal-action::after {
+	background-color: #04d1b3 !important;
+    opacity: 1;
+}
+
 .download-button {
 	&__title {
 		@include typeSetting(5, bold);
@@ -6,7 +15,7 @@
 	&__modal-content {
 	    @include bpMinSmall {
 	    	max-width: 670px !important;
-	    	padding: 45px 30px !important;
+	    	padding: 45px 45px !important;
 	    }
 
 	    @include bpMinMedium {
@@ -24,6 +33,14 @@
 		margin-top: 10px;
 	}
 
+/*	&__icon-link-container {
+		background-color: siteColor(vam-grey-5);
+		&--active {
+			:after {
+			}
+		}
+	}*/
+
 	&__description {
 		font-weight: 100;
 	}
@@ -39,8 +56,6 @@
 	&__download-icon-link {
 		height: 50px;
 		width: 50px;
-		border-radius: 50px;
-		background-color: siteColor(vam-grey-5);
 		border-color: siteColor(vam-grey-5);
 	}
 
@@ -55,7 +70,7 @@
 
 	&__download-info {
 		font-style: italic;
-		color: siteColor(vam-grey-2);
+		color: siteColor(vam-grey-3);
 	}
 
 	&__download-size {
@@ -78,21 +93,79 @@
 
 	&__checkbox-container {
 		position: relative;
+		margin-top: 15px;
+		width: fit-content;
+	}
+
+	&__download-icon-link {
+		color: siteColor(vam-grey-3);
+	    bottom: 30%;
+	    height: 60%;
+	    left: 21%;
+	    z-index: 999;
+	    position: absolute;
+	    right: 27%;
+	    top: 18%;
+	    width: 60%;
+	    &--active {
+	    	backrgound-color: #12d2a0;
+	    	color: siteColor(vam-black);
+	    }
+	}
+
+	&__checkmark {
+		display: none;
+	    position: absolute;
+	    width: 26px;
+	    height: 20px;
+	    margin-top: 5px;
+	    z-index: 99;
+	    &--active {
+	    	display: block !important;
+	    	color: #04d1b3 !important;
+	    }	
+	}
+
+	&__agree-to-terms-reminder {
+		color: siteColor(alert-red);
+		display: none;
+		@include typeSetting(2, light);
+	}
+
+	&__agree-to-terms-text {
+		position: absolute;
+		width: 200px;
 	}
 
 	&__agree-to-terms {
 		margin-left: 40px;
 		@include typeSetting(4, regular);
+
+		&--warning {
+			&:before {
+				background-color: rgba(255, 80, 83, 0.1) !important;
+				border-color: siteColor(alert-red) !important;
+			}
+		}
+
+		&--active {
+			&::before {
+				background-color: #04d1b3 !important;
+				border-color: #04d1b3 !important;
+			}
+		}		
+
 		&:before {
 			cursor: pointer;
 			left: 0px;
 			top: 3px;
 			content: '';
 			width: 25px;
+		    border-radius: 3px;
 			height: 25px;
 			background-color: siteColor(vam-white);
 			position: absolute;
-			border: 1px black solid;
+			border: 1px siteColor(vam-black) solid;
 		}
 	}
 }
