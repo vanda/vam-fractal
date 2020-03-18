@@ -4,7 +4,6 @@
 	</button>                
 </div>
 
-
 <div class="b-modal js-modal">
     <section class="b-modal__content download-button__modal-content">
     	<section class="download-button__title-section">
@@ -20,29 +19,34 @@
 				<li>I understand that the image is licensed for print at A5-size, or 768 pixels online</li>
 				<li>My use is limited to 4000 copies, or 5 years digitally</li>
         	</ul>
-        	<div class="download-button__checkbox-container">
-				<input class="download-button__agree-checkbox" type="checkbox"></input>
-				<span class="download-button__agree-to-terms">
-					I agree to these terms
-				</span>
-        	</div>
+        	<span class="download-button__agree-to-terms-reminder">
+				Please indicate that you accept all terms to proceed
+        	</span>
+	        	<div class="download-button__checkbox-container js-modal-action">
+			        <svg class="download-button__checkmark" role="img">
+			      		<use xlink:href="/assets/svg/svg-template.svg#tick"></use>
+			    	</svg>	        		
+					<input class="download-button__agree-checkbox js-modal-action" type="checkbox"></input>
+		        	<a class="js-modal-action download-button__agree-to-terms" href="javascript:void(0);"></a>
+					<span class="download-button__agree-to-terms-text">
+			        	I agree to these terms
+					</span>
+	        	</div>
         </div>
         <section class="download-button__download-container">
         	<div class="download-button__download-link">
-				<a href="#" class="b-icon-link download-button__download-icon-link">
-				    <div class="b-icon-link__container">
-				        <svg class="b-icon-link__icon" role="img">
+				<a href="javascript:void(0);" class=" b-icon-link js-modal-action">
+				    <div class="b-icon-link__container download-button__icon-link-container js-modal-action">
+				        <svg class="b-icon-link__icon js-modal-action download-button__download-icon-link" role="img">
 				      		<use xlink:href="/assets/svg/svg-template.svg#download"></use>
 				    	</svg>
 				    </div>
 				</a>
-				<div class="download-button__download-link-text">
-				    <span class="download-button__download-link">
-						<a href="#" class="u-link">
-							Download image 
-						</a>
-				    </span>
-				    <span class="download-button__download-info">
+				<div class="download-button__download-link-text js-modal-action">
+					<a href="javascript:void(0);" class="u-link download-button__download-link js-modal-action">
+						Download image 
+					</a>
+				    <span class="download-button__download-info js-modal-action">
 						JPG <span class="download-button__download-size">(1.5mb)</span>
 				   	</span>
 				</div>
