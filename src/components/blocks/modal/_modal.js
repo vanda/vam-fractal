@@ -14,7 +14,7 @@ function modalTracking (category, action) {
 Array.from(modals, (modal) => {
   const modalCampaign = modal.dataset.modalCampaign;
 
-  if (!modal.dataset.modalOnceOnly || !cookies.get(modalCampaign)) {
+  if ((!modal.dataset.modalOnceOnly || !cookies.get(modalCampaign)) && !Boolean(modal.dataset.notOnLoad)) {
     document.body.appendChild(modal);
     modal.classList.add('b-modal--active');
     modalTracking(modalCampaign, 'pop-up displayed');
@@ -29,7 +29,7 @@ Array.from(modals, (modal) => {
         modalTracking(modalCampaign, `clicked: ${e.target.textContent}`);
       } else {
         modalTracking(modalCampaign, 'pop-up dismissed');
-        modal.remove();
+        modal.classList.remove("b-modal--active");
       }
     }
   });

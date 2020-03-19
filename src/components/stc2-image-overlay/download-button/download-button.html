@@ -1,10 +1,10 @@
-<div class="image-overlay-detail__download-button-container">
+<div class="download-button__button">
 	<button href="#" class="u-btn u-btn--micro">
 	    Download image
 	</button>                
 </div>
 
-<div class="b-modal js-modal">
+<div class="download-button__modal b-modal js-modal" data-not-on-load="true">
     <section class="b-modal__content download-button__modal-content">
     	<section class="download-button__title-section">
 	        <h1 class="b-modal__title download-button__title">Download image</h1>
@@ -13,7 +13,7 @@
 	        </div>
 	    </section>
         <div class="b-modal__description download-button__description-container">
-        	<ul>
+        	<ul class="download-button__description-container-bullets">
 				<li>I will not use the image commercially</li>
 				<li>I will use the credit <i>© Victoria and Albert Museum, London</i></li>
 				<li>I understand that the image is licensed for print at A5-size, or 768 pixels online</li>
@@ -55,7 +55,7 @@
         </section>
     	<section class="download-button__footer-section">
 	        <div class="b-modal__description download-button__description download-button__footer-content">
-				If you would like a larger file, or to use the image in other ways, contact <a class="u-link" href="#">our Licensing team</a>.
+				If you would like a larger file, or to use the image in other ways, contact <a class="u-link js-modal-action" href="#">our Licensing team</a>.
 	        </div>
 	    </section>        
     </section>

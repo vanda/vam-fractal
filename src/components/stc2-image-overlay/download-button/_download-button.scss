@@ -4,42 +4,57 @@
 
 .b-icon-link__container.download-button__icon-link-container--active.js-modal-action::after {
 	background-color: #04d1b3 !important;
+	border-color: #04d1b3 !important;
     opacity: 1;
 }
 
 .download-button {
+	&__button {
+      margin-top: 4px;		
+	}
+
 	&__title {
 		@include typeSetting(5, bold);
 	}
 
+	&__description-container-bullets {
+		max-width: 471px;
+	}
+
+	&__description-container-bullets li {
+		margin-bottom: 5px;
+	}
+
 	&__modal-content {
+    	width: 100% !important;
+    	max-width: 500px !important;
+    	padding: 30px 20px 24px;
+
 	    @include bpMinSmall {
-	    	max-width: 670px !important;
-	    	padding: 45px 45px !important;
+    	    padding: 25px 35px 25px !important;
 	    }
 
 	    @include bpMinMedium {
-	    	max-width: 670px !important;
-	    }
+			max-width: 670px !important;
+			height: auto !important;
+			padding: inherit;
+		}
+	}
+
+	&__download-button-description {
+		@include typeSetting(3, light);
 	}
 
 	&__description-container {
 		padding: 22px;
-		@include typeSetting(4, light);
+		@include typeSetting(3, light);
 		background-color: #efefed;
 	}
 
 	&__footer-content {
+		@include typeSetting(3, light);
 		margin-top: 10px;
 	}
-
-/*	&__icon-link-container {
-		background-color: siteColor(vam-grey-5);
-		&--active {
-			:after {
-			}
-		}
-	}*/
 
 	&__description {
 		font-weight: 100;
@@ -118,7 +133,7 @@
 	    position: absolute;
 	    width: 26px;
 	    height: 20px;
-	    margin-top: 5px;
+	    margin-top: 3px;
 	    z-index: 99;
 	    &--active {
 	    	display: block !important;
@@ -158,7 +173,7 @@
 		&:before {
 			cursor: pointer;
 			left: 0px;
-			top: 3px;
+			top: 0px;
 			content: '';
 			width: 25px;
 		    border-radius: 3px;
