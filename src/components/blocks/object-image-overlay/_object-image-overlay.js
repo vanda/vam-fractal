@@ -53,22 +53,22 @@
       } else if (data && data.onDisplay !== null && !data.onDisplay) {
         locationCopy = data.storageOverride || 'This object is currently not on display';
       }
-      const visitUrl = data && data.visitUrl ?
-        `<a class="b-object-image-overlay__visit" href="${data.visitUrl}">Find out how to visit this object</a>`
+      const visitLink = data && data.visitUrl ?
+        `<a class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">Find out how to visit this object</a>`
         : '';
-      const location = locationCopy || visitUrl ?
+      const location = locationCopy || visitLink ?
         `<div class="b-object-image-overlay__location">
           ${onDisplay}
           <div class="b-object-image-overlay__location-copy">${locationCopy}</div>
-          ${visitUrl}
+          ${visitLink}
         </div>
         ` : '';
-      const alink = seed.querySelector('a');
-      const ctaScreen = alink.getAttribute('href').length > 1 ?
-        `<br/><a class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${alink.href}">Explore object in more depth</a>`
+      const objectUrl = seed.querySelector('a').href;
+      const ctaScreen = objectUrl.length > 1 ?
+        `<br/><a class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
         : '';
-      const ctaMobile = alink.getAttribute('href').length > 1 ?
-        `<a class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${alink.href}">Explore object in more depth</a>`
+      const ctaMobile = objectUrl.length > 1 ?
+        `<a class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
         : '';
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
@@ -86,12 +86,12 @@
             <figcaption class="b-object-image-overlay__figcaption">
               ${numberCopyright}
               <div class="b-object-image-overlay__prevnext">
-                <a class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" href="#" title="Previous" aria-label="Previous">
+                <a class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" href="#" title="Previous" aria-label="Previous" data-tracking="previous object">
                   <svg role="img">
                     <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
                   </svg>
                 </a>
-                <a class="b-object-image-overlay__next b-object-image-overlay__next--disabled" href="#" title="Next" aria-label="Next">
+                <a class="b-object-image-overlay__next b-object-image-overlay__next--disabled" href="#" title="Next" aria-label="Next" data-tracking="next object">
                   <svg role="img">
                     <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
                   </svg>
@@ -148,7 +148,16 @@
         oic.clipItem(rewind);
         oic.addItem(oic._index + (2 * (rewind ? -1 : 1)), rewind);
         oic._index += (1 * (rewind ? -1 : 1));
+        oic.track(oic._index);
       }
+    };
+
+    oic.track = (index) => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        object: oicSeeds[index].querySelector('figcaption').textContent,
+        museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber
+      });
     };
 
     document.addEventListener('click', (e) => {
@@ -160,8 +169,8 @@
         oic.classList.add('b-object-image-overlay--active');
         oic.addItem(oic._index + 1);
         oic.addItem(oic._index - 1, true);
-        oic._width = oic.getBoundingClientRect().width;
         oic.focus();
+        oic.track(oic._index);
 
         const keyHandle = (e3) => {
           if (e3.key === 'ArrowLeft') {
