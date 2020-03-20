@@ -22,7 +22,7 @@ module.exports = {
           onDisplay: true,
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 48a, The Raphael Cartoons',
-          visitUrl: 'https://www.bangoid.co.uk'
+          visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?zoom=3.8062500330992246&latlng=-4438.82674843744%2C2111.330630666198&highlightId=FAC0000_49790'
         }
       },
       {
@@ -81,7 +81,7 @@ module.exports = {
           displayOverride: 'You can see this somewhere else',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 74a, Rapid Response Collecting',
-          visitUrl: 'https://www.bangoid.co.uk'
+          visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?highlightId=FAC0000_263251&latlng=-2869%2C2944&floor=2&zoom=4'
         }
       }
     ]
