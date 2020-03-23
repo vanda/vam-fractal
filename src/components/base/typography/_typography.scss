@@ -171,28 +171,28 @@ $base-font-weight: 'regular';
   }
 }
 
-@mixin fontSize($pixelValue) {
-  font-size: $pixelValue + px; // Old browser fallback
-  font-size: ($pixelValue / fontSize($base-font-size)) + rem; // Base fontsize is 16px
+@mixin fontSize($sizeValue: $base-font-size) {
+  font-size: fontSize($sizeValue) + px; // Old browser fallback
+  font-size: (fontSize($sizeValue) / fontSize($base-font-size)) + rem; // Base fontsize is 16px
 }
 
-@mixin lineHeight($pixelValue) {
-  line-height: $pixelValue + px; // Old browser fallback
-  line-height: ($pixelValue / fontSize($base-font-size)) + rem;
+@mixin lineHeight($heightValue: $base-font-size, $weight: $base-font-weight) {
+  line-height: lineHeight($heightValue, $weight) + px; // Old browser fallback
+  line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
 }
 
-@mixin letterSpacing($pixelValue) {
-  letter-spacing: $pixelValue + px;
-  letter-spacing: ($pixelValue / fontSize($base-font-size)) + rem;
+@mixin letterSpacing($size: $base-font-size, $weight: $base-font-weight) {
+  letter-spacing: letterSpace($size, $weight) + px;
+  letter-spacing: (letterSpace($size, $weight) / fontSize($base-font-size)) + rem;
 }
 
 @mixin typeSetting($size: $base-font-size, $weight: $base-font-weight, $transform: none) {
-  @include fontSize(fontSize($size));
-  @include lineHeight(lineHeight($size, $weight));
+  @include fontSize($size);
+  @include lineHeight($size, $weight);
   font-weight: fontWeight($weight);
 
   @if $transform == 'uppercase' and $weight != 'regular' and $weight != 'semi-light' {
-    @include letterSpacing(letterSpacing($size, $weight));
+    @include letterSpacing($size, $weight);
     text-transform: uppercase;
   } @else {
     letter-spacing: initial;

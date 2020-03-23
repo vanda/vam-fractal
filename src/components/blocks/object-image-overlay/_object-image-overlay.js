@@ -155,6 +155,7 @@
     oic.track = (index) => {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
+        event: 'OIC',
         object: oicSeeds[index].querySelector('figcaption').textContent,
         museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber
       });
