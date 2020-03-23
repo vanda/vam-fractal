@@ -1,62 +1,108 @@
-<div class="download-button__button">
+<div class="image-button__download-button">
 	<button href="#" class="u-btn u-btn--micro">
-	    Download image
-	</button>                
+		Download image
+	</button>
 </div>
 
-<div class="download-button__modal b-modal js-modal" data-not-on-load="true">
-    <section class="b-modal__content download-button__modal-content">
-    	<section class="download-button__title-section">
-	        <h1 class="b-modal__title download-button__title">Download image</h1>
-	        <div class="b-modal__description download-button-description">
-				Please confirm that you intend to use the image within the terms and conditions.
-	        </div>
-	    </section>
-        <div class="b-modal__description download-button__description-container">
-        	<ul class="download-button__description-container-bullets">
-				<li>I will not use the image commercially</li>
-				<li>I will use the credit <i>© Victoria and Albert Museum, London</i></li>
-				<li>I understand that the image is licensed for print at A5-size, or 768 pixels online</li>
-				<li>My use is limited to 4000 copies, or 5 years digitally</li>
-        	</ul>
-        	<span class="download-button__agree-to-terms-reminder">
-				Please indicate that you accept all terms to proceed
-        	</span>
-	        	<div class="download-button__checkbox-container js-modal-action">
-			        <svg class="download-button__checkmark" role="img">
-			      		<use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-			    	</svg>	        		
-					<input class="download-button__agree-checkbox js-modal-action" type="checkbox"></input>
-		        	<a class="js-modal-action download-button__agree-to-terms" href="javascript:void(0);"></a>
-					<span class="download-button__agree-to-terms-text">
-			        	I agree to these terms
-					</span>
-	        	</div>
-        </div>
-        <section class="download-button__download-container">
-        	<div class="download-button__download-link">
-				<a href="javascript:void(0);" class=" b-icon-link js-modal-action">
-				    <div class="b-icon-link__container download-button__icon-link-container js-modal-action">
-				        <svg class="b-icon-link__icon js-modal-action download-button__download-icon-link" role="img">
-				      		<use xlink:href="/assets/svg/svg-template.svg#download"></use>
-				    	</svg>
-				    </div>
-				</a>
-				<div class="download-button__download-link-text js-modal-action">
-					<a href="javascript:void(0);" class="u-link download-button__download-link js-modal-action">
-						Download image 
-					</a>
-				    <span class="download-button__download-info js-modal-action">
-						JPG <span class="download-button__download-size">(1.5mb)</span>
-				   	</span>
-				</div>
+<div class="image-button__license-button">
+	<button href="#" class="u-btn u-btn--micro">
+		License image
+	</button>
+</div>
 
-        	</div>
-        </section>
-    	<section class="download-button__footer-section">
-	        <div class="b-modal__description download-button__description download-button__footer-content">
-				If you would like a larger file, or to use the image in other ways, contact <a class="u-link js-modal-action" href="#">our Licensing team</a>.
-	        </div>
-	    </section>        
+<div class="image-button__license-modal b-modal js-modal" data-not-on-load="true">
+    <section class="b-modal__content image-button__modal-content">
+    	<div class="image-button__license-content">
+			<section class="image-button__title-section">
+			    <h1 class="b-modal__title image-button__title">License this image</h1>
+			    <div class="b-modal__description image-button-description">
+					To license this iamge or for more infomration please contact our Licensing team.
+			    </div>
+				<a href="#" class="u-btn">
+				  Email us
+				</a>
+				</br></br>			    
+				<div class="b-modal__description image-button-description">
+				    <div class="b-modal__description">
+						We can manage your request more quickly if you include the following information:
+				    </div>
+					<ul class="image-button__description-container-bullets">
+						<li>Image reference number: XXX</li>
+						<li>Title and author (if applicable)</li>
+						<li>Publisher/Producer/Broadcaster</li>
+						<li>Planned release date</li>
+						<li>Print run or number of units</li>
+						<li>Image size and position, example 1/4 page, full screen, front cover, inside</li>
+						<li>Languages/territorial distribution</li>
+						<li>Digital rights - format details and license period </li>			
+					</ul>
+				</div>			    
+			</section>
+		</div>
+    </section>
+</div>
+
+<div class="image-button__download-modal b-modal js-modal" data-not-on-load="true">
+    <section class="b-modal__content image-button__modal-content">
+    	<div class="image-button__download-content">
+	    <section class="b-modal__content image-button__modal-content">
+			<section class="image-button__title-section">
+			    <h1 class="b-modal__title image-button__title">Download image</h1>
+			    <div class="b-modal__description image-button-description">
+					Please confirm that you intend to use the image within the terms and conditions.
+			    </div>
+			</section>
+			<div class="b-modal__description image-button__description-container">
+				<ul class="image-button__description-container-bullets">
+					<li>I will not use the image commercially</li>
+					<li>I will use the credit <i>© Victoria and Albert Museum, London</i></li>
+					<li>I understand that the image is licensed for print at A5-size, or 768 pixels online</li>
+					<li>My use is limited to 4000 copies, or 5 years digitally</li>
+				</ul>
+				<span class="image-button__agree-to-terms-reminder">
+					Please indicate that you accept all terms to proceed
+				</span>
+			    	<div class="image-button__checkbox-container js-modal-action">
+				        <svg class="image-button__checkmark" role="img">
+				      		<use xlink:href="/assets/svg/svg-template.svg#tick"></use>
+				    	</svg>	        		
+						<input class="image-button__agree-checkbox js-modal-action" type="checkbox"></input>
+			        	<a class="js-modal-action image-button__agree-to-terms" href="javascript:void(0);"></a>
+						<span class="image-button__agree-to-terms-text">
+				        	I agree to these terms
+						</span>
+			    	</div>
+			</div>
+			<section class="image-button__image-container">
+				<div class="image-button__download-link">
+					<a href="javascript:void(0);" class=" b-icon-link js-modal-action">
+					    <div class="b-icon-link__container image-button__icon-link-container js-modal-action">
+					        <svg class="b-icon-link__icon js-modal-action image-button__image-icon-link" role="img">
+					      		<use xlink:href="/assets/svg/svg-template.svg#download"></use>
+					    	</svg>
+					    </div>
+					</a>
+					<div class="image-button__download-link-text js-modal-action">
+						<a href="javascript:void(0);" class="u-link image-button__download-link js-modal-action">
+							Download image 
+						</a>
+					    <span class="image-button__image-info js-modal-action">
+							JPG <span class="image-button__image-size">(1.5mb)</span>
+					   	</span>
+					</div>
+
+				</div>
+			</section>
+			<section class="image-button__footer-section">
+			    <div class="b-modal__description image-button__description image-button__footer-content">
+					If you would like a larger file, or to use the image in other ways, contact <a class="u-link js-modal-action" href="#">our Licensing team</a>.
+			    </div>
+			</section>
+		</section>
+	</div>
+
+	<div class="image-button__modal b-modal js-modal" data-not-on-load="true">
+
+    	</div>     
     </section>
 </div>
