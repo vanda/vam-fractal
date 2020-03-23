@@ -14,8 +14,10 @@
 	var prefix = "image-button";
 
 	buttons.forEach(function(c) {
-		document.querySelector("." + prefix + c.button + " button").onclick = function() {
-			document.querySelector("." + prefix + c.content).classList.add(prefix + c.content + "--active");
+		if (!!document.querySelector("." + prefix + c.button + " button")) {
+			document.querySelector("." + prefix + c.button + " button").onclick = function() {
+				document.querySelector("." + prefix + c.content).classList.add(prefix + c.content + "--active");
+			}
 		}
 	});
 
