@@ -83,6 +83,7 @@
     }
     &__controlled-vocab {
         @include typeSetting(1, light);
+        line-height: 2rem !important;
         border: solid themeColor(silent-green) 1px;
         border-radius: 4px;
         color: siteColor(vam-white);
