@@ -36,6 +36,8 @@
 			document.querySelector(".image-button__agree-checkbox").checked =
 				!document.querySelector(".image-button__agree-checkbox").checked;
 
+				document.querySelector(".image-button__agree-to-terms").classList.remove("image-button__agree-to-terms--warning");
+
 				var elements = [
 					"__icon-link-container",
 					"__checkmark",
@@ -50,12 +52,12 @@
 
 					elements.forEach(function(c) {
 						document.querySelector("." + prefix + c).classList.add(prefix + c + "--active");
-					})
+					});
 
 				} else {
 					elements.forEach(function(c) {
 						document.querySelector("." + prefix + c).classList.remove(prefix + c + "--active");
-					})					
+					});
 				}
 		}
 	}

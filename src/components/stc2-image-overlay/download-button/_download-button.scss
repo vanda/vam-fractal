@@ -19,23 +19,12 @@
       margin-top: 4px;		
 	}
 
-	&__download-content {
-		display: block;
-	}
-
-	&__license-content {
-		display: block;
-	}
-
 	&__title {
 		@include typeSetting(5, bold);
 	}
 
-	&__description-container-bullets {
+	&__image-button-description li {
 		max-width: 471px;
-	}
-
-	&__description-container-bullets li {
 		margin-bottom: 5px;
 	}
 
@@ -61,12 +50,10 @@
 
 	&__description-container {
 		padding: 22px;
-		@include typeSetting(3, light);
 		background-color: #efefed;
 	}
 
 	&__footer-content {
-		@include typeSetting(3, light);
 		margin-top: 10px;
 	}
 
@@ -107,7 +94,7 @@
 	}
 
 	&__title-section, &__footer-section {
-		margin: 0px 25px;
+		margin: 15px 25px 0px 25px;
 		font-weight: 300 !important;
 	}
 
@@ -161,14 +148,14 @@
 		@include typeSetting(2, light);
 	}
 
-	&__agree-to-terms-text {
-		position: absolute;
-		width: 200px;
-	}
-
 	&__agree-to-terms {
 		margin-left: 40px;
 		@include typeSetting(4, regular);
+
+		&-text {
+			position: absolute;
+			width: 200px;		
+		}
 
 		&--warning {
 			&:before {
