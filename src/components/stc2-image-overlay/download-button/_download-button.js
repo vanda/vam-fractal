@@ -33,34 +33,36 @@
 		}
 	}	
 
-	document.querySelector(".image-button__checkbox-container").onclick = function(e) {
-		if (e.target === document.querySelector(".image-button__agree-to-terms")) {
-			document.querySelector(".image-button__agree-checkbox").checked =
-				!document.querySelector(".image-button__agree-checkbox").checked;
+	if (document.querySelector(".image-button__checkbox-container")) {
+		document.querySelector(".image-button__checkbox-container").onclick = function(e) {
+			if (e.target === document.querySelector(".image-button__agree-to-terms")) {
+				document.querySelector(".image-button__agree-checkbox").checked =
+					!document.querySelector(".image-button__agree-checkbox").checked;
 
-			document.querySelector(".image-button__agree-to-terms").classList.remove("image-button__agree-to-terms--warning");
+				document.querySelector(".image-button__agree-to-terms").classList.remove("image-button__agree-to-terms--warning");
 
-			var elements = [
-				"__icon-link-container",
-				"__checkmark",
-				"__image-icon-link",
-				"__agree-to-terms",
-				"__download-content",
-				"__license-content"
-			];
+				var elements = [
+					"__icon-link-container",
+					"__checkmark",
+					"__image-icon-link",
+					"__agree-to-terms",
+					"__download-content",
+					"__license-content"
+				];
 
-			if (document.querySelector(".image-button__agree-checkbox").checked) {
-				document.querySelector(".image-button__agree-to-terms-reminder").style.display = "none";
+				if (document.querySelector(".image-button__agree-checkbox").checked) {
+					document.querySelector(".image-button__agree-to-terms-reminder").style.display = "none";
 
-				elements.forEach(function(c) {
-					document.querySelector("." + prefix + c).classList.add(prefix + c + "--active");
-				});
+					elements.forEach(function(c) {
+						document.querySelector("." + prefix + c).classList.add(prefix + c + "--active");
+					});
 
 
-			} else {
-				elements.forEach(function(c) {
-					document.querySelector("." + prefix + c).classList.remove(prefix + c + "--active");
-				});
+				} else {
+					elements.forEach(function(c) {
+						document.querySelector("." + prefix + c).classList.remove(prefix + c + "--active");
+					});
+				}
 			}
 		}
 	}
