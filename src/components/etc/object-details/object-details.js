@@ -30,10 +30,10 @@
     	} else {
     		textEl.classList.add(hiddenClass)
     	}
-    } 
+    }
 
 	Array.from(document.querySelectorAll(".etc-details__cell-free")).forEach(function(e) {
-		if (e.offsetWidth > 200) {
+		if (e.offsetHeight > 200) {
 			var content = e.querySelector(".etc-details__cell-free-content");
 			content.classList.add('etc-details__cell-free-content--hidden');
 			var clone = revealEl.cloneNode(true);
