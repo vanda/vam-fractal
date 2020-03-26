@@ -134,7 +134,7 @@
 	    position: absolute;
 	    width: 26px;
 	    height: 20px;
-	    margin-top: 3px;
+	    margin-top: 5px;
 	    z-index: 99;
 	    &--active {
 	    	display: block !important;
@@ -154,7 +154,11 @@
 
 		&-text {
 			position: absolute;
-			width: 200px;		
+			width: 500px;
+			margin-top: 5px;
+			@include bpMinSmall {
+				margin-top: 0px;
+			}
 		}
 
 		&--warning {
@@ -174,7 +178,7 @@
 		&:before {
 			cursor: pointer;
 			left: 0px;
-			top: 0px;
+			top: 3px;
 			content: '';
 			width: 25px;
 		    border-radius: 3px;
