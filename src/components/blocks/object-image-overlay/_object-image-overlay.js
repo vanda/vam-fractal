@@ -156,7 +156,7 @@
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'OIC',
-        object: oicSeeds[index].querySelector('figcaption').textContent,
+        object: oicSeeds[index].querySelector('figcaption').textContent.trim(),
         museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber
       });
     };
