@@ -16,6 +16,7 @@
   }
 
   &__close-container {
+    z-index: 9999999;
     position: absolute;
     right: 0;
   }
