@@ -86,12 +86,12 @@
             <figcaption class="b-object-image-overlay__figcaption">
               ${numberCopyright}
               <div class="b-object-image-overlay__prevnext">
-                <a class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" href="#" title="Previous" aria-label="Previous" data-tracking="previous object">
+                <a class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" href="#" title="Previous" aria-label="Previous" data-tracking-oic="previous object">
                   <svg role="img">
                     <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
                   </svg>
                 </a>
-                <a class="b-object-image-overlay__next b-object-image-overlay__next--disabled" href="#" title="Next" aria-label="Next" data-tracking="next object">
+                <a class="b-object-image-overlay__next b-object-image-overlay__next--disabled" href="#" title="Next" aria-label="Next" data-tracking-oic="next object">
                   <svg role="img">
                     <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
                   </svg>
