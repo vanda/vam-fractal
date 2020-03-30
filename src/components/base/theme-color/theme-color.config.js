@@ -145,6 +145,10 @@ module.exports = {
         hex: '#f6a2d2'
       },
       {
+        name: 'postbox-red',
+        hex: '#ff2d2d'
+      },
+      {
         name: 'raspberry',
         hex: '#ff7b90'
       },
