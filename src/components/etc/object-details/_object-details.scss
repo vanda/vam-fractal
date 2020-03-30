@@ -1,10 +1,9 @@
 .etc-background {
     background-color: siteColor(vam-grey-1);
-    width: 800px;
 }
 
 .etc-details {
-    width: 100%;
+    width: 100vw;
     color: siteColor(vam-grey-4);
     &__cell-concealer-button {
         pointer-events: none;
@@ -34,24 +33,41 @@
         padding-bottom: 35px;
     }
     &__row {
+        display: flex;
+        flex-direction: column;
+
+        @include bpMinSmall {
+            flex-direction: row;
+        }
+
         border-style: dashed;
         border-color: siteColor(vam-grey-4);
-        border-width: 1px 0px 1px 0px;
+        border-width: 1px 0px 0px 0px;
         min-height: 46px;
     }
     &__cell {
         padding: 12px 10px 10px 0px;
     }
     &__cell-name {
-        padding-left: 0px;
-        @include typeSetting(3, bold, uppercase);
+        @include typeSetting(2, bold, uppercase);
         color: siteColor(vam-white);
-        width: 165px;
+        flex-shrink: 0;
+        padding-bottom: 3px;
+
+        @include bpMinSmall {
+            width: 165px;
+        }
     }
     &__cell-data {
-        height: 50px;
-        padding-left: 20px;
+        padding-left: 0px;
         @include typeSetting(3, light);
+        padding-top: 0px;
+
+
+        @include bpMinSmall {
+            padding-top: 12px;
+            padding-left: 20px;
+        }
     }
     &__controlled-vocab-string-container {
         padding-bottom: 10px;
@@ -82,13 +98,22 @@
         }    
     }
     &__controlled-vocab {
-        @include typeSetting(1, light);
-        line-height: 2rem !important;
-        border: solid themeColor(silent-green) 1px;
-        border-radius: 4px;
-        color: siteColor(vam-white);
-        padding: 2px 7px 2px 7px;
+
+        padding: 10px 13px;
+        line-height: 3rem !important;
         margin-right: 10px;
+
+        @include bpMinSmall {
+            padding: 2px 7px 2px 7px;
+            margin-right: 10px;
+            line-height: 2rem !important;
+        }
+
+        border-radius: 4px;
+        @include typeSetting(1, light);
+        border: solid themeColor(silent-green) 1px;
+        color: siteColor(vam-white);
+        
         &:hover {
             background-color: themeColor(silent-green);
             color: siteColor(vam-grey-1);
