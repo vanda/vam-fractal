@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "browser-cookies": "^1.2.0",
+    "gulp-livereload": "^4.0.2",
     "svg4everybody": "^2.1.9"
   }
 }

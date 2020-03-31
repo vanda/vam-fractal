@@ -23,6 +23,7 @@ const surge         = require('gulp-surge');
 const svgmin        = require('gulp-svgmin');
 const svgsymbols    = require('gulp-svg-symbols');
 const uglify        = require('gulp-uglify');
+const livereload    = require('gulp-livereload');
 
 // Paths
 const paths = {
@@ -211,8 +212,8 @@ function jsLinter() {
 // Watch
 function watch() {
   serve();
-  gulp.watch(['src/assets/**/*.scss', 'src/components/**/*.scss'], styles);
-  gulp.watch(['src/assets/**/*.js', 'src/components/**/_*.js'], scripts);
+  gulp.watch(['src/assets/**/*.scss', 'src/components/**/**/*.scss'], styles);
+  gulp.watch(['src/assets/**/*.js', 'src/components/**/**/*.js'], scripts);
   gulp.watch('src/assets/svg/*.svg', svg);
   gulp.watch('src/assets/fonts', fonts);
 }
