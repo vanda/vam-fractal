@@ -19,6 +19,7 @@
         line-height: 0;
     }
     &__cell-free-content {
+        word-break: break-word;
         &--hidden {
             height: 200px;
             overflow: hidden;
@@ -79,10 +80,10 @@
         color: siteColor(vam-white);
     }
     &__cell-concealer, &__cell-revealer {
-        padding: 10px;
+        padding: 10px 10px 10px 0px;
         height: 40px;
         position: relative;
-        text-align: center;
+        text-align: left;
         &:hover {
             text-decoration: underline;
             cursor: pointer;

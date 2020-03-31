@@ -1,6 +1,7 @@
 (function(){
 
 	var revealEl = document.createElement("DIV");
+
 	var classes = [
 		"etc-details__cell-concealer",	
 		"etc-details__cell-revealer"
@@ -21,7 +22,7 @@
     	var hiddenClass = "etc-details__cell-free-content--hidden";
     	var textEl = e.target.parentElement.querySelector(".etc-details__cell-free-content");
     	var textElConcealed = textEl.classList.contains(hiddenClass);
-    	
+
     	e.target.innerHTML = html[textElConcealed ? 1 : 0];
     	e.target.className = classes[textElConcealed ? 1 : 0];
 
