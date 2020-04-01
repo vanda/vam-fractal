@@ -15,48 +15,48 @@ function updateImageAndCounter(e) {
 
 	if (!!opr) {
 		newIndex = parseInt(currentSelect.getAttribute("data-image-index"));
-
 	} else {
 		newIndex = setIndex;
 	}
-
-	if (!!currentSelect) {
-		currentSelect.classList.remove(classActive);
-	}
-
 	if (opr == "+") {
 		newIndex = newIndex + 1;
 	} else if (opr == "-") {
 		newIndex = newIndex - 1;
 	}
 
-	var classSelected = "image-carosel__image-preview-container--selected";
-	var selectedEl = document.querySelector("." + classSelected);
+	if (document.querySelector("img[data-image-index='" + String(newIndex) + "']")) {
+		if (!!currentSelect) {
+			currentSelect.classList.remove(classActive);
+		}
 
-	if (!!selectedEl) {
-		selectedEl.classList.remove(classSelected);
+		var classSelected = "image-carosel__image-preview-container--selected";
+		var selectedEl = document.querySelector("." + classSelected);
+
+		if (!!selectedEl) {
+			selectedEl.classList.remove(classSelected);
+		}
+
+		document.querySelector('div[data-image-index="' + String(newIndex) + '"]').classList.add(classSelected);
+
+		var imageDetailNext = document.querySelector(".image-overlay-detail__next");
+		var imageDetailPrev = document.querySelector(".image-overlay-detail__prev");
+
+		if (newIndex === document.querySelectorAll(".image-carosel__image-preview-container").length - 1) {
+			imageDetailNext.classList.remove("image-overlay-detail__next--enabled");
+		} else {
+			imageDetailNext.classList.add("image-overlay-detail__next--enabled");
+		}
+
+		if (newIndex === 0) {
+			imageDetailPrev.classList.remove("image-overlay-detail__prev--enabled");
+		} else {
+			imageDetailPrev.classList.add("image-overlay-detail__prev--enabled");
+		}	
+
+		document.querySelector("img[data-image-index='"+ String(newIndex) +"']").classList.add(classActive);
+		
+		updateCounter();
 	}
-
-	document.querySelector('div[data-image-index="' + String(newIndex) + '"]').classList.add(classSelected);
-
-	var imageDetailNext = document.querySelector(".image-overlay-detail__next");
-	var imageDetailPrev = document.querySelector(".image-overlay-detail__prev");
-
-	if (newIndex === document.querySelectorAll(".image-carosel__image-preview-container").length - 1) {
-		imageDetailNext.classList.remove("image-overlay-detail__next--enabled");
-	} else {
-		imageDetailNext.classList.add("image-overlay-detail__next--enabled");
-	}
-
-	if (newIndex === 0) {
-		imageDetailPrev.classList.remove("image-overlay-detail__prev--enabled");
-	} else {
-		imageDetailPrev.classList.add("image-overlay-detail__prev--enabled");
-	}	
-
-	document.querySelector("img[data-image-index='"+ String(newIndex) +"']").classList.add(classActive);
-	
-	updateCounter();
 }
 
 (function() {
