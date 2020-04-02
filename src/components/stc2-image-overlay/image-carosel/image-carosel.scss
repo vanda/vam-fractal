@@ -1,11 +1,13 @@
 .image-carosel {
   position: relative;
+  display: block;
+  text-align: right;
+  width: 400px;
 
   &__conceal-left {
     left: 54px;
-    height: 88px;
     width: 0px;
-    visibility: hidden;
+    display: none;
     background-image: linear-gradient(to left, rgba(29,30,32,0), #1d1e20);
 
   }
@@ -15,6 +17,7 @@
     position: absolute;
     top: 0px; 
     width: 80px;
+    height: 92px;
     @includeMinLarge {
       width: 140px;
     }        
@@ -23,9 +26,8 @@
 
   &__conceal-right {
     right: 4px;
-    height: 88px;
     margin-right: 50px;
-    visibility: visible;
+    display: none;
     width: 80px;
     @includeMinLarge {
       width: 140px;
@@ -33,10 +35,6 @@
     background-image: linear-gradient(to right, rgba(29,30,32,0), #1d1e20);
   }
 
-  display: block;
-  text-align: right;
-
-  width: 400px;
 
   @include bpMinLarge {
     width: 660px;
@@ -46,6 +44,7 @@
   background: siteColor(vam-black);
 
   &__prevnext {
+    justify-content: center;
     display: flex;
     flex-direction: row;
   }
@@ -53,7 +52,7 @@
   &__navigation-container {
     position: relative;
     flex: 1 0 auto;
-    visibility: hidden;
+    display: none;
     align-self: center;
     text-align: center;
     margin: 0px 12px 0px 12px;
@@ -69,20 +68,32 @@
       position: relative;
       align-items: center;
       overflow: hidden;
+      padding: 5px;
     }
   }
 
+  &__image-preview {
+    width: 91%;
+    height: 91%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+
   &__image-preview-container {
-    min-width: 100px;
-    height: 86px;
+    min-width: 110px;
+    position: relative;
+    height: 91px;
     margin: 0px 12px 0px 0px;
-    background-color: siteColor(vam-grey-5);      
     &:hover {
-      border: solid 5px #b7b8bd;
+      /*outline: solid 5px #b7b8bd;*/
+      background-color: #b7b8bd;
       cursor: pointer;
     }
     &--selected {
-      border: solid 5px siteColor(vam-white);
+      background-color:  siteColor(vam-white);
+      /*outline: solid 5px siteColor(vam-white);*/
     }
   }
 

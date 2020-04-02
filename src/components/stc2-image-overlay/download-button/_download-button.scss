@@ -19,6 +19,20 @@
       margin-top: 4px;		
 	}
 
+	&__modal-license-content {
+		display: none;
+		&--active {
+			display: block;
+		}
+	}
+
+	&__modal-download-content {
+		display: none;
+		&--active {
+			display: block;
+		}		
+	}
+
 	&__title {
 		@include typeSetting(5, bold);
 	}
