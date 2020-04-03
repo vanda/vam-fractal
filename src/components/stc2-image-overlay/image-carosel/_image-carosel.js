@@ -73,14 +73,16 @@
 
 		var concealCarosel = document.querySelector(".image-carosel--conceal .image-carosel__image-carosel");
 
-		document.querySelector('.image-carosel').addEventListener("keypress", function(e) {
-			  console.log('????')
-			  if (e.keyCode === 39) {
-			  	scrollCarosel(scrollPx);
-			  } else if (e.keycode === 37) {
-				scrollCarosel(-scrollPx);
-			  }
-		});
+		document.addEventListener("keydown", function(e) {
+	        switch (event.keyCode) {
+	           case 37:
+	   				document.querySelector('.image-carosel__image-carosel').dispatchEvent(new CustomEvent("updateimageandcounter", { detail: { opr: "-" }, bubbles: true }));
+		           	break;
+	           case 39:
+	   				document.querySelector('.image-carosel__image-carosel').dispatchEvent(new CustomEvent("updateimageandcounter", { detail: { opr: "+" }, bubbles: true }));
+		           	break;
+	        }
+	    });
 
 		if (concealCarosel) {
 			var concealLeft = document.querySelector(".image-carosel__conceal-left");
