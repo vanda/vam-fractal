@@ -1,28 +1,9 @@
 (function(){
-	var buttons = [
-		{
-			button: "__license-button",
-			content: "__license-content"
-		},
-		{
-			button: "__download-button",
-			content: "__download-content",
-
-		}
-	];
-
 	var prefix = "image-button";
-
-	// buttons.forEach(function(c) {
-	// 	if (!!document.querySelector("." + prefix + c.button + " button")) {
-	// 		document.querySelector("." + prefix + c.button + " button").onclick = function() {
-	// 			document.querySelector("." + prefix + c.content).classList.add(prefix + c.content + "--active");
-	// 		}
-	// 	}
-	// });
 
 	if (document.querySelector(".image-button__download-button")) {
 		document.querySelector(".image-button__download-button").onclick = function(e) {
+	        document.querySelector(".image-button__image-modal").dispatchEvent(new CustomEvent("jsModalOpen", {bubbles: true}));
 			document.querySelector(".image-button__image-modal").classList.add("b-modal--active");
 			document.querySelector(".image-button__modal-download-content").classList.add("image-button__modal-download-content--active");
 			document.querySelector(".image-button__modal-license-content").classList.remove("image-button__modal-license-content--active");
@@ -31,6 +12,7 @@
 
 	if (document.querySelector(".image-button__license-button")) {
 		document.querySelector(".image-button__license-button").onclick = function(e) {
+			document.querySelector(".image-button__image-modal").dispatchEvent(new CustomEvent("jsModalOpen", {bubbles: true}));
 			document.querySelector(".image-button__image-modal").classList.add("b-modal--active");
 			document.querySelector(".image-button__modal-download-content").classList.remove("image-button__modal-download-content--active");
 			document.querySelector(".image-button__modal-license-content").classList.add("image-button__modal-license-content--active");			

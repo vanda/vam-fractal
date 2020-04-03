@@ -29,6 +29,7 @@ Array.from(modals, (modal) => {
         modalTracking(modalCampaign, `clicked: ${e.target.textContent}`);
       } else {
         modalTracking(modalCampaign, 'pop-up dismissed');
+        modal.dispatchEvent(new CustomEvent("jsModalClosed", {bubbles: true}));
         modal.classList.remove("b-modal--active");
       }
     }

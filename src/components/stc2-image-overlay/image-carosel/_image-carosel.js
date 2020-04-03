@@ -14,7 +14,7 @@
 			}
 		} 
 
-		var scrollPx = 114;
+		var scrollPx = 154;
 
 		var image_carosel_preview = document.createElement("div");
 		image_carosel_preview.classList.add("image-carosel__image-preview-container");
