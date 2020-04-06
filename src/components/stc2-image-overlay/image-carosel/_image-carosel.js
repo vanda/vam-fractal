@@ -77,9 +77,11 @@
 	        switch (event.keyCode) {
 	           case 37:
 	   				document.querySelector('.image-carosel__image-carosel').dispatchEvent(new CustomEvent("updateimageandcounter", { detail: { opr: "-" }, bubbles: true }));
+					scrollCarosel(-scrollPx);
 		           	break;
 	           case 39:
 	   				document.querySelector('.image-carosel__image-carosel').dispatchEvent(new CustomEvent("updateimageandcounter", { detail: { opr: "+" }, bubbles: true }));
+		           	scrollCarosel(scrollPx);
 		           	break;
 	        }
 	    });
