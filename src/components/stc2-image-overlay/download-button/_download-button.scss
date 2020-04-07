@@ -76,7 +76,7 @@
 	&__description-container {
 		padding: 5px;
 
-		@bpMinSmall {
+		@include bpMinSmall {
 			padding: 22px;
 		}
 		background-color: #efefed;
