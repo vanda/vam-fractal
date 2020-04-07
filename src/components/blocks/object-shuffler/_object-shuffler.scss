@@ -18,7 +18,7 @@
   }
 
   &__slide {
-    align-content: center;
+    align-content: space-between;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -45,6 +45,7 @@
     display: flex;
     flex: 0 1 auto;
     height: 50%;
+    padding: 2%;
     width: 50%;
 
     @include bpMinSmall {
