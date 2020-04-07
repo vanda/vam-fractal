@@ -51,7 +51,7 @@
 
 	&__modal-content {
     	width: 100% !important;
-    	padding: 5px;
+    	padding: 10px;
 
     	@include bpMinXSmall {
         	max-width: 500px !important;
