@@ -47,13 +47,13 @@
 					document.querySelector(".image-button__agree-to-terms-reminder").style.display = "none";
 
 					elements.forEach(function(c) {
-						document.querySelector("." + prefix + c).classList.add(prefix + c + "--active");
+						document.querySelector("." + prefix + c) && document.querySelector("." + prefix + c).classList.add(prefix + c + "--active");
 					});
 
 
 				} else {
 					elements.forEach(function(c) {
-						document.querySelector("." + prefix + c).classList.remove(prefix + c + "--active");
+						document.querySelector("." + prefix + c) && document.querySelector("." + prefix + c).classList.remove(prefix + c + "--active");
 					});
 				}
 			}

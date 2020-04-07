@@ -38,7 +38,10 @@
 	}
 
 	&__title {
-		@include typeSetting(5, bold);
+		@include typeSetting(3, bold);
+		@include bpMinSmall {
+			@include typeSetting(5, bold);
+		}
 	}
 
 	&__description-container-bullets li {
@@ -48,8 +51,12 @@
 
 	&__modal-content {
     	width: 100% !important;
-    	max-width: 500px !important;
-    	padding: 30px 20px 24px;
+    	padding: 5px;
+
+    	@include bpMinXSmall {
+        	max-width: 500px !important;
+			padding: 30px 20px 24px;
+    	}
 
 	    @include bpMinSmall {
     	    padding: 25px 35px 25px !important;
@@ -67,7 +74,11 @@
 	}
 
 	&__description-container {
-		padding: 22px;
+		padding: 5px;
+
+		@bpMinSmall {
+			padding: 22px;
+		}
 		background-color: #efefed;
 	}
 
@@ -98,8 +109,14 @@
 	    align-items: center;
 	}
 
-	&__download-link a {
+	&__download-link-text a {
 	    text-underline-position: under;
+
+	    @include typeSetting(2, light);
+
+	    @include bpMinSmall {
+			@include typeSetting(3, light);	    
+	    }	
 	}
 
 	&__image-info {
@@ -112,12 +129,22 @@
 	}
 
 	&__title-section, &__footer-section {
-		margin: 15px 25px 0px 25px;
+		margin: 5px;		
+
+		@bpMinSmall {
+			margin: 15px 25px 0px 25px;
+		}
+
 		font-weight: 300 !important;
 	}
 
 	&__footer-section {
-		margin-top: 30px;
+		margin-top: 10px;
+
+		@include bpMinSmall {
+			margin-top: 30px;
+		}
+
 		border-top: 1px solid rgba(0, 0, 0, 0.3);
 	}	
 
@@ -126,6 +153,12 @@
 	}
 
 	&__checkbox-container {
+		margin-bottom: 15px;
+
+		@include bpMinSmall {
+			margin-bottom: 15px;			
+		}
+
 		position: relative;
 		margin-top: 15px;
 		width: fit-content;
@@ -171,9 +204,14 @@
 		@include typeSetting(4, regular);
 
 		&-text {
-			position: absolute;
-			width: 500px;
-			margin-top: 5px;
+		    width: 160px;
+		    position: absolute;
+
+			@include bpMinXSmall {
+				width: 500px;
+			    margin-top: 5px;
+			}
+
 			@include bpMinSmall {
 				margin-top: 0px;
 			}
