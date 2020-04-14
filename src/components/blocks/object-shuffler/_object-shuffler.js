@@ -119,6 +119,13 @@
       shuffler.newSlide(el);
       slide.remove();
       shuffler.newSlide(el);
+
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('.js-object-shuffler__more')) {
+          e.preventDefault();
+          shuffler.nextSlide(el);
+        }
+      }, false);
     },
     setSize: (el) => {
       // number of columns determined by item width * 2 rows
@@ -147,18 +154,15 @@
         const scale = 1 + ((el._state.itemsIndex % 2 > 0 ? 1 : -1) * flip * scaler);
         let vector = '0, 0';
         // shift towards to remain in shot
-        //~ if (img.naturalHeight > img.naturalWidth) {
-          const slot = (el._state.itemsIndex % el._state.slideSize) + 1;
-          let xDir = 0;
-          if (slot === 1 || slot === (el._state.slideSize / 2) + 1) {
-            xDir = 1;
-          } else if (slot === el._state.slideSize / 2 || slot === el._state.slideSize) {
-            xDir = -1;
-          }
-          const yDir = slot > el._state.slideSize / 2 ? -1 : 1;
-          vector = `${xDir * scaler * 50}%, ${yDir * scaler * 50}%`;
-          console.log(slot, xDir, yDir);
-        //~ }
+        const slot = (el._state.itemsIndex % el._state.slideSize) + 1;
+        const yDir = slot > el._state.slideSize / 2 ? -1 : 1;
+        let xDir = 0;
+        if (slot === 1 || slot === (el._state.slideSize / 2) + 1) {
+          xDir = 1;
+        } else if (slot === el._state.slideSize / 2 || slot === el._state.slideSize) {
+          xDir = -1;
+        }
+        vector = `${xDir * scaler * 50}%, ${yDir * scaler * 50}%`;
         item.style.transform = `scale(${scale}) translate(${vector})`;
         el._state.itemsIndex += 1;
         return true;
@@ -169,7 +173,7 @@
     },
     nextSlide: (el) => {
       shuffler.newSlide(el);
-      // el.querySelector('.js-object-shuffler__viewer').children[0].remove();
+      el.querySelector('.js-object-shuffler__viewer').children[0].remove();
     }
   };
 

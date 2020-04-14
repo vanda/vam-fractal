@@ -31,7 +31,6 @@
     width: 96%;
 
     &:nth-child(n+2) {
-      left: 100%;
       top: -100%;
     }
 
@@ -46,11 +45,16 @@
     flex: 0 1 auto;
     height: 50%;
     padding: 2%;
+    transition: transform 0.5s;
     width: 50%;
 
     @include bpMinSmall {
       width: 33%;
     }
+  }
+  
+  &__slide:nth-child(n+2) > &__item  {
+    transform: scale(0) !important;
   }
 
   &__image {
@@ -58,5 +62,28 @@
     height: 100%;
     object-fit: contain;
     margin: auto;
+  }
+
+  &__more {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 auto 40px;
+  }
+
+  &__more-icon {
+    border-radius: 50%;
+    background: map-get($theme-colors, silent-green);
+    color: siteColor(vam-black);
+    content: '';
+    display: flex;
+    height: 80px;
+    margin-bottom: 10px;
+    width: 80px;
+
+    > svg {
+      height: 50%;
+      margin: auto;
+      width: 50%;
+    }
   }
 }
