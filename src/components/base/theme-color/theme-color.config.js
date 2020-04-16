@@ -17,6 +17,10 @@ module.exports = {
         hex: '#c9fbff'
       },
       {
+        name: 'black',
+        hex: '#000000'
+      },
+      {
         name: 'blue-green',
         hex: '#12d2a0'
       },
