@@ -104,21 +104,24 @@
 
   const shuffler = {
     init: (el) => {
-      el._state = {
+      el._props = {
+        viewer: el.querySelector('.js-object-shuffler__viewer'),
         slideSize: 4,
         itemsData: [],
-        itemsIndex: 0
+        itemsIndex: 0,
+        transitionDuration: 0
       };
       shuffler.setSize(el);
       shuffler.getData(el);
-      const slide = el.querySelector('.js-object-shuffler__viewer').children[0];
+      const slide = el._props.viewer.children[0];
       const blank = slide.children[0];
-      for (let i = 2; i <= el._state.slideSize; i += 1) {
+      el._props.transitionDuration = parseFloat(window.getComputedStyle(blank).getPropertyValue('transition-duration'));
+      for (let i = 2; i <= el._props.slideSize; i += 1) {
         slide.appendChild(blank.cloneNode(true));
       }
       shuffler.newSlide(el);
-      slide.remove();
       shuffler.newSlide(el);
+      shuffler.nextSlide(el);
 
       document.addEventListener('click', (e) => {
         if (e.target.closest('.js-object-shuffler__more')) {
@@ -129,51 +132,62 @@
     },
     setSize: (el) => {
       // number of columns determined by item width * 2 rows
-      const slide = el.querySelector('.js-object-shuffler__viewer').children[0];
-      el._state.slideSize = 2 * Math.floor(
+      const slide = el._props.viewer.children[0];
+      el._props.slideSize = 2 * Math.floor(
         slide.getBoundingClientRect().width / slide.children[0].getBoundingClientRect().width);
     },
     getData: (el) => {
-      // fetch data from search API
-      el._state.itemsData = [...el._state.itemsData, ...collsAPISet];
+      // append more data from search API
+      while (el._props.itemsData.length < el._props.itemsIndex + el._props.slideSize ) {
+        el._props.itemsData = [...el._props.itemsData, ...collsAPISet];
+      }
     },
     newSlide: (el) => {
       // clone a new slide from the first and load it up
-      const viewer = el.querySelector('.js-object-shuffler__viewer');
-      const slide = viewer.appendChild(viewer.children[0].cloneNode(true));
+      const slide = el._props.viewer.appendChild(el._props.viewer.children[0].cloneNode(true));
       Array.from(slide.children, (item) => {
         const img = item.querySelector('img');
-        item.title = el._state.itemsData[el._state.itemsIndex].title;
-        item.href = el._state.itemsData[el._state.itemsIndex].href;
-        img.srcset = el._state.itemsData[el._state.itemsIndex].img.srcset;
-        img.src = el._state.itemsData[el._state.itemsIndex].img.src;
-        img.alt = el._state.itemsData[el._state.itemsIndex].img.alt;
+        item.title = el._props.itemsData[el._props.itemsIndex].title;
+        item.href = el._props.itemsData[el._props.itemsIndex].href;
+        img.srcset = el._props.itemsData[el._props.itemsIndex].img.srcset;
+        img.src = el._props.itemsData[el._props.itemsIndex].img.src;
+        img.alt = el._props.itemsData[el._props.itemsIndex].img.alt;
         // scatter effect
-        const flip = Math.random() > 0.5 ? 1 : -1;
-        const scaler = Math.random() * 0.34;
-        const scale = 1 + ((el._state.itemsIndex % 2 > 0 ? 1 : -1) * flip * scaler);
-        let vector = '0, 0';
-        // shift towards to remain in shot
-        const slot = (el._state.itemsIndex % el._state.slideSize) + 1;
-        const yDir = slot > el._state.slideSize / 2 ? -1 : 1;
-        let xDir = 0;
-        if (slot === 1 || slot === (el._state.slideSize / 2) + 1) {
+        const scaler = Math.random() * 0.23;
+        const scale = 1 + ((el._props.itemsIndex % 2 > 0 ? 1 : -1) * scaler);
+        // shift items towards centre to remain in shot
+        const slot = (el._props.itemsIndex % el._props.slideSize);
+        const yDir = slot > (el._props.slideSize / 2) - 1 ? -1 : 1;
+        let xDir = Math.random() > 0.5 ? 1 : -1;
+        if (slot === 0 || slot === el._props.slideSize / 2) {
+          // left-hand col
           xDir = 1;
-        } else if (slot === el._state.slideSize / 2 || slot === el._state.slideSize) {
+        } else if (slot === (el._props.slideSize / 2) - 1 || slot === el._props.slideSize - 1) {
+          // right-hand col
           xDir = -1;
         }
-        vector = `${xDir * scaler * 50}%, ${yDir * scaler * 50}%`;
-        item.style.transform = `scale(${scale}) translate(${vector})`;
-        el._state.itemsIndex += 1;
+        const x = (slot % (el._props.slideSize / 2)) * 100 / (el._props.slideSize / 2);
+        const y = slot < el._props.slideSize / 2 ? 0 : 50;
+        const aspect = img.naturalHeight / img.naturalWidth;
+        const jitterX = xDir * scaler * 23 * aspect;
+        const jitterY = yDir * scaler * 23 / aspect;
+        item.style.width = 'auto';
+        item.style.height = `${scale * 50}%`;
+        item.style.position = 'absolute';
+        item.style.left = `${x + jitterX}%`;
+        item.style.top = `${y + jitterY}%`;
+        item.style.transitionDuration = `${el._props.transitionDuration * scale * scale}s`;
+        el._props.itemsIndex += 1;
         return true;
       });
-      if (el._state.itemsData.length - el._state.itemsIndex < el._state.slideSize) {
-        shuffler.getData(el);
-      }
+      shuffler.getData(el);
     },
     nextSlide: (el) => {
       shuffler.newSlide(el);
-      el.querySelector('.js-object-shuffler__viewer').children[0].remove();
+      el._props.viewer.children[0].remove();
+      el._props.viewer.children[0].removeAttribute('active');
+      el._props.viewer.children[1].setAttribute('active', true);
+      el._props.viewer.children[2].removeAttribute('active');
     }
   };
 
