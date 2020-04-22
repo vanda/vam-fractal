@@ -114,14 +114,17 @@
       shuffler.setSize(el);
       shuffler.getData(el);
       const slide = el._props.viewer.children[0];
-      const blank = slide.children[0];
-      el._props.transitionDuration = parseFloat(window.getComputedStyle(blank).getPropertyValue('transition-duration'));
+      // clone initial html markup for an item to make a whole slide
+      const itemTemplate = slide.children[0];
+      el._props.transitionDuration = parseFloat(window.getComputedStyle(itemTemplate).getPropertyValue('transition-duration'));
       for (let i = 2; i <= el._props.slideSize; i += 1) {
-        slide.appendChild(blank.cloneNode(true));
+        slide.appendChild(itemTemplate.cloneNode(true));
       }
+      // next slide transitions require an activating/deactivating pair of slides, plus a next slide ready and waiting (= 3 slides)
+      slide.removeAttribute('active');
+      const activeSlide = shuffler.newSlide(el);
+      activeSlide.setAttribute('active', true);
       shuffler.newSlide(el);
-      shuffler.newSlide(el);
-      shuffler.nextSlide(el);
 
       document.addEventListener('click', (e) => {
         if (e.target.closest('.js-object-shuffler__more')) {
@@ -143,7 +146,7 @@
       }
     },
     newSlide: (el) => {
-      // clone a new slide from the first and load it up
+      // clone a new slide from the first, populate with new data, and append it to the list of slides
       const slide = el._props.viewer.appendChild(el._props.viewer.children[0].cloneNode(true));
       Array.from(slide.children, (item) => {
         const img = item.querySelector('img');
@@ -168,7 +171,7 @@
         }
         const x = (slot % (el._props.slideSize / 2)) * 100 / (el._props.slideSize / 2);
         const y = slot < el._props.slideSize / 2 ? 0 : 50;
-        const aspect = img.naturalHeight / img.naturalWidth;
+        const aspect = 1 || img.naturalHeight / img.naturalWidth;
         const jitterX = xDir * scaler * 23 * aspect;
         const jitterY = yDir * scaler * 23 / aspect;
         item.style.width = 'auto';
@@ -181,13 +184,23 @@
         return true;
       });
       shuffler.getData(el);
+      return slide;
     },
     nextSlide: (el) => {
       shuffler.newSlide(el);
       el._props.viewer.children[0].remove();
-      el._props.viewer.children[0].removeAttribute('active');
-      el._props.viewer.children[1].setAttribute('active', true);
-      el._props.viewer.children[2].removeAttribute('active');
+      let nextActive = false;
+      Array.from(el._props.viewer.children, (slide) => {
+        if (slide.hasAttribute('active')) {
+          nextActive = true;
+          slide.removeAttribute('active');
+        } else if (nextActive) {
+          nextActive = false;
+          slide.setAttribute('active', true);
+        } else {
+          slide.removeAttribute('active');
+        }
+      });
     }
   };
 
