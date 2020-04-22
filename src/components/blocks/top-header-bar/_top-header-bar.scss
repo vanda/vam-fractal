@@ -1,0 +1,55 @@
+.b-global-bar {
+  background-color: siteColor(vam-black);
+  position: relative;
+  @include rem(height, 70px);
+  @include bpMinSmall {
+    @include rem(height, 40px);
+  }
+
+  .b-back {
+    color: siteColor(vam-grey-5);
+    position: absolute;
+    text-transform: uppercase;
+    @include rem(left, 5px);
+    @include rem(top, 10px);
+    @include bpMinSmall {
+      position: relative;
+      @include rem(left, 12px);
+      @include rem(top, 7px);
+    }
+
+    @include bpMinMedium {
+      @include rem(left, 60px);
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .u-back__icon {
+      @include rem(height, 8px);
+      @include rem(margin, 0 $spacing-xsmall);
+      @include rem(width, 10px);
+    }
+
+    .u-back__text {
+      @include rem(letter-spacing, 2px);
+      @include typeSetting(0, normal, uppercase);
+    }
+  }
+
+  .u-logo {
+    color: siteColor(vam-grey-5);
+    position: absolute;
+    @include rem(right, 5px);
+    @include rem(top, 20px);
+    @include bpMinSmall {
+      display: none;
+    }
+
+    .u-logo__icon {
+      @include rem(height, 50px);
+      @include rem(width, 100px);
+    }
+  }
+}
