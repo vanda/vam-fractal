@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 (() => {
   // dummy Collections API response
   const collsAPISet = [
@@ -120,7 +121,8 @@
       for (let i = 2; i <= el._props.slideSize; i += 1) {
         slide.appendChild(itemTemplate.cloneNode(true));
       }
-      // next slide transitions require an activating/deactivating pair of slides, plus a next slide ready and waiting (= 3 slides)
+      // next slide transitions require an activating/deactivating pair of slides,
+      // plus a next slide ready and waiting (= 3 slides)
       slide.removeAttribute('active');
       const activeSlide = shuffler.newSlide(el);
       activeSlide.setAttribute('active', true);
@@ -141,12 +143,12 @@
     },
     getData: (el) => {
       // append more data from search API
-      while (el._props.itemsData.length < el._props.itemsIndex + el._props.slideSize ) {
+      while (el._props.itemsData.length < el._props.itemsIndex + el._props.slideSize) {
         el._props.itemsData = [...el._props.itemsData, ...collsAPISet];
       }
     },
     newSlide: (el) => {
-      // clone a new slide from the first, populate with new data, and append it to the list of slides
+      // append a new slide by cloning the first and populate with new data
       const slide = el._props.viewer.appendChild(el._props.viewer.children[0].cloneNode(true));
       Array.from(slide.children, (item) => {
         const img = item.querySelector('img');
@@ -169,11 +171,11 @@
           // right-hand col
           xDir = -1;
         }
-        const x = (slot % (el._props.slideSize / 2)) * 100 / (el._props.slideSize / 2);
+        const x = (slot % (el._props.slideSize / 2)) * (100 / (el._props.slideSize / 2));
         const y = slot < el._props.slideSize / 2 ? 0 : 50;
         const aspect = 1 || img.naturalHeight / img.naturalWidth;
         const jitterX = xDir * scaler * 23 * aspect;
-        const jitterY = yDir * scaler * 23 / aspect;
+        const jitterY = (yDir * scaler * 23) / aspect;
         item.style.width = 'auto';
         item.style.height = `${scale * 50}%`;
         item.style.position = 'absolute';
@@ -200,6 +202,7 @@
         } else {
           slide.removeAttribute('active');
         }
+        return true;
       });
     }
   };
@@ -231,3 +234,4 @@
     });
   }, true);
 })();
+/* eslint-enable no-underscore-dangle */
