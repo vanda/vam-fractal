@@ -67,12 +67,12 @@
         padding-top: 0px;
 
         @include bpMinSmall {
-            padding-top: 12px;
+            padding-top: 10px;
             padding-left: 20px;            
         }
     }
     &__controlled-vocab-string-container {
-        padding-bottom: 10px;
+        padding-bottom: 8px;
     }
     &__cell-concealer-text {
         pointer-events: none;
@@ -116,7 +116,8 @@
             margin-right: 10px;
             line-height: 2rem !important;
             line-height: 1.3rem !important;
-            margin-top: 0px;
+            margin-top: 2px;
+            margin-bottom: 2px;
         }
 
         border-radius: 4px;
