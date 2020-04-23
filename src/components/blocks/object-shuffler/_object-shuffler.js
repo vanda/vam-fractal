@@ -114,9 +114,9 @@
       };
       shuffler.setSize(el);
       shuffler.getData(el);
-      const slide = el._props.viewer.children[0];
+      const slide = el._props.viewer.firstElementChild;
       // clone initial html markup for an item to make a whole slide
-      const itemTemplate = slide.children[0];
+      const itemTemplate = slide.firstElementChild;
       el._props.transitionDuration = parseFloat(window.getComputedStyle(itemTemplate).getPropertyValue('transition-duration'));
       for (let i = 2; i <= el._props.slideSize; i += 1) {
         slide.appendChild(itemTemplate.cloneNode(true));
@@ -137,9 +137,9 @@
     },
     setSize: (el) => {
       // number of columns determined by item width * 2 rows
-      const slide = el._props.viewer.children[0];
+      const slide = el._props.viewer.firstElementChild;
       el._props.slideSize = 2 * Math.floor(
-        slide.getBoundingClientRect().width / slide.children[0].getBoundingClientRect().width);
+        slide.getBoundingClientRect().width / slide.firstElementChild.getBoundingClientRect().width);
     },
     getData: (el) => {
       // append more data from search API
@@ -149,7 +149,7 @@
     },
     newSlide: (el) => {
       // append a new slide by cloning the first and populate with new data
-      const slide = el._props.viewer.appendChild(el._props.viewer.children[0].cloneNode(true));
+      const slide = el._props.viewer.appendChild(el._props.viewer.firstElementChild.cloneNode(true));
       Array.from(slide.children, (item) => {
         const img = item.querySelector('img');
         item.title = el._props.itemsData[el._props.itemsIndex].title;
@@ -190,20 +190,10 @@
     },
     nextSlide: (el) => {
       shuffler.newSlide(el);
-      el._props.viewer.children[0].remove();
-      let nextActive = false;
-      Array.from(el._props.viewer.children, (slide) => {
-        if (slide.hasAttribute('active')) {
-          nextActive = true;
-          slide.removeAttribute('active');
-        } else if (nextActive) {
-          nextActive = false;
-          slide.setAttribute('active', true);
-        } else {
-          slide.removeAttribute('active');
-        }
-        return true;
-      });
+      el._props.viewer.firstElementChild.remove();
+      const active = el._props.viewer.querySelector('[active]');
+      active.removeAttribute('active');
+      active.nextSibling.setAttribute('active', true);
     }
   };
 
