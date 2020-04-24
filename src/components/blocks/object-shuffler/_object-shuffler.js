@@ -105,74 +105,103 @@
 
   const shuffler = {
     init: (el) => {
-      el._props = {
-        viewer: el.querySelector('.js-object-shuffler__viewer'),
-        slideSize: 4,
-        itemsData: [],
-        itemsIndex: 0,
-        transitionDuration: 0
-      };
-      shuffler.setSize(el);
-      shuffler.getData(el);
-      const slide = el._props.viewer.firstElementChild;
-      // clone initial html markup for an item to make a whole slide
-      const itemTemplate = slide.firstElementChild;
-      el._props.transitionDuration = parseFloat(window.getComputedStyle(itemTemplate).getPropertyValue('transition-duration'));
-      for (let i = 2; i <= el._props.slideSize; i += 1) {
-        slide.appendChild(itemTemplate.cloneNode(true));
+      const shufflerData = JSON.parse(el.dataset.shufflerContent);
+      const deckTemplate = el.querySelector('.js-object-shuffler__deck');
+      const itemTemplate = deckTemplate.firstElementChild.firstElementChild;
+      const imgTemplate = itemTemplate.firstElementChild;
+      const slideSize = shuffler.setSize(itemTemplate);
+      const transitionDurationItem = parseFloat(window.getComputedStyle(itemTemplate).getPropertyValue('transition-duration'));
+      const transitionDurationImg = parseFloat(window.getComputedStyle(imgTemplate).getPropertyValue('transition-duration'));
+      const deckTabs = el.querySelector('.js-object-shuffler__tabs');
+
+      // clone initial html markup into a full set of decks
+      for (let i = 1; i < shufflerData.length; i += 1) {
+        const deck = deckTemplate.parentNode.appendChild(deckTemplate.cloneNode(true));
+        deck.removeAttribute('active');
       }
-      // next slide transitions require an activating/deactivating pair of slides,
-      // plus a next slide ready and waiting (= 3 slides)
-      slide.removeAttribute('active');
-      const activeSlide = shuffler.newSlide(el);
-      activeSlide.setAttribute('active', true);
-      shuffler.newSlide(el);
+      // populate each deck of slides
+      let j = 0;
+      Array.from(el.querySelectorAll('.js-object-shuffler__deck'), (deck) => {
+        deck._props = {
+          slideSize,
+          itemsData: [],
+          itemsIndex: 0,
+          transitionDurationItem,
+          transitionDurationImg
+        };
+        shuffler.getData(deck);
+        const slide = deck.firstElementChild;
+        // clone initial html markup for an item to make a whole slide
+        for (let i = 2; i <= slideSize; i += 1) {
+          slide.appendChild(itemTemplate.cloneNode(true));
+        }
+        // next slide transitions require an activating/deactivating pair of slides,
+        // plus a next slide ready and waiting (= 3 slides)
+        slide.removeAttribute('active');
+        const activeSlide = shuffler.newSlide(deck);
+        activeSlide.setAttribute('active', true);
+        shuffler.newSlide(deck);
+        // create deck tab link
+        const tabLink = deckTabs.appendChild(document.createElement('a'));
+        tabLink.className = 'b-object-shuffler__tab-link';
+        tabLink.innerHTML = shufflerData[j].title;
+        tabLink.title = `filter by ${shufflerData[j].title}`;
+        if (j === 0) { tabLink.setAttribute('active', true); }
+        tabLink.onclick = () => {
+          deckTabs.querySelector('[active]').removeAttribute('active');
+          tabLink.setAttribute('active', true);
+          el.querySelector('.js-object-shuffler__deck[active]').removeAttribute('active');
+          deck.setAttribute('active', true);
+        };
+        j += 1;
+        return true;
+      });
 
       document.addEventListener('click', (e) => {
         if (e.target.closest('.js-object-shuffler__more')) {
           e.preventDefault();
-          shuffler.nextSlide(el);
+          shuffler.nextSlide(el.querySelector('.js-object-shuffler__deck[active]'));
         }
       }, false);
     },
-    setSize: (el) => {
+    setSize: (item) => {
       // number of columns determined by item width * 2 rows
-      const slide = el._props.viewer.firstElementChild;
-      el._props.slideSize = 2 * Math.floor(
-        slide.getBoundingClientRect().width / slide.firstElementChild.getBoundingClientRect().width);
+      const cols = Math.floor(
+        item.parentNode.getBoundingClientRect().width / item.getBoundingClientRect().width);
+      return 2 * cols;
     },
-    getData: (el) => {
+    getData: (deck) => {
       // append more data from search API
-      while (el._props.itemsData.length < el._props.itemsIndex + el._props.slideSize) {
-        el._props.itemsData = [...el._props.itemsData, ...collsAPISet];
+      while (deck._props.itemsData.length < deck._props.itemsIndex + deck._props.slideSize) {
+        deck._props.itemsData = [...deck._props.itemsData, ...collsAPISet];
       }
     },
-    newSlide: (el) => {
+    newSlide: (deck) => {
       // append a new slide by cloning the first and populate with new data
-      const slide = el._props.viewer.appendChild(el._props.viewer.firstElementChild.cloneNode(true));
+      const slide = deck.appendChild(deck.firstElementChild.cloneNode(true));
       Array.from(slide.children, (item) => {
         const img = item.querySelector('img');
-        item.title = el._props.itemsData[el._props.itemsIndex].title;
-        item.href = el._props.itemsData[el._props.itemsIndex].href;
-        img.srcset = el._props.itemsData[el._props.itemsIndex].img.srcset;
-        img.src = el._props.itemsData[el._props.itemsIndex].img.src;
-        img.alt = el._props.itemsData[el._props.itemsIndex].img.alt;
+        item.title = deck._props.itemsData[deck._props.itemsIndex].title;
+        item.href = deck._props.itemsData[deck._props.itemsIndex].href;
+        img.srcset = deck._props.itemsData[deck._props.itemsIndex].img.srcset;
+        img.src = deck._props.itemsData[deck._props.itemsIndex].img.src;
+        img.alt = deck._props.itemsData[deck._props.itemsIndex].img.alt;
         // scatter effect
         const scaler = Math.random() * 0.23;
-        const scale = 1 + ((el._props.itemsIndex % 2 > 0 ? 1 : -1) * scaler);
+        const scale = 1 + ((deck._props.itemsIndex % 2 > 0 ? 1 : -1) * scaler);
         // shift items towards centre to remain in shot
-        const slot = (el._props.itemsIndex % el._props.slideSize);
-        const yDir = slot > (el._props.slideSize / 2) - 1 ? -1 : 1;
+        const slot = (deck._props.itemsIndex % deck._props.slideSize);
+        const yDir = slot > (deck._props.slideSize / 2) - 1 ? -1 : 1;
         let xDir = Math.random() > 0.5 ? 1 : -1;
-        if (slot === 0 || slot === el._props.slideSize / 2) {
+        if (slot === 0 || slot === deck._props.slideSize / 2) {
           // left-hand col
           xDir = 1;
-        } else if (slot === (el._props.slideSize / 2) - 1 || slot === el._props.slideSize - 1) {
+        } else if (slot === (deck._props.slideSize / 2) - 1 || slot === deck._props.slideSize - 1) {
           // right-hand col
           xDir = -1;
         }
-        const x = (slot % (el._props.slideSize / 2)) * (100 / (el._props.slideSize / 2));
-        const y = slot < el._props.slideSize / 2 ? 0 : 50;
+        const x = (slot % (deck._props.slideSize / 2)) * (100 / (deck._props.slideSize / 2));
+        const y = slot < deck._props.slideSize / 2 ? 0 : 50;
         const aspect = 1 || img.naturalHeight / img.naturalWidth;
         const jitterX = xDir * scaler * 23 * aspect;
         const jitterY = (yDir * scaler * 23) / aspect;
@@ -181,17 +210,18 @@
         item.style.position = 'absolute';
         item.style.left = `${x + jitterX}%`;
         item.style.top = `${y + jitterY}%`;
-        item.style.transitionDuration = `${el._props.transitionDuration * scale * scale}s`;
-        el._props.itemsIndex += 1;
+        item.style.transitionDuration = `${deck._props.transitionDurationItem * scale * scale}s`;
+        img.style.transitionDuration = `${deck._props.transitionDurationImg * scale * scale}s`;
+        deck._props.itemsIndex += 1;
         return true;
       });
-      shuffler.getData(el);
+      shuffler.getData(deck);
       return slide;
     },
-    nextSlide: (el) => {
-      shuffler.newSlide(el);
-      el._props.viewer.firstElementChild.remove();
-      const active = el._props.viewer.querySelector('[active]');
+    nextSlide: (deck) => {
+      shuffler.newSlide(deck);
+      deck.firstElementChild.remove();
+      const active = deck.querySelector('[active]');
       active.removeAttribute('active');
       active.nextSibling.setAttribute('active', true);
     }
