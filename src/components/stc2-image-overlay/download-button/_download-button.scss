@@ -19,6 +19,24 @@
       margin-top: 4px;		
 	}
 
+
+	&__content-container {
+		min-height: 300px;
+		height: 300px;
+		overflow-y: scroll;
+		pointer-events: all;
+
+		@media screen and (min-height: 700px) {
+			height: 400px;
+			overflow-y: scroll;
+		}
+
+		@media screen and (min-height: 1080px) {
+			height: auto;
+			overflow-y: hidden;
+		}
+	}
+
 	&__license-modal-open {
 		cusor: pointer;
 	}
@@ -64,7 +82,9 @@
 
 	    @include bpMinMedium {
 			max-width: 670px !important;
-			height: auto !important;
+		    height: auto !important;
+		    padding: inherit;
+		    min-height: 435px;
 			padding: inherit;
 		}
 	}

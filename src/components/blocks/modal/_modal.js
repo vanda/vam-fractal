@@ -25,7 +25,7 @@ Array.from(modals, (modal) => {
       cookies.set(modalCampaign, 'seen', { domain: modal.dataset.modalDomain, expires: 365 });
     }
     if (e.target !== modal) {
-      if (!!(Array.from(e.target.classList).find(c => c === "js-modal-action"))) {
+      if (!!(Array.from(e.target.classList).find(c => c === "js-modal-action")) || e.target.closest('.js-modal-action')) {
         modalTracking(modalCampaign, `clicked: ${e.target.textContent}`);
       } else {
         modalTracking(modalCampaign, 'pop-up dismissed');

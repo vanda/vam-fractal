@@ -28,7 +28,7 @@
 
 	if (document.querySelector(".image-button__checkbox-container")) {
 		document.querySelector(".image-button__checkbox-container").onclick = function(e) {
-			if (e.target === document.querySelector(".image-button__agree-to-terms")) {
+			if (e.target.closest(".image-button__agree-to-terms") === document.querySelector(".image-button__agree-to-terms")) {
 				document.querySelector(".image-button__agree-checkbox").checked =
 					!document.querySelector(".image-button__agree-checkbox").checked;
 
