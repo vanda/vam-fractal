@@ -21,9 +21,10 @@
 
 
 	&__content-container {
-		min-height: 300px;
-		height: 300px;
+		min-height: 250px;
+		height: 250px;
 		overflow-y: scroll;
+		overflow-x: hidden;
 		pointer-events: all;
 
 		@media screen and (min-height: 700px) {
@@ -84,7 +85,7 @@
 			max-width: 670px !important;
 		    height: auto !important;
 		    padding: inherit;
-		    min-height: 435px;
+		    min-height: 250px;
 			padding: inherit;
 		}
 	}
