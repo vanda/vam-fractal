@@ -70,8 +70,8 @@
       object-fit: contain;
       position: relative;
       width: auto;
-      height: 90%;
-      max-width: 100%;
+      height: calc(90vh * 0.5);
+      max-width: 100vw;
       max-height: 535px;
       margin: auto;
     }
