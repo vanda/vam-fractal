@@ -13,6 +13,7 @@
       position: absolute;
       z-index: 40;
       background: #1d1e20;
+      backdrop-filter: blur(10px);
 
       @include bpMinMedium {
         background: rgba(29,30,32,0.9);
