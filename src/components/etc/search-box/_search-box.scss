@@ -8,6 +8,33 @@
       max-width: 100%;
     }
 
+    &-logo-container {
+      display: none;
+      &--listing {
+        display: none;
+
+        @include bpMinMedium {
+          display: block;
+        }
+      }
+    }
+
+    &-logo {
+      color: siteColor(vam-grey-3);
+
+      @include bpMinMedium {
+        width: 130.3px;
+        height: 75.6px;
+        margin-left: 10px;
+      }
+
+      @include bpMinLarge {
+        height: 118px;
+        width: 203px;
+        margin-left: 31px;
+      }
+    }
+
     &-fields {
       position: relative;
       @include bpMinXSmall {
@@ -83,6 +110,7 @@
         width: 100px;
 
         @include bpMinMedium {
+          margin-right: 141px;
           width: 124px;
           height: 46px;
           font-size: 14px;
@@ -90,6 +118,7 @@
         }
 
         @include bpMinLarge {
+          margin-right: 234px;
           width: 150px;
           height: 57px;
           font-size: 16px;

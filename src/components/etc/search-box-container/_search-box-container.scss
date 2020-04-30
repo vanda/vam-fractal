@@ -40,5 +40,19 @@
 				@include typeSetting(5, light);
 			}
 		}
+		&__logo-container {
+			@include bpMinMedium {
+				display: none;
+			}
+			margin-bottom: -7px;
+			display: block;
+			width: 100%;
+			text-align: right;
+		}
+		&__logo {
+			width: 80px;
+			height: 46px;
+			color: siteColor(vam-grey-3);	
+		}
 	}
 }
