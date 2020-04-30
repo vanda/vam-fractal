@@ -1,5 +1,6 @@
 <div style="background-color: #1d1e20;">
 	<div class="search-box-container">
+		{% if modifier !== 'listing' %}
 		<div class="search-box-container-header">
 			<div class="search-box-container-header__title">
 				explore our collections
@@ -8,6 +9,9 @@
 				Search 1,254,534 objects
 			</div>
 		</div>
-		{%- render "@search-box" -%}
+		{% else %}
+			
+		{% endif %}
+		{% render "@search-box", { modifier: modifier } %}
 	</div>
 </div>
