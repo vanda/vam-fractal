@@ -1,0 +1,105 @@
+.search-box {  
+  &__form {
+    margin: auto;
+    position: relative;
+    width: 100%;
+
+    @include bpMinSmall {
+      max-width: 100%;
+    }
+
+    &-fields {
+      position: relative;
+      @include bpMinXSmall {
+        display: flex;
+        flex-direction: row;
+      }
+
+      &-field {
+        @include typeSetting(3, regular);
+        border: 1px solid white;
+        border-radius: 3px;
+        padding: 15px;
+
+        flex-grow: 1;
+        height: 46px;
+        text-align: left;
+        width: 100%;
+
+        @include bpMinMedium {
+          height: 64px;
+          @include typeSetting(5, regular);
+        }        
+
+        @include bpMinLarge {
+          height: 84px;
+          @include typeSetting(6, regular);
+        }
+
+        &::placeholder {
+          color: siteColor(vam-grey-4);
+        }
+
+        &:focus {
+          border: 1px solid themeColor(silent-green);
+          outline: none;
+        }
+      }
+    }
+
+    &-submit {
+      margin: 0px;
+      width: 100%;
+      z-index: 2;
+      padding: 14px 10px 14px 4px;
+      height: 46px;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      width: 88px;
+      font-size: 12px;
+      border-radius: 0px 3px 3px 0px;
+      background-color: themeColor(silent-green);
+      border-color: themeColor(silent-green);
+
+      @include bpMinMedium {
+        width: 124px;
+        height: 64px;
+        font-size: 14px;
+        padding: 23px 0px;
+      }
+
+      @include bpMinLarge {
+        width: 178px;
+        height: 84px;
+        font-size: 18px;
+        padding: 31px 0px;
+        padding-right: 20px;
+        letter-spacing: 4.15px;
+        line-height: 1.33;
+      }
+
+      &:hover,
+      .sent & {
+        background-color: map-get($theme-colors, $theme-color-default);
+        border: 1px solid map-get($theme-colors, $theme-color-default);
+        color: siteColor(vam-black);
+      }
+    }    
+  }
+}
+
+.u-btn.u-btn--arrowed.search-box__form-submit.u-btn--arrowed::after {
+  right: 5px;
+  margin-top: -4px;
+
+  @include bpMinMedium {
+    right: 10px;
+  }
+
+  @include bpMinLarge {
+    right: 30px;
+    border-width: 6px;
+    margin-top: -5px;
+  }  
+}

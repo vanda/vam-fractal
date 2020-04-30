@@ -1,0 +1,44 @@
+.search-box-container {
+	background-color: #242424;
+	margin: auto;
+	text-align: center;
+	max-width: 374.7px;
+	padding: 34px 10px 34px 10px;
+
+	@include bpMinMedium {
+		padding: 48px 48px 48px 48px;
+		max-width: 720px;
+	}
+
+	@include bpMinLarge {
+		max-width: 1200px;
+	}
+
+	&-header {
+		margin-bottom: 24px;
+		&__title {
+			color: siteColor(vam-white);
+			@include typeSetting(3, semi-bold, uppercase);
+
+			@include bpMinMedium {
+				@include typeSetting(4, semi-bold, uppercase);
+			}
+			@include bpMinLarge {
+				@include typeSetting(5, semi-bold, uppercase);
+				letter-spacing: 4.5px;
+			    line-height: 2.5rem;
+			}
+		}
+		&__subtitle {
+			color: siteColor(vam-grey-4);
+			@include typeSetting(3, light);
+
+			@include bpMinMedium {
+				@include typeSetting(4, light);
+			}
+			@include bpMinLarge {
+				@include typeSetting(5, light);
+			}
+		}
+	}
+}
