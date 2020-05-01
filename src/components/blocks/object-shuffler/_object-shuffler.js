@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 (() => {
   // dummy Collections API response
-  const collsAPISet = [
-    {
+  const initialDataset = JSON.stringify(
+    [{
       img: {
         srcset: 'https://vanda-production-assets.s3.amazonaws.com/2017/09/11/14/24/31/13ac4def-8ac7-4010-b324-a5aa912b937c/320.jpg 320w, https://vanda-production-assets.s3.amazonaws.com/2017/09/11/14/24/32/0e7fcce2-2324-42bf-8935-382774cacc6f/640.jpg 640w, https://vanda-production-assets.s3.amazonaws.com/2017/09/11/14/24/32/ea04e92d-1921-4289-8382-4fc85d418242/960.jpg 960w',
         src: 'https://vanda-production-assets.s3.amazonaws.com/2017/09/11/14/24/31/13ac4def-8ac7-4010-b324-a5aa912b937c/640.jpg',
@@ -100,8 +100,9 @@
       },
       title: 'Lithograph poster for Tropon powdered eggs, by Henry van de Velde, 1898, Belgium',
       href: 'https://collections.vam.ac.uk/item/O74080'
-    }
-  ];
+    }]
+  );
+
 
   const shuffler = {
     init: (el) => {
@@ -119,12 +120,13 @@
         const deck = deckTemplate.parentNode.appendChild(deckTemplate.cloneNode(true));
         deck.removeAttribute('active');
       }
-      // populate each deck of slides
-      let j = 0;
+      // populate each deck with slides of items
+      let i = 0;
       Array.from(el.querySelectorAll('.js-object-shuffler__deck'), (deck) => {
         deck._props = {
           slideSize,
-          itemsData: [],
+          itemsData: JSON.parse(initialDataset) || [],
+          itemsDataFeed: shufflerData[i].feed,
           itemsIndex: 0,
           transitionDurationItem,
           transitionDurationImg
@@ -132,7 +134,7 @@
         shuffler.getData(deck);
         const slide = deck.firstElementChild;
         // clone initial html markup for an item to make a whole slide
-        for (let i = 2; i <= slideSize; i += 1) {
+        for (let j = 1; j < slideSize; j += 1) {
           slide.appendChild(itemTemplate.cloneNode(true));
         }
         // next slide transitions require an activating/deactivating pair of slides,
@@ -144,16 +146,16 @@
         // create deck tab link
         const tabLink = deckTabs.appendChild(document.createElement('a'));
         tabLink.className = 'b-object-shuffler__tab-link';
-        tabLink.innerHTML = shufflerData[j].title;
-        tabLink.title = `filter by ${shufflerData[j].title}`;
-        if (j === 0) { tabLink.setAttribute('active', true); }
+        tabLink.innerHTML = shufflerData[i].title;
+        tabLink.title = `filter by ${shufflerData[i].title}`;
+        if (i === 0) { tabLink.setAttribute('active', true); }
         tabLink.onclick = () => {
           deckTabs.querySelector('[active]').removeAttribute('active');
           tabLink.setAttribute('active', true);
           el.querySelector('.js-object-shuffler__deck[active]').removeAttribute('active');
           deck.setAttribute('active', true);
         };
-        j += 1;
+        i += 1;
         return true;
       });
 
@@ -172,20 +174,41 @@
     },
     getData: (deck) => {
       // append more data from search API
-      while (deck._props.itemsData.length < deck._props.itemsIndex + deck._props.slideSize) {
-        deck._props.itemsData = [...deck._props.itemsData, ...collsAPISet];
-      }
+      //~ while (deck._props.itemsData.length < deck._props.itemsIndex + deck._props.slideSize) {
+      //~ let i=0;
+      //~ while (++i < 3) {
+        //~ const request = async () => {
+          //~ const response = await fetch(deck._props.itemsDataFeed).catch(status, err => { return console.log(status, err); });
+          //~ const data = await response.json();
+          //~ //deck._props.itemsData = [...deck._props.itemsData, ...data];
+          //~ Array.from(data.records, (record) => {
+            //~ //console.log(record.fields.primary_image_id);
+            //~ deck._props.itemsData.push({
+              //~ "img": {
+                //~ "srcset": "https://vanda-production-assets.s3.amazonaws.com/2019/01/14/11/31/43/fd788d06-0840-4c9b-9ad8-24c6afa40fc7/320.jpg 320w, https://vanda-production-assets.s3.amazonaws.com/2019/01/14/11/31/43/47264e4a-2496-425b-ab3a-4ed727bf17f7/640.jpg 640w, https://vanda-production-assets.s3.amazonaws.com/2019/01/14/11/31/43/e6d27a20-9309-4b39-a0a6-15727b1ed43e/960.jpg 960w",
+                //~ "src": "https://vanda-production-assets.s3.amazonaws.com/2019/01/14/11/31/43/47264e4a-2496-425b-ab3a-4ed727bf17f7/640.jpg",
+                //~ "alt": record.fields.title
+              //~ },
+              //~ "title": record.fields.title,
+              //~ "href": `http://d3dn4d27rggz6y.cloudfront.net/item/${record.fields.object_number}/index.html`
+            //~ });
+          //~ });
+          //~ console.log(deck._props.itemsData);
+        //~ };
+        //~ request();
+      //~ }
     },
     newSlide: (deck) => {
       // append a new slide by cloning the first and populate with new data
       const slide = deck.appendChild(deck.firstElementChild.cloneNode(true));
       Array.from(slide.children, (item) => {
+        const dataIndex = deck._props.itemsIndex % deck._props.itemsData.length;
         const img = item.querySelector('img');
-        item.title = deck._props.itemsData[deck._props.itemsIndex].title;
-        item.href = deck._props.itemsData[deck._props.itemsIndex].href;
-        img.srcset = deck._props.itemsData[deck._props.itemsIndex].img.srcset;
-        img.src = deck._props.itemsData[deck._props.itemsIndex].img.src;
-        img.alt = deck._props.itemsData[deck._props.itemsIndex].img.alt;
+        item.title = deck._props.itemsData[dataIndex].title;
+        item.href = deck._props.itemsData[dataIndex].href;
+        img.srcset = deck._props.itemsData[dataIndex].img.srcset;
+        img.src = deck._props.itemsData[dataIndex].img.src;
+        img.alt = deck._props.itemsData[dataIndex].img.alt;
         // scatter effect
         const scaler = Math.random() * 0.23;
         const scale = 1 + ((deck._props.itemsIndex % 2 > 0 ? 1 : -1) * scaler);
@@ -239,7 +262,7 @@
         }
       }
     };
-    observer = new IntersectionObserver(lazyLoad, { rootMargin: '0px 0px 500px 0px' });
+    observer = new IntersectionObserver(lazyLoad, { rootMargin: '0px 0px 1000px 0px' });
   }
 
   // lazy load component if possible
