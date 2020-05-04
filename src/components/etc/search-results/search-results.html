@@ -1,0 +1,64 @@
+<div style="background-color: #1d1e20;">
+	<table class="search-results">
+		<thead class="search-results__head">
+			<tr>
+				<td class="search-results__head-image"></td>
+				<td class="search-results__head-responsive"></td>
+				<td class="search-results__head-title search-results__head-cell">
+					Title
+				</td>
+				<td class=" search-results__head-artist search-results__head-cell">
+					Artist/Maker
+				</td>
+				<td class="search-results__head-date search-results__head-cell">
+					Date
+				</td>
+				<td class="search-results__head-place search-results__head-cell">
+					Place Of Origin
+				</td>	
+			</tr>		
+		</thead>
+		<tbody class="search-results__body">
+			{% for item in items %}
+				<tr class="search-results__body-row" >
+					<td class="search-results__cell">
+						<div class="search-results__cell-content-img">
+							<img src={{ item.image }} />
+						</div>
+					</td>
+					<td class="search-results__cell search-results__cell--responsive">
+						<div class="search-results__cell-content-container">
+							<span class="search-results__cell-span search-results__cell-span--emphasis">{{ item.title }}</span></br>
+							<span class="search-results__cell-span">{{ item.artist }}</span>,
+							<span class="search-results__cell-span">{{ item.date }}</span></br>
+							<span class="search-results__cell-span search-results__cell-span--responsive">{{ item.place }}</span></br>
+						</div>
+					</td>
+					</td>
+					<td class="search-results__cell search-results__cell--full search-results__cell--emphasis">
+						<div class="search-results__cell-content">
+							{{ item.title }}
+						</div>
+					</td>
+					<td class="search-results__cell  search-results__cell--full">
+						<div class="search-results__cell-content">
+							{{ item.artist }}
+						</div>
+					</td>
+					<td class="search-results__cell search-results__cell--full">
+						<div class="search-results__cell-content">
+							{{ item.date }}
+						</div>
+					</td>
+					<td class="search-results__cell search-results__cell--full">
+						<div class="search-results__cell-content">
+							{{ item.place }}
+						</div>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+</div>

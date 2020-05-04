@@ -4,7 +4,7 @@ module.exports = {
       		name: 'default',
       		label: 'Default',
       		context: {
-                        modifier: 'start'
+				modifier: 'start'
       		}
 	    },
 	    {

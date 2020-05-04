@@ -1,0 +1,119 @@
+.search-results {
+	color: siteColor(vam-white);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	width: 355px;	
+	@include bpMinMedium {
+		width: auto;
+	}	
+	
+	&__cell {
+		@include typeSetting(3, light);
+		padding-right: 40px;
+		position: relative;
+		&--full {
+			display: none;
+			@include bpMinLarge {
+				display: table-cell;
+			}
+		}
+		&-span {
+			@include typeSetting(2, light);
+			&--emphasis {
+				@include typeSetting(2, bold);				
+			}
+
+			@include bpMinMedium {
+				@include typeSetting(3, light);
+				&--emphasis {
+					@include typeSetting(3, bold);				
+				}			
+			}
+
+			&--responsive {
+				visibility: hidden;
+				@include bpMinMedium {
+					visibility: visible;
+				}
+			}
+		}	
+		&-content {
+			&-img, &-container {
+				position: absolute;
+			    top: 50%;
+			    margin: auto 0px;
+			}
+			&-img {
+
+				img {
+				    width: 100px;
+				    height: 90%;
+				}
+
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			}
+			&-container {
+			    transform: translateY(-50%);
+			}
+			padding-top: 21px;
+		}
+		&--emphasis {
+			@include typeSetting(3, bold);
+		}
+		&--responsive {
+			padding-top: 25px;
+			line-height: 1.8px;
+			display: table-cell;
+			@include bpMinLarge {
+				display: none;
+			}
+		}
+	}
+
+	&__body {
+		&-row {
+			height: 150px;
+			background-color: #393b3f;
+			border-bottom: 4px solid #1d1e20;
+			&:hover {
+				cursor: pointer;			
+			 	background-color: #45484d;			
+			}			
+		}
+	}
+
+	&__head {
+		@include typeSetting(4, semi-bold);
+
+		&-cell {
+			display: none;
+			@include bpMinLarge {
+				display: table-cell;
+			}
+		}
+		&-responsive {
+			display: table-cell;
+			@include bpMinLarge {
+				display: none;
+			}
+			width: 380px;
+		}
+		&-image {
+			width: 220px;
+		}
+		&-title {
+			width: 300px;
+		}
+		&-artist {
+			width: 300px;
+		}
+		&-date {
+			width: 200px;
+		}
+		&-place {
+			width: 180px;
+		}
+	}
+}
