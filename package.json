@@ -59,7 +59,7 @@
     "gulp-surge": "^0.1.0",
     "gulp-svg-symbols": "^2.0.2",
     "gulp-svgmin": "^1.2.4",
-    "gulp-uglify": "^2.1.2",
+    "gulp-uglify": "^3.0.2",
     "npm-audit": "0.0.3",
     "querystring": "^0.2.0",
     "request": "^2.87.0",
