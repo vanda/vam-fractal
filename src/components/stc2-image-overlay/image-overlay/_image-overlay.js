@@ -1,9 +1,5 @@
 (function(){
 	if (document.querySelector(".etc-image-overlay")) {
-		document.querySelector(".etc-image-overlay__close use").onclick = function(e) {
-			e.target.dispatchEvent(new Event("closedImageOverlay"), { bubbles: true });
-		}	
-
 		document.querySelector(".etc-image-overlay__close").onclick = function(e) {
 			e.target.dispatchEvent(new Event("closedImageOverlay"), { bubbles: true });
 			document.querySelector(".etc-image-overlay__container").classList.remove("etc-image-overlay__container--active");
