@@ -24,24 +24,14 @@
   &__close-container {
     text-align: right;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='plus' viewBox='0 0 100 100'%3E%3Ctitle%3Eplus%3C/title%3E%3Cpath d='M42.857 42.857H0v14.286h42.857V100h14.286V57.143H100V42.857H57.143V0H42.857z' fill='%23fff' fill-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
-    height: 37px;
-    width: 37px;
+    height: 29px;
+    width: 29px;
     position: fixed;
     right: 0px;
     top:0px;
     transform: rotate(45deg);
     cursor: pointer;
     margin: 10px;
-  }
-
-  &__close {
-    color: white;
-    height: 30px;
-    width: 30px;
-    transform: rotate(45deg);
-    color: white;
-    margin: 10px;
-    cursor: pointer;
   }
 
   &__content {
