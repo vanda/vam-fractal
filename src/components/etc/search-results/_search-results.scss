@@ -1,13 +1,37 @@
 .search-results {
-	color: siteColor(vam-white);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	&__table {
+		color: siteColor(vam-white);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;	
+		width: 355px;
+		margin-top: 0px;
+
+		@include bpMinMedium {
+			width: auto;
+		}
+
+		@include bpMinLarge {
+			margin-top: 31px;
+		}
+	}
 	
-	width: 355px;	
-	@include bpMinMedium {
-		width: auto;
-	}	
-	
+	&__count {
+
+		color: siteColor(vam-white);
+		padding-bottom: 10px;
+		padding-top: 0px;
+
+		@include bpMinMedium {
+			@include typeSetting(5, regular);
+			padding-bottom: 20px;		
+		}
+
+		@include bpMinLarge {
+			padding-top: 10px;
+			@include typeSetting(6, regular);
+		}
+	}
+
 	&__cell {
 		@include typeSetting(3, light);
 		padding-right: 40px;
@@ -32,9 +56,9 @@
 			}
 
 			&--responsive {
-				visibility: hidden;
+				display: none;
 				@include bpMinMedium {
-					visibility: visible;
+					display: block;
 				}
 			}
 		}	
@@ -45,10 +69,15 @@
 			    margin: auto 0px;
 			}
 			&-img {
-
 				img {
-				    width: 100px;
-				    height: 90%;
+					@include bpMinMedium {
+						max-width: fit-content;
+						max-height: fit-content;
+						padding: 0px;
+					}
+					max-height: 80px;
+					padding: 10px;
+				    max-width: 100px;
 				}
 
 			    left: 50%;
@@ -74,7 +103,12 @@
 
 	&__body {
 		&-row {
-			height: 150px;
+			height: 84px;
+
+			@include bpMinMedium {
+				height: 150px;
+			}
+
 			background-color: #393b3f;
 			border-bottom: 4px solid #1d1e20;
 			&:hover {
@@ -98,7 +132,7 @@
 			@include bpMinLarge {
 				display: none;
 			}
-			width: 380px;
+			width: 420px;
 		}
 		&-image {
 			width: 220px;

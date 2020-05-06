@@ -1,0 +1,70 @@
+.search-pagination {
+	position: relative;
+	display: flex;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;	
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	&__prev-link {
+		left: 0px;
+	}
+	&__next-link {
+		right: 0px;
+	}
+	&__prev-link, &__next-link {
+		position: fixed;
+	  	@include typeSetting(3, bold);
+	  	color: siteColor(vam-white);
+		&--inactive {
+			color: siteColor(vam-grey-4);
+		}		
+	}
+	&__link {
+		&-caret {
+			text-decoration: none;
+		}
+		&-text {
+			text-decoration: underline;
+		}
+	}
+	&__page-button {
+	 	width: 36px;
+	  	height: 44px;
+	  	color: siteColor(vam-white);
+	  	margin-right: 8px;
+	  	@include typeSetting(3, semi-bold);
+	  	border: 1px solid siteColor(vam-white);
+
+	  	&--inactive {
+	  		display: none;
+	  	}
+
+	  	&-seperator {
+  		  	&-start, &-middle, &-last {
+			  	color: siteColor(vam-white);
+	  		  	margin-right: 8px;
+	  		  	margin-top: 6px;
+	  		  	&--inactive {
+	  		  		display: none;
+	  		  	}
+  		  	}
+	  	}
+
+	  	&:hover {
+			background-color: siteColor(vam-grey-3);
+			cursor: pointer;	  		
+	  	}
+
+	  	&--current {
+	  		border-color: themeColor(silent-green);
+			background-color: themeColor(silent-green);
+			color: siteColor(vam-black);
+	  	}
+
+		&-container {
+			display: flex;
+			flex-direction: row;
+		}
+	}
+}

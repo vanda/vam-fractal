@@ -17,8 +17,9 @@ require('../../components/stc2-image-overlay/details/details.js');
 require('../../components/stc2-image-overlay/image-carosel/_image-carosel.js');
 require('../../components/stc2-image-overlay/image-overlay/_image-overlay.js');
 require('../../components/stc2-image-overlay/download-button/_download-button.js');
+require('../../components/stc2-image-overlay/image-overlay/_image-overlay.js');
 
-
+require('../../components/etc/search-pagination/_search-pagination.js');
 
 require('../../components/etc/object-details/object-details.js');
 

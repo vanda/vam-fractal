@@ -1,0 +1,36 @@
+.search-results-page {
+	background-color: siteColor(vam-black);
+	&__search {
+		&-box-container, &-results-container {
+			margin: auto;	
+			width: 355px;
+
+			@include bpMinMedium {
+				width: 640px;
+			}
+
+			@include bpMinLarge {
+				width: 1200px;
+			}
+		}
+
+		&-box-container {
+			position: fixed;
+		    top: 0px;
+		    left: 50%;
+		    transform: translateX(-50%);	
+		}
+
+		&-results-container {
+			padding-top: 100px;
+
+			@include bpMinMedium {
+				padding-top: 68px;
+			}
+
+			@include bpMinLarge {
+				padding-top: 80px;
+			}
+		}
+	}
+}

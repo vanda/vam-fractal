@@ -1,21 +1,19 @@
-<div style="background-color: #1d1e20;">
-	<div class="search-box-container">
-		{% if modifier !== 'listing' %}
-		<div class="search-box-container-header">
-			<div class="search-box-container-header__title">
-				explore our collections
-			</div>
-			<div class="search-box-container-header__subtitle">
-				Search 1,254,534 objects
-			</div>
+<div class="search-box-container search-box-container--{{modifier}}">
+	{% if modifier !== 'listing' %}
+	<div class="search-box-container-header">
+		<div class="search-box-container-header__title">
+			explore our collections
 		</div>
-		{% else %}
-		<div class="search-box-container-header__logo-container">
-	      <svg class="search-box-container-header__logo" role="img">
-	        <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
-	      </svg>
+		<div class="search-box-container-header__subtitle">
+			Search 1,254,534 objects
 		</div>
-		{% endif %}
-		{% render "@search-box", { modifier: modifier } %}
 	</div>
+	{% else %}
+	<div class="search-box-container-header__logo-container">
+      <svg class="search-box-container-header__logo" role="img">
+        <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
+      </svg>
+	</div>
+	{% endif %}
+	{% render "@search-box", { modifier: modifier } %}
 </div>
