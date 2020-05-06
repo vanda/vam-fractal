@@ -6,28 +6,23 @@
 		width: 355px;
 		margin-top: 0px;
 
-		@include bpMinMedium {
+		@include bpMinSmall {
 			width: auto;
-		}
-
-		@include bpMinLarge {
-			margin-top: 31px;
 		}
 	}
 	
 	&__count {
-
 		color: siteColor(vam-white);
 		padding-bottom: 10px;
-		padding-top: 0px;
+		padding-top: 10px;
+		font-size: 21px;
 
-		@include bpMinMedium {
+		@include bpMinSmall {
 			@include typeSetting(5, regular);
-			padding-bottom: 20px;		
+			padding-bottom: 17px;		
 		}
 
 		@include bpMinLarge {
-			padding-top: 10px;
 			@include typeSetting(6, regular);
 		}
 	}
@@ -48,7 +43,7 @@
 				@include typeSetting(2, bold);				
 			}
 
-			@include bpMinMedium {
+			@include bpMinSmall {
 				@include typeSetting(3, light);
 				&--emphasis {
 					@include typeSetting(3, bold);				
@@ -57,7 +52,7 @@
 
 			&--responsive {
 				display: none;
-				@include bpMinMedium {
+				@include bpMinSmall {
 					display: block;
 				}
 			}
@@ -70,7 +65,7 @@
 			}
 			&-img {
 				img {
-					@include bpMinMedium {
+					@include bpMinSmall {
 						max-width: fit-content;
 						max-height: fit-content;
 						padding: 0px;
@@ -105,7 +100,7 @@
 		&-row {
 			height: 84px;
 
-			@include bpMinMedium {
+			@include bpMinSmall {
 				height: 150px;
 			}
 

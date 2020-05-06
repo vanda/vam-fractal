@@ -13,10 +13,18 @@
 		right: 0px;
 	}
 	&__prev-link, &__next-link {
-		position: fixed;
-	  	@include typeSetting(3, bold);
+		position: absolute;
+		cursor: pointer;
+		user-select: none;
+		@include typeSetting(2, bold);
+
+		@include bpMinLarge {
+			@include typeSetting(3, bold);
+		}
+
 	  	color: siteColor(vam-white);
 		&--inactive {
+			cursor: initial;
 			color: siteColor(vam-grey-4);
 		}		
 	}
@@ -29,10 +37,17 @@
 		}
 	}
 	&__page-button {
-	 	width: 36px;
-	  	height: 44px;
+	 	width: 32px;
+	  	height: 40px;
+	  	margin-right: 6px;
+
+		@include bpMinLarge {
+		 	width: 36px;
+		  	height: 44px;
+			margin-right: 8px;		  	
+		}
+
 	  	color: siteColor(vam-white);
-	  	margin-right: 8px;
 	  	@include typeSetting(3, semi-bold);
 	  	border: 1px solid siteColor(vam-white);
 

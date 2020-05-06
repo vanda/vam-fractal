@@ -1,11 +1,12 @@
 .search-results-page {
+    padding-bottom: 48px;
 	background-color: siteColor(vam-black);
 	&__search {
-		&-box-container, &-results-container {
-			margin: auto;	
+		&-box-container, &-results-container, &-pagination-container {
+			margin: auto;
 			width: 355px;
 
-			@include bpMinMedium {
+			@include bpMinSmall {
 				width: 640px;
 			}
 
@@ -21,10 +22,18 @@
 		    transform: translateX(-50%);	
 		}
 
+		&-pagination-container {
+			margin-top: 24px;
+			
+			@include bpMinLarge {
+				margin-top: 48px;
+			}
+		}
+
 		&-results-container {
 			padding-top: 100px;
 
-			@include bpMinMedium {
+			@include bpMinSmall {
 				padding-top: 68px;
 			}
 

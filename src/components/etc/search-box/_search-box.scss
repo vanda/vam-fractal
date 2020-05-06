@@ -13,7 +13,7 @@
       &--listing {
         display: none;
 
-        @include bpMinMedium {
+        @include bpMinSmall {
           display: block;
         }
       }
@@ -22,7 +22,7 @@
     &-logo {
       color: siteColor(vam-grey-3);
 
-      @include bpMinMedium {
+      @include bpMinSmall {
         width: 130.3px;
         height: 75.6px;
         margin-left: 10px;
@@ -54,7 +54,7 @@
         width: 100%;
 
         &--listing {
-          @include bpMinMedium {
+          @include bpMinSmall {
             height: 46px;
             @include typeSetting(4, regular);
           }        
@@ -67,7 +67,7 @@
         }
 
         &--start {
-          @include bpMinMedium {
+          @include bpMinSmall {
             height: 64px;
             @include typeSetting(5, regular);
           }        
@@ -109,7 +109,7 @@
         border-color: siteColor(vam-white);
         width: 100px;
 
-        @include bpMinMedium {
+        @include bpMinSmall {
           margin-right: 141px;
           width: 124px;
           height: 46px;
@@ -137,7 +137,7 @@
       }
 
       &--start {
-        @include bpMinMedium {
+        @include bpMinSmall {
           width: 124px;
           height: 64px;
           font-size: 14px;
@@ -170,7 +170,7 @@
   transform: translateY(-50%);
   right: 5px;
 
-  @include bpMinMedium {
+  @include bpMinSmall {
     right: 15px;
   }
 
@@ -185,7 +185,7 @@
   transform: translateY(-50%);
   right: 8px;
 
-  @include bpMinMedium {
+  @include bpMinSmall {
     right: 10px;
   }
 

@@ -5,7 +5,7 @@
 	max-width: 374.7px;
 	padding: 34px 10px 34px 10px;
 
-	@include bpMinMedium {
+	@include bpMinSmall {
 		padding: 48px 48px 48px 48px;
 		max-width: 720px;
 	}
@@ -25,7 +25,7 @@
 			color: siteColor(vam-white);
 			@include typeSetting(3, semi-bold, uppercase);
 
-			@include bpMinMedium {
+			@include bpMinSmall {
 				@include typeSetting(4, semi-bold, uppercase);
 			}
 			@include bpMinLarge {
@@ -38,7 +38,7 @@
 			color: siteColor(vam-grey-4);
 			@include typeSetting(3, light);
 
-			@include bpMinMedium {
+			@include bpMinSmall {
 				@include typeSetting(4, light);
 			}
 			@include bpMinLarge {
@@ -46,7 +46,7 @@
 			}
 		}
 		&__logo-container {
-			@include bpMinMedium {
+			@include bpMinSmall {
 				display: none;
 			}
 			margin-bottom: -7px;
