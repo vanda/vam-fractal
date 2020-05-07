@@ -12,14 +12,12 @@
 
   &__tabs {
     @include typeSetting(3);
-    font-style: italic;
     margin-bottom: 34px;
   }
 
   &__tab-link {
     cursor: pointer;
-    font-style: normal;
-    margin: 0 0 6px 20px;
+    margin: 0 10px 6px;
 
     &[active],
     &:hover,
@@ -114,6 +112,7 @@
 
 
   &__more {
+    @include typeSetting(1, bold, uppercase);
     display: inline-flex;
     flex-direction: column;
     margin: 0 auto 40px;
@@ -127,14 +126,14 @@
     color: siteColor(vam-black);
     content: '';
     display: flex;
-    height: 80px;
+    height: 60px;
     margin-bottom: 10px;
-    width: 80px;
+    width: 60px;
 
     > svg {
-      height: 50%;
+      height: 40%;
       margin: auto;
-      width: 50%;
+      width: 40%;
     }
   }
 }

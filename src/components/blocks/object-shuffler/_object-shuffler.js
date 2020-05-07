@@ -27,18 +27,6 @@
           transitionDurationItem,
           transitionDurationImg
         };
-        shuffler.getData(deck);
-        const slide = deck.firstElementChild;
-        // clone initial html markup for an item to make a whole slide
-        for (let j = 1; j < slideSize; j += 1) {
-          slide.appendChild(itemTemplate.cloneNode(true));
-        }
-        // next slide transitions require an activating/deactivating pair of slides,
-        // plus a next slide ready and waiting (= 3 slides)
-        slide.removeAttribute('active');
-        const activeSlide = shuffler.newSlide(deck);
-        activeSlide.setAttribute('active', true);
-        shuffler.newSlide(deck);
         // create deck tab link
         const tabLink = deckTabs.appendChild(document.createElement('a'));
         tabLink.className = 'b-object-shuffler__tab-link';
@@ -51,6 +39,21 @@
           el.querySelector('.js-object-shuffler__deck[active]').removeAttribute('active');
           deck.setAttribute('active', true);
         };
+        shuffler.getData(deck)
+        .then(() => {
+          console.log(deck._props.itemsData.length);
+          const slide = deck.firstElementChild;
+          // clone initial html markup for an item to make a whole slide
+          for (let j = 1; j < slideSize; j += 1) {
+            slide.appendChild(itemTemplate.cloneNode(true));
+          }
+          // next slide transitions require an activating/deactivating pair of slides,
+          // plus a next slide ready and waiting (= 3 slides)
+          slide.removeAttribute('active');
+          const activeSlide = shuffler.newSlide(deck);
+          activeSlide.setAttribute('active', true);
+          shuffler.newSlide(deck);
+        });
         i += 1;
         return true;
       });
@@ -66,12 +69,12 @@
       // number of columns determined by item width * 2 rows
       const cols = Math.floor(
         item.parentNode.getBoundingClientRect().width / item.getBoundingClientRect().width);
-      return 2 * cols;
+      return cols * 2;
     },
     getData: (deck) => {
       // append more data from search API
-      if (deck._props.itemsData.length < deck._props.itemsIndex + deck._props.slideSize) {
-        fetch(deck._props.itemsDataFeed)
+      if (deck._props.itemsData.length < deck._props.itemsIndex + (2 * deck._props.slideSize)) {
+        const promise = fetch(deck._props.itemsDataFeed)
         .then(response => response.json())
         .then((data) => {
           // deck._props.itemsData = [...deck._props.itemsData, ...data];
@@ -92,6 +95,9 @@
           });
         })
         .catch(status, err => console.log(status, err));
+        return promise;
+      } else {
+        return Promise.resolve(true);
       }
     },
     newSlide: (deck) => {
