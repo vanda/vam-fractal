@@ -1,7 +1,7 @@
 <div class="search-results">	
 	<div class="search-results__count">
 		{%  if items|length  %}
-			{{ items|length }} objects
+			{{ (items|length) * pages }} objects
 		{% else %}
 			No results
 		{% endif %}
@@ -31,7 +31,7 @@
 					<tr class="search-results__body-row" >
 						<td class="search-results__cell">
 							<div class="search-results__cell-content-img">
-								<img src={{ item.image }} />
+								<img src={{ item.image }} onerror="this.onerror=null;this.classList.add('search-results__cell-content-no-img');" />
 							</div>
 						</td>
 						<td class="search-results__cell search-results__cell--responsive">

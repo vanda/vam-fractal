@@ -57,6 +57,7 @@
 
 	  	&-seperator {
   		  	&-start, &-middle, &-last {
+	  			user-select: none;
 			  	color: siteColor(vam-white);
 	  		  	margin-right: 8px;
 	  		  	margin-top: 6px;

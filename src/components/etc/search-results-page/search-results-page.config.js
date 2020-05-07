@@ -5,6 +5,7 @@ module.exports = {
       		label: 'Default',
       		context: {
 				modifier: 'listing',
+				pages: 10,
 				items: [
 					{
 						image: "https://place-hold.it/150x71",
@@ -33,7 +34,14 @@ module.exports = {
 						artist: "Dong Nguyen",
 						date: "2014",
 						place: "Vietnam"
-					}
+					},
+					{
+						image: "none",
+						title: "Newly Acquired Object",
+						artist: "Unknown",
+						date: "2020",
+						place: "Japan"
+					}					
 				]				
       		}
   		}

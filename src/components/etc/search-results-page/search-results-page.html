@@ -3,9 +3,9 @@
 		{% render "@search-box-container", { modifier: modifier } %}
 	</div>
 	<div class="search-results-page__search-results-container">
-		{% render "@search-results", { items: items } %}
+		{% render "@search-results", { items: items, pages: pages } %}
 	</div>
 	<div class="search-results-page__search-pagination-container">
-		{% render "@search-pagination", { items: items } %}
+		{% render "@search-pagination", { pages: pages } %}
 	</div>
 </div>

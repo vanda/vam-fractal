@@ -32,7 +32,14 @@ module.exports = {
 					artist: "Dong Nguyen",
 					date: "2014",
 					place: "Vietnam"
-				}
+				},
+				{
+					image: "none",
+					title: "Newly Acquired Object",
+					artist: "Unknown",
+					date: "2020",
+					place: "Japan"
+				}				
 			]
 		}
   	},
