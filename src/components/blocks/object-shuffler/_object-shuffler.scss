@@ -74,8 +74,14 @@
     display: flex;
     flex: 0 1 auto;
     height: 50%;
+    position: relative;
     transition: transform .4s;
     width: 50%;
+
+    &:hover,
+    &:focus {
+      z-index: 10;
+    }
 
     @include bpMinSmall {
       width: 33%;
