@@ -41,7 +41,6 @@
         };
         shuffler.getData(deck)
         .then(() => {
-          console.log(deck._props.itemsData.length);
           const slide = deck.firstElementChild;
           // clone initial html markup for an item to make a whole slide
           for (let j = 1; j < slideSize; j += 1) {
@@ -74,7 +73,8 @@
     getData: (deck) => {
       // append more data from search API
       if (deck._props.itemsData.length < deck._props.itemsIndex + (2 * deck._props.slideSize)) {
-        const promise = fetch(deck._props.itemsDataFeed)
+        const dataURI = deck._props.itemsDataFeed.replace(/offset=[^&]+/, `offset=${deck._props.itemsData.length}`);
+        const promise = fetch(dataURI)
         .then(response => response.json())
         .then((data) => {
           // deck._props.itemsData = [...deck._props.itemsData, ...data];
