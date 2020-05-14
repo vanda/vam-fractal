@@ -4,14 +4,15 @@
 	&__search {
 		&-box-container, &-results-container, &-pagination-container {
 			margin: auto;
-			width: 355px;
+			width: 100%;
+			max-width: 355px;
 
-			@include bpMinSmall {
-				width: 640px;
+			@include bpMinXSmall {
+				max-width: 640px;
 			}
 
 			@include bpMinLarge {
-				width: 1200px;
+				max-width: 1200px;
 			}
 		}
 
@@ -33,13 +34,18 @@
 		&-results-container {
 			padding-top: 100px;
 
-			@include bpMinSmall {
+			@include bpMinXSmall {
 				padding-top: 60px;
 			}
 
 			@include bpMinLarge {
 				padding-top: 80px;
 			}
+		}
+
+		&-results-container, &-box-container, &-pagination-container {
+			padding-left: 24px;
+			padding-right: 24px;
 		}
 	}
 }

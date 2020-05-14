@@ -4,7 +4,7 @@
     position: relative;
     width: 100%;
 
-    @include bpMinSmall {
+    @include bpMinXSmall {
       max-width: 100%;
     }
 
@@ -13,7 +13,7 @@
       &--listing {
         display: none;
 
-        @include bpMinSmall {
+        @include bpMinXSmall {
           display: block;
         }
       }
@@ -22,7 +22,7 @@
     &-logo {
       color: siteColor(vam-grey-3);
 
-      @include bpMinSmall {
+      @include bpMinXSmall {
         width: 130.3px;
         height: 75.6px;
         margin-left: 10px;
@@ -54,7 +54,7 @@
         width: 100%;
 
         &--listing {
-          @include bpMinSmall {
+          @include bpMinXSmall {
             height: 46px;
             @include typeSetting(4, regular);
           }        
@@ -67,7 +67,7 @@
         }
 
         &--start {
-          @include bpMinSmall {
+          @include bpMinXSmall {
             height: 64px;
             @include typeSetting(5, regular);
           }        
@@ -109,7 +109,7 @@
         border-color: siteColor(vam-white);
         width: 100px;
 
-        @include bpMinSmall {
+        @include bpMinXSmall {
           margin-right: 141px;
           width: 124px;
           height: 46px;
@@ -137,11 +137,11 @@
       }
 
       &--start {
-        @include bpMinSmall {
+        @include bpMinXSmall {
           width: 124px;
           height: 64px;
           font-size: 14px;
-          padding: 23px 0px;
+          padding: 23px 12px 23px 0px;
         }
 
         @include bpMinLarge {
@@ -170,13 +170,13 @@
   transform: translateY(-50%);
   right: 5px;
 
-  @include bpMinSmall {
+  @include bpMinXSmall {
     right: 15px;
+    border-width: 6px;
   }
 
   @include bpMinLarge {
     right: 35px;
-    border-width: 6px;
   }  
 }
 
@@ -185,7 +185,7 @@
   transform: translateY(-50%);
   right: 8px;
 
-  @include bpMinSmall {
+  @include bpMinXSmall {
     right: 10px;
   }
 

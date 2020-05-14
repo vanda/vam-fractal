@@ -6,7 +6,7 @@
 		width: 355px;
 		margin-top: 0px;
 
-		@include bpMinSmall {
+		@include bpMinXSmall {
 			width: auto;
 		}
 	}
@@ -17,7 +17,7 @@
 		padding-top: 10px;
 		font-size: 21px;
 
-		@include bpMinSmall {
+		@include bpMinXSmall {
 			@include typeSetting(5, regular);
 			padding-bottom: 21px;		
 		}
@@ -43,7 +43,7 @@
 				@include typeSetting(2, bold);				
 			}
 
-			@include bpMinSmall {
+			@include bpMinXSmall {
 				@include typeSetting(3, light);
 				&--emphasis {
 					@include typeSetting(3, bold);				
@@ -52,7 +52,7 @@
 
 			&--responsive {
 				display: none;
-				@include bpMinSmall {
+				@include bpMinXSmall {
 					display: block;
 				}
 			}
@@ -68,7 +68,7 @@
 				width: 0px;
 				height: 0px;
 				&:after {
-					@include bpMinSmall {
+					@include bpMinXSmall {
 					    height: 106px;
 					    width: 150px;
 					    white-space: normal;
@@ -102,7 +102,7 @@
 
 			&-img {
 				img {
-					@include bpMinSmall {
+					@include bpMinXSmall {
 					    max-height: 120px;
 					    max-width: inherit;
 					}
@@ -137,7 +137,7 @@
 		&-row {
 			height: 84px;
 
-			@include bpMinSmall {
+			@include bpMinXSmall {
 				height: 150px;
 			}
 
