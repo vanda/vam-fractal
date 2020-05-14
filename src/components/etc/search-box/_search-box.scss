@@ -28,7 +28,7 @@
         margin-left: 10px;
       }
 
-      @include bpMinLarge {
+      @include bpMinMedium {
         height: 118px;
         width: 203px;
         margin-left: 31px;
@@ -59,7 +59,7 @@
             @include typeSetting(4, regular);
           }        
 
-          @include bpMinLarge {
+          @include bpMinMedium {
             height: 60px;
             @include typeSetting(5, regular);
             font-size: 20px;
@@ -72,7 +72,7 @@
             @include typeSetting(5, regular);
           }        
 
-          @include bpMinLarge {
+          @include bpMinMedium {
             height: 84px;
             @include typeSetting(6, regular);
           }
@@ -117,7 +117,7 @@
           padding: 14px 0px;
         }
 
-        @include bpMinLarge {
+        @include bpMinMedium {
           margin-right: 234px;
           width: 150px;
           height: 57px;
@@ -144,7 +144,7 @@
           padding: 23px 12px 23px 0px;
         }
 
-        @include bpMinLarge {
+        @include bpMinMedium {
           width: 178px;
           height: 84px;
           font-size: 18px;
@@ -175,7 +175,7 @@
     border-width: 6px;
   }
 
-  @include bpMinLarge {
+  @include bpMinMedium {
     right: 35px;
   }  
 }
@@ -189,7 +189,7 @@
     right: 10px;
   }
 
-  @include bpMinLarge {
+  @include bpMinMedium {
     right: 20px;
     border-width: 6px;
   }  

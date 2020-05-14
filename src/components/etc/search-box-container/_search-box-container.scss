@@ -10,7 +10,7 @@
 		max-width: 720px;
 	}
 
-	@include bpMinLarge {
+	@include bpMinMedium {
 		max-width: 1200px;
 	}
 
@@ -28,7 +28,7 @@
 			@include bpMinXSmall {
 				@include typeSetting(4, semi-bold, uppercase);
 			}
-			@include bpMinLarge {
+			@include bpMinMedium {
 				@include typeSetting(5, semi-bold, uppercase);
 				letter-spacing: 4.5px;
 			    line-height: 2.5rem;
@@ -41,7 +41,7 @@
 			@include bpMinXSmall {
 				@include typeSetting(4, light);
 			}
-			@include bpMinLarge {
+			@include bpMinMedium {
 				@include typeSetting(5, light);
 			}
 		}

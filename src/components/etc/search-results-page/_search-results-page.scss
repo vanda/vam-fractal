@@ -11,7 +11,7 @@
 				max-width: 640px;
 			}
 
-			@include bpMinLarge {
+			@include bpMinMedium {
 				max-width: 1200px;
 			}
 		}
