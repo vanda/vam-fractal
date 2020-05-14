@@ -5,7 +5,7 @@
         src: 'https://vanda-production-assets.s3.amazonaws.com/2019/01/10/14/46/48/7ef4dba2-6810-4b1c-ba5e-8d5089b0358e/640.jpg',
         alt: 'poster'
       },
-      title: 'Colour lithograph poster advertising the Nord Express train from Paris to Riga, by Adolphe Mouron Cassandre, 1927, France',
+      title: 'Colour lithograph poster advertising the Nord Express train from Paris to Riga',
       href: 'https://collections.vam.ac.uk/item/O89673'
     }
 */

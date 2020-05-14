@@ -94,11 +94,10 @@
             return true;
           });
         })
-        .catch(status, err => console.log(status, err));
+        .catch(status, err => console.log(status, err)); // eslint-disable-line no-console
         return promise;
-      } else {
-        return Promise.resolve(true);
       }
+      return Promise.resolve(true);
     },
     newSlide: (deck) => {
       // append a new slide by cloning the first and populate with new data
