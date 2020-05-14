@@ -5,7 +5,6 @@
 		&-box-container, &-results-container, &-pagination-container {
 			margin: auto;
 			width: 100%;
-			max-width: 355px;
 
 			@include bpMinXSmall {
 				max-width: 640px;
@@ -38,7 +37,7 @@
 				padding-top: 60px;
 			}
 
-			@include bpMinLarge {
+			@include bpMinMedium {
 				padding-top: 80px;
 			}
 		}
