@@ -112,7 +112,7 @@
         img.src = deck._props.itemsData[dataIndex].img.src;
         img.alt = deck._props.itemsData[dataIndex].img.alt;
         // scatter effect
-        const scaler = Math.random() * 0.23;
+        const scaler = Math.random() * 0.1;
         const scale = 1 + ((deck._props.itemsIndex % 2 > 0 ? 1 : -1) * scaler);
         // shift items towards centre to remain in shot
         const slot = (deck._props.itemsIndex % deck._props.slideSize);
@@ -128,10 +128,10 @@
         const x = (slot % (deck._props.slideSize / 2)) * (100 / (deck._props.slideSize / 2));
         const y = slot < deck._props.slideSize / 2 ? 0 : 50;
         const aspect = 1 || img.naturalHeight / img.naturalWidth;
-        const jitterX = xDir * scaler * 23 * aspect;
-        const jitterY = (yDir * scaler * 23) / aspect;
+        const jitterX = xDir * scaler * 34 * aspect;
+        const jitterY = (yDir * scaler * 74) / aspect;
         item.style.width = 'auto';
-        item.style.height = `${scale * 50}%`;
+        item.style.height = `${(scale / aspect) * 50}%`;
         item.style.position = 'absolute';
         item.style.left = `${x + jitterX}%`;
         item.style.top = `${y + jitterY}%`;

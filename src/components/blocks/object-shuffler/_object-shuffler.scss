@@ -74,6 +74,7 @@
     display: flex;
     flex: 0 1 auto;
     height: 50%;
+    max-width: 60%;
     position: relative;
     transition: transform .4s;
     width: 50%;
@@ -84,6 +85,7 @@
     }
 
     @include bpMinSmall {
+      max-width: 40%;
       width: 33%;
     }
   }
@@ -105,6 +107,7 @@
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, .5));
     margin: auto;
     max-height: 100%;
+    max-width: 100%;
     opacity: 0;
     transform: scale(0);
     transition: transform .3s ease-out, opacity .2s ease;
