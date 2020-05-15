@@ -67,7 +67,12 @@ module.exports = {
       'shop-bag',
       'tick',
       'delivery',
-      'tick-mark'
+      'tick-mark',
+      'person-one',
+      'person-two',
+      'padlock',
+      'eye-striked',
+      'eye'
     ]
   },
   variants: [

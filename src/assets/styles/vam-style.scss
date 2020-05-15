@@ -8,6 +8,7 @@
 @import '../../components/mixins/unstyled-input/unstyled-input';
 @import '../../components/mixins/visually-hidden/visually-hidden';
 @import '../../components/mixins/constrained-image/constrained-image';
+@import '../../components/mixins/convert-rem/convert-rem';
 
 // Base
 @import '../../components/base/site-color/site-color';
@@ -49,6 +50,7 @@
 @import '../../components/blocks/modal/modal';
 @import '../../components/blocks/newsletter-signup/newsletter-signup';
 @import '../../components/blocks/object-card/object-card';
+@import '../../components/blocks/object-shuffler/object-shuffler';
 @import '../../components/blocks/pagination/pagination';
 @import '../../components/blocks/programme-page-tout/programme-page-tout';
 @import '../../components/blocks/promo/promo';
@@ -61,6 +63,7 @@
 @import '../../components/blocks/search-sidebar-item/search-sidebar-item';
 @import '../../components/blocks/site-footer/site-footer';
 @import '../../components/blocks/toggle-nav/toggle-nav';
+@import '../../components/blocks/top-header-bar/top-header-bar';
 @import '../../components/blocks/video-thumbnail/video-thumbnail';
 @import '../../components/blocks/video-trailer/video-trailer';
 
