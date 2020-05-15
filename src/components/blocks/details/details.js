@@ -10,7 +10,7 @@ function updateImageAndCounter(e) {
 	var setIndex = e && e.detail && e.detail.index;
 	var newIndex;
 
-	var classActive = "etc-image-overlay__image--active";
+	var classActive = "b-image-overlay__image--active";
 	var currentSelect = document.querySelector("." + classActive);
 
 	if (!!opr) {

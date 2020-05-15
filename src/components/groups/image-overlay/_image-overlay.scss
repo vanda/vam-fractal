@@ -1,4 +1,4 @@
-.etc-image-overlay {
+.b-image-overlay {
   &__preview {
     max-width: 735px;
     height: auto;
@@ -54,12 +54,6 @@
       display: flex;
       flex-grow: none;
       width: auto;
-/*      margin-top: 0px;
-      flex-grow: 1;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);*/
     }
   }
 
@@ -69,18 +63,12 @@
       display: block;
       object-fit: contain;
       position: relative;
-      width: auto;
+      width: 100%;
       height: calc(90vh * 0.5);
       max-width: 735px;
       max-height: 535px;
       margin: auto;
     }
-
-    @include bpMinSmall {
-/*      width: auto;
-      margin-top: -146px;
-      max-width: 735px;
-*/    }
   }
 
   &__figcaption {

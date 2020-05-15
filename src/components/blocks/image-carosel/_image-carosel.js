@@ -20,7 +20,7 @@
 		image_carosel_preview.classList.add("image-carosel__image-preview-container");
 		image_carosel_preview.innerHTML = "<div class='image-carosel__image-preview'></div>";
 
-		Array.from(document.querySelectorAll(".etc-image-overlay__image")).forEach(
+		Array.from(document.querySelectorAll(".b-image-overlay__image")).forEach(
 			function(el, i) {
 				var cln = image_carosel_preview.cloneNode(true);
 				cln.setAttribute("data-image-index", i);

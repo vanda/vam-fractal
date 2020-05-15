@@ -1,4 +1,4 @@
-.search-box-container {
+.b-search-box-container {
 	background-color: #242424;
 	margin: auto;
 	text-align: center;
@@ -43,16 +43,16 @@
 				@include typeSetting(5, light);
 			}
 		}
-		&__logo-container {
-			@include bpMinXSmall {
-				display: none;
-			}
-			margin-bottom: -7px;
-			display: block;
-			width: 100%;
-			text-align: right;
-		}
 		&__logo {
+			&-container {
+				@include bpMinXSmall {
+					display: none;
+				}
+				margin-bottom: -7px;
+				display: block;
+				width: 100%;
+				text-align: right;
+			}
 			width: 80px;
 			height: 46px;
 			color: siteColor(vam-grey-3);	
