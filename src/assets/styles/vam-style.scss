@@ -66,24 +66,23 @@
 @import '../../components/blocks/top-header-bar/top-header-bar';
 @import '../../components/blocks/video-thumbnail/video-thumbnail';
 @import '../../components/blocks/video-trailer/video-trailer';
-
-//STC2
-@import '../../components/stc2-image-overlay/details/details';
-@import '../../components/stc2-image-overlay/image-carosel/image-carosel';
-@import '../../components/stc2-image-overlay/zoom/zoom';
-@import '../../components/stc2-image-overlay/image-overlay/image-overlay';
-@import '../../components/stc2-image-overlay/download-button/download-button';
-
+@import '../../components/blocks/object-details/object-details';
+@import '../../components/blocks/details/details';
+@import '../../components/blocks/image-carosel/image-carosel';
+@import '../../components/blocks/zoom/zoom';
+@import '../../components/blocks/download-button/download-button';
+@import '../../components/blocks/search-box/search-box';
+@import '../../components/blocks/search-results/search-results';
+@import '../../components/blocks/search-pagination/search-pagination';
 
 // Group
 @import '../../components/groups/block-grid/block-grid';
 @import '../../components/groups/collection-grid/collection-grid';
 @import '../../components/groups/horizontal-scroll-grid/horizontal-scroll-grid';
 @import '../../components/groups/holding-page/holding-page';
-
-@import '../../components/etc/object-details/object-details';
-@import '../../components/etc/search-box/search-box';
-@import '../../components/etc/search-box-container/search-box-container';
-@import '../../components/etc/search-results/search-results';
+@import '../../components/groups/image-overlay/image-overlay';
 @import '../../components/etc/search-results-page/search-results-page';
-@import '../../components/etc/search-pagination/search-pagination';
+@import '../../components/etc/search-box-container/search-box-container';
+
+
+
