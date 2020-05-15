@@ -18,7 +18,6 @@ require('../../components/blocks/object-details/object-details.js');
 require('../../components/blocks/details/details.js');
 require('../../components/blocks/image-carosel/_image-carosel.js');
 require('../../components/blocks/download-button/_download-button.js');
-require('../../components/blocks/image-overlay/_image-overlay.js');
 require('../../components/blocks/search-pagination/_search-pagination.js');
 
 svg4everybody();
