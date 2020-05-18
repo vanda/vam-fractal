@@ -1,4 +1,4 @@
-.search-results-page {
+.b-search-results-page {
     padding-bottom: 48px;
 	background-color: siteColor(vam-black);
 	&__search {
@@ -30,7 +30,7 @@
 			}
 		}
 
-		&-results-container {
+		&-content-container {
 			padding-top: 100px;
 
 			@include bpMinXSmall {
