@@ -61,8 +61,8 @@
     width: 96%;
 
     @media (min-width: 1000px) {
-      margin: 0 calc((100% - 990px) / 2);
-      width: 990px;
+      margin: 0 calc((100% - 1080px) / 2);
+      width: 1080px;
     }
 
     &[active] {
