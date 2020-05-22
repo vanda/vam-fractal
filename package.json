@@ -30,7 +30,7 @@
     "pretest": "npm-audit"
   },
   "devDependencies": {
-    "@frctl/fractal": "latest",
+    "@frctl/fractal": "^1.3.0",
     "@frctl/mandelbrot": "latest",
     "@frctl/nunjucks": "latest",
     "babel-core": "^6.26.0",
@@ -69,6 +69,7 @@
   "dependencies": {
     "browser-cookies": "^1.2.0",
     "gulp-livereload": "^4.0.2",
+    "smooth-scroll": "github:cferdinandi/smooth-scroll#35939c17b602772a1f9abc9272c3f668697be8ba",
     "svg4everybody": "^2.1.9"
   }
 }
