@@ -22,7 +22,7 @@
     &[active],
     &:hover,
     &:focus {
-      border-bottom: 2px solid map-get($theme-colors, silent-green);
+      border-bottom: 2px solid themeColor(silent-green);
     }
   }
 
@@ -130,7 +130,7 @@
   }
 
   &__more-icon {
-    background: map-get($theme-colors, silent-green);
+    background: themeColor(silent-green);
     border-radius: 50%;
     color: siteColor(vam-black);
     content: '';
