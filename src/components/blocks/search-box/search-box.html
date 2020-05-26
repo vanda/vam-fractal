@@ -1,13 +1,14 @@
-<form name="signup" id="signup" action="http://email-vam.org.uk/signup.ashx" method="POST" class="search-box__form">
-	<div class="search-box__form-fields">
-		<input type="text" placeholder="Explore Collections" name="Email" class="js-emailValidation search-box__form-fields-field search-box__form-fields-field--{{ modifier }}">
-		<a href="#" class="u-btn u-btn--arrowed search-box__form-submit search-box__form-submit--{{ modifier }}">
-		  Search
-		</a>
-		<div class="search-box__form-logo-container search-box__form-logo-container--{{ modifier }}">
-	      <svg class="search-box__form-logo" role="img">
-	        <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
-	      </svg>
-		</div>
-	</div>
+<form action="/" method="get">
+  <div class="search-box__form-fields">
+        <input id="user_input" name="q" type="text" class="search-box__form-fields-field search-box__form-fields-field--{{ modifier }}" placeholder="Search by object, artist, maker...">
+        <input id="submit" style="display:none;" type="submit" value="Search"></input>
+        <a href="#" onclick="document.querySelector('#submit').click();" class="u-btn u-btn--arrowed search-box__form-submit search-box__form-submit--{{ modifier }}">
+          Search
+        </a>
+      <div class="search-box__form-logo-container search-box__form-logo-container--{{ modifier }}">
+          <svg class="search-box__form-logo" role="img">
+              <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
+          </svg>
+      </div>
+  </div>
 </form>

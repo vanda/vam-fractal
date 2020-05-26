@@ -1,0 +1,71 @@
+.b-search-page {
+	-webkit-font-smoothing: antialiased;
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+
+	@include bpMinSmall {
+		padding: 0px 27px;
+	}
+
+	&-content-container {
+		margin-bottom: 120px;
+		@include bpMinMedium {
+			margin-bottom: 140px;
+		}		
+	}
+
+	&-title {
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+		font-weight: bold;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		color: #ffffff;
+		margin-bottom: 15px;
+		font-size: 48px;
+
+		@include bpMinMedium {
+			font-size: 54px;
+		}
+	}
+
+	&-subtitle, &-title {
+		padding: 0px 12px;
+
+		@include bpMinSmall {
+			padding: 0px;
+		}
+	}
+
+	&-subtitle {
+		width: 100%;
+		font-size: 18px;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.25;
+		letter-spacing: normal;
+		color: #ffffff;		
+
+		@include bpMinSmall {
+			height: 118px;
+			width: 476px;
+		}
+
+		@include bpMinMedium {
+			font-size: 24px;
+		}
+
+		@include bpMinLarge {
+			
+		}
+	}
+}
+
+.b-search-page-bg {
+	background-color: rgb(47, 49, 50);
+	height: 100vh;
+}

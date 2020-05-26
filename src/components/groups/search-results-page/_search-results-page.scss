@@ -6,10 +6,6 @@
 			margin: auto;
 			width: 100%;
 
-			@include bpMinXSmall {
-				max-width: 640px;
-			}
-
 			@include bpMinMedium {
 				max-width: 1200px;
 			}
@@ -25,12 +21,12 @@
 		&-pagination-container {
 			margin-top: 24px;
 			
-			@include bpMinLarge {
+			@include bpMinMedium {
 				margin-top: 48px;
 			}
 		}
 
-		&-content-container {
+		&-results-container {
 			padding-top: 100px;
 
 			@include bpMinXSmall {
@@ -43,8 +39,19 @@
 		}
 
 		&-results-container, &-box-container, &-pagination-container {
-			padding-left: 24px;
-			padding-right: 24px;
+			padding-left: 12px;
+			padding-right: 12px;
+
+			@include bpMinSmall {
+				padding-left: 60px;
+				padding-right: 60px;
+			}
+
+
+			@include bpMinMedium {
+				padding-left: 120px;
+				padding-right: 120px;			
+			}
 		}
 	}
 }

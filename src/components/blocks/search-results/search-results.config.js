@@ -4,6 +4,7 @@ module.exports = {
   		name: 'default',
   		label: 'Default',
   		context: {
+  			pages: 10,
 			items: [
 				{
 					image: "https://place-hold.it/150x71",

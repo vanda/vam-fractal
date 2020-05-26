@@ -1,9 +1,9 @@
-.search-results {
+.b-search-results {
 	&__table {
 		color: siteColor(vam-white);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;	
-		width: auto;
+		width: 100%;
 		margin-top: 0px;
 	}
 	
@@ -14,16 +14,19 @@
 		font-size: 21px;
 
 		@include bpMinXSmall {
-			@include typeSetting(5, regular);
 			padding-bottom: 21px;		
 		}
 
 		@include bpMinMedium {
-			@include typeSetting(6, regular);
+			@include typeSetting(5, regular);
 		}
 	}
 
 	&__cell {
+		&-img {
+			vertical-align: middle;
+		}
+		vertical-align: baseline;
 		@include typeSetting(3, light);
 		padding-right: 40px;
 		position: relative;
@@ -54,10 +57,12 @@
 			}
 		}	
 		&-content {
-			&-img, &-container {
-				position: absolute;
-			    top: 50%;
+			&-container {
 			    margin: auto 0px;
+			}
+
+			&-img {
+				text-align: center;
 			}
 
 			&-no-img {
@@ -84,7 +89,6 @@
 				    height: 60px;
 				    width: 90px;
 				    font-size: 10px;
-				    left: 50%;
 				    font-weight: 600;
 				    transform: translate(-50%, -50%);
 				    background-color: #505354;
@@ -105,22 +109,16 @@
 					max-height: 80px;
 					padding: 10px;
 				    max-width: 100px;
-
 				}
+			}
 
-			    left: 50%;
-			    transform: translate(-50%, -50%);
-			}
-			&-container {
-			    transform: translateY(-50%);
-			}
 			padding-top: 21px;
 		}
 		&--emphasis {
 			@include typeSetting(3, bold);
 		}
 		&--responsive {
-			padding-top: 25px;
+		    vertical-align: middle;
 			line-height: 1.8px;
 			display: table-cell;
 			@include bpMinMedium {
@@ -134,7 +132,7 @@
 			height: 84px;
 
 			@include bpMinXSmall {
-				height: 150px;
+				height: 132px;
 			}
 
 			background-color: #393b3f;

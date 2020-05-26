@@ -45,7 +45,7 @@
       &-field {
         @include typeSetting(3, regular);
         border: 1px solid white;
-        border-radius: 3px;
+        border-radius: 2px;
         padding: 15px;
 
         flex-grow: 1;
@@ -54,7 +54,7 @@
         width: 100%;
 
         &--listing {
-          @include bpMinXSmall {
+          @include bpMinSmall {
             height: 46px;
             @include typeSetting(4, regular);
           }        
@@ -67,14 +67,13 @@
         }
 
         &--start {
-          @include bpMinXSmall {
+          @include bpMinSmall {
             height: 64px;
             @include typeSetting(5, regular);
           }        
 
           @include bpMinMedium {
-            height: 84px;
-            @include typeSetting(6, regular);
+            height: 74px;
           }
         }
 
@@ -100,7 +99,7 @@
       top: 0px;
       width: 88px;
       font-size: 12px;
-      border-radius: 0px 3px 3px 0px;
+      border-radius: 0px 2px 2px 0px;
       background-color: themeColor(silent-green);
       border-color: themeColor(silent-green);
 
@@ -137,7 +136,7 @@
       }
 
       &--start {
-        @include bpMinXSmall {
+        @include bpMinSmall {
           width: 124px;
           height: 64px;
           font-size: 14px;
@@ -146,9 +145,9 @@
 
         @include bpMinMedium {
           width: 178px;
-          height: 84px;
+          height: 74px;
           font-size: 18px;
-          padding: 30px 0px;
+          padding: 25px 0px;
           padding-right: 20px;
           letter-spacing: 4.15px;
           line-height: 1.33;
@@ -156,8 +155,8 @@
   
         &:hover,
         .sent & {
-          background-color: map-get($theme-colors, $theme-color-default);
-          border: 1px solid map-get($theme-colors, $theme-color-default);
+          background-color: darken(#ceffd6, 30);
+          border-color: darken(#ceffd6, 30);
           color: siteColor(vam-black);
         }        
       }
@@ -170,7 +169,7 @@
   transform: translateY(-50%);
   right: 5px;
 
-  @include bpMinXSmall {
+  @include bpMinSmall {
     right: 15px;
     border-width: 6px;
   }
