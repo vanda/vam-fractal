@@ -1,24 +1,24 @@
-<div class="search-pagination">
-	<span class="search-pagination__prev-link search-pagination__prev-link--inactive">
-		<span class="search-pagination__caret"><</span> <span class="search-pagination__link-text">Prev</span>
+<div class="b-search-pagination">
+	<span class="b-search-pagination__prev-link b-search-pagination__prev-link--inactive">
+		<span class="b-search-pagination__caret"><</span> <span class="b-search-pagination__link-text">Prev</span>
 	</span>
-	<div class="search-pagination__page-button-container">
-		<button page-index="1" class="search-pagination__page-button search-pagination__page-button-first search-pagination__page-button--current">
+	<div class="b-search-pagination__page-button-container">
+		<button page-index="1" class="b-search-pagination__page-button b-search-pagination__page-button-first b-search-pagination__page-button--current">
 			01
 		</button>
-		<span class="search-pagination__page-button-seperator-start search-pagination__page-button-seperator-start--inactive">
+		<span class="b-search-pagination__page-button-seperator-start b-search-pagination__page-button-seperator-start--inactive">
 			...
 		</span>
 		{% for i in range(2, 4) -%}
-			<button page-index="{{ i }}" class="search-pagination__page-button">
+			<button page-index="{{ i }}" class="b-search-pagination__page-button">
 				0{{ i }}
 			</button>
 		{%- endfor %}
-		<span class="search-pagination__page-button-seperator-middle search-pagination__page-button-seperator-middle--inactive">
+		<span class="b-search-pagination__page-button-seperator-middle b-search-pagination__page-button-seperator-middle--inactive">
 			...
 		</span>
 		{% for i in range(4, pages) -%}
-			<button page-index="{{ i }}" class="search-pagination__page-button">
+			<button page-index="{{ i }}" class="b-search-pagination__page-button">
 				{% if i < 10 %}
 					0{{ i }}
 				{% else %}
@@ -26,10 +26,10 @@
 				{% endif %}
 			</button>
 		{%- endfor %}
-		<span class="search-pagination__page-button-seperator-last search-pagination__page-button-seperator-last--inactive">
+		<span class="b-search-pagination__page-button-seperator-last b-search-pagination__page-button-seperator-last--inactive">
 			...
 		</span>		
-		<button page-index="{{ pages }}" class="search-pagination__page-button search-pagination__page-button-last">
+		<button page-index="{{ pages }}" class="b-search-pagination__page-button b-search-pagination__page-button-last">
 			{% if pages < 10 %}
 				0{{ pages }}
 			{% else %}
@@ -37,7 +37,7 @@
 			{% endif %}			
 		</button>	
 	</div>
-	<span class="search-pagination__next-link">
-		 <span class="search-pagination__link-text">Next</span> <span class="search-pagination__link-caret">></span>
+	<span class="b-search-pagination__next-link">
+		 <span class="b-search-pagination__link-text">Next</span> <span class="b-search-pagination__link-caret">></span>
 	</span>
 </div>
