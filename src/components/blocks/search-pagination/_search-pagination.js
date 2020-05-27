@@ -1,7 +1,8 @@
-var search_prev_link_class = "search-pagination__prev-link";
-var search_next_link_class = "search-pagination__next-link";
-var button_class = "search-pagination__page-button";
-var seperator_class = "search-pagination__page-button-seperator";
+var search_pagination_container = "b-search-pagination";
+var search_prev_link_class = search_pagination_container + "__prev-link";
+var search_next_link_class = search_pagination_container + "__next-link";
+var button_class = search_pagination_container + "__page-button";
+var seperator_class = search_pagination_container + "__page-button-seperator";
 var start = "-start";
 var middle = "-middle";
 var last = "-last";
@@ -30,7 +31,7 @@ Array.from(document.querySelectorAll("." + button_class)).forEach(function (e) {
 });
 
 document.addEventListener('DOMContentLoaded', function (event) {
-	document.querySelector(".search-pagination").addEventListener("changeSearchPage", function() {
+	document.querySelector(".b-search-pagination").addEventListener("changeSearchPage", function() {
 		var currentButton = document.querySelector("." + current_button_class);
 		var currentButtonIndex = parseInt(currentButton.getAttribute("page-index"));
 		
@@ -122,12 +123,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 	}
 
-	document.querySelector(".search-pagination__prev-link").onclick = function(e) {
+	document.querySelector("."+ search_prev_link_class).onclick = function(e) {
 		increment_decrement_page("-");
 		e.target.dispatchEvent(new Event("changeSearchPage", { bubbles: true }));
 	}
 
-	document.querySelector(".search-pagination__next-link").onclick = function(e) {
+	document.querySelector("." + search_next_link_class).onclick = function(e) {
 		increment_decrement_page("+");
 		e.target.dispatchEvent(new Event("changeSearchPage", { bubbles: true }));
 	}
