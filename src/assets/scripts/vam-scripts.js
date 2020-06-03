@@ -10,6 +10,7 @@ require('../../components/blocks/modal/_modal.js');
 require('../../components/blocks/newsletter-signup/_newsletter-signup.js');
 require('../../components/blocks/search-form/_search-form.js');
 require('../../components/blocks/search-result/_search-result.js');
+require('../../components/blocks/site-nav/_site-nav.js');
 require('../../components/blocks/toggle-nav/_toggle-nav.js');
 require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');

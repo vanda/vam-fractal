@@ -11,6 +11,14 @@
       }
     }
 
+    .theme-#{$color} &--color--hover { // sass-lint:disable-line class-name-format
+      transition: all .2s;
+
+      &:hover {
+        color: map-get($theme-colors, $color);
+      }
+    }
+
     .theme-#{$color} &--background-color {
       background-color: map-get($theme-colors, $color);
       transition: all .2s;
