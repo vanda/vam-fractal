@@ -63,7 +63,7 @@
           ${visitLink}
         </div>
         ` : '';
-      const objectUrl = seed.querySelector('a').href;
+      const objectUrl = seed.querySelector('a').getAttribute('href');
       const ctaScreen = objectUrl.length > 1 ?
         `<br/><a class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
         : '';
