@@ -1,6 +1,6 @@
 {
   "name": "vam-fractal",
-  "version": "0.4.7",
+  "version": "0.4.9",
   "description": "Visual Style Guide for the V&A's website(s)",
   "keywords": [
     "styleguide",
@@ -41,7 +41,7 @@
     "browserify": "^16.2.2",
     "cryptiles": "latest",
     "del": "^3.0.0",
-    "eslint": "^3.19.0",
+    "eslint": "^4.18.2",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-import": "^2.12.0",
     "glob": "^7.1.2",
