@@ -1,0 +1,76 @@
+.b-associated-contexts {
+	color: #ffffff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	@include bpMinSmall {
+		width: 246px;
+	}
+
+	&-background {
+		background-color: black;
+	}
+	&__controlled-vocab-container {
+		@include bpMinXSmall {
+			margin-top: 40px;
+		}
+	}
+	&__title {
+		font-size: 14px;
+		font-weight: bold;
+		text-transform: uppercase;
+		line-height: 2.29;
+		letter-spacing: 2.63px;
+		margin-bottom: 15px;
+		text-align: center;
+		@include bpMinSmall {
+			text-align: left;
+		}
+	}
+	&__container {
+		list-style-type: none;
+		margin: 0px;
+	}
+	&__link {
+		margin-bottom: 10px;
+		display: none;
+
+		@include bpMinXSmall {
+			display: inline-block;
+		}
+
+		@include bpMinSmall {
+			display: block;
+		}
+
+		&-image {
+		  width: 65px;
+		  height: 65px;
+		  background-color: #d8d8d8;
+		  border-radius: 50%;
+		}
+		&-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		&-text {
+			margin-left: 16px;
+	
+			@include bpMinXSmall {
+				width: 124px;
+			}
+
+			@include bpMinSmall {
+				width: auto;
+			}
+
+			&-title {
+				@include typeSetting(4, regular);
+			}
+			&-subtitle {
+				@include typeSetting(2, regular);
+			}
+		}
+	}
+}
