@@ -1,0 +1,22 @@
+.g-object-grid {
+  @include unstyledList;
+  column-count: 2;
+  column-gap: 12px;
+  margin-bottom: 40px;
+  width: 100%;
+
+  @include bpMinSmall {
+    column-gap: 50px;
+  }
+
+  @include bpMinMedium {
+    column-count: 3;
+    column-gap: 55px;
+  }
+
+  &__item {
+    break-inside: avoid;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+}
