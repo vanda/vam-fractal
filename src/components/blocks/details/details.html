@@ -12,27 +12,27 @@
                     <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
                 </svg>
             </a>
-        </div>        
+        </div>
         <div class="image-overlay-detail__image-counter">
             Image <span class="image-overlay-detail__current-image"></span> of <span class="image-overlay-detail__total-number-of-images"></span>
-        </div> 
+        </div>
         <div class="image-overlay-detail__copyright-holder">
             © Victoria and Albert Museum, London
         </div>
         {%- render "@download-button" -%}
     </div>
 
-    <div class="image-overlay-detail__carosel-container">
+    <div class="image-overlay-detail__carousel-container">
             {% if not more_than_five_images %}
-                {%- render "@image-carosel" -%}
+                {%- render "@image-carousel" -%}
             {% endif %}
 
             {% if more_than_five_images %}
-                {%- render "@image-carosel--more-than-five-images" -%}
+                {%- render "@image-carousel--more-than-five-images" -%}
             {% endif %}
     </div>
 
     <div class="image-overlay-detail__zoom-container">
         {%- render "@zoom" -%}
     </div>
-</div>  
+</div>

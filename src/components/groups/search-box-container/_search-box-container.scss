@@ -1,59 +1,58 @@
 .b-search-box-container {
-	background-color: #242424;
-	margin: auto;
-	text-align: center;
-	padding: 34px 10px 34px 10px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: #242424;
+  margin: auto;
+  padding: 34px 10px 34px 10px;
+  text-align: center;
 
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;	
+  @include bpMinXSmall {
+    padding: 32px 43px 34px 41px;
+  }
 
-	@include bpMinXSmall {
-		padding: 32px 43px 34px 41px;
-	}
+  @include bpMinMedium {
+    max-width: 1200px;
+  }
 
-	@include bpMinMedium {
-		max-width: 1200px;
-	}
+  &--listing {
+    background-color: transparent;
+    padding: 0;
+  }
 
-	&--listing {
-		padding: 0px;
-		background-color: transparent;;
-	}
+  &-header {
+    margin-bottom: 24px;
+    &__title {
+      color: siteColor(vam-white);
 
-	&-header {
-		margin-bottom: 24px;
-		&__title {
-			color: siteColor(vam-white);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3.38px;
+      text-transform: uppercase;
 
-			font-size: 16px; 
-			font-weight: 700; 
-			letter-spacing: 3.38px; 
-			text-transform: uppercase;
-
-			@include bpMinMedium {
-				font-size: 18px; 
-				font-weight: 700; 
-				letter-spacing: 3.38px; 
-			}
-		}
-		&__subtitle {
-			font-size: 16px; 
-			color: siteColor(vam-white);
-			font-weight: 500;
-		}
-		&__logo {
-			&-container {
-				@include bpMinXSmall {
-					display: none;
-				}
-				margin-bottom: -7px;
-				display: block;
-				width: 100%;
-				text-align: right;
-			}
-			width: 80px;
-			height: 46px;
-			color: siteColor(vam-grey-3);	
-		}
-	}
+      @include bpMinMedium {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 3.38px;
+      }
+    }
+    &__subtitle {
+      color: siteColor(vam-white);
+      font-size: 16px;
+      font-weight: 500;
+    }
+    &__logo {
+      &-container {
+        @include bpMinXSmall {
+          display: none;
+        }
+        display: block;
+        margin-bottom: -7px;
+        text-align: right;
+        width: 100%;
+      }
+      color: siteColor(vam-grey-3);
+      height: 46px;
+      width: 80px;
+    }
+  }
 }

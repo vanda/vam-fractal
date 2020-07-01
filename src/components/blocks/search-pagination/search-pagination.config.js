@@ -1,11 +1,11 @@
-module.exports = {  
+module.exports = {
   variants: [
-  		{
-			name: 'default',
-      		label: 'Default',
-      		context: {
-      			pages: 99
-      		}
-  		}
-	]
-}
+    {
+      name: 'default',
+      label: 'Default',
+      context: {
+        pages: 99
+      }
+    }
+  ]
+};

@@ -1,45 +1,41 @@
-(function(){
+const revealEl = document.createElement('DIV');
+const classes = [
+  'etc-details__cell-concealer',
+  'etc-details__cell-revealer'
+];
+const html = [
+  '<span class="etc-details__cell-concealer-text">Read More</span><button class="etc-details__cell-concealer-button">+</button>',
+  '<span class="etc-details__cell-concealer-text">Read Less</span><button class="etc-details__cell-concealer-button">-</button>'
+];
 
-	var revealEl = document.createElement("DIV");
+function clickFunction (e) {
+  const hiddenClass = 'etc-details__cell-free-content--hidden';
+  const textEl = e.target.parentElement.querySelector('.etc-details__cell-free-content');
+  const textElConcealed = textEl.classList.contains(hiddenClass);
 
-	var classes = [
-		"etc-details__cell-concealer",	
-		"etc-details__cell-revealer"
-	];
-	var html = [
-		'<span class="etc-details__cell-concealer-text">\
-	         Read More\
-        </span>\<button class="etc-details__cell-concealer-button">+</button>',
-		'<span class="etc-details__cell-concealer-text">\
-            Read Less\
-        </span>\<button class="etc-details__cell-concealer-button">-</button>'
-	];
-	
-	revealEl.className = classes[0];
-	revealEl.innerHTML = html[0];
+  e.target.innerHTML = html[textElConcealed ? 1 : 0];
+  e.target.className = classes[textElConcealed ? 1 : 0];
 
-	var clickFunction = function(e) {
-    	var hiddenClass = "etc-details__cell-free-content--hidden";
-    	var textEl = e.target.parentElement.querySelector(".etc-details__cell-free-content");
-    	var textElConcealed = textEl.classList.contains(hiddenClass);
+  if (textElConcealed) {
+    textEl.classList.remove(hiddenClass);
+  } else {
+    textEl.classList.add(hiddenClass);
+  }
+}
 
-    	e.target.innerHTML = html[textElConcealed ? 1 : 0];
-    	e.target.className = classes[textElConcealed ? 1 : 0];
+function initRevealer () {
+  revealEl.className = classes[0];
+  revealEl.innerHTML = html[0];
 
-    	if (textElConcealed) {
-    		textEl.classList.remove(hiddenClass)
-    	} else {
-    		textEl.classList.add(hiddenClass)
-    	}
+  Array.from(document.querySelectorAll('.etc-details__cell-free')).forEach((e) => {
+    if (e.offsetHeight > 200) {
+      const content = e.querySelector('.etc-details__cell-free-content');
+      content.classList.add('etc-details__cell-free-content--hidden');
+      const clone = revealEl.cloneNode(true);
+      clone.onclick = clickFunction;
+      e.appendChild(clone);
     }
+  });
+}
 
-	Array.from(document.querySelectorAll(".etc-details__cell-free")).forEach(function(e) {
-		if (e.offsetHeight > 200) {
-			var content = e.querySelector(".etc-details__cell-free-content");
-			content.classList.add('etc-details__cell-free-content--hidden');
-			var clone = revealEl.cloneNode(true);
-			clone.onclick = clickFunction;
-			e.appendChild(clone);
-		}
-	});
-})();
+initRevealer();

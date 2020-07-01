@@ -1,71 +1,67 @@
 .b-search-page {
-	-webkit-font-smoothing: antialiased;
-	width: 100%;
-	max-width: 1200px;
-	margin: auto;
+  -webkit-font-smoothing: antialiased;
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
 
-	@include bpMinSmall {
-		padding: 0px 27px;
-	}
+  @include bpMinSmall {
+    padding: 0 27px;
+  }
 
-	&-content-container {
-		margin-bottom: 120px;
-		@include bpMinMedium {
-			margin-bottom: 140px;
-		}		
-	}
+  &-content-container {
+    margin-bottom: 120px;
+    @include bpMinMedium {
+      margin-bottom: 140px;
+    }
+  }
 
-	&-title {
-		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-		font-weight: bold;
-		font-stretch: normal;
-		font-style: normal;
-		line-height: normal;
-		letter-spacing: normal;
-		color: #ffffff;
-		margin-bottom: 15px;
-		font-size: 48px;
+  &-title {
+    color: #ffffff;
+    font-size: 48px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: normal;
+    line-height: normal;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 
-		@include bpMinMedium {
-			font-size: 54px;
-		}
-	}
+    @include bpMinMedium {
+      font-size: 54px;
+    }
+  }
 
-	&-subtitle, &-title {
-		padding: 0px 12px;
+  &-subtitle, &-title {
+    padding: 0 12px;
 
-		@include bpMinSmall {
-			padding: 0px;
-		}
-	}
+    @include bpMinSmall {
+      padding: 0;
+    }
+  }
 
-	&-subtitle {
-		width: 100%;
-		font-size: 18px;
-		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-		font-weight: normal;
-		font-stretch: normal;
-		font-style: normal;
-		line-height: 1.25;
-		letter-spacing: normal;
-		color: #ffffff;		
+  &-subtitle {
+    color: #ffffff;
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1.25;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    width: 100%;
 
-		@include bpMinSmall {
-			height: 118px;
-			width: 476px;
-		}
+    @include bpMinSmall {
+      height: 118px;
+      width: 476px;
+    }
 
-		@include bpMinMedium {
-			font-size: 24px;
-		}
-
-		@include bpMinLarge {
-			
-		}
-	}
+    @include bpMinMedium {
+      font-size: 24px;
+    }
+  }
 }
 
 .b-search-page-bg {
-	background-color: rgb(47, 49, 50);
-	height: 100vh;
+  background-color: rgb(47, 49, 50);
+  height: 100vh;
 }

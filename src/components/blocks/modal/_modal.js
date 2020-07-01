@@ -14,7 +14,10 @@ function modalTracking (category, action) {
 Array.from(modals, (modal) => {
   const modalCampaign = modal.dataset.modalCampaign;
 
-  if ((!modal.dataset.modalOnceOnly || !cookies.get(modalCampaign)) && !Boolean(modal.dataset.notOnLoad)) {
+  if (
+    (!modal.dataset.modalOnceOnly || !cookies.get(modalCampaign)) &&
+     !modal.dataset.notOnLoad
+  ) {
     document.body.appendChild(modal);
     modal.classList.add('b-modal--active');
     modalTracking(modalCampaign, 'pop-up displayed');
@@ -25,12 +28,12 @@ Array.from(modals, (modal) => {
       cookies.set(modalCampaign, 'seen', { domain: modal.dataset.modalDomain, expires: 365 });
     }
     if (e.target !== modal) {
-      if (!!(Array.from(e.target.classList).find(c => c === "js-modal-action")) || e.target.closest('.js-modal-action')) {
+      if (!!(Array.from(e.target.classList).find(c => c === 'js-modal-action')) || e.target.closest('.js-modal-action')) {
         modalTracking(modalCampaign, `clicked: ${e.target.textContent}`);
       } else {
         modalTracking(modalCampaign, 'pop-up dismissed');
-        modal.dispatchEvent(new CustomEvent("jsModalClosed", {bubbles: true}));
-        modal.classList.remove("b-modal--active");
+        modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
+        modal.classList.remove('b-modal--active');
       }
     }
   });

@@ -1,4 +1,4 @@
-.b-search-box {  
+.b-search-box {
   &__form {
     margin: auto;
     position: relative;
@@ -57,7 +57,7 @@
           @include bpMinSmall {
             height: 46px;
             @include typeSetting(4, regular);
-          }        
+          }
 
           @include bpMinMedium {
             height: 60px;
@@ -70,7 +70,7 @@
           @include bpMinSmall {
             height: 64px;
             @include typeSetting(5, regular);
-          }        
+          }
 
           @include bpMinMedium {
             height: 74px;
@@ -89,17 +89,17 @@
     }
 
     &-submit {
-      margin: 0px;
+      margin: 0;
       width: 100%;
       z-index: 2;
       padding: 14px 10px 14px 4px;
       height: 46px;
       position: absolute;
-      right: 0px;
-      top: 0px;
+      right: 0;
+      top: 0;
       width: 88px;
       font-size: 12px;
-      border-radius: 0px 2px 2px 0px;
+      border-radius: 0 2px 2px 0px;
       background-color: themeColor(silent-green);
       border-color: themeColor(silent-green);
 
@@ -152,20 +152,20 @@
           letter-spacing: 4.15px;
           line-height: 1.33;
         }
-  
+
         &:hover,
         .sent & {
           background-color: darken(#ceffd6, 30);
           border-color: darken(#ceffd6, 30);
           color: siteColor(vam-black);
-        }        
+        }
       }
-    }    
+    }
   }
 }
 
 .u-btn.u-btn--arrowed.b-search-box__form-submit--start.u-btn--arrowed::after {
-  margin-top: 0px;
+  margin-top: 0;
   transform: translateY(-50%);
   right: 5px;
 
@@ -176,11 +176,11 @@
 
   @include bpMinMedium {
     right: 35px;
-  }  
+  }
 }
 
 .u-btn.u-btn--arrowed.b-search-box__form-submit--listing.u-btn--arrowed::after {
-  margin-top: 0px;
+  margin-top: 0;
   transform: translateY(-50%);
   right: 8px;
 
@@ -191,5 +191,5 @@
   @include bpMinMedium {
     right: 20px;
     border-width: 6px;
-  }  
+  }
 }

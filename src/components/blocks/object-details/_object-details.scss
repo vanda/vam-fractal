@@ -3,132 +3,132 @@
 }
 
 .etc-details {
-    width: 100%;
-    color: siteColor(vam-grey-4);
-    &__cell-concealer-button {
-        pointer-events: none;
-        background-color: #ceffd6;
-        width: 15px;
-        height: 14px;
-        font-size: 22px;
-        margin-left: 4px;
-        margin-top: -2px;        
-        color: #1d1e20;
-        border-radius: 10px;
-        vertical-align: middle;
-        line-height: 0;
+  width: 100%;
+  color: siteColor(vam-grey-4);
+  &__cell-concealer-button {
+    pointer-events: none;
+    background-color: #ceffd6;
+    width: 15px;
+    height: 14px;
+    font-size: 22px;
+    margin-left: 4px;
+    margin-top: -2px;
+    color: #1d1e20;
+    border-radius: 10px;
+    vertical-align: middle;
+    line-height: 0;
+  }
+  &__cell-free-content {
+    word-break: break-word;
+    &--hidden {
+      height: 200px;
+      overflow: hidden;
+      word-break: break-word;
     }
-    &__cell-free-content {
-        word-break: break-word;
-        &--hidden {
-            height: 200px;
-            overflow: hidden;
-            word-break: break-word;
-        }
-    }
-    &__title {
-        color: siteColor(vam-white);
-        text-align: center;
-        @include typeSetting(4, bold);
-        letter-spacing: 3.38px;
-        text-transform: uppercase;
-        padding-bottom: 35px;
-    }
-    &__row {
-        display: flex;
-        flex-direction: column;
+  }
+  &__title {
+    color: siteColor(vam-white);
+    text-align: center;
+    @include typeSetting(4, bold);
+    letter-spacing: 3.38px;
+    text-transform: uppercase;
+    padding-bottom: 35px;
+  }
+  &__row {
+    display: flex;
+    flex-direction: column;
 
-        @include bpMinSmall {
-            flex-direction: row;
-        }
+    @include bpMinSmall {
+      flex-direction: row;
+    }
 
-        border-style: dashed;
-        border-color: siteColor(vam-grey-3);
-        border-width: 1px 0px 0px 0px;
-        min-height: 46px;
-    }
-    &__cell {
-        padding: 12px 10px 10px 0px;
-    }
-    &__cell-name {
-        @include typeSetting(2, bold, uppercase);
-        color: siteColor(vam-white);
-        flex-shrink: 0;
-        padding-bottom: 3px;
+    border-style: dashed;
+    border-color: siteColor(vam-grey-3);
+    border-width: 1px 0px 0px 0px;
+    min-height: 46px;
+  }
+  &__cell {
+    padding: 12px 10px 10px 0px;
+  }
+  &__cell-name {
+    @include typeSetting(2, bold, uppercase);
+    color: siteColor(vam-white);
+    flex-shrink: 0;
+    padding-bottom: 3px;
 
-        @include bpMinSmall {
-            width: 165px;
-            padding-bottom: 10px;
-        }
+    @include bpMinSmall {
+      width: 165px;
+      padding-bottom: 10px;
     }
-    &__cell-data {
-        padding-left: 0px;
-        @include typeSetting(3, light);
-        padding-top: 0px;
+  }
+  &__cell-data {
+    padding-left: 0;
+    @include typeSetting(3, light);
+    padding-top: 0;
 
-        @include bpMinSmall {
-            padding-top: 10px;
-            padding-left: 20px;            
-        }
+    @include bpMinSmall {
+      padding-top: 10px;
+      padding-left: 20px;
     }
-    &__controlled-vocab-string-container {
-        padding-bottom: 8px;
+  }
+  &__controlled-vocab-string-container {
+    padding-bottom: 8px;
+  }
+  &__cell-concealer-text {
+    pointer-events: none;
+    color: siteColor(vam-white);
+  }
+  &__cell-concealer, &__cell-revealer {
+    padding: 10px 10px 10px 0px;
+    height: 40px;
+    position: relative;
+    text-align: left;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
     }
-    &__cell-concealer-text {
-        pointer-events: none;
-        color: siteColor(vam-white);
+  }
+  &__cell-concealer {
+    &::before {
+      position: absolute;
+      content: '';
+      height: 100px;
+      left: 0;
+      width: 100%;
+      top: -100px;
+      background-image: linear-gradient(to bottom, rgba(255,0,0,0), #393b3f);
     }
-    &__cell-concealer, &__cell-revealer {
-        padding: 10px 10px 10px 0px;
-        height: 40px;
-        position: relative;
-        text-align: left;
-        &:hover {
-            text-decoration: underline;
-            cursor: pointer;
-        }
+  }
+  &__controlled-vocab {
+    &-container {
+      flex: auto;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
     }
-    &__cell-concealer {
-        &::before {
-            position: absolute;
-            content: '';
-            height: 100px;
-            left: 0px;
-            width: 100%;
-            top: -100px;
-            background-image: linear-gradient(to bottom, rgba(255,0,0,0), #393b3f);
-        }    
-    }
-    &__controlled-vocab {
-        &-container {
-            flex: auto;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;        
-        }
 
-        padding: 10px 13px;
-        margin-right: 10px;
-        margin-top: 5px;
+    padding: 10px 13px;
+    margin-right: 10px;
+    margin-top: 5px;
 
-        @include bpMinSmall {
-            padding: 2px 7px 2px 7px;
-            margin-right: 10px;
-            line-height: 2rem !important;
-            line-height: 1.3rem !important;
-            margin-top: 2px;
-            margin-bottom: 2px;
-        }
-
-        border-radius: 4px;
-        @include typeSetting(1, light);
-        border: solid themeColor(silent-green) 1px;
-        color: siteColor(vam-white);
-        
-        &:hover {
-            background-color: themeColor(silent-green);
-            color: siteColor(vam-grey-1);
-            cursor: pointer;
-        }
+    @include bpMinSmall {
+      padding: 2px 7px 2px 7px;
+      margin-right: 10px;
+      line-height: 2rem !important;
+      line-height: 1.3rem !important;
+      margin-top: 2px;
+      margin-bottom: 2px;
     }
+
+    border-radius: 4px;
+    @include typeSetting(1, light);
+    border: solid themeColor(silent-green) 1px;
+    color: siteColor(vam-white);
+
+    &:hover {
+      background-color: themeColor(silent-green);
+      color: siteColor(vam-grey-1);
+      cursor: pointer;
+    }
+  }
 }

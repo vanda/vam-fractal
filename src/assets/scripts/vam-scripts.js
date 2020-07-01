@@ -17,7 +17,7 @@ require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');
 require('../../components/blocks/object-details/object-details.js');
 require('../../components/blocks/details/details.js');
-require('../../components/blocks/image-carosel/_image-carosel.js');
+require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/download-button/_download-button.js');
 require('../../components/blocks/search-pagination/_search-pagination.js');
 
