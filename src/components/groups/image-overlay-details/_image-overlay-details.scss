@@ -1,4 +1,4 @@
-.image-overlay-detail {
+.b-image-overlay-detail {
   align-items: center;
   background: siteColor(vam-black);
   color: siteColor(vam-white);
@@ -74,7 +74,7 @@
   }
 
   &__caption-container {
-    margin: 0 0 20px;
+    margin: 0 0 0 20px;
     max-width: 371px;
     text-align: left;
 
@@ -106,7 +106,7 @@
     }
   }
 
-  &__carosel-container {
+  &__carousel-container {
     display: none;
     margin: 33px 0 24px;
 
@@ -115,4 +115,4 @@
     }
   }
 }
-  
+

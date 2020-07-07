@@ -1,8 +1,8 @@
 function updateCounter () {
-  document.querySelector('.image-overlay-detail__current-image').innerHTML =
-    parseInt(document.querySelector('.image-carousel__image-preview-container--selected').getAttribute('data-image-index'), 10) + 1;
-  document.querySelector('.image-overlay-detail__total-number-of-images').innerHTML =
-    document.querySelectorAll('.image-carousel__image-preview-container').length;
+  document.querySelector('.b-image-overlay-detail__current-image').innerHTML =
+    parseInt(document.querySelector('.b-image-carousel__image-preview-container--selected').getAttribute('data-image-index'), 10) + 1;
+  document.querySelector('.b-image-overlay-detail__total-number-of-images').innerHTML =
+    document.querySelectorAll('.b-image-carousel__image-preview-container').length;
 }
 
 function createUpdateEvent (opr) {
@@ -27,6 +27,8 @@ function updateImageAndCounter (e) {
     newIndex -= 1;
   }
 
+  console.log('is this not firing');
+
   if (document.querySelector(`img[data-image-index="${String(newIndex)}"]`)) {
     if (currentSelect) {
       currentSelect.classList.remove(classActive);
@@ -41,10 +43,10 @@ function updateImageAndCounter (e) {
 
     document.querySelector(`div[data-image-index='${String(newIndex)}']`).classList.add(classSelected);
 
-    const imageDetailNext = document.querySelector('.image-overlay-detail__next');
-    const imageDetailPrev = document.querySelector('.image-overlay-detail__prev');
+    const imageDetailNext = document.querySelector('.b-image-overlay-detail__next');
+    const imageDetailPrev = document.querySelector('.b-image-overlay-detail__prev');
 
-    if (newIndex === document.querySelectorAll('.image-carousel__image-preview-container').length - 1) {
+    if (newIndex === document.querySelectorAll('.b-image-carousel__image-preview-container').length - 1) {
       imageDetailNext.classList.remove('image-overlay-detail__next--enabled');
     } else {
       imageDetailNext.classList.add('image-overlay-detail__next--enabled');
@@ -63,16 +65,18 @@ function updateImageAndCounter (e) {
 }
 
 function initImageOverlay () {
-  const imageDetailNext = document.querySelector('.image-overlay-detail__next');
-  const imageDetailPrev = document.querySelector('.image-overlay-detail__prev');
+  const imageDetailNext = document.querySelector('.b-image-overlay-detail__next');
+  const imageDetailPrev = document.querySelector('.b-image-overlay-detail__prev');
 
   const updateEvent = opr => createUpdateEvent(opr);
 
-  if (document.querySelector('.image-overlay-detail')) {
+  if (document.querySelector('.b-image-overlay-detail')) {
     imageDetailPrev.onclick = e => e.target.dispatchEvent(updateEvent('-'));
     imageDetailNext.onclick = e => e.target.dispatchEvent(updateEvent('+'));
-    document.querySelector('.image-overlay-detail').addEventListener('updateimageandcounter', updateImageAndCounter);
+    document.querySelector('.b-image-overlay-detail').addEventListener('updateimageandcounter', updateImageAndCounter);
   }
+
+  document.querySelector('.b-image-overlay-detail').dispatchEvent(updateEvent(''));
 }
 
-initImageOverlay();
+document.querySelector('.b-image-overlay-detail') && initImageOverlay();

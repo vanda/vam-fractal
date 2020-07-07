@@ -30,19 +30,23 @@ Array.from(document.querySelectorAll(`.${buttonClass}`)).forEach((el) => {
   };
 });
 
-document.querySelector(`.${buttonClass}${start}`).onclick = (e) => {
-  document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-  e.target.classList.add(currentButtonClass);
-  e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-};
+if (document.querySelector(`.${buttonClass}${start}`)) {
+  document.querySelector(`.${buttonClass}${start}`).onclick = (e) => {
+    document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
+    e.target.classList.add(currentButtonClass);
+    e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
+  };
+}
 
-document.querySelector(`.${buttonClass}${last}`).onclick = (e) => {
-  document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-  e.target.classList.add(currentButtonClass);
-  e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-};
+if (document.querySelector(`.${buttonClass}${last}`)) {
+  document.querySelector(`.${buttonClass}${last}`).onclick = (e) => {
+    document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
+    e.target.classList.add(currentButtonClass);
+    e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
+  };
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+document.querySelector('.b-search-pagination') && document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', () => {
     const currentButton = document.querySelector(`.${currentButtonClass}`);
     const currentButtonIndex = parseInt(currentButton.getAttribute('page-index'), 10);
