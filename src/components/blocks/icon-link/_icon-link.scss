@@ -6,6 +6,17 @@
   position: relative;
   width: 45px;
 
+  &__download {
+    cursor: default;
+  }
+
+  &--active {
+    background-color: #12d2a0;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 1;
+  }
+
   &__container {
     &::after {
       border: 1px solid currentColor;
@@ -20,6 +31,12 @@
 
       .b-icon-link:hover & {
         opacity: 1;
+      }
+    }
+    &-download {
+      &::after {
+        opacity: 1;
+        cursor: pointer;
       }
     }
   }
