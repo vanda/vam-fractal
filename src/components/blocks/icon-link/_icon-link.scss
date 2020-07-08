@@ -11,7 +11,8 @@
   }
 
   &--active {
-    background-color: #12d2a0;
+    background-color: siteColor(secondary-green);
+    border-color: siteColor(secondary-green);
     border-radius: 50%;
     cursor: pointer;
     opacity: 1;
@@ -35,8 +36,8 @@
     }
     &-download {
       &::after {
-        opacity: 1;
         cursor: pointer;
+        opacity: 1;
       }
     }
   }

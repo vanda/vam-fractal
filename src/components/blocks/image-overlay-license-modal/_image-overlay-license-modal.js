@@ -62,7 +62,7 @@ function initDownloadButton () {
         document.querySelector(`.${prefix}${agreeCheckbox}`).checked =
           !document.querySelector(`.${prefix}${agreeCheckbox}`).checked;
 
-        document.querySelector(`.${prefix}${agreeToTerms}`).classList.remove(`.${prefix}${agreeToTerms}${warning}`);
+        document.querySelector(`.${prefix}${agreeToTerms}`).classList.remove(`${prefix}${agreeToTerms}${warning}`);
 
         if (document.querySelector(`.${prefix}${agreeCheckbox}`).checked) {
           document.querySelector(`.${prefix}${agreeToTermsReminder}`).style.display = 'none';
@@ -85,7 +85,7 @@ function initDownloadButton () {
       document.querySelector(`.${prefix}${link}`).onclick = () => {
         if (!document.querySelector(`.${prefix}${agreeCheckbox}`).checked) {
           document.querySelector(`.${prefix}${agreeToTermsReminder}`).style.display = 'block';
-          document.querySelector(`.${prefix}${agreeToTerms}`).classList.add(`.${prefix}${agreeToTerms}${warning}`);
+          document.querySelector(`.${prefix}${agreeToTerms}`).classList.add(`${prefix}${agreeToTerms}${warning}`);
         }
       };
     }
