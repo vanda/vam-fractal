@@ -27,14 +27,16 @@ function updateImageAndCounter (e) {
     newIndex -= 1;
   }
 
-  console.log('is this not firing');
+  // if (!document.querySelector('.b-image-carousel__image-preview-container--selected')) {
+  //   newIndex = 0;
+  // }
 
   if (document.querySelector(`img[data-image-index="${String(newIndex)}"]`)) {
     if (currentSelect) {
       currentSelect.classList.remove(classActive);
     }
 
-    const classSelected = 'image-carousel__image-preview-container--selected';
+    const classSelected = 'b-image-carousel__image-preview-container--selected';
     const selectedEl = document.querySelector(`.${classSelected}`);
 
     if (selectedEl) {
@@ -47,15 +49,15 @@ function updateImageAndCounter (e) {
     const imageDetailPrev = document.querySelector('.b-image-overlay-detail__prev');
 
     if (newIndex === document.querySelectorAll('.b-image-carousel__image-preview-container').length - 1) {
-      imageDetailNext.classList.remove('image-overlay-detail__next--enabled');
+      imageDetailNext.classList.remove('b-image-overlay-detail__next--enabled');
     } else {
-      imageDetailNext.classList.add('image-overlay-detail__next--enabled');
+      imageDetailNext.classList.add('b-image-overlay-detail__next--enabled');
     }
 
     if (newIndex === 0) {
-      imageDetailPrev.classList.remove('image-overlay-detail__prev--enabled');
+      imageDetailPrev.classList.remove('b-image-overlay-detail__prev--enabled');
     } else {
-      imageDetailPrev.classList.add('image-overlay-detail__prev--enabled');
+      imageDetailPrev.classList.add('b-image-overlay-detail__prev--enabled');
     }
 
     document.querySelector(`img[data-image-index='${String(newIndex)}']`).classList.add(classActive);

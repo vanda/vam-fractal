@@ -3,8 +3,8 @@
 }
 
 .b-icon-link__container.image-button__icon-link-container--active.js-modal-action::after {
-  background-color: #04d1b3 !important;
-  border-color: #04d1b3 !important;
+  background-color: siteColor(secondary-green) !important;
+  border-color: siteColor(secondary-green) !important;
   opacity: 1;
 }
 
@@ -195,8 +195,8 @@
     width: 26px;
     z-index: 99;
     &--active {
-      color: #04d1b3 !important;
-      display: block !important;
+      color: siteColor(secondary-green);
+      display: block;
     }
   }
 
@@ -233,8 +233,8 @@
 
     &--active {
       &::before {
-        background-color: #04d1b3 !important;
-        border-color: #04d1b3 !important;
+        background-color: siteColor(secondary-green) !important;
+        border-color: siteColor(secondary-green) !important;
       }
     }
 
