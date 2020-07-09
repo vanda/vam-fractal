@@ -211,8 +211,8 @@ function jsLinter() {
 // Watch
 function watch() {
   serve();
-  gulp.watch(['src/assets/**/*.scss', 'src/components/**/**/*.scss'], styles);
-  gulp.watch(['src/assets/**/*.js', 'src/components/**/**/*.js'], scripts);
+  gulp.watch(['src/assets/**/*.scss', 'src/components/**/*.scss'], styles);
+  gulp.watch(['src/assets/**/*.js', 'src/components/**/_*.js'], scripts);
   gulp.watch('src/assets/svg/*.svg', svg);
   gulp.watch('src/assets/fonts', fonts);
 }
