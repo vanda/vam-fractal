@@ -23,7 +23,6 @@ const surge         = require('gulp-surge');
 const svgmin        = require('gulp-svgmin');
 const svgsymbols    = require('gulp-svg-symbols');
 const uglify        = require('gulp-uglify');
-const livereload    = require('gulp-livereload');
 
 // Paths
 const paths = {

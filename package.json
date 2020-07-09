@@ -68,7 +68,6 @@
   },
   "dependencies": {
     "browser-cookies": "^1.2.0",
-    "gulp-livereload": "^4.0.2",
     "smooth-scroll": "github:cferdinandi/smooth-scroll#35939c17b602772a1f9abc9272c3f668697be8ba",
     "svg4everybody": "^2.1.9"
   }
