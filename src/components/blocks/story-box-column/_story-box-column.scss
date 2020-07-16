@@ -1,0 +1,126 @@
+.b-story-box-column {
+  @include bpMinXSmall {
+    flex-direction: column;
+    height: 100%;
+    max-height: 478px;
+    max-width: 298px;
+  }
+
+  @include bpMinMedium {
+    height: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+    max-height: 505px;
+    max-width: 435px;
+    width: 100%;
+  }
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: siteColor(vam-grey-3);
+  color: siteColor(vam-white);
+  display: flex;
+  flex-direction: row;
+  height: 120px;
+  margin-left: 12px;
+  margin-right: 12px;
+  max-width: 100%;
+  width: 100%;
+
+  &__container-text {
+    @include bpMinXSmall {
+      margin-top: 20px;
+    }
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  &__container-img {
+    @include bpMinXSmall {
+      height: 166px;
+      width: 100%;
+    }
+
+    @include bpMinLarge {
+      height: 244px;
+      width: 100%;
+    }
+
+    background-color: siteColor(vam-grey-4);
+    height: 120px;
+    width: 150px;
+  }
+
+  &__content {
+    &-icon {
+      height: 13px;
+      margin-right: 6px;
+      width: 15px;
+    }
+
+    &-type,
+    &-title,
+    &-text {
+      margin-bottom: 20px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    &-type {
+      &-container {
+        @include bpMinXSmall {
+          margin-bottom: 20px;
+        }
+        display: flex;
+        margin-bottom: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+      &-text {
+        @include typeSetting(1, bold, uppercase);
+      }
+    }
+
+    &-title {
+      @include bpMinXSmall {
+        margin-bottom: 0;
+      }
+      @include typeSetting(3, bold);
+      margin-bottom: 0;
+      position: relative;
+
+      &:after {
+        @include bpMinXSmall {
+          display: block;
+        }
+
+        background-color: siteColor(vam-white);
+        bottom: -9px;
+        content: '';
+        display: none;
+        height: 2px;
+        left: 2px;
+        position: absolute;
+        width: 28px;
+      }
+    }
+
+    &-text {
+      @include bpMinXSmall {
+        display: block;
+      }
+      @include typeSetting(3, regular);
+
+      display: none;
+      margin-top: 15px;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}
