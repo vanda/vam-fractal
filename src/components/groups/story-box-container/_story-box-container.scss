@@ -1,15 +1,9 @@
-.b-story-box-column-container {
+.b-story-box-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 
-  @include bpMinSmall {
-
-  }
-  @include bpMinMedium {
-    flex-wrap: nowrap;
-  }
   &__col-break {
     flex-basis: 100%;
     height: 24px;
@@ -22,10 +16,5 @@
   &__row-break {
     flex-basis: 100%;
     height: 24px;
-
-    @include bpMinMedium {
-      flex-basis: auto;
-      height: 0;
-    }
   }
 }
