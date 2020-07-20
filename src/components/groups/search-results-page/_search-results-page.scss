@@ -1,0 +1,56 @@
+.b-search-results-page {
+  background-color: siteColor(vam-black);
+  padding-bottom: 48px;
+  &__search {
+    &-box-container, &-results-container, &-pagination-container {
+      margin: auto;
+      width: 100%;
+
+      @include bpMinMedium {
+        max-width: 1200px;
+      }
+    }
+
+    &-box-container {
+      left: 50%;
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+    }
+
+    &-pagination-container {
+      margin-top: 24px;
+
+      @include bpMinMedium {
+        margin-top: 48px;
+      }
+    }
+
+    &-results-container {
+      padding-top: 100px;
+
+      @include bpMinXSmall {
+        padding-top: 60px;
+      }
+
+      @include bpMinMedium {
+        padding-top: 80px;
+      }
+    }
+
+    &-results-container, &-box-container, &-pagination-container {
+      padding-left: 12px;
+      padding-right: 12px;
+
+      @include bpMinSmall {
+        padding-left: 60px;
+        padding-right: 60px;
+      }
+
+      @include bpMinMedium {
+        padding-left: 120px;
+        padding-right: 120px;
+      }
+    }
+  }
+}

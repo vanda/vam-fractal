@@ -1,0 +1,43 @@
+<div class="b-search-pagination" style="background-color: black;">
+	<span class="b-search-pagination__prev-link b-search-pagination__prev-link--inactive">
+		<span class="b-search-pagination__caret"><</span> <span class="b-search-pagination__link-text">Prev</span>
+	</span>
+	<div class="b-search-pagination__page-button-container">
+		<button page-index="1" class="b-search-pagination__page-button-start b-search-pagination__page-button--current">
+			01
+		</button>
+		<span class="b-search-pagination__page-button-seperator-start b-search-pagination__page-button-seperator-start--inactive">
+			...
+		</span>
+		{% for i in range(2, 4) -%}
+			<button page-index="{{ i }}" class="b-search-pagination__page-button ">
+				0{{ i }}
+			</button>
+		{%- endfor %}
+		<span class="b-search-pagination__page-button-seperator-middle b-search-pagination__page-button-seperator-middle--inactive">
+			...
+		</span>
+		{% for i in range(4, pages) -%}
+			<button page-index="{{ i }}" class="b-search-pagination__page-button ">
+				{% if i < 10 %}
+					0{{ i }}
+				{% else %}
+					{{ i }}
+				{% endif %}
+			</button>
+		{%- endfor %}
+		<span class="b-search-pagination__page-button-seperator-last b-search-pagination__page-button-seperator-last--inactive">
+			...
+		</span>		
+		<button page-index="{{ pages }}" class="b-search-pagination__page-button-last">
+			{% if pages < 10 %}
+				0{{ pages }}
+			{% else %}
+				{{ pages }}
+			{% endif %}			
+		</button>	
+	</div>
+	<span class="b-search-pagination__next-link">
+		 <span class="b-search-pagination__link-text">Next</span> <span class="b-search-pagination__link-caret">></span>
+	</span>
+</div>

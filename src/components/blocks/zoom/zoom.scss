@@ -1,0 +1,54 @@
+.zoom-container {
+  display: none;
+
+  @include bpMinMedium {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 16px 40px 24px 0;
+  }
+  &__zoom-controls-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__zoom-out {
+    margin-top: 6px;
+  }
+
+  &__zoom-in,
+  &__zoom-out {
+    border: 1px solid #fff;
+    border-radius: 100%;
+    color: #fff;
+    cursor: default;
+    display: inline-flex;
+    height: 30px;
+    margin-right: 10px;
+    opacity: .4;
+    width: 30px;
+
+    svg {
+      height: 12px;
+      margin: auto;
+      width: 12px;
+    }
+
+    &--enabled {
+      cursor: pointer;
+      opacity: 1;
+
+      &:hover,
+      &:focus {
+        background: #ffffff1a;
+      }
+    }
+  }
+
+  &__zoom-placeholder {
+    background-color: #747c80;
+    border: solid 1px #b7b8bd;
+    height: 103px;
+    width: 156px;
+  }
+}

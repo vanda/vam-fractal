@@ -1,0 +1,181 @@
+.b-search-results {
+  &__table {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: siteColor(vam-white);
+    margin-top: 0;
+    width: 100%;
+  }
+
+  &__count {
+    color: siteColor(vam-white);
+    font-size: 21px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+
+    @include bpMinXSmall {
+      padding-bottom: 21px;
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(5, regular);
+    }
+  }
+
+  &__cell {
+    &-img {
+      padding-right: 0;
+      vertical-align: middle;
+    }
+    @include typeSetting(3, light);
+    padding-right: 40px;
+    position: relative;
+    vertical-align: baseline;
+    &--full {
+      display: none;
+      @include bpMinMedium {
+        display: table-cell;
+      }
+    }
+    &-span {
+      @include typeSetting(2, light);
+      &--emphasis {
+        @include typeSetting(2, bold);
+      }
+
+      @include bpMinXSmall {
+        @include typeSetting(3, light);
+        &--emphasis {
+          @include typeSetting(3, bold);
+        }
+      }
+
+      &--responsive {
+        display: none;
+        @include bpMinXSmall {
+          display: block;
+        }
+      }
+    }
+    &-content {
+      &-container {
+        margin: auto 0;
+      }
+
+      &-img {
+        margin: auto;
+        text-align: center;
+
+        @include bpMinMedium {
+          width: 200px;
+        }
+        img {
+          @include bpMinXSmall {
+            max-height: 120px;
+            max-width: 150px;
+          }
+          max-height: 80px;
+          max-width: 100px;
+          padding: 10px;
+        }
+      }
+
+      &-no-img {
+        height: 0;
+        width: 0;
+        &:after {
+          @include bpMinXSmall {
+            background-position-x: -100px;
+            background-position-y: -120px;
+            background-size: 500px;
+            border-width: 0;
+            font-size: 13px;
+            height: 106px;
+            line-height: 8;
+            white-space: normal;
+            width: 130px;
+          }
+          background-color: #505354;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='valogo' viewBox='0 0 500 287'%3E%3Ctitle%3Evalogo%3C/title%3E%3Cpath d='M496.859 279.87c-.457-.073-1.968-.238-4.335-.43-11.586-.931-24.247-3.292-31.776-22.793-2.416-6.249-97.554-252.654-98.177-254.297-.716-1.881-2.501-1.831-3.127.062-.535 1.62-25.75 76.311-25.75 76.311l65.626 180.443c1.151 3.351 2.273 6.668 2.273 9.216 0 3.225-2.178 6.922-5.851 8.656-2.899 1.366-8.416 2.093-12.663 2.448-1.337.11-2.48.226-3.687.402-1.33.193-1.864 1.333-1.864 2.338 0 1.23.923 2.117 2.273 2.117h117.207c.983 0 2.026-.912 2.026-1.975 0-1.81-1.093-2.319-2.174-2.498h-.001zM232.455 13.183c3.447-2.027 7.965-2.996 17.101-3.489 1.293-.07 2.3-.783 2.3-2.085 0-1.375-1.062-2.133-2.058-2.133l-55.42-.02c-1.297 0-2.796.391-2.796 2.127 0 .88.368 1.87 2.07 2.097 1.286.169 4.233.351 7.52.581 7.926.554 10.972 1.38 13.249 4.653 2.137 3.076.988 8.54-1.42 15.04-2.4 6.474-66.192 169.885-66.192 169.885h-.258c-.768-2.389-51.302-161.144-53.495-167.998-2.19-6.857-3.07-11.683-1.94-14.333 2.064-4.836 6.174-6.534 16.426-7.24 1.408-.096 2.06-.149 3.344-.259 1.348-.116 2.114-1.299 1.824-2.744-.302-1.508-1.18-1.819-2.832-1.819L3.14 5.453c-.981 0-2.06.654-2.164 2.01-.084 1.073.419 1.676 1.064 1.97.628.284 2.503.528 6.019.777 7.811.551 10.336 1.215 13.223 2.595 5.86 2.798 9.87 10.3 11.87 16.287 2.003 5.986 84.912 255.053 85.175 255.813.401 1.165 2.087 1.208 2.592.025.51-1.203 103.281-258.943 104.756-262.535 1.267-3.083 3.305-7.168 6.78-9.21v-.002zm126.324 249.03c-2.263-.706-3.673.702-5.333 4.626-1.927 4.55-6.08 5.783-10.075 5.783-7.47 0-14.99-8.55-20.575-17.249-.306-.478-3.477-5.447-8.24-12.918 12.125-16.838 19.038-36.55 22.208-49.563 1.093-4.488 2.708-11.27 5.122-14.085 3.346-3.9 7.005-5.025 12.289-5.554 2.292-.229 3.31-.34 4.17-.592 1.193-.352 1.538-1.481 1.43-2.307-.165-1.241-1.045-1.787-1.983-1.787l-46.184-.008c-1.537 0-2.234.988-2.234 2.174 0 1.113.73 1.74 1.784 1.993.73.176 2.034.306 2.92.352 5.788.3 10.016.954 12.655 2.709 4.255 2.828 3.842 7.245 3.037 13.263-1.806 13.442-8.637 33.256-18.57 48.146-18.073-28.34-50.87-79.774-50.87-79.774s13.58-7.047 22.796-12.342c8.994-5.167 22.756-15.555 22.756-32.541 0-10.072-5.77-17.897-13.67-23.115-8.12-5.363-20.282-9.653-34.088-9.653-17.211 0-35.611 6.313-45.58 22.116-9.63 15.26-7.144 37.545 4.185 56.182a371.05 371.05 0 0 0 6.42 10.123c-4.026 1.44-9.023 3.606-13.238 5.52-22.9 10.626-42.333 30.463-42.333 57.686 0 30.283 22.54 54.637 64.087 54.637 22.655 0 41.325-7.183 56.206-17.806 6.86 9.296 19.555 16.273 37.801 16.273 17.312 0 31.02-10.07 34.568-18.316.604-1.408.238-3.444-1.46-3.971v-.002zM238.733 92.236c3.578-5.14 8.931-7.264 16.105-7.264 9.746 0 21.665 9.092 21.665 32.038 0 14.423-7.296 28.283-19.027 35.996 0 0-10.116-15.616-15.916-26.516-5.077-9.55-9.746-24.315-2.827-34.254zm-35.438 122.937c0-13.68 4.8-31.505 22.316-42.735l.021.033-.02-.033.052.083c.03.043.068.106.12.183 38.2 58.879 40.327 62.265 58.898 90.743-8.163 5.418-17.215 8.672-26.265 8.672-30.941 0-55.123-28.685-55.123-56.945l.001-.001z' fill='%23747c80' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+          background-position-x: -50px;
+          background-position-y: -45px;
+          background-repeat: no-repeat;
+          background-size: 240px;
+          content: "\AImage \A unavailable";
+          font-size: 10px;
+          font-weight: 600;
+          height: 60px;
+          line-height: 1.4;
+          margin: 0;
+          position: absolute;
+          text-align: center;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          white-space: break-spaces;
+        }
+      }
+      padding-top: 21px;
+    }
+    &--emphasis {
+      @include typeSetting(3, bold);
+    }
+    &--responsive {
+      display: table-cell;
+      line-height: 1.8px;
+      vertical-align: middle;
+      @include bpMinMedium {
+        display: none;
+      }
+    }
+  }
+
+  &__body {
+    &-row {
+      @include bpMinXSmall {
+        height: 132px;
+      }
+
+      background-color: #393b3f;
+      border-bottom: 4px solid #1d1e20;
+      height: 84px;
+
+      &:hover {
+        background-color: #45484d;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__head {
+    @include typeSetting(4, semi-bold);
+
+    &-cell {
+      display: none;
+      @include bpMinMedium {
+        display: table-cell;
+      }
+    }
+    &-responsive {
+      display: table-cell;
+      @include bpMinMedium {
+        display: none;
+      }
+      width: 420px;
+    }
+    &-image {
+      width: 220px;
+    }
+    &-title {
+      width: 300px;
+    }
+    &-artist {
+      width: 300px;
+    }
+    &-date {
+      width: 200px;
+    }
+    &-place {
+      width: 180px;
+    }
+  }
+}

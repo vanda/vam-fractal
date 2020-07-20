@@ -5,7 +5,19 @@
   height: 45px;
   position: relative;
   width: 45px;
-  
+
+  &__download {
+    cursor: default;
+  }
+
+  &--active {
+    background-color: siteColor(secondary-green);
+    border-color: siteColor(secondary-green);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 1;
+  }
+
   &__container {
     &::after {
       border: 1px solid currentColor;
@@ -19,6 +31,12 @@
       width: 100%;
 
       .b-icon-link:hover & {
+        opacity: 1;
+      }
+    }
+    &-download {
+      &::after {
+        cursor: pointer;
         opacity: 1;
       }
     }

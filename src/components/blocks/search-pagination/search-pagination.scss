@@ -1,0 +1,91 @@
+.b-search-pagination {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  &__prev-link {
+    left: 0;
+  }
+  &__next-link {
+    right: 0;
+  }
+  &__prev-link, &__next-link {
+    @include typeSetting(2, bold);
+    @include bpMinMedium {
+      @include typeSetting(3, bold);
+    }
+
+    color: siteColor(vam-white);
+    cursor: pointer;
+    position: absolute;
+    user-select: none;
+
+    &--inactive {
+      color: siteColor(vam-grey-4);
+      cursor: initial;
+    }
+  }
+
+  &__link {
+    &-caret {
+      text-decoration: none;
+    }
+    &-text {
+      text-decoration: underline;
+    }
+  }
+
+  &__page-button {
+    display: none;
+    &--active {
+      display: block;
+    }
+  }
+
+  &__page-button, &__page-button-start, &__page-button-last {
+    @include typeSetting(3, semi-bold);
+    @include bpMinMedium {
+      height: 44px;
+      margin-right: 8px;
+      width: 36px;
+    }
+
+    border: 1px solid siteColor(vam-white);
+    border-radius: 0;
+    color: siteColor(vam-white);
+    height: 40px;
+    margin-right: 6px;
+    width: 32px;
+    &-seperator {
+      &-start, &-middle, &-last {
+        color: siteColor(vam-white);
+        margin-right: 8px;
+        margin-top: 6px;
+        user-select: none;
+        &--inactive {
+          display: none;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: siteColor(vam-grey-3);
+      cursor: pointer;
+    }
+
+    &--current {
+      background-color: themeColor(silent-green);
+      border-color: themeColor(silent-green);
+      border-radius: 0;
+      color: siteColor(vam-black);
+    }
+
+    &-container {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.b-search-box-container {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: #242424;
+  margin: auto;
+  padding: 34px 10px 34px 10px;
+  text-align: center;
+
+  @include bpMinXSmall {
+    padding: 32px 43px 34px 41px;
+  }
+
+  @include bpMinMedium {
+    max-width: 1200px;
+  }
+
+  &--listing {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  &-header {
+    margin-bottom: 24px;
+    &__title {
+      color: siteColor(vam-white);
+
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3.38px;
+      text-transform: uppercase;
+
+      @include bpMinMedium {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 3.38px;
+      }
+    }
+    &__subtitle {
+      color: siteColor(vam-white);
+      font-size: 16px;
+      font-weight: 500;
+    }
+    &__logo {
+      &-container {
+        @include bpMinXSmall {
+          display: none;
+        }
+        display: block;
+        margin-bottom: -7px;
+        text-align: right;
+        width: 100%;
+      }
+      color: siteColor(vam-grey-3);
+      height: 46px;
+      width: 80px;
+    }
+  }
+}

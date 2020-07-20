@@ -1,0 +1,19 @@
+<div class="b-search-box-container b-search-box-container--{{modifier}}">
+	{% if modifier !== 'listing' %}
+	<div class="b-search-box-container-header">
+		<div class="b-search-box-container-header__title">
+			explore our collections
+		</div>
+		<div class="b-search-box-container-header__subtitle">
+			Search 1,254,534 objects
+		</div>
+	</div>
+	{% else %}
+	<div class="b-search-box-container-header__logo-container">
+      <svg class="b-search-box-container-header__logo" role="img">
+        <use xlink:href="/assets/svg/svg-template.svg#valogo"></use>
+      </svg>
+	</div>
+	{% endif %}
+	{% render "@search-box", { modifier: modifier } %}
+</div>

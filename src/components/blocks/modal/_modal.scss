@@ -6,7 +6,7 @@
   left: 0;
   position: fixed;
   right: 0;
-  top: 0; 
+  top: 0;
   width: 100%;
   z-index: 9999;
 
@@ -52,6 +52,27 @@
       position: absolute;
       right: 0;
       top: -23px;
+    }
+    &-license {
+      max-width: none;
+      padding: 10px;
+      width: 100%;
+
+      @include bpMinXSmall {
+        max-width: 500px;
+        padding: 30px 20px 24px;
+      }
+
+      @include bpMinSmall {
+        max-width: 500px;
+        padding: 25px 35px 25px;
+      }
+
+      @include bpMinMedium {
+        height: auto;
+        max-width: 670px;
+        min-height: 250px;
+      }
     }
   }
 

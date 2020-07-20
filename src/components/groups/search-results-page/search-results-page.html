@@ -1,0 +1,11 @@
+<div class="b-search-results-page">
+	<div class="b-search-results-page__search-box-container">
+		{% render "@search-box-container", { modifier: modifier } %}
+	</div>
+	<div class="b-search-results-page__search-results-container">
+		{% render "@search-results", { items: items, pages: pages } %}
+	</div>
+	<div class="b-search-results-page__search-pagination-container">
+		{% render "@search-pagination", { pages: pages } %}
+	</div>
+</div>

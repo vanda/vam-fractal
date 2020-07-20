@@ -1,0 +1,35 @@
+.b-context-page-title {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+  &__type {
+    @include typeSetting(1, bold, uppercase);
+    @include bpMinSmall {
+      @include typeSetting(3, bold, uppercase);
+    }
+  }
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+
+    @include bpMinXSmall {
+      @include typeSetting(6, bold);
+    }
+    @include bpMinSmall {
+      @include typeSetting(8, bold);
+    }
+  }
+  &__alternative-name, &__info, &__dates {
+    font-size: 18px;
+    @include bpMinXSmall {
+      font-size: 20px;
+    }
+    @include bpMinSmall {
+      font-size: 30px;
+    }
+  }
+}
+
+.context-page-bg {
+  background-color: black;
+}
