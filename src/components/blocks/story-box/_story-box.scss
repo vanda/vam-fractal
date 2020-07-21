@@ -4,9 +4,14 @@
   background-color: siteColor(vam-grey-3);
   color: siteColor(vam-white);
   display: none;
+  flex: 1 1 235px;
   flex-direction: row;
   height: 120px;
-  flex: 1 1 235px;
+  margin: 6px 0;
+
+  @include bpMinXSmall {
+    margin: 0;
+  }
 
   &--active {
     display: flex;
@@ -60,11 +65,11 @@
 
     &--row {
       @include bpMinXSmall {
+        flex-basis: 437px;
         flex-shrink: 2;
         height: 250px;
         min-width: 245px;
         width: 100%;
-        flex-basis: 437px;
       }
     }
 

@@ -24,7 +24,7 @@ const initRevealer = () => {
     )
 
     if (currentBoxes + 1 === boxes.length) {
-      document.querySelector(".b-story-box-container__reveal-container").classList.remove("b-story-box-container__reveal-container--active")
+      document.querySelector(".b-story-box-container__reveal-container").classList.remove("b-story-box-container__reveal-container--active");
     }
     // stop page going up
     return false;
