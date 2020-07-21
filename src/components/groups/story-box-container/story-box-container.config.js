@@ -1,4 +1,4 @@
-const story = {
+const defaultStory = {
   title: "Title Of Story",
   type: "Content Type",
   img: "https://vanda-production-assets.s3.amazonaws.com/2017/05/24/10/34/05/7f38c9ec-ec6a-49d0-8c0e-0eb218cb9d27/1280.jpg",
@@ -11,18 +11,14 @@ module.exports = {
       name: 'default',
       label: 'Default',
       context: {
-        modifier: "column",
-        story,
-        active: true
+        stories: new Array(3).fill(defaultStory)
       }
     },
     {
-      name: 'row',
-      label: 'row',
+      name: 'more-than-four-boxes',
+      label: 'More than four boxes',
       context: {
-        modifier: "row",
-        story,
-        active: true
+        stories: new Array(5).fill(defaultStory)
       }
     }
   ]

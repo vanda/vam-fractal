@@ -24,4 +24,6 @@ require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal.js');
 
 
+require('../../components/groups/story-box-container/_story-box-container.js');
+
 svg4everybody();

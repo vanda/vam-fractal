@@ -1,22 +1,21 @@
 .b-story-box {
-
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background-color: siteColor(vam-grey-3);
   color: siteColor(vam-white);
-  display: flex;
+  display: none;
   flex-direction: row;
   height: 120px;
-  margin-left: 12px;
-  margin-right: 12px;
-  max-width: 100%;
-  width: 100%;
+  flex: 1 1 235px;
+
+  &--active {
+    display: flex;
+  }
 
   &--row {
     @include bpMinXSmall {
-      max-width: 896px;
-      min-width: 501px;
       height: 250px;
+      min-width: 501px;
     }
   }
 
@@ -24,16 +23,13 @@
     @include bpMinXSmall {
       flex-direction: column;
       height: 100%;
+      margin-bottom: 12px;
       max-height: 478px;
-      max-width: 298px;
     }
 
     @include bpMinMedium {
       height: 100%;
-      margin-left: 12px;
-      margin-right: 12px;
       max-height: 505px;
-      max-width: 435px;
       width: 100%;
     }
   }
@@ -50,7 +46,10 @@
       width: 100%;
     }
     &--row {
-      width: 459px;
+      width: 100%;
+      @include bpMinXSmall {
+        width: 459px;
+      }
     }
   }
 
@@ -63,9 +62,9 @@
       @include bpMinXSmall {
         flex-shrink: 2;
         height: 250px;
-        max-width: 437px;
-        min-width: 250px;
+        min-width: 245px;
         width: 100%;
+        flex-basis: 437px;
       }
     }
 

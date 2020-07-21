@@ -1,20 +1,32 @@
 .b-story-box-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 
-  &__col-break {
-    flex-basis: 100%;
-    height: 24px;
+  &-background {
+    background-color: siteColor(vam-grey-1);
+  }
+  max-width: 712px;
+  &__story-boxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    @include bpMinSmall {
-      flex-basis: auto;
-      height: 0;
+  &__reveal-container {
+    margin-top: 50px;
+    display: none;
+    &--active {
+      display: block;
     }
   }
-  &__row-break {
-    flex-basis: 100%;
-    height: 24px;
+
+  &__col-break {
+    @include bpMinXSmall {
+      flex-basis: 12px;
+    }
+    @include bpMinSmall {
+      flex-basis: 12px;
+    }
   }
 }
