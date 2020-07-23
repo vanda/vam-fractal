@@ -26,4 +26,10 @@
       flex-basis: 12px;
     }
   }
+
+  &__row-break {
+    @include bpMinXSmall {
+      width: 100%;
+    }
+  }
 }

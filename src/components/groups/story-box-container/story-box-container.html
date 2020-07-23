@@ -4,6 +4,8 @@
       {% for story in stories %}
          {% if loop.index % 2 == 0 %}
           <div class="b-story-box-container__col-break"></div>
+         {% else %}
+          <div class="b-story-box-container__row-break"></div>
          {% endif %}
        {% if loop.index == (stories | length) %}
         {% if (stories | length) % 2 == 0 %}
