@@ -1,0 +1,177 @@
+.facet-overlay {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  backdrop-filter: blur(10px);
+  background-color: siteColor(vam-black);
+  height: 100%;
+  left: 0;
+  opacity: .84;
+  padding: 0 130px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &__close {
+    &-button {
+      border: solid .7px #ceffd6;
+      border-radius: 19.5px;
+      font-size: 36px;
+      height: 39px;
+      position: relative;
+      transform: rotate(-315deg);
+      width: 39px;
+      &:hover {
+        background-color: themeColor(silent-green);
+        color: siteColor(vam-black);
+        cursor: pointer;
+      }
+    }
+
+    &-content {
+      height: 19px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+    }
+
+    &-container {
+      padding-top: 20px;
+      text-align: right;
+    }
+  }
+
+  &__facet {
+    margin-bottom: 30px;
+
+    &-text {
+      color: siteColor(vam-white);
+      &:hover {
+        color: themeColor(silent-green);
+        cursor: pointer;
+      }
+
+      @include typeSetting(3, bold, uppercase);
+      position: relative;
+      width: 100%;
+
+      &::after {
+        @include typeSetting(6, light);
+        content: '+';
+      }
+
+      &--active {
+        &::after {
+          @include typeSetting(8, light);
+          background-color: white;
+          content: ' ';
+          height: 2px;
+          width: 12px;
+        }
+      }
+
+      &::after {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &-container {
+      margin-top: 37px;
+    }
+
+    &-term-container {
+      display: none;
+      list-style: none;
+      margin-left: 0;
+
+      &--active {
+        display: block;
+      }
+    }
+
+    &-term-toggle {
+      display: flex;
+      flex-direction: row;
+      margin-top: 25px;
+      position: relative;
+      &-text, &-result {
+        flex-basis: 50%;
+      }
+      &-tick {
+        &--active {
+          display: block;
+        }
+        color: themeColor(silent-green);
+        display: none;
+        height: 25px;
+        left: 0;
+        position: absolute;
+        width: 25px;
+      }
+      &-checkbox {
+        margin-left: 40px;
+        &:before {
+          border: 1px siteColor(vam-white) solid;
+          border-radius: 3px;
+          content: '';
+          cursor: pointer;
+          height: 25px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 25px;
+        }
+      }
+      &-result {
+        text-align: right;
+      }
+    }
+  }
+
+  &__term {
+    color: siteColor(vam-white);
+    /* this button/container gets reused a lot of places...
+    I should really make this a mixin... see also
+    controlled vocab */
+
+    &-text {
+      &::after {
+        content: '+';
+        display: inline-block;
+        font-size: 25px;
+        padding-left: 7px;
+        position: relative;
+        transform: rotate(46deg);
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    @include typeSetting(3, light);
+
+    border: solid themeColor(silent-green) 1px;
+    border-radius: 4px;
+    color: siteColor(vam-white);
+    margin-right: 10px;
+    margin-top: 5px;
+    padding: 10px 13px 10px 13px;
+    position: relative;
+
+    &:hover {
+      background-color: themeColor(silent-green);
+      color: siteColor(vam-grey-1);
+      cursor: pointer;
+    }
+  }
+}
