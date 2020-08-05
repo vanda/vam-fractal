@@ -29,27 +29,32 @@
 @import '../../components/units/button/button';
 @import '../../components/units/label-tag/label-tag';
 @import '../../components/units/list/list';
-@import '../../components/units/tag/tag';
 @import '../../components/units/media-buttons/media-buttons';
+@import '../../components/units/tag/tag';
 
 // Block
 @import '../../components/blocks/annotated-tour-preview/annotated-tour-preview';
+@import '../../components/blocks/associated-contexts/associated-contexts';
 @import '../../components/blocks/background-image/background-image';
 @import '../../components/blocks/background-video/background-video';
 @import '../../components/blocks/collection-card/collection-card';
+@import '../../components/blocks/context-page-title/context-page-title';
 @import '../../components/blocks/cookie-banner/cookie-banner';
 @import '../../components/blocks/event-feature/event-feature';
 @import '../../components/blocks/event-teaser/event-teaser';
 @import '../../components/blocks/icon-badge/icon-badge';
 @import '../../components/blocks/icon-link/icon-link';
 @import '../../components/blocks/icon-list/icon-list';
+@import '../../components/blocks/image-carousel/image-carousel';
 @import '../../components/blocks/image-credit/image-credit';
+@import '../../components/blocks/image-overlay-license-modal/image-overlay-license-modal';
 @import '../../components/blocks/input-select/input-select';
 @import '../../components/blocks/object-image-overlay/object-image-overlay';
 @import '../../components/blocks/membership-upsell/membership-upsell';
 @import '../../components/blocks/modal/modal';
 @import '../../components/blocks/newsletter-signup/newsletter-signup';
 @import '../../components/blocks/object-card/object-card';
+@import '../../components/blocks/object-details/object-details';
 @import '../../components/blocks/object-shuffler/object-shuffler';
 @import '../../components/blocks/pagination/pagination';
 @import '../../components/blocks/programme-page-tout/programme-page-tout';
@@ -60,6 +65,7 @@
 @import '../../components/blocks/search-result/search-result';
 @import '../../components/blocks/search-result-auto-suggest/search-result-auto-suggest';
 @import '../../components/blocks/search-result-objects/search-result-objects';
+@import '../../components/blocks/search-results/search-results';
 @import '../../components/blocks/search-sidebar-item/search-sidebar-item';
 @import '../../components/blocks/site-footer/site-footer';
 @import '../../components/blocks/site-nav/site-nav';
@@ -67,15 +73,7 @@
 @import '../../components/blocks/top-header-bar/top-header-bar';
 @import '../../components/blocks/video-thumbnail/video-thumbnail';
 @import '../../components/blocks/video-trailer/video-trailer';
-@import '../../components/blocks/object-details/object-details';
-@import '../../components/blocks/image-carousel/image-carousel';
 @import '../../components/blocks/zoom/zoom';
-@import '../../components/blocks/image-overlay-license-modal/image-overlay-license-modal';
-@import '../../components/blocks/search-box/search-box';
-@import '../../components/blocks/search-results/search-results';
-@import '../../components/blocks/search-pagination/search-pagination';
-@import '../../components/blocks/associated-contexts/associated-contexts';
-@import '../../components/blocks/context-page-title/context-page-title';
 
 // Group
 @import '../../components/groups/block-grid/block-grid';
@@ -83,9 +81,9 @@
 @import '../../components/groups/horizontal-scroll-grid/horizontal-scroll-grid';
 @import '../../components/groups/holding-page/holding-page';
 @import '../../components/groups/image-overlay/image-overlay';
+@import '../../components/groups/image-overlay-details/image-overlay-details';
 @import '../../components/groups/search-results-page/search-results-page';
 @import '../../components/groups/search-page/search-page';
 @import '../../components/groups/search-box-container/search-box-container';
-@import '../../components/groups/image-overlay-details/image-overlay-details';
 
 

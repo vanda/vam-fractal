@@ -2,139 +2,173 @@
   display: block;
   overflow: hidden;
   width: 100%;
-}
 
-.b-search-form__inner {
-  border-bottom: 1px solid siteColor(vam-grey-5);
-  position: relative;
-}
-
-.b-search-form__icon,
-.b-search-form__input-wrapper {
-  display: inline-block;
-}
-
-.b-search-form__icon {
-  color: siteColor(vam-white);
-  height: 25px;
-  margin: 0 2px -4px 0;
-  opacity: .5;
-  width: 25px;
-
-  @include bpMinSmall {
-    height: 34px;
-    margin: 0 4px -5px 0;
-    width: 34px;
-  }
-}
-
-.b-search-form__input-wrapper {
-  position: relative;
-  width: calc(100% - 42px);
-
-  @include bpMinSmall {
-    width: calc(100% - 140px);
-  }
-}
-
-.b-search-form__input,
-.b-search-form__underscore {
-  font-size: 28px;
-  
-  @include bpMinSmall {
-    font-size: 44px;
-  }
-}
-
-.b-search-form__input {
-  background-color: transparent;
-  border: none;
-  caret-color: siteColor(primary-green);
-  color: siteColor(vam-white);
-  margin: 4px 0;
-  padding: 0;
-  width: 100%;
-
-  &:focus {
-    outline: none;
+  &--etc {
+    background: siteColor(vam-white);
+    border-radius: 2px;
+    padding: 7px 14px;
   }
 
-  &::selection {
-    background-color: siteColor(vam-grey-4);
-  }
+  &__inner {
+    border-bottom: 1px solid siteColor(vam-grey-5);
+    position: relative;
 
-  &::-ms-clear {
-    display: none;
-  }
-
-  @include bpMinSmall {
-    margin: 8px 0;
-  }
-}
-
-.b-search-form__underscore {
-  border-bottom: 3px solid siteColor(primary-green);
-  bottom: 0;
-  display: inline-block;
-  height: 3px;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-
-  @include bpMinSmall {
-    border-width: 5px;
-    height: 5px;
-  }
-}
-
-.b-search-form__submit,
-.b-search-form__clear {
-  border: none;
-  color: siteColor(vam-white);
-  cursor: pointer;
-  float: right;
-  outline: none;
-  position: relative;
-}
-
-.b-search-form__clear {
-  display: none;
-
-  @include bpMinSmall {
-    display: block;
-    height: 19px;
-    margin-top: 30px;
-    width: 19px;
-
-    &#{&}--hidden {
-      display: none;
-    }
-  }
-}
-
-.b-search-form__submit {
-  @include typeSetting(3, normal);
-  background-color: transparent;
-  font-family: 'The Sans';
-  margin-top: 15px;
-  padding-right: 16px;
-
-  @include bpMinSmall {
-    margin-top: 28px;
-
-    &#{&}--hidden {
-      display: none;
+    .b-search-form--etc & {
+      border: none;
     }
   }
 
-  &::after {
-    border: 4px solid transparent;
-    border-left-color: currentColor;
-    content: '';
+  &__icon,
+  &__input-wrapper {
     display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 9px;
   }
 
+  &__icon {
+    color: siteColor(vam-white);
+    height: 25px;
+    margin: 0 2px -4px 0;
+    opacity: .5;
+    width: 25px;
+
+    @include bpMinSmall {
+      height: 34px;
+      margin: 0 4px -5px 0;
+      width: 34px;
+    }
+  }
+
+  &__input-wrapper {
+    position: relative;
+    width: calc(100% - 42px);
+
+    @include bpMinSmall {
+      width: calc(100% - 140px);
+    }
+
+    .b-search-form--etc & {
+      width: calc(100% - 100px);
+    }
+    
+  }
+
+  &__input,
+  &__underscore {
+    @include typeSetting(5);
+    
+    @include bpMinSmall {
+      @include typeSetting(7);
+    }
+
+    .b-search-form--etc & {
+      @include typeSetting(4);
+      
+      @include bpMinSmall {
+        @include typeSetting(5);
+      }
+    }
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    caret-color: siteColor(primary-green);
+    color: siteColor(vam-white);
+    margin: 4px 0;
+    padding: 0;
+    width: 100%;
+
+    .b-search-form--etc & {
+      color: siteColor(vam-black);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::selection {
+      background-color: siteColor(vam-grey-4);
+    }
+
+    &::-ms-clear {
+      display: none;
+    }
+
+    @include bpMinSmall {
+      margin: 8px 0;
+    }
+  }
+
+  &__underscore {
+    border-bottom: 3px solid siteColor(primary-green);
+    bottom: 0;
+    display: inline-block;
+    height: 3px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+
+    @include bpMinSmall {
+      border-width: 5px;
+      height: 5px;
+    }
+  }
+
+  &__submit,
+  &__clear {
+    border: none;
+    color: siteColor(vam-white);
+    cursor: pointer;
+    float: right;
+    outline: none;
+    position: relative;
+  }
+
+  &__clear {
+    display: none;
+
+    @include bpMinSmall {
+      display: block;
+      height: 19px;
+      margin-top: 30px;
+      width: 19px;
+
+      &#{&}--hidden {
+        display: none;
+      }
+    }
+  }
+
+  &__submit {
+    @include typeSetting(2, bold, uppercase);
+    background-color: transparent;
+    margin-top: 15px;
+    padding-right: 16px;
+
+    @include bpMinSmall {
+      margin-top: 28px;
+
+      &#{&}--hidden {
+        display: none;
+      }
+    }
+
+    .b-search-form--etc & {
+      color: siteColor(vam-black);
+      margin-top: 11px;
+
+      @include bpMinSmall {
+        margin-top: 15px;
+      }
+    }
+
+    &::after {
+      border: 4px solid transparent;
+      border-left-color: currentColor;
+      content: '';
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      top: 30%;
+    }
+  }
 }
