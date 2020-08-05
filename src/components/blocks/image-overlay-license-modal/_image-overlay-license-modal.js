@@ -6,10 +6,8 @@ const links = [
 
 const downloadButton = '__download-button';
 const contactButton = '__contact-button';
-
 const modal = '__image-modal';
 const contactModalOpen = '__contact-modal-open';
-
 const iconLinkContainer = '__icon-link-container';
 const checkmark = '__checkmark';
 const imageIconLink = '__image-icon-link';
@@ -27,7 +25,7 @@ const elements = [
   iconLinkContainer,
   checkmark,
   imageIconLink,
-  agreeToTerms,
+  agreeToTerms
 ];
 
 function initDownloadButton () {

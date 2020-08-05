@@ -27,10 +27,6 @@ function updateImageAndCounter (e) {
     newIndex -= 1;
   }
 
-  // if (!document.querySelector('.b-image-carousel__image-preview-container--selected')) {
-  //   newIndex = 0;
-  // }
-
   if (document.querySelector(`img[data-image-index="${String(newIndex)}"]`)) {
     if (currentSelect) {
       currentSelect.classList.remove(classActive);
@@ -81,4 +77,6 @@ function initImageOverlay () {
   document.querySelector('.b-image-overlay-detail').dispatchEvent(updateEvent(''));
 }
 
-document.querySelector('.b-image-overlay-detail') && initImageOverlay();
+if (document.querySelector('.b-image-overlay-detail')) {
+  initImageOverlay();
+}
