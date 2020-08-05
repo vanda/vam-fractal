@@ -2,22 +2,28 @@
 
 
 
-  <form class="b-search-form" id="search" name="search" action="#" method="get">
+  <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %}" id="search" name="search" action="#" method="get">
 
     <div class="b-search-form__inner">
+      {% if not modifiers %}
       <svg class="b-search-form__icon" aria-hidden="true" role="img">
         <use xlink:href="/assets/svg/svg-template.svg#search"></use>
       </svg>
+      {% endif %}
       <div class="b-search-form__input-wrapper">
-        <input type="text" class="b-search-form__input js-search-input" id="q" name="q" placeholder="{{ placeholder }}" autocomplete="off" aria-label="Search input" value="">
+        <input type="text" class="b-search-form__input {% if not modifiers %}js-search-input{% endif %}" id="{{ inputId }}" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" autocomplete="off" aria-label="Search input" value="">
+        {% if not modifiers %}
         <div class="b-search-form__underscore js-search-underscore" aria-hidden="true"></div>
+        {% endif %}
       </div>
-      <button class="b-search-form__submit js-search-submit" aria-label="Search submit">
+      <button class="b-search-form__submit {% if not modifiers %}js-search-submit{% endif %}" aria-label="Search submit">
         Search
       </button>
+      {% if not modifiers %}
       <svg role="img" class="b-search-form__clear b-search-form__clear--hidden js-search-clear" aria-hidden="true">
         <use xlink:href="/assets/svg/svg-template.svg#close"></use>
       </svg>
+      {% endif %}
     </div>
 
   </form>
