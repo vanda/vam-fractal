@@ -24,5 +24,7 @@ require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal.js');
 require('../../components/blocks/search-pagination/_search-pagination.js');
 require('../../components/blocks/facet-overlay/_facet-overlay');
+require('../../components/blocks/facet-overlay/_facet-overlay.js');
+require('../../components/groups/facet-overlay-modal/_facet-overlay-modal.js');
 
 svg4everybody();

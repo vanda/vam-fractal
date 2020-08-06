@@ -1,0 +1,8 @@
+.facet-overlay-modal {
+  &__container {
+    display: none;
+    &--active {
+      display: block;
+    }
+  }
+}

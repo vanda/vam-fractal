@@ -11,6 +11,7 @@ const term_list = document.querySelector(`.${term_list_class}`);
 const term_checkbox_class = `${facet_class}-term-toggle-checkbox`;
 const term_tick_class = `${facet_class}-term-toggle-tick`;
 
+const facet_close_class = ""
 
 const termHTML = (id, facet, term) => `
   <div data-id="${id}" data-facet="${facet}" data-term="${term}" class="facet-overlay__term">
@@ -75,13 +76,19 @@ const initialiseFacetOverlay = () => {
   })
 
   document.onclick = e => {
+    if (e.target.classList.contains(`facet-overlay__close-button`)) {
+      e.target.dispatchEvent(new Event('closeFacetOverlay', {
+        bubbles: true
+      }));
+    }
+
     if (e.target.classList.contains(facet_text_class)) {
       e.target.parentElement.dispatchEvent(new Event('facetToggle', {
         bubbles: true
       }));
     }
 
-    if (e.target.classList.contains(term_checkbox_class) || e.target.getAttribute("xlink:href")) {
+    if (e.target.classList.contains(term_checkbox_class)) {
       const parent = e.target.classList.contains(term_checkbox_class) ?
         e.target.parentElement : e.target.parentElement.parentElement.parentElement;
       term_list.dispatchEvent(newtermToggleEvent(parent.dataset));
