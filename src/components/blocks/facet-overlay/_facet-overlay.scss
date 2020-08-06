@@ -3,10 +3,10 @@
   -webkit-font-smoothing: antialiased;
   backdrop-filter: blur(10px);
   background-color: siteColor(vam-black);
+  color: siteColor(vam-white);
   height: 100%;
   left: 0;
   opacity: .84;
-  padding: 0 130px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -20,6 +20,9 @@
       position: relative;
       transform: rotate(-315deg);
       width: 39px;
+      &:focus {
+        outline: -webkit-focus-ring-color auto 0;
+      }
       &:hover {
         background-color: themeColor(silent-green);
         color: siteColor(vam-black);
@@ -28,6 +31,7 @@
     }
 
     &-content {
+      pointer-events: none;
       height: 19px;
       left: 50%;
       position: absolute;
@@ -38,12 +42,18 @@
 
     &-container {
       padding-top: 20px;
+      padding-right: 20px;
       text-align: right;
     }
   }
 
   &__facet {
     margin-bottom: 30px;
+
+    &-date-start-container, &-date-end-container {
+        display: flex;
+        flex-direction: column;
+    }
 
     &-text {
       color: siteColor(vam-white);
@@ -81,21 +91,47 @@
     }
 
     &-container {
+      padding: 0 20px;
+      margin: auto;
       margin-top: 37px;
+      max-width: 530px;
+    }
+
+    &-date {
+      &-container {
+        margin-top: 20px;
+        &-start, &-end {
+          flex-basis: 30%;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      &-input {
+        width: 101px;
+        height: 44px;
+        border-radius: 2px;
+        font-size: 18px;
+        border: solid 1px #979797;
+        background-color: #ffffff;
+      }
     }
 
     &-term-container {
       display: none;
+      flex-direction: row;
       list-style: none;
       margin-left: 0;
+      width: 100%;
 
       &--active {
-        display: block;
+        display: inline-flex;
+        flex-flow: wrap;
       }
     }
 
     &-term-toggle {
       display: flex;
+      flex-basis: 100%;
       flex-direction: row;
       margin-top: 25px;
       position: relative;
@@ -110,6 +146,7 @@
         display: none;
         height: 25px;
         left: 0;
+        pointer-events: none;
         position: absolute;
         width: 25px;
       }
@@ -134,7 +171,21 @@
   }
 
   &__term {
+    @include typeSetting(3, light);
+
+    border: solid themeColor(silent-green) 1px;
+    border-radius: 4px;
     color: siteColor(vam-white);
+    margin-right: 10px;
+    margin-top: 5px;
+    padding: 10px 13px 10px 13px;
+    position: relative;
+
+    &:hover {
+      background-color: themeColor(silent-green);
+      color: siteColor(vam-grey-1);
+      cursor: pointer;
+    }
     /* this button/container gets reused a lot of places...
     I should really make this a mixin... see also
     controlled vocab */
@@ -155,23 +206,10 @@
       flex: auto;
       flex-direction: row;
       flex-wrap: wrap;
+      margin: auto;
       margin-top: 15px;
-    }
-
-    @include typeSetting(3, light);
-
-    border: solid themeColor(silent-green) 1px;
-    border-radius: 4px;
-    color: siteColor(vam-white);
-    margin-right: 10px;
-    margin-top: 5px;
-    padding: 10px 13px 10px 13px;
-    position: relative;
-
-    &:hover {
-      background-color: themeColor(silent-green);
-      color: siteColor(vam-grey-1);
-      cursor: pointer;
+      max-width: 530px;
+      padding: 0 20px;
     }
   }
 }
