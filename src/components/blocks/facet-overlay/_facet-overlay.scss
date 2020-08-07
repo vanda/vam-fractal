@@ -31,9 +31,9 @@
     }
 
     &-content {
-      pointer-events: none;
       height: 19px;
       left: 50%;
+      pointer-events: none;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -41,8 +41,8 @@
     }
 
     &-container {
-      padding-top: 20px;
       padding-right: 20px;
+      padding-top: 20px;
       text-align: right;
     }
   }
@@ -51,8 +51,8 @@
     margin-bottom: 30px;
 
     &-date-start-container, &-date-end-container {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
 
     &-text {
@@ -69,6 +69,11 @@
       &::after {
         @include typeSetting(6, light);
         content: '+';
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
       }
 
       &--active {
@@ -80,39 +85,31 @@
           width: 12px;
         }
       }
-
-      &::after {
-        display: inline-block;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-      }
     }
 
     &-container {
-      padding: 0 20px;
       margin: auto;
       margin-top: 37px;
       max-width: 530px;
+      padding: 0 20px;
     }
 
     &-date {
       &-container {
         margin-top: 20px;
         &-start, &-end {
-          flex-basis: 30%;
           display: flex;
+          flex-basis: 30%;
           flex-direction: column;
         }
       }
       &-input {
-        width: 101px;
-        height: 44px;
+        background-color: #ffffff;
+        border: solid 1px #979797;
         border-radius: 2px;
         font-size: 18px;
-        border: solid 1px #979797;
-        background-color: #ffffff;
+        height: 44px;
+        width: 101px;
       }
     }
 
