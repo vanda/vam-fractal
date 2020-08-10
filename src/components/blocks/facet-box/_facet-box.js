@@ -1,21 +1,21 @@
-const facet_class = 'facet-overlay__facet';
+const facet_class = 'b-facet-box__facet';
 const facet_term = `${facet_class}-term-toggle`;
 const facet_term_tick =`${facet_term}-tick`;
 const facet_text_class = `${facet_class}-text`;
 const facet_term_container_class = `${facet_class}-term-container`;
 
 
-const term_class = "facet-overlay__term";
+const term_class = "b-facet-box__term";
 const term_list_class = `${term_class}-list`;
 const term_list = document.querySelector(`.${term_list_class}`);
 const term_checkbox_class = `${facet_class}-term-toggle-checkbox`;
 const term_tick_class = `${facet_class}-term-toggle-tick`;
 
-const facet_close_class = ""
+const facet_close_class = `b-facet-box__close-button`
 
 const termHTML = (id, facet, term) => `
-  <div data-id="${id}" data-facet="${facet}" data-term="${term}" class="facet-overlay__term">
-    <span class="facet-overlay__term-text">
+  <div data-id="${id}" data-facet="${facet}" data-term="${term}" class="b-facet-box__term">
+    <span class="b-facet-box__term-text">
         ${facet}: ${term}
     </span>
   </div>
@@ -26,7 +26,7 @@ change when search is actually implemented. */
 
 const updatedSearch = () => {
   const detail = Array.from(document.querySelectorAll(`.${term_class}`)).map(el => JSON.parse(JSON.stringify(el.dataset)));
-  document.querySelector(`.facet-overlay`).dispatchEvent(
+  document.querySelector(`.b-facet-box`).dispatchEvent(
     new CustomEvent('updatedSearch', {
       detail,
       bubbles: true
@@ -76,7 +76,7 @@ const initialiseFacetOverlay = () => {
   })
 
   document.onclick = e => {
-    if (e.target.classList.contains(`facet-overlay__close-button`)) {
+    if (e.target.classList.contains(facet_close_class)) {
       e.target.dispatchEvent(new Event('closeFacetOverlay', {
         bubbles: true
       }));

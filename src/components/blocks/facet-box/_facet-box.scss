@@ -1,4 +1,4 @@
-.facet-overlay {
+.b-facet-box {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   backdrop-filter: blur(10px);
@@ -10,6 +10,13 @@
   position: fixed;
   top: 0;
   width: 100%;
+
+  @include bpMinSmall {
+    backdrop-filter: none;
+    opacity: 1;
+    position: relative;
+    max-width: 276px;
+  }
 
   &__close {
     &-button {
@@ -41,6 +48,9 @@
     }
 
     &-container {
+      @include bpMinSmall {
+        display: none;
+      }
       padding-right: 20px;
       padding-top: 20px;
       text-align: right;
@@ -88,6 +98,10 @@
     }
 
     &-container {
+      @include bpMinSmall {
+        margin-top: 0;
+        padding: 0;
+      }
       margin: auto;
       margin-top: 37px;
       max-width: 530px;
@@ -97,10 +111,41 @@
     &-date {
       &-container {
         margin-top: 20px;
+        max-width: 270px;
+        @include bpMinSmall {
+          max-width: none;
+        }
         &-start, &-end {
-          display: flex;
           flex-basis: 30%;
+          margin-right: 10px;
+          @include bpMinSmall {
+            flex-basis: 38%;
+            margin-right: 11px;
+          }
+        }
+        &-button {
+          flex-basis: 10%;
+        }
+        &-start, &-end, &-button {
+          display: flex;
           flex-direction: column;
+        }
+      }
+      &-button {
+        background-color: #ceffd6;
+        border-radius: 2px;
+        height: 44px;
+        position: relative;
+        width: 44px;
+        &-icon {
+          color: siteColor(vam-black);
+          left: 50%;
+          height: 100%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          padding: 10px;
+          position: absolute;
+          width: 100%;
         }
       }
       &-input {
@@ -199,6 +244,10 @@
     }
 
     &-list {
+      @include bpMinSmall {
+        display: none;
+      }
+
       display: flex;
       flex: auto;
       flex-direction: row;
