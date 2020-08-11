@@ -1,3 +1,36 @@
+{% if testEvent %}
+  <button class="add-facet-button" > add facets </button>
+  <script type="text/javascript">
+    document.onload = document.querySelector(".add-facet-button").onclick = e => {
+      document.querySelector('.b-facet-box').dispatchEvent(
+        new CustomEvent('newFacets', {
+          detail: {
+            facets: [
+              {
+                facet: 'Facet 1',
+                terms: [
+                  {
+                    term: 'Term 1',
+                    count: '< 10000'
+                  },
+                  {
+                    term: 'Term 2',
+                    count: '< 10000'
+                  },
+                  {
+                    term: 'Term 3',
+                    count: '< 10000'
+                  }
+                ]
+              }
+            ]
+          }
+        })
+      )
+    }
+  </script>
+{% endif %}
+
 <div class="b-facet-box">
   <div class="b-facet-box__close-container">
     <button class="b-facet-box__close-button">
@@ -16,98 +49,31 @@
   -->
   </div>
   <div class="b-facet-box__facet-container">
-    <div class="b-facet-box__facet b-facet-box__facet">
-      <div class="b-facet-box__facet-text">
-        Facet 1
-      </div>
-      <ul class="b-facet-box__facet-term-container">
-        <li class="b-facet-box__facet-term-toggle" data-id="1" data-facet="Facet 1" data-term="Term 1">
-          <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-            <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-              <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-            </svg>
-          </a>
-          <span class="b-facet-box__facet-term-toggle-text">
-            Term 1
-          </span>
-          <span class="b-facet-box__facet-term-toggle-result">
-            (< 1000)
-          </span>
-        </li>
-        <li class="b-facet-box__facet-term-toggle" data-id="2" data-facet="Facet 1" data-term="Term 2">
-          <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-            <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-              <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-            </svg>
-          </a>
-          <span class="b-facet-box__facet-term-toggle-text">
-            Term 2
-          </span>
-          <span class="b-facet-box__facet-term-toggle-result">
-            (< 1000)
-          </span>
-        </li>
-        <li class="b-facet-box__facet-term-toggle" data-id="3" data-facet="Facet 1" data-term="Term 3">
-          <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-            <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-              <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-            </svg>
-          </a>
-          <span class="b-facet-box__facet-term-toggle-text">
-            Term 3
-          </span>
-          <span class="b-facet-box__facet-term-toggle-result">
-            (< 1000)
-          </span>
-        </li>
-      </ul>
-    </div>
-    <div class="b-facet-box__facet b-facet-box__facet">
-      <div class="b-facet-box__facet-text">
-        Facet 2
-      </div>
-      <ul class="b-facet-box__facet-term-container">
-        <li class="b-facet-box__facet-term-toggle" data-id="4" data-facet="Facet 2" data-term="Term 1">
-          <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-            <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-              <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-            </svg>
-          </a>
-          <span class="b-facet-box__facet-term-toggle-text">
-            Term 4
-          </span>
-          <span class="b-facet-box__facet-term-toggle-result">
-            (< 1000)
-          </span>
-        </li>
-        <li class="b-facet-box__facet-term-toggle" data-id="5" data-facet="Facet 2" data-term="Term 2">
-          <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-            <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-              <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-            </svg>
-          </a>
-          <span class="b-facet-box__facet-term-toggle-text">
-            Term 5
-          </span>
-          <span class="b-facet-box__facet-term-toggle-result">
-            (< 1000)
-          </span>
-        </li>
-        <li class="b-facet-box__facet-term-toggle" data-id="6" data-facet="Facet 2" data-term="Term 3">
-          <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-            <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-              <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-            </svg>
-          </a>
-          <span class="b-facet-box__facet-term-toggle-text">
-            Term 6
-          </span>
-          <span class="b-facet-box__facet-term-toggle-result">
-            (< 1000)
-          </span>
-        </li>
-      </ul>
-    </div>
+    {% for facet in facets %}
+      <div class="b-facet-box__facet b-facet-box__facet">
+        <div class="b-facet-box__facet-text">
+          {{ facet.facet }}
+        </div>
+        <ul class="b-facet-box__facet-term-container">
+          {% for term in facet.terms %}
+            <li class="b-facet-box__facet-term-toggle" data-id="{{ facet.facet }}-{{ term.term }}-{{loop.index0}}" data-facet="{{ facet.facet }}" data-term="{{ term.term }}">
+              <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
+                <svg class="b-facet-box__facet-term-toggle-tick" role="img">
+                  <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
+                </svg>
+              </a>
+              <span class="b-facet-box__facet-term-toggle-text">
+                {{ term.term }}
+              </span>
+              <span class="b-facet-box__facet-term-toggle-result">
+                ({{ term.count }})
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+     </div>
+    {% endfor %}
+
     <div class="b-facet-box__facet">
       <div class="b-facet-box__facet-text">
         Dates
