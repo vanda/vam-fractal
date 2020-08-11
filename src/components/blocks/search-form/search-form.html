@@ -2,7 +2,7 @@
 
 
 
-  <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %}" id="search" name="search" action="#" method="get">
+  <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" id="search" name="search" action="{{ action }}" method="get" role="search">
 
     <div class="b-search-form__inner">
       {% if not modifiers %}
@@ -11,20 +11,68 @@
       </svg>
       {% endif %}
       <div class="b-search-form__input-wrapper">
-        <input type="text" class="b-search-form__input {% if not modifiers %}js-search-input{% endif %}" id="{{ inputId }}" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" autocomplete="off" aria-label="Search input" value="">
+        <input type="text" class="b-search-form__input" id="{{ inputId }}" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
         {% if not modifiers %}
-        <div class="b-search-form__underscore js-search-underscore" aria-hidden="true"></div>
+        <div class="b-search-form__underscore" aria-hidden="true"></div>
         {% endif %}
       </div>
-      <button class="b-search-form__submit {% if not modifiers %}js-search-submit{% endif %}" aria-label="Search submit">
+      <button class="b-search-form__submit {% if modifiers and 'etc-gateway' in modifiers %}u-btn{% endif %}" aria-label="Search submit">
         Search
       </button>
       {% if not modifiers %}
-      <svg role="img" class="b-search-form__clear b-search-form__clear--hidden js-search-clear" aria-hidden="true">
+      <svg role="img" class="b-search-form__clear b-search-form__clear--hidden" aria-hidden="true">
         <use xlink:href="/assets/svg/svg-template.svg#close"></use>
       </svg>
       {% endif %}
     </div>
+
+    {# Collections Landing pg #}
+    {% if modifiers and 'etc-gateway' in modifiers %}
+    <div class="b-search-form__suggestions" role="listbox" aria-label="search suggestions">
+      Start by entering a search term
+    </div>
+    <div class="b-search-form__filters" aria-label="search filters" role="form">
+      <div class="b-search-form__filter-toggle-set">
+        <div class="b-search-form__filter-toggle js-pane-toggle" aria-hidden="true">Add dates</div>
+        <div class="b-search-form__filter-toggle-pane">
+          <div class="b-search-form__filter-toggle b-search-form__filter-toggle--off js-pane-toggle" aria-hidden="true">Remove dates</div>
+          <div class="b-search-form__filter">
+            <label for="from_year">From year:</label>
+            <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="from_year" name="from_year" min="1500" max="2050" step="50" value="1800">
+          </div>
+          <div class="b-search-form__filter">
+            <label for="to_year">To year:</label>
+            <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="to_year" name="to_year" min="1500" max="2050" step="50" value="2000">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# Collections Search pg #}
+    {% elif modifiers and 'etc' in modifiers %}
+    <div class="b-search-form__facet-pane">
+      <div class="b-search-form__facets">
+        [FACET] &nbsp; [FACET]
+      </div>
+    </div>
+    <div class="b-search-form__filters" aria-label="search filters" role="form">
+      <div class="b-search-form__filter">
+        <input class="b-search-form__filter-input" type="checkbox" id="with_image" name="with_image" >
+        <label for="with_image">With image</label>
+      </div>
+      <div class="b-search-form__filter">
+        <input class="b-search-form__filter-input b-search-form__location-toggle" type="checkbox" id="on_display" name="on_display" >
+        <label for="on_display">On display</label>
+        <div class="b-search-form__filter b-search-form__location-wrapper">
+          <select class="b-search-form__filter-select" id="location" name="location">
+            <option value="">LOCATION</option>
+            <option value="south_kensington">South Kensington</option>
+            <option value="dundee">V&ampA Dundee</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    {% endif %}
 
   </form>
 

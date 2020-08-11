@@ -1,12 +1,16 @@
 .b-search-form {
-  display: block;
   overflow: hidden;
   width: 100%;
 
-  &--etc {
-    background: siteColor(vam-white);
+  &--etc-gateway {
     border-radius: 2px;
-    padding: 7px 14px;
+    overflow: visible;
+    padding: 10px;
+    position: relative;
+
+    &[suggesting] {
+      background: siteColor(vam-grey-2);
+    }
   }
 
   &__inner {
@@ -14,7 +18,14 @@
     position: relative;
 
     .b-search-form--etc & {
+      align-items: center;
+      background: siteColor(vam-white);
       border: none;
+      border-radius: 2px;
+      display: flex;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 7px 14px;
     }
   }
 
@@ -48,7 +59,10 @@
     .b-search-form--etc & {
       width: calc(100% - 100px);
     }
-    
+
+    .b-search-form--etc-gateway & {
+      width: calc(100% - 140px);
+    }
   }
 
   &__input,
@@ -140,9 +154,9 @@
 
   &__submit {
     @include typeSetting(2, bold, uppercase);
-    background-color: transparent;
+    align-items: center;
+    display: inline-flex;
     margin-top: 15px;
-    padding-right: 16px;
 
     @include bpMinSmall {
       margin-top: 28px;
@@ -154,11 +168,15 @@
 
     .b-search-form--etc & {
       color: siteColor(vam-black);
-      margin-top: 11px;
+      margin-top: 0;
+    }
 
-      @include bpMinSmall {
-        margin-top: 15px;
-      }
+    .b-search-form--etc-gateway & {
+      border-radius: 0 2px 2px 0;
+      margin: 0;
+      padding: 30px 37px;
+      position: absolute;
+      right: 0;
     }
 
     &::after {
@@ -166,9 +184,213 @@
       border-left-color: currentColor;
       content: '';
       display: inline-block;
-      position: absolute;
-      right: 0;
-      top: 30%;
+      margin-left: 8px;
     }
+  }
+
+  &__filters {
+    @include typeSetting(3);
+    color: siteColor(vam-white);
+    margin: 20px 0;
+  }
+
+  &__filter-toggle-set {
+    position: relative;
+  }
+
+  &__filter-toggle {
+    cursor: pointer;
+    margin-bottom: 20px;
+    opacity: 1;
+    text-decoration: underline;
+    transition: opacity .3s ease;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &::after {
+      background: siteColor(vam-white);
+      border-radius: 50%;
+      color: siteColor(vam-black);
+      content: '+';
+      display: inline-block;
+      font-size: 16px;
+      height: 16px;
+      line-height: 16px;
+      margin-left: 10px;
+      text-align: center;
+      text-decoration: none;
+      width: 16px;
+    }
+
+    &--off::after {
+      content: '-';
+      font-weight: bold;
+    }
+
+    .b-search-form__filter-toggle-set[active] > &:not(&--off) {
+      opacity: 0;
+    }
+  }
+
+  &__filter-toggle-pane {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    
+    .b-search-form__filter-toggle-set[active] > & {
+      opacity: 1;
+      transition: opacity .3s ease;
+    }
+  }
+
+  &__filter {
+    display: inline-block;
+    margin: 0 44px 20px 0;
+
+    .b-search-form--etc-gateway & {
+      margin-right: 20px;
+    }
+  }
+
+  &__filter-input {
+    @include typeSetting(4);
+    border-radius: 2px;
+    outline: none;
+
+    &[type="checkbox"] {
+      @include visuallyHidden;
+    }
+    &[type="checkbox"] + label {
+      cursor: pointer;
+      padding-left: 28px;
+      position: relative;
+    }
+    &[type="checkbox"] + label:before {
+      background: transparent;
+      border: 1px solid siteColor(vam-white);
+      border-radius: 2px;
+      content: '';
+      height: 16px;
+      left: 0;
+      position: absolute;
+      top: 2px;
+      width: 16px; 
+    }
+    &[type="checkbox"]:checked + label:before {
+      background: siteColor(primary-green);
+      border: 1px solid siteColor(primary-green);
+    }
+    &[type="checkbox"]:checked + label:after {
+      color: siteColor(vam-black);
+      content: '\2713\0020';
+      font-size: 1.2em;
+      font-weight: bold;
+      left: 0;
+      line-height: 16px;
+      position: absolute;
+      top: 4px;
+    }
+
+    &--date {
+      border: none;
+      color: siteColor(vam-black);
+      display: block;
+      margin-top: 6px;
+      padding: 6px 4px 6px 14px;
+      width: 100px;
+    }
+  }
+
+  &__filter-select {
+    @include typeSetting(2);
+    background: transparent;
+    border: 1px solid siteColor(vam-white);
+    border-radius: 2px;
+    color: siteColor(vam-white);
+    outline: none;
+    padding: 2px;
+
+    > option {
+      background: siteColor(vam-black);
+      border: 4px solid transparent;
+      color: siteColor(vam-white);
+    }
+  }
+
+  &__location-wrapper {
+    margin-left: 20px;
+    opacity: 0;
+  }
+  &__location-toggle:checked ~ &__location-wrapper {
+    opacity: 1;
+    transition: opacity .3s ease;
+  }
+
+  &__suggestions {
+    background: siteColor(vam-grey-2);
+    border-radius: 0 0 2px 2px;
+    color: siteColor(vam-white);
+    left: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+    .b-search-form[suggesting] & {
+      max-height: 74vh;
+      opacity: 1;
+      padding: 10px;
+      transition: max-height .4s ease-out, opacity .2s ease;
+    }
+  }
+
+  &__suggestion {
+    @include typeSetting(3);
+    border-radius: 2px;
+    display: block;
+    margin: -2px 0;
+    padding: 20px 14px;
+
+    @include bpMinSmall {
+      @include typeSetting(4, bold);
+    }
+
+    &:hover,
+    &:focus {
+      background: siteColor(vam-grey-4);
+      color: siteColor(vam-black);
+    }
+
+    #{&} + & {
+      border-top: 1px solid siteColor(vam-grey-4);
+    }
+  }
+
+  &__suggestion-type {
+    @include typeSetting(0, bold, uppercase);
+    display: inline-block;
+    margin-right: 16px;
+
+    @include bpMinSmall {
+      @include typeSetting(3, bold, uppercase);
+    }
+  }
+
+  &__facet-pane {
+    background: siteColor(vam-white);
+    border-radius: 0 0 2px 2px;
+    color: siteColor(vam-black);
+    margin-top: -7px;
+    padding: 7px 14px;
+  }
+
+  &__facets {
+    border-top: 2px solid siteColor(vam-grey-5);
+    padding: 7px 0;
   }
 }
