@@ -10,7 +10,7 @@ const term_list = document.querySelector(`.${term_list_class}`);
 const term_checkbox_class = `${facet_class}-term-toggle-checkbox`;
 const term_tick_class = `${facet_class}-term-toggle-tick`;
 
-const facet_close_class = `b-facet-box__close-button`
+const facet_close_class = `b-facet-box__close-button`;
 
 const termHTML = (id, facet, term) => `
   <div data-id="${id}" data-facet="${facet}" data-term="${term}" class="b-facet-box__term">
@@ -95,11 +95,14 @@ const initialiseFacetOverlay = () => {
   /* might change later but basic implemenation will probably be similar... */
   document.querySelector('.b-facet-box').addEventListener('newFacets', e => {
     const { facets } = e.detail;
+    const dateFacet = document.querySelector('.b-facet-box__facet-date').outerHTML;
     document.querySelector('.b-facet-box__facet-container').innerHTML = ``;
     facets.forEach(facet => {
       document.querySelector('.b-facet-box__facet-container').innerHTML =
         document.querySelector('.b-facet-box__facet-container').innerHTML + createFacet(facet);
     })
+    document.querySelector('.b-facet-box__facet-container').innerHTML =
+      document.querySelector('.b-facet-box__facet-container').innerHTML + dateFacet
     initialiseFacetToggle();
   }, true);
 
