@@ -1,4 +1,4 @@
-<div class="b-search-pagination" style="background-color: black;">
+<div class="b-search-pagination" >
 	<span class="b-search-pagination__prev-link b-search-pagination__prev-link--inactive">
 		<span class="b-search-pagination__caret"><</span> <span class="b-search-pagination__link-text">Prev</span>
 	</span>
@@ -28,14 +28,14 @@
 		{%- endfor %}
 		<span class="b-search-pagination__page-button-seperator-last b-search-pagination__page-button-seperator-last--inactive">
 			...
-		</span>		
+		</span>
 		<button page-index="{{ pages }}" class="b-search-pagination__page-button-last">
 			{% if pages < 10 %}
 				0{{ pages }}
 			{% else %}
 				{{ pages }}
-			{% endif %}			
-		</button>	
+			{% endif %}
+		</button>
 	</div>
 	<span class="b-search-pagination__next-link">
 		 <span class="b-search-pagination__link-text">Next</span> <span class="b-search-pagination__link-caret">></span>

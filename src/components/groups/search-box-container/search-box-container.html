@@ -15,5 +15,10 @@
       </svg>
 	</div>
 	{% endif %}
-	{% render "@search-box", { modifier: modifier } %}
+	{% render "@search-form", {
+      modifiers: ['etc'],
+      inputId: 'q-etc',
+      placeholder: 'Search by object, artist, maker&hellip;'
+    }
+  %}
 </div>
