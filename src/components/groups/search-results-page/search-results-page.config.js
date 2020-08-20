@@ -5,7 +5,7 @@ module.exports = {
       label: 'Default',
       context: {
         modifier: 'listing',
-        pages: 10,
+        pages: 40,
         items: [
           {
             image: 'https://place-hold.it/120x120',

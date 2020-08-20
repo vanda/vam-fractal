@@ -164,6 +164,9 @@ if (document.querySelector(".b-search-pagination")) {
   var total_count = parseInt(document.querySelector(".b-search-results__count").getAttribute("data-count"));
   var number_of_pages = Math.ceil(total_count / default_offset);
 
+  console.log(total_count);
+  console.log(number_of_pages);
+
   if (number_of_pages > 3) {
     for (let i = 3; i < number_of_pages - 1; i++) {
         document.querySelector(".b-search-pagination__page-button-container").innerHTML =
