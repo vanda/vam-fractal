@@ -39,8 +39,8 @@
     }
 
     &-results-container, &-box-container, &-pagination-container {
-      padding-left: 12px;
-      padding-right: 12px;
+      padding-left: 20px;
+      padding-right: 20px;
 
       @include bpMinSmall {
         padding-left: 60px;

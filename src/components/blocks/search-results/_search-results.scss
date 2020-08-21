@@ -8,8 +8,12 @@
   }
 
   &__count {
+    @include bpMinXSmall {
+      font-size: 21px;
+    }
+
     color: siteColor(vam-white);
-    font-size: 21px;
+    font-size: 18px;
     padding-bottom: 10px;
     padding-top: 10px;
 
@@ -28,7 +32,10 @@
       vertical-align: middle;
     }
     @include typeSetting(3, light);
-    padding-right: 40px;
+    @include bpMinXSmall {
+    }
+
+    padding-right: 10px;
     position: relative;
     vertical-align: baseline;
     &--full {

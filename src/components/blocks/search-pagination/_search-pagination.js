@@ -147,7 +147,7 @@ if (document.querySelector(".b-search-pagination")) {
 
       params.set('offset', offset);
 
-      document.querySelector(".b-search-pagination__display_counter").innerHTML = `
+      document.querySelector(".b-search-pagination__display-counter").innerHTML = `
         ${offset + 1} - ${offset + default_offset} of ${total_count}
       `;
 

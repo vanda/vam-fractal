@@ -6,6 +6,11 @@
   flex-direction: row;
   justify-content: center;
   position: relative;
+
+  &__display-counter {
+    color: siteColor(vam-white);
+  }
+
   &__prev-link {
     left: 0;
   }
@@ -46,6 +51,9 @@
   }
 
   &__page-button, &__page-button-start, &__page-button-last {
+    &:focus {
+      outline: 0;
+    }
     @include typeSetting(3, semi-bold);
     @include bpMinMedium {
       height: 44px;
