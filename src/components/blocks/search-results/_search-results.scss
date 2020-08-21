@@ -1,4 +1,33 @@
 .b-search-results {
+  position: relative;
+  &__offensive-warning {
+    position: absolute;
+    width: 100vw;
+    padding-left: 20px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    &-text {
+      padding-top: 20px;
+      width: 540px;
+      height: 36px;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.29;
+      letter-spacing: normal;
+      color: #dee0e2;
+    }
+    &-button {
+      @include typeSetting(1, bold, uppercase);
+      color: #ffffff;
+      width: 121px;
+      height: 24px;
+      border-radius: 2px;
+      border: solid 1px #ffffff;
+    }
+  }
+
   &__table {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -147,6 +176,13 @@
 
   &__body {
     &-row {
+      &--offensive {
+        position: relative;
+        td {
+          filter: blur(10px);
+        }
+      }
+
       @include bpMinXSmall {
         height: 132px;
       }

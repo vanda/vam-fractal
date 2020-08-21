@@ -11,6 +11,14 @@ module.exports = {
             title: 'A Vase That Looks Neat With A Really Long Title',
             artist: 'Reknowned Vase Maker',
             date: 'late 18th century',
+            place: 'Britain',
+            offensive: true
+          },
+          {
+            image: 'https://place-hold.it/150x71',
+            title: 'A Vase That Looks Neat',
+            artist: 'Reknowned Vase Maker',
+            date: 'late 18th century',
             place: 'Britain'
           },
           {
@@ -18,7 +26,8 @@ module.exports = {
             title: 'Cool Print',
             artist: 'Established Printer',
             date: '1980',
-            place: 'Germany'
+            place: 'Germany',
+            offensive: true
           },
           {
             image: 'https://place-hold.it/150x71',
