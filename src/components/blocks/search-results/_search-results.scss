@@ -7,8 +7,13 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     &-text {
-      padding-top: 20px;
-      width: 540px;
+      padding-top: 0;
+      width: 350px;
+      margin-bottom: 25px;
+      @include bpMinXSmall {
+        width: 540px;
+        margin-bottom: 10px;
+      }
       height: 36px;
       font-size: 14px;
       font-weight: normal;
@@ -25,6 +30,10 @@
       height: 24px;
       border-radius: 2px;
       border: solid 1px #ffffff;
+      cursor: pointer;
+      &:hover {
+        background-color: siteColor(vam-black);
+      }
     }
   }
 
@@ -34,6 +43,8 @@
     color: siteColor(vam-white);
     margin-top: 0;
     width: 100%;
+    max-width: 1200px;
+    margin: auto;
   }
 
   &__count {
@@ -101,18 +112,13 @@
       &-img {
         margin: auto;
         text-align: center;
+        padding: 16px 0;
 
-        @include bpMinMedium {
-          width: 200px;
-        }
         img {
           @include bpMinXSmall {
-            max-height: 120px;
             max-width: 150px;
           }
-          max-height: 80px;
           max-width: 100px;
-          padding: 10px;
         }
       }
 
@@ -168,14 +174,19 @@
   &__body {
     &-row {
       &--offensive {
+        height: 124px;
+        @include bpMinXSmall {
+          height: auto;
+        }
         position: relative;
         td {
+          background-color: rgba(57, 59, 63, .8);
           filter: blur(10px);
         }
       }
 
       @include bpMinXSmall {
-        height: 132px;
+        height: 150px;
       }
 
       background-color: #393b3f;
@@ -191,7 +202,6 @@
 
   &__head {
     @include typeSetting(4, semi-bold);
-
     &-cell {
       display: none;
       @include bpMinMedium {
@@ -206,19 +216,13 @@
       width: 420px;
     }
     &-image {
-      width: 220px;
+      width: 230px;
     }
-    &-title {
-      width: 300px;
+    &-title, &-artist {
+      width: 268px;
     }
-    &-artist {
-      width: 300px;
-    }
-    &-date {
-      width: 200px;
-    }
-    &-place {
-      width: 180px;
+    &-date, &-place {
+      width: 186px;
     }
   }
 }
