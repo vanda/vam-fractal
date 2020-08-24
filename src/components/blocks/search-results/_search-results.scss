@@ -3,24 +3,34 @@
   &__offensive-warning {
     @include bpMinXSmall {
       padding-left: 20px;
+      margin-left: 0;
     }
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     position: absolute;
-    width: 100vw;
+    margin-left: -12px;
+    padding: 0 5px;
+    width: 100%;
     &-text {
+      @include bpMinXSmall {
+        max-width: 400px;
+      }
+
       @include bpMinSmall {
-        margin-bottom: 10px;
-        width: 540px;
+        margin-top: auto;
+        max-width: 540px;
+      }
+
+      @include bpMinMedium {
+        max-width: 700px;
       }
 
       @include typeSetting(2);
       color: siteColor(vam-white);
       font-size: 14px;
-      height: 36px;
-      margin-bottom: 25px;
-      padding-top: 0;
-      width: 350px;
+      margin-top: -15px;
+      padding: 10px 0;
+      width: 100%;
     }
     &-button {
       @include typeSetting(1, bold, uppercase);
@@ -40,9 +50,7 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: siteColor(vam-white);
-    margin: auto;
     margin-top: 0;
-    max-width: 1200px;
     width: 100%;
   }
 
@@ -111,7 +119,6 @@
 
       &-img {
         margin: auto;
-        padding: 16px 0;
         text-align: center;
 
         @include bpMinSmall {
@@ -187,20 +194,17 @@
 
   &__body {
     &-row {
+      @include bpMinXSmall {
+        height: 132px;
+      }
+
       &--offensive {
-        height: 140px;
-        @include bpMinXSmall {
-          height: auto;
-        }
+        height: 160px;
         position: relative;
         td {
           background-color: rgba(57, 59, 63, .8);
           filter: blur(10px);
         }
-      }
-
-      @include bpMinXSmall {
-        height: 150px;
       }
 
       background-color: #393b3f;
@@ -216,6 +220,7 @@
 
   &__head {
     @include typeSetting(4, semi-bold);
+
     &-cell {
       display: none;
       @include bpMinSmall {

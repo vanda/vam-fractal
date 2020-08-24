@@ -13,7 +13,7 @@ const offensiveWarningInitializer = () => {
       const warningEl = document.createElement('DIV');
       warningEl.className = "b-search-results__offensive-warning";
       warningEl.innerHTML = warningHTML;
-      warningEl.style.top = `${el.offsetTop + (el.offsetHeight / 6) }px`;
+      warningEl.style.top = `${el.offsetTop + (el.offsetHeight / 4) }px`;
       warningEl.style.left = `${el.getBoundingClientRect().left}px`;
       warningEl.setAttribute('data-row-index', i);
       warningEl.onclick = e => {
@@ -26,7 +26,7 @@ const offensiveWarningInitializer = () => {
   window.addEventListener('resize', e => {
     Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach(el => {
        const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
-       el.style.top = `${row.offsetTop + + (row.offsetHeight / 6) }px`;
+       el.style.top = `${row.offsetTop + (row.offsetHeight / 4) }px`;
        if (window.outerWidth < 1200) {
          el.style.left = `${row.getBoundingClientRect().left}px`;
        }
