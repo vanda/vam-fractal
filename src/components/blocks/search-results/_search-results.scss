@@ -1,9 +1,11 @@
 .b-search-results {
   position: relative;
   &__offensive-warning {
+    @include bpMinXSmall {
+      padding-left: 20px;
+    }
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    padding-left: 20px;
     position: absolute;
     width: 100vw;
     &-text {
@@ -186,7 +188,7 @@
   &__body {
     &-row {
       &--offensive {
-        height: 124px;
+        height: 140px;
         @include bpMinXSmall {
           height: auto;
         }
@@ -241,6 +243,12 @@
     }
     &-artist {
       width: 300px;
+    }
+    &-date {
+      width: 200px;
+    }
+    &-place {
+      width: 180px;
     }
   }
 }

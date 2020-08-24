@@ -27,7 +27,9 @@ const offensiveWarningInitializer = () => {
     Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach(el => {
        const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
        el.style.top = `${row.offsetTop + + (row.offsetHeight / 6) }px`;
-       el.style.left = `${row.getBoundingClientRect().left}px`;
+       if (window.outerWidth < 1200) {
+         el.style.left = `${row.getBoundingClientRect().left}px`;
+       }
     })
   });
 };
