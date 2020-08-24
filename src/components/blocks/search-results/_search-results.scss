@@ -66,6 +66,7 @@
     }
     &-content {
       &-container {
+        padding: 12px 0;
         margin: auto 0;
       }
 
@@ -78,10 +79,11 @@
         }
         img {
           @include bpMinXSmall {
-            max-height: 120px;
+            padding: 16px 0;
             max-width: 150px;
+            max-height: auto;
           }
-          max-height: 80px;
+          max-height: 100px;
           max-width: 100px;
           padding: 10px;
         }
@@ -170,7 +172,10 @@
       width: 420px;
     }
     &-image {
-      width: 220px;
+      @include bpMinXSmall {
+        width: 220px;
+      }
+      width: 120px;
     }
     &-title {
       width: 300px;
