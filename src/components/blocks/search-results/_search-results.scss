@@ -127,6 +127,7 @@
           top: 50%;
           transform: translate(-50%, -50%);
           white-space: break-spaces;
+          width: 65px;
         }
       }
       padding-top: 21px;
@@ -184,7 +185,7 @@
       @include bpMinMedium {
         width: 150px;
       }
-      width: 100px;
+      width: 120px;
     }
     &-title {
       width: 300px;
