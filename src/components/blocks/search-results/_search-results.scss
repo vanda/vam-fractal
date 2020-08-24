@@ -75,21 +75,23 @@
         text-align: center;
 
         @include bpMinSmall {
+          text-align: center;
           width: 150px;
         }
         @include bpMinMedium {
-          width: 200px;
+          text-align: center;
+          width: 175px;
         }
         img {
           @include bpMinXSmall {
             max-height: none;
             max-width: 150px;
-            padding: 16px 10;
+            padding: 16px;
           }
 
           max-height: 100px;
-          max-width: 100px;
-          padding: 10px;
+          max-width: 60px;
+          padding: 12px 0;
         }
       }
 
@@ -182,7 +184,7 @@
       @include bpMinMedium {
         width: 150px;
       }
-      width: 120px;
+      width: 100px;
     }
     &-title {
       width: 300px;
