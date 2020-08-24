@@ -21,7 +21,7 @@
       padding-bottom: 21px;
     }
 
-    @include bpMinMedium {
+    @include bpMinSmall {
       @include typeSetting(5, regular);
     }
   }
@@ -40,7 +40,7 @@
     vertical-align: baseline;
     &--full {
       display: none;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: table-cell;
       }
     }
@@ -74,15 +74,19 @@
         margin: auto;
         text-align: center;
 
+        @include bpMinSmall {
+          width: 150px;
+        }
         @include bpMinMedium {
           width: 200px;
         }
         img {
           @include bpMinXSmall {
-            padding: 16px 0;
-            max-width: 150px;
             max-height: none;
+            max-width: 150px;
+            padding: 16px 10;
           }
+
           max-height: 100px;
           max-width: 100px;
           padding: 10px;
@@ -132,7 +136,7 @@
       display: table-cell;
       line-height: 1.8px;
       vertical-align: middle;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: none;
       }
     }
@@ -160,20 +164,23 @@
 
     &-cell {
       display: none;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: table-cell;
       }
     }
     &-responsive {
       display: table-cell;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: none;
       }
       width: 420px;
     }
     &-image {
       @include bpMinXSmall {
-        width: 220px;
+        width: 135px;
+      }
+      @include bpMinMedium {
+        width: 150px;
       }
       width: 120px;
     }
