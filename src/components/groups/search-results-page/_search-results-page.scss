@@ -33,24 +33,14 @@
         padding-top: 60px;
       }
 
-      @include bpMinMedium {
+      @include bpMinSmall {
         padding-top: 80px;
       }
     }
 
     &-results-container, &-box-container, &-pagination-container {
-      padding-left: 12px;
-      padding-right: 12px;
-
-      @include bpMinSmall {
-        padding-left: 60px;
-        padding-right: 60px;
-      }
-
-      @include bpMinMedium {
-        padding-left: 120px;
-        padding-right: 120px;
-      }
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 }

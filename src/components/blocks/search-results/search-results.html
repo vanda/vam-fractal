@@ -1,5 +1,5 @@
-<div class="b-search-results">	
-	<div class="b-search-results__count">
+<div class="b-search-results">
+	<div class="b-search-results__count" data-count="{{ pages*20 }}">
 		{%  if items|length  %}
 			{{ (items|length) * pages }} objects
 		{% else %}
@@ -23,8 +23,8 @@
 					</td>
 					<td class="b-search-results__head-place b-search-results__head-cell">
 						Place Of Origin
-					</td>	
-				</tr>		
+					</td>
+				</tr>
 			</thead>
 			<tbody class="b-search-results__body">
 				{% for item in items %}

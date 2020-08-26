@@ -8,8 +8,12 @@
   }
 
   &__count {
+    @include bpMinXSmall {
+      font-size: 21px;
+    }
+
     color: siteColor(vam-white);
-    font-size: 21px;
+    font-size: 18px;
     padding-bottom: 10px;
     padding-top: 10px;
 
@@ -17,7 +21,7 @@
       padding-bottom: 21px;
     }
 
-    @include bpMinMedium {
+    @include bpMinSmall {
       @include typeSetting(5, regular);
     }
   }
@@ -28,12 +32,15 @@
       vertical-align: middle;
     }
     @include typeSetting(3, light);
-    padding-right: 40px;
+    @include bpMinXSmall {
+    }
+
+    padding-right: 10px;
     position: relative;
     vertical-align: baseline;
     &--full {
       display: none;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: table-cell;
       }
     }
@@ -59,6 +66,7 @@
     }
     &-content {
       &-container {
+        padding: 12px 0;
         margin: auto 0;
       }
 
@@ -66,17 +74,24 @@
         margin: auto;
         text-align: center;
 
+        @include bpMinSmall {
+          text-align: center;
+          width: 150px;
+        }
         @include bpMinMedium {
-          width: 200px;
+          text-align: center;
+          width: 175px;
         }
         img {
           @include bpMinXSmall {
-            max-height: 120px;
+            max-height: none;
             max-width: 150px;
+            padding: 16px;
           }
-          max-height: 80px;
-          max-width: 100px;
-          padding: 10px;
+
+          max-height: 100px;
+          max-width: 60px;
+          padding: 12px 0;
         }
       }
 
@@ -112,6 +127,7 @@
           top: 50%;
           transform: translate(-50%, -50%);
           white-space: break-spaces;
+          width: 65px;
         }
       }
       padding-top: 21px;
@@ -123,7 +139,7 @@
       display: table-cell;
       line-height: 1.8px;
       vertical-align: middle;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: none;
       }
     }
@@ -151,19 +167,25 @@
 
     &-cell {
       display: none;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: table-cell;
       }
     }
     &-responsive {
       display: table-cell;
-      @include bpMinMedium {
+      @include bpMinSmall {
         display: none;
       }
       width: 420px;
     }
     &-image {
-      width: 220px;
+      @include bpMinXSmall {
+        width: 135px;
+      }
+      @include bpMinMedium {
+        width: 150px;
+      }
+      width: 120px;
     }
     &-title {
       width: 300px;

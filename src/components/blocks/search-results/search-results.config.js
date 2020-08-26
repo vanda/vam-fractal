@@ -8,7 +8,7 @@ module.exports = {
         items: [
           {
             image: 'https://place-hold.it/150x71',
-            title: 'A Vase That Looks Neat',
+            title: 'A Vase That Looks Neat With A Really Long Title',
             artist: 'Reknowned Vase Maker',
             date: 'late 18th century',
             place: 'Britain'

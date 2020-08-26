@@ -15,12 +15,12 @@ require('../../components/blocks/toggle-nav/_toggle-nav.js');
 require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');
 require('../../components/blocks/object-details/object-details.js');
+require('../../components/blocks/search-pagination/_search-pagination.js');
 
 require('../../components/groups/image-overlay/_image-overlay.js');
 require('../../components/groups/image-overlay-details/_image-overlay-details.js');
 require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal.js');
 
-require('../../components/blocks/search-pagination/_search-pagination.js');
 
 svg4everybody();
