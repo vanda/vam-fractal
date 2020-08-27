@@ -1,0 +1,261 @@
+.b-facet-box {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  backdrop-filter: blur(10px);
+  background-color: siteColor(vam-black);
+  color: siteColor(vam-white);
+  height: 100%;
+  left: 0;
+  opacity: .84;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  @include bpMinSmall {
+    backdrop-filter: none;
+    opacity: 1;
+    position: relative;
+    max-width: 276px;
+  }
+
+  &__close {
+    &-button {
+      border: solid .7px #ceffd6;
+      border-radius: 19.5px;
+      font-size: 36px;
+      height: 39px;
+      position: relative;
+      transform: rotate(-315deg);
+      width: 39px;
+      &:focus {
+        outline: -webkit-focus-ring-color auto 0;
+      }
+      &:hover {
+        background-color: themeColor(silent-green);
+        color: siteColor(vam-black);
+        cursor: pointer;
+      }
+    }
+
+    &-content {
+      height: 19px;
+      left: 50%;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+    }
+
+    &-container {
+      @include bpMinSmall {
+        display: none;
+      }
+      padding-right: 20px;
+      padding-top: 20px;
+      text-align: right;
+    }
+  }
+
+  &__facet {
+    margin-bottom: 30px;
+
+    &-date-start-container, &-date-end-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-text {
+      color: siteColor(vam-white);
+      &:hover {
+        color: themeColor(silent-green);
+        cursor: pointer;
+      }
+
+      @include typeSetting(3, bold, uppercase);
+      position: relative;
+      width: 100%;
+
+      &::after {
+        @include typeSetting(6, light);
+        content: '+';
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &--active {
+        &::after {
+          @include typeSetting(8, light);
+          background-color: white;
+          content: ' ';
+          height: 2px;
+          width: 12px;
+        }
+      }
+    }
+
+    &-container {
+      @include bpMinSmall {
+        margin-top: 0;
+        padding: 0;
+      }
+      margin: auto;
+      margin-top: 37px;
+      max-width: 530px;
+      padding: 0 20px;
+    }
+
+    &-date {
+      &-container {
+        margin-top: 20px;
+        max-width: 270px;
+        @include bpMinSmall {
+          max-width: none;
+        }
+        &-start, &-end {
+          flex-basis: 30%;
+          margin-right: 10px;
+          @include bpMinSmall {
+            flex-basis: 38%;
+            margin-right: 11px;
+          }
+        }
+        &-button {
+          flex-basis: 10%;
+        }
+        &-start, &-end, &-button {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      &-button {
+        background-color: #ceffd6;
+        border-radius: 2px;
+        height: 44px;
+        position: relative;
+        width: 44px;
+        &-icon {
+          color: siteColor(vam-black);
+          left: 50%;
+          height: 100%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          padding: 10px;
+          position: absolute;
+          width: 100%;
+        }
+      }
+      &-input {
+        background-color: #ffffff;
+        border: solid 1px #979797;
+        border-radius: 2px;
+        font-size: 18px;
+        height: 44px;
+        width: 101px;
+      }
+    }
+
+    &-term-container {
+      display: none;
+      flex-direction: row;
+      list-style: none;
+      margin-left: 0;
+      width: 100%;
+
+      &--active {
+        display: inline-flex;
+        flex-flow: wrap;
+      }
+    }
+
+    &-term-toggle {
+      display: flex;
+      flex-basis: 100%;
+      flex-direction: row;
+      margin-top: 25px;
+      position: relative;
+      &-text, &-result {
+        flex-basis: 50%;
+      }
+      &-tick {
+        &--active {
+          display: block;
+        }
+        color: themeColor(silent-green);
+        display: none;
+        height: 25px;
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        width: 25px;
+      }
+      &-checkbox {
+        margin-left: 40px;
+        &:before {
+          border: 1px siteColor(vam-white) solid;
+          border-radius: 3px;
+          content: '';
+          cursor: pointer;
+          height: 25px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 25px;
+        }
+      }
+      &-result {
+        text-align: right;
+      }
+    }
+  }
+
+  &__term {
+    @include typeSetting(3, light);
+
+    border: solid themeColor(silent-green) 1px;
+    border-radius: 4px;
+    color: siteColor(vam-white);
+    margin-right: 10px;
+    margin-top: 5px;
+    padding: 10px 13px 10px 13px;
+    position: relative;
+
+    &:hover {
+      background-color: themeColor(silent-green);
+      color: siteColor(vam-grey-1);
+      cursor: pointer;
+    }
+    /* this button/container gets reused a lot of places...
+    I should really make this a mixin... see also
+    controlled vocab */
+
+    &-text {
+      &::after {
+        content: '+';
+        display: inline-block;
+        font-size: 25px;
+        padding-left: 7px;
+        position: relative;
+        transform: rotate(46deg);
+      }
+    }
+
+    &-list {
+      @include bpMinSmall {
+        display: none;
+      }
+
+      display: flex;
+      flex: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: auto;
+      margin-top: 15px;
+      max-width: 530px;
+      padding: 0 20px;
+    }
+  }
+}
