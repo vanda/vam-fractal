@@ -1,0 +1,13 @@
+.b-facet-box-modal {
+  &__container {
+    display: none;
+    &--active {
+      display: block;
+    }
+    @include bpMinSmall {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
