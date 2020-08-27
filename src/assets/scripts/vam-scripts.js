@@ -29,4 +29,6 @@ require('../../components/groups/facet-overlay-modal/_facet-overlay-modal.js');
 require('../../components/blocks/facet-box/_facet-box.js');
 require('../../components/groups/facet-box-modal/_facet-box-modal.js');
 
+require('../../components/groups/story-box-container/_story-box-container.js');
+
 svg4everybody();

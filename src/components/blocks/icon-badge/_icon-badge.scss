@@ -20,6 +20,13 @@
       width: 80px;
     }
 
+    &--story-box {
+      background-color: themeColor(silent-green);
+      &:hover {
+        background-color: lighten(themeColor(silent-green), 10);
+      }
+    }
+
     .b-icon-badge--small & {
       height: 60px;
       width: 60px;

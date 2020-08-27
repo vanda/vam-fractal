@@ -1,0 +1,37 @@
+<div class="b-story-box-container-background">
+  <div class="b-story-box-container">
+    <div class="b-story-box-container__story-boxes">
+      {% for story in stories %}
+         {% if loop.index % 2 == 0 %}
+          <div class="b-story-box-container__col-break"></div>
+         {% else %}
+          <div class="b-story-box-container__row-break"></div>
+         {% endif %}
+       {% if loop.index == (stories | length) %}
+        {% if (stories | length) % 2 == 0 %}
+          {% render "@story-box", { modifier: "column", story: story } %}
+        {% else %}
+          {% render "@story-box", { modifier: "row", story: story } %}
+        {% endif %}
+       {% else %}
+         {% render "@story-box", { modifier: "column", story: story } %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="b-story-box-container__reveal-container">
+      <a href="#" class="b-story-box-container__reveal-btn">
+        <div class="b-icon-badge b-icon-badge--small">
+          <div class="b-icon-badge__icon b-icon-badge__icon--story-box s-themed">
+            <svg role="img">
+              <use xlink:href="/assets/svg/svg-template.svg#plus"></use>
+            </svg>
+          </div>
+          <small class="b-icon-badge__label">
+            Show more
+          </small>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

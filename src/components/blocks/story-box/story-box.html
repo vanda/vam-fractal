@@ -1,0 +1,21 @@
+<div class="b-story-box b-story-box--{{ modifier }} {% if active %} b-story-box--active {% endif %}" >
+  <div class="b-story-box__container-img b-story-box__container-img--{{ modifier }}">
+      <img class="b-story-box__img b-story-box__img--{{ modifier }}" src="{{ story.img }}" alt="alt tag here">
+  </div>
+  <div class="b-story-box__container-text b-story-box__container-text--{{ modifier }}">
+    <span class="b-story-box__content-type-container b-story-box__content-type-container--{{ modifier }}">
+      <svg role="img" class="b-story-box__content-icon b-story-box__content-icon--{{ modifier }}">
+        <use xlink:href="/assets/svg/svg-template.svg#interact"></use>
+      </svg>
+      <span class="b-story-box__content-type-text b-story-box__content-type-text--{{ modifier }}">
+        {{ story.type }}
+      </span>
+    </span>
+    <span class="b-story-box__content-title b-story-box__content-title--{{ modifier }}">
+      {{ story.title }}
+    </span>
+    <span class="b-story-box__content-text b-story-box__content-text--{{ modifier }}">
+      {{ story.content }}
+    </span>
+  </div>
+</div>
