@@ -11,26 +11,26 @@ const offensiveWarningInitializer = () => {
   Array.from(document.querySelectorAll('.b-search-results__body-row')).forEach((el, i) => {
     if (el.classList.contains('b-search-results__body-row--offensive')) {
       const warningEl = document.createElement('DIV');
-      warningEl.className = "b-search-results__offensive-warning";
+      warningEl.className = 'b-search-results__offensive-warning';
       warningEl.innerHTML = warningHTML;
-      warningEl.style.top = `${el.offsetTop + (el.offsetHeight / 4) }px`;
+      warningEl.style.top = `${el.offsetTop + (el.offsetHeight / 4)}px`;
       warningEl.style.left = `${el.getBoundingClientRect().left}px`;
       warningEl.setAttribute('data-row-index', i);
-      warningEl.onclick = e => {
+      warningEl.onclick = (e) => {
         Array.from(document.querySelectorAll('.b-search-results__body-row'))[e.target.parentElement.getAttribute('data-row-index')].classList.remove('b-search-results__body-row--offensive');
         e.target.parentElement.remove();
-      }
+      };
       document.querySelector('.b-search-results').appendChild(warningEl);
     }
   });
-  window.addEventListener('resize', e => {
-    Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach(el => {
-       const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
-       el.style.top = `${row.offsetTop + (row.offsetHeight / 4) }px`;
-       if (window.outerWidth < 1200) {
-         el.style.left = `${row.getBoundingClientRect().left}px`;
-       }
-    })
+  window.addEventListener('resize', () => {
+    Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach((el) => {
+      const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
+      el.style.top = `${row.offsetTop + (row.offsetHeight / 4)}px`;
+      if (window.outerWidth < 1200) {
+        el.style.left = `${row.getBoundingClientRect().left}px`;
+      }
+    });
   });
 };
 

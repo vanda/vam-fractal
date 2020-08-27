@@ -33,54 +33,65 @@ function incrementDecrementPage (op) {
 }
 
 if (document.querySelector('.b-search-pagination')) {
-  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', function() {
+  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', () => {
     const currentButton = document.querySelector(`.${currentButtonClass}`);
     const currentButtonIndex = parseInt(currentButton.getAttribute('page-index'), 10);
 
     if (currentButtonIndex > 1) {
-      document.querySelector('.' + searchPrevLinkClass).classList.remove(inactiveSearchPrevLinkClass);
+      document.querySelector(`.${searchPrevLinkClass}`).classList.remove(inactiveSearchPrevLinkClass);
     } else {
-      document.querySelector('.' + searchPrevLinkClass).classList.add(inactiveSearchPrevLinkClass);
+      document.querySelector(`.${searchPrevLinkClass}`).classList.add(inactiveSearchPrevLinkClass);
     }
 
     if (currentButtonIndex < numberOfPages) {
-      document.querySelector('.' + searchNextLinkClass).classList.remove(inactiveSearchNextLinkClass);
+      document.querySelector(`.${searchNextLinkClass}`).classList.remove(inactiveSearchNextLinkClass);
     } else {
-      document.querySelector('.' + searchNextLinkClass).classList.add(inactiveSearchNextLinkClass);
+      document.querySelector(`.${searchNextLinkClass}`).classList.add(inactiveSearchNextLinkClass);
     }
 
     if (numberOfPages > 4) {
       // activate this logic...
-      document.querySelectorAll('.' + buttonClass + active).forEach(function(e) {
-        e.classList.remove(buttonClass + active)
+      document.querySelectorAll(`.${buttonClass}${active}`).forEach((e) => {
+        e.classList.remove(`${buttonClass}${active}`);
       });
 
-      if ((numberOfPages - currentButtonIndex >= 3 && currentButtonIndex > 2 && currentButtonIndex < numberOfPages - 1) || currentButtonIndex == numberOfPages - 2) {
-        document.querySelector('.' + seperatorClass + start).classList.remove(seperatorClass + start + inactive);
-        document.querySelector('.' + seperatorClass + middle).classList.add(seperatorClass + middle + inactive);
-        document.querySelector('.' + seperatorClass + last).classList.remove(seperatorClass + last + inactive);
+      if (
+          (numberOfPages - currentButtonIndex >= 3 &&
+          currentButtonIndex > 2 &&
+          currentButtonIndex < numberOfPages - 1) ||
+          currentButtonIndex === numberOfPages - 2
+        ) {
+        document.querySelector(`.${seperatorClass}${start}`).classList.remove(seperatorClass + start + inactive);
+        document.querySelector(`.${seperatorClass}${middle}`).classList.add(seperatorClass + middle + inactive);
+        document.querySelector(`.${seperatorClass}${last}`).classList.remove(seperatorClass + last + inactive);
 
         showButton(currentButtonIndex - 1);
         showButton(currentButtonIndex);
         showButton(currentButtonIndex + 1);
-
       } else {
         if (currentButtonIndex <= 2) {
           showButton(2);
           showButton(3);
-          document.querySelector('.' + seperatorClass + start).classList.add(seperatorClass + start + inactive);
-          document.querySelector('.' + seperatorClass + middle).classList.add(seperatorClass + middle + inactive);
-          document.querySelector('.' + seperatorClass + last).classList.remove(seperatorClass + last + inactive);
-        } else if (currentButtonIndex >= numberOfPages - 1 && currentButtonIndex <= numberOfPages) {
+          document.querySelector(`.${seperatorClass}${start}`).classList.add(seperatorClass + start + inactive);
+          document.querySelector(`.${seperatorClass}${middle}`).classList.add(seperatorClass + middle + inactive);
+          document.querySelector(`.${seperatorClass}${last}`).classList.remove(seperatorClass + last + inactive);
+        }
+
+        if (
+          !(currentButtonIndex <= 2) &&
+          (currentButtonIndex >= numberOfPages - 1 && currentButtonIndex <= numberOfPages)
+        ) {
           showButton(numberOfPages - 1);
           showButton(numberOfPages - 2);
-          document.querySelector('.' + seperatorClass + start).classList.remove(seperatorClass + start + inactive);
-          document.querySelector('.' + seperatorClass + middle).classList.add(seperatorClass + middle + inactive);
-          document.querySelector('.' + seperatorClass + last).classList.add(seperatorClass + last + inactive);
+          document.querySelector(`.${seperatorClass}${start}`).classList.remove(seperatorClass + start + inactive);
+          document.querySelector(`.${seperatorClass}${middle}`).classList.add(seperatorClass + middle + inactive);
+          document.querySelector(`.${seperatorClass}${last}`).classList.add(seperatorClass + last + inactive);
         }
       }
     } else {
-      document.querySelector('.' + seperatorClass + last) && document.querySelector('.' + seperatorClass + last).classList.add(seperatorClass + last + inactive);
+      if (document.querySelector(`.${seperatorClass}${last}`)) {
+        document.querySelector(`.${seperatorClass}${last}`).classList.add(seperatorClass + last + inactive);
+      }
 
       showButton(1);
 
@@ -98,47 +109,47 @@ if (document.querySelector('.b-search-pagination')) {
   }, true);
 
   if (numberOfPages > 4) {
-    document.querySelector('.' + seperatorClass + middle).classList.remove(seperatorClass + middle + inactive)
-    var currentButtonIndex = parseInt(document.querySelector(`.${currentButtonClass}`).getAttribute('page-index'));
+    document.querySelector(`.${seperatorClass}${middle}`).classList.remove(seperatorClass + middle + inactive);
+    const currentButtonIndex = parseInt(document.querySelector(`.${currentButtonClass}`).getAttribute('page-index'), 10);
     if (currentButtonIndex < 3) {
-      Array.from(document.querySelectorAll('.' + buttonClass)).slice(3, numberOfPages - 1).forEach(function(e) {
+      Array.from(document.querySelectorAll(`.${buttonClass}`)).slice(3, numberOfPages - 1).forEach((e) => {
         e.classList.add(buttonClass + inactive);
       });
     }
   }
 
-  document.querySelector('.b-search-pagination__prev-link').onclick = function(e) {
+  document.querySelector('.b-search-pagination__prev-link').onclick = (e) => {
     incrementDecrementPage('-');
     e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-  }
+  };
 
-  document.querySelector('.b-search-pagination__next-link').onclick = function(e) {
+  document.querySelector('.b-search-pagination__next-link').onclick = (e) => {
     incrementDecrementPage('+');
     e.target.dispatchEvent(new CustomEvent('changeSearchPage', { bubbles: true, detail: true }));
-  }
+  };
 
-  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', function(e) {
-    var page_index = document.querySelector('.b-search-pagination__page-button--current').getAttribute('page-index');
+  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
+    const pageIndex = document.querySelector('.b-search-pagination__page-button--current').getAttribute('page-index');
 
-    if (page_index || e.detail) {
-      var request = new XMLHttpRequest();
+    if (pageIndex || e.detail) {
+      const request = new XMLHttpRequest();
 
-      request.onreadystatechange = function () {
-        if ( request.readyState === 4 ) {
-          if ( request.status !== 200 ) {
+      request.onreadystatechange = () => {
+        if (request.readyState === 4) {
+          if (request.status !== 200) {
             return;
           }
           document.querySelector('#results-table-container').innerHTML = JSON.parse(request.response).rendered;
         }
       };
 
-      var params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(window.location.search);
 
       if (!params.get('limit')) {
         params.set('limit', String(defaultOffset));
       }
 
-      var offset = parseInt(params.get('limit'), 10)*(parseInt(page_index, 10) - 1);
+      const offset = parseInt(params.get('limit'), 10) * (parseInt(pageIndex, 10) - 1);
 
       params.set('offset', offset);
 
@@ -155,59 +166,58 @@ if (document.querySelector('.b-search-pagination')) {
     }
   });
 
-  const buttonContainer = document.querySelector('.b-search-pagination__page-button-container');
+  // const buttonContainer = document.querySelector('.b-search-pagination__page-button-container');
 
   if (numberOfPages > 3) {
-    for (let i = 3; i < numberOfPages - 1; i++) {
-        document.querySelector('.b-search-pagination__page-button-container').innerHTML =
-          document.querySelector('.b-search-pagination__page-button-container').innerHTML + `
-                <button page-index='${i + 1}' class='b-search-pagination__page-button'>
-                    ${ i < 9 ? 0 : ''}${i + 1}
-                </button>
-          `
-    }
+    numberOfPages.slice(3).forEach((page, i) => {
+      document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
+        ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}
+        <button page-index='${i + 1}' class='b-search-pagination__page-button'>
+            ${i < 9 ? 0 : ''}${i + 1}
+        </button>
+      `;
+    });
 
-    document.querySelector('.b-search-pagination__page-button-container').innerHTML =
-      document.querySelector('.b-search-pagination__page-button-container').innerHTML + `
-          <span class='b-search-pagination__page-button-seperator-last'>
-                ...
-            </span>
-              <button page-index='${numberOfPages}' class='b-search-pagination__page-button-last'>
-                  ${ numberOfPages < 10 ? 0 : ''}${numberOfPages}
-              </button>
-    `
+    document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
+      ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}
+      <span class='b-search-pagination__page-button-seperator-last'>
+        ...
+      </span>
+      <button page-index='${numberOfPages}' class='b-search-pagination__page-button-last'>
+          ${numberOfPages < 10 ? 0 : ''}${numberOfPages}
+      </button>
+    `;
   }
 
-  Array.from(document.querySelectorAll('.' + buttonClass)).forEach(function (e) {
-    e.onclick = function(e) {
+  Array.from(document.querySelectorAll(`.${buttonClass}`)).forEach((el) => {
+    el.onclick = (e) => {
       document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
       e.target.classList.add(currentButtonClass);
       e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-    }
+    };
   });
 
-  document.querySelector('.' + buttonClass + start).onclick = function(e) {
+  document.querySelector(`.${buttonClass}${start}`).onclick = (e) => {
     document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
     e.target.classList.add(currentButtonClass);
     e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-  }
+  };
 
-  if (document.querySelector('.' + buttonClass + last)) {
-    document.querySelector('.' + buttonClass + last).onclick = function(e) {
-    document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
+  if (document.querySelector(`.${buttonClass}${last}`)) {
+    document.querySelector(`.${buttonClass}${last}`).onclick = (e) => {
+      document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
       e.target.classList.add(currentButtonClass);
       e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-    }
+    };
   }
 
   const currentButton = document.querySelector(`.${currentButtonClass}`).getAttribute('page-index');
   const params = new URLSearchParams(window.location.search);
-  const currentPage = Math.ceil((parseInt(!params.get('offset') ? 1 : params.get('offset')) + defaultOffset) / defaultOffset);
+  const currentPage = Math.ceil((parseInt(!params.get('offset') ? 1 : params.get('offset'), 10) + defaultOffset) / defaultOffset);
 
   if (currentPage !== currentButton) {
     document.querySelector(`button[page-index="${String(currentPage)}"]`).click();
   } else {
     document.querySelector(`button[page-index="${String(currentButton)}"]`).click();
   }
-
 }
