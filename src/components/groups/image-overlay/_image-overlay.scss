@@ -23,10 +23,10 @@
       object-fit: contain;
     }
     &-concealer {
-      -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
       backdrop-filter: blur(10px);
-      background-color: rgba(57, 59, 63, 0.8);
+      background-color: rgba(57, 59, 63, .8);
       height: 100%;
       left: 0;
       position: absolute;

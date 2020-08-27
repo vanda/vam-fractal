@@ -3,9 +3,10 @@
   -webkit-font-smoothing: antialiased;
 
   &-background {
-    max-width: 712px; /* for test */
     background-color: siteColor(vam-grey-1);
+    max-width: 712px; // for test
   }
+
   &__story-boxes {
     display: flex;
     flex-direction: row;

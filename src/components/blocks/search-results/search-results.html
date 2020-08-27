@@ -5,67 +5,73 @@
     No results
   {% endif %}
 </div>
-<div class="b-search-results">
-	{%  if items|length  %}
-		<table class="b-search-results__table">
-			<thead class="b-search-results__head">
-				<tr>
-					<td class="b-search-results__head-image"></td>
-					<td class="b-search-results__head-responsive"></td>
-					<td class="b-search-results__head-title b-search-results__head-cell">
-						Title
-					</td>
-					<td class=" b-search-results__head-artist b-search-results__head-cell">
-						Artist/Maker
-					</td>
-					<td class="b-search-results__head-date b-search-results__head-cell">
-						Date
-					</td>
-					<td class="b-search-results__head-place b-search-results__head-cell">
-						Place Of Origin
-					</td>
-				</tr>
-			</thead>
-			<tbody class="b-search-results__body">
-				{% for item in items %}
-					<tr class="b-search-results__body-row b-search-results__body-row{% if item.offensive %}--offensive{% endif %}" >
-						<td class="b-search-results__cell b-search-results__cell-img">
-							<div class="b-search-results__cell-content-img">
-								<img src={{ item.image }} onerror="this.onerror=null;this.classList.add('b-search-results__cell-content-no-img');" />
-							</div>
-						</td>
-						<td class="b-search-results__cell b-search-results__cell--responsive">
-							<div class="b-search-results__cell-content-container">
-								<span class="b-search-results__cell-span b-search-results__cell-span--emphasis">{{ item.title }}</span></br>
-								<span class="b-search-results__cell-span">{{ item.artist }},</span>
-								<span class="b-search-results__cell-span">{{ item.date }}</span></br>
-								<span class="b-search-results__cell-span b-search-results__cell-span--responsive">{{ item.place }}</span></br>
-							</div>
-						</td>
-						</td>
-						<td class="b-search-results__cell b-search-results__cell--full b-search-results__cell--emphasis">
-							<div class="b-search-results__cell-content">
-								{{ item.title }}
-							</div>
-						</td>
-						<td class="b-search-results__cell  b-search-results__cell--full">
-							<div class="b-search-results__cell-content">
-								{{ item.artist }}
-							</div>
-						</td>
-						<td class="b-search-results__cell b-search-results__cell--full">
-							<div class="b-search-results__cell-content">
-								{{ item.date }}
-							</div>
-						</td>
-						<td class="b-search-results__cell b-search-results__cell--full">
-							<div class="b-search-results__cell-content">
-								{{ item.place }}
-							</div>
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	{% endif %}
+
+<div class="b-search-results__container">
+  <div class="b-search-results__facet-container">
+    {% render "@facet-box-modal" %}
+  </div>
+  <div class="b-search-results">
+    {%  if items|length  %}
+      <table class="b-search-results__table">
+        <thead class="b-search-results__head">
+          <tr>
+            <td class="b-search-results__head-image"></td>
+            <td class="b-search-results__head-responsive"></td>
+            <td class="b-search-results__head-title b-search-results__head-cell">
+              Title
+            </td>
+            <td class=" b-search-results__head-artist b-search-results__head-cell">
+              Artist/Maker
+            </td>
+            <td class="b-search-results__head-date b-search-results__head-cell">
+              Date
+            </td>
+            <td class="b-search-results__head-place b-search-results__head-cell">
+              Place Of Origin
+            </td>
+          </tr>
+        </thead>
+        <tbody class="b-search-results__body">
+          {% for item in items %}
+            <tr class="b-search-results__body-row b-search-results__body-row{% if item.offensive %}--offensive{% endif %}" >
+              <td class="b-search-results__cell b-search-results__cell-img">
+                <div class="b-search-results__cell-content-img">
+                  <img src={{ item.image }} onerror="this.onerror=null;this.classList.add('b-search-results__cell-content-no-img');" />
+                </div>
+              </td>
+              <td class="b-search-results__cell b-search-results__cell--responsive">
+                <div class="b-search-results__cell-content-container">
+                  <span class="b-search-results__cell-span b-search-results__cell-span--emphasis">{{ item.title }}</span></br>
+                  <span class="b-search-results__cell-span">{{ item.artist }},</span>
+                  <span class="b-search-results__cell-span">{{ item.date }}</span></br>
+                  <span class="b-search-results__cell-span b-search-results__cell-span--responsive">{{ item.place }}</span></br>
+                </div>
+              </td>
+              </td>
+              <td class="b-search-results__cell b-search-results__cell--full b-search-results__cell--emphasis">
+                <div class="b-search-results__cell-content">
+                  {{ item.title }}
+                </div>
+              </td>
+              <td class="b-search-results__cell  b-search-results__cell--full">
+                <div class="b-search-results__cell-content">
+                  {{ item.artist }}
+                </div>
+              </td>
+              <td class="b-search-results__cell b-search-results__cell--full">
+                <div class="b-search-results__cell-content">
+                  {{ item.date }}
+                </div>
+              </td>
+              <td class="b-search-results__cell b-search-results__cell--full">
+                <div class="b-search-results__cell-content">
+                  {{ item.place }}
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
 </div>

@@ -1,15 +1,25 @@
 .b-search-results {
   position: relative;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__facet-container {
+    flex-basis: 276px;
+  }
+
   &__offensive-warning {
     @include bpMinXSmall {
-      padding-left: 20px;
       margin-left: 0;
+      padding-left: 20px;
     }
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    position: absolute;
     margin-left: -12px;
     padding: 0 5px;
+    position: absolute;
     width: 100%;
     &-text {
       @include bpMinXSmall {
@@ -113,8 +123,8 @@
     }
     &-content {
       &-container {
-        padding: 12px 0;
         margin: auto 0;
+        padding: 12px 0;
       }
 
       &-img {

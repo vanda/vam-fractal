@@ -13,9 +13,9 @@
 
   @include bpMinSmall {
     backdrop-filter: none;
+    max-width: 276px;
     opacity: 1;
     position: relative;
-    max-width: 276px;
   }
 
   &__close {
@@ -139,12 +139,12 @@
         width: 44px;
         &-icon {
           color: siteColor(vam-black);
-          left: 50%;
           height: 100%;
-          top: 50%;
-          transform: translate(-50%, -50%);
+          left: 50%;
           padding: 10px;
           position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
           width: 100%;
         }
       }
@@ -228,9 +228,8 @@
       color: siteColor(vam-grey-1);
       cursor: pointer;
     }
-    /* this button/container gets reused a lot of places...
-    I should really make this a mixin... see also
-    controlled vocab */
+
+    // this button/container gets reused a lot of places...I should really make this a mixin... see also controlled vocab
 
     &-text {
       &::after {
