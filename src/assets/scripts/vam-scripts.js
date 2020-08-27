@@ -16,6 +16,7 @@ require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');
 require('../../components/blocks/object-details/object-details.js');
 require('../../components/blocks/search-pagination/_search-pagination.js');
+require('../../components/blocks/search-results/_search-results.js');
 
 require('../../components/groups/image-overlay/_image-overlay.js');
 require('../../components/groups/image-overlay-details/_image-overlay-details.js');
