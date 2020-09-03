@@ -94,7 +94,7 @@
             return true;
           });
         })
-        .catch(status, err => console.log(status, err)); // eslint-disable-line no-console
+        .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
         return promise;
       }
       return Promise.resolve(true);

@@ -15,7 +15,8 @@
   text-shadow: none;
   transition: border .2s, background-color .2s, color .2s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: darken(siteColor(primary-green), 10);
     border-color: darken(siteColor(primary-green), 10);
     color: inherit;
@@ -44,7 +45,8 @@
     border: 1px solid siteColor(vam-black);
     color: siteColor(vam-white);
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: lighten(siteColor(vam-black), 10);
       border: 1px solid lighten(siteColor(vam-black), 10);
 
@@ -77,7 +79,8 @@
       color: siteColor(vam-white);
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: transparent;
       border-color: siteColor(vam-grey-4);
     }
