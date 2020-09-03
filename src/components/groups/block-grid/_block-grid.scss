@@ -73,4 +73,9 @@
       color: siteColor(vam-black);
     }
   }
+
+  &__cols-restarter {
+    column-span: all;
+    height: 0;
+  }
 }
