@@ -1,7 +1,6 @@
 // TODO: take in offset as a parameter, probably pass it by using a data set variable...
 // currently using defaultOffset!!
 if (document.querySelector('.b-search-pagination')) {
-
   const searchPrevLinkClass = 'b-search-pagination__prev-link';
   const searchNextLinkClass = 'b-search-pagination__next-link';
   const buttonClass = 'b-search-pagination__page-button';
@@ -170,14 +169,14 @@ if (document.querySelector('.b-search-pagination')) {
   });
 
   if (numberOfPages > 3) {
-    for (let i = 3; i < numberOfPages - 1; i++) {
+    for (let i = 3; i < numberOfPages - 1; i += 1) {
       document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
         ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}
         <button page-index='${i + 1}' class='b-search-pagination__page-button'>
             ${i < 9 ? 0 : ''}${i + 1}
         </button>
       `;
-    };
+    }
 
     document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
       ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}

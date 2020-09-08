@@ -150,6 +150,6 @@ const initialiseFacetOverlay = () => {
 
 (() => {
   if (document.querySelector('.b-facet-box')) {
-    initialiseFacetOverlay()
+    initialiseFacetOverlay();
   }
 })();
