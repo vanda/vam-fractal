@@ -112,7 +112,7 @@
       &-container {
         &--column, &--row {
           @include bpMinXSmall {
-            margin-bottom: 20px;
+            margin-bottom: 14px;
           }
 
           display: flex;
@@ -148,7 +148,7 @@
           bottom: -9px;
           content: '';
           display: none;
-          height: 2px;
+          height: 1px;
           left: 2px;
           position: absolute;
           width: 28px;
@@ -174,7 +174,7 @@
         @include typeSetting(3, regular);
 
         display: none;
-        margin-top: 15px;
+        margin-top: 20px;
       }
     }
   }
