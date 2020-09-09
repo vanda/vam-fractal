@@ -1,0 +1,29 @@
+jobs:
+  test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test
+  deploy:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: |
+            npm run build
+            ./node_modules/.bin/surge --project www --domain vam-fractal-<<pipeline.git.branch>>.surge.sh
+
+orbs:
+  node: circleci/node@4.0.0
+
+version: 2.1
+
+workflows:
+  deploy:
+    jobs:
+      - deploy
