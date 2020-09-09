@@ -14,8 +14,16 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          command: |
+          name: Run tests
+          command:
+            npm run lint
+      - run:
+          name: Build static site
+          command:
             npm run build
+      - run:
+          name: Deploy branch to surge.sh
+          command:
             ./node_modules/.bin/surge --project www --domain vam-fractal-<<pipeline.git.branch>>.surge.sh
 
 orbs:
@@ -24,6 +32,11 @@ orbs:
 version: 2.1
 
 workflows:
+  version: 2
   deploy:
     jobs:
-      - deploy
+      - deploy:
+          filters:
+            branches:
+              ignore:
+                - master
