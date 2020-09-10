@@ -181,13 +181,13 @@
   }
 
   &__img {
-    &--column {
-      height: 194px;
-    }
     &--column, &--row {
       height: 100%;
       object-fit: cover;
       width: 100%;
+    }
+    &--column {
+      height: 194px;
     }
   }
 }
