@@ -3,6 +3,7 @@
   -webkit-font-smoothing: antialiased;
   background-color: siteColor(vam-grey-2);
   color: siteColor(vam-white);
+  cursor: pointer;
   display: none;
   flex: 1 1 220px;
   flex-direction: row;
@@ -92,9 +93,9 @@
   &__content {
     &-icon {
       &--column, &--row {
-        height: 13px;
-        margin-right: 6px;
-        width: 15px;
+        height: 15px;
+        margin-right: 8px;
+        width: 13px;
       }
     }
 
@@ -180,6 +181,9 @@
   }
 
   &__img {
+    &--column {
+      height: 194px;
+    }
     &--column, &--row {
       height: 100%;
       object-fit: cover;
