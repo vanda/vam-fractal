@@ -3,6 +3,7 @@
   -webkit-font-smoothing: antialiased;
   background-color: siteColor(vam-grey-2);
   color: siteColor(vam-white);
+  cursor: pointer;
   display: none;
   flex: 1 1 220px;
   flex-direction: row;
@@ -92,9 +93,9 @@
   &__content {
     &-icon {
       &--column, &--row {
-        height: 13px;
-        margin-right: 6px;
-        width: 15px;
+        height: 15px;
+        margin-right: 8px;
+        width: 13px;
       }
     }
 
@@ -112,7 +113,7 @@
       &-container {
         &--column, &--row {
           @include bpMinXSmall {
-            margin-bottom: 20px;
+            margin-bottom: 14px;
           }
 
           display: flex;
@@ -148,7 +149,7 @@
           bottom: -9px;
           content: '';
           display: none;
-          height: 2px;
+          height: 1px;
           left: 2px;
           position: absolute;
           width: 28px;
@@ -174,7 +175,7 @@
         @include typeSetting(3, regular);
 
         display: none;
-        margin-top: 15px;
+        margin-top: 20px;
       }
     }
   }
@@ -184,6 +185,9 @@
       height: 100%;
       object-fit: cover;
       width: 100%;
+    }
+    &--column {
+      height: 194px;
     }
   }
 }

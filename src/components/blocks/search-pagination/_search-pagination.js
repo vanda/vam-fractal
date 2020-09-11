@@ -1,38 +1,40 @@
-const searchPrevLinkClass = 'b-search-pagination__prev-link';
-const searchNextLinkClass = 'b-search-pagination__next-link';
-const buttonClass = 'b-search-pagination__page-button';
-const seperatorClass = 'b-search-pagination__page-button-seperator';
-const start = '-start';
-const middle = '-middle';
-const last = '-last';
-const inactive = '--inactive';
-const active = '--active';
-const current = '--current';
-const currentButtonClass = buttonClass + current;
-const inactiveSearchPrevLinkClass = searchPrevLinkClass + inactive;
-const inactiveSearchNextLinkClass = searchNextLinkClass + inactive;
-const defaultOffset = 20;
-const totalCount = parseInt(document.querySelector('.b-search-results__count').getAttribute('data-count'), 10);
-const numberOfPages = Math.ceil(totalCount / defaultOffset);
-
-function showButton (index) {
-  document.querySelector(`button[page-index="${String(index)}"]`).classList.add(buttonClass + active);
-}
-
-function incrementDecrementPage (op) {
-  const currentButton = parseInt(document.querySelector(`.${currentButtonClass}`).getAttribute('page-index'), 10);
-
-  if ((currentButton > 1 && op === '-') || (op === '+' && currentButton < numberOfPages)) {
-    document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-    if (op === '+') {
-      document.querySelector(`button[page-index="${String(currentButton + 1)}"]`).classList.add(currentButtonClass);
-    } else {
-      document.querySelector(`button[page-index="${String(currentButton - 1)}"]`).classList.add(currentButtonClass);
-    }
-  }
-}
-
+// TODO: take in offset as a parameter, probably pass it by using a data set variable...
+// currently using defaultOffset!!
 if (document.querySelector('.b-search-pagination')) {
+  const searchPrevLinkClass = 'b-search-pagination__prev-link';
+  const searchNextLinkClass = 'b-search-pagination__next-link';
+  const buttonClass = 'b-search-pagination__page-button';
+  const seperatorClass = 'b-search-pagination__page-button-seperator';
+  const start = '-start';
+  const middle = '-middle';
+  const last = '-last';
+  const inactive = '--inactive';
+  const active = '--active';
+  const current = '--current';
+  const currentButtonClass = buttonClass + current;
+  const inactiveSearchPrevLinkClass = searchPrevLinkClass + inactive;
+  const inactiveSearchNextLinkClass = searchNextLinkClass + inactive;
+  const defaultOffset = 20;
+  const totalCount = parseInt(document.querySelector('.b-search-results__count').getAttribute('data-count'), 10);
+  const numberOfPages = Math.ceil(totalCount / defaultOffset);
+
+  const showButton = (index) => {
+    document.querySelector(`button[page-index="${String(index)}"]`).classList.add(buttonClass + active);
+  };
+
+  const incrementDecrementPage = (op) => {
+    const currentButton = parseInt(document.querySelector(`.${currentButtonClass}`).getAttribute('page-index'), 10);
+
+    if ((currentButton > 1 && op === '-') || (op === '+' && currentButton < numberOfPages)) {
+      document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
+      if (op === '+') {
+        document.querySelector(`button[page-index="${String(currentButton + 1)}"]`).classList.add(currentButtonClass);
+      } else {
+        document.querySelector(`button[page-index="${String(currentButton - 1)}"]`).classList.add(currentButtonClass);
+      }
+    }
+  };
+
   document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', () => {
     const currentButton = document.querySelector(`.${currentButtonClass}`);
     const currentButtonIndex = parseInt(currentButton.getAttribute('page-index'), 10);
@@ -118,12 +120,12 @@ if (document.querySelector('.b-search-pagination')) {
     }
   }
 
-  document.querySelector('.b-search-pagination__prev-link').onclick = (e) => {
+  document.querySelector(`.${searchPrevLinkClass}`).onclick = (e) => {
     incrementDecrementPage('-');
     e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
   };
 
-  document.querySelector('.b-search-pagination__next-link').onclick = (e) => {
+  document.querySelector(`.${searchNextLinkClass}`).onclick = (e) => {
     incrementDecrementPage('+');
     e.target.dispatchEvent(new CustomEvent('changeSearchPage', { bubbles: true, detail: true }));
   };
@@ -166,17 +168,15 @@ if (document.querySelector('.b-search-pagination')) {
     }
   });
 
-  // const buttonContainer = document.querySelector('.b-search-pagination__page-button-container');
-
   if (numberOfPages > 3) {
-    numberOfPages.slice(3).forEach((page, i) => {
+    for (let i = 3; i < numberOfPages - 1; i += 1) {
       document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
         ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}
         <button page-index='${i + 1}' class='b-search-pagination__page-button'>
             ${i < 9 ? 0 : ''}${i + 1}
         </button>
       `;
-    });
+    }
 
     document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
       ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}

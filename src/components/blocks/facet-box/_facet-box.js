@@ -148,4 +148,8 @@ const initialiseFacetOverlay = () => {
 };
 
 
-(() => initialiseFacetOverlay())();
+(() => {
+  if (document.querySelector('.b-facet-box')) {
+    initialiseFacetOverlay();
+  }
+})();
