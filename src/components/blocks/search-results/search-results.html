@@ -6,11 +6,11 @@
   {% endif %}
 </div>
 
-<div class="b-search-results__container">
+<div class="b-search-results">
   <div class="b-search-results__facet-container">
-    {% render "@facet-box-modal" %}
+    {% render "@facet-box-modal", { onpage: true } %}
   </div>
-  <div class="b-search-results">
+  <div class="b-search-results__container">
     {%  if items|length  %}
       <table class="b-search-results__table">
         <thead class="b-search-results__head">

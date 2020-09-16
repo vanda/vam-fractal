@@ -1,12 +1,33 @@
 .b-facet-box-modal {
+  &__button {
+    &-container {
+      &:after {
+        border-color: themeColor(silent-green);
+        border-width: 2px;
+      }
+    }
+    display: block;
+    @include bpMinSmall {
+      display: none;
+    }
+    &-icon {
+      bottom: auto;
+      height: 43px;
+      left: auto;
+      right: auto;
+      top: auto;
+      width: 42px;
+    }
+  }
   &__container {
     display: none;
     &--active {
       display: block;
     }
-    @include bpMinSmall {
+    @include bpMinMedium {
       display: block;
       height: 100%;
+      padding-top: 30px;
       width: 100%;
     }
   }

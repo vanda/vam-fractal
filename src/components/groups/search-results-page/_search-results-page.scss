@@ -27,14 +27,14 @@
     }
 
     &-results-container {
-      padding-top: 100px;
+      padding-top: 130px;
 
       @include bpMinXSmall {
-        padding-top: 60px;
+        padding-top: 150px;
       }
 
       @include bpMinSmall {
-        padding-top: 80px;
+        padding-top: 170px;
       }
     }
 

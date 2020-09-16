@@ -1,10 +1,12 @@
+{% if not onpage %}
 <a href="javascript:void(0);" class="b-icon-link b-facet-box-modal__button">
-  <div class="b-icon-link__container">
-    <svg class="b-icon-link__icon" role="img">
-      <use xlink:href="/assets/svg/svg-template.svg#twitter"></use>
+  <div class="b-icon-link__container b-facet-box-modal__button-container">
+    <svg class="b-icon-link__icon b-facet-box-modal__button-icon" role="img">
+      <use xlink:href="/assets/svg/svg-template.svg#filters"></use>
     </svg>
   </div>
 </a>
+{% endif %}
 
 <div href="#" class="b-icon-link b-facet-box-modal__container">
   {%- render "@facet-box" -%}

@@ -215,9 +215,18 @@
   &__term {
     @include typeSetting(3, light);
 
-    border: solid themeColor(silent-green) 1px;
+    &--search-box {
+      border: solid siteColor(vam-black) 1px;
+      color: siteColor(vam-black);
+      width: fit-content;
+    }
+
+    &--facet-box {
+      border: solid themeColor(silent-green) 1px;
+      color: siteColor(vam-white);
+    }
+
     border-radius: 4px;
-    color: siteColor(vam-white);
     margin-right: 10px;
     margin-top: 5px;
     padding: 10px 13px 10px 13px;

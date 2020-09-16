@@ -21,7 +21,7 @@ const termHTML = (id, facet, term) => `
 `;
 
 const termToggleHTML = (facet, term, count) => `
-  <li class="b-facet-box__facet-term-toggle" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}">
+  <li class="b-facet-box__facet-term-toggle" data-id="${facet.trim()}-${term.trim()}" data-facet="${facet}" data-term="${term}">
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" role="img">
         <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
@@ -107,17 +107,34 @@ const initialiseFacetOverlay = () => {
 
   document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
     const { id, facet, term } = e.detail;
+
     if (id) {
       if (document.querySelector(`div[data-id='${id}']`)) {
-        document.querySelector(`div[data-id='${id}']`).remove();
+        Array.from(document.querySelector(`div[data-id='${id}']`)).forEach((el) => {
+          el.remove();
+        });
       } else {
         const newTerm = document.createElement('DIV');
+
         newTerm.innerHTML = termHTML(id, facet, term);
         newTerm.onclick = () => {
-          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
+          document.querySelector(`.${termListClass}`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
           document.querySelector(`li[data-id='${id}']`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
         };
+
+        newTerm.firstElementChild.className = `b-facet-box__term b-facet-box__term--facet-box`;
         e.target.appendChild(newTerm);
+
+        const newTermSearch = newTerm.cloneNode();
+
+        newTermSearch.firstElementChild.className = `b-facet-box__term b-facet-box__term--search-box`;
+
+        document.querySelector('.b-search-results-page').dispatchEvent(new CustomEvent("termToggleSearchBox", {
+          detail: {
+            newTermSearch
+          },
+          bubbles: true
+        }));
       }
     }
     updatedSearch();

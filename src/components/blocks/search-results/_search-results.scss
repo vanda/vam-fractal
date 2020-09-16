@@ -1,13 +1,18 @@
 .b-search-results {
+  display: flex;
+  flex-direction: row;
   position: relative;
 
   &__container {
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    width: 100%;
   }
 
   &__facet-container {
-    flex-basis: 276px;
+    @include bpMinMedium {
+      flex-basis: 276px;
+      margin-right: 40px;
+    }
   }
 
   &__offensive-warning {

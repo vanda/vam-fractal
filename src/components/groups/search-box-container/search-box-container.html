@@ -1,5 +1,5 @@
 <div class="b-search-box-container b-search-box-container--{{modifier}}">
-	{% if modifier !== 'listing' %}
+	{% if not 'listing' in modifier %}
 	<div class="b-search-box-container-header">
 		<div class="b-search-box-container-header__title">
 			explore our collections
@@ -15,10 +15,22 @@
       </svg>
 	</div>
 	{% endif %}
-	{% render "@search-form", {
-      modifiers: ['etc'],
-      inputId: 'q-etc',
-      placeholder: 'Search by object, artist, maker&hellip;'
-    }
-  %}
+  {% if not 'onpage' in modifier %}
+    {% render "@search-form", {
+        modifiers: ['etc'],
+        inputId: 'q-etc',
+        placeholder: 'Search by object, artist, maker&hellip;'
+      }
+    %}
+  {% else %}
+    {% render "@search-form", {
+        modifiers: ['etc', 'onpage'],
+        jsHook: 'js-search-etc',
+        inputId: 'q-etc',
+        placeholder: 'Search by object, artist, maker&hellip;',
+        action: 'http://51.11.136.250/api/v2/objects/search'
+      }
+    %}
+  {% endif %}
+
 </div>

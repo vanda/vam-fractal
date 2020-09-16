@@ -29,8 +29,22 @@ const trackAutosuggest = (e) => {
   });
 };
 
-Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'), (searchForm) => {
+Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .js-search-etc'), (searchForm) => {
   const searchInput = searchForm.querySelector('.b-search-form__input');
+
+  if (searchForm.classList.contains('js-search-etc')) {
+    searchForm.querySelector('.b-search-form__facet-pane').style.display = 'none';
+
+    searchForm.addEventListener('termToggleSearchBox', ({ detail }) => {
+      if (detail) {
+        searchForm.querySelector('.b-search-form__facet-pane').style.display = 'block';
+        searchForm.querySelector('.b-search-form__facets').appendChild(detail.newTerm);
+      }
+      if (!(searchForm.querySelector('.b-search-form__facet-pane').childElementCount)) {
+        searchForm.querySelector('.b-search-form__facet-pane').style.display = 'none';
+      }
+    })
+  }
 
   if (searchForm.classList.contains('js-search-site')) {
     /* Main site search */

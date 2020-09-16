@@ -2,6 +2,12 @@
   overflow: hidden;
   width: 100%;
 
+  &__facets-term {
+    border-color: black;
+    color: black;
+    width: fit-content;
+  }
+
   &--etc-gateway {
     border-radius: 2px;
     overflow: visible;
@@ -68,14 +74,14 @@
   &__input,
   &__underscore {
     @include typeSetting(5);
-    
+
     @include bpMinSmall {
       @include typeSetting(7);
     }
 
     .b-search-form--etc & {
       @include typeSetting(4);
-      
+
       @include bpMinSmall {
         @include typeSetting(5);
       }
@@ -192,6 +198,8 @@
     @include typeSetting(3);
     color: siteColor(vam-white);
     margin: 20px 0;
+    position: relative;
+    text-align: left;
   }
 
   &__filter-toggle-set {
@@ -239,7 +247,7 @@
     opacity: 0;
     position: absolute;
     top: 0;
-    
+
     .b-search-form__filter-toggle-set[active] > & {
       opacity: 1;
       transition: opacity .3s ease;
@@ -253,6 +261,12 @@
     .b-search-form--etc-gateway & {
       margin-right: 20px;
     }
+  }
+
+  &__filter-button {
+    position: absolute;
+    left: 93%;
+    top: -10px;
   }
 
   &__filter-input {
@@ -277,7 +291,7 @@
       left: 0;
       position: absolute;
       top: 2px;
-      width: 16px; 
+      width: 16px;
     }
     &[type="checkbox"]:checked + label:before {
       background: siteColor(primary-green);
