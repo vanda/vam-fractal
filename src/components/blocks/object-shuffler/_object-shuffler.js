@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable */
 (() => {
   const shuffler = {
     init: (el) => {

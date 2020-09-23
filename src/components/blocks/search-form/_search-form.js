@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable */
 const loadSuggestions = (searchForm) => {
   searchForm._props.storedSuggestions = JSON.parse(sessionStorage.getItem(`storedSuggestions_${searchForm._props.type}`));
   const now = new Date();

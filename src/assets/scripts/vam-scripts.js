@@ -25,7 +25,6 @@ require('../../components/groups/facet-box-modal/_facet-box-modal.js');
 require('../../components/groups/image-overlay/_image-overlay.js');
 require('../../components/groups/image-overlay-details/_image-overlay-details.js');
 require('../../components/groups/story-box-container/_story-box-container.js');
-require('../../components/groups/search-results-page/_search-results-page.js');
 
 /* eslint-disable no-new */
 new LazyLoad({

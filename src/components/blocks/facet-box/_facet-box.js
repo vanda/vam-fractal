@@ -122,14 +122,14 @@ const initialiseFacetOverlay = () => {
           document.querySelector(`li[data-id='${id}']`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
         };
 
-        newTerm.firstElementChild.className = `b-facet-box__term b-facet-box__term--facet-box`;
+        newTerm.firstElementChild.className = 'b-facet-box__term b-facet-box__term--facet-box';
         e.target.appendChild(newTerm);
 
         const newTermSearch = newTerm.cloneNode();
 
-        newTermSearch.firstElementChild.className = `b-facet-box__term b-facet-box__term--search-box`;
+        newTermSearch.firstElementChild.className = 'b-facet-box__term b-facet-box__term--search-box';
 
-        document.querySelector('.b-search-results-page').dispatchEvent(new CustomEvent("termToggleSearchBox", {
+        document.querySelector('.b-search-results-page').dispatchEvent(new CustomEvent('termToggleSearchBox', {
           detail: {
             newTermSearch
           },

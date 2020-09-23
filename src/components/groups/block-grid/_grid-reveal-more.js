@@ -1,3 +1,4 @@
+/* eslint-disable */
 const gridRevealMore = document.querySelectorAll('.js-grid-reveal-more');
 
 if (gridRevealMore.length) {
