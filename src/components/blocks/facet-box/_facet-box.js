@@ -23,7 +23,7 @@ const termButtonHTML = (id, facet, term) => `
 
 // <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
 const termCheckboxHTML = (facet, paramName, term, value, count) => `
-  <li class="b-facet-box__facet-term-toggle" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}" data-value="${value}">
+  <li class="b-facet-box__facet-term-toggle" data-paramName="${paramName}" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}" data-value="${value}">
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
@@ -35,7 +35,6 @@ const termCheckboxHTML = (facet, paramName, term, value, count) => `
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
-   <input class="b-facet-box__hidden-input" type="hidden" name="${paramName}" value="">
   </li>
 `;
 
@@ -45,6 +44,11 @@ const facetHTML = facet => `
   </div>
   <ul class="b-facet-box__facet-term-container"></ul>
 `;
+
+// const inputHTML = (paramName, value) => `
+//   <input class="b-facet-box__hidden-input" type="hidden" name="${paramName}" value="${value}">
+// `;
+
 
 const createFacet = ({ facet, paramName, terms }) => {
   const newFacet = document.createElement('DIV');
@@ -85,9 +89,14 @@ const initialiseFacetToggle = () => {
   Array.from(document.querySelectorAll(`.${facetTerm}`)).forEach((el) => {
     el.addEventListener('termToggle', (e) => {
       if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
-        e.target.querySelector('.b-facet-box__hidden-input').value = '';
+        e.target.querySelector('.b-facet-box__hidden-input').remove();
       } else {
-        e.target.querySelector('.b-facet-box__hidden-input').value = e.target.dataset.value;
+        const newInput = document.createElement('INPUT');
+        newInput.className = 'b-facet-box__hidden-input';
+        newInput.type = 'hidden';
+        newInput.name = e.target.dataset.paramname;
+        newInput.value = e.target.dataset.value;
+        e.target.appendChild(newInput);
       }
       e.target.querySelector(`.${facetTermTick}`).classList.toggle(
         `${facetTermTick}--active`
