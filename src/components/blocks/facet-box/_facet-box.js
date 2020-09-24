@@ -22,7 +22,7 @@ const termButtonHTML = (id, facet, term) => `
 `;
 
 // <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-const termCheckboxHTML = (facet, param_name, term, value, count) => `
+const termCheckboxHTML = (facet, paramName, term, value, count) => `
   <li class="b-facet-box__facet-term-toggle" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}" data-value="${value}">
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" role="img">
@@ -35,7 +35,7 @@ const termCheckboxHTML = (facet, param_name, term, value, count) => `
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
-   <input class="b-facet-box__hidden-input" type="hidden" name="${param_name}" value="">
+   <input class="b-facet-box__hidden-input" type="hidden" name="${paramName}" value="">
   </li>
 `;
 
@@ -46,13 +46,13 @@ const facetHTML = facet => `
   <ul class="b-facet-box__facet-term-container"></ul>
 `;
 
-const createFacet = ({ facet, param_name, terms }) => {
+const createFacet = ({ facet, paramName, terms }) => {
   const newFacet = document.createElement('DIV');
   newFacet.className = 'b-facet-box__facet';
   newFacet.innerHTML = facetHTML(facet);
   terms.forEach(({ term, count, value }) => {
     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML =
-     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML + termCheckboxHTML(facet, param_name, term, value, count);
+     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML + termCheckboxHTML(facet, paramName, term, value, count);
   });
 
   return newFacet.outerHTML;
@@ -119,7 +119,7 @@ const initialiseFacetOverlay = () => {
 
   // terms in modal...
   document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
-    const { id, facet, term, param_name } = e.detail;
+    const { id, facet, term, paramName } = e.detail;
     // if (id) {
       // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
@@ -128,8 +128,8 @@ const initialiseFacetOverlay = () => {
         const newTerm = document.createElement('DIV');
         newTerm.innerHTML = termButtonHTML(id, facet, term);
         newTerm.onclick = () => {
-          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, param_name }));
-          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, param_name }));
+          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
+          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
         };
         e.target.appendChild(newTerm);
       }
