@@ -12,19 +12,21 @@ const termCheckboxClass = `${facetClass}-term-toggle-checkbox`;
 
 const facetCloseClass = 'b-facet-box__close-button';
 
-const termHTML = (id, facet, term) => `
-  <div data-id="${id}" data-facet="${facet}" data-term="${term}" class="b-facet-box__term">
+
+const termButtonHTML = (id, facet, term) => `
+  <div data-id="${id}" class="b-facet-box__term">
     <span class="b-facet-box__term-text">
         ${facet}: ${term}
     </span>
   </div>
 `;
 
-const termToggleHTML = (facet, term, count) => `
-  <li class="b-facet-box__facet-term-toggle" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}">
+// <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
+const termCheckboxHTML = (facet, param_name, term, value, count) => `
+  <li class="b-facet-box__facet-term-toggle" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}" data-value="${value}">
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-        <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
+        <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
     </a>
     <span class="b-facet-box__facet-term-toggle-text">
@@ -33,6 +35,7 @@ const termToggleHTML = (facet, term, count) => `
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
+   <input class="b-facet-box__hidden-input" type="hidden" name="${param_name}" value="">
   </li>
 `;
 
@@ -43,31 +46,33 @@ const facetHTML = facet => `
   <ul class="b-facet-box__facet-term-container"></ul>
 `;
 
-const createFacet = ({ facet, terms }) => {
+const createFacet = ({ facet, param_name, terms }) => {
   const newFacet = document.createElement('DIV');
   newFacet.className = 'b-facet-box__facet';
   newFacet.innerHTML = facetHTML(facet);
-  terms.forEach(({ term, count }) => {
+  terms.forEach(({ term, count, value }) => {
     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML =
-     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML + termToggleHTML(facet, term, count);
+     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML + termCheckboxHTML(facet, param_name, term, value, count);
   });
 
   return newFacet.outerHTML;
 };
 
-const updatedSearch = () => {
-  const detail = Array.from(
-    document.querySelectorAll(`.${termClass}`)).map(el => JSON.parse(JSON.stringify(el.dataset))
-  );
-  document.querySelector('.b-facet-box').dispatchEvent(
-    new CustomEvent('updatedSearch', {
-      detail,
-      bubbles: true
-    })
-  );
-};
+// obsolete i think because of new search form...
+// const updatedSearch = () => {
+//   const detail = Array.from(
+//     document.querySelectorAll(`.${termClass}`)).map(el => JSON.parse(JSON.stringify(el.dataset))
+//   );
+//   document.querySelector('.b-facet-box').dispatchEvent(
+//     new CustomEvent('updatedSearch', {
+//       detail,
+//       bubbles: true
+//     })
+//   );
+// };
 
 const initialiseFacetToggle = () => {
+  // this just opens and closes each facet list... not very complicated
   Array.from(document.querySelectorAll(`.${facetClass}`)).forEach((el) => {
     el.addEventListener('facetToggle', (e) => {
       Array.from(e.target.children).forEach((ell) => {
@@ -76,8 +81,14 @@ const initialiseFacetToggle = () => {
     });
   });
 
+  // this triggers checkmarks for each term and also changes value
   Array.from(document.querySelectorAll(`.${facetTerm}`)).forEach((el) => {
     el.addEventListener('termToggle', (e) => {
+      if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
+        e.target.querySelector('.b-facet-box__hidden-input').value = '';
+      } else {
+        e.target.querySelector('.b-facet-box__hidden-input').value = e.target.dataset.value;
+      }
       e.target.querySelector(`.${facetTermTick}`).classList.toggle(
         `${facetTermTick}--active`
       );
@@ -85,7 +96,7 @@ const initialiseFacetToggle = () => {
   });
 };
 
-const newtermToggleEvent = detail => new CustomEvent('termToggle', {
+const newTermToggleEvent = detail => new CustomEvent('termToggle', {
   detail,
   bubbles: true
 });
@@ -105,22 +116,25 @@ const initialiseFacetOverlay = () => {
     initialiseFacetToggle();
   }, true);
 
+
+  // terms in modal...
   document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
-    const { id, facet, term } = e.detail;
-    if (id) {
+    const { id, facet, term, param_name } = e.detail;
+    // if (id) {
+      // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
         document.querySelector(`div[data-id='${id}']`).remove();
       } else {
         const newTerm = document.createElement('DIV');
-        newTerm.innerHTML = termHTML(id, facet, term);
+        newTerm.innerHTML = termButtonHTML(id, facet, term);
         newTerm.onclick = () => {
-          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
-          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
+          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, param_name }));
+          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, param_name }));
         };
         e.target.appendChild(newTerm);
       }
-    }
-    updatedSearch();
+    // }
+    // updatedSearch();
   });
 
   document.onclick = (e) => {
@@ -139,8 +153,8 @@ const initialiseFacetOverlay = () => {
     if (e.target.classList.contains(termCheckboxClass)) {
       const parent = e.target.classList.contains(termCheckboxClass) ?
         e.target.parentElement : e.target.parentElement.parentElement.parentElement;
-      termList.dispatchEvent(newtermToggleEvent(parent.dataset));
-      parent.dispatchEvent(newtermToggleEvent(parent.dataset));
+      termList.dispatchEvent(newTermToggleEvent(parent.dataset));
+      parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
   };
 
