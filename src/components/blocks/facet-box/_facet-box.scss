@@ -212,6 +212,12 @@
   }
 
   &__term {
+    &-more {
+      font-weight: 600;
+      margin-top: 10px;
+      text-decoration: underline;
+    }
+
     @include typeSetting(3, light);
 
     border: solid themeColor(silent-green) 1px;

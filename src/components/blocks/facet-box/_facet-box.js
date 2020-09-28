@@ -8,10 +8,8 @@ const termClass = 'b-facet-box__term';
 const termListClass = `${termClass}-list`;
 const termList = document.querySelector(`.${termListClass}`);
 const termCheckboxClass = `${facetClass}-term-toggle-checkbox`;
-// const termTickClass = `${facetClass}-term-toggle-tick`;
 
 const facetCloseClass = 'b-facet-box__close-button';
-
 
 const termButtonHTML = (id, facet, term) => `
   <div data-id="${id}" class="b-facet-box__term">
@@ -21,9 +19,19 @@ const termButtonHTML = (id, facet, term) => `
   </div>
 `;
 
-// <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
-const termCheckboxHTML = (facet, paramName, term, value, count) => `
-  <li class="b-facet-box__facet-term-toggle" data-paramName="${paramName}" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}" data-value="${value}">
+const facetsWithIndex = {};
+
+const termCheckbox = (facet, paramName, term, value, count) => {
+  const checkbox = document.createElement('LI');
+  checkbox.className = 'b-facet-box__facet-term-toggle';
+  checkbox.dataset.id = `${facet}-${value}`;
+  checkbox.dataset.facet = facet;
+  checkbox.dataset.paramName = paramName;
+  checkbox.dataset.term = term;
+  checkbox.dataset.value = value;
+  checkbox.dataset.count = count;
+
+  checkbox.innerHTML = `
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
@@ -35,74 +43,86 @@ const termCheckboxHTML = (facet, paramName, term, value, count) => `
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
-  </li>
-`;
+  `;
+
+  checkbox.addEventListener('termToggle', (e) => {
+    if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
+      e.target.querySelector('.b-facet-box__hidden-input').remove();
+    } else {
+      const newInput = document.createElement('INPUT');
+      newInput.className = 'b-facet-box__hidden-input';
+      newInput.type = 'hidden';
+      newInput.name = e.target.dataset.paramname;
+      newInput.value = e.target.dataset.value;
+      e.target.appendChild(newInput);
+    }
+    e.target.querySelector(`.${facetTermTick}`).classList.toggle(
+      `${facetTermTick}--active`
+    );
+  });
+
+  return checkbox;
+};
 
 const facetHTML = facet => `
   <div class="b-facet-box__facet-text">
     ${facet}
   </div>
-  <ul class="b-facet-box__facet-term-container"></ul>
+  <ul data-facet="${facet}" class="b-facet-box__facet-term-container">
+    <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
+  </ul>
 `;
 
-// const inputHTML = (paramName, value) => `
-//   <input class="b-facet-box__hidden-input" type="hidden" name="${paramName}" value="${value}">
-// `;
+const createFacets = () => {
+  const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
 
+  Object.values(facetsWithIndex).forEach(({ facet, terms, paramName, index }) => {
+    const newFacet = document.createElement('DIV');
+    newFacet.className = 'b-facet-box__facet';
+    newFacet.innerHTML = facetHTML(facet);
 
-const createFacet = ({ facet, paramName, terms }) => {
-  const newFacet = document.createElement('DIV');
-  newFacet.className = 'b-facet-box__facet';
-  newFacet.innerHTML = facetHTML(facet);
-  terms.forEach(({ term, count, value }) => {
-    newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML =
-     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML + termCheckboxHTML(facet, paramName, term, value, count);
+    newFacet.addEventListener('click', (e) => {
+      if (e.target.classList.contains(facetTextClass)) {
+        e.target.classList.toggle(`${e.target.classList[0]}--active`);
+        e.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
+      }
+    });
+
+    terms.slice(index, index + 5).forEach(({ term, count, value }) => {
+      newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
+    });
+    facetsWithIndex[facet].index += 5;
+    newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
+    newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+    facetBoxContainer.appendChild(newFacet);
   });
-
-  return newFacet.outerHTML;
 };
 
-// obsolete i think because of new search form...
-// const updatedSearch = () => {
-//   const detail = Array.from(
-//     document.querySelectorAll(`.${termClass}`)).map(el => JSON.parse(JSON.stringify(el.dataset))
-//   );
-//   document.querySelector('.b-facet-box').dispatchEvent(
-//     new CustomEvent('updatedSearch', {
-//       detail,
-//       bubbles: true
-//     })
-//   );
-// };
-
-const initialiseFacetToggle = () => {
-  // this just opens and closes each facet list... not very complicated
-  Array.from(document.querySelectorAll(`.${facetClass}`)).forEach((el) => {
-    el.addEventListener('facetToggle', (e) => {
-      Array.from(e.target.children).forEach((ell) => {
-        ell.classList.toggle(`${ell.classList[0]}--active`);
-      });
-    });
+const revealMoreFacets = (e) => {
+  e.preventDefault();
+  const linkEl = e.target;
+  const facetContainer = e.target.parentNode;
+  const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset['facet']];
+  e.target.remove();
+  terms.slice(index, index + 5).forEach(({ term, count, value }) => {
+    facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
   });
+  facetsWithIndex[facet].index += 5;
+  if (facetsWithIndex[facet].index !== terms.length) {
+    facetContainer.appendChild(linkEl);
+  }
+}
 
-  // this triggers checkmarks for each term and also changes value
-  Array.from(document.querySelectorAll(`.${facetTerm}`)).forEach((el) => {
-    el.addEventListener('termToggle', (e) => {
-      if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
-        e.target.querySelector('.b-facet-box__hidden-input').remove();
-      } else {
-        const newInput = document.createElement('INPUT');
-        newInput.className = 'b-facet-box__hidden-input';
-        newInput.type = 'hidden';
-        newInput.name = e.target.dataset.paramname;
-        newInput.value = e.target.dataset.value;
-        e.target.appendChild(newInput);
-      }
-      e.target.querySelector(`.${facetTermTick}`).classList.toggle(
-        `${facetTermTick}--active`
-      );
-    });
-  });
+const updatedSearch = () => {
+  const detail = Array.from(
+    document.querySelectorAll(`.${termClass}`)).map(el => JSON.parse(JSON.stringify(el.dataset))
+  );
+  document.querySelector('.b-facet-box').dispatchEvent(
+    new CustomEvent('updatedSearch', {
+      detail,
+      bubbles: true
+    })
+  );
 };
 
 const newTermToggleEvent = detail => new CustomEvent('termToggle', {
@@ -111,25 +131,23 @@ const newTermToggleEvent = detail => new CustomEvent('termToggle', {
 });
 
 const initialiseFacetOverlay = () => {
-  /* might change later but basic implemenation will probably be similar... */
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
     const { facets } = e.detail;
-    const dateFacet = document.querySelector('.b-facet-box__facet-date').outerHTML;
-    document.querySelector('.b-facet-box__facet-container').innerHTML = '';
+
     facets.forEach((facet) => {
-      document.querySelector('.b-facet-box__facet-container').innerHTML =
-        document.querySelector('.b-facet-box__facet-container').innerHTML + createFacet(facet);
+      Object.assign(facetsWithIndex, {
+        [facet.facet]: Object.assign(facet, { index: 0 })
+      });
     });
-    document.querySelector('.b-facet-box__facet-container').innerHTML =
-      document.querySelector('.b-facet-box__facet-container').innerHTML + dateFacet;
-    initialiseFacetToggle();
+
+    const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
+    facetBoxContainer.innerHTML = '';
+
+    createFacets();
   }, true);
 
-
-  // terms in modal...
-  document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
-    const { id, facet, term, paramName } = e.detail;
-    // if (id) {
+  const toggleTerm = ({ id, facet, term, paramName}) => {
+    if (id) {
       // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
         document.querySelector(`div[data-id='${id}']`).remove();
@@ -140,10 +158,15 @@ const initialiseFacetOverlay = () => {
           document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
           document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
         };
-        e.target.appendChild(newTerm);
+        termList.appendChild(newTerm);
       }
-    // }
-    // updatedSearch();
+    }
+  }
+
+  // terms in modal...
+  document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
+    toggleTerm(e.detail);
+    updatedSearch();
   });
 
   document.onclick = (e) => {
@@ -153,23 +176,16 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    if (e.target.classList.contains(facetTextClass)) {
-      e.target.parentElement.dispatchEvent(new Event('facetToggle', {
-        bubbles: true
-      }));
-    }
-
     if (e.target.classList.contains(termCheckboxClass)) {
+
       const parent = e.target.classList.contains(termCheckboxClass) ?
         e.target.parentElement : e.target.parentElement.parentElement.parentElement;
+
       termList.dispatchEvent(newTermToggleEvent(parent.dataset));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
   };
-
-  initialiseFacetToggle();
 };
-
 
 (() => {
   if (document.querySelector('.b-facet-box')) {

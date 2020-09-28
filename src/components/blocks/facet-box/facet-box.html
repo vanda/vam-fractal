@@ -1,42 +1,48 @@
 {% if testEvent %}
   <button class="add-facet-button" > add facets </button>
   <script type="text/javascript">
-    document.onload = document.querySelector(".add-facet-button").onclick = e => {
-      document.querySelector('.b-facet-box').dispatchEvent(
-        new CustomEvent('newFacets', {
-          detail: {
-            facets: [
-              {
-                facet: 'Facet 1',
-                paramName: 'facet_1_id',
-                terms: [
-                  {
-                    term: 'Term 1',
-                    count: '< 10000',
-                    value: 'T1'
-                  },
-                  {
-                    term: 'Term 2',
-                    count: '< 10000',
-                    value: 'T2'
-                  },
-                  {
-                    term: 'Term 3',
-                    count: '< 10000',
-                    value: 'T3'
-                  }
-                ]
-              }
-            ]
-          }
-        })
-      )
-      Array.from(document.querySelectorAll('.b-facet-box__facet-term-toggle')).forEach(el => {
-        el.onclick = () => {
-          Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value));
-        };
-      });
-    }
+    document.onload = (() => {
+
+      window.test = 'FASIKAJNSDASDOIUNA';
+
+      document.querySelector(".add-facet-button").onclick = e => {
+        document.querySelector('.b-facet-box').dispatchEvent(
+          new CustomEvent('newFacets', {
+            detail: {
+              facets: [
+                {
+                  facet: 'Facet 1',
+                  paramName: 'facet_1_id',
+                  terms: (new Array(20).fill(null)).map((x, i) => {
+                    return {
+                      term: `Term ${i}`,
+                      count: '< 10000',
+                      value: `T1${i}`
+                    }
+                  })
+                },
+                {
+                  facet: 'Facet 2',
+                  paramName: 'facet_1_id',
+                  terms: (new Array(20).fill(null)).map((x, i) => {
+                    return {
+                      term: `Term ${i}`,
+                      count: '< 10000',
+                      value: `T2${i}`
+                    }
+                  })
+                }
+              ]
+            }
+          })
+        )
+        Array.from(document.querySelectorAll('.b-facet-box__facet-term-toggle')).forEach(el => {
+          el.onclick = () => {
+            Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value));
+          };
+        });
+      }
+    })();
   </script>
 {% endif %}
 
