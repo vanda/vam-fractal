@@ -24,7 +24,7 @@ const termButtonHTML = (id, facet, term) => `
 const termCheckbox = (facet, paramName, term, value, count) => {
   const checkbox = document.createElement('LI');
   checkbox.className = 'b-facet-box__facet-term-toggle';
-  checkbox.dataset.id = `${facet}-${value}`;
+  checkbox.dataset.id = `${paramName}-${value}`;
   checkbox.dataset.facet = facet;
   checkbox.dataset.paramName = paramName;
   checkbox.dataset.term = term;
@@ -152,7 +152,8 @@ const initialiseFacetOverlay = () => {
     });
 
     if (window.active_facets) {
-      window.active_facets.forEach(facet_id => {
+      // is a set...
+      Array.from(window.active_facets).forEach(facet_id => {
         const target = document.querySelector(`li[data-id='${facet_id}'`);
         target.dispatchEvent(newTermToggleEvent(target.dataset));
         document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
