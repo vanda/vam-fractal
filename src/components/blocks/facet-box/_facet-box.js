@@ -151,6 +151,8 @@ const initialiseFacetOverlay = () => {
       toggleTerm(e.detail);
     });
 
+    console.log(window.active_facets)
+
     if (window.active_facets) {
 
       console.log('active facet check...')
