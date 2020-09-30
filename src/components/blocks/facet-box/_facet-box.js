@@ -155,9 +155,11 @@ const initialiseFacetOverlay = () => {
       // is a set...
       Array.from(activeFacets).forEach(facet_id => {
         const target = document.querySelector(`li[data-id='${facet_id}'`);
-        target.parentElement.parentElement.querySelector('.b-facet-box__facet-text').click();
-        target.dispatchEvent(newTermToggleEvent(target.dataset));
-        document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
+        if (target) {
+          target.parentElement.parentElement.querySelector('.b-facet-box__facet-text').click();
+          target.dispatchEvent(newTermToggleEvent(target.dataset));
+          document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
+        }
       });
     }
 
