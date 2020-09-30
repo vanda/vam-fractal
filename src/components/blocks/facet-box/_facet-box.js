@@ -132,7 +132,7 @@ const initialiseFacetOverlay = () => {
     // stop update search firing until toggled the terms correctly!!!
     e.target.removeEventListener('termToggle', dispatchUpdatedSearch);
 
-    const { facets } = e.detail;
+    const { facets, activeFacets } = e.detail;
 
     facets.forEach((facet) => {
       Object.assign(facetsWithIndex, {
@@ -151,15 +151,11 @@ const initialiseFacetOverlay = () => {
       toggleTerm(e.detail);
     });
 
-    console.log(window.active_facets)
-
-    if (window.active_facets) {
-
-      console.log('active facet check...')
-
+    if (activeFacets) {
       // is a set...
-      Array.from(window.active_facets).forEach(facet_id => {
+      Array.from(activeFacets).forEach(facet_id => {
         const target = document.querySelector(`li[data-id='${facet_id}'`);
+        target.parentElement.parentElement.querySelector('.b-facet-box__facet-text').click();
         target.dispatchEvent(newTermToggleEvent(target.dataset));
         document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
       });

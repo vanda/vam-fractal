@@ -18,6 +18,7 @@
         document.querySelector('.b-facet-box').dispatchEvent(
           new CustomEvent('newFacets', {
             detail: {
+              activeFacets: window.active_facets,
               facets: [
                 {
                   facet: 'Facet 1',
