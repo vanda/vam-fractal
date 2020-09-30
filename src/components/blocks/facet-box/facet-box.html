@@ -3,7 +3,13 @@
   <script type="text/javascript">
     document.onload = (() => {
 
-      window.test = 'FASIKAJNSDASDOIUNA';
+      window.active_facets = [
+        'Facet 1-T10'
+      ];
+
+      document.body.addEventListener('updatedSearch', (e) => {
+        console.log('recieved the updated search event');
+      });
 
       document.querySelector(".add-facet-button").onclick = e => {
         document.querySelector('.b-facet-box').dispatchEvent(

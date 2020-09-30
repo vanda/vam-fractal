@@ -11,6 +11,8 @@ const termCheckboxClass = `${facetClass}-term-toggle-checkbox`;
 
 const facetCloseClass = 'b-facet-box__close-button';
 
+const facetsWithIndex = {};
+
 const termButtonHTML = (id, facet, term) => `
   <div data-id="${id}" class="b-facet-box__term">
     <span class="b-facet-box__term-text">
@@ -18,8 +20,6 @@ const termButtonHTML = (id, facet, term) => `
     </span>
   </div>
 `;
-
-const facetsWithIndex = {};
 
 const termCheckbox = (facet, paramName, term, value, count) => {
   const checkbox = document.createElement('LI');
@@ -52,7 +52,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
       const newInput = document.createElement('INPUT');
       newInput.className = 'b-facet-box__hidden-input';
       newInput.type = 'hidden';
-      newInput.name = e.target.dataset.paramname;
+      newInput.name = e.target.dataset.paramName;
       newInput.value = e.target.dataset.value;
       e.target.appendChild(newInput);
     }
@@ -113,25 +113,20 @@ const revealMoreFacets = (e) => {
   }
 }
 
-const updatedSearch = () => {
-  const detail = Array.from(
-    document.querySelectorAll(`.${termClass}`)).map(el => JSON.parse(JSON.stringify(el.dataset))
-  );
-  document.querySelector('.b-facet-box').dispatchEvent(
-    new CustomEvent('updatedSearch', {
-      detail,
-      bubbles: true
-    })
-  );
-};
-
-const newTermToggleEvent = detail => new CustomEvent('termToggle', {
+const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termToggle', {
   detail,
-  bubbles: true
+  bubbles
 });
 
 const initialiseFacetOverlay = () => {
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
+    const dispatchUpdatedSearch = (e) => {
+      e.target.dispatchEvent(new Event('updatedSearch', { bubbles: true }));
+    }
+
+    // stop update search firing until toggled the terms correctly!!!
+    e.target.removeEventListener('termToggle', dispatchUpdatedSearch);
+
     const { facets } = e.detail;
 
     facets.forEach((facet) => {
@@ -144,6 +139,22 @@ const initialiseFacetOverlay = () => {
     facetBoxContainer.innerHTML = '';
 
     createFacets();
+
+    // terms in modal...
+    document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
+      e.stopPropagation();
+      toggleTerm(e.detail);
+    });
+
+    if (window.active_facets) {
+      window.active_facets.forEach(facet_id => {
+        const target = document.querySelector(`li[data-id='${facet_id}'`);
+        target.dispatchEvent(newTermToggleEvent(target.dataset));
+        document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
+      });
+    }
+
+    e.target.addEventListener('termToggle', dispatchUpdatedSearch);
   }, true);
 
   const toggleTerm = ({ id, facet, term, paramName}) => {
@@ -163,12 +174,6 @@ const initialiseFacetOverlay = () => {
     }
   }
 
-  // terms in modal...
-  document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
-    toggleTerm(e.detail);
-    updatedSearch();
-  });
-
   document.onclick = (e) => {
     if (e.target.classList.contains(facetCloseClass)) {
       e.target.dispatchEvent(new Event('closeFacetOverlay', {
@@ -177,11 +182,10 @@ const initialiseFacetOverlay = () => {
     }
 
     if (e.target.classList.contains(termCheckboxClass)) {
-
       const parent = e.target.classList.contains(termCheckboxClass) ?
         e.target.parentElement : e.target.parentElement.parentElement.parentElement;
 
-      termList.dispatchEvent(newTermToggleEvent(parent.dataset));
+      termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
   };
