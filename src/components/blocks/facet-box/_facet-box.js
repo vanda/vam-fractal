@@ -121,7 +121,12 @@ const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termTogg
 const initialiseFacetOverlay = () => {
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
     const dispatchUpdatedSearch = (e) => {
-      e.target.dispatchEvent(new Event('updatedSearch', { bubbles: true }));
+      e.target.dispatchEvent(new CustomEvent('updatedSearch', {
+        detail: {
+          id: e.detail.id
+        },
+        bubbles: true
+      }));
     }
 
     // stop update search firing until toggled the terms correctly!!!
