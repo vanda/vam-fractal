@@ -155,8 +155,11 @@ const initialiseFacetOverlay = () => {
       // is a set...
       Array.from(activeFacets).forEach(facet_id => {
         const target = document.querySelector(`li[data-id='${facet_id}'`);
+        const facet_text = target.parentElement.parentElement.querySelector('.b-facet-box__facet-text');
         if (target) {
-          target.parentElement.parentElement.querySelector('.b-facet-box__facet-text').click();
+          if (!(facet_text.classList.contains('.b-facet-box__facet-text--active'))) {
+            facet_text.click();
+          }
           target.dispatchEvent(newTermToggleEvent(target.dataset));
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         }
