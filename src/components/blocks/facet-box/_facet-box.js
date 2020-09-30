@@ -152,6 +152,9 @@ const initialiseFacetOverlay = () => {
     });
 
     if (window.active_facets) {
+
+      console.log('active facet check...')
+
       // is a set...
       Array.from(window.active_facets).forEach(facet_id => {
         const target = document.querySelector(`li[data-id='${facet_id}'`);
