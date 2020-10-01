@@ -92,6 +92,8 @@ const createFacets = (activeFacets) => {
 
     const termValues = terms.map(t => t.value);
 
+    console.log(facetToTerm[paramName]);
+
     let newIndex = (facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
       const test = termValues.indexOf(term);
       return current > test ? current : test
