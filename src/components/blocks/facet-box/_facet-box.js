@@ -97,6 +97,8 @@ const createFacets = (activeFacets) => {
       return current > test ? current : test
     }, 5);
 
+    console.log('WHAT')
+
     terms.slice(index, newIndex + 5).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
     });
