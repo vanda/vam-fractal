@@ -68,14 +68,15 @@ const facetHTML = facet => `
 
 const createFacets = (activeFacets) => {
   const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
-
-  console.log(Array.from(activeFacets));
-
   const facetToTerm = Array.from(activeFacets).reduce((res, termfacet) => {
     const facet = termfacet.split('-')[0];
     const term = termfacet.split('-')[1];
 
-    res[facet] = res[facet] && res[facet].push(term) || [term];
+    if (res[facet]) {
+      res[facet].push(term)
+    } else {
+      res[facet] = [term];
+    }
 
     return res;
   }, {});
@@ -93,10 +94,6 @@ const createFacets = (activeFacets) => {
     });
 
     const termValues = terms.map(t => t.value);
-
-    console.log(facetToTerm);
-
-    console.log(facetToTerm[paramName]);
 
     let newIndex = (facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
       const test = termValues.indexOf(term);
