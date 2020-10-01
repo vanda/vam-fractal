@@ -138,7 +138,7 @@ const initialiseFacetOverlay = () => {
     }
 
     // stop update search firing until toggled the terms correctly!!!
-    e.target.removeEventListener('termToggle', dispatchUpdatedSearch);
+    e.target.removeEventListener('termToggle', dispatchUpdatedSearch, true);
 
     const { facets, activeFacets } = e.detail;
 
@@ -179,7 +179,7 @@ const initialiseFacetOverlay = () => {
       });
     }
 
-    e.target.addEventListener('termToggle', dispatchUpdatedSearch);
+    e.target.addEventListener('termToggle', dispatchUpdatedSearch, true);
   }, true);
 
   const toggleTerm = ({ id, facet, term, paramName}) => {
