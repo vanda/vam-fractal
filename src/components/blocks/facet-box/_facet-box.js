@@ -112,16 +112,8 @@ const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termTogg
 });
 
 const initialiseFacetOverlay = () => {
+
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
-    const dispatchUpdatedSearch = (e) => {
-      e.target.dispatchEvent(new CustomEvent('updatedSearch', {
-        bubbles: true
-      }));
-    }
-
-    // stop update search firing until toggled the terms correctly!!!
-    e.target.removeEventListener('boxChecked', dispatchUpdatedSearch, true);
-
     const { facets, activeFacets } = e.detail;
 
     facets.forEach((facet) => {
@@ -146,22 +138,11 @@ const initialiseFacetOverlay = () => {
       Array.from(activeFacets).forEach(facet_id => {
         const target = document.querySelector(`li[data-id='${facet_id}'`);
         if (target) {
-          const facet_text = target.parentElement.parentElement.querySelector('.b-facet-box__facet-text');
-          if (!(facet_text.classList.contains('.b-facet-box__facet-text--active'))) {
-            facet_text.click();
-          }
-          target.dispatchEvent(newTermToggleEvent(Object.assign(
-            target.dataset,
-            {
-              initialiser: true
-            }
-          )));
+          target.dispatchEvent(newTermToggleEvent(target.dataset));
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         }
       });
     }
-
-    e.target.addEventListener('boxChecked', dispatchUpdatedSearch, true);
   }, true);
 
   const toggleTerm = ({ id, facet, term, paramName}) => {
