@@ -66,8 +66,17 @@ const facetHTML = facet => `
   </ul>
 `;
 
-const createFacets = () => {
+const createFacets = (activeFacets) => {
   const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
+
+  const facetToTerm = Array.from(activeFacets).reduce((res, termfacet) => {
+    const facet = termfacet.split('-')[0];
+    const term = termfacet.split('-')[1];
+
+    res[facet] = res[facet] && res[facet].push(term) || [term];
+
+    return res;
+  }, {});
 
   Object.values(facetsWithIndex).forEach(({ facet, terms, paramName, index }) => {
     const newFacet = document.createElement('DIV');
@@ -81,12 +90,24 @@ const createFacets = () => {
       }
     });
 
-    terms.slice(index, index + 5).forEach(({ term, count, value }) => {
+    const termValues = terms.map(t => t.value);
+
+    const newIndex = facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
+      const test = termValues.indexOf(term);
+      return current > test ? current : test
+    }, 5);
+
+    terms.slice(index, newIndex + 5).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
     });
-    facetsWithIndex[facet].index += 5;
-    newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
-    newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+
+    facetsWithIndex[facet].index += (5 + newIndex);
+
+    if (facetsWithIndex[facet].index !== terms.length) {
+      newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
+      newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+    }
+
     facetBoxContainer.appendChild(newFacet);
   });
 };
@@ -125,7 +146,7 @@ const initialiseFacetOverlay = () => {
     const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
     facetBoxContainer.innerHTML = '';
 
-    createFacets();
+    createFacets(activeFacets);
 
     // terms in modal...
     document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
