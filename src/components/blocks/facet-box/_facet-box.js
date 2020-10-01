@@ -92,14 +92,14 @@ const createFacets = (activeFacets) => {
 
     const termValues = terms.map(t => t.value);
 
-    const newIndex = facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
+    let newIndex = (facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
       const test = termValues.indexOf(term);
       return current > test ? current : test
-    }, 5);
+    }, 5)) || 0;
 
-    console.log('WHAT')
+    newIndex = (Math.ceil(newIndex/5)*5) + 5;
 
-    terms.slice(index, newIndex + 5).forEach(({ term, count, value }) => {
+    terms.slice(index, newIndex).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
     });
 
