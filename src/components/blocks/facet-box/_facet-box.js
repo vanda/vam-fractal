@@ -47,15 +47,20 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 
   checkbox.addEventListener('termToggle', (e) => {
     if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
-      e.target.querySelector('.b-facet-box__hidden-input').remove();
+      if (e.target.querySelector('.b-facet-box__hidden-input')) {
+        e.target.querySelector('.b-facet-box__hidden-input').remove();
+      }
     } else {
-      const newInput = document.createElement('INPUT');
-      newInput.className = 'b-facet-box__hidden-input';
-      newInput.type = 'hidden';
-      newInput.name = e.target.dataset.paramName;
-      newInput.value = e.target.dataset.value;
-      e.target.appendChild(newInput);
+      if (!e.target.dataset.initialiser) {
+        const newInput = document.createElement('INPUT');
+        newInput.className = 'b-facet-box__hidden-input';
+        newInput.type = 'hidden';
+        newInput.name = e.target.dataset.paramName;
+        newInput.value = e.target.dataset.value;
+        e.target.appendChild(newInput);
+      }
     }
+
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
@@ -160,7 +165,12 @@ const initialiseFacetOverlay = () => {
           if (!(facet_text.classList.contains('.b-facet-box__facet-text--active'))) {
             facet_text.click();
           }
-          target.dispatchEvent(newTermToggleEvent(target.dataset));
+          target.dispatchEvent(newTermToggleEvent(Object.assign(
+            target.dataset,
+            {
+              initialiser: true
+            }
+          )));
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         }
       });
