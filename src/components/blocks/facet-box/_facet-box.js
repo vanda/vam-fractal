@@ -43,24 +43,27 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
+    <input class="b-facet-box__hidden-input" type="checkbox" name="${paramName}" value="${value}">
   `;
 
   checkbox.addEventListener('termToggle', (e) => {
-    if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
-      if (e.target.querySelector('.b-facet-box__hidden-input')) {
-        e.target.querySelector('.b-facet-box__hidden-input').remove();
-      }
-    } else {
-      if (!e.target.dataset.initialiser) {
-        const newInput = document.createElement('INPUT');
-        newInput.className = 'b-facet-box__hidden-input';
-        newInput.type = 'hidden';
-        newInput.name = e.target.dataset.paramName;
-        newInput.value = e.target.dataset.value;
-        e.target.appendChild(newInput);
-      }
-    }
+    // if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
+    //   if (e.target.querySelector('.b-facet-box__hidden-input')) {
+    //     e.target.querySelector('.b-facet-box__hidden-input').remove();
+    //   }
+    // } else {
+    //   if (!e.target.dataset.initialiser) {
 
+    //     // const newInput = document.createElement('INPUT');
+    //     // newInput.className = 'b-facet-box__hidden-input';
+    //     // newInput.type = 'hidden';
+    //     // newInput.name = e.target.dataset.paramName;
+    //     // newInput.value = e.target.dataset.value;
+    //     // e.target.appendChild(newInput);
+    //   }
+    // }
+
+    e.target.querySelector(".b-facet-box__hidden-input").checked = !e.target.querySelector(".b-facet-box__hidden-input").checked;
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );

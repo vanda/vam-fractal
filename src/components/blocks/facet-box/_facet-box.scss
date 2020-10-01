@@ -17,6 +17,10 @@
     position: relative;
   }
 
+  &__hidden-input {
+    display: none;
+  }
+
   &__close {
     &-button {
       border: solid .7px #ceffd6;
