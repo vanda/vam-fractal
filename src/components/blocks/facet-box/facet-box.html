@@ -12,6 +12,7 @@
       document.body.addEventListener('updatedSearch', (e) => {
         console.log(e);
         console.log('recieved the updated search event');
+        Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value, el.checked))
       });
 
       document.querySelector(".add-facet-button").onclick = e => {
@@ -46,11 +47,6 @@
             }
           })
         )
-        Array.from(document.querySelectorAll('.b-facet-box__facet-term-toggle')).forEach(el => {
-          el.onclick = () => {
-            Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value, el.checked));
-          };
-        });
       }
     })();
   </script>

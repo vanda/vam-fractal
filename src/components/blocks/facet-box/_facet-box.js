@@ -47,26 +47,11 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   `;
 
   checkbox.addEventListener('termToggle', (e) => {
-    // if (e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`)) {
-    //   if (e.target.querySelector('.b-facet-box__hidden-input')) {
-    //     e.target.querySelector('.b-facet-box__hidden-input').remove();
-    //   }
-    // } else {
-    //   if (!e.target.dataset.initialiser) {
-
-    //     // const newInput = document.createElement('INPUT');
-    //     // newInput.className = 'b-facet-box__hidden-input';
-    //     // newInput.type = 'hidden';
-    //     // newInput.name = e.target.dataset.paramName;
-    //     // newInput.value = e.target.dataset.value;
-    //     // e.target.appendChild(newInput);
-    //   }
-    // }
-
     e.target.querySelector(".b-facet-box__hidden-input").checked = !e.target.querySelector(".b-facet-box__hidden-input").checked;
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
+    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked'));
   });
 
   return checkbox;
@@ -130,15 +115,12 @@ const initialiseFacetOverlay = () => {
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
     const dispatchUpdatedSearch = (e) => {
       e.target.dispatchEvent(new CustomEvent('updatedSearch', {
-        detail: {
-          id: e.detail.id
-        },
         bubbles: true
       }));
     }
 
     // stop update search firing until toggled the terms correctly!!!
-    e.target.removeEventListener('termToggle', dispatchUpdatedSearch, true);
+    e.target.removeEventListener('boxChecked', dispatchUpdatedSearch, true);
 
     const { facets, activeFacets } = e.detail;
 
@@ -179,7 +161,7 @@ const initialiseFacetOverlay = () => {
       });
     }
 
-    e.target.addEventListener('termToggle', dispatchUpdatedSearch, true);
+    e.target.addEventListener('boxChecked', dispatchUpdatedSearch, true);
   }, true);
 
   const toggleTerm = ({ id, facet, term, paramName}) => {
