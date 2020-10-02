@@ -5,16 +5,16 @@ const loadSuggestions = (searchForm) => {
   if (!searchForm._props.storedSuggestions
     || now.getTime() > searchForm._props.storedSuggestions.expires) {
     const promise = fetch(searchForm._props.suggestionsTop, { cache: 'no-cache' })
-    .then(response => response.json())
-    .then((data) => {
-      const suggestions = {
-        expires: now.getTime() + (15 * 60000),
-        data
-      };
-      searchForm._props.storedSuggestions = suggestions;
-      sessionStorage.setItem(`storedSuggestions_${searchForm._props.type}`, JSON.stringify(searchForm._props.storedSuggestions));
-    })
-    .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+      .then(response => response.json())
+      .then((data) => {
+        const suggestions = {
+          expires: now.getTime() + (15 * 60000),
+          data
+        };
+        searchForm._props.storedSuggestions = suggestions;
+        sessionStorage.setItem(`storedSuggestions_${searchForm._props.type}`, JSON.stringify(searchForm._props.storedSuggestions));
+      })
+      .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
     return promise;
   }
   return Promise.resolve(true);
@@ -111,56 +111,56 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     };
 
     loadSuggestions(searchForm)
-    .then(() => {
-      let aborter = null;
-      searchInput.addEventListener('input', () => {
-        searchForm.removeAttribute('suggesting');
-        suggestionsEl.innerHTML = '';
-        if (searchInput.value.length) {
-          const term = searchInput.value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-          /* title (or one of the pipe delimited terms for hot-topics)
-           * begins with search term */
-          let regExStart = '(^|\\|)';
-          if (searchInput.value.length > 2) {
-            /* any word in the title begins with search term
-             * (all hot-topic terms get tested since pipe delimiters count as word-boundaries) */
-            regExStart = '\\b';
-          }
-          const regEx = new RegExp(`${regExStart}${term}.*`, 'i');
-          Array.from(searchForm._props.storedSuggestions.data, (result) => {
-            Array.from(result.suggestions, (suggestion) => {
-              const name = suggestion.displayName;
-              if (regEx.test(name)) {
-                searchForm.setAttribute('suggesting', true);
-                autoSuggest(searchInput.value, suggestion);
-              }
+      .then(() => {
+        let aborter = null;
+        searchInput.addEventListener('input', () => {
+          searchForm.removeAttribute('suggesting');
+          suggestionsEl.innerHTML = '';
+          if (searchInput.value.length) {
+            const term = searchInput.value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+            /* title (or one of the pipe delimited terms for hot-topics)
+             * begins with search term */
+            let regExStart = '(^|\\|)';
+            if (searchInput.value.length > 2) {
+              /* any word in the title begins with search term
+               * (all hot-topic terms get tested since pipe delimiters count as word-boundaries) */
+              regExStart = '\\b';
+            }
+            const regEx = new RegExp(`${regExStart}${term}.*`, 'i');
+            Array.from(searchForm._props.storedSuggestions.data, (result) => {
+              Array.from(result.suggestions, (suggestion) => {
+                const name = suggestion.displayName;
+                if (regEx.test(name)) {
+                  searchForm.setAttribute('suggesting', true);
+                  autoSuggest(searchInput.value, suggestion);
+                }
+                return true;
+              });
               return true;
             });
-            return true;
-          });
-          if (searchInput.value.length > 4) {
-            // cancel pending request if any
-            if (aborter) aborter.abort();
-            // make our request cancellable
-            aborter = new window.AbortController();
-            setTimeout(() => aborter.abort(), 500);
-            fetch(`${searchForm._props.suggestionsAPI}?q=${encodeURI(term)}&limit=10`, { signal: aborter.signal })
-            .then(response => response.json())
-            .then((data) => {
-              if (data.info.totalrecords > 0) {
-                searchForm.setAttribute('suggesting', true);
-                Array.from(data.records, (suggestion) => {
-                  autoSuggest(searchInput.value, suggestion);
-                  return true;
-                });
-              }
-            })
-            .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+            if (searchInput.value.length > 4) {
+              // cancel pending request if any
+              if (aborter) aborter.abort();
+              // make our request cancellable
+              aborter = new window.AbortController();
+              setTimeout(() => aborter.abort(), 500);
+              fetch(`${searchForm._props.suggestionsAPI}?q=${encodeURI(term)}&limit=10`, { signal: aborter.signal })
+                .then(response => response.json())
+                .then((data) => {
+                  if (data.info.totalrecords > 0) {
+                    searchForm.setAttribute('suggesting', true);
+                    Array.from(data.records, (suggestion) => {
+                      autoSuggest(searchInput.value, suggestion);
+                      return true;
+                    });
+                  }
+                })
+                .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+            }
           }
-        }
-      }, false);
-    })
-    .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+        }, false);
+      })
+      .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
 
     Array.from(searchForm.querySelectorAll('.b-search-form__filter-toggle'), (toggle) => {
       toggle.addEventListener('click', () => {

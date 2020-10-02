@@ -58,11 +58,11 @@ if (document.querySelector('.b-search-pagination')) {
       });
 
       if (
-          (numberOfPages - currentButtonIndex >= 3 &&
+        (numberOfPages - currentButtonIndex >= 3 &&
           currentButtonIndex > 2 &&
           currentButtonIndex < numberOfPages - 1) ||
           currentButtonIndex === numberOfPages - 2
-        ) {
+      ) {
         document.querySelector(`.${seperatorClass}${start}`).classList.remove(seperatorClass + start + inactive);
         document.querySelector(`.${seperatorClass}${middle}`).classList.add(seperatorClass + middle + inactive);
         document.querySelector(`.${seperatorClass}${last}`).classList.remove(seperatorClass + last + inactive);

@@ -47,7 +47,7 @@ const dateFacetHTML = () => `
         </button>
       </div>
     </div>
-`
+`;
 
 const termCheckbox = (facet, paramName, term, value, count) => {
   const checkbox = document.createElement('LI');
@@ -75,7 +75,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   `;
 
   checkbox.addEventListener('termToggle', (e) => {
-    e.target.querySelector(".b-facet-box__hidden-input").checked = !e.target.querySelector(".b-facet-box__hidden-input").checked;
+    e.target.querySelector('.b-facet-box__hidden-input').checked = !e.target.querySelector('.b-facet-box__hidden-input').checked;
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
@@ -94,6 +94,22 @@ const facetHTML = facet => `
   </ul>
 `;
 
+const revealMoreFacets = (e) => {
+  e.preventDefault();
+  const linkEl = e.target;
+  const facetContainer = e.target.parentNode;
+  const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset.facet];
+  e.target.remove();
+  terms.slice(index, index + 5).forEach(({ term, count, value }) => {
+    facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
+  });
+  facetsWithIndex[facet].index += 5;
+  if (facetsWithIndex[facet].index !== terms.length) {
+    facetContainer.appendChild(linkEl);
+  }
+};
+
+
 const createFacets = (activeFacets) => {
   const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
   const facetToTerm = Array.from(activeFacets).reduce((res, termfacet) => {
@@ -101,7 +117,7 @@ const createFacets = (activeFacets) => {
     const term = termfacet.split('-')[1];
 
     if (res[facet]) {
-      res[facet].push(term)
+      res[facet].push(term);
     } else {
       res[facet] = [term];
     }
@@ -125,10 +141,10 @@ const createFacets = (activeFacets) => {
 
     let newIndex = (facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
       const test = termValues.indexOf(term);
-      return current > test ? current : test
+      return (current > test ? current : test);
     }, 5)) || 0;
 
-    newIndex = (Math.ceil(newIndex/5)*5) + 5;
+    newIndex = (Math.ceil(newIndex / 5) * 5) + 5;
 
     terms.slice(index, newIndex).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
@@ -145,27 +161,31 @@ const createFacets = (activeFacets) => {
   });
 };
 
-const revealMoreFacets = (e) => {
-  e.preventDefault();
-  const linkEl = e.target;
-  const facetContainer = e.target.parentNode;
-  const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset['facet']];
-  e.target.remove();
-  terms.slice(index, index + 5).forEach(({ term, count, value }) => {
-    facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
-  });
-  facetsWithIndex[facet].index += 5;
-  if (facetsWithIndex[facet].index !== terms.length) {
-    facetContainer.appendChild(linkEl);
-  }
-}
-
 const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termToggle', {
   detail,
   bubbles
 });
 
 const initialiseFacetOverlay = () => {
+  const toggleTerm = ({ id, facet, term, paramName }) => {
+    if (id) {
+      // if term already exists, get rid of it
+      if (document.querySelector(`div[data-id='${id}']`)) {
+        document.querySelector(`div[data-id='${id}']`).remove();
+      } else {
+        const newTerm = document.createElement('DIV');
+        newTerm.dataset.id = id;
+        newTerm.className = 'b-facet-box__term';
+        newTerm.innerHTML = termButtonHTML(facet, term);
+        newTerm.onclick = () => {
+          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
+          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
+        };
+        termList.appendChild(newTerm);
+      }
+    }
+  };
+
   termList.addEventListener('termToggle', (e) => {
     e.stopPropagation();
     toggleTerm(e.detail);
@@ -186,15 +206,13 @@ const initialiseFacetOverlay = () => {
 
     createFacets(activeFacets);
 
-    // terms in modal...
-
     const dateFacet = document.createElement('DIV');
-    dateFacet.className = "b-facet-box__facet b-facet-box__facet-date";
+    dateFacet.className = 'b-facet-box__facet b-facet-box__facet-date';
     dateFacet.innerHTML = dateFacetHTML();
-    dateFacet.addEventListener('click', (e) => {
-      if (e.target.classList.contains(facetTextClass)) {
-        e.target.classList.toggle(`${e.target.classList[0]}--active`);
-        e.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
+    dateFacet.addEventListener('click', (ev) => {
+      if (ev.target.classList.contains(facetTextClass)) {
+        ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
+        ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
     });
 
@@ -202,8 +220,8 @@ const initialiseFacetOverlay = () => {
 
     if (activeFacets) {
       // is a set...
-      Array.from(activeFacets).forEach(facet_id => {
-        const target = document.querySelector(`li[data-id='${facet_id}'`);
+      Array.from(activeFacets).forEach((facetId) => {
+        const target = document.querySelector(`li[data-id='${facetId}'`);
         if (target) {
           target.dispatchEvent(newTermToggleEvent(target.dataset));
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
@@ -211,25 +229,6 @@ const initialiseFacetOverlay = () => {
       });
     }
   }, true);
-
-  const toggleTerm = ({ id, facet, term, paramName}) => {
-    if (id) {
-      // if term already exists, get rid of it
-      if (document.querySelector(`div[data-id='${id}']`)) {
-        document.querySelector(`div[data-id='${id}']`).remove();
-      } else {
-        const newTerm = document.createElement('DIV');
-        newTerm.dataset.id = id;
-        newTerm.className = 'b-facet-box__term';
-        newTerm.innerHTML = termButtonHTML(facet, term);
-        newTerm.onclick = () => {
-          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
-          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
-        };
-        termList.appendChild(newTerm);
-      }
-    }
-  }
 
   document.onclick = (e) => {
     if (e.target.classList.contains(facetCloseClass)) {
