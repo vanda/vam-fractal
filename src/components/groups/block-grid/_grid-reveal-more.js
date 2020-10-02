@@ -46,8 +46,8 @@ if (gridRevealMore.length) {
         const hiddenItems = gridItems.filter(el => el.classList.contains('s-visually-hidden'));
         // in case of column layout, add a colspan separator to preserve item order
         const separator = hiddenItems[0].parentNode.insertBefore(
-                            hiddenItems[0].cloneNode(false), hiddenItems[0]
-                          );
+          hiddenItems[0].cloneNode(false), hiddenItems[0]
+        );
         separator.classList.remove('s-visually-hidden');
         separator.classList.add('b-block-grid__cols-restarter');
         // the big reveal

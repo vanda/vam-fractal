@@ -40,19 +40,19 @@
           deck.setAttribute('active', true);
         };
         shuffler.getData(deck)
-        .then(() => {
-          const slide = deck.firstElementChild;
-          // clone initial html markup for an item to make a whole slide
-          for (let j = 1; j < slideSize; j += 1) {
-            slide.appendChild(itemTemplate.cloneNode(true));
-          }
-          // next slide transitions require an activating/deactivating pair of slides,
-          // plus a next slide ready and waiting (= 3 slides)
-          slide.removeAttribute('active');
-          const activeSlide = shuffler.newSlide(deck);
-          activeSlide.setAttribute('active', true);
-          shuffler.newSlide(deck);
-        });
+          .then(() => {
+            const slide = deck.firstElementChild;
+            // clone initial html markup for an item to make a whole slide
+            for (let j = 1; j < slideSize; j += 1) {
+              slide.appendChild(itemTemplate.cloneNode(true));
+            }
+            // next slide transitions require an activating/deactivating pair of slides,
+            // plus a next slide ready and waiting (= 3 slides)
+            slide.removeAttribute('active');
+            const activeSlide = shuffler.newSlide(deck);
+            activeSlide.setAttribute('active', true);
+            shuffler.newSlide(deck);
+          });
         i += 1;
         return true;
       });
@@ -75,26 +75,26 @@
       if (deck._props.itemsData.length < deck._props.itemsIndex + (2 * deck._props.slideSize)) {
         const dataURI = deck._props.itemsDataFeed.replace(/offset=[^&]+/, `offset=${deck._props.itemsData.length}`);
         const promise = fetch(dataURI)
-        .then(response => response.json())
-        .then((data) => {
+          .then(response => response.json())
+          .then((data) => {
           // deck._props.itemsData = [...deck._props.itemsData, ...data];
-          Array.from(data.records, (record) => {
-            const imgPath = `https://media.vam.ac.uk/media/thira/collection_images/${record.fields.primary_image_id.substring(0, 6)}/${record.fields.primary_image_id}.jpg`;
-            deck._props.itemsData.push(
-              {
-                img: {
-                  srcset: `${imgPath} 320w, ${imgPath} 640w, ${imgPath} 960w`,
-                  src: imgPath,
-                  alt: record.fields.title
-                },
-                title: record.fields.title,
-                href: `http://d3dn4d27rggz6y.cloudfront.net/item/${record.fields.object_number}/index.html`
-              }
-            );
-            return true;
-          });
-        })
-        .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+            Array.from(data.records, (record) => {
+              const imgPath = `https://media.vam.ac.uk/media/thira/collection_images/${record.fields.primary_image_id.substring(0, 6)}/${record.fields.primary_image_id}.jpg`;
+              deck._props.itemsData.push(
+                {
+                  img: {
+                    srcset: `${imgPath} 320w, ${imgPath} 640w, ${imgPath} 960w`,
+                    src: imgPath,
+                    alt: record.fields.title
+                  },
+                  title: record.fields.title,
+                  href: `http://d3dn4d27rggz6y.cloudfront.net/item/${record.fields.object_number}/index.html`
+                }
+              );
+              return true;
+            });
+          })
+          .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
         return promise;
       }
       return Promise.resolve(true);

@@ -8,23 +8,61 @@ const termClass = 'b-facet-box__term';
 const termListClass = `${termClass}-list`;
 const termList = document.querySelector(`.${termListClass}`);
 const termCheckboxClass = `${facetClass}-term-toggle-checkbox`;
-// const termTickClass = `${facetClass}-term-toggle-tick`;
 
 const facetCloseClass = 'b-facet-box__close-button';
 
-const termHTML = (id, facet, term) => `
-  <div data-id="${id}" data-facet="${facet}" data-term="${term}" class="b-facet-box__term">
+const facetsWithIndex = {};
+
+const termButtonHTML = (facet, term) => `
     <span class="b-facet-box__term-text">
         ${facet}: ${term}
     </span>
-  </div>
 `;
 
-const termToggleHTML = (facet, term, count) => `
-  <li class="b-facet-box__facet-term-toggle" data-id="${facet}-${term}" data-facet="${facet}" data-term="${term}">
+const dateFacetHTML = () => `
+    <div class="b-facet-box__facet-text">
+      Dates
+    </div>
+    <div class="b-facet-box__facet-term-container b-facet-box__facet-date-container">
+      <div class="b-facet-box__facet-date-container-start">
+        <label class="b-facet-box__facet-date-label">
+          From year:
+        </label>
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-start">
+      </div>
+      <div class="b-facet-box__facet-date-container-end">
+        <label class="b-facet-box__facet-date-label">
+          To year:
+        </label>
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-end">
+      </div>
+      <div class="b-facet-box__facet-date-container-button">
+        <label class="b-facet-box__facet-date-label">
+          &nbsp;
+        </label>
+        <button class="b-facet-box__facet-date-button">
+          <svg class="b-facet-box__facet-date-button-icon" role="img">
+            <use xlink:href="/assets/svg/svg-template.svg#search"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+`;
+
+const termCheckbox = (facet, paramName, term, value, count) => {
+  const checkbox = document.createElement('LI');
+  checkbox.className = 'b-facet-box__facet-term-toggle';
+  checkbox.dataset.id = `${paramName}-${value}`;
+  checkbox.dataset.facet = facet;
+  checkbox.dataset.paramName = paramName;
+  checkbox.dataset.term = term;
+  checkbox.dataset.value = value;
+  checkbox.dataset.count = count;
+
+  checkbox.innerHTML = `
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-        <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
+        <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
     </a>
     <span class="b-facet-box__facet-term-toggle-text">
@@ -33,95 +71,164 @@ const termToggleHTML = (facet, term, count) => `
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
-  </li>
-`;
+    <input class="b-facet-box__hidden-input" type="checkbox" name="${paramName}" value="${value}">
+  `;
+
+  checkbox.addEventListener('termToggle', (e) => {
+    e.target.querySelector('.b-facet-box__hidden-input').checked = !e.target.querySelector('.b-facet-box__hidden-input').checked;
+    e.target.querySelector(`.${facetTermTick}`).classList.toggle(
+      `${facetTermTick}--active`
+    );
+    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked'));
+  });
+
+  return checkbox;
+};
 
 const facetHTML = facet => `
   <div class="b-facet-box__facet-text">
     ${facet}
   </div>
-  <ul class="b-facet-box__facet-term-container"></ul>
+  <ul data-facet="${facet}" class="b-facet-box__facet-term-container">
+    <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
+  </ul>
 `;
 
-const createFacet = ({ facet, terms }) => {
-  const newFacet = document.createElement('DIV');
-  newFacet.className = 'b-facet-box__facet';
-  newFacet.innerHTML = facetHTML(facet);
-  terms.forEach(({ term, count }) => {
-    newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML =
-     newFacet.querySelector(`.${facetTermContainerClass}`).innerHTML + termToggleHTML(facet, term, count);
+const revealMoreFacets = (e) => {
+  e.preventDefault();
+  const linkEl = e.target;
+  const facetContainer = e.target.parentNode;
+  const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset.facet];
+  e.target.remove();
+  terms.slice(index, index + 5).forEach(({ term, count, value }) => {
+    facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
   });
-
-  return newFacet.outerHTML;
+  facetsWithIndex[facet].index += 5;
+  if (facetsWithIndex[facet].index !== terms.length) {
+    facetContainer.appendChild(linkEl);
+  }
 };
 
-const updatedSearch = () => {
-  const detail = Array.from(
-    document.querySelectorAll(`.${termClass}`)).map(el => JSON.parse(JSON.stringify(el.dataset))
-  );
-  document.querySelector('.b-facet-box').dispatchEvent(
-    new CustomEvent('updatedSearch', {
-      detail,
-      bubbles: true
-    })
-  );
-};
 
-const initialiseFacetToggle = () => {
-  Array.from(document.querySelectorAll(`.${facetClass}`)).forEach((el) => {
-    el.addEventListener('facetToggle', (e) => {
-      Array.from(e.target.children).forEach((ell) => {
-        ell.classList.toggle(`${ell.classList[0]}--active`);
-      });
+const createFacets = (activeFacets) => {
+  const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
+  const facetToTerm = Array.from(activeFacets).reduce((res, termfacet) => {
+    const facet = termfacet.split('-')[0];
+    const term = termfacet.split('-')[1];
+
+    if (res[facet]) {
+      res[facet].push(term);
+    } else {
+      res[facet] = [term];
+    }
+
+    return res;
+  }, {});
+
+  Object.values(facetsWithIndex).forEach(({ facet, terms, paramName, index }) => {
+    const newFacet = document.createElement('DIV');
+    newFacet.className = 'b-facet-box__facet';
+    newFacet.innerHTML = facetHTML(facet);
+
+    newFacet.addEventListener('click', (e) => {
+      if (e.target.classList.contains(facetTextClass)) {
+        e.target.classList.toggle(`${e.target.classList[0]}--active`);
+        e.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
+      }
     });
-  });
 
-  Array.from(document.querySelectorAll(`.${facetTerm}`)).forEach((el) => {
-    el.addEventListener('termToggle', (e) => {
-      e.target.querySelector(`.${facetTermTick}`).classList.toggle(
-        `${facetTermTick}--active`
-      );
+    const termValues = terms.map(t => t.value);
+
+    let newIndex = (facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
+      const test = termValues.indexOf(term);
+      return (current > test ? current : test);
+    }, 5)) || 0;
+
+    newIndex = (Math.ceil(newIndex / 5) * 5) + 5;
+
+    terms.slice(index, newIndex).forEach(({ term, count, value }) => {
+      newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
     });
+
+    facetsWithIndex[facet].index += (5 + newIndex);
+
+    if (facetsWithIndex[facet].index !== terms.length) {
+      newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
+      newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+    }
+
+    facetBoxContainer.appendChild(newFacet);
   });
 };
 
-const newtermToggleEvent = detail => new CustomEvent('termToggle', {
+const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termToggle', {
   detail,
-  bubbles: true
+  bubbles
 });
 
 const initialiseFacetOverlay = () => {
-  /* might change later but basic implemenation will probably be similar... */
-  document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
-    const { facets } = e.detail;
-    const dateFacet = document.querySelector('.b-facet-box__facet-date').outerHTML;
-    document.querySelector('.b-facet-box__facet-container').innerHTML = '';
-    facets.forEach((facet) => {
-      document.querySelector('.b-facet-box__facet-container').innerHTML =
-        document.querySelector('.b-facet-box__facet-container').innerHTML + createFacet(facet);
-    });
-    document.querySelector('.b-facet-box__facet-container').innerHTML =
-      document.querySelector('.b-facet-box__facet-container').innerHTML + dateFacet;
-    initialiseFacetToggle();
-  }, true);
-
-  document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
-    const { id, facet, term } = e.detail;
+  const toggleTerm = ({ id, facet, term, paramName }) => {
     if (id) {
+      // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
         document.querySelector(`div[data-id='${id}']`).remove();
       } else {
         const newTerm = document.createElement('DIV');
-        newTerm.innerHTML = termHTML(id, facet, term);
+        newTerm.dataset.id = id;
+        newTerm.className = 'b-facet-box__term';
+        newTerm.innerHTML = termButtonHTML(facet, term);
         newTerm.onclick = () => {
-          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
-          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newtermToggleEvent({ id, facet, term }));
+          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
+          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
         };
-        e.target.appendChild(newTerm);
+        termList.appendChild(newTerm);
       }
     }
-    updatedSearch();
+  };
+
+  termList.addEventListener('termToggle', (e) => {
+    e.stopPropagation();
+    toggleTerm(e.detail);
   });
+
+  document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
+    const { facets, activeFacets } = e.detail;
+
+    facets.forEach((facet) => {
+      Object.assign(facetsWithIndex, {
+        [facet.facet]: Object.assign(facet, { index: 0 })
+      });
+    });
+
+    const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
+    facetBoxContainer.innerHTML = '';
+    termList.innerHTML = '';
+
+    createFacets(activeFacets);
+
+    const dateFacet = document.createElement('DIV');
+    dateFacet.className = 'b-facet-box__facet b-facet-box__facet-date';
+    dateFacet.innerHTML = dateFacetHTML();
+    dateFacet.addEventListener('click', (ev) => {
+      if (ev.target.classList.contains(facetTextClass)) {
+        ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
+        ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
+      }
+    });
+
+    facetBoxContainer.append(dateFacet);
+
+    if (activeFacets) {
+      // is a set...
+      Array.from(activeFacets).forEach((facetId) => {
+        const target = document.querySelector(`li[data-id='${facetId}'`);
+        if (target) {
+          target.dispatchEvent(newTermToggleEvent(target.dataset));
+          document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
+        }
+      });
+    }
+  }, true);
 
   document.onclick = (e) => {
     if (e.target.classList.contains(facetCloseClass)) {
@@ -130,26 +237,24 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    if (e.target.classList.contains(facetTextClass)) {
-      e.target.parentElement.dispatchEvent(new Event('facetToggle', {
-        bubbles: true
-      }));
-    }
-
     if (e.target.classList.contains(termCheckboxClass)) {
       const parent = e.target.classList.contains(termCheckboxClass) ?
         e.target.parentElement : e.target.parentElement.parentElement.parentElement;
-      termList.dispatchEvent(newtermToggleEvent(parent.dataset));
-      parent.dispatchEvent(newtermToggleEvent(parent.dataset));
+
+      termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
+      parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
   };
-
-  initialiseFacetToggle();
 };
-
 
 (() => {
   if (document.querySelector('.b-facet-box')) {
     initialiseFacetOverlay();
+    if (document.querySelector('.b-facet-box__modal-button-open')) {
+      document.querySelector('.b-facet-box__modal-button-open').addEventListener('click', () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active'));
+    }
+    if (document.querySelector('.b-facet-box__modal-button-close')) {
+      document.querySelector('.b-facet-box__modal-button-close').addEventListener('click', () => document.querySelector('.b-facet-box').classList.remove('b-facet-box--active'));
+    }
   }
 })();

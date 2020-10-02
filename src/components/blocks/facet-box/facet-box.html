@@ -1,43 +1,73 @@
 {% if testEvent %}
   <button class="add-facet-button" > add facets </button>
   <script type="text/javascript">
-    document.onload = document.querySelector(".add-facet-button").onclick = e => {
-      document.querySelector('.b-facet-box').dispatchEvent(
-        new CustomEvent('newFacets', {
-          detail: {
-            facets: [
-              {
-                facet: 'Facet 1',
-                terms: [
-                  {
-                    term: 'Term 1',
-                    count: '< 10000'
-                  },
-                  {
-                    term: 'Term 2',
-                    count: '< 10000'
-                  },
-                  {
-                    term: 'Term 3',
-                    count: '< 10000'
-                  }
-                ]
-              }
-            ]
-          }
-        })
-      )
-    }
+    document.onload = (() => {
+
+      document.body.style.backgroundColor = 'black';
+
+      window.active_facets = new Set();
+
+      window.active_facets.add('facet_1_id-T15');
+      window.active_facets.add('facet_1_id-T10');
+
+      document.body.addEventListener('updatedSearch', (e) => {
+        console.log(e);
+        console.log('recieved the updated search event');
+        Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value, el.checked))
+      });
+
+      document.querySelector(".add-facet-button").onclick = e => {
+        document.querySelector('.b-facet-box').dispatchEvent(
+          new CustomEvent('newFacets', {
+            detail: {
+              activeFacets: window.active_facets,
+              facets: [
+                {
+                  facet: 'Facet 1',
+                  paramName: 'facet_1_id',
+                  terms: (new Array(20).fill(null)).map((x, i) => {
+                    return {
+                      term: `Term ${i}`,
+                      count: '< 10000',
+                      value: `T1${i}`
+                    }
+                  })
+                },
+                {
+                  facet: 'Facet 2',
+                  paramName: 'facet_1_id',
+                  terms: (new Array(20).fill(null)).map((x, i) => {
+                    return {
+                      term: `Term ${i}`,
+                      count: '< 10000',
+                      value: `T2${i}`
+                    }
+                  })
+                }
+              ]
+            }
+          })
+        )
+      }
+    })();
   </script>
+
+  <div class="b-facet-box__modal-button b-facet-box__modal-button-open b-facet-box__open-modal-button">
+     <svg class="b-facet-box__modal-content b-facet-box__modal-content-open" role="img">
+          <use xlink:href="/assets/svg/svg-template.svg#settings"></use>
+      </svg>
+  </div>
+
+  <div class="b-facet-box__container">
 {% endif %}
 
 <div class="b-facet-box">
-  <div class="b-facet-box__close-container">
-    <button class="b-facet-box__close-button">
-       <svg class="b-facet-box__close-content" role="img">
+  <div class="b-facet-box__modal-container b-facet-box__close-container">
+    <div class="b-facet-box__modal-button b-facet-box__modal-button-close b-facet-box__close-button">
+       <svg class="b-facet-box__modal-content b-facet-box__modal-content-close" role="img">
             <use xlink:href="/assets/svg/svg-template.svg#plus"></use>
         </svg>
-    </button>
+    </div>
   </div>
   <div class="b-facet-box__term-list">
   <!--  example
@@ -105,3 +135,7 @@
     </div>
   </div>
 </div>
+
+{% if testEvent %}
+</div>
+{% endif %}

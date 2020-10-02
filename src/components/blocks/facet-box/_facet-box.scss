@@ -2,30 +2,40 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   backdrop-filter: blur(10px);
+  background-color: rgba(29, 30, 32, .84);
   color: siteColor(vam-white);
+  display: none;
   height: 100%;
   left: 0;
-  opacity: .84;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
+
+  &--active {
+    display: block;
+    overflow-y: auto;
+  }
 
   @include bpMinSmall {
     backdrop-filter: none;
-    max-width: 276px;
+    background-color: transparent;
+    display: block;
     opacity: 1;
     position: relative;
+    width: 290px;
   }
 
-  &__close {
+  &__hidden-input {
+    display: none;
+  }
+
+  &__modal {
     &-button {
-      border: solid .7px #ceffd6;
-      border-radius: 19.5px;
-      font-size: 36px;
-      height: 39px;
-      position: relative;
-      transform: rotate(-315deg);
-      width: 39px;
+      &-close {
+        margin-left: 92%;
+        transform: rotate(-315deg);
+      }
       &:focus {
         outline: -webkit-focus-ring-color auto 0;
       }
@@ -34,16 +44,34 @@
         color: siteColor(vam-black);
         cursor: pointer;
       }
+      &-open {
+        &:hover svg {
+          filter: invert(1);
+        }
+      }
+      border: solid .7px #ceffd6;
+      border-radius: 19.5px;
+      font-size: 36px;
+      height: 39px;
+      position: relative;
+      width: 39px;
     }
 
     &-content {
-      height: 19px;
+      &-close {
+        height: 19px;
+        width: 18px;
+      }
+      &-open {
+        height: 34px;
+        margin-top: -1px;
+        width: 34px;
+      }
       left: 50%;
       pointer-events: none;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: 18px;
     }
 
     &-container {
@@ -212,6 +240,12 @@
   }
 
   &__term {
+    &-more {
+      font-weight: 600;
+      margin-top: 10px;
+      text-decoration: underline;
+    }
+
     @include typeSetting(3, light);
 
     border: solid themeColor(silent-green) 1px;
