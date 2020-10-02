@@ -15,6 +15,7 @@
 
   &--active {
     display: block;
+    overflow-y: auto;
   }
 
   @include bpMinSmall {
