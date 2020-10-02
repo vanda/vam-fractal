@@ -166,6 +166,12 @@ const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termTogg
 });
 
 const initialiseFacetOverlay = () => {
+  termList.addEventListener('termToggle', (e) => {
+    e.stopPropagation();
+    console.log('hello')
+    console.log(e.detail);
+    toggleTerm(e.detail);
+  });
 
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
     const { facets, activeFacets } = e.detail;
@@ -183,10 +189,6 @@ const initialiseFacetOverlay = () => {
     createFacets(activeFacets);
 
     // terms in modal...
-    document.querySelector(`.${termListClass}`).addEventListener('termToggle', (e) => {
-      e.stopPropagation();
-      toggleTerm(e.detail);
-    });
 
     const dateFacet = document.createElement('DIV');
     dateFacet.className = "b-facet-box__facet b-facet-box__facet-date";
