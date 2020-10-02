@@ -2,6 +2,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   backdrop-filter: blur(10px);
+  background-color: rgba(29, 30, 32, 0.84);
   color: siteColor(vam-white);
   height: 100%;
   left: 0;
@@ -9,9 +10,11 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
 
   @include bpMinSmall {
     backdrop-filter: none;
+    background-color: transparent;
     max-width: 276px;
     opacity: 1;
     position: relative;
