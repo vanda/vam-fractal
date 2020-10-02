@@ -168,8 +168,6 @@ const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termTogg
 const initialiseFacetOverlay = () => {
   termList.addEventListener('termToggle', (e) => {
     e.stopPropagation();
-    console.log('hello')
-    console.log(e.detail);
     toggleTerm(e.detail);
   });
 
