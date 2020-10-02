@@ -178,6 +178,7 @@ const initialiseFacetOverlay = () => {
 
     const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
     facetBoxContainer.innerHTML = '';
+    termList.innerHTML = '';
 
     createFacets(activeFacets);
 

@@ -2,12 +2,11 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   backdrop-filter: blur(10px);
-  background-color: rgba(29, 30, 32, 0.84);
+  background-color: rgba(29, 30, 32, .84);
   color: siteColor(vam-white);
   display: none;
   height: 100%;
   left: 0;
-  opacity: .84;
   position: fixed;
   top: 0;
   width: 100%;
@@ -34,8 +33,8 @@
   &__modal {
     &-button {
       &-close {
-        transform: rotate(-315deg);
         margin-left: 92%;
+        transform: rotate(-315deg);
       }
       &:focus {
         outline: -webkit-focus-ring-color auto 0;
@@ -65,8 +64,8 @@
       }
       &-open {
         height: 34px;
-        width: 34px;
         margin-top: -1px;
+        width: 34px;
       }
       left: 50%;
       pointer-events: none;
