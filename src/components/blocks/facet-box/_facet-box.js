@@ -220,7 +220,6 @@ const initialiseFacetOverlay = () => {
         const newTerm = document.createElement('DIV');
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
-        //  // <div data-id="${id}" class="b-facet-box__term">
         newTerm.innerHTML = termButtonHTML(facet, term);
         newTerm.onclick = () => {
           document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
@@ -252,10 +251,10 @@ const initialiseFacetOverlay = () => {
   if (document.querySelector('.b-facet-box')) {
     initialiseFacetOverlay();
     if (document.querySelector('.b-facet-box__modal-button-open')) {
-      document.querySelector('.b-facet-box__modal-button-open').onclick = () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
+      document.querySelector('.b-facet-box__modal-button-open').addEventListener('click', () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active'));
     }
     if (document.querySelector('.b-facet-box__modal-button-close')) {
-      document.querySelector('.b-facet-box__modal-button-close').onclick = () => document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+      document.querySelector('.b-facet-box__modal-button-close').addEventListener('click', () => document.querySelector('.b-facet-box').classList.remove('b-facet-box--active'));
     }
   }
 })();
