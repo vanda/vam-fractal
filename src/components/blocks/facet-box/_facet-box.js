@@ -13,12 +13,10 @@ const facetCloseClass = 'b-facet-box__close-button';
 
 const facetsWithIndex = {};
 
-const termButtonHTML = (id, facet, term) => `
-  <div data-id="${id}" class="b-facet-box__term">
+const termButtonHTML = (facet, term) => `
     <span class="b-facet-box__term-text">
         ${facet}: ${term}
     </span>
-  </div>
 `;
 
 const dateFacetHTML = () => `
@@ -220,7 +218,10 @@ const initialiseFacetOverlay = () => {
         document.querySelector(`div[data-id='${id}']`).remove();
       } else {
         const newTerm = document.createElement('DIV');
-        newTerm.innerHTML = termButtonHTML(id, facet, term);
+        newTerm.dataset.id = id;
+        newTerm.className = 'b-facet-box__term';
+        //  // <div data-id="${id}" class="b-facet-box__term">
+        newTerm.innerHTML = termButtonHTML(facet, term);
         newTerm.onclick = () => {
           document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
           document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
