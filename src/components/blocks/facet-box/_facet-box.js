@@ -21,6 +21,36 @@ const termButtonHTML = (id, facet, term) => `
   </div>
 `;
 
+const dateFacetHTML = () => `
+    <div class="b-facet-box__facet-text">
+      Dates
+    </div>
+    <div class="b-facet-box__facet-term-container b-facet-box__facet-date-container">
+      <div class="b-facet-box__facet-date-container-start">
+        <label class="b-facet-box__facet-date-label">
+          From year:
+        </label>
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-start">
+      </div>
+      <div class="b-facet-box__facet-date-container-end">
+        <label class="b-facet-box__facet-date-label">
+          To year:
+        </label>
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-end">
+      </div>
+      <div class="b-facet-box__facet-date-container-button">
+        <label class="b-facet-box__facet-date-label">
+          &nbsp;
+        </label>
+        <button class="b-facet-box__facet-date-button">
+          <svg class="b-facet-box__facet-date-button-icon" role="img">
+            <use xlink:href="/assets/svg/svg-template.svg#search"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+`
+
 const termCheckbox = (facet, paramName, term, value, count) => {
   const checkbox = document.createElement('LI');
   checkbox.className = 'b-facet-box__facet-term-toggle';
@@ -159,6 +189,18 @@ const initialiseFacetOverlay = () => {
       toggleTerm(e.detail);
     });
 
+    const dateFacet = document.createElement('DIV');
+    dateFacet.className = "b-facet-box__facet b-facet-box__facet-date";
+    dateFacet.innerHTML = dateFacetHTML();
+    dateFacet.addEventListener('click', (e) => {
+      if (e.target.classList.contains(facetTextClass)) {
+        e.target.classList.toggle(`${e.target.classList[0]}--active`);
+        e.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
+      }
+    });
+
+    facetBoxContainer.append(dateFacet);
+
     if (activeFacets) {
       // is a set...
       Array.from(activeFacets).forEach(facet_id => {
@@ -208,5 +250,11 @@ const initialiseFacetOverlay = () => {
 (() => {
   if (document.querySelector('.b-facet-box')) {
     initialiseFacetOverlay();
+    if (document.querySelector('.b-facet-box__modal-button-open')) {
+      document.querySelector('.b-facet-box__modal-button-open').onclick = () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
+    }
+    if (document.querySelector('.b-facet-box__modal-button-close')) {
+      document.querySelector('.b-facet-box__modal-button-close').onclick = () => document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+    }
   }
 })();
