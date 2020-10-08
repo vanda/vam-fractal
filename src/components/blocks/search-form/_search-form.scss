@@ -385,8 +385,12 @@
     background: siteColor(vam-white);
     border-radius: 0 0 2px 2px;
     color: siteColor(vam-black);
+    display: none;
     margin-top: -7px;
     padding: 7px 14px;
+    &--active {
+      display: block;
+    }
   }
 
   &__facets {

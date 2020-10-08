@@ -172,6 +172,11 @@ const initialiseFacetOverlay = () => {
       // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
         Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.remove());
+        console.log(document.querySelector('.b-search-form__facets').children.length);
+        if (!document.querySelector('.b-search-form__facets').children.length) {
+          console.log('asdas')
+          document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
+        }
       } else {
         const newTermOnClick = (e) => {
           Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
@@ -192,6 +197,11 @@ const initialiseFacetOverlay = () => {
         newFormTerm.classList.add('b-facet-box__term--form')
         if (document.querySelector('.b-search-form__facets')) {
           document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
+        }
+
+        if (!document.querySelector('.b-search-form__facet-pane--active')) {
+          console.log('???')
+          document.querySelector('.b-search-form__facet-pane').classList.add('b-search-form__facet-pane--active');
         }
       }
     }
