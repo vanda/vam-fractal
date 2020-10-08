@@ -1,56 +1,5 @@
 {% if testEvent %}
   <button class="add-facet-button" > add facets </button>
-  <script type="text/javascript">
-    document.onload = (() => {
-
-      document.body.style.backgroundColor = 'black';
-
-      window.active_facets = new Set();
-
-      window.active_facets.add('facet_1_id-T15');
-      window.active_facets.add('facet_1_id-T10');
-
-      document.body.addEventListener('boxChecked', (e) => {
-        console.log('recieved the updated search event');
-        Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value, el.checked))
-      });
-
-      document.querySelector(".add-facet-button").onclick = e => {
-        document.querySelector('.b-facet-box').dispatchEvent(
-          new CustomEvent('newFacets', {
-            detail: {
-              activeFacets: window.active_facets,
-              facets: [
-                {
-                  facet: 'Facet 1',
-                  paramName: 'facet_1_id',
-                  terms: (new Array(20).fill(null)).map((x, i) => {
-                    return {
-                      term: `Term ${i}`,
-                      count: '< 10000',
-                      value: `T1${i}`
-                    }
-                  })
-                },
-                {
-                  facet: 'Facet 2',
-                  paramName: 'facet_1_id',
-                  terms: (new Array(20).fill(null)).map((x, i) => {
-                    return {
-                      term: `Term ${i}`,
-                      count: '< 10000',
-                      value: `T2${i}`
-                    }
-                  })
-                }
-              ]
-            }
-          })
-        )
-      }
-    })();
-  </script>
-
   <div class="b-search-form__facet-pane">
     <div class="b-search-form__facets">
     </div>
@@ -142,4 +91,56 @@
 
 {% if testEvent %}
 </div>
+
+  <script type="text/javascript">
+    document.onload = (() => {
+
+      document.body.style.backgroundColor = 'black';
+
+      window.active_facets = new Set();
+
+      window.active_facets.add('facet_1_id-T15');
+      window.active_facets.add('facet_1_id-T10');
+
+      document.querySelector('.b-facet-box__container').addEventListener('boxChecked', (e) => {
+        console.log('recieved the updated search event');
+        Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value, el.checked))
+      });
+
+      document.querySelector(".add-facet-button").onclick = e => {
+        document.querySelector('.b-search-form__facets').innerHTML = '';
+        document.querySelector('.b-facet-box').dispatchEvent(
+          new CustomEvent('newFacets', {
+            detail: {
+              activeFacets: window.active_facets,
+              facets: [
+                {
+                  facet: 'Facet 1',
+                  paramName: 'facet_1_id',
+                  terms: (new Array(20).fill(null)).map((x, i) => {
+                    return {
+                      term: `Term ${i}`,
+                      count: '< 10000',
+                      value: `T1${i}`
+                    }
+                  })
+                },
+                {
+                  facet: 'Facet 2',
+                  paramName: 'facet_1_id',
+                  terms: (new Array(20).fill(null)).map((x, i) => {
+                    return {
+                      term: `Term ${i}`,
+                      count: '< 10000',
+                      value: `T2${i}`
+                    }
+                  })
+                }
+              ]
+            }
+          })
+        )
+      }
+    })();
+  </script>
 {% endif %}

@@ -79,7 +79,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
-    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked'));
+    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked', { bubbles: true }));
   });
 
   return checkbox;
@@ -172,9 +172,7 @@ const initialiseFacetOverlay = () => {
       // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
         Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.remove());
-        console.log(document.querySelector('.b-search-form__facets').children.length);
         if (!document.querySelector('.b-search-form__facets').children.length) {
-          console.log('asdas')
           document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
         }
       } else {
@@ -200,7 +198,6 @@ const initialiseFacetOverlay = () => {
         }
 
         if (!document.querySelector('.b-search-form__facet-pane--active')) {
-          console.log('???')
           document.querySelector('.b-search-form__facet-pane').classList.add('b-search-form__facet-pane--active');
         }
       }
