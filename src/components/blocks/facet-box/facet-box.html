@@ -10,8 +10,7 @@
       window.active_facets.add('facet_1_id-T15');
       window.active_facets.add('facet_1_id-T10');
 
-      document.body.addEventListener('updatedSearch', (e) => {
-        console.log(e);
+      document.body.addEventListener('boxChecked', (e) => {
         console.log('recieved the updated search event');
         Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => console.log(el.value, el.checked))
       });
@@ -51,6 +50,11 @@
       }
     })();
   </script>
+
+  <div class="b-search-form__facet-pane">
+    <div class="b-search-form__facets">
+    </div>
+  </div>
 
   <div class="b-facet-box__modal-button b-facet-box__modal-button-open b-facet-box__open-modal-button">
      <svg class="b-facet-box__modal-content b-facet-box__modal-content-open" role="img">

@@ -256,6 +256,12 @@
     padding: 10px 13px 10px 13px;
     position: relative;
 
+    &--form {
+      border: solid siteColor(vam-black) 1px;
+      color: siteColor(vam-black);
+      width: fit-content;
+    }
+
     &:hover {
       background-color: themeColor(silent-green);
       color: siteColor(vam-grey-1);

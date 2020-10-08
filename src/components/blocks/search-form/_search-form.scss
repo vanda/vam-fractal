@@ -68,14 +68,14 @@
   &__input,
   &__underscore {
     @include typeSetting(5);
-    
+
     @include bpMinSmall {
       @include typeSetting(7);
     }
 
     .b-search-form--etc & {
       @include typeSetting(4);
-      
+
       @include bpMinSmall {
         @include typeSetting(5);
       }
@@ -239,7 +239,7 @@
     opacity: 0;
     position: absolute;
     top: 0;
-    
+
     .b-search-form__filter-toggle-set[active] > & {
       opacity: 1;
       transition: opacity .3s ease;
@@ -277,7 +277,7 @@
       left: 0;
       position: absolute;
       top: 2px;
-      width: 16px; 
+      width: 16px;
     }
     &[type="checkbox"]:checked + label:before {
       background: siteColor(primary-green);
@@ -391,6 +391,8 @@
 
   &__facets {
     border-top: 2px solid siteColor(vam-grey-5);
+    display: flex;
+    flex-direction: row;
     padding: 7px 0;
   }
 }

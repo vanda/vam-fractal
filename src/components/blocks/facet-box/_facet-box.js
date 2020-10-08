@@ -62,7 +62,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   checkbox.innerHTML = `
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-        <use xlink:href="/svg/vamicons.svg#tick"></use>
+        <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
       </svg>
     </a>
     <span class="b-facet-box__facet-term-toggle-text">
@@ -158,7 +158,7 @@ const createFacets = (activeFacets) => {
     }
 
     facetBoxContainer.appendChild(newFacet);
-  });
+  })
 };
 
 const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termToggle', {
@@ -171,17 +171,28 @@ const initialiseFacetOverlay = () => {
     if (id) {
       // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
-        document.querySelector(`div[data-id='${id}']`).remove();
+        Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.remove());
       } else {
+        const newTermOnClick = (e) => {
+          Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
+          if (document.querySelector(`li[data-id='${id}']`)) {
+            document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
+          }
+        }
+
         const newTerm = document.createElement('DIV');
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
-        newTerm.onclick = () => {
-          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
-          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
-        };
+        newTerm.onclick = (e) => newTermOnClick(e);
         termList.appendChild(newTerm);
+
+        const newFormTerm = newTerm.cloneNode(true);
+        newFormTerm.onclick = (e) => newTermOnClick(e);
+        newFormTerm.classList.add('b-facet-box__term--form')
+        if (document.querySelector('.b-search-form__facets')) {
+          document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
+        }
       }
     }
   };
