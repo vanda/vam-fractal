@@ -197,8 +197,6 @@ const initialiseFacetOverlay = () => {
           document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
         }
 
-        console.log(document.querySelector('.b-search-form__facet-pane--active'))
-
         if (!document.querySelector('.b-search-form__facet-pane--active')) {
           document.querySelector('.b-search-form__facet-pane').classList.add('b-search-form__facet-pane--active');
         }
