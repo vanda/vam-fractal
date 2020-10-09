@@ -280,12 +280,6 @@ const initialiseFacetOverlay = () => {
     window.onresize = () => {
       const facetFormTerms = Array.from(document.querySelectorAll(".b-facet-box__term.b-facet-box__term--form"));
       if (document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross")) {
-        if ((facetFormTerms.length) > 0) {
-          document.querySelector(".b-search-form__facets-mobile").style.display = 'block';
-        } else {
-          document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
-        }
-
         if (window.innerWidth > 499) {
           const facetContainerWidth = document.querySelector(".b-search-form__facets").offsetWidth;
           let cutOffWidth = 0;
@@ -296,8 +290,18 @@ const initialiseFacetOverlay = () => {
               currentIndex += 1;
             }
           });
+          if ((facetFormTerms.length - currentIndex) > 0) {
+            document.querySelector(".b-search-form__facets-mobile").style.display = 'block';
+          } else {
+            document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
+          }
           document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length - currentIndex}+`;
         } else {
+          if ((facetFormTerms.length) > 0) {
+            document.querySelector(".b-search-form__facets-mobile").style.display = 'block';
+          } else {
+            document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
+          }
           document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length} filters applied`;
         }
       }
