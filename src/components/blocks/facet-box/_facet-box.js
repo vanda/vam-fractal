@@ -299,13 +299,15 @@ const initialiseFacetOverlay = () => {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
           }
           document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length - currentIndex}+`;
-        } else {
+        } else if (window.innerWidth < 992) {
           if ((facetFormTerms.length) > 0) {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'block';
           } else {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
           }
           document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length} filters applied`;
+        } else {
+          document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
         }
       }
     }
