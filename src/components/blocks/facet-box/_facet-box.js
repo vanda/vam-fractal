@@ -79,7 +79,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
-    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked'));
+    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked', { bubbles: true }));
   });
 
   return checkbox;
@@ -171,17 +171,38 @@ const initialiseFacetOverlay = () => {
     if (id) {
       // if term already exists, get rid of it
       if (document.querySelector(`div[data-id='${id}']`)) {
-        document.querySelector(`div[data-id='${id}']`).remove();
+        Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.remove());
+        if (!document.querySelector('.b-search-form__facets').children.length) {
+          document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
+        }
+        window.dispatchEvent(new Event('resize'));
       } else {
+        const newTermOnClick = () => {
+          Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
+          if (document.querySelector(`li[data-id='${id}']`)) {
+            document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
+          }
+        };
+
         const newTerm = document.createElement('DIV');
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
-        newTerm.onclick = () => {
-          document.querySelector(`div[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
-          document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
-        };
+        newTerm.onclick = e => newTermOnClick(e);
         termList.appendChild(newTerm);
+
+        const newFormTerm = newTerm.cloneNode(true);
+        newFormTerm.onclick = e => newTermOnClick(e);
+        newFormTerm.classList.add('b-facet-box__term--form');
+        if (document.querySelector('.b-search-form__facets')) {
+          document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
+        }
+
+        if (!document.querySelector('.b-search-form__facet-pane--active')) {
+          document.querySelector('.b-search-form__facet-pane').classList.add('b-search-form__facet-pane--active');
+        }
+
+        window.dispatchEvent(new Event('resize'));
       }
     }
   };
@@ -228,6 +249,8 @@ const initialiseFacetOverlay = () => {
         }
       });
     }
+
+    window.dispatchEvent(new Event('resize'));
   }, true);
 
   document.onclick = (e) => {
@@ -250,11 +273,44 @@ const initialiseFacetOverlay = () => {
 (() => {
   if (document.querySelector('.b-facet-box')) {
     initialiseFacetOverlay();
+
     if (document.querySelector('.b-facet-box__modal-button-open')) {
-      document.querySelector('.b-facet-box__modal-button-open').addEventListener('click', () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active'));
+      document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active')));
     }
-    if (document.querySelector('.b-facet-box__modal-button-close')) {
-      document.querySelector('.b-facet-box__modal-button-close').addEventListener('click', () => document.querySelector('.b-facet-box').classList.remove('b-facet-box--active'));
+    if (document.querySelector('.b-facet-box__close-button')) {
+      document.querySelector('.b-facet-box__close-button').addEventListener('click', () => document.querySelector('.b-facet-box').classList.remove('b-facet-box--active'));
     }
+
+    window.onresize = () => {
+      const facetFormTerms = Array.from(document.querySelectorAll('.b-facet-box__term.b-facet-box__term--form'));
+      if (document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross')) {
+        if (window.innerWidth > 499 && window.innerWidth < 992) {
+          const facetContainerWidth = document.querySelector('.b-search-form__facets').offsetWidth;
+          let cutOffWidth = 0;
+          let currentIndex = 1;
+          facetFormTerms.forEach((el) => {
+            cutOffWidth += el.offsetWidth + 10;
+            if (cutOffWidth < facetContainerWidth) {
+              currentIndex += 1;
+            }
+          });
+          if ((facetFormTerms.length - currentIndex) > 0) {
+            document.querySelector('.b-search-form__facets-mobile').style.display = 'block';
+          } else {
+            document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
+          }
+          document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `+${facetFormTerms.length - currentIndex}`;
+        } else if (window.innerWidth < 500) {
+          if ((facetFormTerms.length) > 0) {
+            document.querySelector('.b-search-form__facets-mobile').style.display = 'block';
+          } else {
+            document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
+          }
+          document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `${facetFormTerms.length - 1} filters applied`;
+        } else {
+          document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
+        }
+      }
+    };
   }
 })();
