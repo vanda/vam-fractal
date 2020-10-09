@@ -283,7 +283,7 @@ const initialiseFacetOverlay = () => {
     window.onresize = () => {
       const facetFormTerms = Array.from(document.querySelectorAll(".b-facet-box__term.b-facet-box__term--form"));
       if (document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross")) {
-        if (window.innerWidth > 499) {
+        if (window.innerWidth > 499 && window.innerWidth < 992) {
           const facetContainerWidth = document.querySelector(".b-search-form__facets").offsetWidth;
           let cutOffWidth = 0;
           let currentIndex = 1;
@@ -299,7 +299,7 @@ const initialiseFacetOverlay = () => {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
           }
           document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length - currentIndex}+`;
-        } else if (window.innerWidth < 992) {
+        } else if (window.innerWidth < 500) {
           if ((facetFormTerms.length) > 0) {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'block';
           } else {
