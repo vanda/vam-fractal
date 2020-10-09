@@ -19,22 +19,18 @@ module.exports = {
         placeholder: 'Search by object, artist, maker&hellip;',
         action: 'http://51.11.136.250/api/v2/objects/search',
         facets: [
-          ...(new Array(2).fill(null)).map((x, i) => {
-            return {
-              facet: `Facet 1`,
-              term: `Term ${i}`
-            }
-          }),
+          ...(new Array(2).fill(null)).map((x, i) => ({
+            facet: 'Facet 1',
+            term: `Term ${i}`
+          })),
           {
-            facet: `Really Long Facet 1`,
-            term: `Term Long`
+            facet: 'Really Long Facet 1',
+            term: 'Term Long'
           },
-          ...(new Array(2).fill(null)).map((x, i) => {
-            return {
-              facet: `Facet 1`,
-              term: `Term ${i}`
-            }
-          })
+          ...(new Array(2).fill(null)).map((x, i) => ({
+            facet: 'Facet 1',
+            term: `Term ${i}`
+          }))
         ]
       }
     },
