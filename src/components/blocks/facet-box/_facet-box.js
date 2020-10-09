@@ -279,19 +279,31 @@ const initialiseFacetOverlay = () => {
 
     window.onresize = () => {
       const facetFormTerms = Array.from(document.querySelectorAll(".b-facet-box__term.b-facet-box__term--form"));
-      if (window.innerWidth > 499) {
-        const facetContainerWidth = document.querySelector(".b-search-form__facets").offsetWidth;
-        let cutOffWidth = 0;
-        let currentIndex = 1;
-        facetFormTerms.forEach(el => {
-          cutOffWidth += el.offsetWidth + 10;
-          if (cutOffWidth < facetContainerWidth) {
-            currentIndex += 1;
+      if (document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross")) {
+        if (window.innerWidth > 499) {
+          const facetContainerWidth = document.querySelector(".b-search-form__facets").offsetWidth;
+          let cutOffWidth = 0;
+          let currentIndex = 1;
+          facetFormTerms.forEach(el => {
+            cutOffWidth += el.offsetWidth + 10;
+            if (cutOffWidth < facetContainerWidth) {
+              currentIndex += 1;
+            }
+          });
+          if ((facetFormTerms.length - currentIndex) > 0) {
+            document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").style.display = 'block';
+          } else {
+            document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").style.display = 'none';
           }
-        });
-        document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length - currentIndex}+`;
-      } else {
-        document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length} filters applied`;
+          document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length - currentIndex}+`;
+        } else {
+          if ((facetFormTerms.length) > 0) {
+            document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").style.display = 'block';
+          } else {
+            document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").style.display = 'none';
+          }
+          document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length} filters applied`;
+        }
       }
     }
   }
