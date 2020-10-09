@@ -305,7 +305,7 @@ const initialiseFacetOverlay = () => {
           } else {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
           }
-          document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length} filters applied`;
+          document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length - 1} filters applied`;
         } else {
           document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
         }
