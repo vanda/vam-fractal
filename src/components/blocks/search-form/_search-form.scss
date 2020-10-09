@@ -393,10 +393,37 @@
     }
   }
 
-  &__facets {
-    border-top: 2px solid siteColor(vam-grey-5);
+  &__facets-container {
     display: flex;
+  }
+
+  &__facets-seperator {
+    border-top: 2px solid #dee0e2;
+  }
+
+  &__facets {
+    display: none;
     flex-direction: row;
+    flex-wrap: wrap;
+    height: 56px;
+    margin: 7px 0;
+    overflow: hidden;
+    width: calc(100% - 70px);
+    @include bpMinXSmall {
+      display: flex;
+    }
+    @include bpMinMedium {
+      height: auto;
+      overflow: auto;
+      width: 100%;
+    }
+  }
+
+  &__facets-mobile {
+    display: block;
     padding: 7px 0;
+    @include bpMinMedium {
+      display: none;
+    }
   }
 }

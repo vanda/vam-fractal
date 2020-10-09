@@ -17,7 +17,7 @@
     overflow-y: auto;
   }
 
-  @include bpMinSmall {
+  @include bpMinXSmall {
     backdrop-filter: none;
     background-color: transparent;
     display: block;
@@ -75,7 +75,7 @@
     }
 
     &-container {
-      @include bpMinSmall {
+      @include bpMinXSmall {
         display: none;
       }
       padding-right: 20px;
@@ -125,7 +125,7 @@
     }
 
     &-container {
-      @include bpMinSmall {
+      @include bpMinXSmall {
         margin-top: 0;
         padding: 0;
       }
@@ -139,13 +139,13 @@
       &-container {
         margin-top: 20px;
         max-width: 270px;
-        @include bpMinSmall {
+        @include bpMinXSmall {
           max-width: none;
         }
         &-start, &-end {
           flex-basis: 30%;
           margin-right: 10px;
-          @include bpMinSmall {
+          @include bpMinXSmall {
             flex-basis: 38%;
             margin-right: 11px;
           }
@@ -248,18 +248,31 @@
 
     @include typeSetting(3, light);
 
+    @include bpMinXSmall {
+      display: block;
+    }
+
     border: solid themeColor(silent-green) 1px;
     border-radius: 4px;
     color: siteColor(vam-white);
+    display: none;
     margin-right: 10px;
     margin-top: 5px;
-    padding: 10px 13px 10px 13px;
+    padding: 10px 33px 10px 13px;
     position: relative;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
 
     &--form {
       border: solid siteColor(vam-black) 1px;
       color: siteColor(vam-black);
       width: fit-content;
+      &-revealer {
+        display: block;
+        padding-right: 13px;
+      }
     }
 
     &:hover {
@@ -275,14 +288,22 @@
         content: '+';
         display: inline-block;
         font-size: 25px;
-        padding-left: 7px;
-        position: relative;
+        padding-left: 11px;
+        position: absolute;
+        top: 14%;
         transform: rotate(46deg);
+      }
+      &--no-cross {
+        font-weight: 800;
+        text-decoration: underline;
+        &::after {
+          content: '';
+        }
       }
     }
 
     &-list {
-      @include bpMinSmall {
+      @include bpMinXSmall {
         display: none;
       }
 
