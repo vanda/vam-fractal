@@ -411,6 +411,7 @@
     width: calc(100% - 70px);
     @include bpMinXSmall {
       display: flex;
+      flex-wrap: wrap;
     }
     @include bpMinMedium {
       height: auto;
