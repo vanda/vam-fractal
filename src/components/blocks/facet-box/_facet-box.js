@@ -273,6 +273,7 @@ const initialiseFacetOverlay = () => {
 (() => {
   if (document.querySelector('.b-facet-box')) {
     initialiseFacetOverlay();
+
     if (document.querySelector('.b-facet-box__modal-button-open')) {
       document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active')));
     }
@@ -298,7 +299,7 @@ const initialiseFacetOverlay = () => {
           } else {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'none';
           }
-          document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `${facetFormTerms.length - currentIndex}+`;
+          document.querySelector(".b-facet-box__term-text.b-facet-box__term-text--no-cross").innerHTML = `+${facetFormTerms.length - currentIndex}`;
         } else if (window.innerWidth < 500) {
           if ((facetFormTerms.length) > 0) {
             document.querySelector(".b-search-form__facets-mobile").style.display = 'block';

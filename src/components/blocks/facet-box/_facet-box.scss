@@ -17,7 +17,7 @@
     overflow-y: auto;
   }
 
-  @include bpMinXSmall {
+  @include bpMinMedium {
     backdrop-filter: none;
     background-color: transparent;
     display: block;
@@ -75,7 +75,7 @@
     }
 
     &-container {
-      @include bpMinXSmall {
+      @include bpMinMedium {
         display: none;
       }
       padding-right: 20px;
@@ -125,7 +125,7 @@
     }
 
     &-container {
-      @include bpMinXSmall {
+      @include bpMinMedium {
         margin-top: 0;
         padding: 0;
       }
@@ -302,7 +302,7 @@
     }
 
     &-list {
-      @include bpMinXSmall {
+      @include bpMinMedium {
         display: none;
       }
 
