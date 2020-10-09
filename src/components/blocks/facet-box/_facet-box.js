@@ -175,6 +175,7 @@ const initialiseFacetOverlay = () => {
         if (!document.querySelector('.b-search-form__facets').children.length) {
           document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
         }
+        window.dispatchEvent(new Event('resize'));
       } else {
         const newTermOnClick = (e) => {
           Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
@@ -200,6 +201,8 @@ const initialiseFacetOverlay = () => {
         if (!document.querySelector('.b-search-form__facet-pane--active')) {
           document.querySelector('.b-search-form__facet-pane').classList.add('b-search-form__facet-pane--active');
         }
+
+        window.dispatchEvent(new Event('resize'));
       }
     }
   };
