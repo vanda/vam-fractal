@@ -42,7 +42,10 @@ if (document.querySelector('.b-search-pagination')) {
     }
   };
 
-  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', () => {
+  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
+    document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
+    e.target.classList.add(currentButtonClass);
+
     const currentButton = document.querySelector(`.${currentButtonClass}`);
     const currentButtonIndex = parseInt(currentButton.getAttribute('page-index'), 10);
     searchPaginationContainer.dataset.currentPage = currentButtonIndex;
@@ -152,7 +155,7 @@ if (document.querySelector('.b-search-pagination')) {
     for (let i = 3; i < numberOfPages - 1; i += 1) {
       document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
         ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}
-        <button page-index='${i + 1}' class='b-search-pagination__page-button'>
+        <button name="page" value='${numberOfPages}' page-index='${i + 1}' class='b-search-pagination__page-button'>
             ${i < 9 ? 0 : ''}${i + 1}
         </button>
       `;
@@ -163,7 +166,7 @@ if (document.querySelector('.b-search-pagination')) {
       <span class='b-search-pagination__page-button-seperator-last'>
         ...
       </span>
-      <button page-index='${numberOfPages}' class='b-search-pagination__page-button-last'>
+      <button name="page" value='${numberOfPages}' page-index='${numberOfPages}' class='b-search-pagination__page-button-last'>
           ${numberOfPages < 10 ? 0 : ''}${numberOfPages}
       </button>
     `;
@@ -171,8 +174,6 @@ if (document.querySelector('.b-search-pagination')) {
 
   Array.from(document.querySelectorAll(`.${buttonClass}`)).forEach((el) => {
     el.onclick = (e) => {
-      document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-      e.target.classList.add(currentButtonClass);
       e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
     };
   });
@@ -191,5 +192,5 @@ if (document.querySelector('.b-search-pagination')) {
     };
   }
 
-  document.querySelector(`button[page-index="${String(searchPaginationContainer.dataset.currentPage)}"]`).click();
+  document.querySelector(`button[page-index="${String(searchPaginationContainer.dataset.currentPage)}"]`).dispatchEvent(new Event('changeSearchPage'));
 }
