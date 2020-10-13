@@ -1,6 +1,15 @@
-// TODO: take in offset as a parameter, probably pass it by using a data set variable...
-// currently using defaultOffset!!
+// currently not able to change the offset i guess
+
 if (document.querySelector('.b-search-pagination')) {
+  const searchPaginationContainer = document.querySelector('.b-search-pagination');
+
+  const { totalCount, offset } = Object.entries(searchPaginationContainer.dataset).reduce(function (total, pair) {
+    const [key, value] = pair;
+    return Object.assign(total, {
+      [key]: parseInt(value)
+    });
+  }, {});
+
   const searchPrevLinkClass = 'b-search-pagination__prev-link';
   const searchNextLinkClass = 'b-search-pagination__next-link';
   const buttonClass = 'b-search-pagination__page-button';
@@ -14,9 +23,7 @@ if (document.querySelector('.b-search-pagination')) {
   const currentButtonClass = buttonClass + current;
   const inactiveSearchPrevLinkClass = searchPrevLinkClass + inactive;
   const inactiveSearchNextLinkClass = searchNextLinkClass + inactive;
-  const defaultOffset = 20;
-  const totalCount = parseInt(document.querySelector('.b-search-results__count').getAttribute('data-count'), 10);
-  const numberOfPages = Math.ceil(totalCount / defaultOffset);
+  const numberOfPages = Math.ceil(totalCount / offset);
 
   const showButton = (index) => {
     document.querySelector(`button[page-index="${String(index)}"]`).classList.add(buttonClass + active);
@@ -38,6 +45,8 @@ if (document.querySelector('.b-search-pagination')) {
   document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', () => {
     const currentButton = document.querySelector(`.${currentButtonClass}`);
     const currentButtonIndex = parseInt(currentButton.getAttribute('page-index'), 10);
+    searchPaginationContainer.dataset.currentPage = currentButtonIndex;
+    document.querySelector('.b-search-pagination__display-counter').dispatchEvent(new Event('updateDisplayCounter'));
 
     if (currentButtonIndex > 1) {
       document.querySelector(`.${searchPrevLinkClass}`).classList.remove(inactiveSearchPrevLinkClass);
@@ -130,42 +139,13 @@ if (document.querySelector('.b-search-pagination')) {
     e.target.dispatchEvent(new CustomEvent('changeSearchPage', { bubbles: true, detail: true }));
   };
 
-  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
-    const pageIndex = document.querySelector('.b-search-pagination__page-button--current').getAttribute('page-index');
-
-    if (pageIndex || e.detail) {
-      const request = new XMLHttpRequest();
-
-      request.onreadystatechange = () => {
-        if (request.readyState === 4) {
-          if (request.status !== 200) {
-            return;
-          }
-          document.querySelector('#results-table-container').innerHTML = JSON.parse(request.response).rendered;
-        }
-      };
-
-      const params = new URLSearchParams(window.location.search);
-
-      if (!params.get('limit')) {
-        params.set('limit', String(defaultOffset));
-      }
-
-      const offset = parseInt(params.get('limit'), 10) * (parseInt(pageIndex, 10) - 1);
-
-      params.set('offset', offset);
-
-      document.querySelector('.b-search-pagination__display-counter').innerHTML = `
-        ${offset + 1} - ${offset + defaultOffset} of ${totalCount}
-      `;
-
-      // request.open('GET', 'http://' + window.location.host + '/search.json?' + params.toString());
-
-      // history.replaceState({page: 'smth'}, '', '?' + params.toString())
-
-      // request.setRequestHeader('Content-Type', 'application/json');
-      // request.send();
-    }
+  document.querySelector('.b-search-pagination__display-counter').addEventListener('updateDisplayCounter', (e) => {
+    const currentPage = searchPaginationContainer.dataset.currentPage - 1;
+    const startingNumber = offset * currentPage + 1;
+    const endingNumber = (offset * currentPage) + offset;
+    document.querySelector('.b-search-pagination__display-counter').innerHTML = `
+      ${offset * currentPage + 1} - ${endingNumber > totalCount ? totalCount : endingNumber} of ${totalCount}
+    `;
   });
 
   if (numberOfPages > 3) {
@@ -211,13 +191,5 @@ if (document.querySelector('.b-search-pagination')) {
     };
   }
 
-  const currentButton = document.querySelector(`.${currentButtonClass}`).getAttribute('page-index');
-  const params = new URLSearchParams(window.location.search);
-  const currentPage = Math.ceil((parseInt(!params.get('offset') ? 1 : params.get('offset'), 10) + defaultOffset) / defaultOffset);
-
-  if (currentPage !== currentButton) {
-    document.querySelector(`button[page-index="${String(currentPage)}"]`).click();
-  } else {
-    document.querySelector(`button[page-index="${String(currentButton)}"]`).click();
-  }
+  document.querySelector(`button[page-index="${String(searchPaginationContainer.dataset.currentPage)}"]`).click();
 }
