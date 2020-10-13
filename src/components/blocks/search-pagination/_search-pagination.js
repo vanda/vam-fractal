@@ -1,6 +1,6 @@
 // currently not able to change the offset i guess
 
-if (document.querySelector('.b-search-pagination')) {
+const initPagination = () => {
   const searchPaginationContainer = document.querySelector('.b-search-pagination');
 
   const { totalCount, offset } = Object.entries(searchPaginationContainer.dataset).reduce(function (total, pair) {
@@ -193,4 +193,9 @@ if (document.querySelector('.b-search-pagination')) {
   }
 
   document.querySelector(`button[page-index="${String(searchPaginationContainer.dataset.currentPage)}"]`).dispatchEvent(new Event('changeSearchPage'));
+}
+
+if (document.querySelector('.b-search-pagination')) {
+  initPagination();
+  document.querySelector('.b-search-pagination').addEventListener('newSearch', () => initPagination());
 }
