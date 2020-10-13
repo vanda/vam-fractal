@@ -71,12 +71,6 @@
 
     color: siteColor(vam-white);
     font-size: 18px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-
-    @include bpMinXSmall {
-      padding-bottom: 21px;
-    }
 
     @include bpMinSmall {
       @include typeSetting(5, regular);

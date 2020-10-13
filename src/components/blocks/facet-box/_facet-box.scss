@@ -21,9 +21,11 @@
     backdrop-filter: none;
     background-color: transparent;
     display: block;
+    max-width: 271px;
+    min-width: 220px;
     opacity: 1;
     position: relative;
-    width: 290px;
+    width: 100%;
   }
 
   &__hidden-input {
