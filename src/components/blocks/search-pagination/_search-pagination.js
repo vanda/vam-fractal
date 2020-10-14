@@ -15,6 +15,7 @@ const initPagination = () => {
   const startSeperator = document.querySelector('.b-search-pagination__page-button-seperator-start');
   const middleSeperator = document.querySelector('.b-search-pagination__page-button-seperator-middle');
   const lastSeperator = document.querySelector('.b-search-pagination__page-button-seperator-last');
+  const hiddenInput = document.querySelector('.b-search-pagination__hidden-input');
 
   const { totalCount, offset, pages } = datasetToInts(searchPaginationContainer.dataset);
 
@@ -133,6 +134,8 @@ const initPagination = () => {
       paginationOver4Pages(e);
       checkNavigationLinks();
       updateDisplayCounter();
+      const { pageIndex } = datasetToInts(e.target.dataset);
+      hiddenInput.value = pageIndex;
     });
   } else {
     makeInactive([startSeperator, middleSeperator, lastSeperator]);
@@ -146,6 +149,8 @@ const initPagination = () => {
       pagination4OrLessPages(e);
       checkNavigationLinks();
       updateDisplayCounter();
+      const { pageIndex } = datasetToInts(e.target.dataset);
+      hiddenInput.value = pageIndex;
     });
   }
 
@@ -163,6 +168,7 @@ const initPagination = () => {
       if ((pageIndex > 0) && (pageIndex <= (pages))) {
         target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
       }
+      return false;
     }
   });
 
