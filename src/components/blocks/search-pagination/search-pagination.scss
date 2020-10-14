@@ -51,6 +51,12 @@
     }
   }
 
+  &__page-button-last {
+    &--inactive {
+      display: none;
+    }
+  }
+
   &__page-button, &__page-button-start, &__page-button-last {
     &:focus {
       outline: 0;

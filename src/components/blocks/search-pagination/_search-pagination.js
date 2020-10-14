@@ -79,6 +79,8 @@ const initPagination = () => {
       for (let i = 0; i < 3; i++) {
         const button = buttons[i];
         const newIndex = i + 2;
+        button.dataset.pageIndex = newIndex;
+        button.value = newIndex;
         button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`
       }
     }
@@ -112,6 +114,8 @@ const initPagination = () => {
       for (let i = 0; i < 3; i++) {
         const button = buttons[i];
         const newIndex = (pages - 3) + i;
+        button.dataset.pageIndex = newIndex;
+        button.value = newIndex;
         button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`
       }
     }
@@ -136,7 +140,7 @@ const initPagination = () => {
         makeInactive([button]);
       }
     });
-    document.querySelector('.b-search-pagination__page-button-last').remove();
+    makeInactive([document.querySelector('.b-search-pagination__page-button-last')]);
     document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
       pagination4OrLessPages(e);
       checkNavigationLinks();
@@ -160,6 +164,8 @@ const initPagination = () => {
       }
     }
   });
+
+  document.querySelector('.b-search-pagination').dispatchEvent(new Event('changeSearchPage'));
 }
 
 if (document.querySelector('.b-search-pagination')) {
