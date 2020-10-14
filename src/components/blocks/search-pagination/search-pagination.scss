@@ -40,13 +40,14 @@
     }
     &-text {
       text-decoration: underline;
+      pointer-events: none;
     }
   }
 
   &__page-button {
-    display: none;
-    &--active {
-      display: block;
+    display: block;
+    &--inactive {
+      display: none;
     }
   }
 

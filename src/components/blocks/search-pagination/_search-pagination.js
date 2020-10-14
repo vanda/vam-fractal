@@ -1,201 +1,169 @@
 // currently not able to change the offset i guess
+const datasetToInts = dataset => Object.entries(dataset).reduce(function (total, pair) {
+    const [key, value] = pair;
+    return Object.assign(total, {
+      [key]: parseInt(value, 10)
+    });
+  }, {});
+const currentButtonClass = 'b-search-pagination__page-button--current';
 
 const initPagination = () => {
   const searchPaginationContainer = document.querySelector('.b-search-pagination');
+  const buttons = Array.from(document.querySelectorAll('.b-search-pagination__page-button'));
+  const searchPrevLink = document.querySelector('.b-search-pagination__prev-link');
+  const searchNextLink = document.querySelector('.b-search-pagination__next-link');
+  const startSeperator = document.querySelector('.b-search-pagination__page-button-seperator-start');
+  const middleSeperator = document.querySelector('.b-search-pagination__page-button-seperator-middle');
+  const lastSeperator = document.querySelector('.b-search-pagination__page-button-seperator-last');
 
-  const { totalCount, offset } = Object.entries(searchPaginationContainer.dataset).reduce(function (total, pair) {
-    const [key, value] = pair;
-    return Object.assign(total, {
-      [key]: parseInt(value)
-    });
-  }, {});
+  const { totalCount, offset, pages } = datasetToInts(searchPaginationContainer.dataset);
 
-  const searchPrevLinkClass = 'b-search-pagination__prev-link';
-  const searchNextLinkClass = 'b-search-pagination__next-link';
-  const buttonClass = 'b-search-pagination__page-button';
-  const seperatorClass = 'b-search-pagination__page-button-seperator';
-  const start = '-start';
-  const middle = '-middle';
-  const last = '-last';
-  const inactive = '--inactive';
-  const active = '--active';
-  const current = '--current';
-  const currentButtonClass = buttonClass + current;
-  const inactiveSearchPrevLinkClass = searchPrevLinkClass + inactive;
-  const inactiveSearchNextLinkClass = searchNextLinkClass + inactive;
-  const numberOfPages = Math.ceil(totalCount / offset);
-
-  const showButton = (index) => {
-    document.querySelector(`button[page-index="${String(index)}"]`).classList.add(buttonClass + active);
+  const makeInactive = (elements) => {
+    elements.filter(el => el.classList.length === 1).forEach(
+      el => el.classList.add(`${el.classList[0]}--inactive`)
+    );
   };
 
-  const incrementDecrementPage = (op) => {
-    const currentButton = parseInt(document.querySelector(`.${currentButtonClass}`).getAttribute('page-index'), 10);
-
-    if ((currentButton > 1 && op === '-') || (op === '+' && currentButton < numberOfPages)) {
-      document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-      if (op === '+') {
-        document.querySelector(`button[page-index="${String(currentButton + 1)}"]`).classList.add(currentButtonClass);
-      } else {
-        document.querySelector(`button[page-index="${String(currentButton - 1)}"]`).classList.add(currentButtonClass);
-      }
-    }
-  };
-
-  document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
-    document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-    e.target.classList.add(currentButtonClass);
-
-    const currentButton = document.querySelector(`.${currentButtonClass}`);
-    const currentButtonIndex = parseInt(currentButton.getAttribute('page-index'), 10);
-    searchPaginationContainer.dataset.currentPage = currentButtonIndex;
-    document.querySelector('.b-search-pagination__display-counter').dispatchEvent(new Event('updateDisplayCounter'));
-
-    if (currentButtonIndex > 1) {
-      document.querySelector(`.${searchPrevLinkClass}`).classList.remove(inactiveSearchPrevLinkClass);
+  const checkNavigationLinks = () => {
+    if (parseInt(searchPrevLink.dataset.pageIndex, 10) < 1) {
+      makeInactive([searchPrevLink]);
     } else {
-      document.querySelector(`.${searchPrevLinkClass}`).classList.add(inactiveSearchPrevLinkClass);
+      makeActive([searchPrevLink]);
     }
 
-    if (currentButtonIndex < numberOfPages) {
-      document.querySelector(`.${searchNextLinkClass}`).classList.remove(inactiveSearchNextLinkClass);
+    if (parseInt(searchNextLink.dataset.pageIndex, 10) > pages) {
+      makeInactive([searchNextLink]);
     } else {
-      document.querySelector(`.${searchNextLinkClass}`).classList.add(inactiveSearchNextLinkClass);
-    }
-
-    if (numberOfPages > 4) {
-      // activate this logic...
-      document.querySelectorAll(`.${buttonClass}${active}`).forEach((e) => {
-        e.classList.remove(`${buttonClass}${active}`);
-      });
-
-      if (
-        (numberOfPages - currentButtonIndex >= 3 &&
-          currentButtonIndex > 2 &&
-          currentButtonIndex < numberOfPages - 1) ||
-          currentButtonIndex === numberOfPages - 2
-      ) {
-        document.querySelector(`.${seperatorClass}${start}`).classList.remove(seperatorClass + start + inactive);
-        document.querySelector(`.${seperatorClass}${middle}`).classList.add(seperatorClass + middle + inactive);
-        document.querySelector(`.${seperatorClass}${last}`).classList.remove(seperatorClass + last + inactive);
-
-        showButton(currentButtonIndex - 1);
-        showButton(currentButtonIndex);
-        showButton(currentButtonIndex + 1);
-      } else {
-        if (currentButtonIndex <= 2) {
-          showButton(2);
-          showButton(3);
-          document.querySelector(`.${seperatorClass}${start}`).classList.add(seperatorClass + start + inactive);
-          document.querySelector(`.${seperatorClass}${middle}`).classList.add(seperatorClass + middle + inactive);
-          document.querySelector(`.${seperatorClass}${last}`).classList.remove(seperatorClass + last + inactive);
-        }
-
-        if (
-          !(currentButtonIndex <= 2) &&
-          (currentButtonIndex >= numberOfPages - 1 && currentButtonIndex <= numberOfPages)
-        ) {
-          showButton(numberOfPages - 1);
-          showButton(numberOfPages - 2);
-          document.querySelector(`.${seperatorClass}${start}`).classList.remove(seperatorClass + start + inactive);
-          document.querySelector(`.${seperatorClass}${middle}`).classList.add(seperatorClass + middle + inactive);
-          document.querySelector(`.${seperatorClass}${last}`).classList.add(seperatorClass + last + inactive);
-        }
-      }
-    } else {
-      if (document.querySelector(`.${seperatorClass}${last}`)) {
-        document.querySelector(`.${seperatorClass}${last}`).classList.add(seperatorClass + last + inactive);
-      }
-
-      showButton(1);
-
-      if (numberOfPages >= 2) {
-        showButton(2);
-      }
-      if (numberOfPages >= 3) {
-        showButton(3);
-      }
-
-      if (numberOfPages === 4) {
-        showButton(4);
-      }
-    }
-  }, true);
-
-  if (numberOfPages > 4) {
-    document.querySelector(`.${seperatorClass}${middle}`).classList.remove(seperatorClass + middle + inactive);
-    const currentButtonIndex = parseInt(document.querySelector(`.${currentButtonClass}`).getAttribute('page-index'), 10);
-    if (currentButtonIndex < 3) {
-      Array.from(document.querySelectorAll(`.${buttonClass}`)).slice(3, numberOfPages - 1).forEach((e) => {
-        e.classList.add(buttonClass + inactive);
-      });
+      makeActive([searchNextLink]);
     }
   }
 
-  document.querySelector(`.${searchPrevLinkClass}`).onclick = (e) => {
-    incrementDecrementPage('-');
-    e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
+  const makeActive = (elements) => {
+    elements.filter(el => el.classList.length === 2).forEach(
+      el => el.classList.remove(`${el.classList[0]}--inactive`)
+    );
   };
 
-  document.querySelector(`.${searchNextLinkClass}`).onclick = (e) => {
-    incrementDecrementPage('+');
-    e.target.dispatchEvent(new CustomEvent('changeSearchPage', { bubbles: true, detail: true }));
-  };
+  const makeButtonCurrentlySelected = (index) => {
+    document.querySelector(`button[data-page-index="${String(index)}"]`).classList.add(currentButtonClass);
+  }
 
-  document.querySelector('.b-search-pagination__display-counter').addEventListener('updateDisplayCounter', (e) => {
-    const currentPage = searchPaginationContainer.dataset.currentPage - 1;
+  const onButtonClick = (pageIndex) => {
+    searchPaginationContainer.dataset.pageIndex = pageIndex;
+    document.querySelector(`.${currentButtonClass}`) && document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
+    searchPrevLink.dataset.pageIndex = pageIndex - 1;
+    searchNextLink.dataset.pageIndex = pageIndex + 1;
+  }
+
+  const updateDisplayCounter = () => {
+    const currentPage = parseInt(searchPaginationContainer.dataset.pageIndex, 10) - 1;
     const startingNumber = offset * currentPage + 1;
     const endingNumber = (offset * currentPage) + offset;
     document.querySelector('.b-search-pagination__display-counter').innerHTML = `
       ${offset * currentPage + 1} - ${endingNumber > totalCount ? totalCount : endingNumber} of ${totalCount}
     `;
-  });
+  }
 
-  if (numberOfPages > 3) {
-    for (let i = 3; i < numberOfPages - 1; i += 1) {
-      document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
-        ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}
-        <button name="page" value='${numberOfPages}' page-index='${i + 1}' class='b-search-pagination__page-button'>
-            ${i < 9 ? 0 : ''}${i + 1}
-        </button>
-      `;
+  const paginationOver4Pages = ({ target }) => {
+    const { pageIndex } = datasetToInts(target.dataset);
+
+    onButtonClick(pageIndex);
+
+    if (pageIndex <= 2) {
+      const buttonToHide = buttons[2];
+      const buttonToShow = buttons[0];
+
+      makeActive([middleSeperator, buttonToShow]);
+      makeInactive([startSeperator, lastSeperator, buttonToHide]);
+      makeButtonCurrentlySelected(pageIndex);
+      for (let i = 0; i < 3; i++) {
+        const button = buttons[i];
+        const newIndex = i + 2;
+        button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`
+      }
     }
 
-    document.querySelector('.b-search-pagination__page-button-container').innerHTML = `
-      ${document.querySelector('.b-search-pagination__page-button-container').innerHTML}
-      <span class='b-search-pagination__page-button-seperator-last'>
-        ...
-      </span>
-      <button name="page" value='${numberOfPages}' page-index='${numberOfPages}' class='b-search-pagination__page-button-last'>
-          ${numberOfPages < 10 ? 0 : ''}${numberOfPages}
-      </button>
-    `;
-  }
+    if (pageIndex > 2 && (pageIndex < (pages - 1))) {
+      const buttonToShow = buttons[2];
 
-  Array.from(document.querySelectorAll(`.${buttonClass}`)).forEach((el) => {
-    el.onclick = (e) => {
-      e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-    };
-  });
+      makeActive([startSeperator, lastSeperator, ...buttons]);
+      makeInactive([middleSeperator]);
 
-  document.querySelector(`.${buttonClass}${start}`).onclick = (e) => {
-    document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-    e.target.classList.add(currentButtonClass);
-    e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
+      const pageIndexBase = pageIndex - 1;
+
+      for (let i = 0; i < 3; i++) {
+        const button = buttons[i];
+        const newIndex = pageIndexBase + i;
+        button.dataset.pageIndex = newIndex;
+        button.value = newIndex;
+        button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`
+      }
+      makeButtonCurrentlySelected(pageIndex);
+    }
+
+    if (pageIndex >= (pages - 1)) {
+      const buttonToHide = buttons[0];
+      const buttonToShow = buttons[2]
+
+      makeActive([startSeperator, buttonToShow]);
+      makeInactive([middleSeperator, lastSeperator, buttonToHide]);
+      makeButtonCurrentlySelected(pageIndex);
+
+      for (let i = 0; i < 3; i++) {
+        const button = buttons[i];
+        const newIndex = (pages - 3) + i;
+        button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`
+      }
+    }
   };
 
-  if (document.querySelector(`.${buttonClass}${last}`)) {
-    document.querySelector(`.${buttonClass}${last}`).onclick = (e) => {
-      document.querySelector(`.${currentButtonClass}`).classList.remove(currentButtonClass);
-      e.target.classList.add(currentButtonClass);
-      e.target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
-    };
+  const pagination4OrLessPages = ({ target }) => {
+    const { pageIndex } = datasetToInts(target.dataset);
+    onButtonClick(pageIndex);
+    makeButtonCurrentlySelected(pageIndex);
   }
 
-  document.querySelector(`button[page-index="${String(searchPaginationContainer.dataset.currentPage)}"]`).dispatchEvent(new Event('changeSearchPage'));
+  if (pages > 4) {
+    document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
+      paginationOver4Pages(e);
+      checkNavigationLinks();
+      updateDisplayCounter();
+    });
+  } else {
+    makeInactive([startSeperator, middleSeperator, lastSeperator]);
+    buttons.forEach(button => {
+      if (parseInt(button.dataset.pageIndex, 10) > pages) {
+        makeInactive([button]);
+      }
+    });
+    document.querySelector('.b-search-pagination__page-button-last').remove();
+    document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
+      pagination4OrLessPages(e);
+      checkNavigationLinks();
+      updateDisplayCounter();
+    });
+  }
+
+
+  document.querySelector('.b-search-pagination').addEventListener('click', ({ target }) => {
+    const { pageIndex } = datasetToInts(target.dataset);
+
+    if (
+      target.closest('.b-search-pagination__page-button') ||
+      target.closest('.b-search-pagination__prev-link') ||
+      target.closest('.b-search-pagination__next-link') ||
+      target.closest('.b-search-pagination__page-button-start') ||
+      target.closest('.b-search-pagination__page-button-last')
+    ) {
+      if ((pageIndex > 0) && (pageIndex <= (pages))) {
+        target.dispatchEvent(new Event('changeSearchPage', { bubbles: true }));
+      }
+    }
+  });
 }
 
 if (document.querySelector('.b-search-pagination')) {
   initPagination();
   document.querySelector('.b-search-pagination').addEventListener('newSearch', () => initPagination());
+  document.querySelector('.b-search-pagination').dispatchEvent(new Event('changeSearchPage'));
 }
