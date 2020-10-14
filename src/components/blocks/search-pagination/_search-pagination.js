@@ -129,6 +129,7 @@ const initPagination = () => {
 
   if (pages > 4) {
     document.querySelector('.b-search-pagination').addEventListener('changeSearchPage', (e) => {
+      makeActive([document.querySelector('.b-search-pagination__page-button-last')]);
       paginationOver4Pages(e);
       checkNavigationLinks();
       updateDisplayCounter();
