@@ -1,4 +1,3 @@
-// currently not able to change the offset i guess
 const datasetToInts = dataset => Object.entries(dataset).reduce(function (total, pair) {
     const [key, value] = pair;
     return Object.assign(total, {
@@ -8,6 +7,7 @@ const datasetToInts = dataset => Object.entries(dataset).reduce(function (total,
 const currentButtonClass = 'b-search-pagination__page-button--current';
 
 const initPagination = () => {
+  // need to stop stacking event listeners...
   const oldSearchPaginationContainer = document.querySelector('.b-search-pagination');
   const searchPaginationContainer = oldSearchPaginationContainer.cloneNode(true);
   oldSearchPaginationContainer.parentNode.replaceChild(searchPaginationContainer, oldSearchPaginationContainer);
@@ -18,7 +18,6 @@ const initPagination = () => {
   const startSeperator = document.querySelector('.b-search-pagination__page-button-seperator-start');
   const middleSeperator = document.querySelector('.b-search-pagination__page-button-seperator-middle');
   const lastSeperator = document.querySelector('.b-search-pagination__page-button-seperator-last');
-  const hiddenInput = document.querySelector('.b-search-pagination__hidden-input');
 
   const { totalCount, offset, pages } = datasetToInts(searchPaginationContainer.dataset);
 
@@ -138,8 +137,8 @@ const initPagination = () => {
       checkNavigationLinks();
       updateDisplayCounter();
       const { pageIndex } = datasetToInts(e.target.dataset);
-      if ((hiddenInput && (hiddenInput.value !== pageIndex))) {
-        hiddenInput.value = pageIndex;
+      if ((document.querySelector('.b-search-pagination__hidden-input') && (document.querySelector('.b-search-pagination__hidden-input').value !== pageIndex))) {
+        document.querySelector('.b-search-pagination__hidden-input').value = pageIndex;
       }
     });
   } else {
@@ -155,8 +154,8 @@ const initPagination = () => {
       checkNavigationLinks();
       updateDisplayCounter();
       const { pageIndex } = datasetToInts(e.target.dataset);
-      if ((hiddenInput && (hiddenInput.value !== pageIndex))) {
-        hiddenInput.value = pageIndex;
+      if ((document.querySelector('.b-search-pagination__hidden-input') && (document.querySelector('.b-search-pagination__hidden-input').value !== pageIndex))) {
+        document.querySelector('.b-search-pagination__hidden-input').value = pageIndex;
       }
     });
   }
