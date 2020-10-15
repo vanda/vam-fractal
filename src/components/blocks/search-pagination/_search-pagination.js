@@ -8,7 +8,10 @@ const datasetToInts = dataset => Object.entries(dataset).reduce(function (total,
 const currentButtonClass = 'b-search-pagination__page-button--current';
 
 const initPagination = () => {
-  const searchPaginationContainer = document.querySelector('.b-search-pagination');
+  const oldSearchPaginationContainer = document.querySelector('.b-search-pagination');
+  const searchPaginationContainer = oldSearchPaginationContainer.cloneNode(true);
+  oldSearchPaginationContainer.parentNode.replaceChild(searchPaginationContainer, oldSearchPaginationContainer);
+
   const buttons = Array.from(document.querySelectorAll('.b-search-pagination__page-button'));
   const searchPrevLink = document.querySelector('.b-search-pagination__prev-link');
   const searchNextLink = document.querySelector('.b-search-pagination__next-link');
