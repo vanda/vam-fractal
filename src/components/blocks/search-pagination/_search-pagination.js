@@ -138,7 +138,9 @@ const initPagination = () => {
       checkNavigationLinks();
       updateDisplayCounter();
       const { pageIndex } = datasetToInts(e.target.dataset);
-      hiddenInput && hiddenInput.value = pageIndex;
+      if (hiddenInput) {
+        hiddenInput.value = pageIndex;
+      }
     });
   } else {
     makeInactive([startSeperator, middleSeperator, lastSeperator]);
@@ -153,7 +155,9 @@ const initPagination = () => {
       checkNavigationLinks();
       updateDisplayCounter();
       const { pageIndex } = datasetToInts(e.target.dataset);
-      hiddenInput && hiddenInput.value = pageIndex;
+      if (hiddenInput) {
+        hiddenInput.value = pageIndex;
+      }
     });
   }
 
