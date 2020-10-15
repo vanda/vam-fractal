@@ -39,14 +39,21 @@
       text-decoration: none;
     }
     &-text {
+      pointer-events: none;
       text-decoration: underline;
     }
   }
 
   &__page-button {
-    display: none;
-    &--active {
-      display: block;
+    display: block;
+    &--inactive {
+      display: none;
+    }
+  }
+
+  &__page-button-last {
+    &--inactive {
+      display: none;
     }
   }
 
