@@ -151,7 +151,8 @@ const createFacets = (activeFacets) => {
 
     newIndex = ((Math.ceil(newIndex / 5) * 5));
 
-    newIndex = newIndex > terms.length ? terms.length : newIndex;
+    newIndex = newIndex > terms.length ? terms.length : ( newIndex == 0 ? 5 : newIndex );
+
 
     terms.slice(index, newIndex).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
