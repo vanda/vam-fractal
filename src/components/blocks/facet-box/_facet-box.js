@@ -85,12 +85,16 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   return checkbox;
 };
 
-const facetHTML = facet => `
+const facetHTML = (facet, see_more) => `
   <div class="b-facet-box__facet-text">
     ${facet}
   </div>
   <ul data-facet="${facet}" class="b-facet-box__facet-term-container">
-    <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
+    ${
+      see_more && `
+          <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
+      ` || ``
+    }
   </ul>
 `;
 
@@ -128,7 +132,9 @@ const createFacets = (activeFacets) => {
   Object.values(facetsWithIndex).forEach(({ facet, terms, paramName, index }) => {
     const newFacet = document.createElement('DIV');
     newFacet.className = 'b-facet-box__facet';
-    newFacet.innerHTML = facetHTML(facet);
+    newFacet.innerHTML = facetHTML(facet, terms.length > 5);
+
+    console.log(newFacet)
 
     newFacet.addEventListener('click', (e) => {
       if (e.target.classList.contains(facetTextClass)) {
@@ -152,7 +158,7 @@ const createFacets = (activeFacets) => {
 
     facetsWithIndex[facet].index += (5 + newIndex);
 
-    if (facetsWithIndex[facet].index !== terms.length) {
+    if (terms.length > 5 && facetsWithIndex[facet].index !== terms.length) {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
       newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
     }
