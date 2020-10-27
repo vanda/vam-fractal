@@ -134,8 +134,6 @@ const createFacets = (activeFacets) => {
     newFacet.className = 'b-facet-box__facet';
     newFacet.innerHTML = facetHTML(facet, terms.length > 5);
 
-    console.log(newFacet)
-
     newFacet.addEventListener('click', (e) => {
       if (e.target.classList.contains(facetTextClass)) {
         e.target.classList.toggle(`${e.target.classList[0]}--active`);
