@@ -108,6 +108,10 @@ const revealMoreFacets = (e) => {
     facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
   });
   facetsWithIndex[facet].index += 5;
+
+  console.log(facetsWithIndex[facet].index)
+  console.log(terms.length)
+
   if (facetsWithIndex[facet].index !== terms.length) {
     facetContainer.appendChild(linkEl);
   }
@@ -156,9 +160,11 @@ const createFacets = (activeFacets) => {
 
     facetsWithIndex[facet].index += (5 + newIndex);
 
-    if (terms.length > 5 && facetsWithIndex[facet].index !== terms.length) {
-      newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
-      newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+    if (terms.length > 5) {
+      if (facetsWithIndex[facet].index !== terms.length) {
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
+        newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+      }
     }
 
     facetBoxContainer.appendChild(newFacet);
