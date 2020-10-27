@@ -109,9 +109,6 @@ const revealMoreFacets = (e) => {
   });
   facetsWithIndex[facet].index += 5;
 
-  console.log(facetsWithIndex[facet].index)
-  console.log(terms.length)
-
   if (facetsWithIndex[facet].index !== terms.length) {
     facetContainer.appendChild(linkEl);
   }
@@ -150,20 +147,24 @@ const createFacets = (activeFacets) => {
     let newIndex = (facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
       const test = termValues.indexOf(term);
       return (current > test ? current : test);
-    }, 5)) || 1;
+    }, 5)) || 0;
 
-    newIndex = ((Math.ceil(newIndex / 5) * 5) + 5);
+    newIndex = ((Math.ceil(newIndex / 5) * 5));
+
+    newIndex = newIndex > terms.length ? terms.length : newIndex;
 
     terms.slice(index, newIndex).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
     });
 
-    facetsWithIndex[facet].index += (5 + newIndex);
+    facetsWithIndex[facet].index += (newIndex);
 
     if (terms.length > 5) {
-      if (facetsWithIndex[facet].index !== terms.length) {
+      if (facetsWithIndex[facet].index < terms.length) {
         newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
         newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+      } else {
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more')).remove();
       }
     }
 
