@@ -85,18 +85,15 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   return checkbox;
 };
 
-const facetHTML = (facet, see_more) => `
+const facetHTML = (facet, seeMore) => `
   <div class="b-facet-box__facet-text">
     ${facet}
   </div>
-  <ul data-facet="${facet}" class="b-facet-box__facet-term-container">
-    ${
-      see_more && `
-          <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
-      ` || ``
-    }
-  </ul>
-`;
+  <ul data-facet="${facet}" class="b-facet-box__facet-term-container">${
+  seeMore ? `
+    <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
+  ` : ''
+}</ul>`;
 
 const revealMoreFacets = (e) => {
   e.preventDefault();
@@ -151,8 +148,7 @@ const createFacets = (activeFacets) => {
 
     newIndex = ((Math.ceil(newIndex / 5) * 5));
 
-    newIndex = newIndex > terms.length ? terms.length : ( newIndex == 0 ? 5 : newIndex );
-
+    newIndex = newIndex > terms.length ? terms.length : (newIndex || 5);
 
     terms.slice(index, newIndex).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
