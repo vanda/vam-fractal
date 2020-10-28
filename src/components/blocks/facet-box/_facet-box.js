@@ -268,13 +268,20 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    if (e.target.classList.contains(termCheckboxClass)) {
-      const parent = e.target.classList.contains(termCheckboxClass) ?
-        e.target.parentElement : e.target.parentElement.parentElement.parentElement;
+    if (e.target.parentElement.classList.contains(facetTerm)) {
+      const parent = e.target.parentElement;
 
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
+
+    // if (e.target.classList.contains(termCheckboxClass)) {
+    //   const parent = e.target.classList.contains(termCheckboxClass) ?
+    //     e.target.parentElement : e.target.parentElement.parentElement.parentElement;
+
+    //   termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
+    //   parent.dispatchEvent(newTermToggleEvent(parent.dataset));
+    // }
   };
 };
 
