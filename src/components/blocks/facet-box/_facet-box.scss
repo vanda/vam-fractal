@@ -201,6 +201,11 @@
     }
 
     &-term-toggle {
+      &:hover {
+        color: siteColor(vam-white);
+      }
+
+      color: siteColor(vam-grey-5);
       cursor: pointer;
       display: flex;
       flex-basis: 100%;
@@ -214,7 +219,7 @@
         display: none;
       }
       &-tick {
-        border: 1px #fff solid;
+        border: 1px siteColor(vam-white) solid;
         border-radius: 3px;
 
         &--active {
