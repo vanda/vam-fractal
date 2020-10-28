@@ -148,7 +148,7 @@
         }
         &-start, &-end {
           flex-basis: 30%;
-          margin-right: 10px;
+          margin-right: 8px;
           @include bpMinXSmall {
             flex-basis: 30%;
           }
