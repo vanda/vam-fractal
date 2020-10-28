@@ -209,13 +209,22 @@
       &-text, &-result {
         flex-basis: 50%;
       }
+      &-tick use {
+        display: none;
+      }
       &-tick {
+        border: 1px #fff solid;
+        border-radius: 3px;
+
         &--active {
           background-color: themeColor(silent-green);
+        }
+
+        &--active use {
           display: block;
         }
+
         color: siteColor(vam-black);
-        display: none;
         height: 25px;
         left: 0;
         pointer-events: none;
@@ -225,8 +234,6 @@
       &-checkbox {
         margin-left: 40px;
         &:before {
-          border: 1px siteColor(vam-white) solid;
-          border-radius: 3px;
           content: '';
           cursor: pointer;
           height: 25px;
