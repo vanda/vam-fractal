@@ -42,7 +42,7 @@ const dateFacetHTML = () => `
         </label>
         <button class="b-facet-box__facet-date-button">
           <svg class="b-facet-box__facet-date-button-icon" role="img">
-            <use xlink:href="/assets/svg/svg-template.svg#search"></use>
+            <use xlink:href="/svg/vamicons.svg#search"></use>
           </svg>
         </button>
       </div>
