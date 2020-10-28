@@ -211,9 +211,10 @@
       }
       &-tick {
         &--active {
+          background-color: themeColor(silent-green);
           display: block;
         }
-        color: themeColor(silent-green);
+        color: siteColor(vam-white);
         display: none;
         height: 25px;
         left: 0;
