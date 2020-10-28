@@ -268,8 +268,10 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    if (e.target.parentElement.classList.contains(facetTerm)) {
-      const parent = e.target.parentElement;
+    console.log(e.target)
+
+    if (e.target.parentElement.classList.contains(facetTerm) || e.target.closest(facetTerm)) {
+      const parent = e.target.closest(facetTerm) || e.target.parentElement;
 
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
