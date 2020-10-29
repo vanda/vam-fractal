@@ -85,19 +85,20 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   hiddenInput.id = `${paramName}=${value}`;
 
   checkbox.addEventListener('termToggle', (e) => {
-    console.log(e);
-
     const existingHiddenInput = document.querySelector(`input[id="${`${paramName}=${value}`}"]`);
 
-    // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
-    // this is because formData has an order which is annoying to change
+    if (!e.detail.refreshing_page || (e.detail.refreshing_page && !existingHiddenInput)) {
 
-    if (existingHiddenInput) {
-      existingHiddenInput.click();
-      existingHiddenInput.remove();
-    } else {
-      document.querySelector('#vam-etc-search').appendChild(hiddenInput);
-      document.querySelector(`input[id="${`${paramName}=${value}`}"]`).click();
+      // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
+      // this is because formData has an order which is annoying to change
+
+      if (existingHiddenInput) {
+        existingHiddenInput.checked = false;
+        existingHiddenInput.remove();
+      } else {
+        document.querySelector('#vam-etc-search').appendChild(hiddenInput);
+        document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
+      }
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
@@ -255,11 +256,11 @@ const initialiseFacetOverlay = () => {
       });
     });
 
+    Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => el.remove());
+
     const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
     facetBoxContainer.innerHTML = '';
     termList.innerHTML = '';
-
-    Array.from(document.querySelectorAll('b-facet-box__hidden-input')).forEach(el => el.remove());
 
     createFacets(activeFacets);
 
@@ -282,7 +283,7 @@ const initialiseFacetOverlay = () => {
       Array.from(activeFacets).forEach((facetId) => {
         const target = document.querySelector(`li[data-id='${facetId}'`);
         if (target) {
-          target.dispatchEvent(newTermToggleEvent(target.dataset));
+          target.dispatchEvent(newTermToggleEvent(Object.assign(target.dataset, {refreshing_page: true})));
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         }
       });
