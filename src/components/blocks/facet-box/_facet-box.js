@@ -83,6 +83,12 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   checkbox.addEventListener('termToggle', (e) => {
     const existingHiddenInput = document.querySelector(`input[id="${`${paramName}=${value}`}"]`);
 
+    console.log(existingHiddenInput)
+
+    console.log(!e.detail.refreshing_page)
+
+    console.log(e.detail.refreshing_page && !existingHiddenInput)
+
     if (!e.detail.refreshing_page || (e.detail.refreshing_page && !existingHiddenInput)) {
 
       // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
@@ -90,7 +96,6 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 
       if (existingHiddenInput) {
 
-        console.log(existingHiddenInput)
 
         existingHiddenInput.checked = false;
         existingHiddenInput.remove();
