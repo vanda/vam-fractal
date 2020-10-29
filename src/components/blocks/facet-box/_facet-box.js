@@ -294,7 +294,7 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    if (e.target.parentElement.classList.contains(facetTerm)) {
+    if (e.target.parentElement && e.target.parentElement.classList.contains(facetTerm)) {
       const parent = e.target.closest(facetTerm) || e.target.parentElement;
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
