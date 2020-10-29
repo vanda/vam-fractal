@@ -90,6 +90,8 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
     // this is because formData has an order which is annoying to change
 
+    console.log('is this happening twice')
+
     if (existingHiddenInput) {
       existingHiddenInput.checked = false;
       existingHiddenInput.remove();
