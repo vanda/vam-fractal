@@ -73,10 +73,6 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     </span>
   `;
 
-  // const hiddenInput = `
-  //   <input class="b-facet-box__hidden-input" type="checkbox" name="${paramName}" value="${value}">
-  // `;
-
   const hiddenInput = document.createElement('INPUT');
   hiddenInput.type = 'checkbox';
   hiddenInput.className = 'b-facet-box__hidden-input';
@@ -93,6 +89,9 @@ const termCheckbox = (facet, paramName, term, value, count) => {
       // this is because formData has an order which is annoying to change
 
       if (existingHiddenInput) {
+
+        console.log(existingHiddenInput)
+
         existingHiddenInput.checked = false;
         existingHiddenInput.remove();
       } else {
