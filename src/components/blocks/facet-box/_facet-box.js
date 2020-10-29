@@ -71,11 +71,32 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
-    <input class="b-facet-box__hidden-input" type="checkbox" name="${paramName}" value="${value}">
   `;
 
+  // const hiddenInput = `
+  //   <input class="b-facet-box__hidden-input" type="checkbox" name="${paramName}" value="${value}">
+  // `;
+
+  const hiddenInput = document.createElement('INPUT');
+  hiddenInput.type = 'checkbox';
+  hiddenInput.className = 'b-facet-box__hidden-input';
+  hiddenInput.name = paramName;
+  hiddenInput.value = value;
+  hiddenInput.id = `${paramName}=${value}`;
+
   checkbox.addEventListener('termToggle', (e) => {
-    e.target.querySelector('.b-facet-box__hidden-input').checked = !e.target.querySelector('.b-facet-box__hidden-input').checked;
+    const existingHiddenInput = document.querySelector(`input[id="${`${paramName}=${value}`}"]`);
+
+    // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
+    // this is because formData has an order which is annoying to change
+
+    if (existingHiddenInput) {
+      existingHiddenInput.remove();
+    } else {
+      document.querySelector('form').appendChild(hiddenInput);
+      document.querySelector('form').appendChild(hiddenInput).checked = true;
+    }
+
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
