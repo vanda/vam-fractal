@@ -257,6 +257,8 @@ const initialiseFacetOverlay = () => {
     facetBoxContainer.innerHTML = '';
     termList.innerHTML = '';
 
+    Array.from(document.querySelectorAll('b-facet-box__hidden-input')).forEach(el => el.remove());
+
     createFacets(activeFacets);
 
     const dateFacet = document.createElement('DIV');
