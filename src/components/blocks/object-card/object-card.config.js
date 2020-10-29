@@ -12,5 +12,14 @@ module.exports = {
     },
     caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11, by Raphael, 1515 – 16, Italy. ROYAL LOANS.2. &copy; Victoria and Albert Museum, London',
     physicalDescription: 'Cartoon for a tapestry'
-  }
+  },
+  variants: [
+    {
+      label: 'EtC Search',
+      name: 'etc',
+      context: {
+        modifiers: ['etc']
+      }
+    }
+  ]
 };

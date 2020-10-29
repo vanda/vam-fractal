@@ -1,6 +1,6 @@
-<div class="fr-content-wrapper">
+<div class="fr-content-wrapper {% if modifiers and 'etc' in modifiers %}fr-bg--dark{% endif %}">
 
-<ul class="g-object-grid js-grid-reveal-more" data-reveal-more-theme="light" data-reveal-more-counter="6" data-icon-url="/assets/svg/svg-template.svg" data-reveal-more-tracking="objects">
+<ul class="g-object-grid {% if not modifiers %} js-grid-reveal-more{% endif %}" data-reveal-more-theme="light" data-reveal-more-counter="6" data-icon-url="/assets/svg/svg-template.svg" data-reveal-more-tracking="objects">
   {% for card in objectCards %}
   <li class="g-object-grid__item">
     {%- render "@object-card", card -%}

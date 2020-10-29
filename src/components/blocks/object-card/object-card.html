@@ -1,4 +1,4 @@
-<figure class="b-object-card{% if objectImageOverlayItem %} js-object-image-overlay-item{% endif %}"
+<figure class="b-object-card{% for m in modifiers %} b-object-card--{{ m }}{% endfor %} {% if objectImageOverlayItem %} js-object-image-overlay-item{% endif %}"
         {% if objectImageOverlayData %} data-object-image-overlay="{{ objectImageOverlayData | dump | escape }}"{% endif %}
         itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
   <link itemprop="url" href="{{image[960]}}">
