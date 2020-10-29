@@ -93,7 +93,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     // this is because formData has an order which is annoying to change
 
     if (existingHiddenInput) {
-      existingHiddenInput.checked = false;
+      existingHiddenInput.click();
       existingHiddenInput.remove();
     } else {
       document.querySelector('#vam-etc-search').appendChild(hiddenInput);
