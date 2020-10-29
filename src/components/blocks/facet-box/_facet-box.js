@@ -91,11 +91,11 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     // this is because formData has an order which is annoying to change
 
     if (existingHiddenInput) {
-      document.querySelector('form').appendChild(hiddenInput).checked = false;
+      existingHiddenInput.checked = false;
       existingHiddenInput.remove();
     } else {
       document.querySelector('form').appendChild(hiddenInput);
-      document.querySelector('form').appendChild(hiddenInput).checked = true;
+      existingHiddenInput.checked = true;
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
