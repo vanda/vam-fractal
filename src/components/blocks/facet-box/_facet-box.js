@@ -94,7 +94,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
       existingHiddenInput.checked = false;
       existingHiddenInput.remove();
     } else {
-      document.querySelector('form').appendChild(hiddenInput);
+      document.querySelector('#vam-etc-search').appendChild(hiddenInput);
       document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
     }
 
