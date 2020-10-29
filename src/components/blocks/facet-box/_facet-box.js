@@ -95,7 +95,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
       existingHiddenInput.remove();
     } else {
       document.querySelector('form').appendChild(hiddenInput);
-      existingHiddenInput.checked = true;
+      document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
