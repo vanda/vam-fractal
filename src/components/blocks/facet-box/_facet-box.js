@@ -82,33 +82,24 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 
   checkbox.addEventListener('termToggle', (e) => {
     const existingHiddenInput = document.querySelector(`input[id="${`${paramName}=${value}`}"]`);
+    // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
+    // this is because formData has an order which is annoying to change
 
-    console.log(existingHiddenInput)
-
-    console.log(!e.detail.refreshing_page)
-
-    console.log(e.detail.refreshing_page && !existingHiddenInput)
-
-    if (!e.detail.refreshing_page || (e.detail.refreshing_page && !existingHiddenInput)) {
-
-      // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
-      // this is because formData has an order which is annoying to change
-
-      if (existingHiddenInput) {
-
-
-        existingHiddenInput.checked = false;
-        existingHiddenInput.remove();
-      } else {
-        document.querySelector('#vam-etc-search').appendChild(hiddenInput);
-        document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
-      }
+    if (existingHiddenInput) {
+      existingHiddenInput.checked = false;
+      existingHiddenInput.remove();
+    } else {
+      document.querySelector('#vam-etc-search').appendChild(hiddenInput);
+      document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
-    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked', { bubbles: true }));
+
+    if (!e.detail.refreshing_page) {
+      document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked', { bubbles: true }));
+    }
   });
 
   return checkbox;
