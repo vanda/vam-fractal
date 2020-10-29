@@ -28,13 +28,13 @@ const dateFacetHTML = () => `
         <label class="b-facet-box__facet-date-label">
           From year:
         </label>
-        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-start">
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="after_year">
       </div>
       <div class="b-facet-box__facet-date-container-end">
         <label class="b-facet-box__facet-date-label">
           To year:
         </label>
-        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-end">
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="before_year">
       </div>
       <div class="b-facet-box__facet-date-container-button">
         <label class="b-facet-box__facet-date-label">
@@ -268,22 +268,11 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    console.log(e.target)
-
     if (e.target.parentElement.classList.contains(facetTerm) || e.target.closest(facetTerm)) {
       const parent = e.target.closest(facetTerm) || e.target.parentElement;
-
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
-
-    // if (e.target.classList.contains(termCheckboxClass)) {
-    //   const parent = e.target.classList.contains(termCheckboxClass) ?
-    //     e.target.parentElement : e.target.parentElement.parentElement.parentElement;
-
-    //   termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
-    //   parent.dispatchEvent(newTermToggleEvent(parent.dataset));
-    // }
   };
 };
 
