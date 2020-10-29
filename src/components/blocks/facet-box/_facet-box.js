@@ -222,6 +222,8 @@ const initialiseFacetOverlay = () => {
 
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
     const { facets, activeFacets } = e.detail;
+    const currentBeforeDate = document.querySelector('input[name="before_year"]') ? document.querySelector('input[name="before_year"]').value : '';
+    const currentAfterDate = document.querySelector('input[name="after_year"]') ? document.querySelector('input[name="after_year"]').value : '';
 
     facets.forEach((facet) => {
       Object.assign(facetsWithIndex, {
@@ -244,6 +246,8 @@ const initialiseFacetOverlay = () => {
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
     });
+    dateFacet.querySelector('input[name="before_year"]').value = currentBeforeDate;
+    dateFacet.querySelector('input[name="after_year"]').value = currentAfterDate;
 
     facetBoxContainer.append(dateFacet);
 
