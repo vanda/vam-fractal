@@ -97,7 +97,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
       existingHiddenInput.remove();
     } else {
       document.querySelector('#vam-etc-search').appendChild(hiddenInput);
-      document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
+      document.querySelector(`input[id="${`${paramName}=${value}`}"]`).click();
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
