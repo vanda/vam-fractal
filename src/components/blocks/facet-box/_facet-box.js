@@ -61,7 +61,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 
   checkbox.innerHTML = `
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-      <svg class="b-facet-box__facet-term-toggle-tick" role="img">
+      <svg class="b-facet-box__facet-term-toggle-tick" aria-label="checkmark-${term}-${paramName}" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
     </a>
