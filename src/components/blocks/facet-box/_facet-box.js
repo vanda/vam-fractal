@@ -41,7 +41,7 @@ const dateFacetHTML = () => `
           &nbsp;
         </label>
         <button class="b-facet-box__facet-date-button">
-          <svg class="b-facet-box__facet-date-button-icon" role="img">
+          <svg class="b-facet-box__facet-date-button-icon" aria-label="apply-date-facet" role="img">
             <use xlink:href="/svg/vamicons.svg#search"></use>
           </svg>
         </button>
