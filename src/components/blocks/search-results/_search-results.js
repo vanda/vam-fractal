@@ -37,6 +37,8 @@ const offensiveWarningInitializer = () => {
         ].classList.remove('b-search-results__body-row--offensive');
         e.target.parentElement.remove();
         reAdjustWarnings();
+        e.stopPropagation();
+        return false;
       };
       el.appendChild(warningEl);
       reAdjustWarnings();
