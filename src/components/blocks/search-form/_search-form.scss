@@ -311,13 +311,6 @@
   }
 
   &__filter-select {
-    @include typeSetting(2, semi-bold, uppercase);
-    background: transparent;
-    border: 1px solid siteColor(vam-white);
-    border-radius: 2px;
-    color: siteColor(vam-white);
-    outline: none;
-    padding: 10px 20px;
 
     &:after {
       color: blue;
@@ -330,9 +323,32 @@
     }
   }
 
+  &__pseudo-select {
+    border-bottom: 1px solid siteColor(vam-white);
+    border-left: 1px solid siteColor(vam-white);
+    border-right: 1px solid siteColor(vam-white);
+    position: absolute;
+  }
+
   &__location-wrapper {
+    @include typeSetting(2, semi-bold, uppercase);
+    background: transparent;
+    border: 1px solid siteColor(vam-white);
+    border-radius: 2px;
+    color: siteColor(vam-white);
     margin-left: 20px;
     opacity: 0;
+    outline: none;
+    padding: 10px 20px;
+    position: relative;
+
+    &--open {
+      border-bottom: none;
+    }
+
+    select {
+      display: none;
+    }
   }
   &__location-toggle:checked ~ &__location-wrapper {
     opacity: 1;
