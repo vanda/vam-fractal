@@ -45,6 +45,9 @@ const offensiveWarningInitializer = () => {
 
 offensiveWarningInitializer();
 window.dispatchEvent(new Event('resize'));
-document.querySelector('.b-search-results').addEventListener('initWarnings', () => {
-  offensiveWarningInitializer();
-})
+
+if (document.querySelector('.etc-template__results-container')) {
+  document.querySelector('.etc-template__results-container').addEventListener('initWarnings', () => {
+    offensiveWarningInitializer();
+  });
+}
