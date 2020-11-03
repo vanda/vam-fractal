@@ -45,3 +45,6 @@ const offensiveWarningInitializer = () => {
 
 offensiveWarningInitializer();
 window.dispatchEvent(new Event('resize'));
+document.querySelector('.b-search-results').addEventListener('initWarnings', () => {
+  offensiveWarningInitializer();
+})
