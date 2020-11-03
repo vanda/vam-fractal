@@ -208,8 +208,10 @@
       &--offensive {
         height: 160px;
         position: relative;
+
         td {
           background-color: rgba(57, 59, 63, .8);
+          pointer-events: none;
           filter: blur(10px);
         }
       }

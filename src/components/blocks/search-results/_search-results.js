@@ -36,9 +36,10 @@ const offensiveWarningInitializer = () => {
           e.target.parentElement.getAttribute('data-row-index')
         ].classList.remove('b-search-results__body-row--offensive');
         e.target.parentElement.remove();
+        reAdjustWarnings();
       };
       el.appendChild(warningEl);
-      window.dispatchEvent(new Event('resize'));
+      reAdjustWarnings();
     }
   });
 
