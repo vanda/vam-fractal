@@ -15,7 +15,6 @@ const offensiveWarningInitializer = () => {
       warningEl.className = 'b-search-results__offensive-warning';
       warningEl.innerHTML = warningHTML;
       warningEl.style.top = `${el.offsetTop + (el.offsetHeight / 5)}px`;
-      warningEl.style.left = `${el.getBoundingClientRect().left / 3}px`;
       warningEl.setAttribute('data-row-index', i);
       warningEl.onclick = (e) => {
         Array.from(document.querySelectorAll('.b-search-results__body-row'))[
@@ -27,24 +26,29 @@ const offensiveWarningInitializer = () => {
       window.dispatchEvent(new Event('resize'));
     }
   });
-  window.addEventListener('resize', () => {
-    const table = document.querySelector('.b-search-results__table');
+};
 
-    Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach((el) => {
-      const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
-      el.style.top = `${row.offsetTop + (row.offsetHeight / 5)}px`;
+const reAdjustWarnings = () => {
+  const table = document.querySelector('.b-search-results__table');
 
-      if (table.clientWidth < 769) {
-        el.style.left = `5px`;
-      } else {
-        el.style.left = `${el.getBoundingClientRect().left / 5}px`;
-      }
-    });
+  Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach((el) => {
+    const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
+    el.style.top = `${row.offsetTop + (row.offsetHeight / 5)}px`;
+
+    if (table.clientWidth < 769) {
+      el.style.left = `5px`;
+    } else {
+      el.style.left = `${el.getBoundingClientRect().left / 5}px`;
+    }
   });
 };
 
+window.addEventListener('resize', () => {
+  reAdjustWarnings();
+});
+
 offensiveWarningInitializer();
-window.dispatchEvent(new Event('resize'));
+reAdjustWarnings();
 
 if (document.querySelector('.etc-template__results-container')) {
   document.querySelector('.etc-template__results-container').addEventListener('initWarnings', () => {
