@@ -7,7 +7,6 @@ const facetTermContainerClass = `${facetClass}-term-container`;
 const termClass = 'b-facet-box__term';
 const termListClass = `${termClass}-list`;
 const termList = document.querySelector(`.${termListClass}`);
-const termCheckboxClass = `${facetClass}-term-toggle-checkbox`;
 
 const facetCloseClass = 'b-facet-box__close-button';
 
@@ -278,7 +277,9 @@ const initialiseFacetOverlay = () => {
       Array.from(activeFacets).forEach((facetId) => {
         const target = document.querySelector(`li[data-id='${facetId}'`);
         if (target) {
-          target.dispatchEvent(newTermToggleEvent(Object.assign(target.dataset, {refreshing_page: true})));
+          target.dispatchEvent(newTermToggleEvent(
+            Object.assign(target.dataset, { refreshing_page: true }))
+          );
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         }
       });

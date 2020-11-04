@@ -16,7 +16,7 @@ const reAdjustWarnings = () => {
     el.style.top = `${row.offsetTop + (row.offsetHeight / 5)}px`;
 
     if (table.clientWidth < 769) {
-      el.style.left = `5px`;
+      el.style.left = '5px';
     } else {
       el.style.left = `${el.getBoundingClientRect().left / 5}px`;
     }
