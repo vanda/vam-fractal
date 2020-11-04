@@ -138,14 +138,14 @@
         }
         img {
           @include bpMinXSmall {
-            max-height: none;
+            max-height: 150px;
             max-width: 150px;
             padding: 16px;
           }
 
           max-height: 100px;
-          max-width: 60px;
-          padding: 12px 0;
+          max-width: 80px;
+          padding: 10px 10px;
         }
       }
 
@@ -216,6 +216,7 @@
         }
 
         img {
+          height: 150px;
           filter: brightness(.5);
         }
 
