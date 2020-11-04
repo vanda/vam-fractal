@@ -211,9 +211,14 @@
 
         td {
           background-color: rgba(57, 59, 63, .8);
-          pointer-events: none;
           filter: blur(10px);
+          pointer-events: none;
         }
+
+        img {
+          filter: brightness(.5);
+        }
+
       }
 
       background-color: #393b3f;
@@ -241,7 +246,7 @@
       @include bpMinSmall {
         display: none;
       }
-      width: 420px;
+      width: 100%;
     }
     &-image {
       @include bpMinXSmall {
