@@ -13,12 +13,11 @@
   &__offensive-warning {
     @include bpMinXSmall {
       margin-left: 0;
-      padding-left: 20px;
     }
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     margin-left: -12px;
-    padding: 0 5px;
+    padding: 0 10px;
     position: absolute;
     width: 100%;
     &-text {
@@ -39,8 +38,12 @@
       color: siteColor(vam-white);
       font-size: 14px;
       margin-top: -15px;
-      padding: 10px 0;
+      padding: 10px 10px;
       width: 100%;
+
+      &:hover .b-search-results__offensive-warning-button {
+        background-color: siteColor(vam-black);
+      }
     }
     &-button {
       @include typeSetting(1, bold, uppercase);
@@ -49,6 +52,8 @@
       color: siteColor(vam-white);
       cursor: pointer;
       height: 24px;
+      margin-top: 10px;
+      pointer-events: none;
       width: 121px;
       &:hover {
         background-color: siteColor(vam-black);
@@ -78,14 +83,12 @@
   }
 
   &__cell {
+    @include typeSetting(3, light);
+
     &-img {
       padding-right: 0;
       vertical-align: middle;
     }
-    @include typeSetting(3, light);
-    @include bpMinXSmall {
-    }
-
     padding-right: 10px;
     position: relative;
     vertical-align: baseline;
@@ -135,14 +138,14 @@
         }
         img {
           @include bpMinXSmall {
-            max-height: none;
+            max-height: 150px;
             max-width: 150px;
             padding: 16px;
           }
 
           max-height: 100px;
-          max-width: 60px;
-          padding: 12px 0;
+          max-width: 80px;
+          padding: 10px 10px;
         }
       }
 
@@ -205,9 +208,16 @@
       &--offensive {
         height: 160px;
         position: relative;
+
         td {
           background-color: rgba(57, 59, 63, .8);
           filter: blur(10px);
+          pointer-events: none;
+        }
+
+        img {
+          filter: brightness(.5);
+          height: 150px;
         }
       }
 
@@ -236,7 +246,7 @@
       @include bpMinSmall {
         display: none;
       }
-      width: 420px;
+      width: 100%;
     }
     &-image {
       @include bpMinXSmall {

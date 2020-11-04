@@ -153,7 +153,7 @@
   }
 
   &__submit {
-    @include typeSetting(2, bold, uppercase);
+    @include typeSetting(3, semi-bold, uppercase);
     align-items: center;
     display: inline-flex;
     margin-top: 15px;
@@ -180,7 +180,7 @@
     }
 
     &::after {
-      border: 4px solid transparent;
+      border: 6px solid transparent;
       border-left-color: currentColor;
       content: '';
       display: inline-block;
@@ -265,7 +265,7 @@
     }
     &[type="checkbox"] + label {
       cursor: pointer;
-      padding-left: 28px;
+      padding-left: 35px;
       position: relative;
     }
     &[type="checkbox"] + label:before {
@@ -273,25 +273,31 @@
       border: 1px solid siteColor(vam-white);
       border-radius: 2px;
       content: '';
-      height: 16px;
+      height: 25px;
       left: 0;
       position: absolute;
-      top: 2px;
-      width: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
     }
     &[type="checkbox"]:checked + label:before {
-      background: siteColor(primary-green);
-      border: 1px solid siteColor(primary-green);
+      background: themeColor(silent-green);
+      border: 1px solid themeColor(silent-green);
     }
     &[type="checkbox"]:checked + label:after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='tick' viewBox='0 0 16 16'%3E%3Ctitle%3ECheckbox-ticked%3C/title%3E%3Cpath d='M6.186 9.528l-.106-.124a205.746 205.746 0 0 1-2.036-2.41L1.737 8.913l.176.211a234.544 234.544 0 0 0 1.89 2.235l.11.127a71.654 71.654 0 0 0 1.433 1.626c.223.243.407.436.556.58.098.095.185.174.272.243.088.068.088.068.231.159.226.13.45.216.789.216.567 0 .802-.164 1.107-.474.07-.07.128-.14.19-.221.079-.104.167-.231.272-.392.177-.27.41-.648.698-1.129a198.71 198.71 0 0 0 1.935-3.331l.106-.186a586.26 586.26 0 0 0 2.81-4.99l-2.62-1.46a363.728 363.728 0 0 1-.868 1.552A583.35 583.35 0 0 1 8.896 7.09l-.106.185c-.73 1.277-1.35 2.348-1.826 3.148-.234-.266-.495-.566-.778-.895z' fill='currentColor' fill-rule='nonzero'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
       color: siteColor(vam-black);
-      content: '\2713\0020';
+      content: ' ';
       font-size: 1.2em;
       font-weight: bold;
+      height: 25px;
       left: 0;
       line-height: 16px;
       position: absolute;
-      top: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
     }
 
     &--date {
@@ -305,13 +311,17 @@
   }
 
   &__filter-select {
-    @include typeSetting(2);
+    @include typeSetting(2, semi-bold, uppercase);
     background: transparent;
     border: 1px solid siteColor(vam-white);
     border-radius: 2px;
     color: siteColor(vam-white);
     outline: none;
-    padding: 2px;
+    padding: 10px 20px;
+
+    &:after {
+      color: blue;
+    }
 
     > option {
       background: siteColor(vam-black);

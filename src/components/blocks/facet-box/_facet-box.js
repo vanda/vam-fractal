@@ -7,7 +7,6 @@ const facetTermContainerClass = `${facetClass}-term-container`;
 const termClass = 'b-facet-box__term';
 const termListClass = `${termClass}-list`;
 const termList = document.querySelector(`.${termListClass}`);
-const termCheckboxClass = `${facetClass}-term-toggle-checkbox`;
 
 const facetCloseClass = 'b-facet-box__close-button';
 
@@ -28,21 +27,21 @@ const dateFacetHTML = () => `
         <label class="b-facet-box__facet-date-label">
           From year:
         </label>
-        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-start">
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="after_year">
       </div>
       <div class="b-facet-box__facet-date-container-end">
         <label class="b-facet-box__facet-date-label">
           To year:
         </label>
-        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="date-end">
+        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="before_year">
       </div>
       <div class="b-facet-box__facet-date-container-button">
         <label class="b-facet-box__facet-date-label">
           &nbsp;
         </label>
         <button class="b-facet-box__facet-date-button">
-          <svg class="b-facet-box__facet-date-button-icon" role="img">
-            <use xlink:href="/assets/svg/svg-template.svg#search"></use>
+          <svg class="b-facet-box__facet-date-button-icon" aria-label="apply-date-facet" role="img">
+            <use xlink:href="/svg/vamicons.svg#search"></use>
           </svg>
         </button>
       </div>
@@ -61,7 +60,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 
   checkbox.innerHTML = `
     <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-      <svg class="b-facet-box__facet-term-toggle-tick" role="img">
+      <svg class="b-facet-box__facet-term-toggle-tick" aria-label="checkmark-${term}-${paramName}" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
     </a>
@@ -71,28 +70,49 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     <span class="b-facet-box__facet-term-toggle-result">
       (${count})
     </span>
-    <input class="b-facet-box__hidden-input" type="checkbox" name="${paramName}" value="${value}">
   `;
 
+  const hiddenInput = document.createElement('INPUT');
+  hiddenInput.type = 'checkbox';
+  hiddenInput.className = 'b-facet-box__hidden-input';
+  hiddenInput.name = paramName;
+  hiddenInput.value = value;
+  hiddenInput.id = `${paramName}=${value}`;
+
   checkbox.addEventListener('termToggle', (e) => {
-    e.target.querySelector('.b-facet-box__hidden-input').checked = !e.target.querySelector('.b-facet-box__hidden-input').checked;
+    const existingHiddenInput = document.querySelector(`input[id="${`${paramName}=${value}`}"]`);
+    // GOTTA ASSUME THERE'S A FORM ON THE PAGE FOR THIS TO WORK!!!
+    // this is because formData has an order which is annoying to change
+
+    if (existingHiddenInput) {
+      existingHiddenInput.click();
+      existingHiddenInput.remove();
+    } else {
+      document.querySelector('#vam-etc-search').appendChild(hiddenInput);
+      document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
+    }
+
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
       `${facetTermTick}--active`
     );
-    document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked', { bubbles: true }));
+
+    if (!e.detail.refreshing_page) {
+      document.querySelector('.b-facet-box').dispatchEvent(new Event('boxChecked', { bubbles: true }));
+    }
   });
 
   return checkbox;
 };
 
-const facetHTML = facet => `
+const facetHTML = (facet, seeMore) => `
   <div class="b-facet-box__facet-text">
     ${facet}
   </div>
-  <ul data-facet="${facet}" class="b-facet-box__facet-term-container">
+  <ul data-facet="${facet}" class="b-facet-box__facet-term-container">${
+  seeMore ? `
     <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
-  </ul>
-`;
+  ` : ''
+}</ul>`;
 
 const revealMoreFacets = (e) => {
   e.preventDefault();
@@ -104,6 +124,7 @@ const revealMoreFacets = (e) => {
     facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
   });
   facetsWithIndex[facet].index += 5;
+
   if (facetsWithIndex[facet].index !== terms.length) {
     facetContainer.appendChild(linkEl);
   }
@@ -128,7 +149,7 @@ const createFacets = (activeFacets) => {
   Object.values(facetsWithIndex).forEach(({ facet, terms, paramName, index }) => {
     const newFacet = document.createElement('DIV');
     newFacet.className = 'b-facet-box__facet';
-    newFacet.innerHTML = facetHTML(facet);
+    newFacet.innerHTML = facetHTML(facet, terms.length > 5);
 
     newFacet.addEventListener('click', (e) => {
       if (e.target.classList.contains(facetTextClass)) {
@@ -144,17 +165,23 @@ const createFacets = (activeFacets) => {
       return (current > test ? current : test);
     }, 5)) || 0;
 
-    newIndex = (Math.ceil(newIndex / 5) * 5) + 5;
+    newIndex = ((Math.ceil(newIndex / 5) * 5));
+
+    newIndex = newIndex > terms.length ? terms.length : (newIndex || 5);
 
     terms.slice(index, newIndex).forEach(({ term, count, value }) => {
       newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(termCheckbox(facet, paramName, term, value, count));
     });
 
-    facetsWithIndex[facet].index += (5 + newIndex);
+    facetsWithIndex[facet].index += (newIndex);
 
-    if (facetsWithIndex[facet].index !== terms.length) {
-      newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
-      newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+    if (terms.length > 5) {
+      if (facetsWithIndex[facet].index < terms.length) {
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
+        newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+      } else {
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more')).remove();
+      }
     }
 
     facetBoxContainer.appendChild(newFacet);
@@ -214,12 +241,16 @@ const initialiseFacetOverlay = () => {
 
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
     const { facets, activeFacets } = e.detail;
+    const currentBeforeDate = document.querySelector('input[name="before_year"]') ? document.querySelector('input[name="before_year"]').value : '';
+    const currentAfterDate = document.querySelector('input[name="after_year"]') ? document.querySelector('input[name="after_year"]').value : '';
 
     facets.forEach((facet) => {
       Object.assign(facetsWithIndex, {
         [facet.facet]: Object.assign(facet, { index: 0 })
       });
     });
+
+    Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => el.remove());
 
     const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
     facetBoxContainer.innerHTML = '';
@@ -236,6 +267,8 @@ const initialiseFacetOverlay = () => {
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
     });
+    dateFacet.querySelector('input[name="before_year"]').value = currentBeforeDate;
+    dateFacet.querySelector('input[name="after_year"]').value = currentAfterDate;
 
     facetBoxContainer.append(dateFacet);
 
@@ -244,7 +277,9 @@ const initialiseFacetOverlay = () => {
       Array.from(activeFacets).forEach((facetId) => {
         const target = document.querySelector(`li[data-id='${facetId}'`);
         if (target) {
-          target.dispatchEvent(newTermToggleEvent(target.dataset));
+          target.dispatchEvent(newTermToggleEvent(
+            Object.assign(target.dataset, { refreshing_page: true }))
+          );
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         }
       });
@@ -260,10 +295,8 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    if (e.target.classList.contains(termCheckboxClass)) {
-      const parent = e.target.classList.contains(termCheckboxClass) ?
-        e.target.parentElement : e.target.parentElement.parentElement.parentElement;
-
+    if (e.target.parentElement && e.target.parentElement.classList.contains(facetTerm)) {
+      const parent = e.target.closest(facetTerm) || e.target.parentElement;
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }

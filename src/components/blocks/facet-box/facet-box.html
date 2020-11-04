@@ -15,7 +15,7 @@
   </div>
 
   <div class="b-facet-box__modal-button b-facet-box__modal-button-open b-facet-box__open-modal-button">
-     <svg class="b-facet-box__modal-content b-facet-box__modal-content-open" role="img">
+     <svg class="b-facet-box__modal-content b-facet-box__modal-content-open" aria-label="open-facet-box" role="img">
           <use xlink:href="/assets/svg/svg-template.svg#settings"></use>
       </svg>
   </div>
@@ -26,7 +26,7 @@
 <div class="b-facet-box">
   <div class="b-facet-box__modal-container b-facet-box__close-container">
     <div class="b-facet-box__modal-button b-facet-box__modal-button-close b-facet-box__close-button">
-       <svg class="b-facet-box__modal-content b-facet-box__modal-content-close" role="img">
+       <svg class="b-facet-box__modal-content b-facet-box__modal-content-close" aria-label="close-facet-box" role="img">
             <use xlink:href="/assets/svg/svg-template.svg#plus"></use>
         </svg>
     </div>
@@ -98,6 +98,8 @@
   </div>
 </div>
 
+<form id="vam-etc-search"></form>
+
 {% if testEvent %}
 </div>
 
@@ -108,11 +110,8 @@
 
       window.active_facets = new Set();
 
-      window.active_facets.add('facet_1_id-T15');
-      window.active_facets.add('facet_1_id-T10');
-      window.active_facets.add('facet_1_id-T12');
-      window.active_facets.add('facet_1_id-T14');
-      window.active_facets.add('facet_1_id-T17');
+      window.active_facets.add('facet_2_id-T214');
+      window.active_facets.add('facet_1_id-T11');
 
       document.querySelector('.b-facet-box__container').addEventListener('boxChecked', (e) => {
         console.log('recieved the updated search event');
@@ -129,7 +128,7 @@
                 {
                   facet: 'Facet 1',
                   paramName: 'facet_1_id',
-                  terms: (new Array(20).fill(null)).map((x, i) => {
+                  terms: (new Array(4).fill(null)).map((x, i) => {
                     return {
                       term: `Term ${i}`,
                       count: '< 10000',
@@ -139,7 +138,7 @@
                 },
                 {
                   facet: 'Facet 2',
-                  paramName: 'facet_1_id',
+                  paramName: 'facet_2_id',
                   terms: (new Array(20).fill(null)).map((x, i) => {
                     return {
                       term: `Term ${i}`,

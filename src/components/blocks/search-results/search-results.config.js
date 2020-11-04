@@ -21,7 +21,7 @@ module.exports = {
             place: 'Britain'
           },
           {
-            image: 'https://place-hold.it/82x119',
+            image: 'https://place-hold.it/82x170',
             title: 'Cool Print',
             artist: 'Established Printer',
             date: '1980',
@@ -73,7 +73,7 @@ module.exports = {
             place: 'Britain'
           },
           {
-            image: 'https://place-hold.it/82x119',
+            image: 'https://place-hold.it/82x170',
             title: 'Cool Print',
             artist: 'Established Printer',
             date: '1980',

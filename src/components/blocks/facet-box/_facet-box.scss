@@ -54,9 +54,9 @@
       border: solid .7px #ceffd6;
       border-radius: 19.5px;
       font-size: 36px;
-      height: 39px;
+      height: 40px;
       position: relative;
-      width: 39px;
+      width: 40px;
     }
 
     &-content {
@@ -139,17 +139,18 @@
 
     &-date {
       &-container {
+        flex-flow: nowrap;
         margin-top: 20px;
         max-width: 270px;
+
         @include bpMinXSmall {
           max-width: none;
         }
         &-start, &-end {
           flex-basis: 30%;
-          margin-right: 10px;
+          margin-right: 8px;
           @include bpMinXSmall {
-            flex-basis: 38%;
-            margin-right: 11px;
+            flex-basis: 30%;
           }
         }
         &-button {
@@ -178,12 +179,16 @@
         }
       }
       &-input {
-        background-color: #ffffff;
+        background-color: siteColor(vam-white);
         border: solid 1px #979797;
         border-radius: 2px;
         font-size: 18px;
         height: 44px;
-        width: 101px;
+        padding-left: 10px;
+        width: 80px;
+        &::-webkit-inner-spin-button {
+          opacity: 1;
+        }
       }
     }
 
@@ -201,6 +206,12 @@
     }
 
     &-term-toggle {
+      &:hover {
+        color: siteColor(vam-white);
+      }
+
+      color: siteColor(vam-grey-5);
+      cursor: pointer;
       display: flex;
       flex-basis: 100%;
       flex-direction: row;
@@ -209,12 +220,23 @@
       &-text, &-result {
         flex-basis: 50%;
       }
+      &-tick use {
+        display: none;
+      }
       &-tick {
+        border: 1px siteColor(vam-white) solid;
+        border-radius: 3px;
+
         &--active {
+          background-color: themeColor(silent-green);
+          border-color: themeColor(silent-green);
+        }
+
+        &--active use {
           display: block;
         }
-        color: themeColor(silent-green);
-        display: none;
+
+        color: siteColor(vam-black);
         height: 25px;
         left: 0;
         pointer-events: none;
@@ -224,8 +246,6 @@
       &-checkbox {
         margin-left: 40px;
         &:before {
-          border: 1px siteColor(vam-white) solid;
-          border-radius: 3px;
           content: '';
           cursor: pointer;
           height: 25px;
@@ -243,8 +263,8 @@
 
   &__term {
     &-more {
-      font-weight: 600;
-      margin-top: 10px;
+      font-weight: 700;
+      margin-top: 20px;
       text-decoration: underline;
     }
 
@@ -253,6 +273,7 @@
     border: solid themeColor(silent-green) 1px;
     border-radius: 4px;
     color: siteColor(vam-white);
+    margin-bottom: 5px;
     margin-right: 10px;
     margin-top: 5px;
     padding: 10px 33px 10px 13px;
