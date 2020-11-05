@@ -240,9 +240,13 @@
       @include bpMinSmall {
         display: table-cell;
 
+        &[data-sortable*="1"] {
+          text-decoration: underline;
+        }
+
         &[data-sortable*="1"]:hover {
           cursor: pointer;
-          text-decoration: underline;
+          font-weight: 800;
         }
 
         &--sort {
