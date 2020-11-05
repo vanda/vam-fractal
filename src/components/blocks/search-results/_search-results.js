@@ -20,8 +20,6 @@ const toggleSort = (el) => {
     'b-search-results__head-cell--sort-desc': 'b-search-results__head-cell--sort-none'
   }[currentClass];
 
-  console.log(newSort)
-
   Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((e) => {
     e.classList.remove('b-search-results__head-cell--sort-desc');
     e.classList.remove('b-search-results__head-cell--sort-asc');
@@ -32,12 +30,12 @@ const toggleSort = (el) => {
     !newSort
   ) {
     el.classList.add(defaultClass);
-    orderSort.value = value;
+    orderBy.value = value;
   } else if (newSort == ('b-search-results__head-cell--sort-desc')) {
-    orderBy.value = 'desc';
+    orderSort.value = 'desc';
   } else if (newSort == ('b-search-results__head-cell--sort-none')) {
-    orderSort.value = '';
-    orderBy.value ='asc';
+    orderBy.value = '';
+    orderSort.value ='asc';
   }
 
   el.classList.add(newSort || defaultClass);
