@@ -7,6 +7,9 @@
     {% endif %}
   </div>
 
+  <input type="hidden" name="order_by" class="b-search-results__hidden-input-order-by" value="asc" />
+  <input type="hidden" name="order_sort" class="b-search-results__hidden-input-order-sort" value="" />
+
   <div class="b-search-results__container">
     <div class="b-search-results__facet-container">
       {% render "@facet-box-modal" %}
@@ -23,18 +26,12 @@
               </td>
               <td class="b-search-results__head-cell b-search-results__head-artist" data-value="artist" data-sortable="1">
                 Artist/Maker
-                <input type="hidden" name="order_by" class="b-search-results__hidden-input-order-by" value="" />
-                <input type="hidden" name="order_sort" class="b-search-results__hidden-input-order-sort" value="" />
               </td>
               <td class="b-search-results__head-cell b-search-results__head-date" data-value="date" data-sortable="1">
                 Date
-                <input type="hidden" name="order_by" class="b-search-results__hidden-input-order-by" value="" />
-                <input type="hidden" name="order_sort" class="b-search-results__hidden-input-order-sort" value="" />
               </td>
               <td class="b-search-results__head-cell b-search-results__head-place" data-value="place" data-sortable="1">
                 Place Of Origin
-                <input type="hidden" name="order_by" class="b-search-results__hidden-input-order-by" value="" />
-                <input type="hidden" name="order_sort" class="b-search-results__hidden-input-order-sort" value="" />
               </td>
             </tr>
           </thead>

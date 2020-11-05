@@ -10,25 +10,37 @@ const warningHTML = `
 
 const toggleSort = (el) => {
   const { value } = el.dataset;
-  const orderBy = el.querySelector('.b-search-results__hidden-input-order-by');
-  const orderSort = el.querySelector('.b-search-results__hidden-input-order-sort');
+  const orderBy = document.querySelector('.b-search-results__hidden-input-order-by');
+  const orderSort = document.querySelector('.b-search-results__hidden-input-order-sort');
+  const defaultClass = 'b-search-results__head-cell--sort-asc';
+  const currentClass = Array.from(el.classList)[2];
+
+  const newSort = {
+    'b-search-results__head-cell--sort-asc': 'b-search-results__head-cell--sort-desc',
+    'b-search-results__head-cell--sort-desc': 'b-search-results__head-cell--sort-none'
+  }[currentClass];
+
+  console.log(newSort)
+
+  Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((e) => {
+    e.classList.remove('b-search-results__head-cell--sort-desc');
+    e.classList.remove('b-search-results__head-cell--sort-asc');
+    e.classList.remove('b-search-results__head-cell--sort-none');
+  });
 
   if (
-    !el.classList.contains('b-search-results__head-cell--sort-asc') &&
-    !el.classList.contains('b-search-results__head-cell--sort-desc')
+    !newSort
   ) {
-    el.classList.add(`${Array.from(el.classList)[0]}--sort-asc`);
+    el.classList.add(defaultClass);
     orderSort.value = value;
-    orderBy.value = 'asc';
-  } else if (el.classList.contains('b-search-results__head-cell--sort-asc')) {
-    el.classList.remove(`${Array.from(el.classList)[0]}--sort-asc`);
-    el.classList.add(`${Array.from(el.classList)[0]}--sort-desc`);
+  } else if (newSort == ('b-search-results__head-cell--sort-desc')) {
     orderBy.value = 'desc';
-  } else if (el.classList.contains('b-search-results__head-cell--sort-desc')) {
-    el.classList.remove(`${Array.from(el.classList)[0]}--sort-desc`);
+  } else if (newSort == ('b-search-results__head-cell--sort-none')) {
     orderSort.value = '';
-    orderBy.value ='';
+    orderBy.value ='asc';
   }
+
+  el.classList.add(newSort || defaultClass);
 }
 
 const reAdjustWarnings = () => {
