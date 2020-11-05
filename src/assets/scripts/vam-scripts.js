@@ -9,7 +9,6 @@ require('../../components/blocks/facet-box/_facet-box.js');
 require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal.js');
 require('../../components/blocks/object-details/object-details.js');
-require('../../components/blocks/object-image-overlay/_object-image-overlay.js');
 require('../../components/blocks/object-shuffler/_object-shuffler.js');
 require('../../components/blocks/modal/_modal.js');
 require('../../components/blocks/newsletter-signup/_newsletter-signup.js');
@@ -33,5 +32,8 @@ new LazyLoad({
     el.classList.remove('s-lazyload-blur');
   }
 });
+
+import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay.js';
+oicInit();
 
 svg4everybody();

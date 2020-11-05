@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-(() => {
+const oicInit = () => {
   const oicSeeds = Array.from(document.querySelectorAll('.js-object-image-overlay-item'));
 
   if (oicSeeds.length) {
@@ -32,8 +32,8 @@
         : '';
       const onDisplay = data && data.onDisplay ?
         `<div class="b-object-image-overlay__location-status">
-          <svg role="img">
-            <use xlink:href="/assets/svg/svg-template.svg#on-display"></use>
+          <svg role="img" viewBox="0 0 52 52">
+            <path d="M51.59 25.348C45.15 15.57 35.838 10 26 10S6.851 15.57.41 25.348L0 26l.41.652C6.85 36.43 16.162 42 26 42s19.149-5.57 25.59-15.348L52 26l-.41-.652zM25.5 35c-5.225 0-9.5-4.275-9.5-9.5s4.275-9.5 9.5-9.5 9.5 4.275 9.5 9.5-4.275 9.5-9.5 9.5z" fill="currentColor"/>
           </svg>
           On display
         </div>`
@@ -87,13 +87,15 @@
               ${numberCopyright}
               <div class="b-object-image-overlay__prevnext">
                 <a class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" href="#" title="Previous" aria-label="Previous" data-tracking-oic="previous object">
-                  <svg role="img">
-                    <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
+                  <svg role="img" viewBox="0 0 100 100">
+                    <path fill="none" d="M-1-1h582v402H-1z"/>
+                    <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
                   </svg>
                 </a>
                 <a class="b-object-image-overlay__next b-object-image-overlay__next--disabled" href="#" title="Next" aria-label="Next" data-tracking-oic="next object">
-                  <svg role="img">
-                    <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
+                  <svg role="img" viewBox="0 0 100 100">
+                    <path fill="none" d="M-1-1h582v402H-1z"/>
+                    <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
                   </svg>
                 </a>
               </div>
@@ -202,5 +204,7 @@
       }
     }, false);
   }
-})();
+};
+export { oicInit as default };
+
 /* eslint-enable no-underscore-dangle */
