@@ -8,6 +8,29 @@ const warningHTML = `
     </div>
 `;
 
+const toggleSort = (el) => {
+  const { value } = el.dataset;
+  const orderBy = el.querySelector('.b-search-results__hidden-input-order-by');
+  const orderSort = el.querySelector('.b-search-results__hidden-input-order-sort');
+
+  if (
+    !el.classList.contains('b-search-results__head-cell--sort-asc') &&
+    !el.classList.contains('b-search-results__head-cell--sort-desc')
+  ) {
+    el.classList.add(`${Array.from(el.classList)[0]}--sort-asc`);
+    orderSort.value = value;
+    orderBy.value = 'asc';
+  } else if (el.classList.contains('b-search-results__head-cell--sort-asc')) {
+    el.classList.remove(`${Array.from(el.classList)[0]}--sort-asc`);
+    el.classList.add(`${Array.from(el.classList)[0]}--sort-desc`);
+    orderBy.value = 'desc';
+  } else if (el.classList.contains('b-search-results__head-cell--sort-desc')) {
+    el.classList.remove(`${Array.from(el.classList)[0]}--sort-desc`);
+    orderSort.value = '';
+    orderBy.value ='';
+  }
+}
+
 const reAdjustWarnings = () => {
   const table = document.querySelector('.b-search-results__table');
 
@@ -59,3 +82,10 @@ if (document.querySelector('.etc-template__results-container')) {
     offensiveWarningInitializer();
   });
 }
+
+Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
+  if (Boolean(parseInt(el.dataset.sortable))) {
+    el.onclick = e => toggleSort(e.target);
+  }
+});
+
