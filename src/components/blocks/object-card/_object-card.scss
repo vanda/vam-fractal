@@ -24,18 +24,24 @@
 
   &__image {
     height: auto;
+    max-height: 586px;
+    object-fit: cover;
     width: 100%;
   }
 
   &__caption {
+    @include typeSetting(3, semi-bold);
     display: none;
+    margin: 10px 0 0;
 
     @include bpMinSmall {
-      @include typeSetting(2, bold);
-      background-color: siteColor(vam-white);
       color: siteColor(vam-black);
       display: block;
-      margin: 10px 0 0;
+    }
+
+    .b-object-card--etc & {
+      color: siteColor(vam-white);
+      display: block;
     }
   }
 }

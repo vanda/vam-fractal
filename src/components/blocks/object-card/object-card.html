@@ -1,9 +1,9 @@
-<figure class="b-object-card{% if objectImageOverlayItem %} js-object-image-overlay-item{% endif %}"
+<figure class="b-object-card{% for m in modifiers %} b-object-card--{{ m }}{% endfor %} {% if objectImageOverlayItem %} js-object-image-overlay-item{% endif %}"
         {% if objectImageOverlayData %} data-object-image-overlay="{{ objectImageOverlayData | dump | escape }}"{% endif %}
         itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
   <link itemprop="url" href="{{image[960]}}">
   <a class="b-object-card__anchor" href="{{ href }}">
-    <img class="b-object-card__image"
+    <img class="b-object-card__image s-lazyload-blur"
          itemprop="contentUrl"
          alt="{{ physicalDescription }}" 
          data-sizes="(max-width: 499px) calc(100vw - 24px),
@@ -11,7 +11,7 @@
                 (min-width: 992px) calc(34vw - 340px),
                 (min-width: 1200px) calc(1200px - 340px)"
          data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-         data-src="{{ image[640] }}">
+         src="{{ image[320] }}">
 
     <figcaption class="b-object-card__caption">
       {{ caption | safe }}
