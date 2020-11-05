@@ -39,6 +39,8 @@ const toggleSort = (el) => {
   }
 
   el.classList.add(newSort || defaultClass);
+
+  el.dispatchEvent(new Event('input', { bubbles: true }))
 }
 
 const reAdjustWarnings = () => {
