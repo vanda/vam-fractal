@@ -1,6 +1,7 @@
 .b-beta-tag {
   @include typeSetting(2, semi-bold, uppercase);
   background-color: themeColor(silent-green);
+  color: siteColor(vam-black);
   height: 23px;
   padding-top: 1px;
   text-align: center;
