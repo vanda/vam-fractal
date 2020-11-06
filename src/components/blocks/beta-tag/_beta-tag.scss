@@ -1,0 +1,16 @@
+.b-beta-tag {
+  @include typeSetting(2, semi-bold, uppercase);
+  background-color: themeColor(silent-green);
+  height: 23px;
+  padding-top: 1px;
+  text-align: center;
+  width: 54px;
+
+  @include bpMinMedium {
+    height: 90px;
+
+    &__text {
+      padding-top: 60px;
+    }
+  }
+}
