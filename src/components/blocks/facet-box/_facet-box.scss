@@ -124,6 +124,7 @@
 
       &--active {
         background-color: siteColor(vam-grey-1);
+        padding-bottom: 0;
 
         &::after {
           @include typeSetting(8, light);
