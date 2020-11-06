@@ -31,17 +31,17 @@ const toggleSort = (el) => {
   ) {
     el.classList.add(defaultClass);
     orderBy.value = value;
-  } else if (newSort == ('b-search-results__head-cell--sort-desc')) {
+  } else if (newSort === ('b-search-results__head-cell--sort-desc')) {
     orderSort.value = 'desc';
-  } else if (newSort == ('b-search-results__head-cell--sort-none')) {
+  } else if (newSort === ('b-search-results__head-cell--sort-none')) {
     orderBy.value = '';
-    orderSort.value ='asc';
+    orderSort.value = 'asc';
   }
 
   el.classList.add(newSort || defaultClass);
 
-  el.dispatchEvent(new Event('change', { bubbles: true }))
-}
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+};
 
 const reAdjustWarnings = () => {
   const table = document.querySelector('.b-search-results__table');
@@ -96,7 +96,7 @@ if (document.querySelector('.etc-template__results-container')) {
 }
 
 Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
-  if (Boolean(parseInt(el.dataset.sortable))) {
+  if (parseInt(el.dataset.sortable, 10)) {
     el.onclick = e => toggleSort(e.target);
   }
 });
