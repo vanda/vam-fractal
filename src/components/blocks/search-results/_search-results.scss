@@ -239,6 +239,38 @@
       display: none;
       @include bpMinSmall {
         display: table-cell;
+
+        &[data-sortable*="1"] {
+          text-decoration: underline;
+        }
+
+        &[data-sortable*="1"]:hover {
+          cursor: pointer;
+          font-weight: 800;
+        }
+
+        &--sort {
+          &-asc, &-desc {
+            font-weight: 800;
+            position: relative;
+            text-decoration: underline;
+            &:after {
+              font-size: 8px;
+              margin-left: 5px;
+              position: absolute;
+            }
+          }
+          &-asc {
+            &:after {
+              content: '▲';
+            }
+          }
+          &-desc {
+            &:after {
+              content: '▼';
+            }
+          }
+        }
       }
     }
     &-responsive {

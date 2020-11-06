@@ -8,6 +8,41 @@ const warningHTML = `
     </div>
 `;
 
+const toggleSort = (el) => {
+  const { value } = el.dataset;
+  const orderBy = document.querySelector('.b-search-results__hidden-input-order-by');
+  const orderSort = document.querySelector('.b-search-results__hidden-input-order-sort');
+  const defaultClass = 'b-search-results__head-cell--sort-asc';
+  const currentClass = Array.from(el.classList)[2];
+
+  const newSort = {
+    'b-search-results__head-cell--sort-asc': 'b-search-results__head-cell--sort-desc',
+    'b-search-results__head-cell--sort-desc': 'b-search-results__head-cell--sort-none'
+  }[currentClass];
+
+  Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((e) => {
+    e.classList.remove('b-search-results__head-cell--sort-desc');
+    e.classList.remove('b-search-results__head-cell--sort-asc');
+    e.classList.remove('b-search-results__head-cell--sort-none');
+  });
+
+  if (
+    !newSort
+  ) {
+    el.classList.add(defaultClass);
+    orderBy.value = value;
+  } else if (newSort === ('b-search-results__head-cell--sort-desc')) {
+    orderSort.value = 'desc';
+  } else if (newSort === ('b-search-results__head-cell--sort-none')) {
+    orderBy.value = '';
+    orderSort.value = 'asc';
+  }
+
+  el.classList.add(newSort || defaultClass);
+
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+};
+
 const reAdjustWarnings = () => {
   const table = document.querySelector('.b-search-results__table');
 
@@ -59,3 +94,10 @@ if (document.querySelector('.etc-template__results-container')) {
     offensiveWarningInitializer();
   });
 }
+
+Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
+  if (parseInt(el.dataset.sortable, 10)) {
+    el.onclick = e => toggleSort(e.target);
+  }
+});
+
