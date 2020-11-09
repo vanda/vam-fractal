@@ -240,6 +240,9 @@ const initialiseFacetOverlay = () => {
   });
 
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
+    // need this step to prevent keeping in memory some facets...
+    Object.keys(facetsWithIndex).forEach(facetKey => delete facetsWithIndex[facetKey]);
+
     const { facets, activeFacets } = e.detail;
     const currentBeforeDate = document.querySelector('input[name="before_year"]') ? document.querySelector('input[name="before_year"]').value : '';
     const currentAfterDate = document.querySelector('input[name="after_year"]') ? document.querySelector('input[name="after_year"]').value : '';
