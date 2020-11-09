@@ -61,6 +61,10 @@
     height: 100%;
     justify-content: space-around;
     width: 100vw;
+
+    &:first-of-type {
+      margin-left: -100vw;
+    }
   }
 
   &__content {
