@@ -87,7 +87,12 @@
   }
 
   &__facet {
-    margin-bottom: 30px;
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+    border-radius: 2px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 
     &-date-start-container, &-date-end-container {
       display: flex;
@@ -95,11 +100,13 @@
     }
 
     &-text {
-      color: siteColor(vam-white);
       &:hover {
-        color: themeColor(silent-green);
+        background-color: siteColor(vam-grey-1);
         cursor: pointer;
       }
+
+      color: siteColor(vam-white);
+      padding: 10px;
 
       @include typeSetting(3, bold, uppercase);
       position: relative;
@@ -110,12 +117,15 @@
         content: '+';
         display: inline-block;
         position: absolute;
-        right: 0;
+        right: 10px;
         top: 50%;
         transform: translateY(-50%);
       }
 
       &--active {
+        background-color: siteColor(vam-grey-1);
+        padding-bottom: 0;
+
         &::after {
           @include typeSetting(8, light);
           background-color: white;
@@ -140,8 +150,8 @@
     &-date {
       &-container {
         flex-flow: nowrap;
-        margin-top: 20px;
         max-width: 270px;
+        padding-bottom: 10px;
 
         @include bpMinXSmall {
           max-width: none;
@@ -193,10 +203,13 @@
     }
 
     &-term-container {
+      background-color: siteColor(vam-grey-1);
       display: none;
       flex-direction: row;
       list-style: none;
       margin-left: 0;
+      padding: 10px;
+      padding-bottom: 0;
       width: 100%;
 
       &--active {
@@ -215,7 +228,8 @@
       display: flex;
       flex-basis: 100%;
       flex-direction: row;
-      margin-top: 25px;
+      margin-bottom: 10px;
+      margin-top: 10px;
       position: relative;
       &-text, &-result {
         flex-basis: 50%;
@@ -264,7 +278,7 @@
   &__term {
     &-more {
       font-weight: 700;
-      margin-top: 20px;
+      margin: 10px 0;
       text-decoration: underline;
     }
 
