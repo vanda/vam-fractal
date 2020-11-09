@@ -150,8 +150,8 @@
     &-date {
       &-container {
         flex-flow: nowrap;
-        margin-top: 20px;
         max-width: 270px;
+        padding-bottom: 10px;
 
         @include bpMinXSmall {
           max-width: none;
