@@ -105,7 +105,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 };
 
 const facetHTML = (facet, seeMore) => `
-  <div class="b-facet-box__facet-text">
+  <div class="b-facet-box__facet-text" data-facet-text="${facet}">
     ${facet}
   </div>
   <ul data-facet="${facet}" class="b-facet-box__facet-term-container">${
