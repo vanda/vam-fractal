@@ -59,12 +59,12 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   checkbox.dataset.count = count;
 
   checkbox.innerHTML = `
-    <button class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-      <svg class="b-facet-box__facet-term-toggle-tick" aria-label="checkmark-${term}-${paramName}" role="img">
+    <button class="b-facet-box__facet-term-toggle-checkbox" role="switch" aria-labelledby="${paramName}-${term}-checkbox-label" aria-checked="false">
+      <svg class="b-facet-box__facet-term-toggle-tick" aria-hidden="true" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
     </button>
-    <span class="b-facet-box__facet-term-toggle-text">
+    <span id="${paramName}-${term}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
       ${term}
     </span>
     <span class="b-facet-box__facet-term-toggle-result">
@@ -85,11 +85,20 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     // this is because formData has an order which is annoying to change
 
     if (existingHiddenInput) {
+      // remove hidden input
       existingHiddenInput.click();
       existingHiddenInput.remove();
     } else {
       document.querySelector('#vam-etc-search').appendChild(hiddenInput);
       document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
+    }
+
+    const checked = e.target.querySelector(`.${facetTermTick}`).classList(`${facetTermTick}--active`);
+
+    if (checked) {
+
+    } else {
+
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
