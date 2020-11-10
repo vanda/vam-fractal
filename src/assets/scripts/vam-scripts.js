@@ -28,9 +28,7 @@ require('../../components/groups/story-box-container/_story-box-container.js');
 /* eslint-disable no-new */
 new LazyLoad({
   elements_selector: 'img[data-srcset]',
-  callback_loaded: (el) => {
-    el.classList.remove('s-lazyload-blur');
-  }
+  class_loading: 's-lazyload-blur'
 });
 
 import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay.js';
