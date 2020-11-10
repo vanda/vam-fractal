@@ -57,13 +57,16 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   checkbox.dataset.term = term;
   checkbox.dataset.value = value;
   checkbox.dataset.count = count;
+  checkbox.setAttribute('aria-labelledby', `${paramName}-${term}-checkbox-label`);
+  checkbox.setAttribute('role', 'switch');
+  checkbox.setAttribute('aria-checked', 'false');
 
   checkbox.innerHTML = `
-    <button class="b-facet-box__facet-term-toggle-checkbox" role="switch" aria-labelledby="${paramName}-${term}-checkbox-label" aria-checked="false">
+    <div class="b-facet-box__facet-term-toggle-checkbox">
       <svg class="b-facet-box__facet-term-toggle-tick" aria-hidden="true" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
-    </button>
+    </div>
     <span id="${paramName}-${term}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
       ${term}
     </span>
@@ -93,12 +96,12 @@ const termCheckbox = (facet, paramName, term, value, count) => {
       document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
     }
 
-    const checked = e.target.querySelector(`.${facetTermTick}`).classList(`${facetTermTick}--active`);
+    const checked = e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`);
 
     if (checked) {
-
+      e.target.setAttribute('aria-checked', 'false');
     } else {
-
+      e.target.setAttribute('aria-checked', 'true');
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
