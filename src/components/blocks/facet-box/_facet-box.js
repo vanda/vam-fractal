@@ -197,21 +197,21 @@ const initialiseFacetOverlay = () => {
   const toggleTerm = ({ id, facet, term, paramName }) => {
     if (id) {
       // if term already exists, get rid of it
-      if (document.querySelector(`div[data-id='${id}']`)) {
-        Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.remove());
+      if (document.querySelector(`button[data-id='${id}']`)) {
+        Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.remove());
         if (!document.querySelector('.b-search-form__facets').children.length) {
           document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
         }
         window.dispatchEvent(new Event('resize'));
       } else {
         const newTermOnClick = () => {
-          Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
+          Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
           if (document.querySelector(`li[data-id='${id}']`)) {
             document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
           }
         };
 
-        const newTerm = document.createElement('DIV');
+        const newTerm = document.createElement('button');
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
@@ -325,7 +325,7 @@ const initialiseFacetOverlay = () => {
           let cutOffWidth = 0;
           let currentIndex = 1;
           facetFormTerms.forEach((el) => {
-            cutOffWidth += el.offsetWidth + 10;
+            cutOffWidth += el.offsetWidth;
             if (cutOffWidth < facetContainerWidth) {
               currentIndex += 1;
             }

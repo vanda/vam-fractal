@@ -326,13 +326,13 @@
 
     &-text {
       &::after {
-        content: '+';
+        content: '\2715';
         display: inline-block;
-        font-size: 25px;
-        padding-left: 11px;
+        font-size: 14px;
         position: absolute;
-        top: 14%;
-        transform: rotate(46deg);
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
       }
       &--no-cross {
         font-weight: 800;
@@ -346,6 +346,7 @@
     &-list {
       @include bpMinMedium {
         display: none;
+        margin-top: 15px;
       }
 
       display: flex;
@@ -353,7 +354,6 @@
       flex-direction: row;
       flex-wrap: wrap;
       margin: auto;
-      margin-top: 15px;
       max-width: 530px;
       padding: 0 20px;
     }
