@@ -1,5 +1,6 @@
 import LazyLoad from 'vanilla-lazyload';
 import svg4everybody from 'svg4everybody';
+import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
 
 require('../../components/services/object_fit_polyfill/_poly-object-fit.js');
 require('../../components/blocks/background-video/_background-video.js');
@@ -9,7 +10,6 @@ require('../../components/blocks/facet-box/_facet-box.js');
 require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal.js');
 require('../../components/blocks/object-details/object-details.js');
-require('../../components/blocks/object-image-overlay/_object-image-overlay.js');
 require('../../components/blocks/object-shuffler/_object-shuffler.js');
 require('../../components/blocks/modal/_modal.js');
 require('../../components/blocks/newsletter-signup/_newsletter-signup.js');
@@ -29,9 +29,9 @@ require('../../components/groups/story-box-container/_story-box-container.js');
 /* eslint-disable no-new */
 new LazyLoad({
   elements_selector: 'img[data-srcset]',
-  callback_loaded: (el) => {
-    el.classList.remove('s-lazyload-blur');
-  }
+  class_loading: 's-lazyload-blur'
 });
+
+oicInit();
 
 svg4everybody();
