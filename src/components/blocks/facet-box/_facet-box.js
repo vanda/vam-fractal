@@ -59,11 +59,11 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   checkbox.dataset.count = count;
 
   checkbox.innerHTML = `
-    <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
+    <button class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
       <svg class="b-facet-box__facet-term-toggle-tick" aria-label="checkmark-${term}-${paramName}" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
-    </a>
+    </button>
     <span class="b-facet-box__facet-term-toggle-text">
       ${term}
     </span>
@@ -105,12 +105,12 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 };
 
 const facetHTML = (facet, seeMore) => `
-  <div class="b-facet-box__facet-text" data-facet-text="${facet}">
+  <button class="b-facet-box__facet-text" data-facet-text="${facet}">
     ${facet}
-  </div>
+  </button>
   <ul data-facet="${facet}" class="b-facet-box__facet-term-container">${
   seeMore ? `
-    <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
+    <button data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</button>
   ` : ''
 }</ul>`;
 
