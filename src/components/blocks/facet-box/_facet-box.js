@@ -60,6 +60,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   checkbox.setAttribute('aria-labelledby', `${paramName}-${term}-checkbox-label`);
   checkbox.setAttribute('role', 'switch');
   checkbox.setAttribute('aria-checked', 'false');
+  checkbox.setAttribute('tabindex', '0');
 
   checkbox.innerHTML = `
     <div class="b-facet-box__facet-term-toggle-checkbox">
@@ -81,6 +82,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   hiddenInput.name = paramName;
   hiddenInput.value = value;
   hiddenInput.id = `${paramName}=${value}`;
+  hiddenInput.setAttribute('aria-hidden', 'true');
 
   checkbox.addEventListener('termToggle', (e) => {
     const existingHiddenInput = document.querySelector(`input[id="${`${paramName}=${value}`}"]`);
