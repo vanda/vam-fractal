@@ -1,5 +1,6 @@
 import LazyLoad from 'vanilla-lazyload';
 import svg4everybody from 'svg4everybody';
+import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
 
 require('../../components/services/object_fit_polyfill/_poly-object-fit.js');
 require('../../components/blocks/background-video/_background-video.js');
@@ -31,7 +32,6 @@ new LazyLoad({
   class_loading: 's-lazyload-blur'
 });
 
-import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay.js';
 oicInit();
 
 svg4everybody();
