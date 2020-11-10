@@ -57,14 +57,18 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   checkbox.dataset.term = term;
   checkbox.dataset.value = value;
   checkbox.dataset.count = count;
+  checkbox.setAttribute('aria-labelledby', `${paramName}-${term}-checkbox-label`);
+  checkbox.setAttribute('role', 'switch');
+  checkbox.setAttribute('aria-checked', 'false');
+  checkbox.setAttribute('tabindex', '0');
 
   checkbox.innerHTML = `
-    <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
-      <svg class="b-facet-box__facet-term-toggle-tick" aria-label="checkmark-${term}-${paramName}" role="img">
+    <div class="b-facet-box__facet-term-toggle-checkbox">
+      <svg class="b-facet-box__facet-term-toggle-tick" aria-hidden="true" role="img">
         <use xlink:href="/svg/vamicons.svg#tick"></use>
       </svg>
-    </a>
-    <span class="b-facet-box__facet-term-toggle-text">
+    </div>
+    <span id="${paramName}-${term}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
       ${term}
     </span>
     <span class="b-facet-box__facet-term-toggle-result">
@@ -78,6 +82,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   hiddenInput.name = paramName;
   hiddenInput.value = value;
   hiddenInput.id = `${paramName}=${value}`;
+  hiddenInput.setAttribute('aria-hidden', 'true');
 
   checkbox.addEventListener('termToggle', (e) => {
     const existingHiddenInput = document.querySelector(`input[id="${`${paramName}=${value}`}"]`);
@@ -85,11 +90,20 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     // this is because formData has an order which is annoying to change
 
     if (existingHiddenInput) {
+      // remove hidden input
       existingHiddenInput.click();
       existingHiddenInput.remove();
     } else {
       document.querySelector('#vam-etc-search').appendChild(hiddenInput);
       document.querySelector(`input[id="${`${paramName}=${value}`}"]`).checked = true;
+    }
+
+    const checked = e.target.querySelector(`.${facetTermTick}`).classList.contains(`${facetTermTick}--active`);
+
+    if (checked) {
+      e.target.setAttribute('aria-checked', 'false');
+    } else {
+      e.target.setAttribute('aria-checked', 'true');
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
@@ -105,19 +119,19 @@ const termCheckbox = (facet, paramName, term, value, count) => {
 };
 
 const facetHTML = (facet, seeMore) => `
-  <div class="b-facet-box__facet-text" data-facet-text="${facet}">
+  <button class="b-facet-box__facet-text" data-facet-text="${facet}">
     ${facet}
-  </div>
+  </button>
   <ul data-facet="${facet}" class="b-facet-box__facet-term-container">${
-  seeMore ? `
-    <a data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</a>
-  ` : ''
+  seeMore ? `<li class="b-facet-box__term-more-container">
+    <button data-facet="${facet}" class="b-facet-box__term-more" aria-label="see more terms of facet ${facet}">See more</button>
+  </li>` : ''
 }</ul>`;
 
 const revealMoreFacets = (e) => {
   e.preventDefault();
   const linkEl = e.target;
-  const facetContainer = e.target.parentNode;
+  const facetContainer = e.target.parentNode.parentNode;
   const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset.facet];
   e.target.remove();
   terms.slice(index, index + 5).forEach(({ term, count, value }) => {
@@ -177,10 +191,10 @@ const createFacets = (activeFacets) => {
 
     if (terms.length > 5) {
       if (facetsWithIndex[facet].index < terms.length) {
-        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more-container'));
         newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
       } else {
-        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more')).remove();
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more-container')).remove();
       }
     }
 
@@ -197,21 +211,21 @@ const initialiseFacetOverlay = () => {
   const toggleTerm = ({ id, facet, term, paramName }) => {
     if (id) {
       // if term already exists, get rid of it
-      if (document.querySelector(`div[data-id='${id}']`)) {
-        Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.remove());
+      if (document.querySelector(`button[data-id='${id}']`)) {
+        Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.remove());
         if (!document.querySelector('.b-search-form__facets').children.length) {
           document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
         }
         window.dispatchEvent(new Event('resize'));
       } else {
         const newTermOnClick = () => {
-          Array.from(document.querySelectorAll(`div[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
+          Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
           if (document.querySelector(`li[data-id='${id}']`)) {
             document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
           }
         };
 
-        const newTerm = document.createElement('DIV');
+        const newTerm = document.createElement('button');
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
@@ -325,7 +339,7 @@ const initialiseFacetOverlay = () => {
           let cutOffWidth = 0;
           let currentIndex = 1;
           facetFormTerms.forEach((el) => {
-            cutOffWidth += el.offsetWidth + 10;
+            cutOffWidth += el.offsetWidth;
             if (cutOffWidth < facetContainerWidth) {
               currentIndex += 1;
             }
