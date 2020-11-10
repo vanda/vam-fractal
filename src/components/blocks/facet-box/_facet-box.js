@@ -109,15 +109,15 @@ const facetHTML = (facet, seeMore) => `
     ${facet}
   </button>
   <ul data-facet="${facet}" class="b-facet-box__facet-term-container">${
-  seeMore ? `
+  seeMore ? `<li class="b-facet-box__term-more-container">
     <button data-facet="${facet}" class="b-facet-box__term-more" href="#">See more</button>
-  ` : ''
+  </li>` : ''
 }</ul>`;
 
 const revealMoreFacets = (e) => {
   e.preventDefault();
   const linkEl = e.target;
-  const facetContainer = e.target.parentNode;
+  const facetContainer = e.target.parentNode.parentNode;
   const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset.facet];
   e.target.remove();
   terms.slice(index, index + 5).forEach(({ term, count, value }) => {
@@ -177,10 +177,10 @@ const createFacets = (activeFacets) => {
 
     if (terms.length > 5) {
       if (facetsWithIndex[facet].index < terms.length) {
-        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more'));
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more-container'));
         newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
       } else {
-        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more')).remove();
+        newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more-container')).remove();
       }
     }
 
