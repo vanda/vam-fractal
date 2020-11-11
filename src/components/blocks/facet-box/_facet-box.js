@@ -51,30 +51,34 @@ const dateFacetHTML = () => `
 const termCheckbox = (facet, paramName, term, value, count) => {
   const checkbox = document.createElement('LI');
   checkbox.className = 'b-facet-box__facet-term-toggle';
-  checkbox.dataset.id = `${paramName}-${value}`;
-  checkbox.dataset.facet = facet;
-  checkbox.dataset.paramName = paramName;
-  checkbox.dataset.term = term;
-  checkbox.dataset.value = value;
-  checkbox.dataset.count = count;
-  checkbox.setAttribute('aria-labelledby', `${paramName}-${term}-checkbox-label`);
-  checkbox.setAttribute('role', 'switch');
-  checkbox.setAttribute('aria-checked', 'false');
-  checkbox.setAttribute('tabindex', '0');
 
   checkbox.innerHTML = `
-    <div class="b-facet-box__facet-term-toggle-checkbox">
-      <svg class="b-facet-box__facet-term-toggle-tick" aria-hidden="true" role="img">
-        <use xlink:href="/svg/vamicons.svg#tick"></use>
-      </svg>
-    </div>
-    <span id="${paramName}-${term}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
-      ${term}
-    </span>
-    <span class="b-facet-box__facet-term-toggle-result">
-      (${count})
-    </span>
+    <button class="b-facet-box__facet-term-toggle-button">
+      <div class="b-facet-box__facet-term-toggle-checkbox">
+        <svg class="b-facet-box__facet-term-toggle-tick" aria-hidden="true" role="img">
+          <use xlink:href="/svg/vamicons.svg#tick"></use>
+        </svg>
+      </div>
+      <span id="${paramName}-${term}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
+        ${term}
+      </span>
+      <span class="b-facet-box__facet-term-toggle-result">
+        (${count})
+      </span>
+    </button>
   `;
+
+  const button = checkbox.querySelector('button');
+  button.dataset.id = `${paramName}-${value}`;
+  button.dataset.facet = facet;
+  button.dataset.paramName = paramName;
+  button.dataset.term = term;
+  button.dataset.value = value;
+  button.dataset.count = count;
+  button.setAttribute('aria-labelledby', `${paramName}-${term}-checkbox-label`);
+  button.setAttribute('role', 'switch');
+  button.setAttribute('aria-checked', 'false');
+
 
   const hiddenInput = document.createElement('INPUT');
   hiddenInput.type = 'checkbox';
@@ -164,10 +168,13 @@ const createFacets = (activeFacets) => {
     const newFacet = document.createElement('DIV');
     newFacet.className = 'b-facet-box__facet';
     newFacet.innerHTML = facetHTML(facet, terms.length > 5);
+    newFacet.setAttribute('aria-haspopup', 'true');
+    newFacet.setAttribute('aria-expanded', 'false');
 
     newFacet.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.classList.contains(facetTextClass)) {
+        e.target.parentNode.setAttribute('aria-expanded', String(!(e.target.parentNode.getAttribute('aria-expanded') === 'true')));
         e.target.classList.toggle(`${e.target.classList[0]}--active`);
         e.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
@@ -213,20 +220,23 @@ const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termTogg
 
 const initialiseFacetOverlay = () => {
   const toggleTerm = ({ id, facet, term, paramName }) => {
+
     if (id) {
+      const termButtons = Array.from(document.querySelectorAll(`button[data-id='${id}']`)).filter(
+        el => !el.classList.contains('b-facet-box__facet-term-toggle-button')
+      );
       // if term already exists, get rid of it
-      if (document.querySelector(`button[data-id='${id}']`)) {
-        Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.remove());
+
+      if (termButtons.length) {
+        termButtons.forEach(el => el.remove());
         if (!document.querySelector('.b-search-form__facets').children.length) {
           document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
         }
         window.dispatchEvent(new Event('resize'));
       } else {
+
         const newTermOnClick = () => {
           Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
-          if (document.querySelector(`li[data-id='${id}']`)) {
-            document.querySelector(`li[data-id='${id}']`).dispatchEvent(newTermToggleEvent({ id, facet, term, paramName }));
-          }
         };
 
         const newTerm = document.createElement('button');
@@ -318,9 +328,9 @@ const initialiseFacetOverlay = () => {
       }));
     }
 
-    if (e.target.parentElement && e.target.parentElement.classList.contains(facetTerm)) {
+    if (e.target.closest(`.${facetTerm}-button`)) {
       e.preventDefault();
-      const parent = e.target.closest(facetTerm) || e.target.parentElement;
+      const parent = e.target.closest(`.${facetTerm}-button`);
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
