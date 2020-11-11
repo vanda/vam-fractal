@@ -220,7 +220,6 @@ const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termTogg
 
 const initialiseFacetOverlay = () => {
   const toggleTerm = ({ id, facet, term, paramName }) => {
-
     if (id) {
       const termButtons = Array.from(document.querySelectorAll(`button[data-id='${id}']`)).filter(
         el => !el.classList.contains('b-facet-box__facet-term-toggle-button')
@@ -234,7 +233,6 @@ const initialiseFacetOverlay = () => {
         }
         window.dispatchEvent(new Event('resize'));
       } else {
-
         const newTermOnClick = () => {
           Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
         };
@@ -243,11 +241,11 @@ const initialiseFacetOverlay = () => {
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
-        newTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); }
+        newTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); };
         termList.appendChild(newTerm);
 
         const newFormTerm = newTerm.cloneNode(true);
-        newFormTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); }
+        newFormTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); };
         newFormTerm.classList.add('b-facet-box__term--form');
         if (document.querySelector('.b-search-form__facets')) {
           document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
@@ -349,8 +347,8 @@ const initialiseFacetOverlay = () => {
     }
     if (document.querySelector('.b-facet-box__close-button')) {
       document.querySelector('.b-facet-box__close-button').addEventListener('click', (e) => {
-       e.preventDefault();
-       document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+        e.preventDefault();
+        document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
       });
     }
 
