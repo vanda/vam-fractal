@@ -307,7 +307,7 @@ const initialiseFacetOverlay = () => {
     if (activeFacets) {
       // is a set...
       Array.from(activeFacets).forEach((facetId) => {
-        const target = document.querySelector(`li[data-id='${facetId}'`);
+        const target = document.querySelector(`button[data-id='${facetId}'`);
         if (target) {
           target.dispatchEvent(newTermToggleEvent(
             Object.assign(target.dataset, { refreshing_page: true }))
