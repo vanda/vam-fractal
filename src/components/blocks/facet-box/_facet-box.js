@@ -166,6 +166,7 @@ const createFacets = (activeFacets) => {
     newFacet.innerHTML = facetHTML(facet, terms.length > 5);
 
     newFacet.addEventListener('click', (e) => {
+      e.preventDefault();
       if (e.target.classList.contains(facetTextClass)) {
         e.target.classList.toggle(`${e.target.classList[0]}--active`);
         e.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
@@ -192,7 +193,10 @@ const createFacets = (activeFacets) => {
     if (terms.length > 5) {
       if (facetsWithIndex[facet].index < terms.length) {
         newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more-container'));
-        newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = e => revealMoreFacets(e);
+        newFacet.querySelector(`.${facetTermContainerClass} .b-facet-box__term-more`).onclick = (e) => {
+          e.preventDefault();
+          revealMoreFacets(e);
+        };
       } else {
         newFacet.querySelector(`.${facetTermContainerClass}`).appendChild(newFacet.querySelector('.b-facet-box__term-more-container')).remove();
       }
@@ -229,11 +233,11 @@ const initialiseFacetOverlay = () => {
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
-        newTerm.onclick = e => newTermOnClick(e);
+        newTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); }
         termList.appendChild(newTerm);
 
         const newFormTerm = newTerm.cloneNode(true);
-        newFormTerm.onclick = e => newTermOnClick(e);
+        newFormTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); }
         newFormTerm.classList.add('b-facet-box__term--form');
         if (document.querySelector('.b-search-form__facets')) {
           document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
@@ -279,6 +283,7 @@ const initialiseFacetOverlay = () => {
     dateFacet.className = 'b-facet-box__facet b-facet-box__facet-date';
     dateFacet.innerHTML = dateFacetHTML();
     dateFacet.addEventListener('click', (ev) => {
+      e.preventDefault();
       if (ev.target.classList.contains(facetTextClass)) {
         ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
@@ -306,6 +311,7 @@ const initialiseFacetOverlay = () => {
   }, true);
 
   document.onclick = (e) => {
+    e.preventDefault();
     if (e.target.classList.contains(facetCloseClass)) {
       e.target.dispatchEvent(new Event('closeFacetOverlay', {
         bubbles: true
@@ -325,10 +331,16 @@ const initialiseFacetOverlay = () => {
     initialiseFacetOverlay();
 
     if (document.querySelector('.b-facet-box__modal-button-open')) {
-      document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', () => document.querySelector('.b-facet-box').classList.add('b-facet-box--active')));
+      document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
+      }));
     }
     if (document.querySelector('.b-facet-box__close-button')) {
-      document.querySelector('.b-facet-box__close-button').addEventListener('click', () => document.querySelector('.b-facet-box').classList.remove('b-facet-box--active'));
+      document.querySelector('.b-facet-box__close-button').addEventListener('click', (e) => {
+       e.preventDefault();
+       document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+      });
     }
 
     window.onresize = () => {
