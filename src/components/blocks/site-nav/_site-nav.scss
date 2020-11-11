@@ -74,7 +74,6 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle,
-  &__mobile-top,
   &__mobile-toggle-text,
   &__mobile-top,
   &__mobile-bag,
@@ -84,6 +83,7 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle-text {
+    color: siteColor(vam-white);
     float: right;
     font-size: 13px;
     font-weight: 700;
@@ -210,6 +210,7 @@ $nav-breakpoints: (
 
   &__mobile-toggle,
   &__mobile-top {
+    color: siteColor(vam-white);
     position: fixed;
     right: 0;
     text-align: center;
@@ -220,6 +221,7 @@ $nav-breakpoints: (
     &--solo {
       background: siteColor(vam-white);
       box-shadow: 0 0 3px rgba(siteColor(vam-black), .75);
+      color: siteColor(vam-black);
     }
 
     &--static {
@@ -267,6 +269,7 @@ $nav-breakpoints: (
     &--show {
       background: siteColor(vam-white);
       box-shadow: 0 0 3px rgba(siteColor(vam-black), .75);
+      color: siteColor(vam-black);
       opacity: 1;
     }
 
