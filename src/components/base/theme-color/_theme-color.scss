@@ -55,7 +55,8 @@ $theme-colors: (
   teal-green: #0ad6cb,
   tru-pink: #ff89b3,
   velvet: #8f82c1,
-  winter-blue: #87c3d6
+  winter-blue: #87c3d6,
+  white: #ffffff
 );
 
 $pale-theme-colors: (
@@ -76,7 +77,8 @@ $pale-theme-colors: (
   sand-storm,
   silent-green,
   sky-purple,
-  soft-pink
+  soft-pink,
+  white
 );
 
 @function themeColor($c) {
