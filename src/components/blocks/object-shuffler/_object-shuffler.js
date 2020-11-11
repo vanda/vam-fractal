@@ -88,7 +88,7 @@
                     alt: record.fields.title
                   },
                   title: record.fields.title,
-                  href: `http://d3dn4d27rggz6y.cloudfront.net/item/${record.fields.object_number}/index.html`
+                  href: `http://vam-etc-test.azureedge.net/item/${record.fields.object_number}/index.html`
                 }
               );
               return true;
