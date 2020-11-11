@@ -311,14 +311,15 @@ const initialiseFacetOverlay = () => {
   }, true);
 
   document.onclick = (e) => {
-    e.preventDefault();
     if (e.target.classList.contains(facetCloseClass)) {
+      e.preventDefault();
       e.target.dispatchEvent(new Event('closeFacetOverlay', {
         bubbles: true
       }));
     }
 
     if (e.target.parentElement && e.target.parentElement.classList.contains(facetTerm)) {
+      e.preventDefault();
       const parent = e.target.closest(facetTerm) || e.target.parentElement;
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
