@@ -80,14 +80,15 @@
           // deck._props.itemsData = [...deck._props.itemsData, ...data];
             Array.from(data.records, (record) => {
               const imgPath = `https://media.vam.ac.uk/media/thira/collection_images/${record._primaryImageId.substring(0, 6)}/${record._primaryImageId}.jpg`;
+              const title = record._primaryTitle || `untitled ${record.objectType}`;
               deck._props.itemsData.push(
                 {
                   img: {
                     srcset: `${imgPath} 320w, ${imgPath} 640w, ${imgPath} 960w`,
                     src: imgPath,
-                    alt: record._primaryTitle
+                    alt: title
                   },
-                  title: record._primaryTitle,
+                  title: title,
                   href: `http://vam-etc-test.azureedge.net/item/${record.systemNumber}/index.html`
                 }
               );
