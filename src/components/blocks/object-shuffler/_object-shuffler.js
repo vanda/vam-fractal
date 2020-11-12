@@ -88,7 +88,7 @@
                     alt: record.fields.title
                   },
                   title: record.fields.title,
-                  ariaLabel: `link to ${record.fields.object} ${record.fields.title.length ? `titled ${record.fields.title}` :
+                  ariaLabel: `link to ${record.fields.object} ${record.fields.title.length ? `titled ${record.fields.title.replace('"', '"')}` :
                    `with ID ${record.fields.object_number}` }`,
                   href: `http://vam-etc-test.azureedge.net/item/${record.fields.object_number}/index.html`
                 }
