@@ -219,9 +219,8 @@ $nav-breakpoints: (
     z-index: 3;
 
     &--solo {
-      background: siteColor(vam-white);
-      box-shadow: 0 0 3px rgba(siteColor(vam-black), .75);
-      color: siteColor(vam-black);
+      background: siteColor(vam-black);
+      box-shadow: 0 0 3px rgba(siteColor(vam-white), .75);
     }
 
     &--static {
@@ -267,9 +266,8 @@ $nav-breakpoints: (
     z-index: 1;
 
     &--show {
-      background: siteColor(vam-white);
-      box-shadow: 0 0 3px rgba(siteColor(vam-black), .75);
-      color: siteColor(vam-black);
+      background: siteColor(vam-black);
+      box-shadow: 0 0 3px rgba(siteColor(vam-white), .75);
       opacity: 1;
     }
 
