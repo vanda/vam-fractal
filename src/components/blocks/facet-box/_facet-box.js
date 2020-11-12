@@ -59,7 +59,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
           <use xlink:href="/svg/vamicons.svg#tick"></use>
         </svg>
       </div>
-      <span id="${paramName}-${term}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
+      <span id="${paramName.replace(' ', '')}-${term.replace(' ', '')}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
         ${term}
       </span>
       <span class="b-facet-box__facet-term-toggle-result">
@@ -69,13 +69,13 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   `;
 
   const button = checkbox.querySelector('button');
-  button.dataset.id = `${paramName}-${value}`;
+  button.dataset.id = `${paramName.replace(' ', '')}-${value}`;
   button.dataset.facet = facet;
   button.dataset.paramName = paramName;
   button.dataset.term = term;
   button.dataset.value = value;
   button.dataset.count = count;
-  button.setAttribute('aria-labelledby', `${paramName}-${term}-checkbox-label`);
+  button.setAttribute('aria-labelledby', `${paramName.replace(' ', '')}-${term.replace(' ', '')}-checkbox-label`);
   button.setAttribute('role', 'switch');
   button.setAttribute('aria-checked', 'false');
 
