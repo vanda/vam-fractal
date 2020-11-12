@@ -105,7 +105,6 @@
       Array.from(slide.children, (item) => {
         const dataIndex = deck._props.itemsIndex % deck._props.itemsData.length;
         const img = item.querySelector('img');
-        item.setAttribute('aria-label', deck._props.itemsData[dataIndex].ariaLabel);
         item.title = deck._props.itemsData[dataIndex].title;
         item.href = deck._props.itemsData[dataIndex].href;
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
