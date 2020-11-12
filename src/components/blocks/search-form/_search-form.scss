@@ -95,10 +95,6 @@
       color: siteColor(vam-black);
     }
 
-    &:focus {
-      outline: none;
-    }
-
     &::selection {
       background-color: siteColor(vam-grey-4);
     }
@@ -133,7 +129,6 @@
     color: siteColor(vam-white);
     cursor: pointer;
     float: right;
-    outline: none;
     position: relative;
   }
 
@@ -258,7 +253,6 @@
   &__filter-input {
     @include typeSetting(4);
     border-radius: 2px;
-    outline: none;
 
     &[type="checkbox"] {
       @include visuallyHidden;
@@ -316,7 +310,6 @@
     border: 1px solid siteColor(vam-white);
     border-radius: 2px;
     color: siteColor(vam-white);
-    outline: none;
     padding: 10px 20px;
 
     &:after {
