@@ -79,18 +79,16 @@
           .then((data) => {
           // deck._props.itemsData = [...deck._props.itemsData, ...data];
             Array.from(data.records, (record) => {
-              const imgPath = `https://media.vam.ac.uk/media/thira/collection_images/${record.fields.primary_image_id.substring(0, 6)}/${record.fields.primary_image_id}.jpg`;
+              const imgPath = `https://media.vam.ac.uk/media/thira/collection_images/${record._primaryImageId.substring(0, 6)}/${record._primaryImageId}.jpg`;
               deck._props.itemsData.push(
                 {
                   img: {
                     srcset: `${imgPath} 320w, ${imgPath} 640w, ${imgPath} 960w`,
                     src: imgPath,
-                    alt: record.fields.title
+                    alt: record._primaryTitle
                   },
-                  title: record.fields.title,
-                  ariaLabel: `link to ${record.fields.object} ${record.fields.title.length ? `titled ${record.fields.title.replace('"', '"')}` :
-                   `with ID ${record.fields.object_number}` }`,
-                  href: `http://vam-etc-test.azureedge.net/item/${record.fields.object_number}/index.html`
+                  title: record._primaryTitle,
+                  href: `http://vam-etc-test.azureedge.net/item/${record.systemNumber}/index.html`
                 }
               );
               return true;
