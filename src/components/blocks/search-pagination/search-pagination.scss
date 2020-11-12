@@ -58,9 +58,6 @@
   }
 
   &__page-button, &__page-button-start, &__page-button-last {
-    &:focus {
-      outline: 0;
-    }
     @include typeSetting(3, semi-bold);
     @include bpMinMedium {
       height: 44px;
