@@ -146,6 +146,8 @@ const revealMoreFacets = (e) => {
   if (facetsWithIndex[facet].index !== terms.length) {
     facetContainer.appendChild(linkEl);
   }
+
+  Array.from(facetContainer.querySelectorAll('.b-facet-box__facet-term-toggle-button'))[facetsWithIndex[facet].index - 5].focus();
 };
 
 
