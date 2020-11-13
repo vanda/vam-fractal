@@ -32,13 +32,8 @@
         tabLink.className = 'b-object-shuffler__tab-link';
         tabLink.innerHTML = shufflerData[i].title;
         tabLink.title = `filter by ${shufflerData[i].title}`;
+        tabLink._deck = deck;
         if (i === 0) { tabLink.setAttribute('active', true); }
-        tabLink.onclick = () => {
-          deckTabs.querySelector('[active]').removeAttribute('active');
-          tabLink.setAttribute('active', true);
-          el.querySelector('.js-object-shuffler__deck[active]').removeAttribute('active');
-          deck.setAttribute('active', true);
-        };
         shuffler.getData(deck)
           .then(() => {
             const slide = deck.firstElementChild;
@@ -58,7 +53,14 @@
       });
 
       document.addEventListener('click', (e) => {
-        if (e.target.closest('.js-object-shuffler__more')) {
+        if (e.target.closest('.js-object-shuffler__tabs')) {
+          const tab = e.target;
+          deckTabs.querySelector('[active]').removeAttribute('active');
+          tab.setAttribute('active', true);
+          el.querySelector('.js-object-shuffler__deck[active]').removeAttribute('active');
+          tab._deck.setAttribute('active', true);
+        }
+        else if (e.target.closest('.js-object-shuffler__more')) {
           e.preventDefault();
           shuffler.nextSlide(el.querySelector('.js-object-shuffler__deck[active]'));
         }
