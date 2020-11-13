@@ -27,7 +27,7 @@ const thumbs = images.map(({ thumb, alt }) => {
 });
 
 const changeViewIndex = (index) => {
-  imageCarousel.dataset.viewIndex = (images.length - Math.max(0, index - 2) < 5) ? images.length - 5 : Math.max(0, index - 2);
+  imageCarousel.dataset.viewIndex = ((images.length - Math.max(0, index - 2)) < 5) ? images.length - 5 : Math.max(0, index - 2);
 }
 const changeIndexAndViewIndex = (index) => {
   changeViewIndex(index);
@@ -118,7 +118,6 @@ const initImageCarousel = () => {
 
     const observer = new MutationObserver(callback);
     observer.observe(imageCarousel, { attributes: true });
-
     imageCarousel.dataset.viewIndex = 0;
     imageCarousel.dataset.index = 0;
   }
@@ -139,14 +138,14 @@ const initImageCarousel = () => {
   });
 
   concealRight.onclick = (e) => {
-    const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) + 3;
-    changeViewIndex(viewIndex);
+    const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) + 1;
+    imageCarousel.dataset.viewIndex = viewIndex;
     initImageCourselContainers();
   };
 
   concealLeft.onclick = (e) => {
-    const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) - 3;
-    changeViewIndex(viewIndex);
+    const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) - 1;
+    imageCarousel.dataset.viewIndex = viewIndex;
     initImageCourselContainers();
   };
 
