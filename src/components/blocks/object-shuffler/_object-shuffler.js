@@ -3,13 +3,13 @@
   const shuffler = {
     init: (el) => {
       const shufflerData = JSON.parse(el.dataset.objectShuffler);
-      const deckTemplate = el.querySelector('.js-object-shuffler__deck');
+      const deckTemplate = el.querySelector('.b-object-shuffler__deck');
       const itemTemplate = deckTemplate.firstElementChild.firstElementChild;
       const imgTemplate = itemTemplate.firstElementChild;
       const slideSize = shuffler.setSize(itemTemplate);
       const transitionDurationItem = parseFloat(window.getComputedStyle(itemTemplate).getPropertyValue('transition-duration'));
       const transitionDurationImg = parseFloat(window.getComputedStyle(imgTemplate).getPropertyValue('transition-duration'));
-      const deckTabs = el.querySelector('.js-object-shuffler__tabs');
+      const deckTabs = el.querySelector('.b-object-shuffler__tabs');
 
       // clone initial html markup into a full set of decks
       for (let i = 1; i < shufflerData.length; i += 1) {
@@ -18,7 +18,7 @@
       }
       // populate each deck with slides of items
       let i = 0;
-      Array.from(el.querySelectorAll('.js-object-shuffler__deck'), (deck) => {
+      Array.from(el.querySelectorAll('.b-object-shuffler__deck'), (deck) => {
         deck._props = {
           slideSize,
           itemsData: shufflerData[i].data || [],
@@ -32,6 +32,7 @@
         tabLink.className = 'b-object-shuffler__tab-link';
         tabLink.innerHTML = shufflerData[i].title;
         tabLink.title = `filter by ${shufflerData[i].title}`;
+        tabLink.href = '#0';
         tabLink._deck = deck;
         if (i === 0) { tabLink.setAttribute('active', true); }
         shuffler.getData(deck)
@@ -47,22 +48,28 @@
             const activeSlide = shuffler.newSlide(deck);
             activeSlide.setAttribute('active', true);
             shuffler.newSlide(deck);
+            // allow visible elements into the tabindex
+            if (activeSlide.closest('.b-object-shuffler__deck[active]')) {
+              shuffler.tabIndexSlide(activeSlide, '0');
+            }
           });
         i += 1;
         return true;
       });
 
       document.addEventListener('click', (e) => {
-        if (e.target.closest('.js-object-shuffler__tabs')) {
-          const tab = e.target;
+        if (e.target.closest('.b-object-shuffler__tab-link')) {
+          const deckTab = e.target;
           deckTabs.querySelector('[active]').removeAttribute('active');
-          tab.setAttribute('active', true);
-          el.querySelector('.js-object-shuffler__deck[active]').removeAttribute('active');
-          tab._deck.setAttribute('active', true);
-        }
-        else if (e.target.closest('.js-object-shuffler__more')) {
+          deckTab.setAttribute('active', true);
+          const activeDeck = el.querySelector('.b-object-shuffler__deck[active]');
+          activeDeck.removeAttribute('active');
+          shuffler.tabIndexSlide(activeDeck.querySelector('.b-object-shuffler__slide[active]'), '-1');
+          deckTab._deck.setAttribute('active', true);
+          shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'), '0');
+        } else if (e.target.closest('.b-object-shuffler__more')) {
           e.preventDefault();
-          shuffler.nextSlide(el.querySelector('.js-object-shuffler__deck[active]'));
+          shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
         }
       }, false);
     },
@@ -110,6 +117,7 @@
         const img = item.querySelector('img');
         item.title = deck._props.itemsData[dataIndex].title;
         item.href = deck._props.itemsData[dataIndex].href;
+        item.tabindex = '-1';
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
         img.src = deck._props.itemsData[dataIndex].img.src;
         img.alt = deck._props.itemsData[dataIndex].img.alt;
@@ -148,9 +156,14 @@
     nextSlide: (deck) => {
       shuffler.newSlide(deck);
       deck.firstElementChild.remove();
-      const active = deck.querySelector('[active]');
-      active.removeAttribute('active');
-      active.nextSibling.setAttribute('active', true);
+      const activeSlide = deck.querySelector('[active]');
+      activeSlide.removeAttribute('active');
+      shuffler.tabIndexSlide(activeSlide, '-1');
+      activeSlide.nextSibling.setAttribute('active', true);
+      shuffler.tabIndexSlide(activeSlide.nextSibling, '0');
+    },
+    tabIndexSlide: (slide, tabIndex) => {
+      Array.from(slide.children, item => item.setAttribute('tabindex', tabIndex));
     }
   };
 
