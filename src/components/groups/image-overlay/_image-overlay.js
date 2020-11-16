@@ -18,15 +18,22 @@ const openObjectOverlay = () => {
   document.querySelector('.b-image-overlay__container').style.top = `${scrollY}px`;
 };
 
+const closeObjectOverlay = () => {
+    document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
+    document.querySelector('body').style.overflowY = 'auto';
+}
+
 const initObjectOverlay = () => {
   offensiveConcealer();
 
   if (document.querySelector('.b-image-overlay')) {
-    document.querySelector('.b-image-overlay__close-container').onclick = (e) => {
-      e.target.dispatchEvent(new Event('closedImageOverlay'), { bubbles: true });
-      document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
-      document.querySelector('body').style.overflowY = 'auto';
-    };
+    document.querySelector('.b-image-overlay__close-container').onclick = () => closeObjectOverlay();
+
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode == 27) {
+        closeObjectOverlay();
+      }
+    });
 
     document.querySelector('.b-image-overlay').addEventListener('openObjectOverlay', openObjectOverlay);
 
