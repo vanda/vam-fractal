@@ -6,8 +6,8 @@ const nextButton = document.querySelector('.b-image-carousel__next');
 const totalNumberOfImages = document.querySelector('.b-image-overlay-detail__total-number-of-images');
 const imageCounter = document.querySelector('.b-image-overlay-detail__current-image');
 
+let numberOfContainers = numberOfContainers;
 let image = document.querySelector('.b-image-overlay__image');
-
 const { images } = imageCarousel ? JSON.parse(imageCarousel.dataset.images) : {};
 
 const imagesWithImage = images.map(({ src, alt }) => {
@@ -27,18 +27,18 @@ const thumbs = images.map(({ thumb, alt }) => {
 });
 
 const changeViewIndex = (index) => {
-  imageCarousel.dataset.viewIndex = ((images.length - Math.max(0, index - 2)) < 5) ? images.length - 5 : Math.max(0, index - 2);
+  imageCarousel.dataset.viewIndex = ((images.length - Math.max(0, index - 2)) < numberOfContainers) ? images.length - numberOfContainers : Math.max(0, index - 2);
 }
 const changeIndexAndViewIndex = (index) => {
   changeViewIndex(index);
   imageCarousel.dataset.index = index;
 }
 
-const initImageCourselContainers = () => {
+const initImageCourselContainers = (newSelection) => {
   const carouselContainers = Array.from(document.querySelectorAll('.b-image-carousel__image-preview-container'));
 
   const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10)
-  const imagesInView = images.slice(viewIndex, viewIndex + 5);
+  const imagesInView = images.slice(viewIndex, viewIndex + numberOfContainers);
 
   carouselContainers.forEach((container, i) => {
     let index = (parseInt(imageCarousel.dataset.viewIndex, 10) + i);
@@ -47,6 +47,9 @@ const initImageCourselContainers = () => {
 
     if (index === parseInt(imageCarousel.dataset.index)) {
       container.classList.add('b-image-carousel__image-preview-container--selected');
+      if (newSelection) {
+        container.focus();
+      }
     }
 
     if (container.firstElementChild) {
@@ -73,9 +76,11 @@ const initImageCarousel = () => {
   }
 
   if (imageCarousel) {
-    for (let i = 0; i < Math.max(0, 5 - images.length); i++) {
+    for (let i = 0; i < Math.max(0, numberOfContainers - images.length); i++) {
       document.querySelector('.b-image-carousel__image-preview-container').remove();
     }
+
+    numberOfContainers = document.querySelectorAll('.b-image-carousel__image-preview-container').length;
 
     initImageCourselContainers();
 
@@ -83,7 +88,7 @@ const initImageCarousel = () => {
       if (mutations.filter(mutation => mutation.attributeName === 'data-view-index')) {
         const viewIndex = parseInt(imageCarousel.dataset.viewIndex);
         concealLeft.style.display = (viewIndex > 0) ? 'block' : 'none';
-        concealRight.style.display = (viewIndex + 5 >= images.length) ? 'none' : 'block';
+        concealRight.style.display = (viewIndex + numberOfContainers >= images.length) ? 'none' : 'block';
       }
 
       if (mutations.filter(mutation => mutation.attributeName === 'data-index')) {
@@ -98,7 +103,7 @@ const initImageCarousel = () => {
         imageParent.appendChild(newImage);
 
         image = newImage;
-        initImageCourselContainers();
+        initImageCourselContainers(true);
 
         if (index > 0) {
           prevButton.removeAttribute('disabled');
