@@ -7,7 +7,11 @@
 
   &__conceal-left {
     background-image: linear-gradient(to left, rgba(29, 30, 32, 0), #1d1e20);
-    left: 0;
+    left: 20px;
+
+    @include bpMinLarge {
+      left: 50px;
+    }
     width: 0;
   }
 
@@ -29,7 +33,13 @@
       width: 140px;
     }
     background-image: linear-gradient(to right, rgba(29, 30, 32, 0), #1d1e20);
-    right: 0;
+
+    right: 20px;
+
+    @include bpMinLarge {
+      right: 50px;
+    }
+
     width: 80px;
   }
 
@@ -57,7 +67,6 @@
       display: flex;
       flex-direction: row;
       max-width: 710px;
-      overflow: hidden;
       padding: 5px;
       position: relative;
     }
