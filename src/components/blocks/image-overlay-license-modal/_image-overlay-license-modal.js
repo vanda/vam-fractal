@@ -31,6 +31,7 @@ const elements = [
 function initDownloadButton () {
   if (document.querySelector(`.${prefix}${downloadButton}`)) {
     document.querySelector(`.${prefix}${downloadButton}`).onclick = () => {
+      document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
       document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
       document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
       document.querySelector(`.${prefix}${downloadContent}`).classList.add(`${prefix}${downloadContent}${active}`);
@@ -40,6 +41,7 @@ function initDownloadButton () {
 
   if (document.querySelector(`.${prefix}${contactButton}`)) {
     document.querySelector(`.${prefix}${contactButton}`).onclick = () => {
+      document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
       document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
       document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
       document.querySelector(`.${prefix}${downloadContent}`).classList.remove(`${prefix}${downloadContent}${active}`);
@@ -89,5 +91,28 @@ function initDownloadButton () {
     }
   });
 }
+
+window.addEventListener('keydown', (e) => {
+  const activeModal = (document.querySelector(`.${prefix}${modal}.b-modal--active`));
+  const activeContent = document.querySelector(`.${prefix}${downloadContent}.${prefix}${downloadContent}${active}`) ||
+    document.querySelector(`.${prefix}${contactContent}.${prefix}${contactContent}${active}`)
+  ;
+
+  if (activeModal && e.keyCode == 9) {
+
+    console.log(document.activeElement.closest('.b-modal--active'))
+
+    if (!document.activeElement.closest('.b-modal--active')) {
+      activeContent.querySelector('.b-modal--active button').focus();
+    }
+  }
+
+  if (activeModal && e.keyCode == 27) {
+    document.querySelector(`.${prefix}${modal}`).classList.remove('b-modal--active');
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+});
 
 initDownloadButton();

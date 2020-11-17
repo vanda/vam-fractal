@@ -30,8 +30,11 @@ const initObjectOverlay = () => {
     document.querySelector('.b-image-overlay__close-container').onclick = () => closeObjectOverlay();
 
     window.addEventListener('keydown', (e) => {
-      if (e.keyCode == 27) {
+
+      if (e.keyCode == 27 && !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')) {
         closeObjectOverlay();
+      } else {
+        document.querySelector('.b-image-overlay').classList.remove('b-image-overlay--unfocus');
       }
     });
 
