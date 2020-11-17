@@ -53,6 +53,7 @@ const initObjectOverlay = () => {
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
         const shift = e.shiftKey;
+
         if (focusable.length) {
           if (shift && document.activeElement === first) {
             last.focus();

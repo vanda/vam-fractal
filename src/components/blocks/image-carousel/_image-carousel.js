@@ -9,7 +9,6 @@ const imageCounter = document.querySelector('.b-image-overlay-detail__current-im
 const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
 const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
 
-
 if (imageCarousel) {
   let image = document.querySelector('.b-image-overlay__image');
   const { images } = imageCarousel ? JSON.parse(imageCarousel.dataset.images) : {};
@@ -89,30 +88,29 @@ if (imageCarousel) {
       image = newImage;
       initImageCarouselContainers(true);
 
-      if (index > 0 && window.innerWidth > 991) {
-        desktopPrevNextButtons[0].removeAttribute('disabled');
+      if (window.innerWidth > 991) {
+        if (index > 0) {
+          desktopPrevNextButtons[0].removeAttribute('disabled');
+        } else {
+          desktopPrevNextButtons[0].setAttribute('disabled', 'true');
+        }
+        if ((index === images.length - 1)) {
+          desktopPrevNextButtons[1].setAttribute('disabled', 'true');
+        } else {
+          desktopPrevNextButtons[1].removeAttribute('disabled');
+        }
       } else {
-        mobilePrevNextButtons[0].removeAttribute('disabled');
+        if (index > 0) {
+          mobilePrevNextButtons[0].removeAttribute('disabled');
+        } else {
+          mobilePrevNextButtons[0].setAttribute('disabled', 'true');
+        }
+        if ((index === images.length - 1)) {
+          mobilePrevNextButtons[1].setAttribute('disabled', 'true');
+        } else {
+          mobilePrevNextButtons[1].removeAttribute('disabled');
+        }
       }
-
-      if (!(index > 0) && window.innerWidth > 991) {
-        desktopPrevNextButtons[0].setAttribute('disabled', 'true');
-      } else {
-        mobilePrevNextButtons[0].setAttribute('disabled', 'true');
-      }
-
-      if ((index === images.length - 1) && (window.innerWidth > 991)) {
-        desktopPrevNextButtons[1].setAttribute('disabled', 'true');
-      } else {
-        mobilePrevNextButtons[1].setAttribute('disabled', 'true');
-      }
-
-      if (!(index === images.length - 1) && (window.innerWidth > 991)) {
-        desktopPrevNextButtons[1].removeAttribute('disabled');
-      } else {
-        mobilePrevNextButtons[1].removeAttribute('disabled');
-      }
-
       imageCounter.innerHTML = `${index + 1}`;
     }
   };
