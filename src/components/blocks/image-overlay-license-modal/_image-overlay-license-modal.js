@@ -31,6 +31,11 @@ const elements = [
 function initDownloadButton () {
   if (document.querySelector(`.${prefix}${downloadButton}`)) {
     document.querySelector(`.${prefix}${downloadButton}`).onclick = () => {
+
+      window.setTimeout(function () {
+        document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
+      }, 10);
+
       document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
       document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
       document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
@@ -41,6 +46,11 @@ function initDownloadButton () {
 
   if (document.querySelector(`.${prefix}${contactButton}`)) {
     document.querySelector(`.${prefix}${contactButton}`).onclick = () => {
+
+      window.setTimeout(function () {
+        document.querySelector('.b-modal__description-license-contact').focus();
+      }, 10);
+
       document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
       document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
       document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
@@ -51,6 +61,9 @@ function initDownloadButton () {
 
   if (document.querySelector(`.${prefix}${contactModalOpen}`)) {
     document.querySelector(`.${prefix}${contactModalOpen}`).onclick = () => {
+      window.setTimeout(function () {
+        document.querySelector('.b-modal__description-license-contact').focus();
+      }, 10);
       document.querySelector(`.${prefix}${downloadContent}`).classList.remove(`${prefix}${downloadContent}${active}`);
       document.querySelector(`.${prefix}${contactContent}`).classList.add(`${prefix}${contactContent}${active}`);
     };
@@ -98,12 +111,29 @@ window.addEventListener('keydown', (e) => {
     document.querySelector(`.${prefix}${contactContent}.${prefix}${contactContent}${active}`)
   ;
 
-  if (activeModal && e.keyCode == 9) {
-
-    console.log(document.activeElement.closest('.b-modal--active'))
-
-    if (!document.activeElement.closest('.b-modal--active')) {
-      activeContent.querySelector('.b-modal--active button').focus();
+  if (activeModal) {
+    // https://stackoverflow.com/a/60031728 w/ modifications
+    if (e.keyCode === 9) {
+        let focusable = activeContent.querySelectorAll(
+          'a, button, input, textarea, select'
+        ).filter(el => el.getAttribute('tabindex') != '-1');
+        let first = focusable[0];
+        let last = focusable[focusable.length - 1];
+        let shift = e.shiftKey;
+        if (focusable.length) {
+            if (shift) {
+                if (document.activeElement === first) { // shift-tab pressed on first input in dialog
+                    last.focus();
+                    e.preventDefault();
+                    console.log(document.activeElement);
+                }
+            } else {
+                if (document.activeElement === last) { // tab pressed on last input in dialog
+                    first.focus();
+                    e.preventDefault();
+                }
+            }
+        }
     }
   }
 

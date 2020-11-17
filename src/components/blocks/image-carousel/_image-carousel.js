@@ -6,6 +6,10 @@ const nextButton = Array.from(document.querySelectorAll('.b-image-carousel__next
 const totalNumberOfImages = document.querySelector('.b-image-overlay-detail__total-number-of-images');
 const imageCounter = document.querySelector('.b-image-overlay-detail__current-image');
 
+const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
+const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
+
+
 if (imageCarousel) {
   let image = document.querySelector('.b-image-overlay__image');
   const { images } = imageCarousel ? JSON.parse(imageCarousel.dataset.images) : {};
@@ -82,23 +86,31 @@ if (imageCarousel) {
       initImageCarouselContainers(true);
 
       if (index > 0) {
-        prevButton.forEach((el) => {
-          el.removeAttribute('disabled');
-        });
+        if (window.innerWidth > 991) {
+          desktopPrevNextButtons[0].removeAttribute('disabled');
+        } else {
+          mobilePrevNextButtons[0].removeAttribute('disabled');
+        }
       } else {
-        prevButton.forEach((el) => {
-          el.setAttribute('disabled', 'true');
-        });
+        if (window.innerWidth > 991) {
+          desktopPrevNextButtons[0].setAttribute('disabled', 'true');
+        } else {
+          mobilePrevNextButtons[0].setAttribute('disabled', 'true');
+        }
       }
 
       if (index === images.length - 1) {
-        nextButton.forEach((el) => {
-          el.setAttribute('disabled', 'true');
-        });
+        if (window.innerWidth > 991) {
+          desktopPrevNextButtons[1].setAttribute('disabled', 'true');
+        } else {
+          mobilePrevNextButtons[1].setAttribute('disabled', 'true');
+        }
       } else {
-        nextButton.forEach((el) => {
-          el.removeAttribute('disabled');
-        });
+        if (window.innerWidth > 991) {
+          desktopPrevNextButtons[1].removeAttribute('disabled');
+        } else {
+          mobilePrevNextButtons[1].removeAttribute('disabled');
+        }
       }
 
       imageCounter.innerHTML = `${index + 1}`;
@@ -208,8 +220,36 @@ if (imageCarousel) {
     }
   }
 
-  window.onresize = () => responsiveImageContainerAction();
+  const disableHiddenNavButtons = () => {
+    if (window.innerWidth < 992) {
+      mobilePrevNextButtons.forEach((el) => {
+        el.removeAttribute('disabled');
+      });
+
+      desktopPrevNextButtons.forEach((el) => {
+        el.setAttribute('disabled', 'true');
+      });
+    }
+
+    if (window.innerWidth > 991) {
+      mobilePrevNextButtons.forEach((el) => {
+        el.setAttribute('disabled', 'true');
+      });
+
+      desktopPrevNextButtons.forEach((el) => {
+        el.removeAttribute('disabled');
+      });
+    }
+  };
+
+  window.onresize = () => {
+    responsiveImageContainerAction();
+    disableHiddenNavButtons();
+    imageCarousel.dataset.index = imageCarousel.dataset.index;
+  };
 
   responsiveImageContainerAction();
+  disableHiddenNavButtons();
   initImageCarousel();
+  imageCarousel.dataset.index = imageCarousel.dataset.index;
 }

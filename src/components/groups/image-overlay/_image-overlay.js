@@ -30,12 +30,43 @@ const initObjectOverlay = () => {
     document.querySelector('.b-image-overlay__close-container').onclick = () => closeObjectOverlay();
 
     window.addEventListener('keydown', (e) => {
-
-      if (e.keyCode == 27 && !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')) {
-        closeObjectOverlay();
-      } else {
-        document.querySelector('.b-image-overlay').classList.remove('b-image-overlay--unfocus');
+      if (e.keyCode == 27) {
+        if (!document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')) {
+          closeObjectOverlay();
+        } else {
+          document.querySelector('.b-image-overlay').classList.remove('b-image-overlay--unfocus');
+        }
       }
+
+      if (
+        !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus') &&
+        e.keyCode === 9
+      ) {
+        // https://stackoverflow.com/a/60031728 w/ modifications
+        let focusable = Array.from(document.querySelector('.b-image-overlay__content').querySelectorAll('button')).filter(
+          el => !el.getAttribute('disabled')
+        ).filter(
+          el => !el.closest('.js-modal')
+        );
+
+        let first = focusable[0];
+        let last = focusable[focusable.length - 1];
+        let shift = e.shiftKey;
+        if (focusable.length) {
+          if (shift) {
+            if (document.activeElement === first) { // shift-tab pressed on first input in dialog
+              last.focus();
+              e.preventDefault();
+              console.log(document.activeElement);
+            }
+          } else {
+            if (document.activeElement === last) { // tab pressed on last input in dialog
+              first.focus();
+              e.preventDefault();
+            }
+          }
+        }
+        }
     });
 
     document.querySelector('.b-image-overlay').addEventListener('openObjectOverlay', openObjectOverlay);
