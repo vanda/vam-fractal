@@ -16,7 +16,7 @@ const openObjectOverlay = () => {
   document.querySelector('body').style.overflowY = 'hidden';
   const scrollY = window.pageYOffset;
   document.querySelector('.b-image-overlay__container').style.top = `${scrollY}px`;
-  document.activeElement.blur();
+  document.querySelector('.b-image-overlay-detail button').focus();
 };
 
 const closeObjectOverlay = () => {
