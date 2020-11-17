@@ -16,11 +16,12 @@ const openObjectOverlay = () => {
   document.querySelector('body').style.overflowY = 'hidden';
   const scrollY = window.pageYOffset;
   document.querySelector('.b-image-overlay__container').style.top = `${scrollY}px`;
+  document.activeElement.blur();
 };
 
 const closeObjectOverlay = () => {
-    document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
-    document.querySelector('body').style.overflowY = 'auto';
+  document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
+  document.querySelector('body').style.overflowY = 'auto';
 }
 
 const initObjectOverlay = () => {
@@ -43,15 +44,15 @@ const initObjectOverlay = () => {
         e.keyCode === 9
       ) {
         // https://stackoverflow.com/a/60031728 w/ modifications
-        let focusable = Array.from(document.querySelector('.b-image-overlay__content').querySelectorAll('button')).filter(
+        const focusable = Array.from(document.querySelector('.b-image-overlay__content').querySelectorAll('button')).filter(
           el => !el.getAttribute('disabled')
         ).filter(
           el => !el.closest('.js-modal')
         );
 
-        let first = focusable[0];
-        let last = focusable[focusable.length - 1];
-        let shift = e.shiftKey;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const shift = e.shiftKey;
         if (focusable.length) {
           if (shift) {
             if (document.activeElement === first) { // shift-tab pressed on first input in dialog
@@ -66,7 +67,7 @@ const initObjectOverlay = () => {
             }
           }
         }
-        }
+      }
     });
 
     document.querySelector('.b-image-overlay').addEventListener('openObjectOverlay', openObjectOverlay);
