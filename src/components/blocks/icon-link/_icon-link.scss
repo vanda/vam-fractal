@@ -36,6 +36,7 @@
     }
     &-download {
       &::after {
+        content: none;
         cursor: pointer;
         opacity: 1;
       }
