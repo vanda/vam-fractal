@@ -22,7 +22,7 @@ const openObjectOverlay = () => {
 const closeObjectOverlay = () => {
   document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
   document.querySelector('body').style.overflowY = 'auto';
-}
+};
 
 const initObjectOverlay = () => {
   offensiveConcealer();
@@ -31,7 +31,7 @@ const initObjectOverlay = () => {
     document.querySelector('.b-image-overlay__close-container').onclick = () => closeObjectOverlay();
 
     window.addEventListener('keydown', (e) => {
-      if (e.keyCode == 27) {
+      if (e.keyCode === 27) {
         if (!document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')) {
           closeObjectOverlay();
         } else {
@@ -43,7 +43,7 @@ const initObjectOverlay = () => {
         !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus') &&
         e.keyCode === 9
       ) {
-        // https://stackoverflow.com/a/60031728 w/ modifications
+        // stackoverflow answer 60031728
         const focusable = Array.from(document.querySelector('.b-image-overlay__content').querySelectorAll('button')).filter(
           el => !el.getAttribute('disabled')
         ).filter(
@@ -54,17 +54,12 @@ const initObjectOverlay = () => {
         const last = focusable[focusable.length - 1];
         const shift = e.shiftKey;
         if (focusable.length) {
-          if (shift) {
-            if (document.activeElement === first) { // shift-tab pressed on first input in dialog
-              last.focus();
-              e.preventDefault();
-              console.log(document.activeElement);
-            }
-          } else {
-            if (document.activeElement === last) { // tab pressed on last input in dialog
-              first.focus();
-              e.preventDefault();
-            }
+          if (shift && document.activeElement === first) {
+            last.focus();
+            e.preventDefault();
+          } else if (!shift && document.activeElement === last) {
+            first.focus();
+            e.preventDefault();
           }
         }
       }
