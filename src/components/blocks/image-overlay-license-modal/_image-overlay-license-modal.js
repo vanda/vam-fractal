@@ -114,26 +114,25 @@ window.addEventListener('keydown', (e) => {
   if (activeModal) {
     // https://stackoverflow.com/a/60031728 w/ modifications
     if (e.keyCode === 9) {
-        let focusable = activeContent.querySelectorAll(
-          'a, button, input, textarea, select'
-        ).filter(el => el.getAttribute('tabindex') != '-1');
-        let first = focusable[0];
-        let last = focusable[focusable.length - 1];
-        let shift = e.shiftKey;
-        if (focusable.length) {
-            if (shift) {
-                if (document.activeElement === first) { // shift-tab pressed on first input in dialog
-                    last.focus();
-                    e.preventDefault();
-                    console.log(document.activeElement);
-                }
-            } else {
-                if (document.activeElement === last) { // tab pressed on last input in dialog
-                    first.focus();
-                    e.preventDefault();
-                }
-            }
+      const focusable = activeContent.querySelectorAll(
+        'button'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const shift = e.shiftKey;
+      if (focusable.length) {
+        if (shift) {
+          if (document.activeElement === first) { // shift-tab pressed on first input in dialog
+            last.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === last) { // tab pressed on last input in dialog
+            first.focus();
+            e.preventDefault();
+          }
         }
+      }
     }
   }
 
