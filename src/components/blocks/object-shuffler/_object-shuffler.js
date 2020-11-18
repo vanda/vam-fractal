@@ -88,7 +88,7 @@
                     src: imgPath,
                     alt: title
                   },
-                  title: title,
+                  title,
                   href: `http://vam-etc-test.azureedge.net/item/${record.systemNumber}/index.html`
                 }
               );
