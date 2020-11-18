@@ -107,7 +107,7 @@
         const dataIndex = deck._props.itemsIndex % deck._props.itemsData.length;
         const img = item.querySelector('img');
 
-        console.log(deck._props.itemsData[dataIndex].title)
+        console.log(item);
 
         item.title = deck._props.itemsData[dataIndex].title;
         item.href = deck._props.itemsData[dataIndex].href;
