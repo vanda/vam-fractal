@@ -31,6 +31,10 @@ const elements = [
 function initDownloadButton () {
   if (document.querySelector(`.${prefix}${downloadButton}`)) {
     document.querySelector(`.${prefix}${downloadButton}`).onclick = () => {
+      window.setTimeout(() => {
+        document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
+      }, 10);
+      document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
       document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
       document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
       document.querySelector(`.${prefix}${downloadContent}`).classList.add(`${prefix}${downloadContent}${active}`);
@@ -40,6 +44,10 @@ function initDownloadButton () {
 
   if (document.querySelector(`.${prefix}${contactButton}`)) {
     document.querySelector(`.${prefix}${contactButton}`).onclick = () => {
+      window.setTimeout(() => {
+        document.querySelector('.b-modal__description-license-contact').focus();
+      }, 10);
+      document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
       document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
       document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
       document.querySelector(`.${prefix}${downloadContent}`).classList.remove(`${prefix}${downloadContent}${active}`);
@@ -49,6 +57,9 @@ function initDownloadButton () {
 
   if (document.querySelector(`.${prefix}${contactModalOpen}`)) {
     document.querySelector(`.${prefix}${contactModalOpen}`).onclick = () => {
+      window.setTimeout(() => {
+        document.querySelector('.b-modal__description-license-contact').focus();
+      }, 10);
       document.querySelector(`.${prefix}${downloadContent}`).classList.remove(`${prefix}${downloadContent}${active}`);
       document.querySelector(`.${prefix}${contactContent}`).classList.add(`${prefix}${contactContent}${active}`);
     };
@@ -89,5 +100,42 @@ function initDownloadButton () {
     }
   });
 }
+
+window.addEventListener('keydown', (e) => {
+  const activeModal = (document.querySelector(`.${prefix}${modal}.b-modal--active`));
+  const activeContent = document.querySelector(`.${prefix}${downloadContent}.${prefix}${downloadContent}${active}`) ||
+    document.querySelector(`.${prefix}${contactContent}.${prefix}${contactContent}${active}`);
+
+  if (activeModal) {
+    // https://stackoverflow.com/a/60031728 w/ modifications
+    if (e.keyCode === 9) {
+      const focusable = activeContent.querySelectorAll(
+        'button'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const shift = e.shiftKey;
+      if (focusable.length) {
+        if (shift && document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        } else if (!shift && document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  }
+
+  if (activeModal && e.keyCode === 27) {
+    document.querySelector(`.${prefix}${modal}`).classList.remove('b-modal--active');
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+
+  // idk, it stops lint complaining
+  return true;
+});
 
 initDownloadButton();

@@ -15,6 +15,13 @@
   &__navigation-container {
     margin-bottom: 10px;
 
+    button {
+      &:nth-of-type(1) {
+        margin-right: 10px;
+      }
+    }
+
+
     @include bpMinMedium {
       display: none;
     }

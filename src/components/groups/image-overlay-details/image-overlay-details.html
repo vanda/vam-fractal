@@ -1,38 +1,34 @@
 <div class="b-image-overlay-detail">
-    <div class="b-image-overlay-detail__caption-container">
-        <div class="b-image-overlay-detail__navigation-container">
-           <a class="b-image-overlay-detail__prev" href="#" title="Previous" aria-label="Previous">
-                <svg role="img">
-                    <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
-                </svg>
-            </a>
-
-            <a class="b-image-overlay-detail__next b-image-overlay-detail__next--enabled" href="#" title="Next" aria-label="Next">
-                <svg role="img">
-                    <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
-                </svg>
-            </a>
-        </div>
-        <div class="b-image-overlay-detail__image-counter">
-            Image <span class="b-image-overlay-detail__current-image"></span> of <span class="b-image-overlay-detail__total-number-of-images"></span>
-        </div>
-        <div class="b-image-overlay-detail__copyright-holder">
-            © Victoria and Albert Museum, London
-        </div>
-        {%- render "@image-overlay-license-modal" -%}
+  <div class="b-image-overlay-detail__caption-container">
+    <div class="b-image-overlay-detail__navigation-container">
+      <button class="b-image-carousel__prev" disabled="true" title="Previous" aria-label="Previous image">
+        <svg role="img">
+          <use xlink:href="/assets/svg/svg-template.svg#point-left"></use>
+        </svg>
+      </button>
+      <button class="b-image-carousel__next" disabled="true" title="Next" aria-label="Next image">
+        <svg role="img">
+          <use xlink:href="/assets/svg/svg-template.svg#point-right"></use>
+        </svg>
+      </button>
     </div>
-
-    <div class="b-image-overlay-detail__carousel-container">
-            {% if not more_than_five_images %}
-                {%- render "@image-carousel" -%}
-            {% endif %}
-
-            {% if more_than_five_images %}
-                {%- render "@image-carousel--more-than-five-images" -%}
-            {% endif %}
+    <div class="b-image-overlay-detail__image-counter">
+      Image <span class="b-image-overlay-detail__current-image"></span> of <span class="b-image-overlay-detail__total-number-of-images"></span>
     </div>
-
-    <div class="b-image-overlay-detail__zoom-container">
-        {%- render "@zoom" -%}
+    <div class="b-image-overlay-detail__copyright-holder">
+      © Victoria and Albert Museum, London
     </div>
+    {%- render "@image-overlay-license-modal" -%}
+  </div>
+  <div class="b-image-overlay-detail__carousel-container">
+    {% if not more_than_five_images %}
+    {%- render "@image-carousel" -%}
+    {% endif %}
+    {% if more_than_five_images %}
+    {%- render "@image-carousel--more-than-five-images" -%}
+    {% endif %}
+  </div>
+  <div class="b-image-overlay-detail__zoom-container">
+    {%- render "@zoom" -%}
+  </div>
 </div>

@@ -16,17 +16,55 @@ const openObjectOverlay = () => {
   document.querySelector('body').style.overflowY = 'hidden';
   const scrollY = window.pageYOffset;
   document.querySelector('.b-image-overlay__container').style.top = `${scrollY}px`;
+  document.querySelector('.b-image-carousel__image-preview-container').focus();
+};
+
+const closeObjectOverlay = () => {
+  document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
+  document.querySelector('body').style.overflowY = 'auto';
 };
 
 const initObjectOverlay = () => {
   offensiveConcealer();
 
   if (document.querySelector('.b-image-overlay')) {
-    document.querySelector('.b-image-overlay__close-container').onclick = (e) => {
-      e.target.dispatchEvent(new Event('closedImageOverlay'), { bubbles: true });
-      document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
-      document.querySelector('body').style.overflowY = 'auto';
-    };
+    document.querySelector('.b-image-overlay__close-container').onclick = () => closeObjectOverlay();
+
+    window.addEventListener('keydown', (e) => {
+      if (e.keyCode === 27) {
+        if (!document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')) {
+          closeObjectOverlay();
+        } else {
+          document.querySelector('.b-image-overlay').classList.remove('b-image-overlay--unfocus');
+        }
+      }
+
+      if (
+        !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus') &&
+        e.keyCode === 9
+      ) {
+        // stackoverflow answer 60031728
+        const focusable = Array.from(document.querySelector('.b-image-overlay__content').querySelectorAll('button')).filter(
+          el => !el.getAttribute('disabled')
+        ).filter(
+          el => !el.closest('.js-modal')
+        );
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const shift = e.shiftKey;
+
+        if (focusable.length) {
+          if (shift && document.activeElement === first) {
+            last.focus();
+            e.preventDefault();
+          } else if (!shift && document.activeElement === last) {
+            first.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    });
 
     document.querySelector('.b-image-overlay').addEventListener('openObjectOverlay', openObjectOverlay);
 

@@ -23,7 +23,6 @@ require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');
 require('../../components/groups/facet-box-modal/_facet-box-modal.js');
 require('../../components/groups/image-overlay/_image-overlay.js');
-require('../../components/groups/image-overlay-details/_image-overlay-details.js');
 require('../../components/groups/story-box-container/_story-box-container.js');
 
 /* eslint-disable no-new */

@@ -1,134 +1,250 @@
-function scrollcarousel (px) {
-  const currentScroll = document.querySelector('.b-image-carousel__image-carousel').scrollLeft;
-  document.querySelector('.b-image-carousel__image-carousel').scrollLeft = currentScroll + px;
-}
+const imageCarousel = document.querySelector('.b-image-carousel');
+const concealRight = document.querySelector('.b-image-carousel__conceal-right');
+const concealLeft = document.querySelector('.b-image-carousel__conceal-left');
+const prevButton = Array.from(document.querySelectorAll('.b-image-carousel__prev'));
+const nextButton = Array.from(document.querySelectorAll('.b-image-carousel__next'));
+const totalNumberOfImages = document.querySelector('.b-image-overlay-detail__total-number-of-images');
+const imageCounter = document.querySelector('.b-image-overlay-detail__current-image');
 
-function initImageCarousel () {
-  if (document.querySelector('.b-image-carousel')) {
-    const updateImageAndCounterEvent = (i = -1) => {
-      if (i >= 0) {
-        return new CustomEvent('updateimageandcounter', {
-          bubbles: true,
-          detail: {
-            index: i
-          }
-        });
-      }
-      return new CustomEvent('updateimageandcounter', { bubbles: true });
-    };
+const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
+const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
 
-    const scrollPx = 160;
-    const imageCarouselPreview = document.createElement('div');
+if (imageCarousel) {
+  let image = document.querySelector('.b-image-overlay__image');
+  const { images } = imageCarousel ? JSON.parse(imageCarousel.dataset.images) : {};
 
-    imageCarouselPreview.classList.add('b-image-carousel__image-preview-container');
-    imageCarouselPreview.innerHTML = '<div class="b-image-carousel__image-preview"></div>';
+  const imagesWithImage = images.map(({ src, alt }) => {
+    const newImage = new Image();
+    newImage.src = src;
+    newImage.alt = alt;
+    newImage.className = 'b-image-overlay__image b-image-overlay__image--active';
+    return newImage;
+  });
 
-    Array.from(document.querySelectorAll('.b-image-overlay__image')).forEach(
-      (el, i) => {
-        const cln = imageCarouselPreview.cloneNode(true);
-        cln.setAttribute('data-image-index', i);
-        document.querySelector('.b-image-carousel__image-carousel').appendChild(cln);
-      }
+  const changeViewIndex = (index) => {
+    imageCarousel.dataset.viewIndex = ((images.length - Math.max(0, index - (Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2)))) < document.querySelectorAll('.b-image-carousel__image-preview-container').length) ? images.length - document.querySelectorAll('.b-image-carousel__image-preview-container').length : Math.max(0, index - (Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2)));
+  };
+  const changeIndexAndViewIndex = (index) => {
+    changeViewIndex(index);
+    imageCarousel.dataset.index = index;
+  };
+
+  const thumbs = images.map(({ thumb, alt }) => {
+    const newImage = new Image();
+    newImage.src = thumb;
+    newImage.alt = `thumbnail for ${alt}`;
+    newImage.className = 'b-image-carousel__image-preview';
+    return newImage;
+  });
+
+  const initImageCarouselContainers = (newSelection) => {
+    const carouselContainers = Array.from(
+      document.querySelectorAll('.b-image-carousel__image-preview-container')
     );
 
-    if (document.querySelectorAll('.b-image-carousel__image-preview').length > 3) {
-      Array.from(document.querySelectorAll('.b-image-carousel__navigation-container')).forEach(
-        (e) => {
-          e.style.display = 'block';
+    carouselContainers.forEach((container, i) => {
+      const index = (parseInt(imageCarousel.dataset.viewIndex, 10) + i);
+
+      container.classList.remove('b-image-carousel__image-preview-container--selected');
+
+      if (index === parseInt(imageCarousel.dataset.index, 10)) {
+        container.classList.add('b-image-carousel__image-preview-container--selected');
+        if (newSelection) {
+          container.focus();
         }
-      );
-
-      document.querySelector('.b-image-carousel__conceal-right').style.display = 'block';
-      document.querySelector('.b-image-carousel').classList.add('b-image-carousel--conceal');
-    }
-
-    Array.from(document.querySelectorAll('.b-image-carousel__image-preview-container')).forEach(
-      (el, i) => {
-        el.onclick = (e) => {
-          e.preventDefault();
-          e.target.dispatchEvent(updateImageAndCounterEvent(i));
-        };
-
-        if (i === 0) {
-          el.dispatchEvent(updateImageAndCounterEvent(i));
-        }
-
-        const imgSrc = document.querySelector(`img[data-image-index='${i}']`).getAttribute('src');
-
-        el.querySelector('.b-image-carousel__image-preview').style.background = `url('${imgSrc}')`;
-        el.querySelector('.b-image-carousel__image-preview').style.backgroundSize = 'cover';
       }
-    );
 
-    if (document.querySelector('.b-image-carousel__image-carousel')) {
-      document.querySelector('.b-image-carousel__next').onclick = () => {
-        scrollcarousel(scrollPx);
+      container.setAttribute('aria-label', `view ${images[index].alt}`);
+
+      if (container.firstElementChild) {
+        container.firstElementChild.remove();
+      }
+
+      container.appendChild(thumbs[index]);
+
+      container.onclick = () => {
+        changeIndexAndViewIndex(index);
       };
-      document.querySelector('.b-image-carousel__prev').onclick = () => {
-        scrollcarousel(-scrollPx);
-      };
-    }
-
-    const concealcarousel = document.querySelector('.b-image-carousel--conceal .b-image-carousel__image-carousel');
-
-    document.addEventListener('keydown', () => {
-      const currentElementScroll = (parseInt(document.querySelector('.b-image-carousel__image-preview-container--selected').getAttribute('data-image-index'), 10) + 1) * 122;
-      const carouselScroll = document.querySelector('.b-image-carousel__image-carousel').scrollLeft;
-      const carouselWidth = document.querySelector('.b-image-carousel__image-carousel').offsetWidth;
-      if (event.keyCode === 37) {
-        document.querySelector('.b-image-carousel__image-carousel').dispatchEvent(new CustomEvent('updateimageandcounter', { detail: { opr: '-' }, bubbles: true }));
-        if ((currentElementScroll - scrollPx - 122) < carouselScroll) {
-          scrollcarousel(-scrollPx);
-        }
-      }
-      if (event.keyCode === 39) {
-        document.querySelector('.b-image-carousel__image-carousel').dispatchEvent(new CustomEvent('updateimageandcounter', { detail: { opr: '+' }, bubbles: true }));
-        if ((currentElementScroll + scrollPx) > (carouselScroll + carouselWidth)) {
-          scrollcarousel(scrollPx);
-        }
-      }
     });
+  };
 
-    if (concealcarousel) {
-      const concealLeft = document.querySelector('.b-image-carousel__conceal-left');
-      const concealRight = document.querySelector('.b-image-carousel__conceal-right');
-      const buttonLeft = document.querySelector('.b-image-carousel__prev');
-      const buttonRight = document.querySelector('.b-image-carousel__next');
+  const callback = (mutations) => {
+    if (mutations.filter(mutation => mutation.attributeName === 'data-view-index')) {
+      const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
+      concealLeft.style.display = (viewIndex > 0) ? 'block' : 'none';
+      concealRight.style.display = (viewIndex + document.querySelectorAll('.b-image-carousel__image-preview-container').length >= images.length) ? 'none' : 'block';
+    }
 
-      concealLeft.onclick = (e) => {
-        e.preventDefault();
-        scrollcarousel(-scrollPx);
-      };
+    if (mutations.filter(mutation => mutation.attributeName === 'data-index')) {
+      const index = parseInt(imageCarousel.dataset.index, 10);
 
-      concealRight.onclick = (e) => {
-        e.preventDefault();
-        scrollcarousel(scrollPx);
-      };
+      const newImage = imagesWithImage[index];
+      const imageParent = document.querySelector('.b-image-overlay__figure');
 
-      concealcarousel.addEventListener('scroll', (e) => {
-        const scrollLeft = e.target.scrollLeft;
-        const scrollWidth = e.target.scrollWidth;
-        const width = e.target.offsetWidth;
+      image.remove();
 
-        /* controlling the buttons */
-        if (scrollLeft === 0) {
-          document.querySelector('.b-image-carousel__conceal-left').style.display = 'none';
-          buttonLeft.classList.remove('b-image-carousel__prev--enabled');
-        } else if (scrollLeft > 0) {
-          document.querySelector('.b-image-carousel__conceal-left').style.display = 'block';
-          buttonLeft.classList.add('b-image-carousel__prev--enabled');
+      imageParent.appendChild(newImage);
+
+      image = newImage;
+      initImageCarouselContainers(true);
+
+      if (window.innerWidth > 991) {
+        if (index > 0) {
+          desktopPrevNextButtons[0].removeAttribute('disabled');
+        } else {
+          desktopPrevNextButtons[0].setAttribute('disabled', 'true');
         }
-        /* controlling the buttons */
-        if (scrollLeft === (scrollWidth - width)) {
-          document.querySelector('.b-image-carousel__conceal-right').style.display = 'none';
-          buttonRight.classList.remove('b-image-carousel__next--enabled');
-        } else if (scrollLeft < (scrollWidth - width)) {
-          document.querySelector('.b-image-carousel__conceal-right').style.display = 'block';
-          buttonRight.classList.add('b-image-carousel__next--enabled');
+        if ((index === images.length - 1)) {
+          desktopPrevNextButtons[1].setAttribute('disabled', 'true');
+        } else {
+          desktopPrevNextButtons[1].removeAttribute('disabled');
         }
+      } else {
+        if (index > 0) {
+          mobilePrevNextButtons[0].removeAttribute('disabled');
+        } else {
+          mobilePrevNextButtons[0].setAttribute('disabled', 'true');
+        }
+        if ((index === images.length - 1)) {
+          mobilePrevNextButtons[1].setAttribute('disabled', 'true');
+        } else {
+          mobilePrevNextButtons[1].removeAttribute('disabled');
+        }
+      }
+      imageCounter.innerHTML = `${index + 1}`;
+    }
+  };
+
+  const observer = new MutationObserver(callback);
+  observer.observe(imageCarousel, { attributes: true });
+
+  document.addEventListener('keydown', () => {
+    if (event.keyCode === 37) {
+      const index = parseInt(imageCarousel.dataset.index, 10) - 1;
+      if (index >= 0) {
+        changeIndexAndViewIndex(index);
+      }
+    }
+    if (event.keyCode === 39) {
+      const index = parseInt(imageCarousel.dataset.index, 10) + 1;
+      if (index < images.length) {
+        changeIndexAndViewIndex(index);
+      }
+    }
+  });
+
+  const initImageCarousel = (resize = false) => {
+    totalNumberOfImages.innerHTML = images.length;
+
+    if (!imageCarousel.dataset.index) {
+      imageCarousel.dataset.index = 0;
+    }
+
+    if (!imageCarousel.dataset.viewIndex) {
+      imageCarousel.dataset.viewIndex = 0;
+    }
+
+    if (imageCarousel) {
+      for (let i = 0; i < Math.max(0, document.querySelectorAll('.b-image-carousel__image-preview-container').length - images.length); i += 1) {
+        document.querySelector('.b-image-carousel__image-preview-container').remove();
+      }
+
+      if (!resize) {
+        imageCarousel.dataset.viewIndex = 0;
+        imageCarousel.dataset.index = 0;
+      } else {
+        changeIndexAndViewIndex(parseInt(imageCarousel.dataset.index, 10));
+      }
+
+      initImageCarouselContainers();
+    }
+  };
+
+  const button = document.createElement('BUTTON');
+  button.className = 'b-image-carousel__image-preview-container';
+  button.innerHTML = '<div class="b-image-carousel__image-preview"></div>';
+
+  const responsiveImageContainerAction = () => {
+    if (window.innerWidth < 1200) {
+      if (document.querySelectorAll('.b-image-carousel__image-preview-container').length > 3) {
+        document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
+        for (let i = 0; i < 3 && i !== images.length; i += 1) {
+          document.querySelector('.b-image-carousel__image-carousel').appendChild(button.cloneNode(true));
+        }
+        initImageCarousel(true);
+      }
+    }
+
+    if (window.innerWidth > 1199) {
+      if (
+        document.querySelectorAll('.b-image-carousel__image-preview-container').length < 5 &&
+        images.length !== document.querySelectorAll('.b-image-carousel__image-preview-container').length
+      ) {
+        document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
+        for (let i = 0; i < 5 && i !== images.length; i += 1) {
+          document.querySelector('.b-image-carousel__image-carousel').appendChild(button.cloneNode(true));
+        }
+        initImageCarousel(true);
+      }
+    }
+  };
+
+  const disableHiddenNavButtons = () => {
+    if (window.innerWidth < 992) {
+      mobilePrevNextButtons.forEach((el) => {
+        el.removeAttribute('disabled');
+      });
+
+      desktopPrevNextButtons.forEach((el) => {
+        el.setAttribute('disabled', 'true');
       });
     }
-  }
-}
 
-initImageCarousel();
+    if (window.innerWidth > 991) {
+      mobilePrevNextButtons.forEach((el) => {
+        el.setAttribute('disabled', 'true');
+      });
+
+      desktopPrevNextButtons.forEach((el) => {
+        el.removeAttribute('disabled');
+      });
+    }
+  };
+
+  concealRight.onclick = () => {
+    const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) + 1;
+    imageCarousel.dataset.viewIndex = viewIndex;
+    initImageCarouselContainers();
+  };
+
+  concealLeft.onclick = () => {
+    const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) - 1;
+    imageCarousel.dataset.viewIndex = viewIndex;
+    initImageCarouselContainers();
+  };
+
+  prevButton.forEach((el) => {
+    el.onclick = () => {
+      const index = parseInt(imageCarousel.dataset.index, 10);
+      changeIndexAndViewIndex(index - 1);
+    };
+  });
+
+  nextButton.forEach((el) => {
+    el.onclick = () => {
+      const index = parseInt(imageCarousel.dataset.index, 10);
+      changeIndexAndViewIndex(index + 1);
+    };
+  });
+
+  window.onresize = () => {
+    responsiveImageContainerAction();
+    disableHiddenNavButtons();
+    imageCarousel.dataset.index = imageCarousel.dataset.index;
+  };
+
+  responsiveImageContainerAction();
+  disableHiddenNavButtons();
+  initImageCarousel();
+  imageCarousel.dataset.index = imageCarousel.dataset.index;
+}
