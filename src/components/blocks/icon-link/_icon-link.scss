@@ -7,6 +7,8 @@
   width: 45px;
 
   &__download {
+    border: 1px solid siteColor(vam-black);
+    border-radius: 50%;
     cursor: default;
   }
 

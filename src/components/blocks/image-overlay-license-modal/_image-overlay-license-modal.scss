@@ -155,14 +155,17 @@
   }
 
   &__checkmark {
+    cursor: pointer;
     display: none;
     height: 20px;
     margin-top: 5px;
     position: absolute;
+    right: 15px;
+    top: 0;
     width: 26px;
     z-index: 99;
     &--active {
-      color: siteColor(secondary-green);
+      color: siteColor(vam-black);
       display: block;
     }
   }
@@ -189,6 +192,12 @@
 
       position: absolute;
       width: 160px;
+    }
+
+    &:focus {
+      &:before {
+        outline: 2px solid siteColor(vam-grey-4);
+      }
     }
 
     &:before {

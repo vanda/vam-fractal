@@ -88,7 +88,7 @@
                     src: imgPath,
                     alt: title
                   },
-                  title: title,
+                  title,
                   href: `http://vam-etc-test.azureedge.net/item/${record.systemNumber}/index.html`
                 }
               );
@@ -106,6 +106,9 @@
       Array.from(slide.children, (item) => {
         const dataIndex = deck._props.itemsIndex % deck._props.itemsData.length;
         const img = item.querySelector('img');
+
+        console.log(deck._props.itemsData[dataIndex].title)
+
         item.title = deck._props.itemsData[dataIndex].title;
         item.href = deck._props.itemsData[dataIndex].href;
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
