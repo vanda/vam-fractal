@@ -145,6 +145,7 @@
         item.style.position = 'absolute';
         item.style.left = `${x + jitterX}%`;
         item.style.top = `${y + jitterY}%`;
+        item.style.setProperty('--js-rotation', `${Math.sin((Math.random() * 2 * Math.PI)) * 5}deg`);
         item.style.transitionDuration = `${deck._props.transitionDurationItem * scale * scale}s`;
         img.style.transitionDuration = `${deck._props.transitionDurationImg * scale * scale}s`;
         deck._props.itemsIndex += 1;

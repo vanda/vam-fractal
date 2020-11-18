@@ -71,6 +71,7 @@
   }
 
   &__item {
+    --js-rotation: 0;
     display: flex;
     flex: 0 1 auto;
     height: 50%;
@@ -79,10 +80,6 @@
     transition: transform .4s;
     width: 50%;
 
-    &:hover,
-    &:focus {
-      z-index: 10;
-    }
 
     @include bpMinSmall {
       max-width: 40%;
@@ -95,7 +92,13 @@
   }
 
   &__deck[active] > &__slide[active] > &__item {
-    transform: translateX(0);
+    transform: translateX(0) rotate(var(--js-rotation, 0));
+
+    &:hover,
+    &:focus {
+      transform: translateX(0) rotate(0);
+      z-index: 10;
+    }
   }
 
   &__deck[active] ~ &__deck > &__slide > &__item {
