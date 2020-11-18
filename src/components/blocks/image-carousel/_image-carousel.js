@@ -24,8 +24,7 @@ if (imageCarousel) {
   const changeViewIndex = (index) => {
     imageCarousel.dataset.viewIndex = ((images.length - Math.max(0, index - (Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2)))) < document.querySelectorAll('.b-image-carousel__image-preview-container').length) ? images.length - document.querySelectorAll('.b-image-carousel__image-preview-container').length : Math.max(0, index - (Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2)));
   };
-  const changeIndexAndViewIndex = (index) => {
-    changeViewIndex(index);
+  const changeIndex = (index) => {
     imageCarousel.dataset.index = index;
   };
 
@@ -63,20 +62,22 @@ if (imageCarousel) {
       container.appendChild(thumbs[index]);
 
       container.onclick = () => {
-        changeIndexAndViewIndex(index);
+        changeIndex(index);
       };
     });
   };
 
   const callback = (mutations) => {
-    if (mutations.filter(mutation => mutation.attributeName === 'data-view-index')) {
+    if (mutations.filter(mutation => mutation.attributeName === 'data-view-index').length) {
       const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
       concealLeft.style.display = (viewIndex > 0) ? 'block' : 'none';
       concealRight.style.display = (viewIndex + document.querySelectorAll('.b-image-carousel__image-preview-container').length >= images.length) ? 'none' : 'block';
     }
 
-    if (mutations.filter(mutation => mutation.attributeName === 'data-index')) {
+    if (mutations.filter(mutation => mutation.attributeName === 'data-index').length) {
       const index = parseInt(imageCarousel.dataset.index, 10);
+
+      changeViewIndex(index);
 
       const newImage = imagesWithImage[index];
       const imageParent = document.querySelector('.b-image-overlay__figure');
@@ -122,13 +123,13 @@ if (imageCarousel) {
     if (event.keyCode === 37) {
       const index = parseInt(imageCarousel.dataset.index, 10) - 1;
       if (index >= 0) {
-        changeIndexAndViewIndex(index);
+        changeIndex(index);
       }
     }
     if (event.keyCode === 39) {
       const index = parseInt(imageCarousel.dataset.index, 10) + 1;
       if (index < images.length) {
-        changeIndexAndViewIndex(index);
+        changeIndex(index);
       }
     }
   });
@@ -153,7 +154,7 @@ if (imageCarousel) {
         imageCarousel.dataset.viewIndex = 0;
         imageCarousel.dataset.index = 0;
       } else {
-        changeIndexAndViewIndex(parseInt(imageCarousel.dataset.index, 10));
+        changeIndex(parseInt(imageCarousel.dataset.index, 10));
       }
 
       initImageCarouselContainers();
@@ -226,14 +227,14 @@ if (imageCarousel) {
   prevButton.forEach((el) => {
     el.onclick = () => {
       const index = parseInt(imageCarousel.dataset.index, 10);
-      changeIndexAndViewIndex(index - 1);
+      changeIndex(index - 1);
     };
   });
 
   nextButton.forEach((el) => {
     el.onclick = () => {
       const index = parseInt(imageCarousel.dataset.index, 10);
-      changeIndexAndViewIndex(index + 1);
+      changeIndex(index + 1);
     };
   });
 
