@@ -3,23 +3,24 @@
   const shuffler = {
     init: (el) => {
       const shufflerData = JSON.parse(el.dataset.objectShuffler);
+      const deckTabs = el.querySelector('.b-object-shuffler__tabs');
+      const tabTemplate = deckTabs.removeChild(deckTabs.querySelector('.b-object-shuffler__tab'));
       const deckTemplate = el.querySelector('.b-object-shuffler__deck');
       const itemTemplate = deckTemplate.firstElementChild.firstElementChild;
       const imgTemplate = itemTemplate.firstElementChild;
       const slideSize = shuffler.setSize(itemTemplate);
       const transitionDurationItem = parseFloat(window.getComputedStyle(itemTemplate).getPropertyValue('transition-duration'));
       const transitionDurationImg = parseFloat(window.getComputedStyle(imgTemplate).getPropertyValue('transition-duration'));
-      const deckTabs = el.querySelector('.b-object-shuffler__tabs');
 
       // clone initial html markup into a full set of decks
       for (let i = 1; i < shufflerData.length; i += 1) {
-        const deck = deckTemplate.parentNode.appendChild(deckTemplate.cloneNode(true));
-        deck.removeAttribute('active');
+        deckTemplate.parentNode.appendChild(deckTemplate.cloneNode(true));
       }
-      // populate each deck with slides of items
       let i = 0;
       Array.from(el.querySelectorAll('.b-object-shuffler__deck'), (deck) => {
+        // store deck data
         deck._props = {
+          deckTitle: shufflerData[i].title,
           slideSize,
           itemsData: shufflerData[i].data || [],
           itemsDataFeed: shufflerData[i].feed,
@@ -27,16 +28,27 @@
           transitionDurationItem,
           transitionDurationImg
         };
-        // create deck tab link
-        const tabLink = deckTabs.appendChild(document.createElement('a'));
-        tabLink.className = 'b-object-shuffler__tab-link';
-        tabLink.innerHTML = shufflerData[i].title;
-        tabLink.title = `filter by ${shufflerData[i].title}`;
-        tabLink.href = '#0';
-        tabLink._deck = deck;
-        if (i === 0) { tabLink.setAttribute('active', true); }
+
+        // setup each deck
         shuffler.getData(deck)
           .then(() => {
+            // abandon deck if there weren't enough results
+            if (deck._props.itemsData.length < slideSize * 1.5) {
+              deck.parentNode.removeChild(deck);
+              return false;
+            }
+            // create deck tab
+            const deckTab = deckTabs.appendChild(tabTemplate.cloneNode(true));
+            deckTab.className = 'b-object-shuffler__tab';
+            deckTab.innerHTML = deck._props.deckTitle;
+            deckTab.title = `filter by ${deck._props.deckTitle}`;
+            deckTab.setAttribute('tabindex', '0');
+            deckTab._deck = deck;
+            if (deckTab === deckTab.parentNode.firstElementChild) {
+              deckTab.setAttribute('active', true);
+              deckTab._deck.setAttribute('active', true);
+            }
+            // populate each deck with slides of items
             const slide = deck.firstElementChild;
             // clone initial html markup for an item to make a whole slide
             for (let j = 1; j < slideSize; j += 1) {
@@ -58,13 +70,15 @@
       });
 
       document.addEventListener('click', (e) => {
-        if (e.target.closest('.b-object-shuffler__tab-link')) {
+        if (e.target.closest('.b-object-shuffler__tab')) {
           const deckTab = e.target;
-          deckTabs.querySelector('[active]').removeAttribute('active');
+          const activeTab = deckTabs.querySelector('[active]');
+          if (activeTab) {
+            activeTab.removeAttribute('active');
+            activeTab._deck.removeAttribute('active');
+            shuffler.tabIndexSlide(activeTab._deck.querySelector('.b-object-shuffler__slide[active]'), '-1');
+          }
           deckTab.setAttribute('active', true);
-          const activeDeck = el.querySelector('.b-object-shuffler__deck[active]');
-          activeDeck.removeAttribute('active');
-          shuffler.tabIndexSlide(activeDeck.querySelector('.b-object-shuffler__slide[active]'), '-1');
           deckTab._deck.setAttribute('active', true);
           shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'), '0');
         } else if (e.target.closest('.b-object-shuffler__more')) {
@@ -81,8 +95,9 @@
     },
     getData: (deck) => {
       // append more data from search API
-      if (deck._props.itemsData.length < deck._props.itemsIndex + (2 * deck._props.slideSize)) {
-        const dataURI = deck._props.itemsDataFeed.replace(/offset=[^&]+/, `offset=${deck._props.itemsData.length}`);
+      const dataSize = 2 * deck._props.slideSize;
+      if (deck._props.itemsData.length < deck._props.itemsIndex + dataSize) {
+        const dataURI = `${deck._props.itemsDataFeed}&page_size=${dataSize}&page=${deck._props.itemsData.length / dataSize}`;
         const promise = fetch(dataURI)
           .then(response => response.json())
           .then((data) => {
