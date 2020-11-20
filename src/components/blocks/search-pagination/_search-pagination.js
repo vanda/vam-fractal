@@ -20,7 +20,7 @@ const populateButton = (button, index) => {
   button.value = index;
   button.innerHTML = `${(index + 1) < 10 ? 0 : ''}${index}`;
   button.ariaLabel = `Go to page ${index}`;
-}
+};
 
 const checkNavigationLinks = () => {
   const { pageIndex, pages } = datasetToInts(paginationElement.dataset);
