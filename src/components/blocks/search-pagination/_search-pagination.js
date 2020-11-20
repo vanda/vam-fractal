@@ -1,7 +1,6 @@
 const paginationElement = document.querySelector('.b-search-pagination');
 const buttons = Array.from(document.querySelectorAll('.b-search-pagination__page-button'));
 const seperators = Array.from(document.querySelectorAll('.b-search-pagination__page-button-seperator'));
-const displayCounter = document.querySelector('.b-search-pagination__display-counter');
 const searchPrevLink = document.querySelector('.b-search-pagination__prev-link');
 const searchNextLink = document.querySelector('.b-search-pagination__next-link');
 const startSeperator = document.querySelector('.b-search-pagination__page-button-seperator-start');
@@ -72,7 +71,7 @@ if (paginationElement) {
         button.value = i + 1;
         button.innerHTML = `${(i + 1) < 10 ? 0 : ''}${i + 1}`;
       });
-      seperators.forEach((seperator, i) => {
+      seperators.forEach((seperator) => {
         seperator.setAttribute('disabled', true);
       });
 
@@ -88,7 +87,6 @@ if (paginationElement) {
 
     if (mutations.filter(mutation => mutation.attributeName === 'data-page-index').length) {
       const { pageIndex, pages } = datasetToInts(paginationElement.dataset);
-      const activeButtons = buttons.filter(el => !el.getAttribute('disabled'));
       const currentButton = document.querySelector(`.${currentButtonClass}`);
 
       const dynamicButtonCheck = pageIndex > 2 && (pageIndex < (pages - 1)) && pages > 5;
@@ -132,7 +130,7 @@ if (paginationElement) {
       }
 
       currentButton.classList.remove(currentButtonClass);
-      buttons.filter(button => parseInt(button.dataset.pageIndex) ==
+      buttons.filter(button => parseInt(button.dataset.pageIndex, 10) ===
         pageIndex)[0].classList.add(currentButtonClass);
       updateDisplayCounter();
       checkNavigationLinks();
@@ -141,7 +139,7 @@ if (paginationElement) {
     if (mutations.filter(mutation => mutation.attributeName === 'data-total-count').length) {
       updateDisplayCounter();
     }
-  }
+  };
 
   paginationElement.addEventListener('click', ({ target }) => {
     const { pageIndex } = datasetToInts(target.dataset);
