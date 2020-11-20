@@ -61,18 +61,26 @@ if (paginationElement) {
   const callback = (mutations) => {
     if (mutations.filter(mutation => mutation.attributeName === 'data-pages').length) {
       const { pages } = datasetToInts(paginationElement.dataset);
+
       buttons.forEach((button, i) => {
         if (i > (pages - 1)) {
           button.setAttribute('disabled', true);
+        } else {
+          button.removeAttribute('disabled');
         }
+        button.dataset.pageIndex = i + 1;
+        button.value = i + 1;
+        button.innerHTML = `${(i + 1) < 10 ? 0 : ''}${i + 1}`;
       });
       seperators.forEach((seperator, i) => {
         seperator.setAttribute('disabled', true);
       });
 
-      const lastButton = buttons.slice(4)[0];
+      const lastButton = buttons.slice(
+        buttons.filter(button => !button.getAttribute('disabled')).length - 1
+      )[0];
 
-      lastButton.dataset.pageIndex = pages - 1;
+      lastButton.dataset.pageIndex = pages;
       lastButton.value = pages;
       lastButton.innerHTML = `${pages < 10 ? 0 : ''}${pages}`;
       paginationElement.dataset.pageIndex = paginationElement.dataset.pageIndex;
@@ -96,7 +104,7 @@ if (paginationElement) {
         }
       }
 
-      if (pageIndex > (pages - 3)) {
+      if ((pageIndex > (pages - 3)) && (pages > 5)) {
         startSeperator.removeAttribute('disabled');
         lastSeperator.setAttribute('disabled', 'true');
         buttons.slice(3)[0].setAttribute('disabled', 'true');
@@ -110,16 +118,18 @@ if (paginationElement) {
         lastSeperator.removeAttribute('disabled');
       }
 
-      buttons.slice(1, 4).filter(el => !el.getAttribute('disabled')).forEach((button, i) => {
-        const newIndex =
-        i + (pageIndex < 3 ? 2 : 0) +
-          (dynamicButtonCheck ? pageIndex - 1 : 0) +
-            ((pageIndex >= (pages - 1)) ? pages - 2 : 0);
+      if (pages > 5) {
+        buttons.slice(1, 4).filter(el => !el.getAttribute('disabled')).forEach((button, i) => {
+          const newIndex =
+          i + (pageIndex < 3 ? 2 : 0) +
+            (dynamicButtonCheck ? pageIndex - 1 : 0) +
+              ((pageIndex >= (pages - 1)) ? pages - 2 : 0);
 
-        button.dataset.pageIndex = newIndex;
-        button.value = newIndex + 1;
-        button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`;
-      });
+          button.dataset.pageIndex = newIndex;
+          button.value = newIndex + 1;
+          button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`;
+        });
+      }
 
       currentButton.classList.remove(currentButtonClass);
       buttons.filter(button => parseInt(button.dataset.pageIndex) ==
