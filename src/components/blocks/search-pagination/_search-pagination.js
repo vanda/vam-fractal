@@ -15,6 +15,13 @@ const datasetToInts = dataset => Object.entries(dataset).reduce((total, pair) =>
   });
 }, {});
 
+const populateButton = (button, index) => {
+  button.dataset.pageIndex = index;
+  button.value = index;
+  button.innerHTML = `${(index + 1) < 10 ? 0 : ''}${index}`;
+  button.ariaLabel = `Go to page ${index}`;
+}
+
 const checkNavigationLinks = () => {
   const { pageIndex, pages } = datasetToInts(paginationElement.dataset);
 
@@ -59,9 +66,7 @@ if (paginationElement) {
         } else {
           button.removeAttribute('disabled');
         }
-        button.dataset.pageIndex = i + 1;
-        button.value = i + 1;
-        button.innerHTML = `${(i + 1) < 10 ? 0 : ''}${i + 1}`;
+        populateButton(button, i + 1);
       });
       seperators.forEach((seperator) => {
         seperator.setAttribute('disabled', true);
@@ -71,9 +76,7 @@ if (paginationElement) {
         buttons.filter(button => !button.getAttribute('disabled')).length - 1
       )[0];
 
-      lastButton.dataset.pageIndex = pages;
-      lastButton.value = pages;
-      lastButton.innerHTML = `${pages < 10 ? 0 : ''}${pages}`;
+      populateButton(lastButton, pages);
       paginationElement.dataset.pageIndex = paginationElement.dataset.pageIndex;
     }
 
@@ -115,9 +118,7 @@ if (paginationElement) {
             (dynamicButtonCheck ? pageIndex - 1 : 0) +
               ((pageIndex >= (pages - 1)) ? pages - 2 : 0);
 
-          button.dataset.pageIndex = newIndex;
-          button.value = newIndex + 1;
-          button.innerHTML = `${newIndex < 10 ? 0 : ''}${newIndex}`;
+          populateButton(button, newIndex);
         });
       }
 
