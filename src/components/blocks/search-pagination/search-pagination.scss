@@ -28,7 +28,7 @@
     position: absolute;
     user-select: none;
 
-    &--inactive {
+    &[disabled] {
       color: siteColor(vam-grey-4);
       cursor: initial;
     }

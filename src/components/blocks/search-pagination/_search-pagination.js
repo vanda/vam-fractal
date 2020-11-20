@@ -15,30 +15,22 @@ const datasetToInts = dataset => Object.entries(dataset).reduce((total, pair) =>
   });
 }, {});
 
-const makeActive = (elements) => {
-  elements.filter(el => el.classList.length === 2).forEach(
-    el => el.classList.remove(`${el.classList[0]}--inactive`)
-  );
-};
-const makeInactive = (elements) => {
-  elements.filter(el => el.classList.length === 1).forEach(
-    el => el.classList.add(`${el.classList[0]}--inactive`)
-  );
-};
-
 const checkNavigationLinks = () => {
-  const { pages } = datasetToInts(paginationElement);
+  const { pageIndex, pages } = datasetToInts(paginationElement.dataset);
+
+  searchPrevLink.dataset.pageIndex = pageIndex - 1;
+  searchNextLink.dataset.pageIndex = pageIndex + 1;
 
   if (parseInt(searchPrevLink.dataset.pageIndex, 10) < 1) {
-    makeInactive([searchPrevLink]);
+    searchPrevLink.setAttribute('disabled', true);
   } else {
-    makeActive([searchPrevLink]);
+    searchPrevLink.removeAttribute('disabled');
   }
 
   if (parseInt(searchNextLink.dataset.pageIndex, 10) > pages) {
-    makeInactive([searchNextLink]);
+    searchNextLink.setAttribute('disabled', true);
   } else {
-    makeActive([searchNextLink]);
+    searchNextLink.removeAttribute('disabled');
   }
 };
 
@@ -144,9 +136,10 @@ if (paginationElement) {
   paginationElement.addEventListener('click', ({ target }) => {
     const { pageIndex } = datasetToInts(target.dataset);
     if (
-      target.closest('.b-search-pagination__page-button') ||
+      (target.closest('.b-search-pagination__page-button') ||
       target.closest('.b-search-pagination__prev-link') ||
-      target.closest('.b-search-pagination__next-link')
+      target.closest('.b-search-pagination__next-link')) &&
+      !target.getAttribute('disabled')
     ) {
       paginationElement.dataset.pageIndex = pageIndex;
     }
