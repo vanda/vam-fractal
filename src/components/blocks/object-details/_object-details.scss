@@ -107,27 +107,29 @@
       flex-wrap: wrap;
     }
 
-    @include bpMinSmall {
-      line-height: 1.3rem;
-      margin-bottom: 2px;
+    &-content {
+      @include bpMinSmall {
+        line-height: 1.3rem;
+        margin-bottom: 2px;
+        margin-right: 10px;
+        margin-top: 2px;
+        padding: 2px 7px 2px 7px;
+      }
+
+      @include typeSetting(1, light);
+
+      border: solid themeColor(silent-green) 1px;
+      border-radius: 4px;
+      color: siteColor(vam-white);
       margin-right: 10px;
-      margin-top: 2px;
-      padding: 2px 7px 2px 7px;
-    }
+      margin-top: 5px;
+      padding: 10px 13px;
 
-    @include typeSetting(1, light);
-
-    border: solid themeColor(silent-green) 1px;
-    border-radius: 4px;
-    color: siteColor(vam-white);
-    margin-right: 10px;
-    margin-top: 5px;
-    padding: 10px 13px;
-
-    &:hover {
-      background-color: themeColor(silent-green);
-      color: siteColor(vam-grey-1);
-      cursor: pointer;
+      &:hover {
+        background-color: themeColor(silent-green);
+        color: siteColor(vam-grey-1);
+        cursor: pointer;
+      }
     }
   }
 }
