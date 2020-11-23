@@ -231,6 +231,7 @@
       position: relative;
 
       &-text {
+        max-width: 167px;
         text-align: left;
       }
       &-text, &-result {
