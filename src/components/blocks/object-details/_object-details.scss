@@ -90,7 +90,7 @@
   }
   &__cell-concealer {
     &::before {
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), siteColor(vam-grey-1));
+      background-image: linear-gradient(rgba(57, 59, 63, 0), #393b3f);
       content: '';
       height: 100px;
       left: 0;
