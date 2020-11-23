@@ -189,16 +189,10 @@
     margin: 20px 0;
   }
 
-  &__filter-toggle-set {
-    position: relative;
-  }
-
   &__filter-toggle {
     cursor: pointer;
     margin-bottom: 20px;
-    opacity: 1;
     text-decoration: underline;
-    transition: opacity .3s ease;
 
     &:hover,
     &:focus {
@@ -226,18 +220,15 @@
     }
 
     .b-search-form__filter-toggle-set[active] > &:not(&--off) {
-      opacity: 0;
+      display: none;
     }
   }
 
   &__filter-toggle-pane {
-    opacity: 0;
-    position: absolute;
-    top: 0;
+    display: none;
 
     .b-search-form__filter-toggle-set[active] > & {
-      opacity: 1;
-      transition: opacity .3s ease;
+      display: block;
     }
   }
 
