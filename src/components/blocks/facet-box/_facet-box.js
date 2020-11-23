@@ -379,7 +379,7 @@ const initialiseFacetOverlay = () => {
           } else {
             document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
           }
-          document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `${facetFormTerms.length - 1} filters applied`;
+          document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `${facetFormTerms.length - 1} filter${facetFormTerms.length - 1 > 1 ? 's' : ''} applied`;
         } else {
           document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
         }
