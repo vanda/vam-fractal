@@ -70,7 +70,8 @@
     color: siteColor(vam-white);
     height: 40px;
     margin-right: 6px;
-    width: 32px;
+    min-width: 32px;
+    padding: 0 5px;
     &-seperator {
       &-start, &-middle, &-last {
         color: siteColor(vam-white);
