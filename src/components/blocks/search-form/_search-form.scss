@@ -243,7 +243,11 @@
 
   &__filter {
     display: inline-block;
-    margin: 0 44px 0 0;
+    margin: 5px 0;
+
+    @include bpMinXSmall {
+      margin: 0 44px 0 0;
+    }
 
     .b-search-form--etc-gateway & {
       margin-right: 20px;
@@ -324,7 +328,12 @@
   }
 
   &__location-wrapper {
-    margin-left: 20px;
+    margin-top: 10px;
+
+    @include bpMinXSmall {
+      margin-left: 20px;
+    }
+
     opacity: 0;
   }
   &__location-toggle:checked ~ &__location-wrapper {
