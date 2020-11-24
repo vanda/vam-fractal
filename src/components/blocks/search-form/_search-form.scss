@@ -236,9 +236,11 @@
     display: block;
     margin: 10px 44px 0 0;
     text-align: left;
+    width: 100%;
 
     @include bpMinXSmall {
       display: inline-block;
+      width: auto;
     }
 
     .b-search-form--etc-gateway & {
