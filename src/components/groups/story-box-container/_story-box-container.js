@@ -4,11 +4,11 @@ const initRevealer = () => {
   const boxes = Array.from(document.querySelectorAll('.b-story-box'));
   const columnBoxes = Array.from(document.querySelectorAll('.b-story-box--column'));
 
-  if (boxes.length > 4) {
+  if (boxes.length > 2) {
     document.querySelector('.b-story-box-container__reveal-container').classList.add('b-story-box-container__reveal-container--active');
   }
 
-  boxes.slice(0, 4).forEach(
+  boxes.slice(0, 2).forEach(
     (el) => {
       el.classList.add('b-story-box--active');
     }
@@ -48,12 +48,28 @@ const initRevealer = () => {
   }
 };
 
+const clampText = () => {
+  const textToClamp = Array.from(document.querySelectorAll('.b-story-box__content-text'))
+
+  if (window.innerWidth > 499) {
+    textToClamp.forEach((el) => {
+      Clamp(el, {
+        clamp: 'auto',
+        splitOnChars: ['.', ',', ' ']
+      });
+    });
+  } else {
+    textToClamp.forEach((el) => {
+      el.style.display = 'none';
+    });
+  }
+};
+
 window.onresize = () => {
-  Array.from(document.querySelectorAll('.b-story-box__content-text')).forEach((el) => {
-    Clamp(el, { clamp: 'auto' });
-  });
+  clampText();
 };
 
 if (document.querySelector('.b-story-box')) {
   initRevealer();
+  clampText();
 }
