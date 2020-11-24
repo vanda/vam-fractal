@@ -16,7 +16,7 @@
 
   &__reveal-container {
     display: none;
-    margin-top: 50px;
+    margin-top: 20px;
     &--active {
       display: block;
     }
@@ -24,7 +24,7 @@
 
   &__col-break {
     @include bpMinXSmall {
-      flex-basis: 12px;
+      flex-basis: 24px;
     }
   }
 
