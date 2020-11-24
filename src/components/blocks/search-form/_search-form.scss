@@ -234,12 +234,13 @@
 
   &__filter {
     display: block;
-    margin: 10px 44px 0 0;
+    margin: 20px 44px 0 0;
     text-align: left;
     width: 100%;
 
     @include bpMinXSmall {
       display: inline-block;
+      margin: 10px 44px 0 0;
       width: auto;
     }
 
