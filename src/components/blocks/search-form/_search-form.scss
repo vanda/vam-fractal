@@ -304,6 +304,7 @@
   }
 
   &__filter-select {
+    appearance: none;
     @include bpMinXSmall {
       width: auto;
     }
@@ -313,12 +314,8 @@
     border: 1px solid siteColor(vam-white);
     border-radius: 2px;
     color: siteColor(vam-white);
-    padding: 10px 20px;
+    padding: 10px 40px 10px 20px;
     width: 100%;
-
-    &:after {
-      color: blue;
-    }
 
     > option {
       background: siteColor(vam-black);
@@ -328,6 +325,18 @@
   }
 
   &__location-wrapper {
+    &:after {
+      content: '⌄';
+      font-size: 20px;
+      font-weight: 100;
+      height: 10px;
+      position: absolute;
+      right: 20px;
+      top: 10%;
+      transform: scaleX(1.5);
+      width: 10px;
+    }
+
     @include bpMinXSmall {
       margin-left: 20px;
       width: auto;
@@ -335,6 +344,7 @@
 
     margin-left: 0;
     opacity: 0;
+    position: relative;
     width: 100%;
   }
   &__location-toggle:checked ~ &__location-wrapper {
