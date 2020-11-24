@@ -144,7 +144,7 @@ if (imageCarousel) {
   button.className = 'b-image-carousel__image-preview-container';
   button.innerHTML = '<div class="b-image-carousel__image-preview"></div>';
 
-  const initImageCarousel = (resize = false) => {
+  const initImageCarousel = () => {
     totalNumberOfImages.innerHTML = images.length;
 
     if (!imageCarousel.dataset.index) {
@@ -157,21 +157,22 @@ if (imageCarousel) {
 
     if (imageCarousel) {
       if (window.innerWidth < 1200) {
-        if (document.querySelectorAll('.b-image-carousel__image-preview-container').length > 3 ||
-          document.querySelectorAll('.b-image-carousel__image-preview-container').length == 0
-          ) {
+        if (
+          document.querySelectorAll('.b-image-carousel__image-preview-container').length > 3 ||
+          document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
+        ) {
           document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
           for (let i = 0; i < 3 && i !== images.length; i += 1) {
             document.querySelector('.b-image-carousel__image-carousel').appendChild(button.cloneNode(true));
           }
         }
-      } else {
+      } else if (window.innerWidth > 1199) {
         if (
           (
-            document.querySelectorAll('.b-image-carousel__image-preview-container').length < 5  ||
-            document.querySelectorAll('.b-image-carousel__image-preview-container').length == 0
-          ) &&
-          images.length !== document.querySelectorAll('.b-image-carousel__image-preview-container').length
+            document.querySelectorAll('.b-image-carousel__image-preview-container').length < 5 ||
+            document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
+          )
+          && images.length !== document.querySelectorAll('.b-image-carousel__image-preview-container').length
         ) {
           document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
           for (let i = 0; i < 5 && i !== images.length; i += 1) {
