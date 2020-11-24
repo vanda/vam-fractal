@@ -233,8 +233,12 @@
   }
 
   &__filter {
-    display: inline-block;
-    margin: 0 44px 0 0;
+    display: block;
+    margin: 10px 44px 0 0;
+
+    @include bpMinXSmall {
+      display: inline-block;
+    }
 
     .b-search-form--etc-gateway & {
       margin-right: 20px;
