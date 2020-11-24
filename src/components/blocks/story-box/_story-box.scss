@@ -9,6 +9,7 @@
   flex-direction: row;
   height: 120px;
   margin: 6px 0;
+  text-align: left;
 
   @include bpMinXSmall {
     margin: 0;
@@ -194,7 +195,9 @@
       width: 100%;
     }
     &--column {
-      height: 194px;
+      @include bpMinXSmall {
+        height: 194px;
+      }
     }
   }
 }
