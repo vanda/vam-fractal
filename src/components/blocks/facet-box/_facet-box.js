@@ -134,20 +134,22 @@ const facetHTML = (facet, seeMore) => `
 
 const revealMoreFacets = (e) => {
   e.preventDefault();
-  const linkEl = e.target;
+  const linkEl = e.target.parentNode;
   const facetContainer = e.target.parentNode.parentNode;
   const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset.facet];
-  e.target.remove();
+
   terms.slice(index, index + 5).forEach(({ term, count, value }) => {
     facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
   });
   facetsWithIndex[facet].index += 5;
 
-  if (facetsWithIndex[facet].index !== terms.length) {
+  if ((facetsWithIndex[facet].index) < terms.length) {
     facetContainer.appendChild(linkEl);
+  } else {
+    linkEl.remove();
   }
 
-  Array.from(facetContainer.querySelectorAll('.b-facet-box__facet-term-toggle-button'))[facetsWithIndex[facet].index - 5].focus();
+  Array.from(facetContainer.querySelectorAll('.b-facet-box__facet-term-toggle-button')).slice(-1)[0].focus();
 };
 
 
