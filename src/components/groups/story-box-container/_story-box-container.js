@@ -1,19 +1,8 @@
+import Clamp from 'clamp-js';
+
 const initRevealer = () => {
   const boxes = Array.from(document.querySelectorAll('.b-story-box'));
   const columnBoxes = Array.from(document.querySelectorAll('.b-story-box--column'));
-
-  window.onload = () => {
-    for (let i = 0; i < columnBoxes.length; i += 2) {
-      const textContentBoxes = columnBoxes.slice(i, i + 2).map(el => el.querySelector('.b-story-box__content-text'));
-      const tallestInRow = textContentBoxes[
-        (textContentBoxes[0].offsetHeight > textContentBoxes[1].offsetHeight ? 0 : 1)
-      ].offsetHeight;
-
-      textContentBoxes.forEach((el) => {
-        el.style.height = `${tallestInRow}px`;
-      });
-    }
-  };
 
   if (boxes.length > 4) {
     document.querySelector('.b-story-box-container__reveal-container').classList.add('b-story-box-container__reveal-container--active');
@@ -57,6 +46,12 @@ const initRevealer = () => {
       return false;
     };
   }
+};
+
+window.onresize = () => {
+  Array.from(document.querySelectorAll('.b-story-box__content-text')).forEach((el) => {
+    Clamp(el, { clamp: 'auto' });
+  });
 };
 
 if (document.querySelector('.b-story-box')) {

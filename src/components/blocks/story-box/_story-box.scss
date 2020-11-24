@@ -34,7 +34,7 @@
     }
 
     @include bpMinMedium {
-      height: 100%;
+      height: 404px;
       width: 100%;
     }
   }
@@ -48,6 +48,7 @@
     flex-direction: column;
     margin-top: 15px;
     &--column {
+      height: 190px;
       width: 100%;
     }
     &--row {
@@ -109,6 +110,12 @@
       }
     }
 
+    &-text {
+      &--column {
+        height: 96px;
+      }
+    }
+
     &-type {
       &-container {
         &--column, &--row {
@@ -149,7 +156,7 @@
           bottom: -9px;
           content: '';
           display: none;
-          height: 1px;
+          height: 2px;
           left: 2px;
           position: absolute;
           width: 28px;
