@@ -49,7 +49,7 @@ const initRevealer = () => {
 };
 
 const clampText = () => {
-  const textToClamp = Array.from(document.querySelectorAll('.b-story-box__content-text'))
+  const textToClamp = Array.from(document.querySelectorAll('.b-story-box__content-text'));
 
   if (window.innerWidth > 499) {
     textToClamp.forEach((el) => {

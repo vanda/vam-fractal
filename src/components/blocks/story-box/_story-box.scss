@@ -111,12 +111,6 @@
       }
     }
 
-    &-text {
-      &--column {
-        height: 96px;
-      }
-    }
-
     &-type {
       &-container {
         &--column, &--row {
@@ -168,12 +162,10 @@
     &-text {
       &--row {
         max-height: 120px;
-        overflow: hidden;
       }
 
       &--column {
-        max-height: 196px;
-        overflow: hidden;
+        height: 96px;
       }
       &--column, &--row {
         @include bpMinXSmall {
@@ -184,6 +176,7 @@
 
         display: none;
         margin-top: 20px;
+        overflow: hidden;
       }
     }
   }
