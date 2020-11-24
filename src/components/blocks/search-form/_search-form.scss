@@ -235,6 +235,7 @@
   &__filter {
     display: block;
     margin: 10px 44px 0 0;
+    text-align: left;
 
     @include bpMinXSmall {
       display: inline-block;
@@ -300,12 +301,17 @@
   }
 
   &__filter-select {
+    @include bpMinXSmall {
+      width: auto;
+    }
+
     @include typeSetting(2, semi-bold, uppercase);
     background: transparent;
     border: 1px solid siteColor(vam-white);
     border-radius: 2px;
     color: siteColor(vam-white);
     padding: 10px 20px;
+    width: 100%;
 
     &:after {
       color: blue;
@@ -319,8 +325,14 @@
   }
 
   &__location-wrapper {
-    margin-left: 20px;
+    @include bpMinXSmall {
+      margin-left: 20px;
+      width: auto;
+    }
+
+    margin-left: 0;
     opacity: 0;
+    width: 100%;
   }
   &__location-toggle:checked ~ &__location-wrapper {
     opacity: 1;
