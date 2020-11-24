@@ -49,7 +49,9 @@
     flex-direction: column;
     margin-top: 15px;
     &--column {
-      height: 190px;
+      @include bpMinXSmall {
+        height: 190px;
+      }
       width: 100%;
     }
     &--row {
