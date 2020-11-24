@@ -41,8 +41,14 @@ if (imageCarousel) {
       document.querySelectorAll('.b-image-carousel__image-preview-container')
     );
 
+    const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
+
+    if ((viewIndex + carouselContainers.length) > (images.length - 1)) {
+      changeViewIndex(images.length - carouselContainers.length - 1);
+    }
+
     carouselContainers.forEach((container, i) => {
-      const index = (parseInt(imageCarousel.dataset.viewIndex, 10) + i);
+      const index = (viewIndex + i);
 
       container.classList.remove('b-image-carousel__image-preview-container--selected');
 
@@ -134,7 +140,11 @@ if (imageCarousel) {
     }
   });
 
-  const initImageCarousel = (resize = false) => {
+  const button = document.createElement('BUTTON');
+  button.className = 'b-image-carousel__image-preview-container';
+  button.innerHTML = '<div class="b-image-carousel__image-preview"></div>';
+
+  const initImageCarousel = () => {
     totalNumberOfImages.innerHTML = images.length;
 
     if (!imageCarousel.dataset.index) {
@@ -146,46 +156,29 @@ if (imageCarousel) {
     }
 
     if (imageCarousel) {
-      for (let i = 0; i < Math.max(0, document.querySelectorAll('.b-image-carousel__image-preview-container').length - images.length); i += 1) {
-        document.querySelector('.b-image-carousel__image-preview-container').remove();
-      }
-
-      if (!resize) {
-        imageCarousel.dataset.viewIndex = 0;
-        imageCarousel.dataset.index = 0;
-      } else {
-        changeIndex(parseInt(imageCarousel.dataset.index, 10));
-      }
-
-      initImageCarouselContainers();
-    }
-  };
-
-  const button = document.createElement('BUTTON');
-  button.className = 'b-image-carousel__image-preview-container';
-  button.innerHTML = '<div class="b-image-carousel__image-preview"></div>';
-
-  const responsiveImageContainerAction = () => {
-    if (window.innerWidth < 1200) {
-      if (document.querySelectorAll('.b-image-carousel__image-preview-container').length > 3) {
-        document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
-        for (let i = 0; i < 3 && i !== images.length; i += 1) {
-          document.querySelector('.b-image-carousel__image-carousel').appendChild(button.cloneNode(true));
+      if (window.innerWidth < 1200) {
+        if (
+          document.querySelectorAll('.b-image-carousel__image-preview-container').length > 3 ||
+          document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
+        ) {
+          document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
+          for (let i = 0; i < 3 && i !== images.length; i += 1) {
+            document.querySelector('.b-image-carousel__image-carousel').appendChild(button.cloneNode(true));
+          }
         }
-        initImageCarousel(true);
-      }
-    }
-
-    if (window.innerWidth > 1199) {
-      if (
-        document.querySelectorAll('.b-image-carousel__image-preview-container').length < 5 &&
-        images.length !== document.querySelectorAll('.b-image-carousel__image-preview-container').length
-      ) {
-        document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
-        for (let i = 0; i < 5 && i !== images.length; i += 1) {
-          document.querySelector('.b-image-carousel__image-carousel').appendChild(button.cloneNode(true));
+      } else if (window.innerWidth > 1199) {
+        if (
+          (
+            document.querySelectorAll('.b-image-carousel__image-preview-container').length < 5 ||
+            document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
+          )
+          && images.length !== document.querySelectorAll('.b-image-carousel__image-preview-container').length
+        ) {
+          document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
+          for (let i = 0; i < 5 && i !== images.length; i += 1) {
+            document.querySelector('.b-image-carousel__image-carousel').appendChild(button.cloneNode(true));
+          }
         }
-        initImageCarousel(true);
       }
     }
   };
@@ -239,13 +232,15 @@ if (imageCarousel) {
   });
 
   window.onresize = () => {
-    responsiveImageContainerAction();
+    initImageCarousel();
+    changeIndex(parseInt(imageCarousel.dataset.index, 10));
     disableHiddenNavButtons();
     imageCarousel.dataset.index = imageCarousel.dataset.index;
+    initImageCarouselContainers();
   };
 
-  responsiveImageContainerAction();
   disableHiddenNavButtons();
   initImageCarousel();
   imageCarousel.dataset.index = imageCarousel.dataset.index;
+  initImageCarouselContainers();
 }
