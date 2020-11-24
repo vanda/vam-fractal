@@ -233,8 +233,16 @@
   }
 
   &__filter {
-    display: inline-block;
-    margin: 0 44px 0 0;
+    display: block;
+    margin: 20px 44px 0 0;
+    text-align: left;
+    width: 100%;
+
+    @include bpMinXSmall {
+      display: inline-block;
+      margin: 10px 44px 0 0;
+      width: auto;
+    }
 
     .b-search-form--etc-gateway & {
       margin-right: 20px;
@@ -296,16 +304,18 @@
   }
 
   &__filter-select {
+    appearance: none;
+    @include bpMinXSmall {
+      width: auto;
+    }
+
     @include typeSetting(2, semi-bold, uppercase);
     background: transparent;
     border: 1px solid siteColor(vam-white);
     border-radius: 2px;
     color: siteColor(vam-white);
-    padding: 10px 20px;
-
-    &:after {
-      color: blue;
-    }
+    padding: 10px 40px 10px 20px;
+    width: 100%;
 
     > option {
       background: siteColor(vam-black);
@@ -315,8 +325,27 @@
   }
 
   &__location-wrapper {
-    margin-left: 20px;
+    &:after {
+      content: '⌄';
+      font-size: 20px;
+      font-weight: 100;
+      height: 10px;
+      position: absolute;
+      right: 20px;
+      top: 10%;
+      transform: scaleX(1.5);
+      width: 10px;
+    }
+
+    @include bpMinXSmall {
+      margin-left: 20px;
+      width: auto;
+    }
+
+    margin-left: 0;
     opacity: 0;
+    position: relative;
+    width: 100%;
   }
   &__location-toggle:checked ~ &__location-wrapper {
     opacity: 1;
