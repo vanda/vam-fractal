@@ -147,6 +147,7 @@
 
     &-date {
       &-container {
+        display: flex;
         flex-flow: nowrap;
         max-width: 270px;
         padding-bottom: 10px;

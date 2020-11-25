@@ -22,28 +22,30 @@ const dateFacetHTML = () => `
     <div class="b-facet-box__facet-text">
       Dates
     </div>
-    <div class="b-facet-box__facet-term-container b-facet-box__facet-date-container">
-      <div class="b-facet-box__facet-date-container-start">
-        <label class="b-facet-box__facet-date-label">
-          From year:
-        </label>
-        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="after_year">
-      </div>
-      <div class="b-facet-box__facet-date-container-end">
-        <label class="b-facet-box__facet-date-label">
-          To year:
-        </label>
-        <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="before_year">
-      </div>
-      <div class="b-facet-box__facet-date-container-button">
-        <label class="b-facet-box__facet-date-label">
-          &nbsp;
-        </label>
-        <button class="b-facet-box__facet-date-button">
-          <svg class="b-facet-box__facet-date-button-icon" aria-label="apply-date-facet" role="img">
-            <use xlink:href="/svg/vamicons.svg#search"></use>
-          </svg>
-        </button>
+    <div class="b-facet-box__facet-term-container">
+      <div class="b-facet-box__facet-date-container">
+        <div class="b-facet-box__facet-date-container-start">
+          <label class="b-facet-box__facet-date-label">
+            From year:
+          </label>
+          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="after_year">
+        </div>
+        <div class="b-facet-box__facet-date-container-end">
+          <label class="b-facet-box__facet-date-label">
+            To year:
+          </label>
+          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="before_year">
+        </div>
+        <div class="b-facet-box__facet-date-container-button">
+          <label class="b-facet-box__facet-date-label">
+            &nbsp;
+          </label>
+          <button class="b-facet-box__facet-date-button">
+            <svg class="b-facet-box__facet-date-button-icon" aria-label="apply-date-facet" role="img">
+              <use xlink:href="/svg/vamicons.svg#search"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 `;
