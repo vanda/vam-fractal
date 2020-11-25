@@ -21,6 +21,7 @@ require('../../components/blocks/site-nav/_site-nav.js');
 require('../../components/blocks/toggle-nav/_toggle-nav.js');
 require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
 require('../../components/blocks/video-trailer/_video-trailer.js');
+require('../../components/blocks/date-facet/_date-facet.js');
 require('../../components/groups/facet-box-modal/_facet-box-modal.js');
 require('../../components/groups/image-overlay/_image-overlay.js');
 require('../../components/groups/story-box-container/_story-box-container.js');
