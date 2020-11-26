@@ -7,6 +7,7 @@ module.exports = {
     icons: [
       'valogo',
       'valogo-clipped',
+      'no-img',
       'facebook',
       'instagram',
       'pinterest',
@@ -46,7 +47,9 @@ module.exports = {
       'listen',
       'watch',
       'pause',
+      'shuffle',
       'view',
+      'make',
       'event-none',
       'point-up',
       'point-right',
