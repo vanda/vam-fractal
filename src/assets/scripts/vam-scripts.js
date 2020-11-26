@@ -28,7 +28,8 @@ require('../../components/groups/story-box-container/_story-box-container.js');
 /* eslint-disable no-new */
 new LazyLoad({
   elements_selector: 'img[data-srcset]',
-  class_loading: 's-lazyload-blur'
+  class_loading: 's-lazyload--blur',
+  class_error: 's-lazyload--error'
 });
 
 oicInit();

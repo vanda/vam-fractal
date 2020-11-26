@@ -22,11 +22,12 @@
 
 h1 {
   @include typeSetting(5, bold);
-  margin: 1rem 0;
+  margin: 0 0 .25rem;
+}
 
-  @include bpMinSmall {
-    @include typeSetting(6, bold);
-  }
+h2 {
+  @include typeSetting(4, bold);
+  margin: 0;
 }
 
 .fr-visually-hidden {
