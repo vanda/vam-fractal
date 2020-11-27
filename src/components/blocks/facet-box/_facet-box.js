@@ -58,7 +58,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     <button class="b-facet-box__facet-term-toggle-button">
       <div class="b-facet-box__facet-term-toggle-checkbox">
         <svg class="b-facet-box__facet-term-toggle-tick" aria-hidden="true" role="img">
-          <use xlink:href="/svg/vamicons.svg#tick"></use>
+          <use xlink:href="/assets/svg/vamicons.svg#tick"></use>
         </svg>
       </div>
       <span id="${paramName.replace(' ', '')}-${term.replace(' ', '')}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
