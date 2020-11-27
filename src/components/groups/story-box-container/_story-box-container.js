@@ -42,6 +42,8 @@ const initRevealer = () => {
         });
       }
 
+      clampText();
+
       // stop page going up
       return false;
     };
