@@ -8,9 +8,9 @@ const imageCounter = document.querySelector('.b-image-overlay-detail__current-im
 
 const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
 const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
+let image = document.querySelector('.b-image-overlay__image');
 
-if (imageCarousel) {
-  let image = document.querySelector('.b-image-overlay__image');
+if (imageCarousel && image) {
   const { images } = imageCarousel ? JSON.parse(imageCarousel.dataset.images) : {};
 
   const imagesWithImage = images.map(({ src, alt }) => {
