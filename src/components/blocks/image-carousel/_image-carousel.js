@@ -8,10 +8,14 @@ const imageCounter = document.querySelector('.b-image-overlay-detail__current-im
 
 const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
 const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
-let image = document.querySelector('.b-image-overlay__image');
+let images = [];
 
-if (imageCarousel && image) {
-  const { images } = imageCarousel ? JSON.parse(imageCarousel.dataset.images) : {};
+if (imageCarousel) {
+  images = (imageCarousel ? JSON.parse(imageCarousel.dataset.images) : { images: [] }).images;
+}
+
+if (imageCarousel && images.length) {
+  let image = document.querySelector('.b-image-overlay__image');
 
   const imagesWithImage = images.map(({ src, alt }) => {
     const newImage = new Image();
