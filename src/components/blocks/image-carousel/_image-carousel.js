@@ -26,8 +26,15 @@ if (imageCarousel && images.length) {
   });
 
   const changeViewIndex = (index) => {
-    imageCarousel.dataset.viewIndex = ((images.length - Math.max(0, index - (Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2)))) < document.querySelectorAll('.b-image-carousel__image-preview-container').length) ? images.length - document.querySelectorAll('.b-image-carousel__image-preview-container').length : Math.max(0, index - (Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2)));
+    const numberOfContainers = document.querySelectorAll('.b-image-carousel__image-preview-container').length;
+    if (index > 0) {
+      imageCarousel.dataset.viewIndex = index > (images.length - numberOfContainers) ?
+        images.length - numberOfContainers : index;
+    } else {
+      imageCarousel.dataset.viewIndex = 0;
+    }
   };
+
   const changeIndex = (index) => {
     imageCarousel.dataset.index = index;
   };
@@ -46,10 +53,6 @@ if (imageCarousel && images.length) {
     );
 
     const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
-
-    if ((viewIndex + carouselContainers.length) > (images.length - 1)) {
-      changeViewIndex(images.length - carouselContainers.length - 1);
-    }
 
     carouselContainers.forEach((container, i) => {
       const index = (viewIndex + i);
@@ -81,13 +84,13 @@ if (imageCarousel && images.length) {
     if (mutations.filter(mutation => mutation.attributeName === 'data-view-index').length) {
       const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
       concealLeft.style.display = (viewIndex > 0) ? 'block' : 'none';
-      concealRight.style.display = (viewIndex + document.querySelectorAll('.b-image-carousel__image-preview-container').length >= images.length) ? 'none' : 'block';
+      concealRight.style.display = ((viewIndex + document.querySelectorAll('.b-image-carousel__image-preview-container').length) >= images.length) ? 'none' : 'block';
     }
 
     if (mutations.filter(mutation => mutation.attributeName === 'data-index').length) {
       const index = parseInt(imageCarousel.dataset.index, 10);
 
-      changeViewIndex(index);
+      changeViewIndex(index - Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2));
 
       const newImage = imagesWithImage[index];
       const imageParent = document.querySelector('.b-image-overlay__figure');
@@ -211,13 +214,13 @@ if (imageCarousel && images.length) {
 
   concealRight.onclick = () => {
     const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) + 1;
-    imageCarousel.dataset.viewIndex = viewIndex;
+    changeViewIndex(viewIndex);
     initImageCarouselContainers();
   };
 
   concealLeft.onclick = () => {
     const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10) - 1;
-    imageCarousel.dataset.viewIndex = viewIndex;
+    changeViewIndex(viewIndex);
     initImageCarouselContainers();
   };
 
