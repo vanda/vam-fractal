@@ -131,11 +131,16 @@
         const dataIndex = deck._props.itemsIndex % deck._props.itemsData.length;
         const img = item.querySelector('img');
         item.title = deck._props.itemsData[dataIndex].title;
+        img.alt = deck._props.itemsData[dataIndex].img.alt;
         item.href = deck._props.itemsData[dataIndex].href;
         item.tabindex = '-1';
+        img.classList.remove('s-lazyload--error');
+        img.onerror = () => {
+          img.classList.add('s-lazyload--error');
+          return true;
+        }
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
         img.src = deck._props.itemsData[dataIndex].img.src;
-        img.alt = deck._props.itemsData[dataIndex].img.alt;
         // scatter effect
         const scaler = Math.random() * 0.1;
         const scale = 1 + ((deck._props.itemsIndex % 2 > 0 ? 1 : -1) * scaler);
