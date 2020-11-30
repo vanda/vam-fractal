@@ -7,7 +7,7 @@
 
   &__conceal-left {
     background-image: linear-gradient(to left, rgba(29, 30, 32, 0), #1d1e20);
-    left: 20px;
+    left: 18px;
 
     @include bpMinLarge {
       left: 50px;
