@@ -7,9 +7,13 @@
   }
 
   &--error {
-    display: block;
-    position: relative;
-    visibility: hidden;
+    // sass-lint:disable no-important
+    display: block !important;
+    height: 0 !important;
+    padding-top: 100% !important;
+    position: relative !important;
+    visibility: hidden !important;
+    // sass-lint:enable no-important
 
     &::before {
       background-color: #505354;
@@ -20,6 +24,8 @@
       content: '';
       display: block;
       padding-top: 100%;
+      position: absolute;
+      top: 0;
       visibility: visible;
       width: 100%;
     }
@@ -35,7 +41,6 @@
       transform: translate(0, -50%);
       visibility: visible;
       width: 100%;
-      z-index: 1;
     }
   }
 }
