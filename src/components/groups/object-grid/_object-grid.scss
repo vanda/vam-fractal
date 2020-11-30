@@ -5,7 +5,7 @@
 
   @include bpMinXSmall {
     column-count: 2;
-    column-gap: 50px;
+    column-gap: 30px;
   }
 
   @include bpMinMedium {
@@ -14,7 +14,7 @@
 
   &__item {
     break-inside: avoid;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     width: 100%;
   }
 }
