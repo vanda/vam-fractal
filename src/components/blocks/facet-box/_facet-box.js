@@ -361,7 +361,7 @@ const initialiseFacetOverlay = () => {
       });
     }
 
-    window.onresize = () => {
+    window.addEventListener('onresize', () => {
       const facetFormTerms = Array.from(document.querySelectorAll('.b-facet-box__term.b-facet-box__term--form'));
       if (document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross')) {
         if (window.innerWidth > 499 && window.innerWidth < 992) {
@@ -391,6 +391,6 @@ const initialiseFacetOverlay = () => {
           document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
         }
       }
-    };
+    });
   }
 })();

@@ -235,13 +235,13 @@ if (imageCarousel && images.length) {
     };
   });
 
-  window.onresize = () => {
+  window.addEventListener('resize', () => {
     initImageCarousel();
     changeIndex(parseInt(imageCarousel.dataset.index, 10));
     disableHiddenNavButtons();
     imageCarousel.dataset.index = imageCarousel.dataset.index;
     initImageCarouselContainers();
-  };
+  });
 
   disableHiddenNavButtons();
   initImageCarousel();

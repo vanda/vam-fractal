@@ -1,5 +1,22 @@
 import Clamp from 'clamp-js';
 
+const clampText = () => {
+  const textToClamp = Array.from(document.querySelectorAll('.b-story-box__content-text'));
+
+  if (window.innerWidth > 499) {
+    textToClamp.forEach((el) => {
+      Clamp(el, {
+        clamp: 'auto',
+        splitOnChars: ['.', ',', ' ']
+      });
+    });
+  } else {
+    textToClamp.forEach((el) => {
+      el.style.display = 'none';
+    });
+  }
+};
+
 const initRevealer = () => {
   const boxes = Array.from(document.querySelectorAll('.b-story-box'));
   const columnBoxes = Array.from(document.querySelectorAll('.b-story-box--column'));
@@ -50,28 +67,10 @@ const initRevealer = () => {
   }
 };
 
-const clampText = () => {
-  const textToClamp = Array.from(document.querySelectorAll('.b-story-box__content-text'));
-
-  if (window.innerWidth > 499) {
-    textToClamp.forEach((el) => {
-      Clamp(el, {
-        clamp: 'auto',
-        splitOnChars: ['.', ',', ' ']
-      });
-    });
-  } else {
-    textToClamp.forEach((el) => {
-      el.style.display = 'none';
-    });
-  }
-};
-
-window.onresize = () => {
-  clampText();
-};
-
 if (document.querySelector('.b-story-box')) {
   initRevealer();
   clampText();
+  window.addEventListener('resize', () => {
+    clampText();
+  });
 }
