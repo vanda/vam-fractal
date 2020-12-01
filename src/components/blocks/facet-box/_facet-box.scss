@@ -236,12 +236,11 @@
       position: relative;
 
       &-text {
+        flex-grow: 1;
         max-width: 167px;
         text-align: left;
       }
-      &-text, &-result {
-        flex-basis: 50%;
-      }
+
       &-tick use {
         display: none;
       }
@@ -269,6 +268,7 @@
       }
 
       &-button {
+        align-items: center;
         display: flex;
         user-select: text;
         width: 100%;
@@ -287,7 +287,10 @@
         }
       }
       &-result {
+        flex-shrink: 1;
+        padding-left: 10px;
         text-align: right;
+        white-space: nowrap;
       }
     }
   }
