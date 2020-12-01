@@ -87,8 +87,8 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     const autoSuggest = (term, suggestion) => {
       const suggestEl = document.createElement('a');
       if (suggestionsEl.childElementCount < 10) {
-        const url = suggestion.uniqueID;
         const title = suggestion.displayName || suggestion.displayTerm;
+        const url = `http://vam-etc-test.azureedge.net/search/?id_${suggestion.index.toLowerCase()}=${suggestion.uniqueID}`;
         suggestEl.className = 'b-search-form__suggestion';
         suggestEl.href = url;
         suggestEl.tabindex = 0;
