@@ -78,8 +78,8 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     /* EtC landing pg search */
     searchForm._props = {
       type: 'etcGatewaySearch',
-      suggestionsTop: '//localhost/vam-fractal/src/assets/etc-search-suggestions-top',
-      suggestionsAPI: 'http://51.11.136.250/api/v2/sayt/search'
+      suggestionsTop: 'http://vam-etc-test.azureedge.net/assets/data/suggestions.json',
+      suggestionsAPI: 'http://vam-etc-test-api.azureedge.net/api/v2/sayt/search'
     };
 
     const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
@@ -144,7 +144,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
               // make our request cancellable
               aborter = new window.AbortController();
               setTimeout(() => aborter.abort(), 500);
-              fetch(`${searchForm._props.suggestionsAPI}?q=${encodeURI(term)}&limit=10`, { signal: aborter.signal })
+              fetch(`${searchForm._props.suggestionsAPI}?q=${encodeURI(term)}&page_size=10`, { signal: aborter.signal })
                 .then(response => response.json())
                 .then((data) => {
                   if (data.info.totalrecords > 0) {
