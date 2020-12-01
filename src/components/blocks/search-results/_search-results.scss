@@ -94,7 +94,7 @@
     vertical-align: baseline;
     &--full {
       display: none;
-      @include bpMinSmall {
+      @include bpMinLarge {
         display: table-cell;
       }
     }
@@ -112,9 +112,13 @@
       }
 
       &--responsive {
-        display: none;
-        @include bpMinXSmall {
-          display: block;
+        display: block;
+        @include bpMinMedium {
+          width: 552px;
+        }
+
+        @include bpMinLarge {
+          display: none;
         }
       }
     }
@@ -194,7 +198,8 @@
       display: table-cell;
       line-height: 1.8px;
       vertical-align: middle;
-      @include bpMinSmall {
+      width: 100%;
+      @include bpMinLarge {
         display: none;
       }
     }
@@ -238,7 +243,7 @@
 
     &-cell {
       display: none;
-      @include bpMinSmall {
+      @include bpMinLarge {
         display: table-cell;
 
         &[data-sortable*="1"] {
@@ -276,7 +281,7 @@
     }
     &-responsive {
       display: table-cell;
-      @include bpMinSmall {
+      @include bpMinLarge {
         display: none;
       }
       width: 100%;

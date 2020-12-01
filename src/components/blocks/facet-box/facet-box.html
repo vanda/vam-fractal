@@ -130,8 +130,8 @@
                   paramName: 'facet_1_id',
                   terms: (new Array(25).fill(null)).map((x, i) => {
                     return {
-                      term: `Term ${i}`,
-                      count: '< 10000',
+                      term: `Term ${i} that is really long and has to be more than one line`,
+                      count: '100',
                       value: `T1${i}`
                     }
                   })
@@ -142,7 +142,7 @@
                   terms: (new Array(18).fill(null)).map((x, i) => {
                     return {
                       term: `Term ${i}`,
-                      count: '< 10000',
+                      count: '< 100',
                       value: `T2${i}`
                     }
                   })
