@@ -295,12 +295,9 @@
   &__term {
     &-more {
       cursor: pointer;
-      font-weight: 400;
+      font-weight: 700;
       margin: 10px 0;
       text-decoration: underline;
-      &:hover {
-        font-weight: 700;
-      }
     }
 
     @include typeSetting(3, light);
