@@ -9,6 +9,7 @@
   color: siteColor(vam-black);
   height: 23px;
   padding-top: 1px;
+  position: relative;
   text-align: center;
   width: 54px;
 
@@ -19,6 +20,11 @@
     &__text {
       padding-top: 60px;
       pointer-events: none;
+      @include bpMinSmall {
+        left: 10px;
+        position: absolute;
+        top: 0;
+      }
     }
   }
 }
