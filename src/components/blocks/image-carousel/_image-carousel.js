@@ -66,7 +66,9 @@ if (imageCarousel && images.length) {
         }
       }
 
-      container.setAttribute('aria-label', `view ${images[index].alt}`);
+      if (images[index]) {
+        container.setAttribute('aria-label', `view ${images[index].alt}`);
+      }
 
       if (container.firstElementChild) {
         container.firstElementChild.remove();
