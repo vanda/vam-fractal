@@ -74,7 +74,10 @@ if (imageCarousel && images.length) {
         container.firstElementChild.remove();
       }
 
-      container.appendChild(thumbs[index]);
+      if (thumbs[index]) {
+        container.appendChild(thumbs[index]);
+      }
+
 
       container.onclick = () => {
         changeIndex(index);
