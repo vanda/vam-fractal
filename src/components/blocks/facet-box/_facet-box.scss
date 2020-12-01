@@ -236,8 +236,10 @@
       position: relative;
 
       &-text {
+        @include bpMinMedium {
+          max-width: 167px;
+        }
         flex-grow: 1;
-        max-width: 167px;
         text-align: left;
       }
 
