@@ -14,6 +14,25 @@
     justify-content: center;
   }
 
+  &__reveal-container button {
+    cursor: pointer;
+  }
+
+  &__reveal-container .b-icon-badge__icon {
+    height: 60px;
+    width: 60px;
+  }
+
+  &__reveal-container .b-icon-badge__label {
+    margin-top: 15px;
+    text-shadow: none;
+  }
+
+  &__reveal-container svg {
+    height: 20px;
+    width: 20px;
+  }
+
   &__reveal-container {
     display: none;
     margin-top: 20px;

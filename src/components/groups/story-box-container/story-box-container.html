@@ -17,19 +17,18 @@
       {% endif %}
     {% endfor %}
   </div>
-
-  <div class="b-story-box-container__reveal-container">
-    <a href="#" class="b-story-box-container__reveal-btn">
-      <div class="b-icon-badge b-icon-badge--small">
-        <div class="b-icon-badge__icon b-icon-badge__icon--story-box s-themed">
-          <svg role="img">
-            <use xlink:href="/assets/svg/svg-template.svg#plus"></use>
-          </svg>
+  <div class="b-story-box-container__reveal-container b-story-box-container__reveal-container--active" style="text-align: center;">
+      <button href="#" aria-label="show more stories" class="b-story-box-container__reveal-btn">
+        <div class="b-icon-badge">
+          <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
+            <svg aria-hidden="true" role="img">
+              <use xlink:href="/assets/svg/svg-template.svg#plus"></use>
+            </svg>
+          </div>
+          <small class="b-icon-badge__label">
+            Show more
+          </small>
         </div>
-        <small class="b-icon-badge__label">
-          Show more
-        </small>
-      </div>
-    </a>
-  </div>
+      </button>
+    </div>
 </div>
