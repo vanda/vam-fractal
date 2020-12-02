@@ -50,6 +50,9 @@ const dateFacetHTML = () => `
           </button>
         </div>
       </div>
+      <span disabled="false" class="b-facet-box__facet-term-container-text b-facet-box__facet-term-container-text--warning">
+        Please enter both a start and end year.
+      </span>
     </div>
 `;
 
@@ -242,7 +245,7 @@ const initialiseFacetOverlay = () => {
         }
         window.dispatchEvent(new Event('resize'));
       } else {
-        const newTermOnClick = () => {
+        const newTermOnClick = (e) => {
           Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
         };
 
@@ -250,11 +253,27 @@ const initialiseFacetOverlay = () => {
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
-        newTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); };
+        newTerm.onclick = (e) => {
+          const button = e.target.closest('.b-facet-box__term');
+          if (button.dataset.id === "date_terms") {
+            const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
+            inputs.forEach((input) => { input.value = "" });
+          }
+          e.preventDefault();
+          newTermOnClick(e);
+        };
         termList.appendChild(newTerm);
 
         const newFormTerm = newTerm.cloneNode(true);
-        newFormTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); };
+        newFormTerm.onclick = (e) => {
+          const button = e.target.closest('.b-facet-box__term');
+          if (button.dataset.id === "date_terms") {
+            const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
+            inputs.forEach((input) => { input.value = "" });
+          }
+          e.preventDefault();
+          newTermOnClick(e);
+        };
         newFormTerm.classList.add('b-facet-box__term--form');
         if (document.querySelector('.b-search-form__facets')) {
           document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
@@ -340,6 +359,52 @@ const initialiseFacetOverlay = () => {
       const parent = e.target.closest(`.${facetTerm}-button`);
       termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
       parent.dispatchEvent(newTermToggleEvent(parent.dataset));
+    }
+
+    if (e.target.closest(`.b-facet-box__facet-date-button`)) {
+      e.stopPropagation();
+      e.preventDefault();
+
+      const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
+
+      inputs.forEach(input => input.classList.remove('b-facet-box__facet-date-input--error'));
+
+      const dates = inputs.map(el =>
+        el.value
+      );
+
+      if (dates.filter(value => value.length).length != 2) {
+        dates.forEach((date, i) => {
+          if (!date.length) {
+            inputs[i].classList.add('b-facet-box__facet-date-input--error')
+          }
+        })
+        document.querySelector('.b-facet-box__facet-term-container-text--warning').removeAttribute('disabled');
+      } else {
+        if (document.querySelector('button[data-id="date_terms"]')) {
+          termList.dispatchEvent(newTermToggleEvent(
+            {
+              facet: "Dates",
+              id: "date_terms",
+              paramName: 'date_terms',
+              refreshing_page: false,
+              term: `${dates[0]} - ${dates[1]}`
+            },
+            true
+          ));
+        }
+        document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
+        termList.dispatchEvent(newTermToggleEvent(
+          {
+            facet: "Dates",
+            id: "date_terms",
+            paramName: 'date_terms',
+            refreshing_page: false,
+            term: `${dates[0]} - ${dates[1]}`
+          },
+          true
+        ));
+      }
     }
   };
 };

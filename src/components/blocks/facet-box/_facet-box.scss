@@ -198,6 +198,9 @@
         &::-webkit-inner-spin-button {
           opacity: 1;
         }
+        &--error {
+          border-color: red;
+        }
       }
     }
 
@@ -213,6 +216,13 @@
       &-text {
         @include typeSetting(2, light);
         padding-bottom: 10px;
+        &--warning {
+          color: white;
+          padding-bottom: 0;
+        }
+        &[disabled] {
+          display: none;
+        }
       }
 
       &--active {
