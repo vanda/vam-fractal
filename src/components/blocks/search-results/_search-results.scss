@@ -114,7 +114,7 @@
       &--responsive {
         display: block;
         @include bpMinMedium {
-          width: 552px;
+          max-width: 552px;
         }
 
         @include bpMinLarge {
