@@ -346,7 +346,8 @@ const initialiseFacetOverlay = () => {
         const hiddenDateInput = document.createElement('INPUT');
         hiddenDateInput.type = "hidden";
         hiddenDateInput.className = "b-search-results__hidden-date";
-        document.querySelectorAll('b-search-results__hidden-date').forEach(el => el.remove());
+
+        document.querySelectorAll('.b-search-results__hidden-date').forEach(el => el.remove());
 
         if (document.querySelector('button[data-id="date_terms"]')) {
           termList.dispatchEvent(newTermToggleEvent(
