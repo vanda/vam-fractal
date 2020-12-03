@@ -298,9 +298,6 @@ const initialiseFacetOverlay = () => {
     Object.keys(facetsWithIndex).forEach(facetKey => delete facetsWithIndex[facetKey]);
 
     const { facets, activeFacets } = e.detail;
-    const currentBeforeDate = document.querySelector('input[name="before_year"]') ? document.querySelector('input[name="before_year"]').value : '';
-    const currentAfterDate = document.querySelector('input[name="after_year"]') ? document.querySelector('input[name="after_year"]').value : '';
-
     facets.forEach((facet) => {
       Object.assign(facetsWithIndex, {
         [facet.facet]: Object.assign(facet, { index: 0 })
@@ -325,8 +322,6 @@ const initialiseFacetOverlay = () => {
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
     });
-    dateFacet.querySelector('input[name="before_year"]').value = currentBeforeDate;
-    dateFacet.querySelector('input[name="after_year"]').value = currentAfterDate;
 
     facetBoxContainer.append(dateFacet);
 
@@ -349,6 +344,7 @@ const initialiseFacetOverlay = () => {
           (splitFacetId[0] === 'before_year')
         ) {
           key = splitFacetId[0];
+          dateFacet.querySelector(`input[name="${key}"]`).value = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
           dateFacetInputs[key] = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
           if (Object.keys(dateFacetInputs).length === 2) {
             termList.dispatchEvent(newTermToggleEvent(
@@ -386,6 +382,10 @@ const initialiseFacetOverlay = () => {
         });
         document.querySelector('.b-facet-box__facet-term-container-text--warning').removeAttribute('disabled');
       } else {
+        const hiddenDateInput = document.createElement('INPUT');
+        hiddenDateInput.type = "hidden";
+        hiddenDateInput.className = "b-search-results__hidden-date";
+
         if (document.querySelector('button[data-id="date_terms"]')) {
           termList.dispatchEvent(newTermToggleEvent(
             {
@@ -397,8 +397,21 @@ const initialiseFacetOverlay = () => {
             },
             true
           ));
+          document.querySelectorAll('b-search-results__hidden-date').forEach(el => el.remove());
         }
         document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
+
+        const hiddenDateInputBefore = hiddenDateInput.cloneNode(true);
+        hiddenDateInputBefore.name = "before_year";
+        hiddenDateInputBefore.value = dates[0];
+
+        const hiddenDateInputAfter = hiddenDateInput.cloneNode(true);
+        hiddenDateInputAfter.name = "after_year";
+        hiddenDateInputAfter.value = dates[1];
+
+        document.querySelector('#vam-etc-search').appendChild(hiddenDateInputBefore);
+        document.querySelector('#vam-etc-search').appendChild(hiddenDateInputAfter);
+
         termList.dispatchEvent(newTermToggleEvent(
           {
             facet: 'Dates',
