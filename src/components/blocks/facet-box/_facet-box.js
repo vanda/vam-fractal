@@ -26,7 +26,7 @@ const dateFacetHTML = () => `
       <span class="b-facet-box__facet-term-container-text">
         Prefix year with a hypen to indicate BC. For example -800 is 800BC.
       </span>
-      <div class="b-facet-box__facet-date-container">
+      <form class="b-facet-box__facet-date-container">
         <div class="b-facet-box__facet-date-container-start">
           <label class="b-facet-box__facet-date-label">
             From year:
@@ -49,7 +49,7 @@ const dateFacetHTML = () => `
             </svg>
           </button>
         </div>
-      </div>
+      </form>
       <span disabled="false" class="b-facet-box__facet-term-container-text b-facet-box__facet-term-container-text--warning">
         Please enter both a start and end year.
       </span>
@@ -343,27 +343,9 @@ const initialiseFacetOverlay = () => {
       });
     }
 
-    window.dispatchEvent(new Event('resize'));
-  }, true);
-
-  document.onclick = (e) => {
-    if (e.target.classList.contains(facetCloseClass)) {
+    document.querySelector('.b-facet-box__facet-date-container').addEventListener('submit', (e) => {
       e.preventDefault();
-      e.target.dispatchEvent(new Event('closeFacetOverlay', {
-        bubbles: true
-      }));
-    }
-
-    if (e.target.closest(`.${facetTerm}-button`)) {
-      e.preventDefault();
-      const parent = e.target.closest(`.${facetTerm}-button`);
-      termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
-      parent.dispatchEvent(newTermToggleEvent(parent.dataset));
-    }
-
-    if (e.target.closest(`.b-facet-box__facet-date-button`)) {
       e.stopPropagation();
-      e.preventDefault();
 
       const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
 
@@ -405,6 +387,24 @@ const initialiseFacetOverlay = () => {
           true
         ));
       }
+    });
+
+    window.dispatchEvent(new Event('resize'));
+  }, true);
+
+  document.onclick = (e) => {
+    if (e.target.classList.contains(facetCloseClass)) {
+      e.preventDefault();
+      e.target.dispatchEvent(new Event('closeFacetOverlay', {
+        bubbles: true
+      }));
+    }
+
+    if (e.target.closest(`.${facetTerm}-button`)) {
+      e.preventDefault();
+      const parent = e.target.closest(`.${facetTerm}-button`);
+      termList.dispatchEvent(newTermToggleEvent(parent.dataset, false));
+      parent.dispatchEvent(newTermToggleEvent(parent.dataset));
     }
   };
 };
