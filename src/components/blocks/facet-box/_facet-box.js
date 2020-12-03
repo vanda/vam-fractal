@@ -245,7 +245,7 @@ const initialiseFacetOverlay = () => {
         }
         window.dispatchEvent(new Event('resize'));
       } else {
-        const newTermOnClick = (e) => {
+        const newTermOnClick = () => {
           Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
         };
 
@@ -255,9 +255,9 @@ const initialiseFacetOverlay = () => {
         newTerm.innerHTML = termButtonHTML(facet, term);
         newTerm.onclick = (e) => {
           const button = e.target.closest('.b-facet-box__term');
-          if (button.dataset.id === "date_terms") {
+          if (button.dataset.id === 'date_terms') {
             const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
-            inputs.forEach((input) => { input.value = "" });
+            inputs.forEach((input) => { input.value = ''; });
           }
           e.preventDefault();
           newTermOnClick(e);
@@ -267,9 +267,9 @@ const initialiseFacetOverlay = () => {
         const newFormTerm = newTerm.cloneNode(true);
         newFormTerm.onclick = (e) => {
           const button = e.target.closest('.b-facet-box__term');
-          if (button.dataset.id === "date_terms") {
+          if (button.dataset.id === 'date_terms') {
             const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
-            inputs.forEach((input) => { input.value = "" });
+            inputs.forEach((input) => { input.value = ''; });
           }
           e.preventDefault();
           newTermOnClick(e);
@@ -343,9 +343,9 @@ const initialiseFacetOverlay = () => {
       });
     }
 
-    document.querySelector('.b-facet-box__facet-date-container').addEventListener('submit', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+    document.querySelector('.b-facet-box__facet-date-container').addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
 
       const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
 
@@ -355,19 +355,19 @@ const initialiseFacetOverlay = () => {
         el.value
       );
 
-      if (dates.filter(value => value.length).length != 2) {
+      if (dates.filter(value => value.length).length !== 2) {
         dates.forEach((date, i) => {
           if (!date.length) {
-            inputs[i].classList.add('b-facet-box__facet-date-input--error')
+            inputs[i].classList.add('b-facet-box__facet-date-input--error');
           }
-        })
+        });
         document.querySelector('.b-facet-box__facet-term-container-text--warning').removeAttribute('disabled');
       } else {
         if (document.querySelector('button[data-id="date_terms"]')) {
           termList.dispatchEvent(newTermToggleEvent(
             {
-              facet: "Dates",
-              id: "date_terms",
+              facet: 'Dates',
+              id: 'date_terms',
               paramName: 'date_terms',
               refreshing_page: false,
               term: `${dates[0]} - ${dates[1]}`
@@ -378,8 +378,8 @@ const initialiseFacetOverlay = () => {
         document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
         termList.dispatchEvent(newTermToggleEvent(
           {
-            facet: "Dates",
-            id: "date_terms",
+            facet: 'Dates',
+            id: 'date_terms',
             paramName: 'date_terms',
             refreshing_page: false,
             term: `${dates[0]} - ${dates[1]}`
