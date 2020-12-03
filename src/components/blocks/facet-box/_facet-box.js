@@ -330,7 +330,12 @@ const initialiseFacetOverlay = () => {
 
     facetBoxContainer.append(dateFacet);
 
+    let dateFacetInputs = {};
+
     if (activeFacets) {
+
+      console.log(activeFacets)
+
       // is a set...
       Array.from(activeFacets).forEach((facetId) => {
         const target = document.querySelector(`button[data-id='${facetId}'`);
@@ -339,6 +344,28 @@ const initialiseFacetOverlay = () => {
             Object.assign(target.dataset, { refreshing_page: true }))
           );
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
+        }
+        const splitFacetId = facetId.split('-');
+        let key;
+        if (
+          (splitFacetId[0] === 'after_year') ||
+          (splitFacetId[0] === 'before_year')
+        ) {
+          key = splitFacetId[0];
+          dateFacetInputs[key] = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
+          console.log(dateFacetInputs);
+          if (Object.keys(dateFacetInputs).length === 2) {
+            termList.dispatchEvent(newTermToggleEvent(
+              {
+                facet: 'Dates',
+                id: 'date_terms',
+                paramName: 'date_terms',
+                refreshing_page: false,
+                term: `${dateFacetInputs['after_year']} - ${dateFacetInputs['before_year']}`
+              },
+              true
+            ));
+          }
         }
       });
     }
