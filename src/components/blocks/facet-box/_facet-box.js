@@ -323,46 +323,7 @@ const initialiseFacetOverlay = () => {
       }
     });
 
-    facetBoxContainer.append(dateFacet);
-
-    const dateFacetInputs = {};
-
-    if (activeFacets) {
-      // is a set...
-      Array.from(activeFacets).forEach((facetId) => {
-        const target = document.querySelector(`button[data-id='${facetId}'`);
-        if (target) {
-          target.dispatchEvent(newTermToggleEvent(
-            Object.assign(target.dataset, { refreshing_page: true }))
-          );
-          document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
-        }
-        const splitFacetId = facetId.split('-');
-        let key;
-        if (
-          (splitFacetId[0] === 'after_year') ||
-          (splitFacetId[0] === 'before_year')
-        ) {
-          key = splitFacetId[0];
-          dateFacet.querySelector(`input[name="${key}"]`).value = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
-          dateFacetInputs[key] = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
-          if (Object.keys(dateFacetInputs).length === 2) {
-            termList.dispatchEvent(newTermToggleEvent(
-              {
-                facet: 'Dates',
-                id: 'date_terms',
-                paramName: 'date_terms',
-                refreshing_page: false,
-                term: `${dateFacetInputs.after_year} - ${dateFacetInputs.before_year}`
-              },
-              true
-            ));
-          }
-        }
-      });
-    }
-
-    document.querySelector('.b-facet-box__facet-date-container').addEventListener('submit', (ev) => {
+    dateFacet.querySelector('form').addEventListener('submit', (ev) => {
       ev.preventDefault();
       ev.stopPropagation();
 
@@ -425,6 +386,36 @@ const initialiseFacetOverlay = () => {
       }
     });
 
+    facetBoxContainer.append(dateFacet);
+
+    const dateFacetInputs = {};
+
+    if (activeFacets) {
+      // is a set...
+      Array.from(activeFacets).forEach((facetId) => {
+        const target = document.querySelector(`button[data-id='${facetId}'`);
+        if (target) {
+          target.dispatchEvent(newTermToggleEvent(
+            Object.assign(target.dataset, { refreshing_page: true }))
+          );
+          document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
+        }
+        const splitFacetId = facetId.split('-');
+        let key;
+        if (
+          (splitFacetId[0] === 'after_year') ||
+          (splitFacetId[0] === 'before_year')
+        ) {
+          key = splitFacetId[0];
+          dateFacet.querySelector(`input[name="${key}"]`).value = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
+          dateFacetInputs[key] = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
+          if (Object.keys(dateFacetInputs).length === 2) {
+            // i am not sure why i have to click here instead of submitting but it works
+            dateFacet.querySelector('form button').click();
+          }
+        }
+      });
+    }
     window.dispatchEvent(new Event('resize'));
   }, true);
 
