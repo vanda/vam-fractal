@@ -346,6 +346,7 @@ const initialiseFacetOverlay = () => {
         const hiddenDateInput = document.createElement('INPUT');
         hiddenDateInput.type = "hidden";
         hiddenDateInput.className = "b-search-results__hidden-date";
+        document.querySelectorAll('b-search-results__hidden-date').forEach(el => el.remove());
 
         if (document.querySelector('button[data-id="date_terms"]')) {
           termList.dispatchEvent(newTermToggleEvent(
@@ -358,7 +359,6 @@ const initialiseFacetOverlay = () => {
             },
             true
           ));
-          document.querySelectorAll('b-search-results__hidden-date').forEach(el => el.remove());
         }
         document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
 
