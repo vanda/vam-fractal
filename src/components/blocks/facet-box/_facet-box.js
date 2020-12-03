@@ -330,12 +330,9 @@ const initialiseFacetOverlay = () => {
 
     facetBoxContainer.append(dateFacet);
 
-    let dateFacetInputs = {};
+    const dateFacetInputs = {};
 
     if (activeFacets) {
-
-      console.log(activeFacets)
-
       // is a set...
       Array.from(activeFacets).forEach((facetId) => {
         const target = document.querySelector(`button[data-id='${facetId}'`);
@@ -353,7 +350,6 @@ const initialiseFacetOverlay = () => {
         ) {
           key = splitFacetId[0];
           dateFacetInputs[key] = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
-          console.log(dateFacetInputs);
           if (Object.keys(dateFacetInputs).length === 2) {
             termList.dispatchEvent(newTermToggleEvent(
               {
@@ -361,7 +357,7 @@ const initialiseFacetOverlay = () => {
                 id: 'date_terms',
                 paramName: 'date_terms',
                 refreshing_page: false,
-                term: `${dateFacetInputs['after_year']} - ${dateFacetInputs['before_year']}`
+                term: `${dateFacetInputs.after_year} - ${dateFacetInputs.before_year}`
               },
               true
             ));
