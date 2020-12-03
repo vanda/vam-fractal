@@ -78,8 +78,8 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     /* EtC landing pg search */
     searchForm._props = {
       type: 'etcGatewaySearch',
-      suggestionsTop: 'http://vam-etc-test.azureedge.net/assets/data/suggestions.json',
-      suggestionsAPI: 'http://vam-etc-test-api.azureedge.net/api/v2/sayt/search'
+      suggestionsTop: 'https://vam-etc-test.azureedge.net/assets/data/suggestions.json',
+      suggestionsAPI: 'https://vam-etc-test-api.azureedge.net/api/v2/sayt/search'
     };
 
     const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
@@ -88,14 +88,14 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       const suggestEl = document.createElement('a');
       if (suggestionsEl.childElementCount < 10) {
         const title = suggestion.displayName || suggestion.displayTerm;
-        const url = `http://vam-etc-test.azureedge.net/search/?id_${suggestion.index.toLowerCase()}=${suggestion.uniqueID}`;
+        const url = `https://vam-etc-test.azureedge.net/search/?id_${suggestion.recordType}=${suggestion.systemNumber}`;
         suggestEl.className = 'b-search-form__suggestion';
         suggestEl.href = url;
         suggestEl.tabindex = 0;
         suggestEl.role = 'option';
         suggestEl.innerHTML = `
           <div class="b-search-form__suggestion-type">
-            ${suggestion.index}
+            ${suggestion.recordType}
           </div>
           ${title}
         `;
@@ -147,7 +147,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
               fetch(`${searchForm._props.suggestionsAPI}?q=${encodeURI(term)}&page_size=10`, { signal: aborter.signal })
                 .then(response => response.json())
                 .then((data) => {
-                  if (data.info.totalrecords > 0) {
+                  if (data.info.record_count > 0) {
                     searchForm.setAttribute('suggesting', true);
                     Array.from(data.records, (suggestion) => {
                       autoSuggest(searchInput.value, suggestion);
