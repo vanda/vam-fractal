@@ -426,8 +426,8 @@ const initialiseFacetOverlay = () => {
       });
     }
 
-    window.addEventListener('onresize', () => {
-      const facetFormTerms = Array.from(document.querySelectorAll('.b-facet-box__term.b-facet-box__term--form'));
+    window.addEventListener('resize', () => {
+      const facetFormTerms = Array.from(document.querySelector('.b-search-form__facets').children);
       if (document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross')) {
         if (window.innerWidth > 499 && window.innerWidth < 992) {
           const facetContainerWidth = document.querySelector('.b-search-form__facets').offsetWidth;
