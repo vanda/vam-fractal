@@ -364,11 +364,11 @@ const initialiseFacetOverlay = () => {
         document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
 
         const hiddenDateInputBefore = hiddenDateInput.cloneNode(true);
-        hiddenDateInputBefore.name = "before_year";
+        hiddenDateInputBefore.name = "after_year";
         hiddenDateInputBefore.value = dates[0];
 
         const hiddenDateInputAfter = hiddenDateInput.cloneNode(true);
-        hiddenDateInputAfter.name = "after_year";
+        hiddenDateInputAfter.name = "before_year";
         hiddenDateInputAfter.value = dates[1];
 
         document.querySelector('#vam-etc-search').appendChild(hiddenDateInputBefore);
