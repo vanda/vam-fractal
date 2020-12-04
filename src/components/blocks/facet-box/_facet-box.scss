@@ -190,11 +190,10 @@
       &-input {
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
-          -webkit-appearance: inner-spin-button !important;
+          -webkit-appearance: inner-spin-button;
           margin-left: 5px;
           opacity: 1;
         }
-        // -webkit-appearance: inner-spin-button !important;
         background-color: siteColor(vam-white);
         border: solid 1px #979797;
         border-radius: 2px;
