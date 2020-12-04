@@ -344,8 +344,8 @@ const initialiseFacetOverlay = () => {
         document.querySelector('.b-facet-box__facet-term-container-text--warning').removeAttribute('disabled');
       } else {
         const hiddenDateInput = document.createElement('INPUT');
-        hiddenDateInput.type = "hidden";
-        hiddenDateInput.className = "b-search-results__hidden-date";
+        hiddenDateInput.type = 'hidden';
+        hiddenDateInput.className = 'b-search-results__hidden-date';
 
         document.querySelectorAll('.b-search-results__hidden-date').forEach(el => el.remove());
 
@@ -364,11 +364,11 @@ const initialiseFacetOverlay = () => {
         document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
 
         const hiddenDateInputBefore = hiddenDateInput.cloneNode(true);
-        hiddenDateInputBefore.name = "after_year";
+        hiddenDateInputBefore.name = 'after_year';
         hiddenDateInputBefore.value = dates[0];
 
         const hiddenDateInputAfter = hiddenDateInput.cloneNode(true);
-        hiddenDateInputAfter.name = "before_year";
+        hiddenDateInputAfter.name = 'before_year';
         hiddenDateInputAfter.value = dates[1];
 
         document.querySelector('#vam-etc-search').appendChild(hiddenDateInputBefore);
