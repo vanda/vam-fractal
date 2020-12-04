@@ -26,18 +26,18 @@ const dateFacetHTML = () => `
       <span class="b-facet-box__facet-term-container-text">
         Prefix year with a hypen to indicate BC. For example -800 is 800BC.
       </span>
-      <div class="b-facet-box__facet-date-container">
+      <form class="b-facet-box__facet-date-container">
         <div class="b-facet-box__facet-date-container-start">
           <label class="b-facet-box__facet-date-label">
             From year:
           </label>
-          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="after_year">
+          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="made_after_year">
         </div>
         <div class="b-facet-box__facet-date-container-end">
           <label class="b-facet-box__facet-date-label">
             To year:
           </label>
-          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="before_year">
+          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="made_before_year">
         </div>
         <div class="b-facet-box__facet-date-container-button">
           <label class="b-facet-box__facet-date-label">
@@ -49,7 +49,10 @@ const dateFacetHTML = () => `
             </svg>
           </button>
         </div>
-      </div>
+      </form>
+      <span disabled="false" class="b-facet-box__facet-term-container-text b-facet-box__facet-term-container-text--warning">
+        Please enter both a start and end year.
+      </span>
     </div>
 `;
 
@@ -250,11 +253,27 @@ const initialiseFacetOverlay = () => {
         newTerm.dataset.id = id;
         newTerm.className = 'b-facet-box__term';
         newTerm.innerHTML = termButtonHTML(facet, term);
-        newTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); };
+        newTerm.onclick = (e) => {
+          const button = e.target.closest('.b-facet-box__term');
+          if (button.dataset.id === 'date_terms') {
+            const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
+            inputs.forEach((input) => { input.value = ''; });
+          }
+          e.preventDefault();
+          newTermOnClick(e);
+        };
         termList.appendChild(newTerm);
 
         const newFormTerm = newTerm.cloneNode(true);
-        newFormTerm.onclick = (e) => { e.preventDefault(); newTermOnClick(e); };
+        newFormTerm.onclick = (e) => {
+          const button = e.target.closest('.b-facet-box__term');
+          if (button.dataset.id === 'date_terms') {
+            const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
+            inputs.forEach((input) => { input.value = ''; });
+          }
+          e.preventDefault();
+          newTermOnClick(e);
+        };
         newFormTerm.classList.add('b-facet-box__term--form');
         if (document.querySelector('.b-search-form__facets')) {
           document.querySelector('.b-search-form__facets').appendChild(newFormTerm);
@@ -279,9 +298,6 @@ const initialiseFacetOverlay = () => {
     Object.keys(facetsWithIndex).forEach(facetKey => delete facetsWithIndex[facetKey]);
 
     const { facets, activeFacets } = e.detail;
-    const currentBeforeDate = document.querySelector('input[name="before_year"]') ? document.querySelector('input[name="before_year"]').value : '';
-    const currentAfterDate = document.querySelector('input[name="after_year"]') ? document.querySelector('input[name="after_year"]').value : '';
-
     facets.forEach((facet) => {
       Object.assign(facetsWithIndex, {
         [facet.facet]: Object.assign(facet, { index: 0 })
@@ -306,10 +322,74 @@ const initialiseFacetOverlay = () => {
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
     });
-    dateFacet.querySelector('input[name="before_year"]').value = currentBeforeDate;
-    dateFacet.querySelector('input[name="after_year"]').value = currentAfterDate;
+
+    dateFacet.querySelector('form').addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
+
+      inputs.forEach(input => input.classList.remove('b-facet-box__facet-date-input--error'));
+
+      const dates = inputs.map(el =>
+        el.value
+      );
+
+      if (dates.filter(value => value.length).length !== 2) {
+        dates.forEach((date, i) => {
+          if (!date.length) {
+            inputs[i].classList.add('b-facet-box__facet-date-input--error');
+          }
+        });
+        document.querySelector('.b-facet-box__facet-term-container-text--warning').removeAttribute('disabled');
+      } else {
+        const hiddenDateInput = document.createElement('INPUT');
+        hiddenDateInput.type = 'hidden';
+        hiddenDateInput.className = 'b-search-results__hidden-date';
+
+        document.querySelectorAll('.b-search-results__hidden-date').forEach(el => el.remove());
+
+        if (document.querySelector('button[data-id="date_terms"]')) {
+          termList.dispatchEvent(newTermToggleEvent(
+            {
+              facet: 'Dates',
+              id: 'date_terms',
+              paramName: 'date_terms',
+              refreshing_page: false,
+              term: `${dates[0]} - ${dates[1]}`
+            },
+            true
+          ));
+        }
+        document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
+
+        const hiddenDateInputBefore = hiddenDateInput.cloneNode(true);
+        hiddenDateInputBefore.name = 'made_after_year';
+        hiddenDateInputBefore.value = dates[0];
+
+        const hiddenDateInputAfter = hiddenDateInput.cloneNode(true);
+        hiddenDateInputAfter.name = 'made_before_year';
+        hiddenDateInputAfter.value = dates[1];
+
+        document.querySelector('#vam-etc-search').appendChild(hiddenDateInputBefore);
+        document.querySelector('#vam-etc-search').appendChild(hiddenDateInputAfter);
+
+        termList.dispatchEvent(newTermToggleEvent(
+          {
+            facet: 'Dates',
+            id: 'date_terms',
+            paramName: 'date_terms',
+            refreshing_page: false,
+            term: `${dates[0]} - ${dates[1]}`
+          },
+          true
+        ));
+      }
+    });
 
     facetBoxContainer.append(dateFacet);
+
+    const dateFacetInputs = {};
 
     if (activeFacets) {
       // is a set...
@@ -321,9 +401,22 @@ const initialiseFacetOverlay = () => {
           );
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         }
+        const splitFacetId = facetId.split('-');
+        let key;
+        if (
+          (splitFacetId[0] === 'made_after_year') ||
+          (splitFacetId[0] === 'made_before_year')
+        ) {
+          key = splitFacetId[0];
+          dateFacet.querySelector(`input[name="${key}"]`).value = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
+          dateFacetInputs[key] = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
+          if (Object.keys(dateFacetInputs).length === 2) {
+            // i am not sure why i have to click here instead of submitting but it works
+            dateFacet.querySelector('form button').click();
+          }
+        }
       });
     }
-
     window.dispatchEvent(new Event('resize'));
   }, true);
 
@@ -361,7 +454,7 @@ const initialiseFacetOverlay = () => {
       });
     }
 
-    window.addEventListener('onresize', () => {
+    window.addEventListener('resize', () => {
       const facetFormTerms = Array.from(document.querySelectorAll('.b-facet-box__term.b-facet-box__term--form'));
       if (document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross')) {
         if (window.innerWidth > 499 && window.innerWidth < 992) {

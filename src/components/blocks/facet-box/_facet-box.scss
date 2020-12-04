@@ -188,6 +188,12 @@
         }
       }
       &-input {
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: inner-spin-button;
+          margin-left: 5px;
+          opacity: 1;
+        }
         background-color: siteColor(vam-white);
         border: solid 1px #979797;
         border-radius: 2px;
@@ -195,8 +201,8 @@
         height: 44px;
         padding-left: 10px;
         width: 95px;
-        &::-webkit-inner-spin-button {
-          opacity: 1;
+        &--error {
+          border-color: red;
         }
       }
     }
@@ -213,6 +219,13 @@
       &-text {
         @include typeSetting(2, light);
         padding-bottom: 10px;
+        &--warning {
+          color: white;
+          padding-bottom: 0;
+        }
+        &[disabled] {
+          display: none;
+        }
       }
 
       &--active {
