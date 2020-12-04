@@ -162,12 +162,16 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       })
       .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
 
-    Array.from(searchForm.querySelectorAll('.b-search-form__filter-toggle'), (toggle) => {
-      toggle.addEventListener('click', () => {
-        toggle.closest('.b-search-form__filter-toggle-set').toggleAttribute('active');
-      }, false);
-      return true;
-    });
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.b-search-form__filter-toggle')) {
+        const toggleSet = e.target.closest('.b-search-form__filter-toggle-set');
+        toggleSet.toggleAttribute('active');
+        Array.from(toggleSet.querySelectorAll('input'), (input) => {
+          input.value = '';
+          return true;
+        });
+      }
+    }, false);
   }
   return true;
 });

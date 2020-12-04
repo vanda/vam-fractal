@@ -189,6 +189,11 @@
     margin: 20px 0;
   }
 
+  &__filter-info {
+    @include typeSetting(2);
+    color: siteColor(vam-grey-5);
+  }
+
   &__filter-toggle {
     cursor: pointer;
     margin-bottom: 20px;

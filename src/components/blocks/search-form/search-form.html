@@ -35,14 +35,18 @@
     <div class="b-search-form__filter-toggle-set">
       <div class="b-search-form__filter-toggle js-pane-toggle" aria-hidden="true">Add dates</div>
       <div class="b-search-form__filter-toggle-pane">
-        <div class="b-search-form__filter-toggle b-search-form__filter-toggle--off js-pane-toggle" aria-hidden="true">Remove dates</div>
+        <div class="b-search-form__filter-toggle b-search-form__filter-toggle--off" aria-hidden="true">Remove dates</div>
+        <div class="b-search-form__filter-info">
+          Use a minus to indicate dates BC. 
+          <br>For example -800 is 800BC
+        </div>
         <div class="b-search-form__filter">
           <label for="from_year">From year:</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="from_year" name="from_year" min="1500" max="2050" step="50" value="1800">
+          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="from_year" name="from_year" min="-4000" max="2050" step="1" placeholder="Year" value="">
         </div>
         <div class="b-search-form__filter">
           <label for="to_year">To year:</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="to_year" name="to_year" min="1500" max="2050" step="50" value="2000">
+          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="to_year" name="to_year" min="-4000" max="2050" step="1" placeholder="Year" value="">
         </div>
       </div>
     </div>
