@@ -349,13 +349,7 @@ const initialiseFacetOverlay = () => {
 
         document.querySelectorAll('.b-search-results__hidden-date').forEach(el => el.remove());
 
-        const isBCDate = (date) => {
-          if (parseInt(date) < 0) {
-            return `${date * -1} BC`;
-          } else {
-            return date;
-          }
-        };
+        const isBCDate = date => (parseInt(date, 10) < 0 ? `${date * -1} BC` : date);
 
         if (document.querySelector('button[data-id="date_terms"]')) {
           termList.dispatchEvent(newTermToggleEvent(
