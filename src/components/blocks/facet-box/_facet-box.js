@@ -19,7 +19,7 @@ const termButtonHTML = (facet, term) => `
 `;
 
 const dateFacetHTML = () => `
-    <div class="b-facet-box__facet-text">
+    <div class="b-facet-box__facet-text" data-facet-text="dates">
       Dates
     </div>
     <div class="b-facet-box__facet-term-container">
@@ -388,7 +388,7 @@ const initialiseFacetOverlay = () => {
             id: 'date_terms',
             paramName: 'date_terms',
             refreshing_page: false,
-            term: `${dates[0]} - ${dates[1]}`
+            term: `${isBCDate(dates[0])} - ${isBCDate(dates[1])}`
           },
           true
         ));
