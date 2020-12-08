@@ -349,14 +349,22 @@ const initialiseFacetOverlay = () => {
 
         document.querySelectorAll('.b-search-results__hidden-date').forEach(el => el.remove());
 
+        const isBCDate = (date) => {
+          if (parseInt(date) < 0) {
+            return `${date * -1} BC`;
+          } else {
+            return date;
+          }
+        };
+
         if (document.querySelector('button[data-id="date_terms"]')) {
           termList.dispatchEvent(newTermToggleEvent(
             {
-              facet: 'Dates',
+              facet: 'dates',
               id: 'date_terms',
               paramName: 'date_terms',
               refreshing_page: false,
-              term: `${dates[0]} - ${dates[1]}`
+              term: `${isBCDate(dates[0])} - ${isBCDate(dates[1])}`
             },
             true
           ));
