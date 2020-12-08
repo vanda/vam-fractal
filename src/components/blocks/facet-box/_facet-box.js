@@ -384,7 +384,7 @@ const initialiseFacetOverlay = () => {
 
         termList.dispatchEvent(newTermToggleEvent(
           {
-            facet: 'Dates',
+            facet: 'dates',
             id: 'date_terms',
             paramName: 'date_terms',
             refreshing_page: false,
