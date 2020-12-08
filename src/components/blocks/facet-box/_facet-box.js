@@ -179,6 +179,7 @@ const createFacets = (activeFacets) => {
   Object.values(facetsWithIndex).forEach(({ facet, terms, paramName, index }) => {
     const newFacet = document.createElement('DIV');
     newFacet.className = 'b-facet-box__facet';
+    newFacet.setAttribute('data-param-name', paramName);
     newFacet.innerHTML = facetHTML(facet, terms.length > 5);
     newFacet.setAttribute('aria-haspopup', 'true');
     newFacet.setAttribute('aria-expanded', 'false');
@@ -397,13 +398,25 @@ const initialiseFacetOverlay = () => {
       // is a set...
       Array.from(activeFacets).forEach((facetId) => {
         const target = document.querySelector(`button[data-id='${facetId}'`);
+        const splitFacetId = facetId.split('-');
         if (target) {
           target.dispatchEvent(newTermToggleEvent(
             Object.assign(target.dataset, { refreshing_page: true }))
           );
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
+        } else {
+          while (
+            !document.querySelector(`button[data-id='${facetId}']`) &&
+            document.querySelector(`div[data-param-name="${splitFacetId[0]}"] .b-facet-box__term-more`)
+          ) {
+            document.querySelector(`div[data-param-name="${splitFacetId[0]}"] .b-facet-box__term-more`).click();
+            document.querySelector(`button[data-id='${facetId}'`).dispatchEvent(newTermToggleEvent(
+              Object.assign(document.querySelector(`button[data-id='${facetId}'`).dataset, { refreshing_page: true }))
+            );
+            document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(document.querySelector(`button[data-id='${facetId}'`).dataset));
+          }
         }
-        const splitFacetId = facetId.split('-');
+
         let key;
         if (
           (splitFacetId[0] === 'made_after_year') ||
