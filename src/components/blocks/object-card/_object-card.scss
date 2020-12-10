@@ -1,10 +1,67 @@
 .b-object-card {
+  &__warning {
+    min-height: 232px;
+    overflow: hidden;
+    position: relative;
+
+    &__banner  {
+      align-items: center;
+      background-color: siteColor(vam-black);
+      bottom: 0;
+      color: siteColor(vam-white);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      left: 0;
+      opacity: 0;
+      padding: 20px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: opacity .4s ease;
+      z-index: 1;
+
+      &__text {
+        @include typeSetting(2, regular);
+        margin-bottom: 20px;
+        max-width: 224px;
+        text-align: center;
+      }
+
+      &__dismiss {
+        @include typeSetting(1, semi-bold, uppercase);
+        background-color: siteColor(vam-black);
+        border: 1px solid siteColor(vam-white);
+        border-radius: 2px;
+        padding: 4px 12px;
+      }
+    }
+
+    & > #{&}__banner {
+      opacity: .8;
+    }
+
+    &:hover > #{&}__banner,
+    &:focus > #{&}__banner {
+      opacity: .9;
+    }
+
+    & > .b-object-card__image {
+      filter: blur(10px);
+    }
+
+    & > .b-object-card__caption {
+      filter: blur(10px);
+    }
+  }
+
   &__anchor {
     display: block;
     position: relative;
 
     &::after {
-      background-image: linear-gradient(black, transparent 80%);
+      background-image: linear-gradient(siteColor(vam-black), transparent 80%);
       bottom: 0;
       content: '';
       display: block;

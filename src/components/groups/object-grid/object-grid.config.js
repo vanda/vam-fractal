@@ -22,6 +22,7 @@ let objectCards = [
     }
   },
   {
+    contentWarning: true,
     objectImageOverlayItem: true,
     image: {
       320: 'https://vanda-production-assets.s3.amazonaws.com/2016/04/29/10/51/59/e2d419a2-bf64-4fa6-92e1-01cca82a835e/Blue-glass-form-2560.jpg',

@@ -2,7 +2,7 @@
         {% if objectImageOverlayData %} data-object-image-overlay="{{ objectImageOverlayData | dump | escape }}"{% endif %}
         itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
   <link itemprop="url" href="{{image[960]}}">
-  <a class="b-object-card__anchor" href="{{ href }}">
+  <a class="b-object-card__anchor {% if contentWarning %}b-object-card__warning{% endif %}" href="{{ href }}">
     <img class="b-object-card__image"
          itemprop="contentUrl"
          alt="{{ physicalDescription }}" 

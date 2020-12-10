@@ -9,6 +9,7 @@ require('../../components/blocks/cookie-banner/_cookie-banner.js');
 require('../../components/blocks/facet-box/_facet-box.js');
 require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal.js');
+require('../../components/blocks/object-card/_object-card.js');
 require('../../components/blocks/object-details/object-details.js');
 require('../../components/blocks/object-shuffler/_object-shuffler.js');
 require('../../components/blocks/modal/_modal.js');
