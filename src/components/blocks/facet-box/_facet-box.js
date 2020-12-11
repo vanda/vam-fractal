@@ -31,13 +31,13 @@ const dateFacetHTML = () => `
           <label class="b-facet-box__facet-date-label">
             From year:
           </label>
-          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="made_after_year">
+          <input class="b-facet-box__facet-date-input" placeholder="-800" type="number" name="made_after_year">
         </div>
         <div class="b-facet-box__facet-date-container-end">
           <label class="b-facet-box__facet-date-label">
             To year:
           </label>
-          <input class="b-facet-box__facet-date-input" placeholder="Year" type="number" name="made_before_year">
+          <input class="b-facet-box__facet-date-input" placeholder="2000" type="number" name="made_before_year">
         </div>
         <div class="b-facet-box__facet-date-container-button">
           <label class="b-facet-box__facet-date-label">
