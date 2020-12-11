@@ -21,9 +21,12 @@ const openObjectOverlay = () => {
   body.style.position = 'fixed';
   const scrollY = window.pageYOffset;
   imageOverlayContainer.style.top = `${scrollY}px`;
-  let vh = window.innerHeight * 0.01;
-  // Then we set the value in the --vh custom property to the root of the document
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  imageOverlayContainer.style.height = `${window.innerHeight}px`;
+  if (window.innerWidth <= 1000) {
+    figCaption.style.marginBottom  = `${window.outerHeight - window.innerHeight}px`;
+  } else {
+    figCaption.style.marginBottom = '0px';
+  }
   document.querySelector('.b-image-carousel__image-preview-container').focus();
 };
 
@@ -41,9 +44,13 @@ const initObjectOverlay = () => {
 
     window.addEventListener('resize', () => {
       imageOverlayContainer.style.height = `${window.innerHeight}px`;
-      let vh = window.innerHeight * 0.01;
-      // Then we set the value in the --vh custom property to the root of the document
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      // what follows is a hack for mobile phone browsers, if this does not look good on desktop,
+      // trust me it works on phones...
+      if (window.innerWidth <= 1000) {
+        figCaption.style.marginBottom  = `${window.outerHeight - window.innerHeight}px`;
+      } else {
+        figCaption.style.marginBottom = '0px';
+      }
     });
 
     window.addEventListener('keydown', (e) => {
