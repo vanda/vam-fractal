@@ -1,5 +1,6 @@
 const imageOverlayContainer = document.querySelector('.b-image-overlay__container');
 const body = document.querySelector('body');
+const figCaption = document.querySelector('.b-image-overlay__figcaption');
 
 const offensiveConcealer = () => {
   if (document.querySelector('.b-image-overlay__preview-concealer')) {
@@ -20,7 +21,9 @@ const openObjectOverlay = () => {
   body.style.position = 'fixed';
   const scrollY = window.pageYOffset;
   imageOverlayContainer.style.top = `${scrollY}px`;
-  imageOverlayContainer.style.height = `${window.innerHeight}px`;
+  let vh = window.innerHeight * 0.01;
+  // Then we set the value in the --vh custom property to the root of the document
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
   document.querySelector('.b-image-carousel__image-preview-container').focus();
 };
 
@@ -38,6 +41,9 @@ const initObjectOverlay = () => {
 
     window.addEventListener('resize', () => {
       imageOverlayContainer.style.height = `${window.innerHeight}px`;
+      let vh = window.innerHeight * 0.01;
+      // Then we set the value in the --vh custom property to the root of the document
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
 
     window.addEventListener('keydown', (e) => {
