@@ -8,7 +8,7 @@ const oicInit = () => {
     oic.classList.add('b-object-image-overlay');
     oic.setAttribute('tabindex', 0);
     oic.innerHTML = `
-      <a class="b-object-image-overlay__dismiss" title="Close" aria-label="Close"></a>
+      <button class="b-object-image-overlay__dismiss" title="Close" aria-label="Close"></button>
       <div class="b-object-image-overlay__items"></div>
     `;
     const items = oic.querySelector('.b-object-image-overlay__items');
@@ -86,18 +86,18 @@ const oicInit = () => {
             <figcaption class="b-object-image-overlay__figcaption">
               ${numberCopyright}
               <div class="b-object-image-overlay__prevnext">
-                <a class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" href="#" title="Previous" aria-label="Previous" data-tracking-oic="previous object">
+                <button class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous" aria-label="Previous" data-tracking-oic="previous object">
                   <svg role="img" viewBox="0 0 100 100">
                     <path fill="none" d="M-1-1h582v402H-1z"/>
                     <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
                   </svg>
-                </a>
-                <a class="b-object-image-overlay__next b-object-image-overlay__next--disabled" href="#" title="Next" aria-label="Next" data-tracking-oic="next object">
+                </button>
+                <button class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next" aria-label="Next" data-tracking-oic="next object">
                   <svg role="img" viewBox="0 0 100 100">
                     <path fill="none" d="M-1-1h582v402H-1z"/>
                     <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
                   </svg>
-                </a>
+                </button>
               </div>
             </figcaption>
           </figure>
