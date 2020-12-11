@@ -23,7 +23,7 @@ const openObjectOverlay = () => {
   imageOverlayContainer.style.top = `${scrollY}px`;
   imageOverlayContainer.style.height = `${window.innerHeight}px`;
   if (window.innerWidth <= 1000) {
-    figCaption.style.marginBottom  = `${window.outerHeight - window.innerHeight}px`;
+    figCaption.style.marginBottom  = `${screen.height - window.innerHeight}px`;
   } else {
     figCaption.style.marginBottom = '0px';
   }
@@ -47,7 +47,7 @@ const initObjectOverlay = () => {
       // what follows is a hack for mobile phone browsers, if this does not look good on desktop,
       // trust me it works on phones...
       if (window.innerWidth <= 1000) {
-        figCaption.style.marginBottom  = `${window.outerHeight - window.innerHeight}px`;
+        figCaption.style.marginBottom  = `${screen.height - window.innerHeight}px`;
       } else {
         figCaption.style.marginBottom = '0px';
       }

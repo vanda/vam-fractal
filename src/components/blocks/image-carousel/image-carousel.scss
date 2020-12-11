@@ -109,6 +109,20 @@
     opacity: 1;
     width: 30px;
 
+    &--mobile svg {
+      height: 14px;
+      width: 14px;
+    }
+
+    &--mobile {
+      height: 44px;
+      width: 44px;
+      svg {
+        height: 14px;
+        width: 14px;
+      }
+    }
+
     &[disabled] {
       border: 1px solid siteColor(vam-grey-5);
       color: siteColor(vam-grey-5);
