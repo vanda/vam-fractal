@@ -1,3 +1,6 @@
+const imageOverlayContainer = document.querySelector('.b-image-overlay__container');
+const body = document.querySelector('body');
+
 const offensiveConcealer = () => {
   if (document.querySelector('.b-image-overlay__preview-concealer')) {
     document.querySelector('.b-image-overlay__preview-concealer').onclick = (e) => {
@@ -12,11 +15,12 @@ const offensiveConcealer = () => {
 };
 
 const openObjectOverlay = () => {
-  document.querySelector('.b-image-overlay__container').classList.add('b-image-overlay__container--active');
-  document.querySelector('body').style.overflowY = 'hidden';
-  document.querySelector('body').style.position = 'fixed';
+  imageOverlayContainer.classList.add('b-image-overlay__container--active');
+  body.style.overflowY = 'hidden';
+  body.style.position = 'fixed';
   const scrollY = window.pageYOffset;
-  document.querySelector('.b-image-overlay__container').style.top = `${scrollY}px`;
+  imageOverlayContainer.style.top = `${scrollY}px`;
+  imageOverlayContainer.style.height = `${window.innerHeight}px`;
   document.querySelector('.b-image-carousel__image-preview-container').focus();
 };
 
@@ -31,6 +35,10 @@ const initObjectOverlay = () => {
 
   if (document.querySelector('.b-image-overlay')) {
     document.querySelector('.b-image-overlay__close-container').onclick = () => closeObjectOverlay();
+
+    window.addEventListener('resize', () => {
+      imageOverlayContainer.style.height = `${window.innerHeight}px`;
+    });
 
     window.addEventListener('keydown', (e) => {
       if (e.keyCode === 27) {
