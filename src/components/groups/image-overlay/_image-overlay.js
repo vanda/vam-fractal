@@ -14,6 +14,7 @@ const offensiveConcealer = () => {
 const openObjectOverlay = () => {
   document.querySelector('.b-image-overlay__container').classList.add('b-image-overlay__container--active');
   document.querySelector('body').style.overflowY = 'hidden';
+  document.querySelector('body').style.postion = 'fixed';
   const scrollY = window.pageYOffset;
   document.querySelector('.b-image-overlay__container').style.top = `${scrollY}px`;
   document.querySelector('.b-image-carousel__image-preview-container').focus();
@@ -22,6 +23,7 @@ const openObjectOverlay = () => {
 const closeObjectOverlay = () => {
   document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
   document.querySelector('body').style.overflowY = 'auto';
+  document.querySelector('body').style.postion = 'relative';
 };
 
 const initObjectOverlay = () => {
