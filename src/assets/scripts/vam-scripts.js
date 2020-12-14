@@ -1,6 +1,7 @@
 import LazyLoad from 'vanilla-lazyload';
 import svg4everybody from 'svg4everybody';
 import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
+import contentWarningsInit from '../../components/blocks/object-card/_object-card';
 
 require('../../components/services/object_fit_polyfill/_poly-object-fit.js');
 require('../../components/blocks/background-video/_background-video.js');
@@ -9,7 +10,6 @@ require('../../components/blocks/cookie-banner/_cookie-banner.js');
 require('../../components/blocks/facet-box/_facet-box.js');
 require('../../components/blocks/image-carousel/_image-carousel.js');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal.js');
-require('../../components/blocks/object-card/_object-card.js');
 require('../../components/blocks/object-details/object-details.js');
 require('../../components/blocks/object-shuffler/_object-shuffler.js');
 require('../../components/blocks/modal/_modal.js');
@@ -33,6 +33,7 @@ new LazyLoad({
   class_error: 's-lazyload--error'
 });
 
+contentWarningsInit();
 oicInit();
 
 svg4everybody();

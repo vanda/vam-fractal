@@ -1,4 +1,4 @@
-const contentWarningsInit = () => {
+export default (() => {
   Array.from(document.querySelectorAll('.b-object-card__warning'), (card) => {
     card.innerHTML = `
       <div class="b-object-card__warning__banner">
@@ -13,17 +13,14 @@ const contentWarningsInit = () => {
     `;
     return true;
   });
+});
 
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.b-object-card__warning')) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      e.target.closest('.b-object-card__warning').classList.remove('b-object-card__warning');
-      return false;
-    }
-    return true;
-  }, false);
-};
-contentWarningsInit();
-
-export default contentWarningsInit;
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.b-object-card__warning')) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    e.target.closest('.b-object-card__warning').classList.remove('b-object-card__warning');
+    return false;
+  }
+  return true;
+}, false);
