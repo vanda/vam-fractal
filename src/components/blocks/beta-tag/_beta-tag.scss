@@ -1,7 +1,9 @@
 .b-beta-tag {
   &:hover {
     cursor: pointer;
-    text-decoration: underline;
+    span {
+      text-decoration: underline;
+    }
   }
 
   @include typeSetting(2, semi-bold, uppercase);
