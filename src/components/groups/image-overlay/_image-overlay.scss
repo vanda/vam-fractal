@@ -7,6 +7,9 @@
     &--offensive {
       cursor: auto;
     }
+    &--hidden {
+      display: none;
+    }
     &-image {
       @include bpMinMedium {
         max-height: -webkit-fit-content;

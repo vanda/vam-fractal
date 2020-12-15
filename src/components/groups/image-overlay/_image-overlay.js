@@ -32,6 +32,7 @@ const offensiveConcealer = () => {
       e.stopPropagation();
       document.querySelector('.b-image-overlay__preview--offensive').classList.remove('b-image-overlay__preview--offensive');
       document.querySelector('.b-image-overlay__preview-concealer').remove();
+      document.querySelectorAll('.b-image-overlay__preview--hidden').forEach(el => el.classList.remove('b-image-overlay__preview--hidden'));
     };
   }
 };
