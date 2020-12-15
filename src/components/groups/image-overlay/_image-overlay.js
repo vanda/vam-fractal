@@ -1,3 +1,22 @@
+const isMobile = {
+  Android: () => navigator.userAgent.match(/Android/i),
+  BlackBerry: () => navigator.userAgent.match(/BlackBerry/i),
+  iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
+  Opera: () => navigator.userAgent.match(/Opera Mini/i),
+  Windows: () => navigator.userAgent.match(/IEMobile/i),
+  any: () => (
+    isMobile.Android() ||
+    isMobile.BlackBerry() ||
+    isMobile.iOS() ||
+    isMobile.Opera() ||
+    isMobile.Windows()
+  )
+};
+
+const imageOverlayContainer = document.querySelector('.b-image-overlay__container');
+const body = document.querySelector('body');
+const figCaption = document.querySelector('.b-image-overlay__figcaption');
+
 const offensiveConcealer = () => {
   if (document.querySelector('.b-image-overlay__preview-concealer')) {
     document.querySelector('.b-image-overlay__preview-concealer').onclick = (e) => {
@@ -7,21 +26,30 @@ const offensiveConcealer = () => {
       e.stopPropagation();
       document.querySelector('.b-image-overlay__preview--offensive').classList.remove('b-image-overlay__preview--offensive');
       document.querySelector('.b-image-overlay__preview-concealer').remove();
+      document.querySelectorAll('.b-image-overlay__preview--hidden').forEach(el => el.classList.remove('b-image-overlay__preview--hidden'));
     };
   }
 };
 
 const openObjectOverlay = () => {
-  document.querySelector('.b-image-overlay__container').classList.add('b-image-overlay__container--active');
-  document.querySelector('body').style.overflowY = 'hidden';
+  imageOverlayContainer.classList.add('b-image-overlay__container--active');
+  body.style.overflowY = 'hidden';
+  body.style.position = 'fixed';
   const scrollY = window.pageYOffset;
-  document.querySelector('.b-image-overlay__container').style.top = `${scrollY}px`;
+  imageOverlayContainer.style.top = `${scrollY}px`;
+  imageOverlayContainer.style.height = `${window.innerHeight}px`;
+  if (window.innerWidth <= 1000 && isMobile.any()) {
+    figCaption.style.marginBottom = `${screen.height - window.innerHeight}px`;
+  } else {
+    figCaption.style.marginBottom = '0px';
+  }
   document.querySelector('.b-image-carousel__image-preview-container').focus();
 };
 
 const closeObjectOverlay = () => {
   document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
   document.querySelector('body').style.overflowY = 'auto';
+  document.querySelector('body').style.position = 'relative';
 };
 
 const initObjectOverlay = () => {
@@ -29,6 +57,17 @@ const initObjectOverlay = () => {
 
   if (document.querySelector('.b-image-overlay')) {
     document.querySelector('.b-image-overlay__close-container').onclick = () => closeObjectOverlay();
+
+    window.addEventListener('resize', () => {
+      imageOverlayContainer.style.height = `${window.innerHeight}px`;
+      // what follows is a hack for mobile phone browsers, if this does not look good on desktop,
+      // trust me it works on phones...
+      if (window.innerWidth <= 1000 && isMobile.any()) {
+        figCaption.style.marginBottom = `${screen.height - window.innerHeight}px`;
+      } else {
+        figCaption.style.marginBottom = '0px';
+      }
+    });
 
     window.addEventListener('keydown', (e) => {
       if (e.keyCode === 27) {

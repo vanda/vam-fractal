@@ -1,4 +1,11 @@
 .b-image-overlay-license-modal {
+  &__download-button, &__contact-button {
+    padding: 13px 10px;
+    @include bpMinMedium {
+      padding: 6px 10px;
+    }
+  }
+
   &__content-container {
     height: 250px;
     min-height: 250px;

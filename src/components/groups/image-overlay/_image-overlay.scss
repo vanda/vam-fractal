@@ -7,6 +7,9 @@
     &--offensive {
       cursor: auto;
     }
+    &--hidden {
+      display: none !important; // sass-lint:disable-line no-important
+    }
     &-image {
       @include bpMinMedium {
         max-height: -webkit-fit-content;
