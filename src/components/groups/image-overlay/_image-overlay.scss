@@ -8,9 +8,7 @@
       cursor: auto;
     }
     &--hidden {
-      // scss-lint:disable ImportantRule
-      display: none !important;
-      // scss-lint:enable ImportantRule
+      display: none !important; // sass-lint:disable-line no-important
     }
     &-image {
       @include bpMinMedium {

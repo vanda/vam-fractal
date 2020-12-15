@@ -1,22 +1,16 @@
 const isMobile = {
-    Android: () => {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: () => {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: () => {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: () => {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: () => {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: () => {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
+  Android: () => navigator.userAgent.match(/Android/i),
+  BlackBerry: () => navigator.userAgent.match(/BlackBerry/i),
+  iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
+  Opera: () => navigator.userAgent.match(/Opera Mini/i),
+  Windows: () => navigator.userAgent.match(/IEMobile/i),
+  any: () => (
+    isMobile.Android() ||
+    isMobile.BlackBerry() ||
+    isMobile.iOS() ||
+    isMobile.Opera() ||
+    isMobile.Windows()
+  )
 };
 
 const imageOverlayContainer = document.querySelector('.b-image-overlay__container');
@@ -45,7 +39,7 @@ const openObjectOverlay = () => {
   imageOverlayContainer.style.top = `${scrollY}px`;
   imageOverlayContainer.style.height = `${window.innerHeight}px`;
   if (window.innerWidth <= 1000 && isMobile.any()) {
-    figCaption.style.marginBottom  = `${screen.height - window.innerHeight}px`;
+    figCaption.style.marginBottom = `${screen.height - window.innerHeight}px`;
   } else {
     figCaption.style.marginBottom = '0px';
   }
@@ -69,7 +63,7 @@ const initObjectOverlay = () => {
       // what follows is a hack for mobile phone browsers, if this does not look good on desktop,
       // trust me it works on phones...
       if (window.innerWidth <= 1000 && isMobile.any()) {
-        figCaption.style.marginBottom  = `${screen.height - window.innerHeight}px`;
+        figCaption.style.marginBottom = `${screen.height - window.innerHeight}px`;
       } else {
         figCaption.style.marginBottom = '0px';
       }
