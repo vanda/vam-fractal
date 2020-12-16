@@ -22,10 +22,6 @@
     width: 100%;
     &-text {
       @include bpMinXSmall {
-        max-width: 600px;
-      }
-
-      @include bpMinSmall {
         margin-top: auto;
         max-width: 800px;
       }
