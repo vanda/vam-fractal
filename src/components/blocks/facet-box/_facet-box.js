@@ -24,7 +24,7 @@ const dateFacetHTML = () => `
     </div>
     <div class="b-facet-box__facet-term-container">
       <span class="b-facet-box__facet-term-container-text">
-        Prefix year with a hypen to indicate BC. For example -800 is 800BC.
+        Use a hyphen to indicate dates BC. For example -800 is 800 BC.
       </span>
       <form class="b-facet-box__facet-date-container">
         <div class="b-facet-box__facet-date-container-start">
