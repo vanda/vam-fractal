@@ -44,12 +44,8 @@ const toggleSort = (el) => {
 };
 
 const reAdjustWarnings = () => {
-  const table = document.querySelector('.b-search-results__table');
-
   Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach((el) => {
     const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
-    console.log(row.offsetHeight)
-    console.log(el.offsetHeight)
     const topOffset = (row.offsetHeight - el.offsetHeight) / 2;
     el.style.top = `${row.offsetTop + topOffset}px`;
     el.style.left = '5px';
