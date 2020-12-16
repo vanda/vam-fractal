@@ -44,17 +44,11 @@ const toggleSort = (el) => {
 };
 
 const reAdjustWarnings = () => {
-  const table = document.querySelector('.b-search-results__table');
-
   Array.from(document.querySelectorAll('.b-search-results__offensive-warning')).forEach((el) => {
     const row = Array.from(document.querySelectorAll('.b-search-results__body-row'))[el.getAttribute('data-row-index')];
-    el.style.top = `${row.offsetTop + (row.offsetHeight / 5)}px`;
-
-    if (table.clientWidth < 769) {
-      el.style.left = '5px';
-    } else {
-      el.style.left = `${el.getBoundingClientRect().left / 5}px`;
-    }
+    const topOffset = (row.offsetHeight - el.offsetHeight) / 2;
+    el.style.top = `${row.offsetTop + topOffset}px`;
+    el.style.left = '5px';
   });
 };
 
@@ -64,7 +58,8 @@ const offensiveWarningInitializer = () => {
       const warningEl = document.createElement('DIV');
       warningEl.className = 'b-search-results__offensive-warning';
       warningEl.innerHTML = warningHTML;
-      warningEl.style.top = `${el.offsetTop + (el.offsetHeight / 5)}px`;
+      const topOffset = (el.offsetHeight - warningEl.offsetHeight) / 2;
+      warningEl.style.top = `${el.offsetTop + topOffset}px`;
       warningEl.setAttribute('data-row-index', i);
       warningEl.onclick = (e) => {
         Array.from(document.querySelectorAll('.b-search-results__body-row'))[
