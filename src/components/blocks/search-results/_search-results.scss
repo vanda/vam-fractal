@@ -79,6 +79,11 @@
 
     &-img {
       vertical-align: middle;
+
+      @include bpMinMedium {
+        height: 120px;
+      }
+
     }
     padding-right: 10px;
     position: relative;
@@ -120,6 +125,9 @@
       }
 
       &-img {
+        align-items: center;
+        display: flex;
+        justify-content: center;
         margin: auto;
         text-align: center;
 
@@ -130,23 +138,20 @@
         }
 
         @include bpMinSmall {
+          height: 120px;
+          min-width: 120px;
           text-align: center;
-          width: 150px;
+          width: fit-content;
         }
-        @include bpMinMedium {
-          text-align: center;
-          width: 175px;
-        }
+
         &-image {
           @include bpMinXSmall {
-            max-height: 150px;
-            max-width: 150px;
-            padding: 16px;
+            max-height: 120px;
+            max-width: 120px;
           }
 
           max-height: 100px;
           max-width: 80px;
-          padding: 10px 10px;
         }
       }
 
@@ -228,7 +233,7 @@
   &__body {
     &-row {
       @include bpMinXSmall {
-        height: 132px;
+        height: 150px;
       }
 
       &--offensive {
