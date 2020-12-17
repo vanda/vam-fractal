@@ -137,7 +137,7 @@
           text-align: center;
           width: 175px;
         }
-        img {
+        &-image {
           @include bpMinXSmall {
             max-height: 150px;
             max-width: 150px;
@@ -152,7 +152,12 @@
 
       &-no-img {
         height: 0;
+        left: 47%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
         width: 0;
+
         &:after {
           @include bpMinXSmall {
             background-position-x: -105px;
@@ -161,9 +166,10 @@
             border-width: 0;
             font-size: 11px;
             height: 100px;
-            left: 48%;
+            left: 46%;
             line-height: 8;
             padding: 6px;
+            position: absolute;
             white-space: normal;
             width: 100px;
           }
@@ -175,9 +181,10 @@
             border-width: 0;
             font-size: 13px;
             height: 120px;
-            left: 48%;
+            left: 47%;
             line-height: 8;
             padding: 6px;
+            position: absolute;
             white-space: normal;
             width: 120px;
           }

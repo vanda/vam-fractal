@@ -40,7 +40,8 @@
               <tr class="b-search-results__body-row b-search-results__body-row{% if item.offensive %}--offensive{% endif %}" >
                 <td class="b-search-results__cell b-search-results__cell-img">
                   <div class="b-search-results__cell-content-img">
-                    <img src={{ item.image }} alt='some alt' onerror="this.onerror=null;this.classList.add('b-search-results__cell-content-no-img');this.parentNode.classList.add('b-search-results__cell-content-img--no-img');" />
+                    <img class="b-search-results__cell-content-img-image" src={{ item.image }} alt='some alt' onerror="this.setAttribute('alt', '');this.onerror=null;this.className='';this.parentNode.children[1].classList.add('b-search-results__cell-content-no-img');this.parentNode.children[1].classList.add('b-search-results__cell-content-img-image');this.parentNode.classList.add('b-search-results__cell-content-img--no-img');this.remove();" />
+                    <div></div>
                   </div>
                 </td>
                 <td class="b-search-results__cell b-search-results__cell--responsive">
