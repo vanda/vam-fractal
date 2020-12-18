@@ -186,7 +186,7 @@
             width: 100px;
           }
 
-          @include bpMinMedium {
+          @include bpMinLarge {
             background-position-x: -105px;
             background-position-y: -85px;
             background-size: 450px;
