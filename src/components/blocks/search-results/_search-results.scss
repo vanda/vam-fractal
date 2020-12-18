@@ -85,7 +85,11 @@
       }
 
     }
-    padding-right: 20px;
+    padding: 0 15px;
+    @include bpMinXSmall {
+      padding-left: 0;
+      padding-right: 20px;
+    }
     position: relative;
     vertical-align: baseline;
     &--full {
