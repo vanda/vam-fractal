@@ -1,8 +1,4 @@
 const prefix = 'b-image-overlay-license-modal';
-const links = [
-  '__download-icon-link',
-  '__download-link-text'
-];
 
 const downloadButton = '__download-button';
 const contactButton = '__contact-button';
@@ -35,14 +31,14 @@ const contactContent = document.querySelector(`.${prefix}${contactContentClass}`
 
 window.addEventListener('click', (e) => {
   if (e.target.closest(`.${prefix}${downloadButton}`)) {
-     window.setTimeout(() => {
-        document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
-      }, 10);
-      imageOverlay.classList.add('b-image-overlay--unfocus');
-      modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
-      modal.classList.add('b-modal--active');
-      downloadContent.classList.add(`${prefix}${downloadContentClass}${active}`);
-      contactContent.classList.remove(`${prefix}${contactContentClass}${active}`);
+    window.setTimeout(() => {
+      document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
+    }, 10);
+    imageOverlay.classList.add('b-image-overlay--unfocus');
+    modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
+    modal.classList.add('b-modal--active');
+    downloadContent.classList.add(`${prefix}${downloadContentClass}${active}`);
+    contactContent.classList.remove(`${prefix}${contactContentClass}${active}`);
   }
 
   if (e.target.closest(`.${prefix}${contactButton}`)) {
@@ -57,7 +53,7 @@ window.addEventListener('click', (e) => {
   }
 
   if (e.target.closest(`.${prefix}${contactModalOpen}`)) {
-   window.setTimeout(() => {
+    window.setTimeout(() => {
       document.querySelector('.b-modal__description-license-contact').focus();
     }, 10);
     downloadContent.classList.remove(`${prefix}${downloadContentClass}${active}`);
