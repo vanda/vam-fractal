@@ -79,8 +79,17 @@
 
     &-img {
       vertical-align: middle;
+
+      @include bpMinMedium {
+        height: 120px;
+      }
+
     }
-    padding-right: 10px;
+    padding: 0 15px;
+    @include bpMinLarge {
+      padding-left: 0;
+      padding-right: 20px;
+    }
     position: relative;
     vertical-align: baseline;
     &--full {
@@ -120,6 +129,9 @@
       }
 
       &-img {
+        align-items: center;
+        display: flex;
+        justify-content: center;
         margin: auto;
         text-align: center;
 
@@ -129,30 +141,36 @@
           }
         }
 
-        @include bpMinSmall {
+        @include bpMinXSmall {
+          height: 120px;
+          min-width: 120px;
           text-align: center;
-          width: 150px;
+          width: fit-content;
         }
-        @include bpMinMedium {
-          text-align: center;
-          width: 175px;
-        }
-        &-image {
-          @include bpMinXSmall {
-            max-height: 150px;
-            max-width: 150px;
-            padding: 16px;
-          }
 
-          max-height: 100px;
-          max-width: 80px;
-          padding: 10px 10px;
+        &--no-img {
+          margin: 0;
+          position: relative;
+          width: 100%;
+        }
+
+        &-image {
+          max-height: 60px;
+          max-width: 60px;
+          @include bpMinXSmall {
+            max-height: 100px;
+            max-width: 100px;
+          }
+          @include bpMinLarge {
+            max-height: 120px;
+            max-width: 120px;
+          }
         }
       }
 
       &-no-img {
         height: 0;
-        left: 47%;
+        left: 50%;
         position: absolute;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -166,7 +184,7 @@
             border-width: 0;
             font-size: 11px;
             height: 100px;
-            left: 46%;
+            left: 50%;
             line-height: 8;
             padding: 6px;
             position: absolute;
@@ -174,14 +192,14 @@
             width: 100px;
           }
 
-          @include bpMinMedium {
+          @include bpMinLarge {
             background-position-x: -105px;
             background-position-y: -85px;
             background-size: 450px;
             border-width: 0;
             font-size: 13px;
             height: 120px;
-            left: 47%;
+            left: 50%;
             line-height: 8;
             padding: 6px;
             position: absolute;
@@ -228,7 +246,7 @@
   &__body {
     &-row {
       @include bpMinXSmall {
-        height: 132px;
+        height: 150px;
       }
 
       &--offensive {
@@ -310,7 +328,7 @@
         width: 135px;
       }
       @include bpMinMedium {
-        width: 150px;
+        width: 230px;
       }
       width: 120px;
     }
