@@ -148,6 +148,12 @@
           width: fit-content;
         }
 
+        &--no-img {
+          margin: 0;
+          position: relative;
+          width: 100%;
+        }
+
         &-image {
           max-height: 60px;
           max-width: 60px;
@@ -164,7 +170,7 @@
 
       &-no-img {
         height: 0;
-        left: 47%;
+        left: 50%;
         position: absolute;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -178,7 +184,7 @@
             border-width: 0;
             font-size: 11px;
             height: 100px;
-            left: 46%;
+            left: 50%;
             line-height: 8;
             padding: 6px;
             position: absolute;
@@ -193,7 +199,7 @@
             border-width: 0;
             font-size: 13px;
             height: 120px;
-            left: 47%;
+            left: 50%;
             line-height: 8;
             padding: 6px;
             position: absolute;
@@ -322,7 +328,7 @@
         width: 135px;
       }
       @include bpMinMedium {
-        width: 180px;
+        width: 230px;
       }
       width: 120px;
     }
