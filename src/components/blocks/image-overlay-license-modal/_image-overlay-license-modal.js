@@ -1,19 +1,15 @@
 const prefix = 'b-image-overlay-license-modal';
-const links = [
-  '__download-icon-link',
-  '__download-link-text'
-];
 
 const downloadButton = '__download-button';
 const contactButton = '__contact-button';
-const modal = '__image-modal';
+const modalClass = '__image-modal';
 const contactModalOpen = '__contact-modal-open';
 const iconLinkContainer = '__icon-link-container';
 const checkmark = '__checkmark';
 const imageIconLink = '__image-icon-link';
 const agreeToTerms = '__agree-to-terms';
-const downloadContent = '__modal-download-content';
-const contactContent = '__modal-contact-content';
+const downloadContentClass = '__modal-download-content';
+const contactContentClass = '__modal-contact-content';
 const checkboxContainer = '__checkbox-container';
 const agreeCheckbox = '__agree-checkbox';
 const agreeToTermsReminder = '__agree-to-terms-reminder';
@@ -28,83 +24,76 @@ const elements = [
   agreeToTerms
 ];
 
-function initDownloadButton () {
-  if (document.querySelector(`.${prefix}${downloadButton}`)) {
-    document.querySelector(`.${prefix}${downloadButton}`).onclick = () => {
-      window.setTimeout(() => {
-        document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
-      }, 10);
-      document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
-      document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
-      document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
-      document.querySelector(`.${prefix}${downloadContent}`).classList.add(`${prefix}${downloadContent}${active}`);
-      document.querySelector(`.${prefix}${contactContent}`).classList.remove(`${prefix}${contactContent}${active}`);
-    };
+const modal = document.querySelector(`.${prefix}${modalClass}`);
+const imageOverlay = document.querySelector('.b-image-overlay');
+const downloadContent = document.querySelector(`.${prefix}${downloadContentClass}`);
+const contactContent = document.querySelector(`.${prefix}${contactContentClass}`);
+
+window.addEventListener('click', (e) => {
+  if (e.target.closest(`.${prefix}${downloadButton}`)) {
+    window.setTimeout(() => {
+      document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
+    }, 10);
+    imageOverlay.classList.add('b-image-overlay--unfocus');
+    modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
+    modal.classList.add('b-modal--active');
+    downloadContent.classList.add(`${prefix}${downloadContentClass}${active}`);
+    contactContent.classList.remove(`${prefix}${contactContentClass}${active}`);
   }
 
-  if (document.querySelector(`.${prefix}${contactButton}`)) {
-    document.querySelector(`.${prefix}${contactButton}`).onclick = () => {
-      window.setTimeout(() => {
-        document.querySelector('.b-modal__description-license-contact').focus();
-      }, 10);
-      document.querySelector('.b-image-overlay').classList.add('b-image-overlay--unfocus');
-      document.querySelector(`.${prefix}${modal}`).dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
-      document.querySelector(`.${prefix}${modal}`).classList.add('b-modal--active');
-      document.querySelector(`.${prefix}${downloadContent}`).classList.remove(`${prefix}${downloadContent}${active}`);
-      document.querySelector(`.${prefix}${contactContent}`).classList.add(`${prefix}${contactContent}${active}`);
-    };
+  if (e.target.closest(`.${prefix}${contactButton}`)) {
+    window.setTimeout(() => {
+      document.querySelector('.b-modal__description-license-contact').focus();
+    }, 10);
+    imageOverlay.classList.add('b-image-overlay--unfocus');
+    modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
+    modal.classList.add('b-modal--active');
+    downloadContent.classList.remove(`${prefix}${downloadContentClass}${active}`);
+    contactContent.classList.add(`${prefix}${contactContentClass}${active}`);
   }
 
-  if (document.querySelector(`.${prefix}${contactModalOpen}`)) {
-    document.querySelector(`.${prefix}${contactModalOpen}`).onclick = () => {
-      window.setTimeout(() => {
-        document.querySelector('.b-modal__description-license-contact').focus();
-      }, 10);
-      document.querySelector(`.${prefix}${downloadContent}`).classList.remove(`${prefix}${downloadContent}${active}`);
-      document.querySelector(`.${prefix}${contactContent}`).classList.add(`${prefix}${contactContent}${active}`);
-    };
+  if (e.target.closest(`.${prefix}${contactModalOpen}`)) {
+    window.setTimeout(() => {
+      document.querySelector('.b-modal__description-license-contact').focus();
+    }, 10);
+    downloadContent.classList.remove(`${prefix}${downloadContentClass}${active}`);
+    contactContent.classList.add(`${prefix}${contactContentClass}${active}`);
   }
 
-  if (document.querySelector(`.${prefix}${checkboxContainer}`)) {
-    document.querySelector(`.${prefix}${checkboxContainer}`).onclick = (e) => {
-      if (e.target.closest(`.${prefix}${agreeToTerms}`) === document.querySelector(`.${prefix}${agreeToTerms}`)) {
-        document.querySelector(`.${prefix}${agreeCheckbox}`).checked =
-          !document.querySelector(`.${prefix}${agreeCheckbox}`).checked;
+  if (e.target.closest(`.${prefix}${checkboxContainer}`)) {
+    if (e.target.closest(`.${prefix}${agreeToTerms}`) === document.querySelector(`.${prefix}${agreeToTerms}`)) {
+      document.querySelector(`.${prefix}${agreeCheckbox}`).checked =
+        !document.querySelector(`.${prefix}${agreeCheckbox}`).checked;
 
-        document.querySelector(`.${prefix}${agreeToTerms}`).classList.remove(`${prefix}${agreeToTerms}${warning}`);
+      document.querySelector(`.${prefix}${agreeToTerms}`).classList.remove(`${prefix}${agreeToTerms}${warning}`);
 
-        if (document.querySelector(`.${prefix}${agreeCheckbox}`).checked) {
-          document.querySelector(`.${prefix}${agreeToTermsReminder}`).style.display = 'none';
-          elements.forEach(c =>
-            document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.add(`${prefix}${c}--active`)
-          );
-          document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.add('b-icon-link--active');
-        } else {
-          elements.forEach(c =>
-            document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.remove(`${prefix}${c}--active`)
-          );
-          document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.remove('b-icon-link--active');
-        }
+      if (document.querySelector(`.${prefix}${agreeCheckbox}`).checked) {
+        document.querySelector(`.${prefix}${agreeToTermsReminder}`).style.display = 'none';
+        elements.forEach(c =>
+          document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.add(`${prefix}${c}--active`)
+        );
+        document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.add('b-icon-link--active');
+      } else {
+        elements.forEach(c =>
+          document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.remove(`${prefix}${c}--active`)
+        );
+        document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.remove('b-icon-link--active');
       }
-    };
+    }
   }
 
-  links.forEach((link) => {
-    if (document.querySelector(`.${prefix}${link}`)) {
-      document.querySelector(`.${prefix}${link}`).onclick = () => {
-        if (!document.querySelector(`.${prefix}${agreeCheckbox}`).checked) {
-          document.querySelector(`.${prefix}${agreeToTermsReminder}`).style.display = 'block';
-          document.querySelector(`.${prefix}${agreeToTerms}`).classList.add(`${prefix}${agreeToTerms}${warning}`);
-        }
-      };
+  if (e.target.closest(`.${prefix}${checkboxContainer}`)) {
+    if (!document.querySelector(`.${prefix}${agreeCheckbox}`).checked) {
+      document.querySelector(`.${prefix}${agreeToTermsReminder}`).style.display = 'block';
+      document.querySelector(`.${prefix}${agreeToTerms}`).classList.add(`${prefix}${agreeToTerms}${warning}`);
     }
-  });
-}
+  }
+});
 
 window.addEventListener('keydown', (e) => {
-  const activeModal = (document.querySelector(`.${prefix}${modal}.b-modal--active`));
-  const activeContent = document.querySelector(`.${prefix}${downloadContent}.${prefix}${downloadContent}${active}`) ||
-    document.querySelector(`.${prefix}${contactContent}.${prefix}${contactContent}${active}`);
+  const activeModal = (document.querySelector(`.${prefix}${modalClass}.b-modal--active`));
+  const activeContent = document.querySelector(`.${prefix}${downloadContentClass}.${prefix}${downloadContentClass}${active}`) ||
+    document.querySelector(`.${prefix}${contactContentClass}.${prefix}${contactContentClass}${active}`);
 
   if (activeModal) {
     // https://stackoverflow.com/a/60031728 w/ modifications
@@ -128,7 +117,7 @@ window.addEventListener('keydown', (e) => {
   }
 
   if (activeModal && e.keyCode === 27) {
-    document.querySelector(`.${prefix}${modal}`).classList.remove('b-modal--active');
+    modal.classList.remove('b-modal--active');
     e.preventDefault();
     e.stopPropagation();
     return false;
@@ -137,5 +126,3 @@ window.addEventListener('keydown', (e) => {
   // idk, it stops lint complaining
   return true;
 });
-
-initDownloadButton();

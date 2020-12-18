@@ -5,6 +5,8 @@ const prevButton = Array.from(document.querySelectorAll('.b-image-carousel__prev
 const nextButton = Array.from(document.querySelectorAll('.b-image-carousel__next'));
 const totalNumberOfImages = document.querySelector('.b-image-overlay-detail__total-number-of-images');
 const imageCounter = document.querySelector('.b-image-overlay-detail__current-image');
+const imageRef = document.querySelector('.b-image-overlay__img-ref-number');
+const copyrightNotice = document.querySelector('.b-image-overlay-detail__copyright-holder');
 
 const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
 const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
@@ -17,11 +19,13 @@ if (imageCarousel) {
 if (imageCarousel && images.length) {
   let image = document.querySelector('.b-image-overlay__image');
 
-  const imagesWithImage = images.map(({ src, alt }) => {
+  const imagesWithImage = images.map(({ src, alt, ref, copyright }) => {
     const newImage = new Image();
     newImage.src = src;
     newImage.alt = alt;
     newImage.className = 'b-image-overlay__image b-image-overlay__image--active';
+    newImage.dataset.ref = ref;
+    newImage.dataset.copyright = copyright;
     return newImage;
   });
 
@@ -36,7 +40,10 @@ if (imageCarousel && images.length) {
   };
 
   const changeIndex = (index) => {
+    const { ref, copyright } = document.querySelector('.b-image-overlay__image').dataset;
     imageCarousel.dataset.index = index;
+    imageRef.innerHTML = ref;
+    copyrightNotice.innerHTML = copyright;
   };
 
   const thumbs = images.map(({ thumb, alt }) => {
