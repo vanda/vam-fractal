@@ -40,8 +40,7 @@
             // create deck tab
             const deckTab = deckTabs.appendChild(tabTemplate.cloneNode(true));
             deckTab.className = 'b-object-shuffler__tab';
-            deckTab.innerHTML = deck._props.deckTitle;
-            deckTab.title = `filter by ${deck._props.deckTitle}`;
+            deckTab.title = `${deck._props.deckTitle}`;
             deckTab.setAttribute('tabindex', '0');
             deckTab._deck = deck;
             if (deckTab === deckTab.parentNode.firstElementChild) {
@@ -85,6 +84,15 @@
           e.preventDefault();
           shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
         }
+      }, false);
+
+      // apply the active animation to an activated more button
+      const moreBtn = el.querySelector('.b-object-shuffler__more');
+      moreBtn.addEventListener('pointerdown', () => {
+        moreBtn.setAttribute('active', true);
+      }, false);
+      moreBtn.addEventListener('animationend', () => {
+        moreBtn.removeAttribute('active');
       }, false);
     },
     setSize: (item) => {
