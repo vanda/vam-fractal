@@ -16,6 +16,7 @@
   }
 
   &__tab {
+    cursor: pointer;
     margin: 0 10px 6px;
 
     &[active],
@@ -124,6 +125,7 @@
 
   &__more {
     @include typeSetting(1, bold, uppercase);
+    cursor: pointer;
     display: inline-flex;
     flex-direction: column;
     margin: 0 auto 40px;
