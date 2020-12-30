@@ -34,11 +34,11 @@ const offensiveConcealer = () => {
 const openObjectOverlay = () => {
   imageOverlayContainer.classList.add('b-image-overlay__container--active');
   body.style.overflowY = 'hidden';
-  body.style.position = 'fixed';
   const scrollY = window.pageYOffset;
   imageOverlayContainer.style.top = `${scrollY}px`;
   imageOverlayContainer.style.height = `${window.innerHeight}px`;
   if (window.innerWidth <= 1000 && isMobile.any()) {
+    body.style.position = 'fixed';
     figCaption.style.marginBottom = `${screen.height - window.innerHeight}px`;
   } else {
     figCaption.style.marginBottom = '0px';
