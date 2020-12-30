@@ -11,6 +11,10 @@
       display: none !important; // sass-lint:disable-line no-important
     }
     &-image {
+      &--offensive {
+        filter: blur(10px);
+      }
+
       @include bpMinMedium {
         max-height: -webkit-fit-content;
         max-height: -moz-fit-content;
@@ -28,7 +32,6 @@
     &-concealer {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
-      backdrop-filter: blur(10px);
       background-color: rgba(57, 59, 63, .8);
       height: 100%;
       left: 0;
