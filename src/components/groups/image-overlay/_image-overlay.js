@@ -34,7 +34,7 @@ const offensiveConcealer = () => {
 const openObjectOverlay = () => {
   imageOverlayContainer.classList.add('b-image-overlay__container--active');
   body.style.overflowY = 'hidden';
-  body.style.position = 'fixed';
+  // body.style.position = 'fixed';
   const scrollY = window.pageYOffset;
   imageOverlayContainer.style.top = `${scrollY}px`;
   imageOverlayContainer.style.height = `${window.innerHeight}px`;
