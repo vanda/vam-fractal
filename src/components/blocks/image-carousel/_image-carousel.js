@@ -42,8 +42,6 @@ if (imageCarousel && images.length) {
   const changeIndex = (index) => {
     const { ref, copyright } = document.querySelector('.b-image-overlay__image').dataset;
     imageCarousel.dataset.index = index;
-    imageRef.innerHTML = ref;
-    copyrightNotice.innerHTML = copyright;
   };
 
   const thumbs = images.map(({ thumb, alt }) => {
@@ -73,7 +71,9 @@ if (imageCarousel && images.length) {
         }
       }
 
-      container.setAttribute('aria-label', `view ${images[index].alt}`);
+      if (images[index].alt) {
+       container.setAttribute('aria-label', `view ${images[index].alt}`);
+      }
 
       if (container.firstElementChild) {
         container.firstElementChild.remove();
@@ -105,6 +105,11 @@ if (imageCarousel && images.length) {
       image.remove();
 
       imageParent.appendChild(newImage);
+
+      const { ref, copyright } = newImage.dataset;
+
+      imageRef.innerHTML = ref;
+      copyrightNotice.innerHTML = copyright;
 
       image = newImage;
       initImageCarouselContainers(true);
