@@ -3,23 +3,24 @@
   const shuffler = {
     init: (el) => {
       const shufflerData = JSON.parse(el.dataset.objectShuffler);
-      const deckTemplate = el.querySelector('.js-object-shuffler__deck');
+      const deckTabs = el.querySelector('.b-object-shuffler__tabs');
+      const tabTemplate = deckTabs.removeChild(deckTabs.querySelector('.b-object-shuffler__tab'));
+      const deckTemplate = el.querySelector('.b-object-shuffler__deck');
       const itemTemplate = deckTemplate.firstElementChild.firstElementChild;
       const imgTemplate = itemTemplate.firstElementChild;
       const slideSize = shuffler.setSize(itemTemplate);
       const transitionDurationItem = parseFloat(window.getComputedStyle(itemTemplate).getPropertyValue('transition-duration'));
       const transitionDurationImg = parseFloat(window.getComputedStyle(imgTemplate).getPropertyValue('transition-duration'));
-      const deckTabs = el.querySelector('.js-object-shuffler__tabs');
 
       // clone initial html markup into a full set of decks
       for (let i = 1; i < shufflerData.length; i += 1) {
-        const deck = deckTemplate.parentNode.appendChild(deckTemplate.cloneNode(true));
-        deck.removeAttribute('active');
+        deckTemplate.parentNode.appendChild(deckTemplate.cloneNode(true));
       }
-      // populate each deck with slides of items
       let i = 0;
-      Array.from(el.querySelectorAll('.js-object-shuffler__deck'), (deck) => {
+      Array.from(el.querySelectorAll('.b-object-shuffler__deck'), (deck) => {
+        // store deck data
         deck._props = {
+          deckTitle: shufflerData[i].title,
           slideSize,
           itemsData: shufflerData[i].data || [],
           itemsDataFeed: shufflerData[i].feed,
@@ -27,20 +28,26 @@
           transitionDurationItem,
           transitionDurationImg
         };
-        // create deck tab link
-        const tabLink = deckTabs.appendChild(document.createElement('a'));
-        tabLink.className = 'b-object-shuffler__tab-link';
-        tabLink.innerHTML = shufflerData[i].title;
-        tabLink.title = `filter by ${shufflerData[i].title}`;
-        if (i === 0) { tabLink.setAttribute('active', true); }
-        tabLink.onclick = () => {
-          deckTabs.querySelector('[active]').removeAttribute('active');
-          tabLink.setAttribute('active', true);
-          el.querySelector('.js-object-shuffler__deck[active]').removeAttribute('active');
-          deck.setAttribute('active', true);
-        };
+
+        // setup each deck
         shuffler.getData(deck)
           .then(() => {
+            // abandon deck if there weren't enough results
+            if (deck._props.itemsData.length < slideSize * 1.5) {
+              deck.parentNode.removeChild(deck);
+              return false;
+            }
+            // create deck tab
+            const deckTab = deckTabs.appendChild(tabTemplate.cloneNode(true));
+            deckTab.className = 'b-object-shuffler__tab';
+            deckTab.title = `${deck._props.deckTitle}`;
+            deckTab.setAttribute('tabindex', '0');
+            deckTab._deck = deck;
+            if (deckTab === deckTab.parentNode.firstElementChild) {
+              deckTab.setAttribute('active', true);
+              deckTab._deck.setAttribute('active', true);
+            }
+            // populate each deck with slides of items
             const slide = deck.firstElementChild;
             // clone initial html markup for an item to make a whole slide
             for (let j = 1; j < slideSize; j += 1) {
@@ -52,16 +59,40 @@
             const activeSlide = shuffler.newSlide(deck);
             activeSlide.setAttribute('active', true);
             shuffler.newSlide(deck);
+            // allow visible elements into the tabindex
+            if (activeSlide.closest('.b-object-shuffler__deck[active]')) {
+              shuffler.tabIndexSlide(activeSlide, '0');
+            }
           });
         i += 1;
         return true;
       });
 
       document.addEventListener('click', (e) => {
-        if (e.target.closest('.js-object-shuffler__more')) {
+        if (e.target.closest('.b-object-shuffler__tab')) {
+          const deckTab = e.target;
+          const activeTab = deckTabs.querySelector('[active]');
+          if (activeTab) {
+            activeTab.removeAttribute('active');
+            activeTab._deck.removeAttribute('active');
+            shuffler.tabIndexSlide(activeTab._deck.querySelector('.b-object-shuffler__slide[active]'), '-1');
+          }
+          deckTab.setAttribute('active', true);
+          deckTab._deck.setAttribute('active', true);
+          shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'), '0');
+        } else if (e.target.closest('.b-object-shuffler__more')) {
           e.preventDefault();
-          shuffler.nextSlide(el.querySelector('.js-object-shuffler__deck[active]'));
+          shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
         }
+      }, false);
+
+      // apply the active animation to an activated more button
+      const moreBtn = el.querySelector('.b-object-shuffler__more');
+      moreBtn.addEventListener('pointerdown', () => {
+        moreBtn.setAttribute('active', true);
+      }, false);
+      moreBtn.addEventListener('animationend', () => {
+        moreBtn.removeAttribute('active');
       }, false);
     },
     setSize: (item) => {
@@ -72,8 +103,9 @@
     },
     getData: (deck) => {
       // append more data from search API
-      if (deck._props.itemsData.length < deck._props.itemsIndex + (2 * deck._props.slideSize)) {
-        const dataURI = deck._props.itemsDataFeed.replace(/offset=[^&]+/, `offset=${deck._props.itemsData.length}`);
+      const dataSize = 2 * deck._props.slideSize;
+      if (deck._props.itemsData.length < deck._props.itemsIndex + dataSize) {
+        const dataURI = `${deck._props.itemsDataFeed}&page_size=${dataSize}&page=${deck._props.itemsData.length / dataSize}`;
         const promise = fetch(dataURI)
           .then(response => response.json())
           .then((data) => {
@@ -107,10 +139,16 @@
         const dataIndex = deck._props.itemsIndex % deck._props.itemsData.length;
         const img = item.querySelector('img');
         item.title = deck._props.itemsData[dataIndex].title;
+        img.alt = deck._props.itemsData[dataIndex].img.alt;
         item.href = deck._props.itemsData[dataIndex].href;
+        item.tabindex = '-1';
+        img.classList.remove('s-lazyload--error');
+        img.onerror = () => {
+          img.classList.add('s-lazyload--error');
+          return true;
+        }
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
         img.src = deck._props.itemsData[dataIndex].img.src;
-        img.alt = deck._props.itemsData[dataIndex].img.alt;
         // scatter effect
         const scaler = Math.random() * 0.1;
         const scale = 1 + ((deck._props.itemsIndex % 2 > 0 ? 1 : -1) * scaler);
@@ -135,6 +173,7 @@
         item.style.position = 'absolute';
         item.style.left = `${x + jitterX}%`;
         item.style.top = `${y + jitterY}%`;
+        item.style.setProperty('--js-rotation', `${Math.sin((Math.random() * 2 * Math.PI)) * 5}deg`);
         item.style.transitionDuration = `${deck._props.transitionDurationItem * scale * scale}s`;
         img.style.transitionDuration = `${deck._props.transitionDurationImg * scale * scale}s`;
         deck._props.itemsIndex += 1;
@@ -146,9 +185,14 @@
     nextSlide: (deck) => {
       shuffler.newSlide(deck);
       deck.firstElementChild.remove();
-      const active = deck.querySelector('[active]');
-      active.removeAttribute('active');
-      active.nextSibling.setAttribute('active', true);
+      const activeSlide = deck.querySelector('[active]');
+      activeSlide.removeAttribute('active');
+      shuffler.tabIndexSlide(activeSlide, '-1');
+      activeSlide.nextSibling.setAttribute('active', true);
+      shuffler.tabIndexSlide(activeSlide.nextSibling, '0');
+    },
+    tabIndexSlide: (slide, tabIndex) => {
+      Array.from(slide.children, item => item.setAttribute('tabindex', tabIndex));
     }
   };
 

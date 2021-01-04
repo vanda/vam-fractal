@@ -2,14 +2,15 @@
 
   <h6 class="b-object-shuffler__heading">You may also like</h6>
   
-  <div class="b-object-shuffler__tabs js-object-shuffler__tabs">
+  <div class="b-object-shuffler__tabs">
+    <button class="b-object-shuffler__tab" title="" tabindex="-1"></button>
   </div>
 
-  <div class="b-object-shuffler__viewer js-object-shuffler__viewer">
+  <div class="b-object-shuffler__viewer">
 
-    <div class="b-object-shuffler__deck js-object-shuffler__deck" active="true">
+    <div class="b-object-shuffler__deck">
       <div class="b-object-shuffler__slide" active="true">
-        <a class="b-object-shuffler__item" href="" title="">
+        <a class="b-object-shuffler__item" href="" title="" tabindex="-1">
           <img class="b-object-shuffler__image"
             itemprop="contentUrl"
             alt="" 
@@ -24,13 +25,10 @@
 
   </div>
   
-  <a class="b-object-shuffler__more js-object-shuffler__more" href="#" title="show more">
-    <div class="b-object-shuffler__more-icon">
-      <svg role="img">
-        <use xlink:href="/assets/svg/svg-template.svg#plus"></use>
-      </svg>
-    </div>
-    Shuffle
-  </a>
+  <button class="b-object-shuffler__more s-themed--background-color" title="show more">
+    <svg role="img">
+      <use xlink:href="/assets/svg/svg-template.svg#shuffle"></use>
+    </svg>
+  </button>
 
 </div>

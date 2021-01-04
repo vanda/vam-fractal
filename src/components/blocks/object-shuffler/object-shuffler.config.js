@@ -17,25 +17,25 @@ module.exports = {
     objectShufflerData: [
       {
         title: 'Posters',
-        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?profile=ymal&q=poster&limit=12&offset=0',
+        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?search_profile=ymal&q=poster',
         data: [
         ]
       },
       {
         title: 'Netsuke',
-        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?profile=ymal&q_object_type=netsuke&limit=12&offset=0',
+        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?search_profile=ymal&q_object_type=netsuke',
         data: [
         ]
       },
       {
         title: 'Lego',
-        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?profile=ymal&&q=lego&limit=12&offset=0',
+        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?search_profile=ymal&q=lego',
         data: [
         ]
       },
       {
         title: 'Bikes',
-        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?profile=ymal&q=bicycle&limit=12&offset=0',
+        feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?search_profile=ymal&q=bicycle',
         data: [
         ]
       }
