@@ -31,13 +31,13 @@ const dateFacetHTML = () => `
           <label class="b-facet-box__facet-date-label">
             From year:
           </label>
-          <input class="b-facet-box__facet-date-input" placeholder="-800" type="number" name="made_after_year">
+          <input class="b-facet-box__facet-date-input" placeholder="-800" type="number" name="year_made_from">
         </div>
         <div class="b-facet-box__facet-date-container-end">
           <label class="b-facet-box__facet-date-label">
             To year:
           </label>
-          <input class="b-facet-box__facet-date-input" placeholder="2000" type="number" name="made_before_year">
+          <input class="b-facet-box__facet-date-input" placeholder="2000" type="number" name="year_made_to">
         </div>
         <div class="b-facet-box__facet-date-container-button">
           <label class="b-facet-box__facet-date-label">
@@ -367,11 +367,11 @@ const initialiseFacetOverlay = () => {
         document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
 
         const hiddenDateInputBefore = hiddenDateInput.cloneNode(true);
-        hiddenDateInputBefore.name = 'made_after_year';
+        hiddenDateInputBefore.name = 'year_made_from';
         hiddenDateInputBefore.value = dates[0];
 
         const hiddenDateInputAfter = hiddenDateInput.cloneNode(true);
-        hiddenDateInputAfter.name = 'made_before_year';
+        hiddenDateInputAfter.name = 'year_made_to';
         hiddenDateInputAfter.value = dates[1];
 
         document.querySelector('#vam-etc-search').appendChild(hiddenDateInputBefore);
@@ -419,8 +419,8 @@ const initialiseFacetOverlay = () => {
 
         let key;
         if (
-          (splitFacetId[0] === 'made_after_year') ||
-          (splitFacetId[0] === 'made_before_year')
+          (splitFacetId[0] === 'year_made_from') ||
+          (splitFacetId[0] === 'year_made_to')
         ) {
           key = splitFacetId[0];
           dateFacet.querySelector(`input[name="${key}"]`).value = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
