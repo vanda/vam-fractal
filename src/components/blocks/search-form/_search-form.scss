@@ -185,8 +185,12 @@
 
   &__filters {
     @include typeSetting(3);
+    align-items: baseline;
     color: siteColor(vam-white);
-    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px 0;
   }
 
   &__filter-info {
@@ -238,6 +242,11 @@
   }
 
   &__filter {
+
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+
     display: block;
     margin: 20px 44px 0 0;
     text-align: left;
@@ -347,7 +356,7 @@
       width: auto;
     }
 
-    margin-left: 0;
+    margin: 10px 0 0 0;
     opacity: 0;
     position: relative;
     width: 100%;
@@ -355,6 +364,10 @@
   &__location-toggle:checked ~ &__location-wrapper {
     opacity: 1;
     transition: opacity .3s ease;
+    margin-top: 20px;
+    @include bpMinXSmall {
+      margin-top: 0;
+    }
   }
 
   &__suggestions {
