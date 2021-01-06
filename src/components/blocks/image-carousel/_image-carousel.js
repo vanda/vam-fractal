@@ -40,7 +40,6 @@ if (imageCarousel && images.length) {
   };
 
   const changeIndex = (index) => {
-    const { ref, copyright } = document.querySelector('.b-image-overlay__image').dataset;
     imageCarousel.dataset.index = index;
   };
 
@@ -72,7 +71,7 @@ if (imageCarousel && images.length) {
       }
 
       if (images[index].alt) {
-       container.setAttribute('aria-label', `view ${images[index].alt}`);
+        container.setAttribute('aria-label', `view ${images[index].alt}`);
       }
 
       if (container.firstElementChild) {

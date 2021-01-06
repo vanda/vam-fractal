@@ -185,8 +185,12 @@
 
   &__filters {
     @include typeSetting(3);
+    align-items: baseline;
     color: siteColor(vam-white);
-    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 1px;
   }
 
   &__filter-info {
@@ -245,8 +249,11 @@
 
     @include bpMinXSmall {
       display: inline-block;
-      margin: 10px 44px 0 0;
+      margin: 10px 0 0 0;
       width: auto;
+      &:nth-of-type(1) {
+        margin: 20px 44px 0 0;
+      }
     }
 
     .b-search-form--etc-gateway & {
@@ -346,15 +353,21 @@
       margin-left: 20px;
       width: auto;
     }
-
-    margin-left: 0;
+    display: none;
+    margin: 10px 0 0 0;
     opacity: 0;
     position: relative;
     width: 100%;
   }
   &__location-toggle:checked ~ &__location-wrapper {
+    display: inline-block;
+    margin-top: 20px;
     opacity: 1;
     transition: opacity .3s ease;
+    @include bpMinXSmall {
+      margin-left: 20px;
+      margin-top: 0;
+    }
   }
 
   &__suggestions {

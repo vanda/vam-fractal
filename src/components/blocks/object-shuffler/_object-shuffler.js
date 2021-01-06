@@ -31,7 +31,7 @@
 
         // setup each deck
         shuffler.getData(deck)
-          .then(() => {
+          .then(() => { // eslint-disable-line consistent-return
             // abandon deck if there weren't enough results
             if (deck._props.itemsData.length < slideSize * 1.5) {
               deck.parentNode.removeChild(deck);
@@ -146,7 +146,7 @@
         img.onerror = () => {
           img.classList.add('s-lazyload--error');
           return true;
-        }
+        };
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
         img.src = deck._props.itemsData[dataIndex].img.src;
         // scatter effect
