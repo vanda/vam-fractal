@@ -250,6 +250,9 @@
       display: inline-block;
       margin: 10px 44px 0 0;
       width: auto;
+      &:nth-of-type(1) {
+        margin: 20px 44px 0 0;
+      }
     }
 
     .b-search-form--etc-gateway & {
@@ -357,9 +360,9 @@
   }
   &__location-toggle:checked ~ &__location-wrapper {
     display: inline-block;
+    margin-top: 20px;
     opacity: 1;
     transition: opacity .3s ease;
-    margin-top: 20px;
     @include bpMinXSmall {
       margin-top: 0;
     }
