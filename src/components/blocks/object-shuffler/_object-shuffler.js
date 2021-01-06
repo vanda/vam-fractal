@@ -42,6 +42,7 @@
             deckTab.className = 'b-object-shuffler__tab';
             deckTab.title = `${deck._props.deckTitle}`;
             deckTab.setAttribute('tabindex', '0');
+            deckTab.setAttribute('aria-hidden', false);
             deckTab._deck = deck;
             if (deckTab === deckTab.parentNode.firstElementChild) {
               deckTab.setAttribute('active', true);
@@ -61,7 +62,7 @@
             shuffler.newSlide(deck);
             // allow visible elements into the tabindex
             if (activeSlide.closest('.b-object-shuffler__deck[active]')) {
-              shuffler.tabIndexSlide(activeSlide, '0');
+              shuffler.tabIndexSlide(activeSlide);
             }
           });
         i += 1;
@@ -75,11 +76,11 @@
           if (activeTab) {
             activeTab.removeAttribute('active');
             activeTab._deck.removeAttribute('active');
-            shuffler.tabIndexSlide(activeTab._deck.querySelector('.b-object-shuffler__slide[active]'), '-1');
+            shuffler.tabIndexSlide(activeTab._deck.querySelector('.b-object-shuffler__slide[active]'), false);
           }
           deckTab.setAttribute('active', true);
           deckTab._deck.setAttribute('active', true);
-          shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'), '0');
+          shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'));
         } else if (e.target.closest('.b-object-shuffler__more')) {
           e.preventDefault();
           shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
@@ -141,7 +142,8 @@
         item.title = deck._props.itemsData[dataIndex].title;
         img.alt = deck._props.itemsData[dataIndex].img.alt;
         item.href = deck._props.itemsData[dataIndex].href;
-        item.tabindex = '-1';
+        item.setAttribute('tabindex', '-1');
+        item.setAttribute('aria-hidden', true);
         img.classList.remove('s-lazyload--error');
         img.onerror = () => {
           img.classList.add('s-lazyload--error');
@@ -187,12 +189,15 @@
       deck.firstElementChild.remove();
       const activeSlide = deck.querySelector('[active]');
       activeSlide.removeAttribute('active');
-      shuffler.tabIndexSlide(activeSlide, '-1');
+      shuffler.tabIndexSlide(activeSlide, false);
       activeSlide.nextSibling.setAttribute('active', true);
-      shuffler.tabIndexSlide(activeSlide.nextSibling, '0');
+      shuffler.tabIndexSlide(activeSlide.nextSibling);
     },
-    tabIndexSlide: (slide, tabIndex) => {
-      Array.from(slide.children, item => item.setAttribute('tabindex', tabIndex));
+    tabIndexSlide: (slide, index = true) => {
+      Array.from(slide.children, (item) => {
+        item.setAttribute('tabindex', index ? '0' : '-1');
+        item.setAttribute('aria-hidden', !index);
+      });
     }
   };
 
