@@ -190,6 +190,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-bottom: 1px;
   }
 
   &__filter-info {
@@ -361,6 +362,7 @@
   &__location-toggle:checked ~ &__location-wrapper {
     display: inline-block;
     margin-top: 20px;
+    margin-left: 20px;
     opacity: 1;
     transition: opacity .3s ease;
     @include bpMinXSmall {
