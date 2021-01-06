@@ -249,7 +249,7 @@
 
     @include bpMinXSmall {
       display: inline-block;
-      margin: 10px 44px 0 0;
+      margin: 10px 0 0 0;
       width: auto;
       &:nth-of-type(1) {
         margin: 20px 44px 0 0;
@@ -362,10 +362,10 @@
   &__location-toggle:checked ~ &__location-wrapper {
     display: inline-block;
     margin-top: 20px;
-    margin-left: 20px;
     opacity: 1;
     transition: opacity .3s ease;
     @include bpMinXSmall {
+      margin-left: 20px;
       margin-top: 0;
     }
   }
