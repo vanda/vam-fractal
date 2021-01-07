@@ -144,9 +144,9 @@
         item.href = deck._props.itemsData[dataIndex].href;
         item.setAttribute('tabindex', '-1');
         item.setAttribute('aria-hidden', true);
-        img.classList.remove('s-lazyload--error');
+        img.classList.remove('s-lazyload--abort');
         img.onerror = () => {
-          img.classList.add('s-lazyload--error');
+          img.classList.add('s-lazyload--abort');
           return true;
         };
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
