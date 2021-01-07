@@ -46,8 +46,10 @@
 
   &__title {
     @include typeSetting(3, bold);
+    margin-bottom: 10px;
     @include bpMinSmall {
       @include typeSetting(5, bold);
+      margin-bottom: 18px;
     }
   }
 
