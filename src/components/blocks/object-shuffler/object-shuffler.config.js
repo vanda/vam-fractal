@@ -16,7 +16,7 @@ module.exports = {
   context: {
     objectShufflerData: [
       {
-        title: 'Posters',
+        title: 'Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters ',
         feed: 'http://vam-etc-test-api.azureedge.net/api/v2/objects/search?search_profile=ymal&q=poster',
         data: [
         ]
