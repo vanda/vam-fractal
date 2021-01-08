@@ -1,16 +1,16 @@
 <div class="b-object-shuffler js-object-shuffler" data-object-shuffler="{{ objectShufflerData | dump | escape }}">
 
-  <h6 class="b-object-shuffler__heading">You may also like</h6>
+  <h2 class="b-object-shuffler__heading">You may also like</h2>
   
   <div class="b-object-shuffler__tabs">
-    <button class="b-object-shuffler__tab" title="" tabindex="-1"></button>
+    <button class="b-object-shuffler__tab" title="" tabindex="-1" aria-hidden="true"></button>
   </div>
 
   <div class="b-object-shuffler__viewer">
 
     <div class="b-object-shuffler__deck">
       <div class="b-object-shuffler__slide" active="true">
-        <a class="b-object-shuffler__item" href="" title="" tabindex="-1">
+        <a class="b-object-shuffler__item" href="" title="" tabindex="-1" aria-hidden="true">
           <img class="b-object-shuffler__image"
             itemprop="contentUrl"
             alt="" 
@@ -26,7 +26,7 @@
   </div>
   
   <button class="b-object-shuffler__more s-themed--background-color" title="show more">
-    <svg role="img">
+    <svg role="presentation">
       <use xlink:href="/assets/svg/svg-template.svg#shuffle"></use>
     </svg>
   </button>

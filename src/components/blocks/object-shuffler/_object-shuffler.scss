@@ -7,7 +7,11 @@
 
   &__heading {
     @include typeSetting(4, bold, uppercase);
-    margin-bottom: 34px;
+    margin-bottom: 20px;
+
+    @include bpMinMedium {
+      margin-bottom: 30px;
+    }
   }
 
   &__tabs {
@@ -17,26 +21,33 @@
   }
 
   &__tab {
-    background: siteColor(vam-black);
-    border: 1px solid siteColor(vam-white);
+    background: siteColor(vam-grey-3);
     border-radius: 100%;
     cursor: pointer;
-    height: 24px;
+    height: 20px;
     margin: 0 16px;
     opacity: 1;
     outline: 0;
-    width: 24px;
+    width: 20px;
 
     &::before {
       @include typeSetting(3, bold);
+      bottom: 46px;
       content: attr(title);
       display: block;
       left: 50%;
+      max-height: 46px;
       opacity: 0;
+      overflow: hidden;
       position: absolute;
-      top: 0;
       transform: translateX(-50%);
       transition: opacity .3s ease;
+      vertical-align: bottom;
+      width: 80%;
+
+      @include bpMinSmall {
+        width: 60%;
+      }
     }
 
     &[active],
@@ -82,10 +93,10 @@
     height: 100%;
     justify-content: space-between;
     left: 0;
-    margin: 0 2%;
+    margin: 0 3% 0 7%;
     position: absolute;
     top: 0;
-    width: 96%;
+    width: 90%;
 
     @media (min-width: 1000px) {
       margin: 0 calc((100% - 990px) / 2);
@@ -138,14 +149,14 @@
     max-height: 100%;
     max-width: 100%;
     opacity: 0;
-    transform: scale(0);
-    transition: transform .3s ease-out, opacity .2s ease;
+    transform: scale(.6);
+    transition: transform .4s ease-out, opacity .2s ease;
   }
 
   &__slide[active] &__image {
     opacity: 1;
     transform: scale(1);
-    transition-delay: .23s;
+    transition-delay: .4s;
   }
 
 
@@ -166,15 +177,14 @@
       transform: scale(1.1);
     }
 
-    &:active,
     &[active] {
-      animation: .5s ease-out blink;
+      animation: .8s ease-out blink;
     }
 
     > svg {
-      height: 16px;
+      height: 18px;
       margin: auto;
-      width: 30px;
+      width: 34px;
     }
   }
 }

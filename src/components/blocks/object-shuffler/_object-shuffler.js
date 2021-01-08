@@ -42,6 +42,7 @@
             deckTab.className = 'b-object-shuffler__tab';
             deckTab.title = `${deck._props.deckTitle}`;
             deckTab.setAttribute('tabindex', '0');
+            deckTab.setAttribute('aria-hidden', false);
             deckTab._deck = deck;
             if (deckTab === deckTab.parentNode.firstElementChild) {
               deckTab.setAttribute('active', true);
@@ -61,7 +62,7 @@
             shuffler.newSlide(deck);
             // allow visible elements into the tabindex
             if (activeSlide.closest('.b-object-shuffler__deck[active]')) {
-              shuffler.tabIndexSlide(activeSlide, '0');
+              shuffler.tabIndexSlide(activeSlide);
             }
           });
         i += 1;
@@ -75,20 +76,18 @@
           if (activeTab) {
             activeTab.removeAttribute('active');
             activeTab._deck.removeAttribute('active');
-            shuffler.tabIndexSlide(activeTab._deck.querySelector('.b-object-shuffler__slide[active]'), '-1');
+            shuffler.tabIndexSlide(activeTab._deck.querySelector('.b-object-shuffler__slide[active]'), false);
           }
           deckTab.setAttribute('active', true);
           deckTab._deck.setAttribute('active', true);
-          shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'), '0');
-        } else if (e.target.closest('.b-object-shuffler__more')) {
-          e.preventDefault();
-          shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
+          shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'));
         }
       }, false);
 
       // apply the active animation to an activated more button
       const moreBtn = el.querySelector('.b-object-shuffler__more');
-      moreBtn.addEventListener('pointerdown', () => {
+      moreBtn.addEventListener('click', () => {
+        shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
         moreBtn.setAttribute('active', true);
       }, false);
       moreBtn.addEventListener('animationend', () => {
@@ -141,10 +140,11 @@
         item.title = deck._props.itemsData[dataIndex].title;
         img.alt = deck._props.itemsData[dataIndex].img.alt;
         item.href = deck._props.itemsData[dataIndex].href;
-        item.tabindex = '-1';
-        img.classList.remove('s-lazyload--error');
+        item.setAttribute('tabindex', '-1');
+        item.setAttribute('aria-hidden', true);
+        img.classList.remove('s-lazyload--abort');
         img.onerror = () => {
-          img.classList.add('s-lazyload--error');
+          img.classList.add('s-lazyload--abort');
           return true;
         };
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
@@ -155,18 +155,10 @@
         // shift items towards centre to remain in shot
         const slot = (deck._props.itemsIndex % deck._props.slideSize);
         const yDir = slot > (deck._props.slideSize / 2) - 1 ? -1 : 1;
-        let xDir = Math.random() > 0.5 ? 1 : -1;
-        if (slot === 0 || slot === deck._props.slideSize / 2) {
-          // left-hand col
-          xDir = 1;
-        } else if (slot === (deck._props.slideSize / 2) - 1 || slot === deck._props.slideSize - 1) {
-          // right-hand col
-          xDir = -1;
-        }
         const x = (slot % (deck._props.slideSize / 2)) * (100 / (deck._props.slideSize / 2));
         const y = slot < deck._props.slideSize / 2 ? 0 : 50;
         const aspect = 1 || img.naturalHeight / img.naturalWidth;
-        const jitterX = xDir * scaler * 34 * aspect;
+        const jitterX = scaler * 34 * aspect;
         const jitterY = (yDir * scaler * 74) / aspect;
         item.style.width = 'auto';
         item.style.height = `${(scale / aspect) * 50}%`;
@@ -187,12 +179,15 @@
       deck.firstElementChild.remove();
       const activeSlide = deck.querySelector('[active]');
       activeSlide.removeAttribute('active');
-      shuffler.tabIndexSlide(activeSlide, '-1');
+      shuffler.tabIndexSlide(activeSlide, false);
       activeSlide.nextSibling.setAttribute('active', true);
-      shuffler.tabIndexSlide(activeSlide.nextSibling, '0');
+      shuffler.tabIndexSlide(activeSlide.nextSibling);
     },
-    tabIndexSlide: (slide, tabIndex) => {
-      Array.from(slide.children, item => item.setAttribute('tabindex', tabIndex));
+    tabIndexSlide: (slide, index = true) => {
+      Array.from(slide.children, (item) => {
+        item.setAttribute('tabindex', index ? '0' : '-1');
+        item.setAttribute('aria-hidden', !index);
+      });
     }
   };
 
