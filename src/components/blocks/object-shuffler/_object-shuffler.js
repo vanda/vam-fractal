@@ -81,15 +81,13 @@
           deckTab.setAttribute('active', true);
           deckTab._deck.setAttribute('active', true);
           shuffler.tabIndexSlide(deckTab._deck.querySelector('.b-object-shuffler__slide[active]'));
-        } else if (e.target.closest('.b-object-shuffler__more')) {
-          e.preventDefault();
-          shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
         }
       }, false);
 
       // apply the active animation to an activated more button
       const moreBtn = el.querySelector('.b-object-shuffler__more');
-      moreBtn.addEventListener('pointerdown', () => {
+      moreBtn.addEventListener('click', () => {
+        shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
         moreBtn.setAttribute('active', true);
       }, false);
       moreBtn.addEventListener('animationend', () => {
@@ -157,18 +155,10 @@
         // shift items towards centre to remain in shot
         const slot = (deck._props.itemsIndex % deck._props.slideSize);
         const yDir = slot > (deck._props.slideSize / 2) - 1 ? -1 : 1;
-        let xDir = Math.random() > 0.5 ? 1 : -1;
-        if (slot === 0 || slot === deck._props.slideSize / 2) {
-          // left-hand col
-          xDir = 1;
-        } else if (slot === (deck._props.slideSize / 2) - 1 || slot === deck._props.slideSize - 1) {
-          // right-hand col
-          xDir = -1;
-        }
         const x = (slot % (deck._props.slideSize / 2)) * (100 / (deck._props.slideSize / 2));
         const y = slot < deck._props.slideSize / 2 ? 0 : 50;
         const aspect = 1 || img.naturalHeight / img.naturalWidth;
-        const jitterX = xDir * scaler * 34 * aspect;
+        const jitterX = scaler * 34 * aspect;
         const jitterY = (yDir * scaler * 74) / aspect;
         item.style.width = 'auto';
         item.style.height = `${(scale / aspect) * 50}%`;
