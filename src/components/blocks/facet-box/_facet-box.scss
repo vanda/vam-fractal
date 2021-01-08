@@ -353,6 +353,12 @@
       cursor: pointer;
     }
 
+    &--mobile {
+      &:hover {
+        background-color: themeColor(silent-green);
+      }
+    }
+
     // this button/container gets reused a lot of places...I should really make this a mixin... see also controlled vocab
 
     &-text {

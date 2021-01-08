@@ -263,9 +263,11 @@ const initialiseFacetOverlay = () => {
           e.preventDefault();
           newTermOnClick(e);
         };
+        newTerm.classList.add('b-facet-box__term--mobile');
         termList.appendChild(newTerm);
 
         const newFormTerm = newTerm.cloneNode(true);
+        newFormTerm.classList.remove('b-facet-box__term--mobile');
         newFormTerm.onclick = (e) => {
           const button = e.target.closest('.b-facet-box__term');
           if (button.dataset.id === 'date_terms') {
