@@ -144,16 +144,18 @@ if (imageCarousel && images.length) {
   observer.observe(imageCarousel, { attributes: true });
 
   document.addEventListener('keydown', () => {
-    if (event.keyCode === 37) {
-      const index = parseInt(imageCarousel.dataset.index, 10) - 1;
-      if (index >= 0) {
-        changeIndex(index);
+    if (document.querySelector('.b-image-overlay__container--active')) {
+      if (event.keyCode === 37) {
+        const index = parseInt(imageCarousel.dataset.index, 10) - 1;
+        if (index >= 0) {
+          changeIndex(index);
+        }
       }
-    }
-    if (event.keyCode === 39) {
-      const index = parseInt(imageCarousel.dataset.index, 10) + 1;
-      if (index < images.length) {
-        changeIndex(index);
+      if (event.keyCode === 39) {
+        const index = parseInt(imageCarousel.dataset.index, 10) + 1;
+        if (index < images.length) {
+          changeIndex(index);
+        }
       }
     }
   });
