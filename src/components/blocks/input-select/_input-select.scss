@@ -40,7 +40,6 @@
   cursor: pointer;
   display: block;
   margin: 0;
-  outline: none;
   padding: 12px 41px 12px 17px;
   position: relative;
   width: 100%;
@@ -52,7 +51,6 @@
   & option {
     background-color: siteColor(vam-white);
     line-height: 50px;
-    outline: none;
   }
 
 }

@@ -187,6 +187,7 @@
       Array.from(slide.children, (item) => {
         item.setAttribute('tabindex', index ? '0' : '-1');
         item.setAttribute('aria-hidden', !index);
+        return true;
       });
     }
   };

@@ -36,9 +36,6 @@
         position: absolute;
         right: 20px;
       }
-      &:focus {
-        outline: -webkit-focus-ring-color auto 0;
-      }
       &:hover {
         background-color: themeColor(silent-green);
         color: siteColor(vam-black);
