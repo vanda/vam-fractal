@@ -133,6 +133,7 @@
       }
 
       &:hover,
+      &:focus,
       .sent & {
         background-color: map-get($theme-colors, $theme-color-default);
         border: 1px solid map-get($theme-colors, $theme-color-default);
