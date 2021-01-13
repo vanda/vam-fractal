@@ -78,10 +78,11 @@
     display: none;
     &--active {
       backdrop-filter: blur(10px);
-      background: #1d1e20;
+      background: siteColor(vam-black);
       display: block;
       height: 100%;
-      position: absolute;
+      position: fixed;
+      top: 0;
       z-index: 40;
 
       @include bpMinMedium {
