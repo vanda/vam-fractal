@@ -7,6 +7,7 @@ const totalNumberOfImages = document.querySelector('.b-image-overlay-detail__tot
 const imageCounter = document.querySelector('.b-image-overlay-detail__current-image');
 const imageRef = document.querySelector('.b-image-overlay__img-ref-number');
 const copyrightNotice = document.querySelector('.b-image-overlay-detail__copyright-holder');
+const contactModal = document.querySelector('.b-modal__description-license-contact');
 
 const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
 const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
@@ -107,6 +108,7 @@ if (imageCarousel && images.length) {
 
       const { ref, copyright } = newImage.dataset;
 
+      contactModal.setAttribute('href', `mailto:vaimages@vam.ac.uk?subject=Image reference: ${ref}`);
       imageRef.innerHTML = ref;
       copyrightNotice.innerHTML = copyright;
 
