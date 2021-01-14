@@ -92,7 +92,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
         suggestEl.className = 'b-search-form__suggestion';
         suggestEl.href = url;
         suggestEl.tabindex = 0;
-        suggestEl.role = 'option';
         suggestEl.innerHTML = `
           <div class="b-search-form__suggestion-type">
             ${suggestion.recordType}

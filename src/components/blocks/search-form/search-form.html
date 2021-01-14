@@ -1,9 +1,10 @@
 <div class="fr-bg--dark fr-fullheight">
 
 
-
+{% if modifiers and 'etc-gateway' in modifiers %}
+<label class="b-search-form__label" for="{{ inputId }}">Search more than 1.2 million objects</label>
+{% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" id="search" name="search" action="{{ action }}" method="get" role="search">
-
   <div class="b-search-form__inner">
     {% if not modifiers %}
     <svg class="b-search-form__icon" aria-hidden="true" role="img">
@@ -28,7 +29,7 @@
 
   {# Collections Landing pg #}
   {% if modifiers and 'etc-gateway' in modifiers %}
-  <div class="b-search-form__suggestions" role="listbox" aria-label="search suggestions">
+  <div class="b-search-form__suggestions" aria-label="search suggestions">
     Start by entering a search term
   </div>
   <div class="b-search-form__filters" aria-label="search filters" role="form">
