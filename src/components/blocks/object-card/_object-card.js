@@ -3,7 +3,7 @@ export default (() => {
     card.innerHTML = `
       <div class="b-object-card__warning__banner">
         <div class="b-object-card__warning__banner__text">
-          This record uses a term that has since fallen from usage and is now considered offensive. The term is repeated in this record in its original historical context.
+          This object, or the text that describes it, is deemed offensive and discriminatory. We are committed to improving our records, and work is ongoing.
         </div>
         <div class="b-object-card__warning__banner__dismiss">
           View record
