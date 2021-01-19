@@ -1,6 +1,6 @@
 const warningHTML = `
     <div class="b-search-results__offensive-warning-text">
-      This record uses a term that has since fallen from usage and is now considered offensive. The term is repeated in this record in its original historical context.
+      This object, or the text that describes it, is deemed offensive and discriminatory. We are committed to improving our records, and work is ongoing.
       </br>
       <button class="b-search-results__offensive-warning-button">
         View record
