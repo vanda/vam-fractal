@@ -25,7 +25,7 @@
       display: flex;
       justify-content: space-between;
       overflow: hidden;
-      padding: 7px 14px;
+      padding: 7px 9px;
     }
   }
 
@@ -53,15 +53,28 @@
     width: calc(100% - 42px);
 
     @include bpMinSmall {
-      width: calc(100% - 140px);
+      width: calc(100% - 150px);
     }
 
     .b-search-form--etc & {
-      width: calc(100% - 100px);
-    }
+      width: calc(100% - 94px);
 
-    .b-search-form--etc-gateway & {
-      width: calc(100% - 140px);
+      @include bpMinSmall {
+        width: calc(100% - 156px);
+      }
+    }
+  }
+
+  &__label {
+    @include typeSetting(3);
+    color: siteColor(vam-grey-5);
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+
+    @include bpMinSmall {
+      @include typeSetting(5);
+      margin-bottom: 20px;
     }
   }
 
@@ -87,6 +100,7 @@
     border: none;
     caret-color: siteColor(primary-green);
     color: siteColor(vam-white);
+    height: 100%;
     margin: 4px 0;
     padding: 0;
     width: 100%;
@@ -101,10 +115,6 @@
 
     &::-ms-clear {
       display: none;
-    }
-
-    @include bpMinSmall {
-      margin: 8px 0;
     }
   }
 
@@ -148,12 +158,13 @@
   }
 
   &__submit {
-    @include typeSetting(3, semi-bold, uppercase);
+    @include typeSetting(0, semi-bold, uppercase);
     align-items: center;
     display: inline-flex;
     margin-top: 15px;
 
     @include bpMinSmall {
+      @include typeSetting(3, semi-bold, uppercase);
       margin-top: 28px;
 
       &#{&}--hidden {
@@ -168,10 +179,15 @@
 
     .b-search-form--etc-gateway & {
       border-radius: 0 2px 2px 0;
+      height: 100%;
       margin: 0;
-      padding: 30px 37px;
+      padding: 7px 5px 7px 12px;
       position: absolute;
       right: 0;
+
+      @include bpMinSmall {
+        padding: 30px 30px 30px 37px;
+      }
     }
 
     &::after {
@@ -190,7 +206,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-bottom: 1px;
+    padding: 20px 0 1px;
   }
 
   &__filter-info {
@@ -428,7 +444,8 @@
     color: siteColor(vam-black);
     display: none;
     margin-top: -7px;
-    padding: 7px 14px;
+    padding: 7px 9px;
+
     &--active {
       display: block;
     }
