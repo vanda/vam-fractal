@@ -121,7 +121,7 @@
 
     @include bpMinSmall {
       display: flex;
-      flex-grow: none;
+      flex-grow: 0;
       width: auto;
     }
   }
