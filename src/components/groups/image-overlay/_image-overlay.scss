@@ -77,7 +77,6 @@
   &__container {
     display: none;
     &--active {
-      backdrop-filter: blur(10px);
       background: siteColor(vam-black);
       display: block;
       height: 100%;
