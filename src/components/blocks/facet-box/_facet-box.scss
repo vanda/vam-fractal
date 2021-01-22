@@ -1,7 +1,6 @@
 .b-facet-box {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  backdrop-filter: blur(10px);
   background-color: rgba(29, 30, 32, .92);
   color: siteColor(vam-white);
   display: none;
@@ -18,7 +17,6 @@
   }
 
   @include bpMinMedium {
-    backdrop-filter: none;
     background-color: transparent;
     display: block;
     opacity: 1;
