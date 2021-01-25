@@ -79,7 +79,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     searchForm._props = {
       type: 'etcGatewaySearch',
       suggestionsTop: 'https://vam-etc-test.azureedge.net/assets/data/suggestions.json',
-      suggestionsAPI: 'https://vam-etc-test-api.azureedge.net/api/v2/sayt/search'
+      suggestionsAPI: 'https://vam-etc-test-api.azureedge.net/v2/sayt/search'
     };
 
     const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
