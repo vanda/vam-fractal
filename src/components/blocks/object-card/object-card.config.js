@@ -10,7 +10,8 @@ module.exports = {
       1920: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/10/b35b0588-664e-46c5-bbf5-64623211e638/1920.jpg',
       2560: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/11/efff658e-81be-42e4-913c-6f898c734efc/2560.jpg'
     },
-    caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11, by Raphael, 1515 – 16, Italy. ROYAL LOANS.2. &copy; Victoria and Albert Museum, London',
+    caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
+    captionSub: ['Raphael', '1515 – 16'],
     physicalDescription: 'Cartoon for a tapestry'
   },
   variants: [

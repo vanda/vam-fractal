@@ -13,8 +13,9 @@
          data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
          src="{{ image[320] }}">
 
-    <figcaption class="b-object-card__caption">
-      {{ caption | safe }}
+    <figcaption>
+      <div class="b-object-card__caption">{{ caption | safe }}</div>
+      {% for cs in captionSub %}<div class="b-object-card__caption b-object-card__caption--sub">{{ cs | safe }}</div>{% endfor %}
     </figcaption>
   </a>
 </figure>

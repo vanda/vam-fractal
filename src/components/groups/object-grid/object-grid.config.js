@@ -9,7 +9,8 @@ let objectCards = [
       1920: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/10/b35b0588-664e-46c5-bbf5-64623211e638/1920.jpg',
       2560: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/11/efff658e-81be-42e4-913c-6f898c734efc/2560.jpg'
     },
-    caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11, by Raphael, 1515 – 16, Italy.',
+    caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
+    captionSub: ['Raphael', '1515 – 16'],
     physicalDescription: 'Cartoon for a tapestry.',
     href: 'https://collections.vam.ac.uk/item/O102006/the-miraculous-draught-of-fishes-cartoon-for-a-raphael',
     objectImageOverlayData: {
@@ -32,7 +33,8 @@ let objectCards = [
       1920: 'https://vanda-production-assets.s3.amazonaws.com/2016/04/29/10/52/00/ef71bb86-fc36-428f-b2a9-80e56a89df70/Blue-glass-form-2560.jpg',
       2560: 'https://vanda-production-assets.s3.amazonaws.com/2016/04/29/10/52/00/5ee4b571-2911-4eef-8574-4cd13e0474ee/Blue-glass-form-2560.jpg'
     },
-    caption: 'Blue glass form, René Roubicek, 1959, Czechoslovakia.',
+    caption: 'Blue glass form',
+    captionSub: ['René Roubicek', '1959'],
     physicalDescription: 'An abstract form sculpted from blue glass.',
     href: 'http://collections.vam.ac.uk/item/O8905/form-roubicek-rene',
     objectImageOverlayData: {
@@ -51,7 +53,8 @@ let objectCards = [
       1920: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/8e244833-8b78-4701-9b77-2639312dbf94/1920.jpg',
       2560: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/41/7dfc2083-58d3-4928-ba07-3cf428eadad6/2560.jpg'
     },
-    caption: 'Fruits from the Garden and the Field, rainbow wallpaper (detail). © Fallen Fruit, 2019.',
+    caption: 'Fruits from the Garden and the Field, rainbow wallpaper (detail)',
+    captionSub: ['Fallen Fruit', '2019'],
     physicalDescription: 'A wallpaper print design.',
     objectImageOverlayData: {
       onDisplay: false,
@@ -68,7 +71,8 @@ let objectCards = [
       1920: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/c8d09cd6-c361-460f-a388-f2118ee44c1d/1920.jpg',
       2560: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/4f6d683f-854e-4576-a0dd-6f54c78ae7b0/2560.jpg'
     },
-    caption: 'The Research Institute, Lego set, designed by Ellen Kooijman, 2015, Denmark.',
+    caption: 'The Research Institute, Lego set, designed by Ellen Kooijman',
+    captionSub: ['Lego', '2015'],
     physicalDescription: 'A Research Institute made of Lego.',
     href: 'http://collections.vam.ac.uk/item/O1298864/the-research-institute-lego-set-kooijman-ellen',
     objectImageOverlayData: {
