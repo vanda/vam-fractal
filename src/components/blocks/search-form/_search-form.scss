@@ -26,6 +26,14 @@
       justify-content: space-between;
       overflow: hidden;
       padding: 7px 9px;
+
+      @include bpMinSmall {
+        padding: 11px 9px;
+      }
+
+      @include bpMinMedium {
+        padding: 16px 9px;
+      }
     }
   }
 
@@ -60,7 +68,7 @@
       width: calc(100% - 94px);
 
       @include bpMinSmall {
-        width: calc(100% - 156px);
+        width: calc(100% - 168px);
       }
     }
   }
@@ -91,6 +99,10 @@
 
       @include bpMinSmall {
         @include typeSetting(5);
+      }
+
+      @include bpMinMedium {
+        @include typeSetting(6);
       }
     }
   }
@@ -175,18 +187,22 @@
     .b-search-form--etc & {
       color: siteColor(vam-black);
       margin-top: 0;
+
+      @include bpMinMedium {
+        @include typeSetting(4, semi-bold, uppercase);
+      }
     }
 
     .b-search-form--etc-gateway & {
       border-radius: 0 2px 2px 0;
       height: 100%;
       margin: 0;
-      padding: 7px 5px 7px 12px;
+      padding: 0 5px 0 12px;
       position: absolute;
       right: 0;
 
       @include bpMinSmall {
-        padding: 30px 30px 30px 37px;
+        padding: 0 30px 0 37px;
       }
     }
 
