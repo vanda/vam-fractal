@@ -30,7 +30,12 @@ require('../../components/groups/story-box-container/_story-box-container.js');
 new LazyLoad({
   elements_selector: 'img[data-srcset]',
   class_loading: 's-lazyload--blur',
-  class_error: 's-lazyload--error'
+  class_error: 's-lazyload--error',
+  callback_error: (el) => {
+    // required for safari which won't apply pseudo elements to replaced elements like IMG
+    el.parentNode.insertBefore(document.createElement('div'), el).classList.add('s-lazyload--error');
+    el.parentNode.removeChild(el);
+  }
 });
 
 contentWarningsInit();
