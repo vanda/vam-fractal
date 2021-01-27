@@ -120,7 +120,7 @@
                     alt: title
                   },
                   title,
-                  href: `http://vam-etc-test.azureedge.net/item/${record.systemNumber}/index.html`
+                  href: `/item/${record.systemNumber}/index.html`
                 }
               );
               return true;
