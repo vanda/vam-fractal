@@ -18,7 +18,7 @@ const datasetToInts = dataset => Object.entries(dataset).reduce((total, pair) =>
 const populateButton = (button, index) => {
   button.dataset.pageIndex = index;
   button.value = index;
-  button.innerHTML = `${(index + 1) < 10 ? 0 : ''}${index}`;
+  button.innerHTML = `${(index + 1) < 11 ? 0 : ''}${index}`;
   button.ariaLabel = `Go to page ${index}`;
 };
 
