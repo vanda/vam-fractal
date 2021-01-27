@@ -45,6 +45,11 @@
     outline: 0;
     width: 20px;
 
+    &:only-child {
+      cursor: default;
+      height: 0;
+    }
+
     &::before {
       @include typeSetting(3, bold);
       bottom: 46px;
