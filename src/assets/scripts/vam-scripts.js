@@ -33,7 +33,7 @@ new LazyLoad({
   class_error: 's-lazyload--error',
   callback_error: (el) => {
     // required for safari which won't apply pseudo elements to replaced elements like IMG
-    el.parentNode.insertBefore(document.createElement('div'), el).classList.add('s-lazyload--error');
+    el.parentNode.insertBefore(document.createElement('div'), el).className = el.className;
     el.parentNode.removeChild(el);
   }
 });
