@@ -30,12 +30,6 @@
       }
     }
 
-    .theme-#{$color} &--border-color,
-    .theme-#{$color} &--border-color--hover:hover { // sass-lint:disable-line class-name-format
-      border-color: darken(map-get($theme-colors, $color), 10%);
-      transition: all .2s ease-out;
-    }
-
 
     .theme-#{$color} &--border-color { // sass-lint:disable-line class-name-format
       border-color: map-get($theme-colors, $color);
