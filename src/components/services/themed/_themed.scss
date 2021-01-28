@@ -44,7 +44,7 @@
     // This was breaking when chained with the above.
     // Duplicated the hover styling into it's own declaration for now.
     .theme-#{$color}--border-color--hover:hover { // sass-lint:disable-line class-name-format
-      border-color: map-get($theme-colors, $color);
+      border-color: darken(map-get($theme-colors, $color), 10%);
     }
   }
 }
