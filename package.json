@@ -72,6 +72,6 @@
     "clamp-js": "^0.7.0",
     "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll#35939c17b602772a1f9abc9272c3f668697be8ba",
     "svg4everybody": "^2.1.9",
-    "vanilla-lazyload": "^17.0.1"
+    "vanilla-lazyload": "^17.3.0"
   }
 }
