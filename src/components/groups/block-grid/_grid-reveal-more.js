@@ -24,7 +24,7 @@ if (gridRevealMore.length) {
         <a href="#" data-tracking-showmorebutton="${tracking}" class="js-reveal-more-btn">
           <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">
             <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
-              <svg role="img">
+              <svg aria-hidden="true" role="img">
                 <use xlink:href="${svgURL}#plus"></use>
               </svg>
             </div>
