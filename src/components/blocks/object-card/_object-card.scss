@@ -49,10 +49,10 @@
 
     & > .b-object-card__image {
       filter: blur(10px);
-    }
 
-    & > .b-object-card__caption {
-      filter: blur(10px);
+      & + figcaption {
+        filter: blur(10px);
+      }
     }
   }
 
