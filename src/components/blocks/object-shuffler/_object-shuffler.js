@@ -43,6 +43,7 @@
             deckTab.title = `${deck._props.deckTitle}`;
             deckTab.setAttribute('tabindex', '0');
             deckTab.setAttribute('aria-hidden', false);
+            deckTab.dataset.trackingCollections = 'you may also like carousel';
             deckTab._deck = deck;
             if (deckTab === deckTab.parentNode.firstElementChild) {
               deckTab.setAttribute('active', true);
@@ -138,10 +139,11 @@
         const dataIndex = deck._props.itemsIndex % deck._props.itemsData.length;
         const img = item.querySelector('img');
         item.title = deck._props.itemsData[dataIndex].title;
-        img.alt = deck._props.itemsData[dataIndex].img.alt;
         item.href = deck._props.itemsData[dataIndex].href;
         item.setAttribute('tabindex', '-1');
         item.setAttribute('aria-hidden', true);
+        item.dataset.trackingCollections = 'you may also like object';
+        img.alt = deck._props.itemsData[dataIndex].img.alt;
         img.classList.remove('s-lazyload--abort');
         img.onerror = () => {
           img.classList.add('s-lazyload--abort');
