@@ -210,6 +210,42 @@ module.exports = {
             eventMachineStartDate: '2017-06-24',
             eventMachineEndDate: '2017-06-24',
             actions: ['More info']
+          },
+          {
+            eventUrl: 'https://www.vam.ac.uk/event/YRnWAm3y/digital-design-drop-in',
+            eventType: 'Drop-in',
+            eventTitle: 'Digital Design Drop-in',
+            eventImage: {
+              320: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/14/60112fc1-0a21-415c-bc9c-ab1e65ecba12/digital-design-drop-in_320.jpg',
+              640: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/14/7df7507c-6ab4-4d4f-9a9c-67e0dd1e6de8/digital-design-drop-in_640.jpg',
+              960: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/501c15fa-11d8-43b4-8c65-19f8d2e69507/digital-design-drop-in_960.jpg',
+              1280: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/8d4487a5-b19a-43f0-bff7-f0694f5576dc/digital-design-drop-in_1280.jpg',
+              1920: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/731bebea-f1ed-4fa8-9ef0-4b672c2c7224/digital-design-drop-in_1920.jpg',
+              2560: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/fa44e405-a3c9-45f0-aa63-5fc527cadd8a/digital-design-drop-in_2560.jpg'
+            },
+            eventPrice: 'FREE',
+            eventHumanDates: 'Saturday, 24th June 2017',
+            eventMachineStartDate: '2017-06-24',
+            eventMachineEndDate: '2017-06-24',
+            actions: ['More info']
+          },
+          {
+            eventUrl: 'https://www.vam.ac.uk/event/YRnWAm3y/digital-design-drop-in',
+            eventType: 'Drop-in',
+            eventTitle: 'Digital Design Drop-in',
+            eventImage: {
+              320: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/14/60112fc1-0a21-415c-bc9c-ab1e65ecba12/digital-design-drop-in_320.jpg',
+              640: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/14/7df7507c-6ab4-4d4f-9a9c-67e0dd1e6de8/digital-design-drop-in_640.jpg',
+              960: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/501c15fa-11d8-43b4-8c65-19f8d2e69507/digital-design-drop-in_960.jpg',
+              1280: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/8d4487a5-b19a-43f0-bff7-f0694f5576dc/digital-design-drop-in_1280.jpg',
+              1920: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/731bebea-f1ed-4fa8-9ef0-4b672c2c7224/digital-design-drop-in_1920.jpg',
+              2560: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/15/fa44e405-a3c9-45f0-aa63-5fc527cadd8a/digital-design-drop-in_2560.jpg'
+            },
+            eventPrice: 'FREE',
+            eventHumanDates: 'Saturday, 24th June 2017',
+            eventMachineStartDate: '2017-06-24',
+            eventMachineEndDate: '2017-06-24',
+            actions: ['More info']
           }
         ]
       }
