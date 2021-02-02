@@ -1,6 +1,6 @@
 const prefix = 'b-image-overlay-license-modal';
 
-const downloadButton = '__download-button';
+const downloadButtonClass = '__download-button';
 const contactButton = '__contact-button';
 const modalClass = '__image-modal';
 const contactModalOpen = '__contact-modal-open';
@@ -28,9 +28,11 @@ const modal = document.querySelector(`.${prefix}${modalClass}`);
 const imageOverlay = document.querySelector('.b-image-overlay');
 const downloadContent = document.querySelector(`.${prefix}${downloadContentClass}`);
 const contactContent = document.querySelector(`.${prefix}${contactContentClass}`);
+const downloadLink = document.querySelector('.u-link.b-image-overlay-license-modal__download-link.js-modal-action');
+const downloadButton = document.querySelector('.b-icon-link.b-icon-link__download.js-modal-action');
 
 window.addEventListener('click', (e) => {
-  if (e.target.closest(`.${prefix}${downloadButton}`)) {
+  if (e.target.closest(`.${prefix}${downloadButtonClass}`)) {
     window.setTimeout(() => {
       document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
     }, 10);
@@ -73,11 +75,15 @@ window.addEventListener('click', (e) => {
           document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.add(`${prefix}${c}--active`)
         );
         document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.add('b-icon-link--active');
+        downloadLink.setAttribute('data-tracking-collections', 'image download');
+        downloadButton.setAttribute('data-tracking-collections', 'image download');
       } else {
         elements.forEach(c =>
           document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.remove(`${prefix}${c}--active`)
         );
         document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.remove('b-icon-link--active');
+        downloadLink.removeAttribute('data-tracking-collections');
+        downloadButton.removeAttribute('data-tracking-collections');
       }
     }
   }
