@@ -18,14 +18,17 @@ function clickFunction (e) {
 
   if (textElConcealed) {
     textEl.classList.remove(hiddenClass);
+    e.target.setAttribute('data-tracking-collections', 'read less');
   } else {
     textEl.classList.add(hiddenClass);
+    e.target.setAttribute('data-tracking-collections', 'read more');
   }
 }
 
 function initRevealer () {
   revealEl.className = classes[0];
   revealEl.innerHTML = html[0];
+  revealEl.setAttribute('data-tracking-collections', 'read more');
 
   Array.from(document.querySelectorAll('.etc-details__cell-free')).forEach((e) => {
     if (e.offsetHeight > 200) {
