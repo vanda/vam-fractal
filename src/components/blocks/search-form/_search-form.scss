@@ -30,11 +30,7 @@
 
     .b-search-form--etc-gateway & {
       @include bpMinSmall {
-        padding: 11px 9px;
-      }
-
-      @include bpMinMedium {
-        padding: 16px 9px;
+        padding: 11px 20px;
       }
     }
   }
@@ -76,15 +72,15 @@
   }
 
   &__label {
-    @include typeSetting(3);
+    @include typeSetting(3, light);
     color: siteColor(vam-grey-5);
     display: block;
     margin-bottom: 10px;
     text-align: center;
 
     @include bpMinSmall {
-      @include typeSetting(5);
-      margin-bottom: 20px;
+      @include typeSetting(5, light);
+      margin-bottom: 5px;
     }
   }
 
@@ -101,10 +97,6 @@
 
       @include bpMinSmall {
         @include typeSetting(5);
-      }
-
-      @include bpMinMedium {
-        @include typeSetting(6);
       }
     }
   }
