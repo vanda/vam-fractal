@@ -9,11 +9,11 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
 
   &--active {
     display: block;
     overflow-y: auto;
+    z-index: 9999;
   }
 
   @include bpMinMedium {
