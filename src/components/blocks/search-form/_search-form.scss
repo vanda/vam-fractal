@@ -30,7 +30,7 @@
 
     .b-search-form--etc-gateway & {
       @include bpMinSmall {
-        padding: 11px 20px;
+        padding: 11px 10px;
       }
     }
   }
@@ -108,8 +108,11 @@
     color: siteColor(vam-white);
     height: 100%;
     margin: 4px 0;
-    padding: 0;
     width: 100%;
+
+    @include bpMinSmall {
+      padding-left: 10px;
+    }
 
     .b-search-form--etc & {
       color: siteColor(vam-black);
