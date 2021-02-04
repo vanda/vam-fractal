@@ -111,13 +111,13 @@
           .then((data) => {
           // deck._props.itemsData = [...deck._props.itemsData, ...data];
             Array.from(data.records, (record) => {
-              const imgPath = `https://media.vam.ac.uk/media/thira/collection_images/${record._primaryImageId.substring(0, 6)}/${record._primaryImageId}.jpg`;
+              const imgPath = `${record._images._iiif_image_base_url}full/`;
               const title = record._primaryTitle || `untitled ${record.objectType}`;
               deck._props.itemsData.push(
                 {
                   img: {
-                    srcset: `${imgPath} 320w, ${imgPath} 640w, ${imgPath} 960w`,
-                    src: imgPath,
+                    srcset: `${imgPath}250,/0/default.jpg 250w, ${imgPath}350,/0/default.jpg 350w, ${imgPath}450,/0/default.jpg 450w, ${imgPath}550,/0/default.jpg 550w, ${imgPath}700,/0/default.jpg 700w, ${imgPath}900,/0/default.jpg 900w`,
+                    src: `${imgPath}350,/0/default.jpg`,
                     alt: title
                   },
                   title,
