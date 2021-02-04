@@ -29,6 +29,7 @@ require('../../components/groups/story-box-container/_story-box-container.js');
 /* eslint-disable no-new */
 new LazyLoad({
   elements_selector: 'img[data-srcset]',
+  cancel_on_exit: false,
   class_loading: 's-lazyload--blur',
   class_error: 's-lazyload--error',
   callback_error: (el) => {
