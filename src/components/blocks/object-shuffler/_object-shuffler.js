@@ -121,7 +121,7 @@
                     alt: title
                   },
                   title,
-                  href: `/item/${record.systemNumber}/index.html`
+                  href: `/item/${record.systemNumber}/`
                 }
               );
               return true;
