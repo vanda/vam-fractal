@@ -78,8 +78,8 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     /* EtC landing pg search */
     searchForm._props = {
       type: 'etcGatewaySearch',
-      suggestionsTop: 'https://vam-etc-test.azureedge.net/assets/data/suggestions.json',
-      suggestionsAPI: 'https://vam-etc-test-api.azureedge.net/v2/sayt/search'
+      suggestionsTop: 'https://collections.vam.ac.uk/assets/data/suggestions.json',
+      suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search'
     };
 
     const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
@@ -88,7 +88,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       const suggestEl = document.createElement('a');
       if (suggestionsEl.childElementCount < 10) {
         const title = suggestion.displayName || suggestion.displayTerm;
-        const url = `https://vam-etc-test.azureedge.net/search/?id_${suggestion.recordType}=${suggestion.systemNumber}`;
+        const url = `https://collections.vam.ac.uk/search/?id_${suggestion.recordType}=${suggestion.systemNumber}`;
         suggestEl.className = 'b-search-form__suggestion';
         suggestEl.href = url;
         suggestEl.tabindex = 0;
