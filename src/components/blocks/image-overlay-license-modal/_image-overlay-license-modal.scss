@@ -144,7 +144,6 @@
     }
     margin: 15px 0;
     position: relative;
-    width: fit-content;
   }
 
   &__image-icon-link {
@@ -169,9 +168,9 @@
     cursor: pointer;
     display: none;
     height: 20px;
+    left: 0;
     margin-top: 5px;
     position: absolute;
-    right: 15px;
     top: 0;
     width: 26px;
     z-index: 99;
@@ -189,6 +188,7 @@
 
   &__agree-to-terms {
     @include typeSetting(4, regular);
+    cursor: pointer;
     margin-left: 40px;
 
     &-text {
