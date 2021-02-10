@@ -153,6 +153,7 @@
     height: 60%;
     left: 21%;
     position: absolute;
+    pointer-events: none;
     right: 27%;
     top: 18%;
     width: 60%;
@@ -160,6 +161,7 @@
     &--active {
       background-color: #12d2a0;
       color: siteColor(vam-black);
+      pointer-events: none;
     }
   }
 

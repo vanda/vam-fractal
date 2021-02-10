@@ -114,6 +114,7 @@
       width: 44px;
       svg {
         height: 14px;
+        pointer-events: none;
         width: 14px;
       }
     }
@@ -134,6 +135,7 @@
     svg {
       height: 12px;
       margin: auto;
+      pointer-events: none;
       width: 12px;
     }
 
