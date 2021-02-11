@@ -70,7 +70,7 @@ const offensiveWarningInitializer = () => {
         e.stopPropagation();
         return false;
       };
-      el.appendChild(warningEl);
+      el.parentElement.appendChild(warningEl);
       reAdjustWarnings();
     }
   });

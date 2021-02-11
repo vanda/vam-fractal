@@ -254,6 +254,10 @@
       }
 
       &--offensive {
+        div {
+          filter: blur(10px);
+        }
+
         height: 160px;
         position: relative;
 
