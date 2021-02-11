@@ -94,7 +94,7 @@ if (document.querySelector('.etc-template__results-container')) {
         el.onclick = e => toggleSort(e.target);
       }
     });
-  })
+  });
   document.querySelector('.etc-template__results-container').dispatchEvent(new Event('initSorts'));
 }
 
