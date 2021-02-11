@@ -37,6 +37,7 @@
               </div>
             </div>
             {% for item in items %}
+
               <div class="b-search-results__body-row b-search-results__body-row{% if item.offensive %}--offensive{% endif %}" >
                 <div class="b-search-results__cell b-search-results__cell-img">
                   <div class="b-search-results__cell-content-img">
@@ -44,34 +45,34 @@
                     <div></div>
                   </div>
                 </div>
-                <div class="b-search-results__cell b-search-results__cell--responsive">
+                <a class="b-search-results__cell b-search-results__cell--responsive">
                   <div class="b-search-results__cell-content-container">
                     <span class="b-search-results__cell-span b-search-results__cell-span--emphasis">{{ item.title }}</span></br>
                     <span class="b-search-results__cell-span">{{ item.artist }},</span>
                     <span class="b-search-results__cell-span">{{ item.date }}</span></br>
                     <span class="b-search-results__cell-span b-search-results__cell-span--responsive">{{ item.place }}</span></br>
                 </div>
-                </div>
-                <div class="b-search-results__cell b-search-results__cell--full b-search-results__cell--emphasis">
+                </a>
+                <a class="b-search-results__cell b-search-results__cell--full b-search-results__cell--emphasis">
                   <div class="b-search-results__cell-content">
                     {{ item.title }}
                   </div>
-                </div>
-                <div class="b-search-results__cell  b-search-results__cell--full">
+                </A>
+                <a class="b-search-results__cell  b-search-results__cell--full">
                   <div class="b-search-results__cell-content">
                     {{ item.artist }}
                   </div>
-                </div>
-                <div class="b-search-results__cell b-search-results__cell--full">
+                </A>
+                <a class="b-search-results__cell b-search-results__cell--full">
                   <div class="b-search-results__cell-content">
                     {{ item.date }}
                   </div>
-                </div>
-                <div class="b-search-results__cell b-search-results__cell--full">
+                </a>
+                <a class="b-search-results__cell b-search-results__cell--full">
                   <div class="b-search-results__cell-content">
                     {{ item.place }}
                   </div>
-                </div>
+                </a>
               </div>
             {% endfor %}
           </div>
