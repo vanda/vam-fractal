@@ -1,4 +1,6 @@
-<div style='background:black;max-width: 1200px;'>
+<div class="etc-template__results-container"></div>>
+
+<div style='background:#1d1e20;max-width: 1200px;'>
   <div class="b-search-results__count" data-count="{{ pages*20 }}">
     {%  if items|length  %}
       {{ (items|length) * pages }} objects
@@ -16,67 +18,65 @@
     </div>
     <div class="b-search-results">
       {%  if items|length  %}
-        <table class="b-search-results__table">
-          <thead class="b-search-results__head">
-            <tr>
-              <td class="b-search-results__head-image"></td>
-              <td class="b-search-results__head-responsive"></td>
-              <td class="b-search-results__head-cell b-search-results__head-title" data-sortable="0">
+        <div class="b-search-results__table">
+          <div class="b-search-results__body">
+            <div class="b-search-results__head">
+              <div class="b-search-results__head-image"></div>
+              <div class="b-search-results__head-responsive"></div>
+              <div class="b-search-results__head-cell b-search-results__head-title" data-sortable="0">
                 Title
-              </td>
-              <td class="b-search-results__head-cell b-search-results__head-artist" data-value="artist" data-sortable="1">
+              </div>
+              <div class="b-search-results__head-cell b-search-results__head-artist" data-value="artist" data-sortable="1">
                 Artist/Maker
-              </td>
-              <td class="b-search-results__head-cell b-search-results__head-date" data-value="date" data-sortable="1">
+              </div>
+              <div class="b-search-results__head-cell b-search-results__head-date" data-value="date" data-sortable="1">
                 Date
-              </td>
-              <td class="b-search-results__head-cell b-search-results__head-place" data-value="place" data-sortable="1">
+              </div>
+              <div class="b-search-results__head-cell b-search-results__head-place" data-value="place" data-sortable="1">
                 Place Of Origin
-              </td>
-            </tr>
-          </thead>
-          <tbody class="b-search-results__body">
+              </div>
+            </div>
             {% for item in items %}
-              <tr class="b-search-results__body-row b-search-results__body-row{% if item.offensive %}--offensive{% endif %}" >
-                <td class="b-search-results__cell b-search-results__cell-img">
+
+              <div class="b-search-results__body-row b-search-results__body-row{% if item.offensive %}--offensive{% endif %}" >
+                <div class="b-search-results__cell b-search-results__cell-img">
                   <div class="b-search-results__cell-content-img">
                     <img class="b-search-results__cell-content-img-image" src={{ item.image }} alt='some alt' onerror="this.setAttribute('alt', '');this.onerror=null;this.className='';this.parentNode.children[1].classList.add('b-search-results__cell-content-no-img');this.parentNode.children[1].classList.add('b-search-results__cell-content-img-image');this.parentNode.classList.add('b-search-results__cell-content-img--no-img');this.remove();" />
                     <div></div>
                   </div>
-                </td>
-                <td class="b-search-results__cell b-search-results__cell--responsive">
+                </div>
+                <a class="b-search-results__cell b-search-results__cell--responsive">
                   <div class="b-search-results__cell-content-container">
                     <span class="b-search-results__cell-span b-search-results__cell-span--emphasis">{{ item.title }}</span></br>
                     <span class="b-search-results__cell-span">{{ item.artist }},</span>
                     <span class="b-search-results__cell-span">{{ item.date }}</span></br>
                     <span class="b-search-results__cell-span b-search-results__cell-span--responsive">{{ item.place }}</span></br>
-                  </div>
-                </td>
-                </td>
-                <td class="b-search-results__cell b-search-results__cell--full b-search-results__cell--emphasis">
+                </div>
+                </a>
+                <a class="b-search-results__cell b-search-results__cell--full b-search-results__cell--emphasis">
                   <div class="b-search-results__cell-content">
                     {{ item.title }}
                   </div>
-                </td>
-                <td class="b-search-results__cell  b-search-results__cell--full">
+                </A>
+                <a class="b-search-results__cell  b-search-results__cell--full">
                   <div class="b-search-results__cell-content">
                     {{ item.artist }}
                   </div>
-                </td>
-                <td class="b-search-results__cell b-search-results__cell--full">
+                </A>
+                <a class="b-search-results__cell b-search-results__cell--full">
                   <div class="b-search-results__cell-content">
                     {{ item.date }}
                   </div>
-                </td>
-                <td class="b-search-results__cell b-search-results__cell--full">
+                </a>
+                <a class="b-search-results__cell b-search-results__cell--full">
                   <div class="b-search-results__cell-content">
                     {{ item.place }}
                   </div>
-                </td>
-              </tr>
+                </a>
+              </div>
             {% endfor %}
-          </tbody>
-        </table>
+          </div>
+        </div>
       {% endif %}
     </div>
   </div>

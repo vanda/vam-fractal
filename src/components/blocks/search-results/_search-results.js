@@ -70,7 +70,7 @@ const offensiveWarningInitializer = () => {
         e.stopPropagation();
         return false;
       };
-      el.appendChild(warningEl);
+      el.parentElement.appendChild(warningEl);
       reAdjustWarnings();
     }
   });
@@ -88,11 +88,20 @@ if (document.querySelector('.etc-template__results-container')) {
   document.querySelector('.etc-template__results-container').addEventListener('initWarnings', () => {
     offensiveWarningInitializer();
   });
+  document.querySelector('.etc-template__results-container').addEventListener('initSorts', () => {
+    Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
+      if (parseInt(el.dataset.sortable, 10)) {
+        el.onclick = e => toggleSort(e.target);
+      }
+    });
+  });
+  document.querySelector('.etc-template__results-container').dispatchEvent(new Event('initSorts'));
 }
 
-Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
-  if (parseInt(el.dataset.sortable, 10)) {
-    el.onclick = e => toggleSort(e.target);
-  }
-});
+
+// Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
+//   if (parseInt(el.dataset.sortable, 10)) {
+//     el.onclick = e => toggleSort(e.target);
+//   }
+// });
 

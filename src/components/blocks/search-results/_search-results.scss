@@ -56,7 +56,9 @@
   &__table {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    border-collapse: collapse;
     color: siteColor(vam-white);
+    display: table;
     margin-top: 0;
     width: 100%;
   }
@@ -76,6 +78,8 @@
 
   &__cell {
     @include typeSetting(3, light);
+
+    display: table-cell;
 
     &-img {
       vertical-align: middle;
@@ -250,6 +254,10 @@
       }
 
       &--offensive {
+        div {
+          filter: blur(10px);
+        }
+
         height: 160px;
         position: relative;
 
@@ -266,6 +274,7 @@
 
       background-color: #393b3f;
       border-bottom: 4px solid #1d1e20;
+      display: table-row;
       height: 84px;
 
       &:hover {
@@ -277,6 +286,8 @@
 
   &__head {
     @include typeSetting(4, semi-bold);
+    display: table-row;
+
 
     &-cell {
       display: none;
@@ -328,7 +339,7 @@
         width: 135px;
       }
       @include bpMinMedium {
-        width: 230px;
+        width: 170px;
       }
       width: 120px;
     }
