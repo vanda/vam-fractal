@@ -2,7 +2,7 @@
   <ul class='b-icon-list{% if modifier %} b-icon-list--{{ modifier }}{% endif %}'>
     {% for item in items %}
     <li class='b-icon-list__item'>
-      <svg role="img" class="b-icon-list__item__icon" aria-hidden="true">
+      <svg role="presentation" class="b-icon-list__item__icon">
         <use xlink:href="/assets/svg/svg-template.svg#{{ item.icon }}"></use>
       </svg>
       <div class="b-icon-list__item__content">
