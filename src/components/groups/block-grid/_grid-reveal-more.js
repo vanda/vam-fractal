@@ -1,7 +1,7 @@
 const gridRevealMore = document.querySelectorAll('.js-grid-reveal-more');
 
 if (gridRevealMore.length) {
-  Array.from(document.querySelectorAll('.js-grid-reveal-more'), (gridBlock) => {
+  Array.from(gridRevealMore, (gridBlock) => {
     const noOfItemsToShow = gridBlock.dataset.revealMoreCounter || 4;
 
     if (noOfItemsToShow < gridBlock.childElementCount) {
@@ -24,7 +24,7 @@ if (gridRevealMore.length) {
         <a href="#" data-tracking-showmorebutton="${tracking}" class="js-reveal-more-btn">
           <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">
             <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
-              <svg aria-hidden="true" role="img">
+              <svg aria-hidden="true" role="presentation">
                 <use xlink:href="${svgURL}#plus"></use>
               </svg>
             </div>
@@ -45,11 +45,14 @@ if (gridRevealMore.length) {
         // Filter down to just the hidden items
         const hiddenItems = gridItems.filter(el => el.classList.contains('s-visually-hidden'));
         // in case of column layout, add a colspan separator to preserve item order
-        const separator = hiddenItems[0].parentNode.insertBefore(
-          hiddenItems[0].cloneNode(false), hiddenItems[0]
-        );
-        separator.classList.remove('s-visually-hidden');
-        separator.classList.add('b-block-grid__cols-restarter');
+        const columns = window.getComputedStyle(gridBlock).getPropertyValue('column-count');
+        if (columns > 1) {
+          const separator = hiddenItems[0].parentNode.insertBefore(
+            hiddenItems[0].cloneNode(false), hiddenItems[0]
+          );
+          separator.classList.remove('s-visually-hidden');
+          separator.classList.add('b-block-grid__cols-restarter');
+        }
         // the big reveal
         hiddenItems.slice(0, noOfItemsToShow).forEach(el => el.classList.remove('s-visually-hidden'));
         // Remove the footer if we're not going to need the button after this
