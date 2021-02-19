@@ -135,7 +135,7 @@ const oicInit = () => {
     };
 
     oic.buttonInit = (rewind) => {
-      // need to disable all buttons and links on screen first then reenable
+      // need to disable all buttons and links on screen first then re-enable
       // buttons that are on screen
       oic.querySelectorAll('button').forEach(el => el.setAttribute('disabled', true));
 
@@ -153,6 +153,8 @@ const oicInit = () => {
       const itemPrev = item.querySelector('.b-object-image-overlay__prev');
       const itemNext = item.querySelector('.b-object-image-overlay__next');
 
+      // buttons only appear on desktop but still are present and
+      // focusable on mobile view
       if (window.innerWidth > 991) {
         if (oic._index > 0) {
           itemPrev.classList.add('b-object-image-overlay__prev--enabled');
