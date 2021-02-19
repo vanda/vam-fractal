@@ -168,6 +168,8 @@ const oicInit = () => {
 
       item.querySelectorAll('a').forEach(el => el.removeAttribute('tabindex'));
 
+      // different cta for mobile and desktop which are both
+      // focusable without this step
       if (window.innerWidth > 991) {
         if (item.querySelector('.b-object-image-overlay__cta--mobile')) {
           item.querySelector('.b-object-image-overlay__cta--mobile').setAttribute('tabindex', -1);
@@ -255,6 +257,7 @@ const oicInit = () => {
             e3.preventDefault();
             oic.advance();
           } else if (e3.key === 'Escape' || e3.key === 'Esc') {
+            /* eslint-disable-next-line no-use-before-define */
             closeModal();
           } else if (e3.keyCode === 9) {
             const first = oic.focusable[0];
