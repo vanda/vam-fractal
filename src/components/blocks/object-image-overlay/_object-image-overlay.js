@@ -136,15 +136,19 @@ const oicInit = () => {
       }
     };
 
-    oic.buttonInit = () => {
+    oic.buttonInit = (rewind) => {
+      // need to disable all buttons and links on screen first then reenable
+      // buttons that are on screen
       oic.querySelectorAll('button').forEach(el => el.setAttribute('disabled', true));
       oic.querySelectorAll('a').forEach(el => el.setAttribute('tabindex', '-1'));
       oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
-      // this logic needs to be moved here because otherwise the buttons off screen
+
+      // this logic needs to be here because otherwise the buttons off screen
       // will be focused by tabbing
       const item = document.querySelectorAll('.b-object-image-overlay__item')[1];
       const itemPrev = item.querySelector('.b-object-image-overlay__prev');
       const itemNext = item.querySelector('.b-object-image-overlay__next');
+
       if (oic._index > 0) {
         itemPrev.classList.add('b-object-image-overlay__prev--enabled');
         itemPrev.removeAttribute('disabled');
@@ -155,21 +159,49 @@ const oicInit = () => {
       }
       item.querySelectorAll('a').forEach(el => el.removeAttribute('tabindex'));
 
-     const currentItem = Array.from(document.querySelectorAll('.b-object-image-overlay__item'))[1];
-
       oic.focusable = [
         document.querySelector('.b-object-image-overlay__dismiss'),
       ].concat(Array.from(
-        currentItem.querySelectorAll(
+        item.querySelectorAll(
           'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         )
       ));
 
-      oic.focusable = oic.focusable.filter(x => !x.classList.contains('b-object-image-overlay__cta--mobile'));
-
-      oic.focusable[0].focus();
-
-      oic.focusable = oic.focusable.filter(x => !x.classList.contains('b-object-image-overlay__cta--mobile'))
+      if (rewind === false && rewind !== null) {
+        if (
+          item.querySelector('.b-object-image-overlay__next:not([disabled]')
+        ) {
+          item.querySelector('.b-object-image-overlay__next').focus();
+        } else if (
+          item.querySelector('.b-object-image-overlay__prev:not([disabled]')
+        ) {
+         item.querySelector('.b-object-image-overlay__prev').focus();
+        } else {
+          oic.focusable[0].focus();
+        }
+      } else if (rewind === true) {
+        if (
+          item.querySelector('.b-object-image-overlay__prev:not([disabled]')
+        ) {
+          item.querySelector('.b-object-image-overlay__prev').focus();
+        } else if (
+          item.querySelector('.b-object-image-overlay__next:not([disabled]')
+        ) {
+          item.querySelector('.b-object-image-overlay__next').focus();
+        } else {
+          oic.focusable[0].focus();
+        }
+      } else {
+        if (
+          item.querySelector('.b-object-image-overlay__next:not([disabled]')
+        ) {
+          item.querySelector('.b-object-image-overlay__next').focus();
+        } else if (item.querySelector('.b-object-image-overlay__prev:not([disabled]')) {
+         item.querySelector('.b-object-image-overlay__prev').focus();
+        } else {
+          oic.focusable[0].focus();
+        }
+      }
     }
 
     oic.advance = (rewind = false) => {
@@ -181,7 +213,7 @@ const oicInit = () => {
         oic.track(oic._index);
       }
 
-      oic.buttonInit();
+      oic.buttonInit(rewind);
     };
 
     oic.track = (index) => {
@@ -217,27 +249,13 @@ const oicInit = () => {
 
         const currentItem = Array.from(document.querySelectorAll('.b-object-image-overlay__item'))[1];
 
-        // oic.focusable = [
-        //   document.querySelector('.b-object-image-overlay__dismiss'),
-        // ].concat(Array.from(
-        //   currentItem.querySelectorAll(
-        //     'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        //   )
-        // ));
-
-        // oic.focusable = oic.focusable.filter(x => !x.classList.contains('b-object-image-overlay__cta--mobile'));
-
-        // oic.focusable[0].focus();
-
         const keyHandle = (e3) => {
           if (e3.key === 'ArrowLeft') {
             e3.preventDefault();
             oic.advance(true);
-            oic.buttonInit();
           } else if (e3.key === 'ArrowRight') {
             e3.preventDefault();
             oic.advance();
-            oic.buttonInit();
           } else if (e3.key === 'Escape' || e3.key === 'Esc') {
             closeModal();
           } else if (e3.keyCode === 9) {
@@ -266,11 +284,9 @@ const oicInit = () => {
           } else if (e2.target.closest('.b-object-image-overlay__next--enabled')) {
             e2.preventDefault();
             oic.advance();
-            oic.buttonInit();
           } else if (e2.target.closest('.b-object-image-overlay__prev--enabled')) {
             e2.preventDefault();
             oic.advance(true);
-            oic.buttonInit();
           }
         };
       }
