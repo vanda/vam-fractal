@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const oicInit = () => {
   const oicSeeds = Array.from(document.querySelectorAll('.js-object-image-overlay-item'));
-  let focusableElements = [];
 
   if (oicSeeds.length) {
     const oic = document.querySelector('.b-object-image-overlay') || document.createElement('div');
@@ -172,25 +171,28 @@ const oicInit = () => {
           item.querySelector('.b-object-image-overlay__cta--mobile').setAttribute('tabindex', -1);
           item.querySelector('.b-object-image-overlay__cta--screen').removeAttribute('tabindex');
         }
-      } else {
-        if (item.querySelector('.b-object-image-overlay__cta--screen')) {
-          item.querySelector('.b-object-image-overlay__cta--screen').setAttribute('tabindex', -1);
-          item.querySelector('.b-object-image-overlay__cta--mobile').removeAttribute('tabindex');
-        }
+      } else if (item.querySelector('.b-object-image-overlay__cta--screen')) {
+        item.querySelector('.b-object-image-overlay__cta--screen').setAttribute('tabindex', -1);
+        item.querySelector('.b-object-image-overlay__cta--mobile').removeAttribute('tabindex');
       }
 
       oic.focusable = [
-        document.querySelector('.b-object-image-overlay__dismiss'),
+        document.querySelector('.b-object-image-overlay__dismiss')
       ].concat(Array.from(
         item.querySelectorAll(
           'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         )
       ));
 
-      console.log(oic.focusable);
-
-      const focusHierarchy = (first, second, last) =>
-        first ? (() => first.focus())() : (second ? (() => second.focus())() : last.focus());
+      const focusHierarchy = (first, second, last) => {
+        if (first) {
+          first.focus();
+        } else if (second) {
+          second.focus();
+        } else {
+          last.focus();
+        }
+      };
 
       if (!rewind) {
         focusHierarchy(
@@ -205,7 +207,7 @@ const oicInit = () => {
           oic.focusable[0]
         );
       }
-    }
+    };
 
     oic.advance = (rewind = false) => {
       if ((!rewind && oic._index < oicSeeds.length - 1)
@@ -243,15 +245,6 @@ const oicInit = () => {
         oic.track(oic._index);
         oic.buttonInit();
 
-        const closeModal = () => {
-          oic.classList.remove('b-object-image-overlay--active');
-          items.innerHTML = '';
-          oic.onclick = null;
-          document.removeEventListener('keydown', keyHandle, false);
-        };
-
-        const currentItem = Array.from(document.querySelectorAll('.b-object-image-overlay__item'))[1];
-
         const keyHandle = (e3) => {
           if (e3.key === 'ArrowLeft') {
             e3.preventDefault();
@@ -276,6 +269,13 @@ const oicInit = () => {
               }
             }
           }
+        };
+
+        const closeModal = () => {
+          oic.classList.remove('b-object-image-overlay--active');
+          items.innerHTML = '';
+          oic.onclick = null;
+          document.removeEventListener('keydown', keyHandle, false);
         };
 
         document.addEventListener('keydown', keyHandle, false);
