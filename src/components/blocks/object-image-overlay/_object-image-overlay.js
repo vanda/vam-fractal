@@ -257,8 +257,9 @@ const oicInit = () => {
             e3.preventDefault();
             oic.advance();
           } else if (e3.key === 'Escape' || e3.key === 'Esc') {
-            /* eslint-disable-next-line no-use-before-define */
+            /* eslint-disable no-use-before-define */
             closeModal();
+            /* eslint-enable no-use-before-define */
           } else if (e3.keyCode === 9) {
             const first = oic.focusable[0];
             const last = oic.focusable[oic.focusable.length - 1];
