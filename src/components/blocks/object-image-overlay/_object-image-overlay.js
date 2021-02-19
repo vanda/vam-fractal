@@ -7,7 +7,6 @@ const oicInit = () => {
     const oic = document.querySelector('.b-object-image-overlay') || document.createElement('div');
     document.body.appendChild(oic);
     oic.classList.add('b-object-image-overlay');
-    // oic.setAttribute('tabindex', 0);
     oic.innerHTML = `
       <button class="b-object-image-overlay__dismiss" title="Close" aria-label="Close"></button>
       <div class="b-object-image-overlay__items"></div>
@@ -140,7 +139,13 @@ const oicInit = () => {
       // need to disable all buttons and links on screen first then reenable
       // buttons that are on screen
       oic.querySelectorAll('button').forEach(el => el.setAttribute('disabled', true));
+
       oic.querySelectorAll('a').forEach(el => el.setAttribute('tabindex', '-1'));
+
+      if (window.innerWidth > 991) {
+        oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
+      }
+
       oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
 
       // this logic needs to be here because otherwise the buttons off screen
@@ -149,15 +154,30 @@ const oicInit = () => {
       const itemPrev = item.querySelector('.b-object-image-overlay__prev');
       const itemNext = item.querySelector('.b-object-image-overlay__next');
 
-      if (oic._index > 0) {
-        itemPrev.classList.add('b-object-image-overlay__prev--enabled');
-        itemPrev.removeAttribute('disabled');
+      if (window.innerWidth > 991) {
+        if (oic._index > 0) {
+          itemPrev.classList.add('b-object-image-overlay__prev--enabled');
+          itemPrev.removeAttribute('disabled');
+        }
+        if (oic._index < oicSeeds.length - 1) {
+          itemNext.classList.add('b-object-image-overlay__next--enabled');
+          itemNext.removeAttribute('disabled');
+        }
       }
-      if (oic._index < oicSeeds.length - 1) {
-        itemNext.classList.add('b-object-image-overlay__next--enabled');
-        itemNext.removeAttribute('disabled');
-      }
+
       item.querySelectorAll('a').forEach(el => el.removeAttribute('tabindex'));
+
+      if (window.innerWidth > 991) {
+        if (item.querySelector('.b-object-image-overlay__cta--mobile')) {
+          item.querySelector('.b-object-image-overlay__cta--mobile').setAttribute('tabindex', -1);
+          item.querySelector('.b-object-image-overlay__cta--screen').removeAttribute('tabindex');
+        }
+      } else {
+        if (item.querySelector('.b-object-image-overlay__cta--screen')) {
+          item.querySelector('.b-object-image-overlay__cta--screen').setAttribute('tabindex', -1);
+          item.querySelector('.b-object-image-overlay__cta--mobile').removeAttribute('tabindex');
+        }
+      }
 
       oic.focusable = [
         document.querySelector('.b-object-image-overlay__dismiss'),
@@ -167,40 +187,23 @@ const oicInit = () => {
         )
       ));
 
-      if (rewind === false && rewind !== null) {
-        if (
-          item.querySelector('.b-object-image-overlay__next:not([disabled]')
-        ) {
-          item.querySelector('.b-object-image-overlay__next').focus();
-        } else if (
-          item.querySelector('.b-object-image-overlay__prev:not([disabled]')
-        ) {
-         item.querySelector('.b-object-image-overlay__prev').focus();
-        } else {
-          oic.focusable[0].focus();
-        }
-      } else if (rewind === true) {
-        if (
-          item.querySelector('.b-object-image-overlay__prev:not([disabled]')
-        ) {
-          item.querySelector('.b-object-image-overlay__prev').focus();
-        } else if (
-          item.querySelector('.b-object-image-overlay__next:not([disabled]')
-        ) {
-          item.querySelector('.b-object-image-overlay__next').focus();
-        } else {
-          oic.focusable[0].focus();
-        }
-      } else {
-        if (
-          item.querySelector('.b-object-image-overlay__next:not([disabled]')
-        ) {
-          item.querySelector('.b-object-image-overlay__next').focus();
-        } else if (item.querySelector('.b-object-image-overlay__prev:not([disabled]')) {
-         item.querySelector('.b-object-image-overlay__prev').focus();
-        } else {
-          oic.focusable[0].focus();
-        }
+      console.log(oic.focusable);
+
+      const focusHierarchy = (first, second, last) =>
+        first ? (() => first.focus())() : (second ? (() => second.focus())() : last.focus());
+
+      if (!rewind) {
+        focusHierarchy(
+          item.querySelector('.b-object-image-overlay__next:not([disabled]'),
+          item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
+          oic.focusable[0]
+        );
+      } else if (rewind) {
+        focusHierarchy(
+          item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
+          item.querySelector('.b-object-image-overlay__next:not([disabled]'),
+          oic.focusable[0]
+        );
       }
     }
 
