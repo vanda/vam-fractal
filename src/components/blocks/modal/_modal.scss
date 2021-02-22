@@ -15,6 +15,43 @@
     display: block;
   }
 
+  &__close {
+    display: inline-block;
+    height: 100%;
+    width: 22px;
+
+    &-button {
+      border: none;
+      bottom: 10px;
+      cursor: pointer;
+      height: 18px;
+      position: absolute;
+      right: 8px;
+      width: 18px;
+
+      @include bpMinSmall {
+        height: 20px;
+        right: 0;
+        top: -32px;
+        width: 20px;
+      }
+    }
+
+    &-icon {
+      bottom: 0;
+      color: siteColor(vam-white);
+      height: 18px;
+      position: absolute;
+      right: 0;
+      width: 18px;
+
+      @include bpMinSmall {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+
   &__content {
     background-color: siteColor(vam-white);
     border-radius: 2px;
@@ -43,16 +80,6 @@
       pointer-events: all;
     }
 
-    &::after {
-      color: #fff;
-      content: '×';
-      cursor: pointer;
-      font-size: 32px;
-      line-height: 0;
-      position: absolute;
-      right: 0;
-      top: -23px;
-    }
     &-license {
       max-width: none;
       padding: 10px;
