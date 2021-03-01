@@ -184,7 +184,7 @@ const oicInit = () => {
         document.querySelector('.b-object-image-overlay__dismiss')
       ].concat(Array.from(
         item.querySelectorAll(
-          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          'button:not([disabled]), a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])'
         )
       ));
 
