@@ -1,6 +1,12 @@
+* {
+  &:focus {
+    outline: white 1px solid;
+  }
+}
+
 .b-object-image-overlay {
   display: none;
-  
+
   &--active {
     animation: opacityFadeIn .2s;
     background-color: rgba(29, 30, 32, .98);
@@ -94,7 +100,7 @@
       padding: 32px 60px;
       width: 65%;
     }
-  }    
+  }
 
   &__image {
     margin: auto;
@@ -120,7 +126,7 @@
       margin-top: 50px;
       padding: 4px 0 0;
     }
-  }    
+  }
 
   &__prevnext {
     display: none;
@@ -179,7 +185,7 @@
       top: 0;
       width: 35%;
     }
-  }    
+  }
 
   &__caption {
     @include typeSetting(3, regular);
@@ -254,7 +260,7 @@
       padding: 35px 30px;
       position: relative;
     }
-  }    
+  }
 
   &__location-status {
     @include typeSetting(3, regular);
@@ -263,7 +269,7 @@
     &::after {
       content: ' at ';
     }
-      
+
     svg {
       display: none;
     }
@@ -289,7 +295,7 @@
         width: 16px;
       }
     }
-  }    
+  }
 
   &__location-copy {
     @include typeSetting(3, regular);
