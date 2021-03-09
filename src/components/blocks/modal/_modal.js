@@ -15,6 +15,13 @@ Array.from(modals, (modal) => {
   const modalCampaign = modal.dataset.modalCampaign;
   const focusable = modal.querySelectorAll('a');
 
+  const closeModal = () => {
+    modalTracking(modalCampaign, 'pop-up dismissed');
+    modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
+    // remove focus focusHandler
+    modal.classList.remove('b-modal--active');
+  };
+
   const focusHandler = (e) => {
     if (e.keyCode === 9) {
       const first = focusable[0];
@@ -31,17 +38,10 @@ Array.from(modals, (modal) => {
       }
     }
     if (e.key === 'Escape') {
+      modal.removeEventListener('keydown', focusHandler);
       closeModal();
     }
   };
-
-  const closeModal = () => {
-    modalTracking(modalCampaign, 'pop-up dismissed');
-    modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
-    // remove focus focusHandler
-    modal.removeEventListener('keydown', focusHandler);
-    modal.classList.remove('b-modal--active');
-  }
 
   if (
     (!modal.dataset.modalOnceOnly || !cookies.get(modalCampaign)) &&
@@ -67,6 +67,7 @@ Array.from(modals, (modal) => {
       if (!!(Array.from(e.target.classList).find(c => c === 'js-modal-action')) || e.target.closest('.js-modal-action')) {
         modalTracking(modalCampaign, `clicked: ${e.target.textContent}`);
       } else {
+        modal.removeEventListener('keydown', focusHandler);
         closeModal();
       }
     }
