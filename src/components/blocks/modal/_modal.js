@@ -16,6 +16,8 @@ Array.from(modals, (modal) => {
   const focusable = modal.querySelectorAll('a');
 
   const closeModal = () => {
+    modal.setAttribute('tabindex', '-1');
+    modal.setAttribute('aria-hidden', 'true');
     modalTracking(modalCampaign, 'pop-up dismissed');
     modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
     // remove focus focusHandler
@@ -48,6 +50,8 @@ Array.from(modals, (modal) => {
      !modal.dataset.notOnLoad
   ) {
     document.body.appendChild(modal);
+    modal.setAttribute('tabindex', '0');
+    modal.removeAttribute('aria-hidden');
     modal.classList.add('b-modal--active');
     modalTracking(modalCampaign, 'pop-up displayed');
 
