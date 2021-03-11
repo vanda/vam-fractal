@@ -94,7 +94,8 @@
         width: 100%;
 
         &::placeholder {
-          color: siteColor(vam-grey-4);
+          color: siteColor(vam-grey-3);
+          opacity: 1;
         }
 
         @include bpMinXSmall {
