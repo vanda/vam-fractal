@@ -147,7 +147,7 @@
     @include bpMaxSmall {
       @include visuallyHidden;
     }
-
+    text-shadow: siteColor(vam-black) 0 1px 2px;
     width: 100%;
   }
 
@@ -159,6 +159,7 @@
   }
 
   &__quote {
+    text-shadow: siteColor(vam-black) 0 1px 2px;
     width: 100%;
 
     &__body {
@@ -176,6 +177,7 @@
     }
 
     &__citation {
+      text-shadow: siteColor(vam-black) 0 1px 2px;
       @include typeSetting(1);
     }
   }
