@@ -9,8 +9,8 @@
 
   <form name="signup" id="signup" action="http://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form js-newsletter_form">
     <h1 class="b-newsletter__headline">Sign up to get the latest V&A news</h1>
-    <p class="b-newsletter__descriptor js-newsletter__descriptor">Hear about exhibitions, events, offers and opportunities from the V&A and the V&A Museum of Childhood.</p>
-    
+    <p aria-live="polite" class="b-newsletter__descriptor js-newsletter__descriptor">Hear about exhibitions, events, offers and opportunities from the V&A and the V&A Museum of Childhood.</p>
+
     <div class="b-newsletter__form-fields">
       <input type="hidden" name="addressbookid" value="3410112">
       <input type="hidden" name="ci_isconsentform" value="true">
@@ -20,7 +20,7 @@
       <input type="hidden" name="ReturnURL" value="http://www.vam.ac.uk/content/email/confirmation/?result=success">
       <!-- Email - the user's email address -->
 
-      <input type="text" placeholder="Enter your email address" name="Email" class="js-emailValidation b-newsletter__form-fields-field">
+      <input aria-invalid="false" type="text" placeholder="Enter your email address" name="Email" class="js-emailValidation b-newsletter__form-fields-field">
       <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit js-newsletter__submit">
     </div>
     <div class="b-newsletter__info">
