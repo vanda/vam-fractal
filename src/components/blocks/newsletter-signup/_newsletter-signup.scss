@@ -93,6 +93,10 @@
         text-align: center;
         width: 100%;
 
+        &[aria-invalid="true"] {
+          border-color: siteColor(alert-red);
+        }
+
         &::placeholder {
           color: siteColor(vam-grey-4);
         }
