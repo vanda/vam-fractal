@@ -63,7 +63,7 @@
     "npm-audit": "0.0.3",
     "querystring": "^0.2.0",
     "request": "^2.87.0",
-    "surge": "^0.21.6",
+    "surge": "^0.22.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
