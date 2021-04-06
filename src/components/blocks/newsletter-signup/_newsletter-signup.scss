@@ -206,7 +206,7 @@
 
   &__info {
     @include typeSetting(1, regular);
-    color: siteColor(vam-grey-3);
+    color: siteColor(vam-grey-2);
     text-align: center;
 
     @include bpMinXSmall {
