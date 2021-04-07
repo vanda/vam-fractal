@@ -1,10 +1,8 @@
 import cookies from 'browser-cookies';
-import smoothScroll from 'smooth-scroll';
 
 const siteNav = document.querySelector('.js-site-nav');
 
 if (siteNav) {
-  const winHeight = document.querySelector('html').scrollHeight;
   const mobileNavToggle = document.querySelectorAll('.js-site-nav__mobile-toggle');
   const mobileNavToggleIcon = document.querySelector('.js-site-nav__mobile-toggle--icon');
   const mobileNavToggleText = document.querySelector('.js-site-nav__mobile-toggle-text');

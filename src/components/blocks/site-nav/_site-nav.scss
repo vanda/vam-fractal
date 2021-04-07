@@ -270,6 +270,13 @@ $nav-breakpoints: (
       display: none;
     }
 
+    .b-site-nav--open & {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      color: siteColor(vam-white);
+    }
+
     .b-site-nav--open &__icon--hamburger {
       display: none;
     }
@@ -280,15 +287,6 @@ $nav-breakpoints: (
 
     .b-site-nav--open &__icon--close {
       display: block;
-    }
-  }
-
-  &__mobile-toggle {
-    .b-site-nav--open & {
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      color: siteColor(vam-white);
     }
   }
 

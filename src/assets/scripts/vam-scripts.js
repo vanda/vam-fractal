@@ -1,3 +1,4 @@
+import 'element-closest-polyfill';
 import LazyLoad from 'vanilla-lazyload';
 import svg4everybody from 'svg4everybody';
 import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
