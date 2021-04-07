@@ -86,6 +86,8 @@ const initObjectOverlay = () => {
           el => !el.getAttribute('disabled')
         ).filter(
           el => !el.closest('.js-modal')
+        ).filter(
+          el => el.offsetHeight > 0
         );
 
         const first = focusable[0];
@@ -122,6 +124,12 @@ const initObjectOverlay = () => {
         }
       };
     });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.b-image-overlay__figcaption__handle')) {
+        figCaption.classList.toggle('b-image-overlay__figcaption--shut');
+      }
+    }, false);
   }
 };
 
