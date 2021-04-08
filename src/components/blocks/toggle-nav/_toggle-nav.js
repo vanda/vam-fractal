@@ -20,9 +20,9 @@ if (toggleNav) {
       }
       tog.preventHistoryPush = false;
       Array.from(tnToggees, (el) => {
-        el.classList.add('s-visually-hidden');
+        el.style.display = 'none';
         if (el.dataset.toggleType === togType) {
-          el.classList.remove('s-visually-hidden');
+          el.style.display = 'block';
         }
         return true;
       });
@@ -42,10 +42,6 @@ if (toggleNav) {
   });
 
   window.addEventListener('popstate', (e) => {
-    Array.from(document.querySelectorAll('s-visually-hidden'), (el) => {
-      el.classList.remove('s-visually-hidden');
-      return true;
-    });
     if (e.state && e.state.toggleNavType) {
       Array.from(toggleNavBtns, (tog) => {
         if (e.state.toggleNavType === tog.dataset.toggleType) {
