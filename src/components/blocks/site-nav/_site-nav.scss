@@ -23,6 +23,37 @@ $nav-breakpoints: (
     display: none;
   }
 
+  &__access-nav-link {
+    font-size: 0;
+    position: absolute;
+
+    &:focus,
+    &:active {
+      background: siteColor(vam-white);
+      border: 1px solid siteColor(vam-black);
+      color: siteColor(vam-black);
+      font-size: 13px;
+      height: 40px;
+      padding: 8px 0 0 13px;
+      width: 147px;
+      z-index: 9999;
+    }
+
+    &--whatson:focus,
+    &--whatson:active {
+      left: 50%;
+      top: -40px;
+      transform: translateX(-50%);
+    }
+
+    &--home:focus,
+    &--home:active {
+      left: 9px;
+      position: absolute;
+      top: 9px;
+    }
+  }
+
   &--access {
     @include visuallyHidden;
   }
