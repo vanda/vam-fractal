@@ -19,9 +19,9 @@ const termButtonHTML = (facet, term) => `
 `;
 
 const dateFacetHTML = () => `
-    <div class="b-facet-box__facet-text" data-facet-text="dates">
+    <button tabindex="0" class="b-facet-box__facet-text" data-facet-text="dates">
       Dates
-    </div>
+    </button>
     <div class="b-facet-box__facet-term-container">
       <span class="b-facet-box__facet-term-container-text">
         Use a hyphen to indicate dates BC. For example -800 is 800 BC.
@@ -260,7 +260,6 @@ const initialiseFacetOverlay = () => {
             const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
             inputs.forEach((input) => { input.value = ''; });
           }
-          e.preventDefault();
           newTermOnClick(e);
         };
         newTerm.classList.add('b-facet-box__term--mobile');
@@ -318,8 +317,8 @@ const initialiseFacetOverlay = () => {
     const dateFacet = document.createElement('DIV');
     dateFacet.className = 'b-facet-box__facet b-facet-box__facet-date';
     dateFacet.innerHTML = dateFacetHTML();
-    dateFacet.addEventListener('click', (ev) => {
-      e.preventDefault();
+    dateFacet.querySelector('button').addEventListener('click', (ev) => {
+      ev.preventDefault();
       if (ev.target.classList.contains(facetTextClass)) {
         ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
