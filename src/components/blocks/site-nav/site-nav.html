@@ -1,6 +1,6 @@
 <a class="b-site-nav__access-nav-link b-site-nav__access-nav-link--home" href="#main-content">Skip to main content</a>
 
-<nav class="b-site-nav js-site-nav" id="vam_nav">
+<nav class="b-site-nav js-site-nav" id="vam_nav" aria-label="Main">
 
   <div class="b-site-nav__mobile" aria-hidden="true">
     <span class="b-site-nav__mobile__info">
@@ -16,7 +16,7 @@
     </a>
   </div>
 
-  <a class="b-site-nav__mobile-toggle s-themed--color js-site-nav__mobile-toggle js-site-nav__mobile-toggle--icon" href="#footernav" aria-hidden="true" tabindex='-1'>
+  <a class="b-site-nav__mobile-toggle s-themed--color js-site-nav__mobile-toggle js-site-nav__mobile-toggle--icon" href="#vam_nav">
     <svg role="presentation" class="b-site-nav__mobile-toggle__icon--hamburger">
       <use xlink:href="/assets/svg/svg-template.svg#menu-hamburger"></use>
     </svg>
@@ -33,12 +33,14 @@
   <div class="b-site-nav__core">
 
     <div class="b-site-nav__core__search js-site-nav-search">
-      <div class="b-site-nav__core__search__container">
-        {%- render "@search-form" -%}
-      </div>
-      <div class="b-site-nav__core__search__container b-site-nav__core__search__container--results b-site-nav__core__search__container--hidden js-search-content">
-        <ul class="sitesearch__list js-search-suggest">
-        </ul>
+      <div class="b-site-nav__core__search__wrapper">
+        <div class="b-site-nav__core__search__container">
+          {%- render "@search-form" -%}
+        </div>
+        <div class="b-site-nav__core__search__container b-site-nav__core__search__container--results b-site-nav__core__search__container--hidden js-search-content" aria-live="polite">
+          <ul class="b-site-nav__core__search__results js-search-suggest">
+          </ul>
+        </div>
       </div>
     </div>
 

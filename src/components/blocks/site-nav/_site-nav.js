@@ -13,7 +13,7 @@ if (siteNav) {
   const navBagTotal = document.querySelector('.js-site-nav-bag-total');
   const navSearchBtn = document.querySelector('.js-site-nav-search-btn');
   const navSearch = document.querySelector('.js-site-nav-search');
-  const navSearchInput = document.querySelector('.js-search-input');
+  const navSearchInput = document.querySelector('.js-nav-search-input');
   const navSearchContent = document.querySelector('.js-search-content');
   const navSearchSuggest = document.querySelector('.js-search-suggest');
   const shopCookieBagTotal = cookies.get('basketCount');
@@ -56,8 +56,10 @@ if (siteNav) {
       }
       if (scrollY / winHeight > 0.35) {
         mobileNavTop.classList.add('b-site-nav__mobile-top--show');
+        mobileNavTop.setAttribute('tabindex', 0);
       } else {
         mobileNavTop.classList.remove('b-site-nav__mobile-top--show');
+        mobileNavTop.setAttribute('tabindex', -1);
       }
     };
     scrollMonitor(scrollReact);
@@ -67,15 +69,6 @@ if (siteNav) {
     });
   }
 
-  Array.from(mobileNavToggle, (toggle) => {
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      siteNav.classList.toggle('b-site-nav--open');
-      toggle.classList.toggle('active');
-    }, false);
-    return true;
-  });
-
   if (tabletNavToggle) {
     tabletNavToggle.addEventListener('click', (e) => {
       e.preventDefault();
@@ -83,10 +76,81 @@ if (siteNav) {
     }, false);
   }
 
+  const navSearchActivate = (activate) => {
+    if (activate) {
+      navSearch.classList.add('b-site-nav__core__search--active');
+      document.body.style.position = 'fixed';
+      navSearchInput.focus();
+      navSearchInput.setSelectionRange(100, 100);
+    } else {
+      navSearch.classList.remove('b-site-nav__core__search--active');
+      document.body.style.position = '';
+    }
+  };
+
+  Array.from(mobileNavToggle, (toggle) => {
+    const tabFirst = mobileNavToggleIcon;
+    const tabLast = siteNav.querySelector('.b-site-nav__core__item:nth-last-child(2)>a');
+    const tabListener = (e) => {
+      const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+      if (isTabPressed) {
+        if (document.activeElement === tabFirst && e.shiftKey) {
+          e.preventDefault();
+          tabLast.focus();
+        } else if (document.activeElement === tabLast && !e.shiftKey) {
+          e.preventDefault();
+          tabFirst.focus();
+        }
+      }
+    };
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (siteNav.classList.contains('b-site-nav--open')) {
+        siteNav.classList.remove('b-site-nav--open');
+        document.removeEventListener('keydown', tabListener, false);
+        navSearchActivate(false);
+      } else {
+        siteNav.classList.add('b-site-nav--open');
+        document.addEventListener('keydown', tabListener, false);
+        navSearchActivate(true);
+      }
+    }, false);
+    return true;
+  });
+
+  if (navSearchBtn) {
+    const tabFirst = navSearchInput;
+    const tabLast = navSearchBtn;
+    const tabListener = (e) => {
+      const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+      if (isTabPressed) {
+        if (document.activeElement === tabFirst && e.shiftKey) {
+          e.preventDefault();
+          tabLast.focus();
+        } else if (document.activeElement === tabLast && !e.shiftKey) {
+          e.preventDefault();
+          tabFirst.focus();
+        }
+      }
+    };
+    navSearchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (navSearchBtn.classList.contains('b-site-nav__core__search-btn--active')) {
+        navSearchBtn.classList.remove('b-site-nav__core__search-btn--active');
+        document.removeEventListener('keydown', tabListener, false);
+        navSearchActivate(false);
+      } else {
+        navSearchBtn.classList.add('b-site-nav__core__search-btn--active');
+        document.addEventListener('keydown', tabListener, false);
+        navSearchActivate(true);
+      }
+    }, false);
+  }
+
   let storedSearch = JSON.parse(sessionStorage.getItem('storedSearch'));
   if (!storedSearch || Date.parse(new Date()) > Date.parse(storedSearch.expires)) {
     const httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', 'https://vam.ac.uk/services/search/suggest/promoted');
+    httpRequest.open('GET', 'https://www.vam.ac.uk/services/search/suggest/promoted');
     httpRequest.send();
     httpRequest.onreadystatechange = () => {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -162,16 +226,6 @@ if (siteNav) {
     });
   };
 
-  if (navSearchBtn) {
-    navSearchBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      navSearchBtn.classList.toggle('b-site-nav__core__search-btn--active');
-      navSearch.classList.toggle('b-site-nav__core__search--active');
-      navSearchInput.focus();
-      navSearchInput.setSelectionRange(100, 100);
-    }, false);
-  }
-
   if (navSearchInput) {
     navSearchInput.addEventListener('input', () => {
       if (navSearchInput.value.length < 42) {
@@ -193,7 +247,7 @@ if (siteNav) {
             const httpRequest = new XMLHttpRequest();
             httpRequest.open(
               'GET',
-              `https:/vam.ac.uk/services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`
+              `https://www.vam.ac.uk/services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`
             );
             httpRequest.send();
             httpRequest.onreadystatechange = () => {
