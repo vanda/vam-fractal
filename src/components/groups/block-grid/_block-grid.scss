@@ -45,7 +45,7 @@
 
     @include bpMinMedium {
       color: siteColor(vam-white);
-      text-shadow: siteColor(vam-black) 0 1px 2px;
+      text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
 
       .b-block-grid--light & {
         color: siteColor(vam-black);
