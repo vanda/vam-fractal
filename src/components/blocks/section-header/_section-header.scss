@@ -27,10 +27,10 @@
     @include bpMinSmall {
       @include typeSetting(5, bold, uppercase);
     }
-    
+
     .b-section-header--transparent & {
       color: siteColor(vam-white);
-      text-shadow: siteColor(vam-black) 0 1px 2px;
+      text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     }
   }
 }

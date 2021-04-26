@@ -48,8 +48,7 @@
   }
 
   &__anchor {
-    background-color: rgba(siteColor(vam-black), .3);
-    background-image: linear-gradient(rgba(siteColor(vam-white), 0), rgba(siteColor(vam-black), .5));
+    background-color: rgba(29, 30, 32, .5);
     display: block;
     height: 100%;
     position: relative;
@@ -57,7 +56,7 @@
 
     &:hover,
     &:focus {
-      background-color: transparent;
+      background-color: rgba(29, 30, 32, .6);
     }
 
     .b-promo--white & {
@@ -115,7 +114,7 @@
   &__type {
     @include typeSetting(2, semi-bold, uppercase);
     margin: 0;
-    text-shadow: siteColor(vam-black) 0 1px 2px;
+    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
 
     @include bpMinSmall {
       @include typeSetting(3, semi-bold, uppercase);
@@ -130,7 +129,7 @@
     @include typeSetting(3);
     margin: $spacing-small 0;
     text-align: center;
-    text-shadow: siteColor(vam-black) 0 1px 2px;
+    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     width: 100%;
 
     @include bpMinSmall {
@@ -147,19 +146,19 @@
     @include bpMaxSmall {
       @include visuallyHidden;
     }
-    text-shadow: siteColor(vam-black) 0 1px 2px;
+    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     width: 100%;
   }
 
   &__sponsor {
     @include typeSetting(1, light);
     margin: 0 0 20px;
-    text-shadow: siteColor(vam-black) 0 1px 2px;
+    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     width: 100%;
   }
 
   &__quote {
-    text-shadow: siteColor(vam-black) 0 1px 2px;
+    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     width: 100%;
 
     &__body {
@@ -177,7 +176,7 @@
     }
 
     &__citation {
-      text-shadow: siteColor(vam-black) 0 1px 2px;
+      text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
       @include typeSetting(1);
     }
   }
