@@ -47,8 +47,15 @@
     padding: 50px $spacing-small 0;
     position: relative;
 
+    &--newsletter {
+      padding: 32px $spacing-small 0;
+    }
+
     @include bpMinSmall {
       padding-top: 20px;
+      &--newsletter {
+        padding-top: 0;
+      }
     }
   }
 
