@@ -1,0 +1,18 @@
+@mixin defaultFocus {
+  box-shadow: 0 0 0 6px #fff;
+  outline: 3px solid #1d1e20;
+}
+
+.example-focus {
+  a, button, input {
+    &:focus {
+      @include defaultFocus;
+    }
+  }
+
+  .div-focus-example {
+    &:focus {
+      @include defaultFocus;
+    }
+  }
+}
