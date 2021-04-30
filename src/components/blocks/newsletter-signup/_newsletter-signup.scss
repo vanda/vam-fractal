@@ -113,7 +113,6 @@
 
         &:focus {
           border: 1px solid map-get($theme-colors, $theme-color-default);
-          outline: none;
 
           @each $color in map-keys($theme-colors) {
             .theme-#{$color} & {
