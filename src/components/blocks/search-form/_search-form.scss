@@ -294,6 +294,11 @@
     @include typeSetting(4);
     border-radius: 2px;
 
+    &:focus + label {
+      @include defaultFocus;
+      overflow: auto;
+    }
+
     &[type="checkbox"] {
       @include visuallyHidden;
     }

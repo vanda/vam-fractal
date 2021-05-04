@@ -77,8 +77,13 @@
   }
 
   &__cell {
-    @include typeSetting(3, light);
+    &:focus,
+    &:active {
+      box-shadow: none;
+    }
 
+    @include typeSetting(3, light);
+    box-shadow: none;
     display: table-cell;
 
     &-img {
@@ -280,6 +285,12 @@
       &:hover {
         background-color: #45484d;
         cursor: pointer;
+      }
+
+      // need custom focus because of display: table-row
+      &:focus {
+        box-shadow: inset 0 0 0 3px siteColor(vam-black);
+        outline: 3px solid siteColor(vam-white);
       }
     }
   }

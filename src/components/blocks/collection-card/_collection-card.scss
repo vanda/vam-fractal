@@ -1,4 +1,10 @@
 .b-collection-card {
+  &__anchor {
+    &:focus {
+      outline: 0;
+    }
+  }
+
   &__media {
     @include constrainedImage(7 4);
 
@@ -33,6 +39,10 @@
     top: 0;
     transition: opacity 200ms;
     z-index: 1;
+
+    .b-collection-card__anchor:focus & {
+      @include defaultFocus;
+    }
 
     .b-collection-card__anchor:hover &,
     .b-collection-card__anchor:focus & {

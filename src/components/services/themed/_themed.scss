@@ -2,7 +2,7 @@
   @each $color in map-keys($theme-colors) {
     .theme-#{$color} &--color {
       color: map-get($theme-colors, $color);
-      transition: all .2s ease-out;
+      transition: color .2s ease-out, border-color .2s ease-out;
 
       &--hover { // sass-lint:disable-line class-name-format
         &:hover {
@@ -12,7 +12,7 @@
     }
 
     .theme-#{$color} &--color--hover { // sass-lint:disable-line class-name-format
-      transition: all .2s ease-out;
+      transition: color .2s ease-out;
 
       &:hover {
         color: map-get($theme-colors, $color);
@@ -21,7 +21,7 @@
 
     .theme-#{$color} &--background-color {
       background-color: map-get($theme-colors, $color);
-      transition: all .2s ease-out;
+      transition: background-color .2s ease-out;
 
       &--hover { // sass-lint:disable-line class-name-format
         &:hover {

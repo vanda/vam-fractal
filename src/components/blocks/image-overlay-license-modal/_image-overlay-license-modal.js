@@ -33,33 +33,32 @@ const downloadButton = document.querySelector('.b-icon-link.b-icon-link__downloa
 
 window.addEventListener('click', (e) => {
   if (e.target.closest(`.${prefix}${downloadButtonClass}`)) {
-    window.setTimeout(() => {
-      document.querySelector('.b-image-overlay-license-modal__agree-to-terms').focus();
-    }, 10);
+    const focusable = downloadContent.querySelectorAll(`
+      .b-image-overlay-license-modal__title-section a,
+      .b-image-overlay-license-modal__content-container button,
+      .b-image-overlay-license-modal__footer-section a
+    `);
     imageOverlay.classList.add('b-image-overlay--unfocus');
     modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
     modal.classList.add('b-modal--active');
     downloadContent.classList.add(`${prefix}${downloadContentClass}${active}`);
     contactContent.classList.remove(`${prefix}${contactContentClass}${active}`);
+    focusable[0].focus();
   }
 
   if (e.target.closest(`.${prefix}${contactButton}`)) {
-    window.setTimeout(() => {
-      document.querySelector('.b-modal__description-license-contact').focus();
-    }, 10);
     imageOverlay.classList.add('b-image-overlay--unfocus');
     modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
     modal.classList.add('b-modal--active');
     downloadContent.classList.remove(`${prefix}${downloadContentClass}${active}`);
     contactContent.classList.add(`${prefix}${contactContentClass}${active}`);
+    document.querySelector('.b-modal__description-license-contact').focus();
   }
 
   if (e.target.closest(`.${prefix}${contactModalOpen}`)) {
-    window.setTimeout(() => {
-      document.querySelector('.b-modal__description-license-contact').focus();
-    }, 10);
     downloadContent.classList.remove(`${prefix}${downloadContentClass}${active}`);
     contactContent.classList.add(`${prefix}${contactContentClass}${active}`);
+    document.querySelector('.b-modal__description-license-contact').focus();
   }
 
   if (e.target.closest(`.${prefix}${checkboxContainer}`)) {
@@ -104,15 +103,21 @@ window.addEventListener('keydown', (e) => {
   if (activeModal) {
     // https://stackoverflow.com/a/60031728 w/ modifications
     if (e.keyCode === 9) {
-      const focusable = activeContent.querySelectorAll(
-        'button'
-      );
+      const focusable = activeContent.querySelectorAll(`
+        .b-image-overlay-license-modal__title-section a,
+        .b-image-overlay-license-modal__content-container button,
+        .b-image-overlay-license-modal__footer-section a
+      `);
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       const shift = e.shiftKey;
       if (focusable.length) {
         if (shift && document.activeElement === first) {
-          last.focus();
+          if (focusable.length === 1) {
+            first.focus();
+          } else {
+            last.focus();
+          }
           e.preventDefault();
         } else if (!shift && document.activeElement === last) {
           first.focus();
@@ -120,6 +125,10 @@ window.addEventListener('keydown', (e) => {
         }
       }
     }
+  }
+
+  if (e.keyCode === 13 && document.activeElement.classList.contains('b-image-overlay-license-modal__contact-modal-open')) {
+    document.activeElement.click();
   }
 
   if (activeModal && e.keyCode === 27) {

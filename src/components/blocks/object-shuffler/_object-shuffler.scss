@@ -71,8 +71,7 @@
     }
 
     &[active],
-    &:hover,
-    &:focus {
+    &:hover {
       background: siteColor(vam-white);
     }
 

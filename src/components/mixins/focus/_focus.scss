@@ -1,6 +1,6 @@
 @mixin defaultFocus {
-  box-shadow: 0 0 0 6px #fff;
-  outline: 3px solid #1d1e20;
+  box-shadow: 0 0 0 3px #1d1e20, 0 0 0 6px #fff;
+  outline: 0;
 }
 
 .example-focus {

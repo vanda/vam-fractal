@@ -145,11 +145,6 @@
             max-width: none;
           }
         }
-
-        &:focus {
-          border: 1px solid map-get($theme-colors, $theme-color-default);
-          outline: none;
-        }
       }
     }
 

@@ -1,4 +1,8 @@
 .b-beta-tag {
+  &:focus div {
+    @include defaultFocus;
+  }
+
   &__tag {
     &:hover {
       cursor: pointer;

@@ -182,12 +182,17 @@
 
   &__agree-to-terms-reminder {
     @include typeSetting(2, light);
+    box-shadow: none;
     color: siteColor(alert-red);
     display: none;
+    &:focus svg {
+      @include defaultFocus;
+    }
   }
 
   &__agree-to-terms {
     @include typeSetting(4, regular);
+    box-shadow: none;
     cursor: pointer;
     margin-left: 40px;
 
@@ -207,7 +212,7 @@
 
     &:focus {
       &:before {
-        outline: 2px solid siteColor(vam-grey-4);
+        @include defaultFocus;
       }
     }
 
