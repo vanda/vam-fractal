@@ -110,16 +110,6 @@
           text-align: left;
           width: 330px;
         }
-
-        &:focus {
-          border: 1px solid map-get($theme-colors, $theme-color-default);
-
-          @each $color in map-keys($theme-colors) {
-            .theme-#{$color} & {
-              border: 1px solid map-get($theme-colors, $color);
-            }
-          }
-        }
       }
     }
 

@@ -38,6 +38,8 @@
       }
     }
 
+
+
     & > #{&}__banner {
       opacity: .8;
     }
@@ -71,6 +73,10 @@
       right: 0;
       top: 0;
       transition: opacity .1s;
+    }
+
+    &:focus {
+      @include defaultFocus;
     }
 
     &:hover::after,
