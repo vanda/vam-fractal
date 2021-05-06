@@ -232,6 +232,10 @@
     margin-bottom: 20px;
     text-decoration: underline;
 
+    &:focus {
+      @include defaultFocus;
+    }
+
     &:hover,
     &:focus {
       text-decoration: none;

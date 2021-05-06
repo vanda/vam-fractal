@@ -161,10 +161,25 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       })
       .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
 
+    document.addEventListener('keydown', (e) => {
+      if (e.keyCode === 13 && document.activeElement.closest('.b-search-form__filter-toggle')) {
+        document.activeElement.click();
+      }
+    });
+
     document.addEventListener('click', (e) => {
       if (e.target.closest('.b-search-form__filter-toggle')) {
         const toggleSet = e.target.closest('.b-search-form__filter-toggle-set');
         toggleSet.toggleAttribute('active');
+
+        // make sure only the visible toggle link is aria visible and focusable
+        const toggleLinks = Array.from(document.querySelectorAll('.b-search-form__filter-toggle'));
+        const tabIndexIndex = toggleLinks.indexOf(document.querySelector('[tabindex="0"]'));
+        toggleLinks[tabIndexIndex].setAttribute('tabindex', -1);
+        toggleLinks[tabIndexIndex].setAttribute('aria-hidden', true);
+        toggleLinks[([1, 0])[tabIndexIndex]].setAttribute('tabindex', 0);
+        toggleLinks[([1, 0])[tabIndexIndex]].removeAttribute('aria-hidden');
+
         Array.from(toggleSet.querySelectorAll('input'), (input) => {
           input.value = '';
           return true;
