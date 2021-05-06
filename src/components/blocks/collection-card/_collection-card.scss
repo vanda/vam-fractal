@@ -1,6 +1,7 @@
 .b-collection-card {
   &__anchor {
     &:focus {
+      box-shadow: none;
       outline: 0;
     }
   }
