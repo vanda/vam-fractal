@@ -1,7 +1,20 @@
 module.exports = {
-  title: 'Newsletter signup',
-  label: 'Newsletter signup',
-  context: {
-    title: 'Signup'
-  }
+  variants: [
+    {
+      name: 'default',
+      label: 'Default',
+      context: {
+        title: 'Signup',
+        modifier: ''
+      }
+    },
+    {
+      name: 'footer newsletter',
+      label: 'Footer Newsletter',
+      context: {
+        title: 'Signup',
+        modifier: '--footer'
+      }
+    }
+  ]
 };
