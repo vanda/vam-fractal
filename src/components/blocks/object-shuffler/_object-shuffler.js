@@ -35,19 +35,31 @@
             // abandon deck if there weren't enough results
             if (deck._props.itemsData.length < slideSize * 1.5) {
               deck.parentNode.removeChild(deck);
+              if (document.querySelectorAll('.b-object-shuffler__tab').length === 1) {
+                document.querySelector('.b-object-shuffler__tab').setAttribute('tabindex', '-1');
+                document.querySelector('.b-object-shuffler__tab').setAttribute('aria-hidden', true);
+              } else if (document.querySelectorAll('.b-object-shuffler__tab').length > 1) {
+                document.querySelector('.b-object-shuffler__tab').setAttribute('tabindex', '0');
+                document.querySelector('.b-object-shuffler__tab').setAttribute('aria-hidden', false);
+              }
               return false;
             }
             // create deck tab
             const deckTab = deckTabs.appendChild(tabTemplate.cloneNode(true));
             deckTab.className = 'b-object-shuffler__tab';
             deckTab.title = `${deck._props.deckTitle}`;
-            deckTab.setAttribute('tabindex', '0');
-            deckTab.setAttribute('aria-hidden', false);
             deckTab.dataset.trackingCollections = 'you may also like carousel';
             deckTab._deck = deck;
             if (deckTab === deckTab.parentNode.firstElementChild) {
               deckTab.setAttribute('active', true);
               deckTab._deck.setAttribute('active', true);
+            }
+            if (Array.from(el.querySelectorAll('.b-object-shuffler__deck')).length === 1) {
+              deckTab.setAttribute('tabindex', '-1');
+              deckTab.setAttribute('aria-hidden', true);
+            } else {
+              deckTab.setAttribute('tabindex', '0');
+              deckTab.setAttribute('aria-hidden', false);
             }
             // populate each deck with slides of items
             const slide = deck.firstElementChild;
@@ -69,6 +81,10 @@
         i += 1;
         return true;
       });
+
+      if (deckTabs.querySelectorAll('.b-object-shuffler__tab').length === 1) {
+        deckTabs.querySelector('.b-object-shuffler__tab').setAttribute('tabindex', -1);
+      }
 
       document.addEventListener('click', (e) => {
         if (e.target.closest('.b-object-shuffler__tab')) {
