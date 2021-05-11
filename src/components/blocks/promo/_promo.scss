@@ -58,6 +58,10 @@
       @include defaultFocus;
     }
 
+    &:focus .b-icon-badge {
+      @include defaultFocus;
+    }
+
     &:hover,
     &:focus {
       background-color: rgba(29, 30, 32, .6);

@@ -66,8 +66,12 @@
       outline: 0;
     }
 
-    a:focus div {
-      @include defaultFocus;
+
+    a:focus {
+      box-shadow: none;
+      .b-icon-badge__icon {
+        @include defaultFocus;
+      }
     }
 
     background-color: siteColor(vam-black);
