@@ -287,10 +287,8 @@
         cursor: pointer;
       }
 
-      // need custom focus because of display: table-row
       &:focus {
-        box-shadow: inset 0 0 0 3px siteColor(vam-black);
-        outline: 3px solid siteColor(vam-white);
+        @include insetFocus;
       }
     }
   }

@@ -172,6 +172,10 @@
     display: inline-flex;
     margin-top: 15px;
 
+    &:focus {
+      @include insetFocus;
+    }
+
     @include bpMinSmall {
       @include typeSetting(3, semi-bold, uppercase);
       margin-top: 28px;
