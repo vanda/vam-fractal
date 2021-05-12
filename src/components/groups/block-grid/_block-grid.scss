@@ -64,11 +64,6 @@
     a:focus {
       box-shadow: none;
       outline: 0;
-    }
-
-
-    a:focus {
-      box-shadow: none;
       .b-icon-badge__icon {
         @include defaultFocus;
       }
