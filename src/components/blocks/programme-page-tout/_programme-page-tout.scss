@@ -5,6 +5,11 @@
   min-width: 152px;
   width: 100%;
 
+  &:focus div {
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+  }
+
   @include bpMinSmall {
     margin: 2px;
     max-width: 200px;
@@ -13,13 +18,13 @@
 
   &__content {
     position: relative;
-    
+
     &-image {
       height: 100%;
       max-height: 244px;
       width: 100%;
     }
-    
+
     &-overlay {
       &:after {
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, .8), rgba(0, 0, 0, 1));

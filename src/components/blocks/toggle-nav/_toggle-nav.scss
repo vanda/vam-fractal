@@ -67,5 +67,9 @@
     &:hover {
       color: siteColor(vam-grey-2);
     }
+
+    &:focus {
+      @include insetFocus;
+    }
   }
 }
