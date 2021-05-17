@@ -49,7 +49,7 @@
               deckTab.setAttribute('active', true);
               deckTab._deck.setAttribute('active', true);
             }
-            // populate each deck with slides of items
+            // populate deck with slides of items
             const slide = deck.firstElementChild;
             // clone initial html markup for an item to make a whole slide
             for (let j = 1; j < slideSize; j += 1) {
@@ -64,6 +64,10 @@
             // allow visible elements into the tabindex
             if (activeSlide.closest('.b-object-shuffler__deck[active]')) {
               shuffler.tabIndexSlide(activeSlide);
+            }
+            // in case we end up with only 1 tab, remove it from tabindex
+            if (i === shufflerData.length && deckTabs.childElementCount === 1) {
+              deckTabs.firstElementChild.setAttribute('tabindex', -1);
             }
           });
         i += 1;

@@ -54,9 +54,18 @@
     position: relative;
     transition: background-color .3s;
 
+    &:focus .u-btn {
+      @include defaultFocus;
+    }
+
+    &:focus .b-icon-badge {
+      @include defaultFocus;
+    }
+
     &:hover,
     &:focus {
       background-color: rgba(29, 30, 32, .6);
+      box-shadow: none;
     }
 
     .b-promo--white & {

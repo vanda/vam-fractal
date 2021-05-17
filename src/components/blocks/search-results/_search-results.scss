@@ -77,8 +77,13 @@
   }
 
   &__cell {
-    @include typeSetting(3, light);
+    &:focus,
+    &:active {
+      box-shadow: none;
+    }
 
+    @include typeSetting(3, light);
+    box-shadow: none;
     display: table-cell;
 
     &-img {
@@ -280,6 +285,10 @@
       &:hover {
         background-color: #45484d;
         cursor: pointer;
+      }
+
+      &:focus {
+        @include insetFocus;
       }
     }
   }

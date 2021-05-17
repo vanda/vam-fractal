@@ -31,6 +31,7 @@ $nav-breakpoints: (
     &:active {
       background: siteColor(vam-white);
       border: 1px solid siteColor(vam-black);
+      box-shadow: none;
       color: siteColor(vam-black);
       font-size: 13px;
       height: 40px;

@@ -172,6 +172,10 @@
     display: inline-flex;
     margin-top: 15px;
 
+    &:focus {
+      @include insetFocus;
+    }
+
     @include bpMinSmall {
       @include typeSetting(3, semi-bold, uppercase);
       margin-top: 28px;
@@ -231,6 +235,10 @@
     cursor: pointer;
     margin-bottom: 20px;
     text-decoration: underline;
+
+    &:focus {
+      @include defaultFocus;
+    }
 
     &:hover,
     &:focus {
@@ -293,6 +301,11 @@
   &__filter-input {
     @include typeSetting(4);
     border-radius: 2px;
+
+    &:focus + label {
+      @include defaultFocus;
+      overflow: auto;
+    }
 
     &[type="checkbox"] {
       @include visuallyHidden;
