@@ -315,9 +315,7 @@ $nav-breakpoints: (
     color: siteColor(vam-grey-6);
     display: flex;
     flex-direction: column;
-    height: 100%;
     min-height: 60px;
-    overflow: hidden;
     position: fixed;
     top: -100%;
     transform: translate3d(0, 0, 0);
@@ -326,13 +324,14 @@ $nav-breakpoints: (
     z-index: 2;
 
     .b-site-nav--open & {
+      height: 100vh;
+      overflow: auto;
       top: 0;
     }
 
     @include bpMinNav(small) {
       background-color: siteColor(vam-grey-1);
       height: auto;
-      overflow: visible;
       position: relative;
       top: 0;
     }
@@ -340,13 +339,21 @@ $nav-breakpoints: (
 
   &__core__items {
     align-items: baseline;
-    display: flex;
+    display: none;
     flex-direction: column;
     flex-grow: 1;
     font-size: 24px;
     justify-content: space-around;
     padding: 20px 0 75px;
     text-rendering: geometricPrecision;
+
+    @include bpMinNav(small) {
+      display: flex;
+    }
+
+    .b-site-nav--open & {
+      display: flex;
+    }
 
     a {
       transition: margin .2s;
@@ -532,8 +539,7 @@ $nav-breakpoints: (
     padding: 45px 0 10px;
 
     @include bpMinNav(small) {
-      min-height: 100vh;
-      overflow: hidden;
+      height: 100vh;
       padding: 27px 0 5px;
       position: absolute;
       top: -100vh;
@@ -542,7 +548,16 @@ $nav-breakpoints: (
       z-index: -1;
 
       &--active {
+        overflow: auto;
         top: 59px;
+      }
+    }
+
+    &__wrapper {
+      display: none;
+
+      .b-site-nav__core__search--active & {
+        display: block;
       }
     }
 
@@ -563,7 +578,6 @@ $nav-breakpoints: (
       &--results {
         background: siteColor(vam-black);
         margin-bottom: 38px;
-        max-height: 300px;
         overflow: auto;
         padding: 0;
 
@@ -582,6 +596,10 @@ $nav-breakpoints: (
       &--hidden {
         display: none;
       }
+    }
+
+    &__results {
+      margin-left: 0;
     }
   }
 }

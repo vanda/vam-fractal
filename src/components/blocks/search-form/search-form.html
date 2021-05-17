@@ -12,7 +12,7 @@
     </svg>
     {% endif %}
     <div class="b-search-form__input-wrapper">
-      <input type="text" class="b-search-form__input" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
+      <input type="text" class="b-search-form__input js-nav-search-input" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
       {% if not modifiers %}
       <div class="b-search-form__underscore" aria-hidden="true"></div>
       {% endif %}
@@ -43,11 +43,11 @@
         </div>
         <div class="b-search-form__filter">
           <label for="year_made_from">From year:</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_from" name="year_made_from" min="-4000" max="2050" step="1" placeholder="Year" value="">
+          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" name="year_made_from" min="-4000" max="2050" step="1" placeholder="Year" value="">
         </div>
         <div class="b-search-form__filter">
           <label for="year_made_to">To year:</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_to" name="year_made_to" min="-4000" max="2050" step="1" placeholder="Year" value="">
+          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" name="year_made_to" min="-4000" max="2050" step="1" placeholder="Year" value="">
         </div>
       </div>
     </div>
@@ -78,14 +78,14 @@
   </div>
   <div class="b-search-form__filters" aria-label="search filters" role="form">
     <div class="b-search-form__filter">
-      <input class="b-search-form__filter-input" type="checkbox" id="with_image" name="with_image" >
+      <input class="b-search-form__filter-input" type="checkbox" name="with_image" >
       <label for="with_image">With image</label>
     </div>
     <div class="b-search-form__filter">
-      <input class="b-search-form__filter-input b-search-form__location-toggle" type="checkbox" id="on_display" name="on_display" >
+      <input class="b-search-form__filter-input b-search-form__location-toggle" type="checkbox" name="on_display" >
       <label for="on_display">On display</label>
       <div class="b-search-form__filter b-search-form__location-wrapper">
-        <select class="b-search-form__filter-select" id="location" name="location">
+        <select class="b-search-form__filter-select" name="location">
           <option value="">LOCATION</option>
           <option value="south_kensington">South Kensington</option>
           <option value="dundee">V&ampA Dundee</option>
