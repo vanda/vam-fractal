@@ -3,13 +3,12 @@
 // Mixin
 @import '../../components/mixins/breakpoints/breakpoints';
 @import '../../components/mixins/constrained-image/constrained-image';
+@import '../../components/mixins/convert-rem/convert-rem';
+@import '../../components/mixins/focus/focus';
 @import '../../components/mixins/tiles/tiles';
 @import '../../components/mixins/unstyled-list/unstyled-list';
 @import '../../components/mixins/unstyled-input/unstyled-input';
 @import '../../components/mixins/visually-hidden/visually-hidden';
-@import '../../components/mixins/constrained-image/constrained-image';
-@import '../../components/mixins/convert-rem/convert-rem';
-@import '../../components/mixins/focus/focus';
 
 // Base
 @import '../../components/base/site-color/site-color';
