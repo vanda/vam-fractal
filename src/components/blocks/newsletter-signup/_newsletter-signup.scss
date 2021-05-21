@@ -147,7 +147,7 @@
           text-align: left;
         }
         @include bpMinMedium {
-          max-width: 380px;
+          max-width: 355px;
         }
       }
     }
@@ -265,7 +265,7 @@
     }
 
     @include bpMinSmall {
-      max-width: 545px;
+      max-width: 520px;
       text-align: left;
     }
   }
