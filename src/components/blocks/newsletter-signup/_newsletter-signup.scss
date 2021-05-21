@@ -89,8 +89,7 @@
       max-width: 100%;
       padding: 30px 0 30px 55px;
       &--footer {
-        margin: 0 0 10px;
-        padding: 10px 0 20px;
+        padding: 20px 0 30px;
       }
     }
 
@@ -147,7 +146,7 @@
           text-align: left;
         }
         @include bpMinMedium {
-          max-width: 380px;
+          max-width: 355px;
         }
       }
     }
@@ -265,7 +264,7 @@
     }
 
     @include bpMinSmall {
-      max-width: 545px;
+      max-width: 520px;
       text-align: left;
     }
   }
