@@ -109,6 +109,10 @@
       @include bpMinXSmall {
         display: flex;
         flex-direction: row;
+        width: 100%;
+      }
+      @include bpMinMedium {
+        justify-content: flex-end;
       }
 
       &-field {
@@ -122,6 +126,7 @@
         &--footer {
           height: 50px;
           margin-right: 3px;
+          max-width: none;
           text-align: left;
           width: calc(100% - 129px);
         }
@@ -139,11 +144,10 @@
           flex-grow: 1;
           height: 50px;
           margin-right: 8px;
-          max-width: 380px;
           text-align: left;
-          &--footer {
-            max-width: none;
-          }
+        }
+        @include bpMinMedium {
+          max-width: 380px;
         }
       }
     }
@@ -260,8 +264,8 @@
       text-align: left;
     }
 
-    @include bpMinXSmall {
-      max-width: 500px;
+    @include bpMinSmall {
+      max-width: 545px;
       text-align: left;
     }
   }
@@ -270,6 +274,10 @@
     @include bpMinSmall {
       display: flex;
       &-form {
+        align-content: center;
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
         min-width: 390px;
         width: calc(100% - 500px);
       }
