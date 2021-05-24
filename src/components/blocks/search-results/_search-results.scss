@@ -167,8 +167,8 @@
           max-height: 60px;
           max-width: 60px;
           @include bpMinXSmall {
-            max-height: 90px;
-            max-width: 90px;
+            max-height: 100px;
+            max-width: 100px;
           }
         }
       }
@@ -235,6 +235,62 @@
   }
 
   &__body {
+
+    &--filters-closed {
+      .b-search-results__cell-content-no-img {
+        &:after {
+          @include bpMinLarge {
+            background-position-x: -105px;
+            background-position-y: -85px;
+            background-size: 450px;
+            border-width: 0;
+            font-size: 13px;
+            height: 120px;
+            left: 50%;
+            line-height: 8;
+            padding: 6px;
+            position: absolute;
+            white-space: normal;
+            width: 120px;
+          }
+        }
+      }
+      .b-search-results__cell-content-img-image {
+        @include bpMinLarge {
+          max-height: 120px;
+          max-width: 120px;
+        }
+      }
+      .b-search-results__head-image {
+        @include bpMinMedium {
+          width: 170px;
+        }
+      }
+
+      .b-search-results__head {
+        &-title {
+          @include bpMinLarge {
+            width: 300px;
+          }
+        }
+        &-artist {
+          @include bpMinLarge {
+            width: 250px;
+          }
+        }
+        &-date {
+          @include bpMinLarge {
+            width: 200px;
+          }
+        }
+        &-place {
+          @include bpMinLarge {
+            width: 300px;
+          }
+        }
+      }
+    }
+
     &-row {
       @include bpMinXSmall {
         height: 150px;
