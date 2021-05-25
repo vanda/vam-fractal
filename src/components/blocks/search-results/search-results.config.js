@@ -11,7 +11,7 @@ module.exports = {
             title: 'A Vase That Looks Neat With A Really Long Title',
             artist: 'Reknowned Vase Maker',
             date: 'late 18th century',
-            place: 'Britain'
+            place: 'Britain Britain Britain Britain Britain Britain, Britain Britain Britain Britain Britain'
           },
           {
             image: 'https://place-hold.it/150x71',
