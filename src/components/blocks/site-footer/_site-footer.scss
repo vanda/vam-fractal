@@ -21,6 +21,18 @@
       text-align: center;
       top: -32px;
     }
+    &--etc {
+      &:after {
+        border-bottom: 1px siteColor(vam-grey-2) solid;
+        content: ' ';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        z-index: -1;
+      }
+    }
   }
 
   &__backtotop-btn {
