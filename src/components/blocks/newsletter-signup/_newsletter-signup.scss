@@ -79,7 +79,16 @@
     width: 100%;
 
     &--footer {
-      border-bottom: 1px solid siteColor(vam-grey-4);
+      &-etc {
+        border-bottom: 1px solid siteColor(vam-grey-2);
+        @include bpMinSmall {
+          border-bottom: 1px solid siteColor(vam-grey-4);
+        }
+      }
+      &-main {
+        border-bottom: 1px solid siteColor(vam-grey-4);
+      }
+
       margin: 0;
       max-width: none;
       padding: 0 0 50px;
@@ -190,6 +199,11 @@
       @include typeSetting(4, bold);
       font-size: 22px;
       text-align: left;
+      @include bpMinSmall {
+        @include typeSetting(6, bold);
+        font-size: 28px;
+        margin-bottom: 0;
+      }
     }
 
     @include typeSetting(4, bold);
@@ -197,11 +211,6 @@
     text-align: center;
 
     @include bpMinXSmall {
-      &--footer {
-        @include typeSetting(6, bold);
-        font-size: 28px;
-        margin-bottom: 0;
-      }
       @include typeSetting(5, bold);
       margin-bottom: 10px;
       text-align: left;

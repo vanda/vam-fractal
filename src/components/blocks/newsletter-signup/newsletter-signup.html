@@ -1,3 +1,7 @@
+{% if modifier === "--footer" %}
+<div class="background-color: black; height: 100vh;">
+{% endif %}
+
 <a id="signup" name="signup"></a>
 <div class="b-newsletter {% if modifier.length > 0 %}b-newsletter{{ modifier }}{% endif %}">
 
@@ -67,3 +71,7 @@
   </form>
 
 </div>
+
+{% if modifier === "--footer" %}
+</div>
+{% endif %}
