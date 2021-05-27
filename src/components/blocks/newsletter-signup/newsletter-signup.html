@@ -1,6 +1,5 @@
 <a id="signup" name="signup"></a>
 <div class="b-newsletter {% if modifier.length > 0 %}b-newsletter{{ modifier }}{% endif %}">
-
   {% if modifier.length === 0 %}
     <div class="b-newsletter__logo">
         <svg role="img">
@@ -39,7 +38,7 @@
     {% if modifier === "--footer" %}
       <div class="b-newsletter__flex-form-container-form">
     {% endif %}
-    <div class="b-newsletter__form-fields">
+    <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields{{ modifier }}{% endif %}">
       <input type="hidden" name="addressbookid" value="3410112">
       <input type="hidden" name="ci_isconsentform" value="true">
       <input type="hidden" name="userid" value="193690">
@@ -65,5 +64,4 @@
       </div>
     {% endif %}
   </form>
-
 </div>
