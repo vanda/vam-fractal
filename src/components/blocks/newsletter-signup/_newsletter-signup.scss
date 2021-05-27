@@ -79,26 +79,18 @@
     width: 100%;
 
     &--footer {
-      &-etc {
-        border-bottom: 1px solid siteColor(vam-grey-2);
-        @include bpMinSmall {
-          border-bottom: 1px solid siteColor(vam-grey-4);
-        }
-      }
-      &-main {
-        border-bottom: 1px solid siteColor(vam-grey-4);
-      }
-
+      border-bottom: 1px solid siteColor(vam-grey-4);
       margin: 0;
       max-width: none;
-      padding: 0 0 50px;
+      padding: 0 0 30px;
     }
 
     @include bpMinSmall {
       max-width: 100%;
       padding: 30px 0 30px 55px;
       &--footer {
-        padding: 20px 0 30px;
+        margin: 0 0 10px;
+        padding: 10px 0 20px;
       }
     }
 
@@ -117,10 +109,6 @@
       @include bpMinXSmall {
         display: flex;
         flex-direction: row;
-        width: 100%;
-      }
-      @include bpMinMedium {
-        justify-content: flex-end;
       }
 
       &-field {
@@ -134,7 +122,6 @@
         &--footer {
           height: 50px;
           margin-right: 3px;
-          max-width: none;
           text-align: left;
           width: calc(100% - 129px);
         }
@@ -152,10 +139,11 @@
           flex-grow: 1;
           height: 50px;
           margin-right: 8px;
+          max-width: 380px;
           text-align: left;
-        }
-        @include bpMinMedium {
-          max-width: 355px;
+          &--footer {
+            max-width: none;
+          }
         }
       }
     }
@@ -196,14 +184,9 @@
 
   &__headline {
     &--footer {
-      @include typeSetting(4, bold);
-      font-size: 22px;
+      @include typeSetting(6, bold);
+      font-size: 28px;
       text-align: left;
-      @include bpMinSmall {
-        @include typeSetting(6, bold);
-        font-size: 28px;
-        margin-bottom: 0;
-      }
     }
 
     @include typeSetting(4, bold);
@@ -211,6 +194,11 @@
     text-align: center;
 
     @include bpMinXSmall {
+      &--footer {
+        @include typeSetting(6, bold);
+        font-size: 28px;
+        margin-bottom: 0;
+      }
       @include typeSetting(5, bold);
       margin-bottom: 10px;
       text-align: left;
@@ -272,8 +260,8 @@
       text-align: left;
     }
 
-    @include bpMinSmall {
-      max-width: 520px;
+    @include bpMinXSmall {
+      max-width: 500px;
       text-align: left;
     }
   }
@@ -282,10 +270,6 @@
     @include bpMinSmall {
       display: flex;
       &-form {
-        align-content: center;
-        align-items: flex-end;
-        display: flex;
-        flex-direction: column;
         min-width: 390px;
         width: calc(100% - 500px);
       }
