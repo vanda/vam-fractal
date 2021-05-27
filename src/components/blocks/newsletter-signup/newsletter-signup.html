@@ -38,7 +38,7 @@
     {% if modifier === "--footer" %}
       <div class="b-newsletter__flex-form-container-form">
     {% endif %}
-    <div class="b-newsletter__form-fields">
+    <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields{{ modifier }}{% endif %}">
       <input type="hidden" name="addressbookid" value="3410112">
       <input type="hidden" name="ci_isconsentform" value="true">
       <input type="hidden" name="userid" value="193690">

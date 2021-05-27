@@ -119,8 +119,10 @@
         flex-direction: row;
         width: 100%;
       }
-      @include bpMinMedium {
-        justify-content: flex-end;
+      &--footer {
+        @include bpMinMedium {
+          justify-content: flex-end;
+        }
       }
 
       &-field {
