@@ -20,7 +20,7 @@ module.exports = {
             title: 'Cool Print',
             artist: 'Established Printer',
             date: '1980',
-            place: 'Germany'
+            place: 'Germany Germany Germany Germany Germany Germany Germany Germany Germany Germany Germany Germany Germany Germany'
           },
           {
             image: 'https://place-hold.it/120x120',
