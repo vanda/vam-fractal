@@ -9,8 +9,13 @@
     height: 92px;
   }
  
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #000000;
+  }
+
+  &-content {
+    display: block;
   }
 
   &-content-type {
