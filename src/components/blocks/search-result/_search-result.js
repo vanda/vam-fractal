@@ -1,28 +1,30 @@
-const searchResultTextEls = document.querySelectorAll('.js-search-result-text');
-
-function searchResultTextTruncate (textEl) {
-  textEl.innerHTML = textEl.textFull;
+const searchResultTextTruncate = (textEl) => {
+  if (!textEl.dataset.fulltext) {
+    textEl.dataset.fulltext = textEl.innerHTML;
+  }
+  const fullText = textEl.dataset.fulltext;
+  textEl.innerHTML = fullText;
   if (textEl.scrollHeight - textEl.clientHeight > 10) {
-    const focus = textEl.textFull.indexOf('</em>');
-    const maxChars = (textEl.clientHeight / textEl.scrollHeight) * textEl.textFull.length;
+    const focus = fullText.indexOf('&lt;/em&gt;');
+    const maxChars = (textEl.clientHeight / textEl.scrollHeight) * fullText.length;
     const shunt = focus - maxChars;
     let firstChar = 0;
-    let lastChar = textEl.textFull.lastIndexOf(' ', maxChars);
+    let lastChar = fullText.lastIndexOf(' ', maxChars);
     let prepend = '';
     if (shunt > 0) {
       prepend = '&hellip;';
-      firstChar = textEl.textFull.indexOf(' ', shunt + 20) + 1;
-      lastChar = textEl.textFull.lastIndexOf(' ', maxChars + shunt + 20);
+      firstChar = fullText.indexOf(' ', shunt + 20) + 1;
+      lastChar = fullText.lastIndexOf(' ', maxChars + shunt + 20);
     }
-    textEl.innerHTML = `${prepend}${textEl.textFull.substring(firstChar, lastChar)}&hellip;`;
+    textEl.innerHTML = `${prepend}${fullText.substring(firstChar, lastChar)}&hellip;`;
   }
-}
+};
 
-if (searchResultTextEls.length) {
-  Array.from(searchResultTextEls, (textEl) => {
-    textEl.textFull = textEl.innerHTML;
+const searchResultsTruncate = () => {
+  Array.from(document.querySelectorAll('.js-search-result-text'), (textEl) => {
     searchResultTextTruncate(textEl);
-    window.addEventListener('resize', searchResultTextTruncate.bind(this, textEl), false);
     return true;
   });
-}
+};
+searchResultsTruncate();
+window.addEventListener('resize', searchResultsTruncate, false);

@@ -13,85 +13,86 @@
     background-color: #000000;
   }
 
-}
-
-.b-search-result-auto-suggest-content-type {
-  @include typeSetting(0, normal);
-  color: siteColor(primary-green);
-  height: 13px;
-  margin-bottom: 4px;
-  text-align: left;
-  text-transform: uppercase;
-  
-  @include bpMinSmall {
-    @include typeSetting(2, normal);
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    line-height: .93;
+  &-content-type {
+    @include typeSetting(0, normal);
+    color: siteColor(primary-green);
+    height: 13px;
+    margin-bottom: 4px;
+    text-align: left;
     text-transform: uppercase;
+    
+    @include bpMinSmall {
+      @include typeSetting(2, normal);
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      line-height: .93;
+      text-transform: uppercase;
+    }
+
+    @include bpMaxLarge {
+      @include typeSetting(1, normal);
+      font-size: 13px;
+      letter-spacing: 1.1px;
+      line-height: 1.0;
+      text-transform: uppercase;
+    }
   }
 
-  @include bpMaxLarge {
-    @include typeSetting(1, normal);
-    font-size: 13px;
-    letter-spacing: 1.1px;
-    line-height: 1.0;
-    text-transform: uppercase;
-  }
-}
+  &-title {
+    @include typeSetting(3, light);
+    color: siteColor(vam-white);
+    height: 42px;
+    line-height: 1.33;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-.b-search-result-auto-suggest-title {
-  @include typeSetting(3, light);
-  color: siteColor(vam-white);
-  height: 42px;
-  line-height: 1.33;
-  overflow: hidden;
-  text-align: left;
+    @include bpMinSmall {
+      @include typeSetting(4, light);
+      height: 48px;
+      line-height: 1.2;
+    }
 
-  @include bpMinSmall {
-    @include typeSetting(4, light);
-    height: 48px;
-    line-height: 1.2;
-  }
-
-  @include bpMinLarge {
-    @include typeSetting(5, light);
-    height: 58px;
-  }
-}
-
-.b-search-result-auto-suggest-text {
-  bottom: 10px;
-  display: inline;
-  margin-left: -2px;
-  position: relative;
-
-  @include bpMaxLarge {
-    bottom: 14px;
-    margin-left: 4px;
+    @include bpMinLarge {
+      @include typeSetting(5, light);
+      height: 58px;
+    }
   }
 
-  @include bpMinSmall {
-    bottom: 8px;
-    margin-left: 2px;
+  &-text {
+    bottom: 10px;
+    display: inline;
+    margin-left: -2px;
+    position: relative;
+
+    @include bpMaxLarge {
+      bottom: 14px;
+      margin-left: 4px;
+    }
+
+    @include bpMinSmall {
+      bottom: 8px;
+      margin-left: 2px;
+    }
+
+    & em {
+      font-style: normal;
+      font-weight: 700;
+    }
   }
 
-  & em {
-    font-style: normal;
-    font-weight: 700;
-  }
-}
+  &-image {
+    float: left;
+    height: 100px;
+    margin: 12px;
+    object-fit: cover;
+    width: 100px;
 
-.b-search-result-auto-suggest-image {
-  float: left;
-  height: 100px;
-  margin: 12px;
-  object-fit: cover;
-  width: 100px;
-
-  @include bpMaxLarge {
-    height: 72px;
-    margin: 10px;
-    width: 72px;
+    @include bpMaxLarge {
+      height: 72px;
+      margin: 10px;
+      width: 72px;
+    }
   }
 }

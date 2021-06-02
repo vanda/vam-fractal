@@ -207,7 +207,7 @@ if (siteNav) {
                   <div class="b-search-result-auto-suggest-content-type">
                     ${result.suggestions[i].type}
                   </div>
-                  <div class="b-search-result-auto-suggest-title js-search-result-text">
+                  <div class="b-search-result-auto-suggest-title">
                     ${result.suggestions[i].title}
                   </div>
                 </div>
