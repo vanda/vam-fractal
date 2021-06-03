@@ -345,6 +345,9 @@
 
 
     &-cell {
+      &:focus {
+        @include insetFocus;
+      }
       display: none;
       @include bpMinLarge {
         display: table-cell;
