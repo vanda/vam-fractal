@@ -1,10 +1,9 @@
 .u-label-tag {
   @include typeSetting(2, semi-bold, uppercase);
   background: siteColor(primary-green);
-  border-radius: 2px;
   bottom: initial;
-  color: siteColor(vam-white);
-  margin: 12px;
+  color: siteColor(vam-black);
+  margin: 12px 12px 12px 0;
   padding: 5px 12px 4px;
   position: absolute;
   top: 0;
