@@ -56,10 +56,8 @@ if (siteNav) {
       }
       if (scrollY / winHeight > 0.35) {
         mobileNavTop.classList.add('b-site-nav__mobile-top--show');
-        mobileNavTop.setAttribute('tabindex', 0);
       } else {
         mobileNavTop.classList.remove('b-site-nav__mobile-top--show');
-        mobileNavTop.setAttribute('tabindex', -1);
       }
     };
     scrollMonitor(scrollReact);

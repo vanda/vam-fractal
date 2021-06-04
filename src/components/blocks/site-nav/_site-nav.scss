@@ -293,18 +293,17 @@ $nav-breakpoints: (
   }
 
   &__mobile-top {
+    display: none;
     left: 0;
-    opacity: 0;
-    transition: opacity .5s;
     z-index: 1;
 
     &--show {
+      display: block;
       background: siteColor(vam-black);
       box-shadow: 0 0 3px rgba(siteColor(vam-white), .75);
-      opacity: 1;
     }
 
-    svg {
+    > svg {
       height: 55%;
       margin: 8px 0 0;
       width: 100%;
@@ -312,7 +311,7 @@ $nav-breakpoints: (
   }
 
   &__core {
-    background-color: themeColor(cream-yellow);
+    background-color: siteColor(vam-grey-1);
     color: siteColor(vam-grey-6);
     display: flex;
     flex-direction: column;
@@ -357,8 +356,6 @@ $nav-breakpoints: (
     }
 
     a {
-      transition: margin .2s;
-
       &:hover {
         margin-left: 10px;
       }
@@ -394,7 +391,6 @@ $nav-breakpoints: (
     padding: 0 15px;
 
     @media (max-width: (map-get($nav-breakpoints, small) - 1)) {
-      color: siteColor(vam-black);
       display: block;
       width: 100%;
 
@@ -513,24 +509,6 @@ $nav-breakpoints: (
         display: none;
       }
     }
-  }
-
-  &__core__logo-container {
-    bottom: 0;
-    height: 100px;
-    position: absolute;
-    right: -20px;
-    width: 175px;
-
-    @include bpMinNav(small) {
-      display: none;
-    }
-  }
-
-  &__core__logo {
-    color: siteColor(vam-black);
-    height: 100px;
-    width: 175px;
   }
 
   &__core__search {
