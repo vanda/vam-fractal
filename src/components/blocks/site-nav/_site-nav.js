@@ -8,7 +8,6 @@ if (siteNav) {
   const mobileNavToggle = document.querySelectorAll('.js-site-nav__mobile-toggle');
   const mobileNavToggleIcon = document.querySelector('.js-site-nav__mobile-toggle--icon');
   const mobileNavToggleText = document.querySelector('.js-site-nav__mobile-toggle-text');
-  const mobileNavTop = document.querySelector('.js-site-nav__mobile-top');
   const navBag = document.querySelector('.js-site-nav-bag');
   const navBagTotal = document.querySelector('.js-site-nav-bag-total');
   const navSearchBtn = document.querySelector('.js-site-nav-search-btn');
@@ -54,17 +53,8 @@ if (siteNav) {
       } else {
         mobileNavToggleIcon.classList.remove('b-site-nav__mobile-toggle--solo');
       }
-      if (scrollY / winHeight > 0.35) {
-        mobileNavTop.classList.add('b-site-nav__mobile-top--show');
-      } else {
-        mobileNavTop.classList.remove('b-site-nav__mobile-top--show');
-      }
     };
     scrollMonitor(scrollReact);
-
-    mobileNavTop.addEventListener('click', () => {
-      smoothScroll.animateScroll(0);
-    });
   }
 
   if (tabletNavToggle) {

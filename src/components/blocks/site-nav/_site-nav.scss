@@ -108,7 +108,6 @@ $nav-breakpoints: (
 
   &__mobile-toggle,
   &__mobile-toggle-text,
-  &__mobile-top,
   &__mobile-bag,
   &__core__bag,
   &__core__search-btn {
@@ -134,7 +133,6 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle,
-  &__mobile-top,
   &__mobile-bag,
   &__core__bag,
   &__core__search-btn {
@@ -155,7 +153,6 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle,
-  &__mobile-top,
   &__mobile-bag,
   &__core__rhs {
     @include bpMinNav(small) {
@@ -241,8 +238,7 @@ $nav-breakpoints: (
     top: 10px;
   }
 
-  &__mobile-toggle,
-  &__mobile-top {
+  &__mobile-toggle {
     color: siteColor(vam-white);
     position: fixed;
     right: 0;
@@ -289,24 +285,6 @@ $nav-breakpoints: (
       border: none;
       box-shadow: none;
       color: siteColor(vam-white);
-    }
-  }
-
-  &__mobile-top {
-    display: none;
-    left: 0;
-    z-index: 1;
-
-    &--show {
-      display: block;
-      background: siteColor(vam-black);
-      box-shadow: 0 0 3px rgba(siteColor(vam-white), .75);
-    }
-
-    > svg {
-      height: 55%;
-      margin: 8px 0 0;
-      width: 100%;
     }
   }
 
