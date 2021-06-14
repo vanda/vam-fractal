@@ -278,6 +278,10 @@ $nav-breakpoints: (
       display: none;
     }
 
+    .b-site-nav__mobile-toggle:focus &__icon--close {
+      @include defaultFocus;
+    }
+
     .b-site-nav--open &__icon--close {
       display: block;
     }
