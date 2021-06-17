@@ -63,6 +63,18 @@ const oicInit = () => {
         </div>
         ` : '';
       const objectUrl = seed.querySelector('a').getAttribute('href');
+      const objectImg = seed.querySelector('img');
+      const objectImgHTML = objectImg ?
+        `<img class="b-object-image-overlay__image"
+           itemprop="contentUrl"
+           alt="${objectImg.alt}"
+           sizes="(max-width: 991px) calc(100vw - 20px),
+                  (min-width: 992px) calc(70vw - 145px),
+                  (min-width: 1200px) 710px"
+           srcset="${objectImg.srcset}"
+           src="${objectImg.src}">
+        `
+        : '<div class="s-lazyload--error"></div>';
       const ctaScreen = objectUrl.length > 1 ?
         `<br/><a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
         : '';
@@ -74,14 +86,7 @@ const oicInit = () => {
       item.innerHTML += `
         <div class="b-object-image-overlay__content">
           <figure class="b-object-image-overlay__figure">
-            <img class="b-object-image-overlay__image"
-                 itemprop="contentUrl"
-                 alt="${seed.querySelector('img').alt}"
-                 sizes="(max-width: 991px) calc(100vw - 20px),
-                        (min-width: 992px) calc(70vw - 145px),
-                        (min-width: 1200px) 710px"
-                 srcset="${seed.querySelector('img').srcset}"
-                 src="${seed.querySelector('img').src}">
+            ${objectImgHTML}
             <figcaption class="b-object-image-overlay__figcaption">
               ${numberCopyright}
               <div class="b-object-image-overlay__prevnext">
