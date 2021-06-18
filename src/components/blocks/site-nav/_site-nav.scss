@@ -73,14 +73,14 @@ $nav-breakpoints: (
   }
 
   &__mobile {
+    @include bpMinNav(small) {
+      display: none;
+    }
+
     background-color: siteColor(vam-grey-1);
     color: siteColor(vam-grey-6);
     min-height: 60px;
     transform: translate3d(0, 0, 0);
-
-    @include bpMinNav(small) {
-      display: none;
-    }
 
     &__thin {
       background-color: siteColor(vam-black);
@@ -167,11 +167,6 @@ $nav-breakpoints: (
   }
 
   &__core__rhs {
-    display: none;
-    position: absolute;
-    right: 10px;
-    top: 0;
-
     @include bpMinNav(small) {
       display: inline-block;
     }
@@ -179,6 +174,11 @@ $nav-breakpoints: (
     @include bpMinLarge {
       right: calc(50% - 590px);
     }
+
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 0;
   }
 
   &__core__bag,
@@ -247,6 +247,13 @@ $nav-breakpoints: (
     transition: all .5s;
     z-index: 3;
 
+    .b-site-nav--open & {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      color: siteColor(vam-white);
+    }
+
     &--solo {
       background: siteColor(vam-black);
       box-shadow: 0 0 3px rgba(siteColor(vam-white), .75);
@@ -283,15 +290,6 @@ $nav-breakpoints: (
     }
   }
 
-  &__mobile-toggle {
-    .b-site-nav--open & {
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      color: siteColor(vam-white);
-    }
-  }
-
   &__core {
     background-color: siteColor(vam-grey-1);
     color: siteColor(vam-grey-6);
@@ -320,6 +318,10 @@ $nav-breakpoints: (
   }
 
   &__core__items {
+    @include bpMinNav(small) {
+      display: flex;
+    }
+
     align-items: baseline;
     display: none;
     flex-direction: column;
@@ -328,10 +330,6 @@ $nav-breakpoints: (
     justify-content: space-around;
     padding: 20px 0 75px;
     text-rendering: geometricPrecision;
-
-    @include bpMinNav(small) {
-      display: flex;
-    }
 
     .b-site-nav--open & {
       display: flex;
@@ -440,15 +438,15 @@ $nav-breakpoints: (
   }
 
   &__core__item__icon {
+    @include bpMinNav(small) {
+      display: none;
+    }
+
     display: inline;
     height: 20px;
     margin-right: 10px;
     padding-top: 3px;
     width: 20px;
-
-    @include bpMinNav(small) {
-      display: none;
-    }
   }
 
   &__core__overflowitems {
@@ -483,22 +481,17 @@ $nav-breakpoints: (
   }
 
   &__core__overflowitem {
-    padding: 10px 15px;
-
     @include bpMinNav(medium) {
       &--collections,
       &--learning {
         display: none;
       }
     }
+
+    padding: 10px 15px;
   }
 
   &__core__search {
-    background-color: #000;
-    color: siteColor(vam-grey-6);
-    display: block;
-    padding: 45px 0 10px;
-
     @include bpMinNav(small) {
       height: 100vh;
       padding: 27px 0 5px;
@@ -513,6 +506,11 @@ $nav-breakpoints: (
         top: 59px;
       }
     }
+
+    background-color: #000;
+    color: siteColor(vam-grey-6);
+    display: block;
+    padding: 45px 0 10px;
 
     &__wrapper {
       display: none;
