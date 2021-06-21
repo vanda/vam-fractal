@@ -6,7 +6,7 @@ const searchNextLink = document.querySelector('.b-search-pagination__next-link')
 const startSeperator = document.querySelector('.b-search-pagination__page-button-seperator-start');
 const lastSeperator = document.querySelector('.b-search-pagination__page-button-seperator-last');
 const pageHiddenInput = document.querySelector('input[name="page"]');
-const pageSizeHiddenInput = document.querySelector('input[name="page-size"]');
+const pageSizeHiddenInput = document.querySelector('input[name="page_size"]');
 
 const currentButtonClass = 'b-search-pagination__page-button--current';
 
