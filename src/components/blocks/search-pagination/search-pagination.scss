@@ -1,14 +1,30 @@
 .b-search-pagination {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-
-  &__display-counter {
+  &__container {
+    align-items: center;
     color: siteColor(vam-white);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    &--display-counter {
+      justify-content: left;
+    }
+    &--page-size {
+      margin-top: 20px;
+    }
+  }
+
+  &__page-size {
+    cursor: pointer;
+    margin-left: 10px;
+    &--active {
+      text-decoration: underline;
+    }
+    &:hover {
+      font-weight: 800;
+    }
   }
 
   &__prev-link {

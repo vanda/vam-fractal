@@ -1,7 +1,11 @@
 <div style="background: black;">
-  <p class="b-search-pagination__display-counter"></p>
-  <input class="b-search-pagination__hidden-input" type="hidden" name="page" />
-  <div class="b-search-pagination" data-page-index="1" data-offset="15" data-pages="1234" data-total-count="120">
+  <div class="b-search-pagination" data-page-index="1" data-page-size="15" data-pages="1234" data-total-count="12000">
+    <div class="b-search-pagination__container b-search-pagination__container--display-counter">
+      <p class="b-search-pagination__display-counter"></p>
+      <input class="b-search-pagination__hidden-input" type="hidden" name="page" />
+      <input class="b-search-pagination__hidden-input" type="hidden" name="page-size" />
+    </div>
+    <div class="b-search-pagination__container">
       <button data-page-index="0" class="b-search-pagination__prev-link b-search-pagination__prev-link--inactive">
           <span class="b-search-pagination__caret">
               <</span> <span class="b-search-pagination__link-text">Prev
@@ -36,5 +40,11 @@
       <button data-page-index="2" class="b-search-pagination__next-link">
           <span class="b-search-pagination__link-text">Next</span> <span class="b-search-pagination__link-caret">></span>
       </button>
+    </div>
+    <div class="b-search-pagination__container b-search-pagination__container--page-size">
+      <span class="b-search-pagination__page-size-label">Results per page:</span>
+      <button data-page-size="15" class="b-search-pagination__page-size b-search-pagination__page-size--active">15</button>
+      <button data-page-size="100" class="b-search-pagination__page-size">100</button>
+    </div>
   </div>
 </div>

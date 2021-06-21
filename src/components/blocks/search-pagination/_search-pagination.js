@@ -5,13 +5,15 @@ const searchPrevLink = document.querySelector('.b-search-pagination__prev-link')
 const searchNextLink = document.querySelector('.b-search-pagination__next-link');
 const startSeperator = document.querySelector('.b-search-pagination__page-button-seperator-start');
 const lastSeperator = document.querySelector('.b-search-pagination__page-button-seperator-last');
+const pageHiddenInput = document.querySelector('input[name="page"]');
+const pageSizeHiddenInput = document.querySelector('input[name="page-size"]');
 
 const currentButtonClass = 'b-search-pagination__page-button--current';
 
 const datasetToInts = dataset => Object.entries(dataset).reduce((total, pair) => {
   const [key, value] = pair;
   return Object.assign(total, {
-    [key]: parseInt(value, 10)
+    [key]: +value
   });
 }, {});
 
@@ -28,13 +30,13 @@ const checkNavigationLinks = () => {
   searchPrevLink.dataset.pageIndex = pageIndex - 1;
   searchNextLink.dataset.pageIndex = pageIndex + 1;
 
-  if (parseInt(searchPrevLink.dataset.pageIndex, 10) < 1) {
+  if (+searchPrevLink.dataset.pageIndex < 1) {
     searchPrevLink.setAttribute('disabled', true);
   } else {
     searchPrevLink.removeAttribute('disabled');
   }
 
-  if (parseInt(searchNextLink.dataset.pageIndex, 10) > pages) {
+  if (+searchNextLink.dataset.pageIndex > pages) {
     searchNextLink.setAttribute('disabled', true);
   } else {
     searchNextLink.removeAttribute('disabled');
@@ -42,13 +44,13 @@ const checkNavigationLinks = () => {
 };
 
 const updateDisplayCounter = () => {
-  const { pageIndex, offset, totalCount } = datasetToInts(paginationElement.dataset);
-  if (totalCount < offset) {
+  const { pageIndex, pageSize, totalCount } = datasetToInts(paginationElement.dataset);
+  if (totalCount < pageSize) {
     document.querySelector('.b-search-pagination__display-counter').innerHTML = '';
   } else {
     const currentPage = pageIndex - 1;
-    const startingNumber = (offset * currentPage) + 1;
-    const endingNumber = (offset * currentPage) + offset;
+    const startingNumber = (pageSize * currentPage) + 1;
+    const endingNumber = (pageSize * currentPage) + pageSize;
     document.querySelector('.b-search-pagination__display-counter').innerHTML = `
       ${startingNumber} - ${endingNumber > totalCount ? totalCount : endingNumber} of ${totalCount}
     `;
@@ -123,7 +125,7 @@ if (paginationElement) {
       }
 
       currentButton.classList.remove(currentButtonClass);
-      buttons.filter(button => parseInt(button.dataset.pageIndex, 10) ===
+      buttons.filter(button => +button.dataset.pageIndex ===
         pageIndex)[0].classList.add(currentButtonClass);
       updateDisplayCounter();
       checkNavigationLinks();
@@ -135,14 +137,28 @@ if (paginationElement) {
   };
 
   paginationElement.addEventListener('click', ({ target }) => {
-    const { pageIndex } = datasetToInts(target.dataset);
     if (
       (target.closest('.b-search-pagination__page-button') ||
       target.closest('.b-search-pagination__prev-link') ||
       target.closest('.b-search-pagination__next-link')) &&
       !target.getAttribute('disabled')
     ) {
+      const { pageIndex } = target.dataset;
       paginationElement.dataset.pageIndex = pageIndex;
+      pageHiddenInput.value = pageIndex;
+      // directly changing the value of hidden input, does not trigger a change event
+      // so need to simulate one
+      window.setTimeout(() => pageHiddenInput.dispatchEvent(new Event('change')), 100);
+    }
+    if (target.closest('.b-search-pagination__page-size')) {
+      const { pageSize } = target.dataset;
+      document.querySelector('.b-search-pagination__page-size--active')
+        .classList.toggle('b-search-pagination__page-size--active');
+      target.classList.add('b-search-pagination__page-size--active');
+      paginationElement.dataset.pageSize = pageSize;
+      pageSizeHiddenInput.value = pageSize;
+      window.setTimeout(() => pageSizeHiddenInput.dispatchEvent(new Event('change')), 100);
+      updateDisplayCounter();
     }
     return false;
   });
