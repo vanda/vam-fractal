@@ -59,6 +59,14 @@ const updateDisplayCounter = () => {
 
 if (paginationElement) {
   const callback = (mutations) => {
+    if (mutations.filter(mutation => mutation.attributeName === 'data-page-size').length) {
+      if (document.querySelector(`button[data-page-size="${paginationElement.dataset.pageSize}"]`)) {
+        document.querySelector('.b-search-pagination__page-size--active').classList.remove('b-search-pagination__page-size--active');
+        document.querySelector(`button[data-page-size="${paginationElement.dataset.pageSize}"]`).classList.add('b-search-pagination__page-size--active');
+        updateDisplayCounter();
+      }
+    }
+
     if (mutations.filter(mutation => mutation.attributeName === 'data-pages').length) {
       const { pages } = datasetToInts(paginationElement.dataset);
 
