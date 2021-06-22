@@ -19,11 +19,14 @@
   &__page-size {
     cursor: pointer;
     margin-left: 10px;
+    text-decoration: underline;
     &--active {
-      text-decoration: underline;
+      cursor: default;
+      font-weight: 800;
+      text-decoration: none;
     }
     &:hover {
-      font-weight: 800;
+      font-weight: 600;
     }
   }
 
