@@ -14,6 +14,9 @@
     &--page-size {
       margin-top: 20px;
     }
+    &--col {
+      flex-direction: column;
+    }
   }
 
   &__page-size {
@@ -39,12 +42,14 @@
   &__prev-link, &__next-link {
     @include typeSetting(2, bold);
     @include bpMinMedium {
+      top: 11px;
       @include typeSetting(3, bold);
     }
 
     color: siteColor(vam-white);
     cursor: pointer;
     position: absolute;
+    top: 11px;
     user-select: none;
 
     &[disabled] {
@@ -67,6 +72,9 @@
     display: block;
     &[disabled] {
       display: none;
+    }
+    &:last-of-type {
+      margin-right: 0;
     }
   }
 
