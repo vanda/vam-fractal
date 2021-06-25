@@ -17,7 +17,7 @@ module.exports = {
     objectShufflerData: [
       {
         title: 'Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters ',
-        feed: 'http://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=poster',
+        feed: 'http://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=psychedellic',
         data: [
         ]
       },
