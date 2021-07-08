@@ -1,3 +1,5 @@
+import OpenSeadragon from 'openseadragon';
+
 const imageCarousel = document.querySelector('.b-image-carousel');
 const concealRight = document.querySelector('.b-image-carousel__conceal-right');
 const concealLeft = document.querySelector('.b-image-carousel__conceal-left');
@@ -9,27 +11,16 @@ const imageRef = document.querySelector('.b-image-overlay__img-ref-number');
 const copyrightNotice = document.querySelector('.b-image-overlay-detail__copyright-holder');
 const contactModal = document.querySelector('.b-modal__description-license-contact');
 
-const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container button');
-const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__navigation-container button');
+const mobilePrevNextButtons = document.querySelectorAll('.b-image-overlay-detail__navigation-container > button');
+const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__prevnext > button');
 let images = [];
 
 if (imageCarousel) {
-  images = (imageCarousel ? JSON.parse(imageCarousel.dataset.images) : { images: [] }).images;
+  images = (imageCarousel.dataset.images ?
+    JSON.parse(imageCarousel.dataset.images) : { images: [] }).images;
 }
 
 if (imageCarousel && images.length) {
-  let image = document.querySelector('.b-image-overlay__image');
-
-  const imagesWithImage = images.map(({ src, alt, ref, copyright }) => {
-    const newImage = new Image();
-    newImage.src = src;
-    newImage.alt = alt;
-    newImage.className = 'b-image-overlay__image b-image-overlay__image--active';
-    newImage.dataset.ref = ref;
-    newImage.dataset.copyright = copyright;
-    return newImage;
-  });
-
   const changeViewIndex = (index) => {
     const numberOfContainers = document.querySelectorAll('.b-image-carousel__image-preview-container').length;
     if (index > 0) {
@@ -44,9 +35,9 @@ if (imageCarousel && images.length) {
     imageCarousel.dataset.index = index;
   };
 
-  const thumbs = images.map(({ thumb, alt }) => {
+  const thumbs = images.map(({ imageId, alt }) => {
     const newImage = new Image();
-    newImage.src = thumb;
+    newImage.src = `https://framemark.vam.ac.uk/collections/${imageId}/full/!100,100/0/default.jpg`;
     newImage.alt = `thumbnail for ${alt}`;
     newImage.className = 'b-image-carousel__image-preview';
     return newImage;
@@ -87,6 +78,31 @@ if (imageCarousel && images.length) {
     });
   };
 
+  const osd = OpenSeadragon({
+    element: document.querySelector('#js-image-overlay__osd'),
+    showHomeControl: false,
+    showFullPageControl: false,
+    zoomInButton: 'js-image-overlay__zoomin',
+    zoomOutButton: 'js-image-overlay__zoomout',
+    showNavigator: true,
+    navigatorId: 'js-image-overlay__zoomnavigator',
+    navigatorDisplayRegionColor: '#b7b8bd',
+    navigatorAutoFade: false,
+    tabIndex: -1
+  });
+
+  const zoomNav = document.querySelector('#js-image-overlay__zoomnavigator');
+  zoomNav.parentNode.parentNode.insertBefore(zoomNav, zoomNav.parentNode);
+  zoomNav.parentNode.removeChild(zoomNav.nextSibling);
+
+  const osdArgs = {
+    index: 0,
+    replace: false,
+    success: () => {
+      osdArgs.replace = true;
+    }
+  };
+
   const callback = (mutations) => {
     if (mutations.filter(mutation => mutation.attributeName === 'data-view-index').length) {
       const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
@@ -99,20 +115,15 @@ if (imageCarousel && images.length) {
 
       changeViewIndex(index - Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2));
 
-      const newImage = imagesWithImage[index];
-      const imageParent = document.querySelector('.b-image-overlay__figure');
+      const newImage = images[index];
+      osdArgs.tileSource = `https://framemark.vam.ac.uk/collections/${newImage.imageId}/info.json`;
+      osd.addTiledImage(osdArgs);
+      osd.viewport.fitHorizontally().fitVertically();
 
-      image.remove();
+      contactModal.setAttribute('href', `mailto:vaimages@vam.ac.uk?subject=Image reference: ${newImage.ref}`);
+      imageRef.innerHTML = newImage.ref;
+      copyrightNotice.innerHTML = newImage.copyright;
 
-      imageParent.appendChild(newImage);
-
-      const { ref, copyright } = newImage.dataset;
-
-      contactModal.setAttribute('href', `mailto:vaimages@vam.ac.uk?subject=Image reference: ${ref}`);
-      imageRef.innerHTML = ref;
-      copyrightNotice.innerHTML = copyright;
-
-      image = newImage;
       initImageCarouselContainers(true);
 
       if (window.innerWidth > 991) {

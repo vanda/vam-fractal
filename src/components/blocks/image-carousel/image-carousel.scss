@@ -2,66 +2,42 @@
   background: siteColor(vam-black);
   display: block;
   position: relative;
-  text-align: right;
   width: 400px;
-
-  &__conceal-left {
-    background-image: linear-gradient(to left, rgba(29, 30, 32, 0), #1d1e20);
-    left: 18px;
-
-    @include bpMinLarge {
-      left: 50px;
-    }
-    width: 0;
-  }
-
-  &__conceal-left, &__conceal-right {
-    @include bpMinLarge {
-      width: 140px;
-    }
-
-    content: '';
-    height: 100px;
-    position: absolute;
-    top: 0;
-    width: 80px;
-    z-index: 1;
-  }
-
-  &__conceal-right {
-    @include bpMinLarge {
-      width: 140px;
-    }
-    background-image: linear-gradient(to right, rgba(29, 30, 32, 0), #1d1e20);
-
-    right: 20px;
-
-    @include bpMinLarge {
-      right: 50px;
-    }
-
-    width: 80px;
-  }
 
   @include bpMinLarge {
     width: 710px;
   }
 
+  &__conceal-left,
+  &__conceal-right {
+    content: '';
+    height: 100px;
+    position: absolute;
+    top: 0;
+    width: 68px;
+    z-index: 1;
+  }
+
+  &__conceal-left {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), siteColor(vam-black));
+    left: 0;
+  }
+
+  &__conceal-right {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), siteColor(vam-black));
+    right: 0;
+  }
+
   &__prevnext {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
 
-  &__navigation-container {
-    align-self: center;
-    flex: 1 0 auto;
-    margin: 0 12px;
-    position: relative;
-    text-align: center;
-  }
-
   &__image-carousel {
+    display: none;
+
     @include bpMinMedium {
       align-items: center;
       display: flex;
@@ -70,8 +46,6 @@
       padding: 5px;
       position: relative;
     }
-
-    display: none;
   }
 
   &__image-preview {
@@ -89,12 +63,14 @@
     margin: 0 12px 0 0;
     min-width: 110px;
     position: relative;
+
     &:hover {
       background-color: #b7b8bd;
       cursor: pointer;
     }
+
     &--selected {
-      background-color:  siteColor(vam-white);
+      background-color: siteColor(vam-white);
     }
   }
 
@@ -103,15 +79,19 @@
     border: 1px solid siteColor(vam-white);
     border-radius: 100%;
     color: siteColor(vam-white);
-    cursor: pointer;
     display: inline-flex;
+    flex: none;
     height: 30px;
+    margin: 0 12px;
     opacity: 1;
     width: 30px;
+    z-index: 2;
 
     &--mobile {
       height: 44px;
+      margin: 0 12px 0 0;
       width: 44px;
+
       svg {
         height: 14px;
         pointer-events: none;
@@ -124,8 +104,10 @@
       color: siteColor(vam-grey-5);
       cursor: default;
       opacity: .4;
+
       &:hover {
         background: inherit;
+
         svg {
           color: inherit;
         }

@@ -1,19 +1,17 @@
-  <div class="b-image-overlay__container">
-    <div class="b-image-overlay__content b-image-overlay__content--active">
-      <div class="b-image-overlay__close-container b-image-overlay__close-container--active"></div>
-      <div class="b-image-overlay__figure">
-        <img class="b-image-overlay__image b-image-overlay__image b-image-overlay__image--active" itemprop="contentUrl" alt="" src="">
-      </div>
-      <div class="b-image-overlay__figcaption b-image-overlay__figcaption--active">
-        <div class="b-image-overlay__prevnext">
-          {%- render "@image-overlay-details" -%}
-        </div>
-      </div>
+<div class="b-image-overlay__container">
+  <div class="b-image-overlay__content b-image-overlay__content--active">
+    <button class="b-image-overlay__close-container" title="Close"></button>
+    <div class="b-image-overlay__figure" id="js-image-overlay__osd">
+    </div>
+    <div class="b-image-overlay__figcaption">
+      {%- render "@image-overlay-details" -%}
+      <button class="b-image-overlay__figcaption__handle" title="More information"></button>
     </div>
   </div>
+</div>
 
 <div class='b-image-overlay b-image-overlay__preview b-image-overlay__preview--offensive'>
-  <img class='b-image-overlay__preview-image b-image-overlay__preview-image--offensive object-page__hero-img' alt="Cartoon for a tapestry." src="https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/10/c4e0e19a-5afa-4aea-953b-5c9df66cf596/1280.jpg">
+  <img class='b-image-overlay__preview-image b-image-overlay__preview-image--offensive object-page__hero-img' alt="Cartoon for a tapestry." src="https://framemark.vam.ac.uk/collections/2006AN5938/full/230,/0/default.jpg">
   {%- if offensive_image -%}
     <div class="b-image-overlay__preview-concealer">
       <span class="b-image-overlay__preview-concealer-text">
