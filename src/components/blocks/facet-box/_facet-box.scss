@@ -46,11 +46,24 @@
       border-color: themeColor(silent-green);
       color: siteColor(vam-black);
     }
+
+    &-close {
+      border: .7px solid themeColor(silent-green);
+      border-radius: 19.5px;
+      color: siteColor(vam-white);
+      font-size: 36px;
+      height: 40px;
+      position: relative;
+      width: 40px;
+    }
   }
 
   &__modal-content {
     &-close {
+      color: siteColor(vam-white);
       height: 19px;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 18px;
     }
     &-open {
@@ -76,6 +89,14 @@
     &-container {
       @include bpMinMedium {
         display: none;
+      }
+      &--close {
+        @include bpMinMedium {
+          display: none;
+        }
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
       }
       padding-right: 20px;
       padding-top: 20px;
