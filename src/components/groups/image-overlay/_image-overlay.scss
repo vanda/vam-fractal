@@ -87,7 +87,7 @@
       height: 100%;
       position: fixed;
       top: 0;
-      z-index: 40;
+      z-index: 300;
 
       @include bpMinMedium {
         background: rgba(29, 30, 32, .9);

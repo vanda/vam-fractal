@@ -95,13 +95,7 @@ if (imageCarousel && images.length) {
   zoomNav.parentNode.parentNode.insertBefore(zoomNav, zoomNav.parentNode);
   zoomNav.parentNode.removeChild(zoomNav.nextSibling);
 
-  const osdArgs = {
-    index: 0,
-    replace: false,
-    success: () => {
-      osdArgs.replace = true;
-    }
-  };
+  const osdArgs = {};
 
   const callback = (mutations) => {
     if (mutations.filter(mutation => mutation.attributeName === 'data-view-index').length) {
@@ -117,6 +111,7 @@ if (imageCarousel && images.length) {
 
       const newImage = images[index];
       osdArgs.tileSource = `https://framemark.vam.ac.uk/collections/${newImage.imageId}/info.json`;
+      osd.world.removeAll();
       osd.addTiledImage(osdArgs);
       osd.viewport.fitHorizontally().fitVertically();
 
