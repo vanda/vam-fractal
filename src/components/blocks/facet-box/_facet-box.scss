@@ -31,44 +31,48 @@
     display: none;
   }
 
-  &__modal {
-    &-button {
-      background-color: transparent;
+  &__modal-button {
+    @include bpMinMedium {
+      display: none;
+    }
+    background-color: transparent;
+    border-color: themeColor(silent-green);
+    color: siteColor(vam-white);
+    display: block;
+    padding-right: 36px;
+    position: relative;
+    &:hover {
+      background-color:  themeColor(silent-green);
       border-color: themeColor(silent-green);
+      color: siteColor(vam-black);
+    }
+  }
+
+  &__modal-content {
+    &-close {
+      height: 19px;
+      width: 18px;
+    }
+    &-open {
+      height: 34px;
+      margin-top: -1px;
+      width: 30px;
+    }
+
+    .b-facet-box__modal-button:hover & {
       color: siteColor(vam-white);
-      padding-right: 40px;
-      position: relative;
-      &:hover {
-        background-color:  themeColor(silent-green);
-        border-color: themeColor(silent-green);
-        color: siteColor(vam-black);
-      }
+      filter: invert(100%);
     }
 
-    &-content {
-      &-close {
-        height: 19px;
-        width: 18px;
-      }
-      &-open {
-        height: 34px;
-        margin-top: -1px;
-        width: 30px;
-      }
+    color: themeColor(silent-green);
+    left: calc(100% - 34px);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
-      .b-facet-box__modal-button:hover & {
-        color: siteColor(vam-white);
-        filter: invert(100%);
-      }
-
-      color: themeColor(silent-green);
-      left: calc(100% - 34px);
-      pointer-events: none;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
+  &__modal {
     &-container {
       @include bpMinMedium {
         display: none;
