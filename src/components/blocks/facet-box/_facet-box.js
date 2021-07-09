@@ -316,10 +316,16 @@ const initialiseFacetOverlay = () => {
 
     const dateFacet = document.createElement('DIV');
     dateFacet.className = 'b-facet-box__facet b-facet-box__facet-date';
+    dateFacet.setAttribute('aria-haspopup', 'true');
+    dateFacet.setAttribute('aria-expanded', 'false');
     dateFacet.innerHTML = dateFacetHTML();
     dateFacet.querySelector('button').addEventListener('click', (ev) => {
       ev.preventDefault();
       if (ev.target.classList.contains(facetTextClass)) {
+        const currentExpanded = dateFacet.getAttribute('aria-expanded');
+        dateFacet.setAttribute('aria-expanded',
+          currentExpanded === 'true' ? 'false' : 'true'
+        );
         ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
@@ -453,20 +459,66 @@ const initialiseFacetOverlay = () => {
   };
 };
 
+const focusHandler = (e) => {
+  let focusable = [];
+
+  // need to calculate this, since not everything focusable will be visible
+  focusable = focusable.concat(Array.from(document.querySelectorAll('.b-facet-box__term-list button')));
+  Array.from(document.querySelectorAll('.b-facet-box__facet')).forEach((el) => {
+    focusable.push(el.querySelector('button'));
+    if (el.getAttribute('aria-expanded') === 'true') {
+      if (el.classList.contains('b-facet-box__facet-date')) {
+        focusable = focusable.concat(Array.from(el.querySelectorAll('form button, form input')));
+      } else {
+        focusable = focusable.concat(Array.from(el.querySelectorAll('ul button')));
+      }
+    }
+  });
+
+  if (e.key === 'Escape') {
+    document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+    window.removeEventListener('keydown', focusHandler);
+  }
+
+  if (e.keyCode === 9) {
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const shift = e.shiftKey;
+    if (focusable.length) {
+      if (shift && document.activeElement === first) {
+        last.focus();
+        e.preventDefault();
+      } else if (!shift && document.activeElement === last) {
+        first.focus();
+        e.preventDefault();
+      }
+    }
+  }
+};
+
 (() => {
   if (document.querySelector('.b-facet-box')) {
     initialiseFacetOverlay();
+
+    const instruction = document.createElement('SPAN');
+    instruction.classList.add('b-facet-box__instruction');
+    instruction.setAttribute('aria-live', 'polite');
+    instruction.innerHTML = 'Use Escape Key to close filters';
 
     if (document.querySelector('.b-facet-box__modal-button-open')) {
       document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', (e) => {
         e.preventDefault();
         document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
+        window.addEventListener('keydown', focusHandler);
+        document.querySelector('.b-facet-box').appendChild(instruction);
       }));
     }
     if (document.querySelector('.b-facet-box__close-button')) {
       document.querySelector('.b-facet-box__close-button').addEventListener('click', (e) => {
         e.preventDefault();
         document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+        window.removeEventListener('keydown', focusHandler);
+        document.querySelector('.b-facet-box').removeChild(instruction);
       });
     }
 
