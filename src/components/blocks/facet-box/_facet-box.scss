@@ -10,6 +10,15 @@
   top: 0;
   width: 100%;
 
+  &__instruction {
+    height: 1px;
+    left: -2px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 1px;
+  }
+
   &--active {
     display: block;
     overflow-y: auto;

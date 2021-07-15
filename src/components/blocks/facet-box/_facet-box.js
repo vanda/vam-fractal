@@ -316,10 +316,16 @@ const initialiseFacetOverlay = () => {
 
     const dateFacet = document.createElement('DIV');
     dateFacet.className = 'b-facet-box__facet b-facet-box__facet-date';
+    dateFacet.setAttribute('aria-haspopup', 'true');
+    dateFacet.setAttribute('aria-expanded', 'false');
     dateFacet.innerHTML = dateFacetHTML();
     dateFacet.querySelector('button').addEventListener('click', (ev) => {
       ev.preventDefault();
       if (ev.target.classList.contains(facetTextClass)) {
+        const currentExpanded = dateFacet.getAttribute('aria-expanded');
+        dateFacet.setAttribute('aria-expanded',
+          currentExpanded === 'true' ? 'false' : 'true'
+        );
         ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
@@ -453,53 +459,105 @@ const initialiseFacetOverlay = () => {
   };
 };
 
-(() => {
-  if (document.querySelector('.b-facet-box')) {
-    initialiseFacetOverlay();
+const getFocusable = () => {
+  let focusable = [];
 
-    if (document.querySelector('.b-facet-box__modal-button-open')) {
-      document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
-      }));
+  // need to calculate this, since not everything focusable will be visible
+  focusable = focusable.concat(Array.from(document.querySelectorAll('.b-facet-box__term-list button')));
+  Array.from(document.querySelectorAll('.b-facet-box__facet')).forEach((el) => {
+    focusable.push(el.querySelector('button'));
+    if (el.getAttribute('aria-expanded') === 'true') {
+      if (el.classList.contains('b-facet-box__facet-date')) {
+        focusable = focusable.concat(Array.from(el.querySelectorAll('form button, form input')));
+      } else {
+        focusable = focusable.concat(Array.from(el.querySelectorAll('ul button')));
+      }
     }
-    if (document.querySelector('.b-facet-box__close-button')) {
-      document.querySelector('.b-facet-box__close-button').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
-      });
-    }
+  });
 
-    window.addEventListener('resize', () => {
-      const facetFormTerms = Array.from(document.querySelectorAll('.b-facet-box__term.b-facet-box__term--form'));
-      if (document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross')) {
-        if (window.innerWidth > 499 && window.innerWidth < 992) {
-          const facetContainerWidth = document.querySelector('.b-search-form__facets').offsetWidth;
-          let cutOffWidth = 0;
-          let currentIndex = 1;
-          facetFormTerms.forEach((el) => {
-            cutOffWidth += el.offsetWidth;
-            if (cutOffWidth < facetContainerWidth) {
-              currentIndex += 1;
-            }
-          });
-          if ((facetFormTerms.length - currentIndex) > 0) {
-            document.querySelector('.b-search-form__facets-mobile').style.display = 'block';
-          } else {
-            document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
+  return focusable;
+};
+
+const focusHandler = (e) => {
+  const focusable = getFocusable();
+
+  if (e.key === 'Escape') {
+    document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+    window.removeEventListener('keydown', focusHandler);
+  }
+
+  if (e.keyCode === 9) {
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const shift = e.shiftKey;
+    if (focusable.length) {
+      if (shift && document.activeElement === first) {
+        last.focus();
+        e.preventDefault();
+      } else if (!shift && document.activeElement === last) {
+        first.focus();
+        e.preventDefault();
+      }
+    }
+  }
+};
+
+if (document.querySelector('.b-facet-box')) {
+  initialiseFacetOverlay();
+
+  const instruction = document.createElement('SPAN');
+  instruction.classList.add('b-facet-box__instruction');
+  instruction.setAttribute('aria-live', 'polite');
+  instruction.innerHTML = 'Use Escape Key to close filters';
+
+  if (document.querySelector('.b-facet-box__modal-button-open')) {
+    document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
+      window.addEventListener('keydown', focusHandler);
+      document.querySelector('.b-facet-box').appendChild(instruction);
+      getFocusable()[0].focus();
+    }));
+  }
+  if (document.querySelector('.b-facet-box__close-button')) {
+    document.querySelector('.b-facet-box__close-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
+      window.removeEventListener('keydown', focusHandler);
+      document.querySelector('.b-facet-box').removeChild(instruction);
+    });
+  }
+
+  window.addEventListener('resize', () => {
+    const facetFormTerms = Array.from(document.querySelectorAll('.b-facet-box__term.b-facet-box__term--form'));
+    if (document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross')) {
+      if (window.innerWidth > 499 && window.innerWidth < 992) {
+        const facetContainerWidth = document.querySelector('.b-search-form__facets').offsetWidth;
+        let cutOffWidth = 0;
+        let currentIndex = 1;
+        facetFormTerms.forEach((el) => {
+          cutOffWidth += el.offsetWidth;
+          if (cutOffWidth < facetContainerWidth) {
+            currentIndex += 1;
           }
-          document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `+${facetFormTerms.length - currentIndex}`;
-        } else if (window.innerWidth < 500) {
-          if ((facetFormTerms.length) > 0) {
-            document.querySelector('.b-search-form__facets-mobile').style.display = 'block';
-          } else {
-            document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
-          }
-          document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `${facetFormTerms.length - 1} filter${facetFormTerms.length - 1 > 1 ? 's' : ''} applied`;
+        });
+        if ((facetFormTerms.length - currentIndex) > 0) {
+          document.querySelector('.b-search-form__facets-mobile').style.display = 'block';
         } else {
           document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
         }
+        document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `+${facetFormTerms.length - currentIndex}`;
+      } else if (window.innerWidth < 500) {
+        if ((facetFormTerms.length) > 0) {
+          document.querySelector('.b-search-form__facets-mobile').style.display = 'block';
+        } else {
+          document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
+        }
+        document.querySelector('.b-facet-box__term-text.b-facet-box__term-text--no-cross').innerHTML = `${facetFormTerms.length - 1} filter${facetFormTerms.length - 1 > 1 ? 's' : ''} applied`;
+      } else {
+        document.querySelector('.b-search-form__facets-mobile').style.display = 'none';
       }
-    });
-  }
-})();
+    }
+  });
+}
+
