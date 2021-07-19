@@ -1,14 +1,36 @@
 .b-search-pagination {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-
-  &__display-counter {
+  &__container {
+    align-items: center;
     color: siteColor(vam-white);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    &--display-counter {
+      justify-content: left;
+    }
+    &--page-size {
+      margin-top: 20px;
+    }
+    &--col {
+      flex-direction: column;
+    }
+  }
+
+  &__page-size {
+    cursor: pointer;
+    margin-left: 10px;
+    text-decoration: underline;
+    &--active {
+      cursor: default;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    &:hover {
+      font-weight: 600;
+    }
   }
 
   &__prev-link {
@@ -20,12 +42,14 @@
   &__prev-link, &__next-link {
     @include typeSetting(2, bold);
     @include bpMinMedium {
+      top: 11px;
       @include typeSetting(3, bold);
     }
 
     color: siteColor(vam-white);
     cursor: pointer;
     position: absolute;
+    top: 11px;
     user-select: none;
 
     &[disabled] {
@@ -48,6 +72,9 @@
     display: block;
     &[disabled] {
       display: none;
+    }
+    &:last-of-type {
+      margin-right: 0;
     }
   }
 
