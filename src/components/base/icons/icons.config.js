@@ -50,6 +50,7 @@ module.exports = {
       'shuffle',
       'view',
       'make',
+      'print',
       'event-none',
       'point-up',
       'point-right',
