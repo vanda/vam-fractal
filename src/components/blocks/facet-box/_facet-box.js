@@ -481,6 +481,12 @@ const getFocusable = () => {
 const focusHandler = (e) => {
   const focusable = getFocusable();
 
+  if (e.keyCode === 13) {
+    if (+document.activeElement.getAttribute('tabindex') > -1) {
+      document.activeElement.click();
+    }
+  }
+
   if (e.key === 'Escape') {
     document.querySelector('.b-facet-box').classList.remove('b-facet-box--active');
     window.removeEventListener('keydown', focusHandler);
