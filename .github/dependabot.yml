@@ -1,0 +1,19 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: surge
+    versions:
+    - 0.21.7
+    - 0.22.1
+  - dependency-name: "@frctl/nunjucks"
+    versions:
+    - 2.0.7
+    - 2.0.8
+  - dependency-name: vanilla-lazyload
+    versions:
+    - 17.3.0
