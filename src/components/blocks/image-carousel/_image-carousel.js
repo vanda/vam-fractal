@@ -87,10 +87,8 @@ if (imageCarousel && images.length) {
     showNavigator: true,
     navigatorId: 'js-image-overlay__zoomnavigator',
     navigatorDisplayRegionColor: '#b7b8bd',
-    navigatorAutoFade: false,
-    tabIndex: -1
+    navigatorAutoFade: false
   });
-
   const zoomNav = document.querySelector('#js-image-overlay__zoomnavigator');
   zoomNav.parentNode.parentNode.insertBefore(zoomNav, zoomNav.parentNode);
   zoomNav.parentNode.removeChild(zoomNav.nextSibling);
@@ -152,7 +150,8 @@ if (imageCarousel && images.length) {
   observer.observe(imageCarousel, { attributes: true });
 
   document.addEventListener('keydown', () => {
-    if (document.querySelector('.b-image-overlay__container--active')) {
+    if (document.querySelector('.b-image-overlay__container--active')
+      && document.activeElement !== osd.canvas) {
       if (event.keyCode === 37) {
         const index = parseInt(imageCarousel.dataset.index, 10) - 1;
         if (index >= 0) {
