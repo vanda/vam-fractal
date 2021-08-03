@@ -128,7 +128,7 @@
     background: siteColor(vam-black);
     display: flex;
     line-height: 1.7;
-    max-height: 25%;
+    max-height: 50%;
     transition: max-height 450ms;
     width: 100%;
 
@@ -147,6 +147,7 @@
       border-radius: 50%;
       cursor: pointer;
       display: flex;
+      flex-shrink: 0;
       height: 32px;
       padding: 0;
       position: relative;
