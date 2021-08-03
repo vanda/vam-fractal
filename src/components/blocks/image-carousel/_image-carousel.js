@@ -93,6 +93,23 @@ if (imageCarousel && images.length) {
   zoomNav.parentNode.parentNode.insertBefore(zoomNav, zoomNav.parentNode);
   zoomNav.parentNode.removeChild(zoomNav.nextSibling);
 
+  const zoomIn = document.querySelector('.b-image-overlay-detail__zoom-in');
+  const zoomOut = document.querySelector('.b-image-overlay-detail__zoom-out');
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.b-image-overlay-detail__zoom-in')) {
+      if (osd.viewport.getZoom() === osd.viewport.getMaxZoom()) {
+        zoomIn.classList.remove('b-image-overlay-detail__zoom-in--enabled');
+      }
+      zoomOut.classList.add('b-image-overlay-detail__zoom-out--enabled');
+    } else if (e.target.closest('.b-image-overlay-detail__zoom-out')) {
+      if (osd.viewport.getZoom() === osd.viewport.getMinZoom()) {
+        zoomOut.classList.remove('b-image-overlay-detail__zoom-out--enabled');
+      }
+      zoomIn.classList.add('b-image-overlay-detail__zoom-in--enabled');
+    }
+  }, false);
+
   const osdArgs = {};
 
   const callback = (mutations) => {
@@ -264,6 +281,8 @@ if (imageCarousel && images.length) {
     disableHiddenNavButtons();
     imageCarousel.dataset.index = imageCarousel.dataset.index;
     initImageCarouselContainers();
+    zoomOut.classList.add('b-image-overlay-detail__zoom-out--enabled');
+    zoomIn.classList.add('b-image-overlay-detail__zoom-in--enabled');
   });
 
   disableHiddenNavButtons();
