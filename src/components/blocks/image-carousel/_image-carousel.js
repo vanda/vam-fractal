@@ -104,6 +104,14 @@ if (imageCarousel && images.length) {
       concealRight.style.display = ((viewIndex + document.querySelectorAll('.b-image-carousel__image-preview-container').length) >= images.length) ? 'none' : 'block';
     }
 
+    if (mutations.filter(mutation => mutation.attributeName === 'data-image-id').length) {
+      const imageId = imageCarousel.dataset.imageId;
+      const imageIdIndex = images.findIndex(img => img.imageId === imageId);
+      if (imageIdIndex > -1) {
+        changeIndex(imageIdIndex);
+      }
+    }
+
     if (mutations.filter(mutation => mutation.attributeName === 'data-index').length) {
       const index = parseInt(imageCarousel.dataset.index, 10);
 
