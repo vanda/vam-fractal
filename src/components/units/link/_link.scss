@@ -6,30 +6,9 @@
     color: inherit;
   }
 
-  &--border {
-    border-bottom: 1px solid currentColor;
-    text-decoration: none;
-  }
-
-  &--arrow {
-    display: inline-block;
-
-    &::after {
-      // If CSS triangles are used then the arrow
-      //  can become orphaned from the main link.
-      // Also ensure that your HTML has no white-
-      //  space in it either.
-      content: ' ▸';
-      display: inline-block;
-      text-decoration: none;
-    }
-  }
-
   &--arrowed {
-    border-bottom: 1px solid currentColor;
     display: inline-block;
     position: relative;
-    text-decoration: none;
 
     &::after {
       bottom: 1%;
@@ -38,10 +17,6 @@
       position: absolute;
       right: -14px;
       transform: scale(.6, 1.25);
-    }
-
-    &:hover {
-      text-decoration: none;
     }
   }
 

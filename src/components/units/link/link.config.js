@@ -13,23 +13,6 @@ module.exports = {
       }
     },
     {
-      name: 'border',
-      label: 'With border',
-      context: {
-        text: 'The following link is for use as a stand alone element',
-        modifiers: ['border']
-      }
-    },
-    {
-      name: 'arrow',
-      label: 'With arrow',
-      context: {
-        arrowed: true,
-        text: 'The following link is for use as a stand alone element',
-        modifiers: ['arrow', 'border']
-      }
-    },
-    {
       name: 'arrowed',
       label: 'arrowed',
       context: {
@@ -42,8 +25,7 @@ module.exports = {
       label: 'External',
       context: {
         external: true,
-        text: 'The following link is for use as a stand alone element',
-        modifiers: ['border']
+        text: 'The following link is for use as a stand alone element'
       }
     }
   ]

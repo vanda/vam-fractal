@@ -6,15 +6,6 @@
   <p>
     {{text}}
   </p>
-    {% if arrowed %}
-      <a href="#">
-        <span class="u-link--border">
-          Link
-        </span>
-        <span class="u-link--arrow">
-        </span>
-      </a>
-    {% else %}
       <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}">
         {% if external %}
           <svg role="img" class="u-link--external-icon">
@@ -23,5 +14,4 @@
         {% endif %}
         Link
       </a>
-    {% endif %}
 {% endif %}
