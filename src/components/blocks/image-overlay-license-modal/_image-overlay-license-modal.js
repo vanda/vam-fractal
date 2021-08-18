@@ -30,8 +30,15 @@ const downloadContent = document.querySelector(`.${prefix}${downloadContentClass
 const contactContent = document.querySelector(`.${prefix}${contactContentClass}`);
 const downloadLink = document.querySelector('.u-link.b-image-overlay-license-modal__download-link.js-modal-action');
 const downloadButton = document.querySelector('.b-icon-link.b-icon-link__download.js-modal-action');
+const closeButton = document.querySelector('.b-image-overlay-license-modal__close-container');
 
 window.addEventListener('click', (e) => {
+  if (e.target.closest('.b-image-overlay-license-modal__close-container')) {
+    closeButton.disabled = true;
+    modal.classList.remove('b-modal--active');
+    modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
+  }
+
   if (e.target.closest(`.${prefix}${downloadButtonClass}`)) {
     const focusable = downloadContent.querySelectorAll(`
       .b-image-overlay-license-modal__title-section a,
@@ -41,6 +48,7 @@ window.addEventListener('click', (e) => {
     imageOverlay.classList.add('b-image-overlay--unfocus');
     modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
     modal.classList.add('b-modal--active');
+    closeButton.disabled = false;
     downloadContent.classList.add(`${prefix}${downloadContentClass}${active}`);
     contactContent.classList.remove(`${prefix}${contactContentClass}${active}`);
     focusable[0].focus();
@@ -50,6 +58,7 @@ window.addEventListener('click', (e) => {
     imageOverlay.classList.add('b-image-overlay--unfocus');
     modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
     modal.classList.add('b-modal--active');
+    closeButton.disabled = false;
     downloadContent.classList.remove(`${prefix}${downloadContentClass}${active}`);
     contactContent.classList.add(`${prefix}${contactContentClass}${active}`);
     document.querySelector('.b-modal__description-license-contact').focus();
@@ -133,6 +142,7 @@ window.addEventListener('keydown', (e) => {
 
   if (activeModal && e.keyCode === 27) {
     modal.classList.remove('b-modal--active');
+    modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
     e.preventDefault();
     e.stopPropagation();
     return false;
