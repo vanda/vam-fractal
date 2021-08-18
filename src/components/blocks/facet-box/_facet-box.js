@@ -513,6 +513,7 @@ if (document.querySelector('.b-facet-box')) {
   if (document.querySelector('.b-facet-box__modal-button-open')) {
     document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
       window.addEventListener('keydown', focusHandler);
       document.querySelector('.b-facet-box').appendChild(instruction);
