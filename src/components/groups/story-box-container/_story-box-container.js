@@ -43,7 +43,7 @@ const initRevealer = () => {
         }
       );
 
-      if (currentBoxes + 1 === boxes.length) {
+      if (Array.from((document.querySelectorAll('.b-story-box--active'))).length === boxes.length) {
         document.querySelector('.b-story-box-container__reveal-container').classList.remove('b-story-box-container__reveal-container--active');
       } else {
         const textContentBoxes = columnBoxes.slice(

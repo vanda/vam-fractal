@@ -35,10 +35,10 @@ module.exports = {
       }
     },
     {
-      name: 'more-than-four-boxes',
-      label: 'More than four boxes',
+      name: 'four-boxes',
+      label: 'four boxes',
       context: {
-        stories: new Array(5).fill(defaultStory)
+        stories: new Array(4).fill(defaultStory)
       }
     }
   ]
