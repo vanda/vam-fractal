@@ -1,3 +1,7 @@
+.b-modal__description-license-contact:focus {
+  @include insetFocus;
+}
+
 .b-image-overlay {
   &__preview {
     cursor: pointer;
