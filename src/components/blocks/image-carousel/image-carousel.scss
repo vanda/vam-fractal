@@ -64,13 +64,17 @@
     min-width: 110px;
     position: relative;
 
+    &:focus {
+      @include defaultFocus;
+    }
+
     &:hover {
-      background-color: #b7b8bd;
       cursor: pointer;
+      opacity: .3;
     }
 
     &--selected {
-      background-color: siteColor(vam-white);
+      transform: scale(1.1);
     }
   }
 
