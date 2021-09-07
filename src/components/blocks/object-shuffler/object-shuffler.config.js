@@ -16,26 +16,26 @@ module.exports = {
   context: {
     objectShufflerData: [
       {
+        title: 'Allsorts aggregator',
+        feed: 'https://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=THES260586|x30308&q_object_title=trip&q_actor=head',
+        data: [
+        ]
+      },
+      {
         title: 'Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters ',
-        feed: 'http://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=psychedellic',
+        feed: 'https://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=psychedellic',
         data: [
         ]
       },
       {
         title: 'Netsuke',
-        feed: 'http://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q_object_type=netsuke',
+        feed: 'https://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q_object_type=netsuke',
         data: [
         ]
       },
       {
         title: 'Lego',
-        feed: 'http://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=lego',
-        data: [
-        ]
-      },
-      {
-        title: 'Bikes',
-        feed: 'http://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=bicycle',
+        feed: 'https://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=lego',
         data: [
         ]
       }
