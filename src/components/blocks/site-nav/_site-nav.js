@@ -93,10 +93,12 @@ if (siteNav) {
       e.preventDefault();
       if (siteNav.classList.contains('b-site-nav--open')) {
         siteNav.classList.remove('b-site-nav--open');
+        siteNav.setAttribute('aria-expanded', 'false');
         document.removeEventListener('keydown', tabListener, false);
         navSearchActivate(false);
       } else {
         siteNav.classList.add('b-site-nav--open');
+        siteNav.setAttribute('aria-expanded', 'true');
         document.addEventListener('keydown', tabListener, false);
         navSearchActivate(true);
       }
