@@ -65,9 +65,10 @@
             if (activeSlide.closest('.b-object-shuffler__deck[active]')) {
               shuffler.tabIndexSlide(activeSlide);
             }
-            // in case we end up with only 1 tab, remove it from tabindex
-            if (i === shufflerData.length && deckTabs.childElementCount === 1) {
-              deckTabs.firstElementChild.setAttribute('tabindex', -1);
+            // in case of just 1 tab, remove it
+            if (i === shufflerData.length && i === 1) {
+              deckTabs.removeChild(deckTabs.firstElementChild);
+              deckTabs.classList.add('b-object-shuffler__tabs--void');
             }
           });
         i += 1;
@@ -90,7 +91,7 @@
       }, false);
 
       // apply the active animation to an activated more button
-      const moreBtn = el.querySelector('.b-object-shuffler__more');
+      const moreBtn = el.querySelector('.b-object-shuffler__more-icon');
       moreBtn.addEventListener('click', () => {
         shuffler.nextSlide(el.querySelector('.b-object-shuffler__deck[active]'));
         moreBtn.setAttribute('active', true);
@@ -106,14 +107,14 @@
       return cols * 2;
     },
     getData: (deck) => {
-      // append more data from search API
+      // append more data from search API when needed
       const dataSize = 2 * deck._props.slideSize;
       if (deck._props.itemsData.length < deck._props.itemsIndex + dataSize) {
-        const dataURI = `${deck._props.itemsDataFeed}&page_size=${dataSize}&page=${deck._props.itemsData.length / dataSize}`;
+        deck._props.apiPage = deck._props.apiPage + 1 || 1; // increment api page
+        const dataURI = `${deck._props.itemsDataFeed}&page_size=${dataSize}&page=${deck._props.apiPage}`;
         const promise = fetch(dataURI)
           .then(response => response.json())
           .then((data) => {
-          // deck._props.itemsData = [...deck._props.itemsData, ...data];
             Array.from(data.records, (record) => {
               const imgPath = `${record._images._iiif_image_base_url}full/`;
               const title = record._primaryTitle || `untitled ${record.objectType}`;

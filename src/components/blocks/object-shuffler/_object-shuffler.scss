@@ -30,9 +30,13 @@
   }
 
   &__tabs {
-    margin: 0 0 20px;
+    margin-bottom: 20px;
     padding-top: 44px;
     position: relative;
+
+    &--void {
+      margin: 0;
+    }
   }
 
   &__tab {
@@ -42,13 +46,7 @@
     height: 20px;
     margin: 0 16px;
     opacity: 1;
-    outline: 0;
     width: 20px;
-
-    &:only-child {
-      cursor: default;
-      height: 0;
-    }
 
     &::before {
       @include typeSetting(3, bold);
@@ -68,6 +66,11 @@
       @include bpMinSmall {
         width: 60%;
       }
+    }
+
+    &:only-child {
+      cursor: default;
+      height: 0;
     }
 
     &[active],
@@ -180,16 +183,24 @@
 
 
   &__more {
-    background: siteColor(vam-white);
+    @include typeSetting(1, bold, uppercase);
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__more-icon {
     border-radius: 50%;
     color: siteColor(vam-black);
-    cursor: pointer;
     display: flex;
     height: 60px;
-    margin: 0 auto 40px;
+    margin-bottom: 10px;
     transition: transform .3s ease-out;
     width: 60px;
-    z-index: 1;
 
     &:hover,
     &:focus {
