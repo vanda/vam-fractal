@@ -17,9 +17,8 @@ module.exports = {
     objectShufflerData: [
       {
         title: 'Allsorts aggregator',
-        feed: 'https://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=THES260586|x30308&q_object_title=trip&q_actor=head',
-        data: [
-        ]
+        feed: 'https://api.vam.ac.uk/v2/objects/search?search_profile=ymal&q=THES260586|AAT112743&q_object_title=trip&q_actor=head',
+        exclude: 'O1318092'
       },
       {
         title: 'Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters Posters ',

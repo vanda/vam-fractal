@@ -20,9 +20,10 @@
       Array.from(el.querySelectorAll('.b-object-shuffler__deck'), (deck) => {
         // store deck data
         deck._props = {
-          deckTitle: shufflerData[i].title,
+          deckTitle: shufflerData[i].title || '',
           slideSize,
           itemsData: shufflerData[i].data || [],
+          itemsExclude: shufflerData[i].exclude || null,
           itemsDataFeed: shufflerData[i].feed,
           itemsIndex: 0,
           transitionDurationItem,
@@ -116,19 +117,21 @@
           .then(response => response.json())
           .then((data) => {
             Array.from(data.records, (record) => {
-              const imgPath = `${record._images._iiif_image_base_url}full/`;
-              const title = record._primaryTitle || `untitled ${record.objectType}`;
-              deck._props.itemsData.push(
-                {
-                  img: {
-                    srcset: `${imgPath}250,/0/default.jpg 250w, ${imgPath}350,/0/default.jpg 350w, ${imgPath}450,/0/default.jpg 450w, ${imgPath}550,/0/default.jpg 550w, ${imgPath}700,/0/default.jpg 700w, ${imgPath}900,/0/default.jpg 900w`,
-                    src: `${imgPath}350,/0/default.jpg`,
-                    alt: title
-                  },
-                  title,
-                  href: `/item/${record.systemNumber}/`
-                }
-              );
+              if (record.systemNumber !== deck._props.itemsExclude) {
+                const imgPath = `${record._images._iiif_image_base_url}full/`;
+                const title = record._primaryTitle || `untitled ${record.objectType}`;
+                deck._props.itemsData.push(
+                  {
+                    img: {
+                      srcset: `${imgPath}250,/0/default.jpg 250w, ${imgPath}350,/0/default.jpg 350w, ${imgPath}450,/0/default.jpg 450w, ${imgPath}550,/0/default.jpg 550w, ${imgPath}700,/0/default.jpg 700w, ${imgPath}900,/0/default.jpg 900w`,
+                      src: `${imgPath}350,/0/default.jpg`,
+                      alt: title
+                    },
+                    title,
+                    href: `/item/${record.systemNumber}/`
+                  }
+                );
+              }
               return true;
             });
           })
