@@ -1,48 +1,44 @@
-<div class="fr-bg--light">
+<section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
+  <header class="b-block-grid__header">
+    <h1 class="b-block-grid__title">One Featured Event</h1>
+  </header>
 
-  <section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
-    <header class="b-block-grid__header">
-      <h1 class="b-block-grid__title">One Featured Event</h1>
-    </header>
-
-    {%- render "@event-feature" -%}
-  </section>
+  {%- render "@event-feature" -%}
+</section>
 
 
-  <section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
-    <header class="b-block-grid__header">
-      <h1 class="b-block-grid__title">Two Featured Events</h1>
-    </header>
+<section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
+  <header class="b-block-grid__header">
+    <h1 class="b-block-grid__title">Two Featured Events</h1>
+  </header>
 
-    {%- render "@event-feature--half-width" -%}
-    {%- render "@event-feature--half-width" -%}
-  </section>
-
-
-  <section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
-    <header class="b-block-grid__header">
-      <h1 class="b-block-grid__title">Three Featured Events</h1>
-    </header>
-
-    {%- render "@event-feature" -%}
-    <div>
-      {%- render "@event-feature--half-width-fixed" -%}
-      {%- render "@event-feature--half-width-fixed" -%}
-    </div>
-  </section>
+  {%- render "@event-feature--half-width" -%}
+  {%- render "@event-feature--half-width" -%}
+</section>
 
 
-  <section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
-    <header class="b-block-grid__header">
-      <h1 class="b-block-grid__title">Four Featured Events</h1>
-    </header>
+<section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
+  <header class="b-block-grid__header">
+    <h1 class="b-block-grid__title">Three Featured Events</h1>
+  </header>
 
-    {%- render "@event-feature" -%}
-    <div>
-      {%- render "@event-feature--third-width" -%}
-      {%- render "@event-feature--third-width" -%}
-      {%- render "@event-feature--third-width" -%}
-    </div>
-  </section>
+  {%- render "@event-feature" -%}
+  <div>
+    {%- render "@event-feature--half-width-fixed" -%}
+    {%- render "@event-feature--half-width-fixed" -%}
+  </div>
+</section>
 
-</div>
+
+<section class="b-block-grid b-block-grid--padded b-block-grid--light" id="events" name="events">
+  <header class="b-block-grid__header">
+    <h1 class="b-block-grid__title">Four Featured Events</h1>
+  </header>
+
+  {%- render "@event-feature" -%}
+  <div>
+    {%- render "@event-feature--third-width" -%}
+    {%- render "@event-feature--third-width" -%}
+    {%- render "@event-feature--third-width" -%}
+  </div>
+</section>

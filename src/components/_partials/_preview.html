@@ -16,7 +16,7 @@
     <script src="{{ '/assets/scripts/modernizr.custom.min.js' | path }}"></script>
   </head>
 
-  <body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%}">
+  <body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%} {% if _target.context.previewClass %} {{ _target.context.previewClass }}{%- endif -%}">
     {{ yield | safe }}
 
     <!--[if lte IE 8]>

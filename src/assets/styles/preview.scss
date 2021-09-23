@@ -46,19 +46,14 @@ h2 {
   background-color: siteColor(vam-white);
 }
 
-.fr-content-wrapper {
+.fr-content-wrapper,
+.fr-content-bg {
   margin: auto;
   max-width: 1200px;
-}
-
-.fr-fullheight {
-  height: 100%;
 }
 
 .fr-content-bg {
   height: 200%;
-  margin: auto;
-  max-width: 1200px;
 
   &::after {
     content: 'Lorem ipsum dolor sit amet, V&A consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna V&A. Ut enim ad minim veniam,  V&A quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. V&A aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. V&A sint occaecat cupidatat non proident, excepteur sunt in culpa qui officia deserunt mollit anim id est V&A.';

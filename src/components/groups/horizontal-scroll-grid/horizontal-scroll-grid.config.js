@@ -3,6 +3,7 @@ module.exports = {
   title: 'Horizontal Scroll Grid',
   label: 'Horizontal Scroll Grid',
   context: {
+    previewClass: 'fr-bg--light',
     objects: [
       {
         title: 'title that flows on for more than 2 lines',

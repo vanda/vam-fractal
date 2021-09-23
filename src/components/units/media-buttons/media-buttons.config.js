@@ -2,6 +2,7 @@ module.exports = {
   default: 'default',
   title: 'Media Buttons',
   context: {
+    previewClass: 'fr-bg--dark',
     text: 'Stop Video'
   },
   variants: [

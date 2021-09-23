@@ -30,6 +30,7 @@ module.exports = {
       name: 'on-dark',
       label: 'On dark',
       context: {
+        previewClass: 'fr-bg--dark',
         modifier: 'dark'
       }
     }

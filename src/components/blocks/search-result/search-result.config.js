@@ -2,6 +2,7 @@ module.exports = {
   title: 'Search Result',
   label: 'Search Result',
   context: {
+    previewClass: 'fr-bg--dark',
     content_type: 'Display',
     title: 'Lunchtime Lecture: Ceramics, Speedos truncates after 1 line when > 768 and 2 lines otherwise',
     description: 'Bringing together the work of fifteen emerging and established artists from Korea, this display offers a glimpse into contemporary Korean studio ceramic practice. Some are inspired by historical <em>truncates</em> after 2 lines normally but after 4 at smaller sizes',

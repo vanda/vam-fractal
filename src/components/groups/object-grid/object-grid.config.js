@@ -92,6 +92,7 @@ module.exports = {
   title: 'Object Grid',
   label: 'Object Grid',
   context: {
+    previewClass: 'fr-content-wrapper',
     objectCards
   },
   variants: [
@@ -99,6 +100,7 @@ module.exports = {
       label: 'EtC Search',
       name: 'etc',
       context: {
+        previewClass: 'fr-content-wrapper fr-bg--dark',
         modifiers: ['etc'],
         objectCards: objectCards.map((x) => {
           const objectCard = JSON.parse(JSON.stringify(x));

@@ -1,21 +1,17 @@
-<div class="fr-bg--dark fr-fullheight">
-
-  <a class="b-video-thumbnail{% for m in modifiers %} b-video-thumbnail--{{ m }}{% endfor %} js-video-thumbnail"
-     itemscope
-     itemtype="http://schema.org/Movie"
-     itemprop="thumbnail"
-     aria-label="Play {{ title }} video clip"
-     title="Play {{ title }} clip"
-     href="https://www.youtube.com/embed/{{ youtubeID }}/?autoplay=1&playsinline=0">
-    <img alt=""
-         class="b-video-thumbnail__image"
-         itemprop="contentUrl"
-         src="https://img.youtube.com/vi/{{ youtubeID }}/default.jpg">
-    <div class="b-video-thumbnail__icon">
-      <svg role="img">
-        <use xlink:href="/assets/svg/svg-template.svg#watch"></use>
-      </svg>
-    </div>
-  </a>
-
+<a class="b-video-thumbnail{% for m in modifiers %} b-video-thumbnail--{{ m }}{% endfor %} js-video-thumbnail"
+itemscope
+itemtype="http://schema.org/Movie"
+itemprop="thumbnail"
+aria-label="Play {{ title }} video clip"
+title="Play {{ title }} clip"
+href="https://www.youtube.com/embed/{{ youtubeID }}/?autoplay=1&playsinline=0">
+<img alt=""
+    class="b-video-thumbnail__image"
+    itemprop="contentUrl"
+    src="https://img.youtube.com/vi/{{ youtubeID }}/default.jpg">
+<div class="b-video-thumbnail__icon">
+ <svg role="img">
+   <use xlink:href="/assets/svg/svg-template.svg#watch"></use>
+ </svg>
 </div>
+</a>

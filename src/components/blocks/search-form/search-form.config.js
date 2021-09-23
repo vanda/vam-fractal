@@ -3,6 +3,7 @@ module.exports = {
   name: 'Search Form',
   label: 'Search Form',
   context: {
+    previewClass: 'fr-bg--dark',
     jsHook: 'js-search-site',
     inputId: 'q',
     placeholder: 'Type your search here',

@@ -1,20 +1,18 @@
-{% if modifier %}<div class="fr-bg--{{ modifier }}">{% endif %}
-  <ul class='b-icon-list{% if modifier %} b-icon-list--{{ modifier }}{% endif %}'>
-    {% for item in items %}
-    <li class='b-icon-list__item'>
-      <svg role="presentation" class="b-icon-list__item__icon">
-        <use xlink:href="/assets/svg/svg-template.svg#{{ item.icon }}"></use>
-      </svg>
-      <div class="b-icon-list__item__content">
-        <p class="b-icon-list__item__heading">{{ item.title }}</p>
-        <p>{{ item.body }}</p>
-        {% if item.link %}
-        <p>
-          <a href="#">{{ item.link }}</a>
-        </p>
-        {% endif %}
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
-{% if modifier %}</div>{% endif %}
+<ul class='b-icon-list{% if modifier %} b-icon-list--{{ modifier }}{% endif %}'>
+  {% for item in items %}
+  <li class='b-icon-list__item'>
+    <svg role="presentation" class="b-icon-list__item__icon">
+      <use xlink:href="/assets/svg/svg-template.svg#{{ item.icon }}"></use>
+    </svg>
+    <div class="b-icon-list__item__content">
+      <p class="b-icon-list__item__heading">{{ item.title }}</p>
+      <p>{{ item.body }}</p>
+      {% if item.link %}
+      <p>
+        <a href="#">{{ item.link }}</a>
+      </p>
+      {% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>

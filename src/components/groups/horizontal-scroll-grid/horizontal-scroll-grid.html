@@ -1,13 +1,11 @@
-<div class="fr-bg--light fr-fullheight">
-  <div class="b-horizontal-scroll-grid">
-    <div class="b-horizontal-scroll-grid__content">
-      {% for object in objects %}
-        {% if tout %}
-          {%- render "@programme-page-tout", object -%}
-        {% else %}
-          {%- render "@search-result-objects", object -%}
-        {% endif %}
-      {% endfor %}
-    </div>
+<div class="b-horizontal-scroll-grid">
+  <div class="b-horizontal-scroll-grid__content">
+    {% for object in objects %}
+      {% if tout %}
+        {%- render "@programme-page-tout", object -%}
+      {% else %}
+        {%- render "@search-result-objects", object -%}
+      {% endif %}
+    {% endfor %}
   </div>
 </div>

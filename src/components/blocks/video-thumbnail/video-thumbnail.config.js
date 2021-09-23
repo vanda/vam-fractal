@@ -1,4 +1,5 @@
 module.exports = {
+  previewClass: 'fr-bg--dark',
   title: 'Video Thumbnail',
   label: 'Video Thumbnail',
   status: 'wip',

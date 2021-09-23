@@ -2,6 +2,7 @@ module.exports = {
   title: 'Membership Upsell',
   label: 'Membership Upsell',
   context: {
+    previewClass: 'fr-content-bg',
     title: 'Members go free',
     body: 'Enjoy unlimited free entry to all our exhibitions from as little as £57',
     cta: 'Become a Member',

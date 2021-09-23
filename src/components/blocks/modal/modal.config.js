@@ -2,6 +2,7 @@ module.exports = {
   title: 'Modal',
   label: 'Modal',
   context: {
+    previewClass: 'fr-content-bg',
     title: 'We need your help',
     body: 'Hello. We are working to improve our collections online and would like to understand better how our visitors use our site. Please could you spare two minutes to answer some questions?',
     cta: {

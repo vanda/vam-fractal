@@ -1,41 +1,31 @@
-<div class="fr-bg--dark">
-  <div class="fr-content-wrapper">
+<section class="b-collection-grid">
+  <header class="b-section-header b-section-header--transparent">
+    <h2 class="b-section-header__title">{{ title_1 }}</h2>
+  </header>
+  
+  <ul class="b-collection-grid__items">
+  {% for card in collectionsLatest %}
+    <li class="b-collection-grid__item--featured">
+      {%- render "@collection-card", card -%}
+    </li>
+  {% endfor %}
+  </ul>
 
-    <section class="b-collection-grid">
+</section>
 
-      <header class="b-section-header b-section-header--transparent">
-        <h2 class="b-section-header__title">{{ title_1 }}</h2>
-      </header>
-      
-      <ul class="b-collection-grid__items">
-      {% for card in collectionsLatest %}
-        <li class="b-collection-grid__item--featured">
-          {%- render "@collection-card", card -%}
-        </li>
-      {% endfor %}
-      </ul>
-
-    </section>
-
-    <section class="b-collection-grid">
-
-      <header class="b-section-header b-section-header--transparent">
-        <h2 class="b-section-header__title">{{ title_2 }}</h2>
-      </header>
-      
-      <div class="b-collection-grid__3after4 fr-bg--light">
-
-        <ul class="b-collection-grid__items">
-        {% for card in collections %}
-          <li class="b-collection-grid__item">
-            {%- render "@collection-card", card -%}
-          </li>
-        {% endfor %}
-        </ul>
-        
-      </div>
-
-    </section>
-
+<section class="b-collection-grid">
+  <header class="b-section-header b-section-header--transparent">
+    <h2 class="b-section-header__title">{{ title_2 }}</h2>
+  </header>
+  
+  <div class="b-collection-grid__3after4 fr-bg--light">
+    <ul class="b-collection-grid__items">
+    {% for card in collections %}
+      <li class="b-collection-grid__item">
+        {%- render "@collection-card", card -%}
+      </li>
+    {% endfor %}
+    </ul>
   </div>
-</div>
+
+</section>
