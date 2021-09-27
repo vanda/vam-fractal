@@ -198,8 +198,8 @@
     color: siteColor(vam-black);
     display: flex;
     height: 60px;
-    margin-bottom: 10px;
-    transition: transform .3s ease-out;
+    margin-bottom: 15px;
+    transition: transform .3s ease-out !important;
     width: 60px;
 
     &:hover,
