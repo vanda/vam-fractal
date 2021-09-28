@@ -24,7 +24,7 @@
           slideSize,
           itemsData: shufflerData[i].data || [],
           itemsExclude: shufflerData[i].exclude || null,
-          itemsDataFeed: shufflerData[i].feed,
+          itemsDataFeed: encodeURI(shufflerData[i].feed),
           itemsIndex: 0,
           transitionDurationItem,
           transitionDurationImg
