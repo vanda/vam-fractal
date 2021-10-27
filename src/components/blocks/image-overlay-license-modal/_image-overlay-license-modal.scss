@@ -1,4 +1,8 @@
 .b-image-overlay-license-modal {
+  a:focus {
+    @include defaultFocus;
+  }
+
   &__download-button, &__contact-button {
     padding: 13px 10px;
     @include bpMinMedium {
@@ -6,14 +10,28 @@
     }
   }
 
+  &__modal-content {
+    background-color: siteColor(vam-white);
+    border-radius: 2px;
+    color: siteColor(vam-black);
+    left: 50%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
   &__close-container {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 39.254 10.749 0 0 10.742l39.251 39.254L0 89.251 10.749 100 50 60.746 89.251 100 100 89.243 60.749 49.99 100 10.734 89.244 0 49.992 39.254z' fill='%23fff'/%3E%3C/svg%3E");
     cursor: pointer;
     height: 29px;
+    left: 94%;
     margin: 10px;
+    pointer-events: all;
     position: fixed;
     right: 0;
-    top: 0;
+    top: -50px;
     width: 29px;
     z-index: 99999;
     &:disabled {
@@ -26,7 +44,6 @@
     min-height: 250px;
     overflow-x: hidden;
     overflow-y: scroll;
-    pointer-events: all;
 
     @media screen and (min-height: 700px) {
       height: 400px;
