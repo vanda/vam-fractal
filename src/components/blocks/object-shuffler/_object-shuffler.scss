@@ -21,7 +21,7 @@
   width: 100%;
 
   &__heading {
-    @include typeSetting(4, bold, uppercase);
+    @include typeSetting(4, bold);
     margin-bottom: 20px;
 
     @include bpMinMedium {
@@ -182,7 +182,7 @@
 
 
   &__more {
-    @include typeSetting(1, bold, uppercase);
+    @include typeSetting(1, bold);
     align-items: center;
     cursor: pointer;
     display: inline-flex;
