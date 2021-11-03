@@ -1,70 +1,11 @@
 @font-face {
   font-display: swap;
-  font-family: 'The Sans';
-  font-style: normal;
-  font-weight: 200;
-  src: url('../fonts/V&A TheSansA6-4SemiLight.woff2') format('woff2'), url('../fonts/V&A TheSansA6-4SemiLight.woff') format('woff');
+  font-family: 'Spiller';
+  src: url('../fonts/Tycho-WeightWidthContrast-VF-Web.woff2') format('woff2'), url('../fonts/Tycho-WeightWidthContrast-VF-Web.woff') format('woff');
 }
-
-@font-face {
-  font-display: swap;
-  font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 200;
-  src: url('../fonts/V&A TheSansA6-4SemiLightItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-4SemiLightItalic.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'The Sans';
-  font-style: normal;
-  font-weight: 500;
-  src: url('../fonts/V&A TheSansA6-5Plain.woff2') format('woff2'), url('../fonts/V&A TheSansA6-5Plain.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 500;
-  src: url('../fonts/V&A TheSansA6-5PlainItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-5PlainItalic.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'The Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/V&A TheSansA6-6SemiBold.woff2') format('woff2'), url('../fonts/V&A TheSansA6-6SemiBold.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 600;
-  src: url('../fonts/V&A TheSansA6-6SemiBoldItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-6SemiBoldItalic.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'The Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/V&A TheSansA6-7Bold.woff2') format('woff2'), url('../fonts/V&A TheSansA6-7Bold.woff') format('woff');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'The Sans';
-  font-style: italic;
-  font-weight: 700;
-  src: url('../fonts/V&A TheSansA6-7BoldItalic.woff2') format('woff2'), url('../fonts/V&A TheSansA6-7BoldItalic.woff') format('woff');
-}
-
 
 $font-family: (
-  text: ('The Sans', Arial, Helvetica, sans-serif),
+  text: ('Spiller', Arial, Helvetica, sans-serif),
   code: (Consolas, Menlo, Monaco, 'Courier New', monospace)
 );
 
@@ -72,13 +13,13 @@ $font-size: (
   0: 12,
   1: 13,
   2: 14,
-  3: 16,
-  4: 18,
-  5: 24,
-  6: 32,
-  7: 44,
-  8: 56,
-  9: 68
+  3: 15,
+  4: 17,
+  5: 23,
+  6: 31,
+  7: 41,
+  8: 51,
+  9: 62
 );
 
 $line-height: (
@@ -126,34 +67,10 @@ $base-font-weight: 'regular';
 }
 
 @function letterSpace($size: $base-font-size, $w: $base-font-weight) {
-  @if $w == 'bold' {
-
-    @if $size < 2 {
-      @return map-get($letter-spacing, 2);
-    } @else if $size < 4 {
-      @return map-get($letter-spacing, 3);
-    } @else {
-      @return map-get($letter-spacing, 5);
-    }
-
-  } @else if $w == 'semi-bold' {
-    @return map-get($letter-spacing, 3);
-  }
   @return map-get($letter-spacing, 0);
 }
 
 @function lineHeight($size: $base-font-size, $weight: $base-font-weight) {
-
-  @if $weight == "light" {
-    @if $size == 5 {
-      @return map-get($line-height, 4);
-    }
-
-    @if $size == 7 {
-      @return map-get($line-height, 6);
-    }
-  }
-
   @if $size < 2 {
     @return map-get($line-height, 0);
   } @else if $size < 3 {
@@ -190,12 +107,6 @@ $base-font-weight: 'regular';
   @include fontSize($size);
   @include lineHeight($size, $weight);
   font-weight: fontWeight($weight);
-
-  @if $transform == 'uppercase' and $weight != 'regular' and $weight != 'semi-light' {
-    @include letterSpacing($size, $weight);
-    text-transform: uppercase;
-  } @else {
-    letter-spacing: initial;
-    text-transform: $transform;
-  }
+  letter-spacing: initial;
+  text-transform: $transform;
 }

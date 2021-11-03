@@ -49,7 +49,7 @@
   }
 
   &__label {
-    @include typeSetting(0, bold, uppercase);
+    @include typeSetting(0, bold);
     color: siteColor(vam-white);
     display: block;
     letter-spacing: .25em;
@@ -59,16 +59,16 @@
 
 
     @include bpMinSmall {
-      @include typeSetting(1, bold, uppercase);
+      @include typeSetting(1, bold);
     }
 
     @include bpMinMedium {
-      @include typeSetting(2, bold, uppercase);
+      @include typeSetting(2, bold);
       margin-top: $spacing-small;
     }
 
     .b-icon-badge--small & {
-      @include typeSetting(1, bold, uppercase);
+      @include typeSetting(1, bold);
     }
 
     .b-icon-badge--light & {

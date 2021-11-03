@@ -121,12 +121,12 @@
   }
 
   &__type {
-    @include typeSetting(2, semi-bold, uppercase);
+    @include typeSetting(2, semi-bold);
     margin: 0;
     text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
 
     @include bpMinSmall {
-      @include typeSetting(3, semi-bold, uppercase);
+      @include typeSetting(3, semi-bold);
     }
 
     .b-promo--white & {

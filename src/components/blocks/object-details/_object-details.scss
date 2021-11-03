@@ -32,7 +32,6 @@
     letter-spacing: 3.38px;
     padding-bottom: 35px;
     text-align: center;
-    text-transform: uppercase;
   }
   &__row {
     @include bpMinSmall {
@@ -55,7 +54,7 @@
     padding: 12px 10px 10px 0;
   }
   &__cell-name {
-    @include typeSetting(2, bold, uppercase);
+    @include typeSetting(2, bold);
     color: siteColor(vam-white);
     flex-shrink: 0;
     padding-bottom: 3px;

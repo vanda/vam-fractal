@@ -11,7 +11,7 @@
       }
     }
 
-    @include typeSetting(2, semi-bold, uppercase);
+    @include typeSetting(2, semi-bold);
     background-color: themeColor(silent-green);
     color: siteColor(vam-black);
     height: 23px;

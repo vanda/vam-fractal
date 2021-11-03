@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    @include typeSetting(2, bold, uppercase);
+    @include typeSetting(2, bold);
     &-icon {
       height: 41px;
       margin: auto;

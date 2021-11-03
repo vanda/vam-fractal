@@ -45,12 +45,12 @@
     }
     
     &-title {
-      @include typeSetting(3, bold, uppercase);
+      @include typeSetting(3, bold);
       margin: auto;
       text-align: center;
 
       @include bpMinSmall {
-        @include typeSetting(5, bold, uppercase);
+        @include typeSetting(5, bold);
       }
     }
   }

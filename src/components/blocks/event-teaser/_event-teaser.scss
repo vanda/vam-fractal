@@ -129,7 +129,7 @@
   }
 
   &__label {
-    @include typeSetting(1, bold, uppercase);
+    @include typeSetting(1, bold);
   }
 
   &__title {

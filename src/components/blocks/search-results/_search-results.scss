@@ -38,7 +38,7 @@
       }
     }
     &-button {
-      @include typeSetting(1, bold, uppercase);
+      @include typeSetting(1, bold);
       border: solid 1px siteColor(vam-white);
       border-radius: 2px;
       color: siteColor(vam-white);

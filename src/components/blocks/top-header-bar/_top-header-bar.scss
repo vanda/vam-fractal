@@ -9,7 +9,6 @@
   .b-back {
     color: siteColor(vam-grey-5);
     position: absolute;
-    text-transform: uppercase;
     @include rem(left, 5px);
     @include rem(top, 10px);
     @include bpMinSmall {
@@ -34,7 +33,7 @@
 
     .u-back__text {
       @include rem(letter-spacing, 2px);
-      @include typeSetting(0, normal, uppercase);
+      @include typeSetting(0, normal);
     }
   }
 
