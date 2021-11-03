@@ -85,7 +85,7 @@
   }
 
   &__page-button, &__page-button-start, &__page-button-last {
-    @include typeSetting(3, semi-bold);
+    @include typeSetting(3, medium);
     @include bpMinMedium {
       height: 44px;
       margin-right: 8px;

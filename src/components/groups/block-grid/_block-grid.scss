@@ -34,13 +34,13 @@
   }
 
   &__title {
-    @include typeSetting(3, bold, uppercase);
+    @include typeSetting(3, bold);
     color: siteColor(vam-black);
     display: block;
     text-align: center;
 
     @include bpMinSmall {
-      @include typeSetting(5, bold, uppercase);
+      @include typeSetting(5, bold);
     }
 
     @include bpMinMedium {
