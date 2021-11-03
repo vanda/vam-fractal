@@ -45,7 +45,7 @@ window.addEventListener('click', (e) => {
     const focusable = downloadContent.querySelectorAll(`
       .b-image-overlay-license-modal__close-container,
       .b-image-overlay-license-modal__title-section a,
-      .b-modal__description,
+      .b-modal__description.b-image-overlay-license-modal__description-container,
       .b-image-overlay-license-modal__content-container button,
       .b-image-overlay-license-modal__footer-section a
     `);
