@@ -1,8 +1,8 @@
-# V&A Typography - The Sans
+# V&A Typography - Spiller
 
 ## Font family
 
-The V&A font is a modified version of The Sans. The font family can be referenced by the Sass function `fontFamily()`:
+The V&A font is called Spiller. The font family can be referenced by the Sass function `fontFamily()`:
 
 ```sass
 .foo {

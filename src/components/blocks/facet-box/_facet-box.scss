@@ -127,7 +127,7 @@
     }
 
     &-text {
-      @include typeSetting(3, bold, uppercase);
+      @include typeSetting(3, bold);
       &:hover {
         background-color: siteColor(vam-grey-1);
         cursor: pointer;

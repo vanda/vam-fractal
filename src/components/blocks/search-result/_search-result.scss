@@ -17,13 +17,13 @@
     }
 
     &-type {
-      @include typeSetting(0, semi-bold, uppercase);
+      @include typeSetting(0, medium);
       color: siteColor(vam-grey-2);
       margin-bottom: 4px;
 
 
       @include bpMinXSmall {
-        @include typeSetting(1, semi-bold, uppercase);
+        @include typeSetting(1, medium);
         height: 28px;
         line-height: 2rem;
         margin-bottom: 0;
