@@ -25,7 +25,7 @@ const elements = [
 ];
 
 const modal = document.querySelector(`.${prefix}${modalClass}`);
-const imageOverlay = document.querySelector('.b-image-overlay');
+const imageOverlay = document.querySelector('.b-image-overlay') || document.querySelector('body');
 const downloadContent = document.querySelector(`.${prefix}${downloadContentClass}`);
 const contactContent = document.querySelector(`.${prefix}${contactContentClass}`);
 const downloadLink = document.querySelector('.u-link.b-image-overlay-license-modal__download-link.js-modal-action');
@@ -40,8 +40,12 @@ window.addEventListener('click', (e) => {
   }
 
   if (e.target.closest(`.${prefix}${downloadButtonClass}`)) {
+    downloadContent.querySelector('.b-image-overlay-license-modal__close-container').disabled = false;
+    contactContent.querySelector('.b-image-overlay-license-modal__close-container').disabled = true;
     const focusable = downloadContent.querySelectorAll(`
+      .b-image-overlay-license-modal__close-container,
       .b-image-overlay-license-modal__title-section a,
+      .b-modal__description.b-image-overlay-license-modal__description-container,
       .b-image-overlay-license-modal__content-container button,
       .b-image-overlay-license-modal__footer-section a
     `);
@@ -55,6 +59,8 @@ window.addEventListener('click', (e) => {
   }
 
   if (e.target.closest(`.${prefix}${contactButton}`)) {
+    downloadContent.querySelector('.b-image-overlay-license-modal__close-container').disabled = true;
+    contactContent.querySelector('.b-image-overlay-license-modal__close-container').disabled = false;
     imageOverlay.classList.add('b-image-overlay--unfocus');
     modal.dispatchEvent(new CustomEvent('jsModalOpen', { bubbles: true }));
     modal.classList.add('b-modal--active');
@@ -113,7 +119,9 @@ window.addEventListener('keydown', (e) => {
     // https://stackoverflow.com/a/60031728 w/ modifications
     if (e.keyCode === 9) {
       const focusable = activeContent.querySelectorAll(`
+        .b-image-overlay-license-modal__close-container,
         .b-image-overlay-license-modal__title-section a,
+        .b-modal__description.b-image-overlay-license-modal__description-container,
         .b-image-overlay-license-modal__content-container button,
         .b-image-overlay-license-modal__footer-section a
       `);
