@@ -6,8 +6,7 @@ if (siteNav) {
   const mobileNavToggle = document.querySelectorAll('.js-site-nav__mobile-toggle');
   const mobileNavToggleIcon = document.querySelector('.js-site-nav__mobile-toggle--icon');
   const mobileNavToggleText = document.querySelector('.js-site-nav__mobile-toggle-text');
-  const navBag = document.querySelector('.js-site-nav-bag');
-  const navBagTotal = document.querySelector('.js-site-nav-bag-total');
+  const navBags = document.querySelectorAll('.js-site-nav-bag');
   const navSearchBtn = document.querySelector('.js-site-nav-search-btn');
   const navSearch = document.querySelector('.js-site-nav-search');
   const navSearchInput = document.querySelector('.js-nav-search-input');
@@ -35,13 +34,12 @@ if (siteNav) {
   };
 
   if (!!shopCookieBagTotal && shopCookieBagTotal > 0) {
-    if (navBag) {
+    Array.from(navBags, (navBag) => {
       navBag.classList.remove('b-site-nav__bag--hidden');
-    }
-    navBagTotal.innerHTML = shopCookieBagTotal < 100 ? shopCookieBagTotal : '';
-    if (mobileNavToggleIcon) {
-      mobileNavToggleText.classList.add('b-site-nav__mobile-toggle-text--hidden');
-    }
+      navBag.querySelector('.js-site-nav-bag-total').innerHTML = shopCookieBagTotal < 100 ? shopCookieBagTotal : '';
+      return true;
+    });
+    mobileNavToggleText.classList.add('b-site-nav__mobile-toggle-text--hidden');
   }
 
   if (mobileNavToggleIcon && window.getComputedStyle(mobileNavToggleIcon).display !== 'none') {
