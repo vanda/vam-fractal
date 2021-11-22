@@ -61,7 +61,7 @@
     "gulp-svgmin": "^1.2.4",
     "gulp-uglify": "^3.0.2",
     "npm-audit": "0.0.3",
-    "querystring": "^0.2.0",
+    "querystring": "^0.2.1",
     "request": "^2.87.0",
     "surge": "^0.21.6",
     "vinyl-buffer": "^1.0.1",
