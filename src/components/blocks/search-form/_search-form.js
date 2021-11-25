@@ -67,7 +67,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     } else {
       searchSubmit.classList.add('b-search-form__submit--hidden');
     }
-    searchInput.focus();
     searchDecorate();
     searchInput.addEventListener('input', () => {
       searchDecorate();

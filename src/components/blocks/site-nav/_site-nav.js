@@ -64,7 +64,6 @@ if (siteNav) {
     if (activate) {
       navSearch.classList.add('b-site-nav__core__search--active');
       document.body.style.overflow = 'hidden';
-      navSearchInput.focus();
       navSearchInput.setSelectionRange(100, 100);
     } else {
       navSearch.classList.remove('b-site-nav__core__search--active');
