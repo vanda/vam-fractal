@@ -17,7 +17,7 @@ module.exports = {
         jsHook: 'js-search-etc',
         inputId: 'q-etc',
         placeholder: 'Search by object, artist, maker&hellip;',
-        action: 'https://vam-etc-test.azureedge.net/search/',
+        action: 'https://collections.vam.ac.uk/search/',
         facets: [
           ...(new Array(2).fill(null)).map((x, i) => ({
             facet: 'Facet 1',
@@ -42,7 +42,7 @@ module.exports = {
         jsHook: 'js-search-etc-gateway',
         inputId: 'q-etc',
         placeholder: 'Search by object, artist, maker&hellip;',
-        action: 'https://vam-etc-test.azureedge.net/search/'
+        action: 'https://collections.vam.ac.uk/search/'
       }
     }
   ]

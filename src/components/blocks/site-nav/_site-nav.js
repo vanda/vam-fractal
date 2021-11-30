@@ -1,19 +1,19 @@
 import cookies from 'browser-cookies';
 
-const siteNav = document.querySelector('.js-site-nav');
+const siteNav = document.querySelector('.b-site-nav');
 
 if (siteNav) {
-  const mobileNavToggle = document.querySelectorAll('.js-site-nav__mobile-toggle');
-  const mobileNavToggleIcon = document.querySelector('.js-site-nav__mobile-toggle--icon');
-  const mobileNavToggleText = document.querySelector('.js-site-nav__mobile-toggle-text');
-  const navBags = document.querySelectorAll('.js-site-nav-bag');
-  const navSearchBtn = document.querySelector('.js-site-nav-search-btn');
-  const navSearch = document.querySelector('.js-site-nav-search');
-  const navSearchInput = document.querySelector('.js-nav-search-input');
-  const navSearchContent = document.querySelector('.js-search-content');
-  const navSearchSuggest = document.querySelector('.js-search-suggest');
+  const mobileNavToggle = siteNav.querySelectorAll('.js-site-nav__mobile-toggle');
+  const mobileNavToggleIcon = siteNav.querySelector('.js-site-nav__mobile-toggle--icon');
+  const mobileNavToggleText = siteNav.querySelector('.js-site-nav__mobile-toggle-text');
+  const navBags = siteNav.querySelectorAll('.js-site-nav-bag');
+  const navSearchBtn = siteNav.querySelector('.js-site-nav-search-btn');
+  const navSearch = siteNav.querySelector('.js-site-nav-search');
+  const navSearchInput = navSearch.querySelector('.b-search-form__input');
+  const navSearchContent = navSearch.querySelector('.js-search-content');
+  const navSearchSuggest = navSearch.querySelector('.js-search-suggest');
   const shopCookieBagTotal = cookies.get('basketCount');
-  const tabletNavToggle = document.querySelector('.js-site-nav__tablet-toggle');
+  const tabletNavToggle = siteNav.querySelector('.js-site-nav__tablet-toggle');
 
   const scrollMonitor = (callback) => {
     let lastScrollY = 0;
@@ -132,10 +132,12 @@ if (siteNav) {
     }, false);
   }
 
+  const searchHost = document.location.host.indexOf('localhost') === 0 ? 'https://www.vam.ac.uk/' : '/';
+
   let storedSearch = JSON.parse(sessionStorage.getItem('storedSearch'));
   if (!storedSearch || Date.parse(new Date()) > Date.parse(storedSearch.expires)) {
     const httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', 'https://www.vam.ac.uk/services/search/suggest/promoted');
+    httpRequest.open('GET', `${searchHost}services/search/suggest/promoted`);
     httpRequest.send();
     httpRequest.onreadystatechange = () => {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -232,7 +234,7 @@ if (siteNav) {
             const httpRequest = new XMLHttpRequest();
             httpRequest.open(
               'GET',
-              `https://www.vam.ac.uk/services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`
+              `${searchHost}services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`
             );
             httpRequest.send();
             httpRequest.onreadystatechange = () => {

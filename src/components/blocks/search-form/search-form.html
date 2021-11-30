@@ -12,7 +12,7 @@
     </svg>
     {% endif %}
     <div class="b-search-form__input-wrapper">
-      <input type="text" class="b-search-form__input js-nav-search-input" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
+      <input type="text" class="b-search-form__input" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
       {% if not modifiers %}
       <div class="b-search-form__underscore" aria-hidden="true"></div>
       {% endif %}
