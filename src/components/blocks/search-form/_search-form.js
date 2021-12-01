@@ -1,34 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-const loadSuggestions = (searchForm) => {
-  searchForm._props.storedSuggestions = JSON.parse(sessionStorage.getItem(`storedSuggestions_${searchForm._props.type}`));
-  const now = new Date();
-  if (!searchForm._props.storedSuggestions
-    || now.getTime() > searchForm._props.storedSuggestions.expires) {
-    const promise = fetch(searchForm._props.suggestionsTop, { cache: 'no-cache' })
-      .then(response => response.json())
-      .then((data) => {
-        const suggestions = {
-          expires: now.getTime() + (15 * 60000),
-          data
-        };
-        searchForm._props.storedSuggestions = suggestions;
-        sessionStorage.setItem(`storedSuggestions_${searchForm._props.type}`, JSON.stringify(searchForm._props.storedSuggestions));
-      })
-      .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
-    return promise;
-  }
-  return Promise.resolve(true);
-};
-
-const trackAutosuggest = (e) => {
-  window.dataLayer.push({
-    event: e.target.tracking.event,
-    eventCategory: e.target.tracking.eventCategory,
-    eventAction: e.target.tracking.eventAction,
-    eventLabel: e.target.tracking.eventLabel
-  });
-};
-
 Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'), (searchForm) => {
   const searchInput = searchForm.querySelector('.b-search-form__input');
 
@@ -79,6 +49,36 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       type: 'etcGatewaySearch',
       suggestionsTop: 'https://collections.vam.ac.uk/assets/data/suggestions.json',
       suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search'
+    };
+
+    const loadSuggestions = (formEl) => {
+      formEl._props.storedSuggestions = JSON.parse(sessionStorage.getItem(`storedSuggestions_${formEl._props.type}`));
+      const now = new Date();
+      if (!formEl._props.storedSuggestions
+        || now.getTime() > formEl._props.storedSuggestions.expires) {
+        const promise = fetch(formEl._props.suggestionsTop, { cache: 'no-cache' })
+          .then(response => response.json())
+          .then((data) => {
+            const suggestions = {
+              expires: now.getTime() + (15 * 60000),
+              data
+            };
+            formEl._props.storedSuggestions = suggestions;
+            sessionStorage.setItem(`storedSuggestions_${formEl._props.type}`, JSON.stringify(formEl._props.storedSuggestions));
+          })
+          .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+        return promise;
+      }
+      return Promise.resolve(true);
+    };
+
+    const trackAutosuggest = (e) => {
+      window.dataLayer.push({
+        event: e.target.tracking.event,
+        eventCategory: e.target.tracking.eventCategory,
+        eventAction: e.target.tracking.eventAction,
+        eventLabel: e.target.tracking.eventLabel
+      });
     };
 
     const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
