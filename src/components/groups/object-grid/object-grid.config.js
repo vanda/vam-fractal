@@ -2,12 +2,12 @@ let objectCards = [
   {
     objectImageOverlayItem: true,
     image: {
-      320: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/09/f0ae845e-d304-46be-b836-f8520d211df2/320.jpg',
-      640: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/09/877ba61d-fabc-40ac-afd1-51a6902e8a49/640.jpg',
-      960: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/10/12a94859-afb0-4525-9676-854850b96222/960.jpg',
-      1280: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/10/c4e0e19a-5afa-4aea-953b-5c9df66cf596/1280.jpg',
-      1920: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/10/b35b0588-664e-46c5-bbf5-64623211e638/1920.jpg',
-      2560: 'https://vanda-production-assets.s3.amazonaws.com/2018/02/07/16/27/11/efff658e-81be-42e4-913c-6f898c734efc/2560.jpg'
+      320: 'https://vanda-production-assets.s3.amazonaws.com/2020/10/15/14/12/22/3de61dd0-4688-43fe-b756-88f8910ffdc8/320.jpg',
+      640: 'https://vanda-production-assets.s3.amazonaws.com/2020/10/15/14/12/22/560b6d69-f5e0-4040-ab6b-4169e3e2dc09/640.jpg',
+      960: 'https://vanda-production-assets.s3.amazonaws.com/2020/10/15/14/12/22/6b848d06-659c-4a40-acf2-df95a144e65d/960.jpg',
+      1280: 'https://vanda-production-assets.s3.amazonaws.com/2020/10/15/14/12/22/0f775b16-1e31-46cb-8b50-6b5333ad8f36/1280.jpg',
+      1920: 'https://vanda-production-assets.s3.amazonaws.com/2020/10/15/14/12/22/ee959fc7-dc87-41a5-928a-5f7f5f197486/1920.jpg',
+      2560: 'https://vanda-production-assets.s3.amazonaws.com/2020/10/15/14/12/22/5c44211f-2884-4f80-9748-cf6524f399be/2560.jpg'
     },
     caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
     captionSub: ['Raphael', '1515 – 16'],
