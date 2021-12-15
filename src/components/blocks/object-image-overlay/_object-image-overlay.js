@@ -253,6 +253,7 @@ const oicInit = () => {
         oic.focus();
         oic.track(oic._index);
         oic.buttonInit();
+        document.body.style.overflow = 'hidden';
 
         const keyHandle = (e3) => {
           if (e3.key === 'ArrowLeft') {
@@ -284,6 +285,7 @@ const oicInit = () => {
 
         const closeModal = () => {
           oic.classList.remove('b-object-image-overlay--active');
+          document.body.style.overflow = '';
           items.innerHTML = '';
           oic.onclick = null;
           document.removeEventListener('keydown', keyHandle, false);
