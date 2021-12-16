@@ -1,0 +1,82 @@
+.b-venue-card {
+  display: block;
+  position: relative;
+
+  &::after {
+    background-image: linear-gradient(to bottom, #000, rgba(0, 0, 0, 0) 36%);
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity .4s ease;
+  }
+
+  &:focus {
+    @include defaultFocus;
+  }
+
+  &__title {
+    @include typeSetting(4);
+    color: #fff;
+    left: 10px;
+    position: absolute;
+    text-shadow: 0 1px 3px #1d1e20;
+    top: 10px;
+    z-index: 1;
+
+    @include bpMinXSmall {
+      @include typeSetting(3);
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(4);
+    }
+
+    @include bpMinLarge {
+      @include typeSetting(5);
+    }
+
+    .b-venue-card:hover &,
+    .b-venue-card:focus & {
+      text-decoration: underline;
+    }
+  }
+  
+  &__subtitle {
+    @include typeSetting(4);
+
+    @include bpMinXSmall {
+      @include typeSetting(1);
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(3);
+    }
+  }
+
+  &__open {
+    @include typeSetting(0);
+    background-color: #fff;
+    bottom: 10px;
+    color: siteColor(vam-black);
+    left: 10px;
+    opacity: .9;
+    padding: 4px 10px;
+    position: absolute;
+    z-index: 1;
+
+    @include bpMinSmall {
+      @include typeSetting(2);
+    }
+  }
+  
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}
