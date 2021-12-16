@@ -1,0 +1,12 @@
+<section class="g-venue-card-grid">
+  <header>
+    <h2 class="g-venue-card-grid__header">Visit the V&amp;A</h2>
+  </header>
+  <div class="g-venue-card-grid__grid">
+    {% for n in [1, 2, 3, 4, 5] %}
+    <div class="g-venue-card-grid__item">
+      {%- render "@venue-card" -%}
+    </div>
+    {% endfor %}
+  </div>
+</section>
