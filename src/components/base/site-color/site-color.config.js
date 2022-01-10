@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         name: 'vam-grey-3',
-        hex: '#747c80'
+        hex: '#70787c'
       },
       {
         name: 'vam-grey-4',
