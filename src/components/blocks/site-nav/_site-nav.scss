@@ -25,6 +25,12 @@ $nav-breakpoints: (
     display: none;
   }
 
+  &--solid {
+    background: siteColor(vam-grey-1);
+    height: auto;
+    margin-bottom: 0;
+  }
+
   &__access-nav-link {
     font-size: 0;
     position: absolute;
@@ -381,7 +387,7 @@ $nav-breakpoints: (
       a {
         border-bottom: 4px solid transparent;
         margin: 4px 0 0;
-        padding: 12px 0;
+        padding: 5px 0;
 
         &:hover {
           margin-left: 0;
@@ -485,6 +491,10 @@ $nav-breakpoints: (
     right: 0;
     text-align: left;
     top: 100%;
+
+    .b-site-nav--solid & {
+      background: siteColor(vam-grey-1);
+    }
 
     .active & {
       display: block;
