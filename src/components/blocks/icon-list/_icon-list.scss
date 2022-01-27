@@ -8,6 +8,13 @@ $icon-width: 30px;
   display: flex;
   flex-wrap: wrap;
 
+  &--venue {
+    padding-bottom: 15px;
+    @include bpMinMedium {
+      padding-bottom: 0;
+    }
+  }
+
   &--dark {
     color: siteColor(vam-white);
   }
@@ -17,21 +24,35 @@ $icon-width: 30px;
     margin-left: $icon-width;
     width: calc(100% - #{$icon-width});
 
+    &--venue {
+      margin-bottom: 0;
+      margin-left: 16px;
+      width: calc(100% - 16px);
+    }
+
     @include bpMinXSmall {
       float: left;
       margin-right: 2%;
       width: calc(48% - #{$icon-width});
+      &--venue {
+        margin-bottom: 0;
+        margin-left: 16px;
+        width: calc(100% - 16px);
+
+        float: none;
+        width: 100%;
+      }
     }
 
     @include bpMinSmall {
       float: none;
       margin-bottom: 25px;
       width: 100%;
-    }
-
-    &--venue {
-      font-size: 17px;
-      margin-bottom: 10px;
+      &--venue {
+        margin-bottom: 0;
+        margin-left: 16px;
+        width: calc(100% - 16px);
+      }
     }
 
     &__icon {
@@ -40,11 +61,35 @@ $icon-width: 30px;
       margin-left: -$icon-width;
       margin-top: 5px;
       width: 20px;
+
+      &--venue {
+        height: 16px;
+        margin-left: -16px;
+        width: 16px;
+      }
+
+      @include bpMinMedium {
+        &--venue {
+          height: 20px;
+          margin-left: -$icon-width;
+          margin-top: 5px;
+          width: 20px;
+        }
+      }
     }
 
     &__heading {
       @include typeSetting(4, regular);
       margin: 0;
+      &--venue {
+        margin-left: 10px;
+        font-size: 13px;
+      }
+      @include bpMinMedium {
+        &--venue {
+          font-size: 17px;
+        }
+      }
     }
   }
 }

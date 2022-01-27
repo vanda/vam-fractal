@@ -55,24 +55,24 @@
 
 
       {% if isVenue %}
-      <ul class='b-icon-list'>
+      <ul class='b-icon-list b-icon-list--venue'>
         {% if address %}
           <li class='b-icon-list__item b-icon-list__item--venue'>
-            <svg role="presentation" class="b-icon-list__item__icon">
+            <svg role="presentation" class="b-icon-list__item__icon b-icon-list__item__icon--venue">
                 <use xlink:href="/assets/svg/svg-template.svg#map"></use>
             </svg>
             <div class="b-icon-list__item__content">
-                <span itemprop="address" class="b-icon-list__item__heading">{{ address }}</span>
+                <span itemprop="address" class="b-icon-list__item__heading b-icon-list__item__heading--venue">{{ address }}</span>
             </div>
           </li>
         {% endif %}
         {% if admission_info %}
           <li class='b-icon-list__item b-icon-list__item--venue'>
-            <svg role="presentation" class="b-icon-list__item__icon">
+            <svg role="presentation" class="b-icon-list__item__icon b-icon-list__item__icon--venue">
                 <use xlink:href="/assets/svg/svg-template.svg#clock"></use>
             </svg>
             <div class="b-icon-list__item__content" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
-              <span itemprop="description" class="b-icon-list__item__heading">{{ admission_info }}</span>
+              <span itemprop="description" class="b-icon-list__item__heading b-icon-list__item__heading--venue">{{ admission_info }}</span>
             </div>
           </li>
         {% endif %}
@@ -96,7 +96,7 @@
         </div>
       {% endif %}
 
-      <footer class="b-event-teaser__footer">
+      <footer class="b-event-teaser__footer b-event-teaser__footer--venue">
         {% for action in actions %}
         <div class="u-btn u-btn--micro u-btn--outlined">
           {{ action }}
