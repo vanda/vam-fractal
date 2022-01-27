@@ -35,11 +35,10 @@ $icon-width: 30px;
       margin-right: 2%;
       width: calc(48% - #{$icon-width});
       &--venue {
+        float: none;
         margin-bottom: 0;
         margin-left: 16px;
         width: calc(100% - 16px);
-
-        float: none;
         width: 100%;
       }
     }
@@ -71,7 +70,7 @@ $icon-width: 30px;
       @include bpMinMedium {
         &--venue {
           height: 20px;
-          margin-left: -$icon-width;
+          margin-left: -16px;
           margin-top: 5px;
           width: 20px;
         }

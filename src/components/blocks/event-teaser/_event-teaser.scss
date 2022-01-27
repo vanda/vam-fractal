@@ -7,10 +7,6 @@
   position: relative;
   width: 100%;
 
-  &--venue {
-    padding: 0;
-  }
-
   .no-flexbox & {
     float: left;
   }
@@ -130,8 +126,8 @@
 
     &--venue {
       border-bottom: none;
-      font-size: 23px;
-      margin-bottom: 20px;
+      font-size: 17px;
+      margin-bottom: 10px;
     }
 
     @include bpMinXSmall {
@@ -143,6 +139,10 @@
     }
 
     @include bpMinMedium {
+      &--venue {
+        font-size: 23px;
+        margin-bottom: 20px;
+      }
       min-height: 210px;
       padding-bottom: 60px;
     }
@@ -164,9 +164,15 @@
     }
 
     &--venue {
-      font-size: 23px;
+      font-size: 17px;
       font-weight: 700;
-      margin: 20px 30px 20px 0;
+      margin: 20px 30px 10px 0;
+    }
+
+    @include bpMinMedium {
+      &--venue {
+        font-size: 23px;
+      }
     }
   }
 
