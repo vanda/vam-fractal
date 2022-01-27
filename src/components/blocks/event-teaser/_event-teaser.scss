@@ -22,6 +22,11 @@
   }
 
   @include bpMinMedium {
+    &--venue {
+      flex-basis: 50%;
+      max-width: 520px;
+    }
+
     flex-basis: 33.333%;
     max-width: 33.333%;
 
@@ -91,6 +96,15 @@
     }
   }
 
+  &__media--venue,
+  &__media--venue:after,
+  &__media-image--venue {
+    @include bpMinMedium {
+      height: (.85 * 28vw);
+      max-height: 346px;
+    }
+  }
+
   &__sponsor {
     @include typeSetting(0, regular);
     background-color: rgba(siteColor(vam-black), .4);
@@ -109,6 +123,12 @@
     color: siteColor(vam-black);
     padding-bottom: 20px;
     position: relative;
+
+    &--venue {
+      border-bottom: none;
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
 
     @include bpMinXSmall {
       min-height: 200px;
@@ -137,6 +157,12 @@
 
     @include bpMinSmall {
       @include typeSetting(5, regular);
+    }
+
+    &--venue {
+      font-size: 23px;
+      font-weight: 700;
+      margin: 20px 30px 20px 0;
     }
   }
 

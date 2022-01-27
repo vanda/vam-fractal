@@ -22,6 +22,29 @@ module.exports = {
   },
   variants: [
     {
+      name: 'for venues',
+      context: {
+        eventUrl: 'https://www.vam.ac.uk/exhibitions/pink-floyd',
+        eventTitle: 'V&A South Kensington',
+        eventType: '',
+        eventPrice: '',
+        eventHumanDates: '',
+        eventImage: {
+          320: 'https://assets-cdn.vam.ac.uk/2017/06/29/09/52/22/314659d6-cd47-467b-8acd-fcf8e6091244/1920.jpg',
+          640: 'https://assets-cdn.vam.ac.uk/2017/06/29/09/52/22/314659d6-cd47-467b-8acd-fcf8e6091244/1920.jpg',
+          960: 'https://assets-cdn.vam.ac.uk/2017/06/29/09/52/22/314659d6-cd47-467b-8acd-fcf8e6091244/1920.jpg',
+          1280: 'https://assets-cdn.vam.ac.uk/2017/06/29/09/52/22/314659d6-cd47-467b-8acd-fcf8e6091244/1920.jpg',
+          1920: 'https://assets-cdn.vam.ac.uk/2017/06/29/09/52/22/314659d6-cd47-467b-8acd-fcf8e6091244/1920.jpg',
+          2560: 'https://assets-cdn.vam.ac.uk/2017/06/29/09/52/22/314659d6-cd47-467b-8acd-fcf8e6091244/1920.jpg'
+        },
+        eventDescription: 'The world’s leading museum of art, design and performance.',
+        address: 'Cromwell Road, London SW7 2RL',
+        admission_info: "Open Wed – Sun, 10am – 5.45pm Last admission 16:45",
+        actions: ['Plan a visit', 'What\'s on'],
+        isVenue: true
+      }
+    },
+    {
       name: 'simple'
     },
     {
