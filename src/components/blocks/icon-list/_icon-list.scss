@@ -67,12 +67,20 @@ $icon-width: 30px;
         width: 16px;
       }
 
+      &--venue-button {
+        float: right;
+        margin: -3px 0 0 5px;
+      }
+
       @include bpMinMedium {
         &--venue {
           height: 20px;
-          margin-left: -16px;
-          margin-top: 5px;
+          margin: 5px 0 0 -16px;
           width: 20px;
+        }
+        &--venue-button {
+          float: right;
+          margin: -3px 0 0 5px;
         }
       }
     }
@@ -81,8 +89,8 @@ $icon-width: 30px;
       @include typeSetting(4, regular);
       margin: 0;
       &--venue {
-        margin-left: 10px;
         font-size: 13px;
+        margin-left: 10px;
       }
       @include bpMinMedium {
         &--venue {

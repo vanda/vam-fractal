@@ -43,9 +43,15 @@
         {{ eventType }}
       </div>
 
-      <h1 class="b-event-teaser__title {% if isVenue %}b-event-teaser__title--venue{% endif %}" aria-label="{{ eventTitle }}" itemprop="name" content="{{ eventTitle }}">
-        {{ eventTitle }}
-      </h1>
+
+      <div class="b-event-teaser__title-container">
+        <h2 class="b-event-teaser__title {% if isVenue %}b-event-teaser__title--venue{% endif %}" aria-label="{{ eventTitle }}" itemprop="name" content="{{ eventTitle }}">
+          {{ eventTitle }}
+        </h2>
+        <svg role="presentation" class="b-event-teaser__title-icon">
+            <use xlink:href="/assets/svg/svg-template.svg#link-external"></use>
+        </svg>
+      </div>
 
       {% if isVenue %}
         <p class="b-event-teaser__description--venue" itemprop="description" content="{{ eventDescription }}">
@@ -100,6 +106,9 @@
         {% for action in actions %}
         <div class="u-btn u-btn--micro u-btn--outlined">
           {{ action }}
+          <svg role="presentation" class="b-icon-list__item__icon b-icon-list__item__icon--venue b-icon-list__item__icon--venue-button">
+              <use xlink:href="/assets/svg/svg-template.svg#link-external"></use>
+          </svg>
         </div>
         {% endfor %}
       </footer>
