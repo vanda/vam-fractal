@@ -197,39 +197,34 @@
   }
 
   &__headline {
+
     &--footer {
-      @include typeSetting(4, bold);
-      font-size: 22px;
+      @include typeSetting(5, regular);
       text-align: left;
-      @include bpMinSmall {
-        @include typeSetting(6, bold);
-        font-size: 28px;
-        margin-bottom: 0;
-      }
     }
 
-    @include typeSetting(4, bold);
+    @include typeSetting(4, regular);
     margin: 0;
     text-align: center;
 
     @include bpMinXSmall {
-      @include typeSetting(5, bold);
+      @include typeSetting(5, regular);
       margin-bottom: 10px;
       text-align: left;
     }
 
-    @include bpMinSmall {
-      &--footer {
-        font-size: 28px;
-      }
-      @include typeSetting(6, bold);
-    }
+    // @include bpMinSmall {
+      // &--footer {
+      //   font-size: 28px;
+      // }
+      // @include typeSetting(6, regular);
+    // }
   }
 
   &__descriptor {
     @include typeSetting(3, regular);
     margin: 0 15px 15px 15px;
-    text-align: center;
+    // text-align: center;
 
     &--footer {
       margin-left: 0;

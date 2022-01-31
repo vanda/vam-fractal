@@ -2,7 +2,6 @@
   background-color: siteColor(vam-black);
   color: siteColor(vam-white);
   font-size: 13px;
-  letter-spacing: .3px;
   line-height: 18px;
   margin-top: 32px;
   position: relative;
@@ -71,23 +70,13 @@
   }
 
   &__name {
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 36px;
-    margin-bottom: 42px;
-  }
-
-  &__info-block {
-    margin-bottom: 45px;
-
-    @include bpMinSmall {
-      float: left;
-      width: 33%;
-    }
-
-    @include bpMinMedium {
-      width: 25%;
-    }
+    color: siteColor(vam-white);
+    font-size: 31px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: 1.16;
   }
 
   &__blocks {
@@ -128,17 +117,16 @@
     }
   }
 
-  &__header,
   &__item {
     line-height: 18px;
     margin: 0 0 12px;
   }
 
   &__header {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    margin-bottom: 18px;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 18px;
+    margin: 0 0 18px;
   }
 
   &__list {
@@ -146,8 +134,10 @@
   }
 
   &__link {
-    &.s-themed--color:hover {
-      color: siteColor(vam-white);
+    color: siteColor(vam-grey-4);
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 
