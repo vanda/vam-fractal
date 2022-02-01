@@ -22,6 +22,11 @@
   }
 
   @include bpMinMedium {
+    &--venue {
+      flex-basis: 50%;
+      max-width: 520px;
+    }
+
     flex-basis: 33.333%;
     max-width: 33.333%;
 
@@ -91,6 +96,15 @@
     }
   }
 
+  &__media--venue,
+  &__media--venue:after,
+  &__media-image--venue {
+    @include bpMinMedium {
+      height: (.85 * 28vw);
+      max-height: 346px;
+    }
+  }
+
   &__sponsor {
     @include typeSetting(0, regular);
     background-color: rgba(siteColor(vam-black), .4);
@@ -110,6 +124,12 @@
     padding-bottom: 20px;
     position: relative;
 
+    &--venue {
+      border-bottom: none;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
     @include bpMinXSmall {
       min-height: 200px;
     }
@@ -119,6 +139,10 @@
     }
 
     @include bpMinMedium {
+      &--venue {
+        font-size: 23px;
+        margin-bottom: 20px;
+      }
       min-height: 210px;
       padding-bottom: 60px;
     }
@@ -135,8 +159,42 @@
   &__title {
     margin: 1px 0 10px;
 
+    &-icon {
+      height: 14px;
+      margin-top: 5px;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      @include bpMinMedium {
+        height: 20px;
+        margin-top: 4px;
+        right: 5px;
+        width: 20px;
+      }
+    }
+
+    &-container {
+      display: inline-flex;
+      flex-direction: row;
+      position: relative;
+    }
+
     @include bpMinSmall {
       @include typeSetting(5, regular);
+    }
+
+    &--venue {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 20px 30px 10px 0;
+    }
+
+    @include bpMinMedium {
+      &--venue {
+        font-size: 23px;
+      }
     }
   }
 
@@ -153,6 +211,11 @@
   }
 
   &__footer {
+    &--venue {
+      bottom: 0;
+      display: inline-block;
+      position: absolute;
+    }
     bottom: 10px;
     display: none;
     height: 40px;
