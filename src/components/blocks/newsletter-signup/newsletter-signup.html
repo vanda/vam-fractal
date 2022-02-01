@@ -1,5 +1,15 @@
-<a id="signup" name="signup"></a>
-<div class="b-newsletter {% if modifier.length > 0 %}b-newsletter{{ modifier }}{% endif %}">
+{% if modifier === "--component" %}
+<section class="b-promo">
+  <article class="b-promo__item js-object-fit-container">
+    <img srcset="https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_320.jpg 320w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_640.jpg 640w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_960.jpg 960w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_1280.jpg 1280w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_1920.jpg 1920w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_2560.jpg 2560w" sizes="(min-width: 1200px) 1200px, 100vw" class="b-promo__image" src="https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_960.jpg" alt="Membership">
+    <a id="signup" name="signup" class=""></a>
+    <div class="b-promo__content b-promo__content--newsletter">
+{% endif %}
+
+{% if not modifier === "--component" %}
+  <a id="signup" name="signup"></a>
+  <div class="b-newsletter {% if modifier.length > 0 %}b-newsletter{{ modifier }}{% endif %}">
+{% endif %}
   {% if modifier.length === 0 %}
     <div class="b-newsletter__logo">
         <svg role="img">
@@ -8,7 +18,7 @@
     </div>
   {% endif %}
 
-  <form name="signup" id="signup" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form{{ modifier }}{% endif %} js-newsletter_form">
+  <form name="signup" id="signup" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form{{ modifier }}{% endif %} js-newsletter_form {% if modifier === '--component' %} b-promo__anchor {% endif %}">
     {% if modifier === "--footer" %}
       <div class="b-newsletter__flex-form-container">
     {% endif %}
@@ -51,10 +61,21 @@
       <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit{{ modifier }}{% endif %} js-newsletter__submit">
     </div>
     <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info{{ modifier }}{% endif %}">
+      {% if modifier === "--component" %}
+        <div class="b-newsletter__info-statement">
+      {% endif %}
+
       {% if modifier === "--footer" %}
         You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy notice</a>.
       {% else %}
         You can opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy policy.</a>
+      {% endif %}
+
+      {% if modifier === "--component" %}
+        </div>
+        <div
+        class="u-btn u-btn--black b-newsletter__form-submit b-newsletter__form-submit--component js-newsletter__submit b-newsletter__form-submit--hidden"
+        ></div>
       {% endif %}
     </div>
     {% if modifier === "--footer" %}
@@ -64,4 +85,13 @@
       </div>
     {% endif %}
   </form>
+{% if not modifier === "--component" %}
 </div>
+{% endif %}
+
+{% if modifier === "--component" %}
+  </div>
+  </a>
+  </article>
+  </section>
+{% endif %}
