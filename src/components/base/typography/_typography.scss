@@ -80,10 +80,8 @@ $base-font-weight: 'regular';
   line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
 }
 
-@mixin typeSetting($size: $base-font-size, $weight: $base-font-weight, $transform: none) {
+@mixin typeSetting($size: $base-font-size, $weight: $base-font-weight) {
   @include fontSize($size);
   @include lineHeight($size, $weight);
   font-weight: fontWeight($weight);
-  letter-spacing: initial;
-  text-transform: $transform;
 }

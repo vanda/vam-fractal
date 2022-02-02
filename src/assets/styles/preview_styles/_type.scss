@@ -16,10 +16,4 @@
       @include typeSetting($i, $weight);
     }
   }
-
-  @for $i from 0 through 5 {
-    .fr-font-#{$weight}-#{$i}-uppercase {
-      @include typeSetting($i, $weight, 'uppercase');
-    }
-  }
 }
