@@ -84,6 +84,4 @@ $base-font-weight: 'regular';
   @include fontSize($size);
   @include lineHeight($size, $weight);
   font-weight: fontWeight($weight);
-  letter-spacing: initial;
-  text-transform: $transform;
 }
