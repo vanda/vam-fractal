@@ -15,6 +15,14 @@ module.exports = {
         title: 'Signup',
         modifier: '--footer'
       }
+    },
+    {
+      name: 'component newsletter',
+      label: 'Component Newsletter',
+      context: {
+        title: 'Signup',
+        modifier: '--component'
+      }
     }
   ]
 };

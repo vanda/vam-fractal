@@ -105,6 +105,13 @@
     @include bpMinLarge {
       &--footer {
         background-color: siteColor(vam-black);
+      }
+
+      &--component {
+        background-color: transparent;
+      }
+
+      &--footer, &--component {
         margin: 0 0 10px;
         width: 100%;
       }
@@ -124,6 +131,12 @@
           justify-content: flex-end;
         }
       }
+      &--component {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+      }
 
       &-field {
         @include typeSetting(3, regular);
@@ -132,6 +145,10 @@
         padding: 15px;
         text-align: center;
         width: 100%;
+
+        &--component {
+          height: 50px;
+        }
 
         &--footer {
           height: 50px;
@@ -151,18 +168,36 @@
         }
 
         @include bpMinXSmall {
+          &--component {
+            max-width: 467px;
+          }
           flex-grow: 1;
           height: 50px;
           margin-right: 8px;
           text-align: left;
         }
         @include bpMinMedium {
+          &--component {
+            max-width: 467px;
+          }
           max-width: 355px;
         }
       }
     }
 
     &-submit {
+      &--component {
+        margin-left: 5px;
+        margin-top: 0;
+        max-width: 102px;
+        padding: 16px;
+      }
+
+      &--hidden {
+        max-width: 80px;
+        visibility: hidden;
+      }
+
       margin-bottom: 14px;
       margin-top: 8px;
       padding: 15px;
@@ -222,7 +257,16 @@
       &--footer {
         font-size: 28px;
       }
+      &--component {
+        font-size: 31px;
+        font-weight: 500;
+        line-height: 1.23;
+      }
       @include typeSetting(6, bold);
+    }
+
+    &--component {
+      text-align: center;
     }
   }
 
@@ -233,16 +277,6 @@
 
     &--footer {
       margin-left: 0;
-      text-align: left;
-    }
-
-    @include bpMinXSmall {
-      @include typeSetting(4, regular);
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 26px;
-      margin: 0 0 15px 0;
-      max-width: 450px;
       text-align: left;
     }
 
@@ -261,6 +295,27 @@
       color: siteColor(vam-black);
       font-style: 700;
     }
+
+    &--component {
+      margin: auto;
+      max-width: 275px;
+      padding-bottom: 30px;
+    }
+
+    @include bpMinXSmall {
+      @include typeSetting(4, regular);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 26px;
+      margin: 0 0 15px 0;
+      max-width: 450px;
+      text-align: left;
+      &--component {
+        max-width: none;
+        padding-bottom: 0;
+        text-align: center;
+      }
+    }
   }
 
   &__info {
@@ -268,15 +323,25 @@
     color: siteColor(vam-grey-2);
     text-align: center;
 
-    &--footer {
+    &--footer, &--component {
       color: siteColor(vam-white);
       font-size: 12px;
       text-align: left;
     }
 
+    &--component {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+
     @include bpMinSmall {
       max-width: 520px;
       text-align: left;
+      &--component {
+        margin: auto;
+        max-width: 635px;
+      }
     }
   }
 
