@@ -7,6 +7,11 @@
   position: relative;
   width: 100%;
 
+  &--venue {
+    display: flex;
+    flex-direction: column;
+  }
+
   .no-flexbox & {
     float: left;
   }
@@ -126,6 +131,7 @@
 
     &--venue {
       border-bottom: none;
+      flex-grow: 3;
       font-size: 17px;
       margin-bottom: 10px;
     }
