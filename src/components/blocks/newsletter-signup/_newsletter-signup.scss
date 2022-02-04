@@ -128,10 +128,6 @@
     }
 
     &-fields {
-      &--component {
-        margin-bottom: 10px;
-      }
-
       @include bpMinXSmall {
         display: flex;
         flex-direction: row;
@@ -146,6 +142,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        margin-bottom: 10px;
         width: 100%;
       }
 
@@ -247,6 +244,7 @@
   &__headline {
     &--component {
       font-size: 23px;
+      text-align: center;
     }
 
     &--footer {
@@ -281,19 +279,12 @@
       }
       @include typeSetting(6, bold);
     }
-
-    &--component {
-      text-align: center;
-    }
   }
 
   &__descriptor {
     @include typeSetting(3, regular);
     margin: 0 15px 15px 15px;
     text-align: center;
-
-    &--component {
-    }
 
     &--footer {
       margin-left: 0;
@@ -334,8 +325,8 @@
         font-size: 17px;
         line-height: 1.65;
         max-width: none;
-        padding-top: 0;
         padding-bottom: 15px;
+        padding-top: 0;
         text-align: center;
       }
     }
