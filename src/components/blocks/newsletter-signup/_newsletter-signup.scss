@@ -276,6 +276,7 @@
       &--component {
         font-size: 31px;
         line-height: 1.23;
+        text-align: center;
       }
       @include typeSetting(6, bold);
     }
