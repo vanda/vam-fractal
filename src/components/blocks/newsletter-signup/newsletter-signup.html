@@ -34,8 +34,8 @@
       {% endif %}
     </h1>
     <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor{{ modifier }}{% endif %} js-newsletter__descriptor">
-    {% if modifier === "--footer" %}
-      Hear about activities, events and exhibitions from the V&A.
+    {% if (modifier === "--footer") or (modifier === "--component") %}
+      Hear about exhibitions, events, offers and opportunities from V&A South Kensington
     {% else %}
       Hear about exhibitions, events, offers and opportunities from the V&A and the V&A Museum of Childhood.
     {% endif %}

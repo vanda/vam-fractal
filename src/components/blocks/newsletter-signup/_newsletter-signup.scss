@@ -78,6 +78,10 @@
     position: relative;
     width: 100%;
 
+    &--component {
+      max-width: none;
+    }
+
     &--footer {
       &-etc {
         border-bottom: 1px solid siteColor(vam-grey-2);
@@ -97,6 +101,9 @@
     @include bpMinSmall {
       max-width: 100%;
       padding: 30px 0 30px 55px;
+      &--component {
+        padding: 30px 0 25px 55px;
+      }
       &--footer {
         padding: 20px 0 30px;
       }
@@ -105,6 +112,7 @@
     @include bpMinLarge {
       &--footer {
         background-color: siteColor(vam-black);
+        margin: 0 0 10px;
       }
 
       &--component {
@@ -112,7 +120,6 @@
       }
 
       &--footer, &--component {
-        margin: 0 0 10px;
         width: 100%;
       }
       background-color: siteColor(vam-grey-5);
@@ -121,6 +128,10 @@
     }
 
     &-fields {
+      &--component {
+        margin-bottom: 10px;
+      }
+
       @include bpMinXSmall {
         display: flex;
         flex-direction: row;
@@ -143,7 +154,6 @@
         border: 1px solid white;
         border-radius: 2px;
         padding: 15px;
-        text-align: center;
         width: 100%;
 
         &--component {
@@ -169,6 +179,7 @@
 
         @include bpMinXSmall {
           &--component {
+            margin-right: 0;
             max-width: 467px;
           }
           flex-grow: 1;
@@ -187,8 +198,7 @@
 
     &-submit {
       &--component {
-        margin-left: 5px;
-        margin-top: 0;
+        margin: 0 0 0 5px;
         max-width: 102px;
         padding: 16px;
       }
@@ -216,6 +226,9 @@
           max-width: 158px;
           padding-top: 17px;
         }
+        &--component {
+          max-width: 102px;
+        }
         font-size: 13px;
         margin-top: 0;
         max-width: 150px;
@@ -232,6 +245,10 @@
   }
 
   &__headline {
+    &--component {
+      font-size: 23px;
+    }
+
     &--footer {
       @include typeSetting(4, bold);
       font-size: 22px;
@@ -275,6 +292,9 @@
     margin: 0 15px 15px 15px;
     text-align: center;
 
+    &--component {
+    }
+
     &--footer {
       margin-left: 0;
       text-align: left;
@@ -299,7 +319,7 @@
     &--component {
       margin: auto;
       max-width: 275px;
-      padding-bottom: 30px;
+      padding: 10px 0 30px 0;
     }
 
     @include bpMinXSmall {
@@ -311,8 +331,11 @@
       max-width: 450px;
       text-align: left;
       &--component {
+        font-size: 17px;
+        line-height: 1.65;
         max-width: none;
-        padding-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 15px;
         text-align: center;
       }
     }
@@ -335,12 +358,12 @@
       width: 100%;
     }
 
-    @include bpMinSmall {
+    @include bpMinXSmall {
       max-width: 520px;
       text-align: left;
       &--component {
         margin: auto;
-        max-width: 635px;
+        max-width: 575px;
       }
     }
   }
