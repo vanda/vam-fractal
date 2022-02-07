@@ -4,47 +4,15 @@
   <div class="b-site-footer__backtotop">
     <a href="#vam_body" class="b-site-footer__backtotop-btn">Back to the top</a>
   </div>
-  <div class="b-newsletter b-newsletter--footer b-site-footer__content b-site-footer__content--newsletter">
-    <form name="signup-footer" id="signup-footer" action="//email-vam.org.uk/signup.ashx" autocomplete="off" method="POST" class="b-newsletter__form b-newsletter__form--footer b-newsletter__form--footer-main js-newsletter_form">
-      <div class="b-newsletter__flex-form-container">
-        <div class="b-newsletter__flex-form-container-title">
-          <h2 class="b-newsletter__headline b-newsletter__headline--footer">
-            Sign up to our emails
-          </h2>
-          <p aria-live="polite" class="b-newsletter__descriptor b-newsletter__descriptor--footer js-newsletter__descriptor">
-            Hear about activities, events and exhibitions from the V&amp;A.
-          </p>
-        </div>
-        <div class="b-newsletter__flex-form-container-form">
-          <div class="b-newsletter__form-fields b-newsletter__form-fields--footer">
-            <input type="hidden" name="ci_isconsentform" value="true">
-            <input type="hidden" name="userid" value="193690">
-            <input type="hidden" name="SIG111c61b9060bb903d4d00273e56ca0b7f2a5008ddd91799cf706ed2bbe35672f" value="">
-            <input type="hidden" name="addressbookid" value="23385029">
-            <input type="hidden" name="programid" value="214084">
-            <!-- ReturnURL - when the user hits submit, they'll get sent here -->
-            <input type="hidden" name="ReturnURL" value="https://www.vam.ac.uk/info/va-newsletter">
-            <input type="hidden" name="ci_userConsentText" value="Hear about activities, events and exhibitions from the V&A. You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full privacy notice.">
-            <input type="hidden" id="ci_consenturl_footer" name="ci_consenturl" value="">
-            <!-- Email - the user's email address -->
-            <input aria-invalid="false" type="text" placeholder="name@example.com" name="Email" class="js-emailValidation b-newsletter__form-fields-field b-newsletter__form-fields-field--footer" aria-label="Enter your email address">
-            <input type="hidden" name="ci_userConsentCheckBox" value="on">
-            <input type="submit" value="Sign up" name="btnsubmit" class="u-btn b-newsletter__form-submit b-newsletter__form-submit--footer js-newsletter__submit s-themed s-themed--background-color s-themed--background-color--hover s-themed--border-color s-themed--border-color--hover">
-          </div>
-          <script language="javascript">
-					var urlInput = document.getElementById("ci_consenturl_footer");
-					if (urlInput != null && urlInput != 'undefined') {
-						urlInput.value = encodeURI(window.location.href);
-						}
-			  	</script>
 
-          <div class="b-newsletter__info b-newsletter__info--footer">
-            You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href="/info/privacy-notice" class="u-link">privacy notice</a>.
-          </div>
-        </div>
-      </div>
-    </form>
+
+  
+
+  <div class="b-site-footer__content b-site-footer__content--newsletter">
+    {%- render "@newsletter-signup--footer" -%}
   </div>
+  
+  
   <div class="b-site-footer__content">
     <h2 class="b-site-footer__name" itemprop="name">Victoria and <br/>Albert Museum</h2>
 
@@ -156,7 +124,7 @@
         <h3 class="b-site-footer__header">V&amp;A South Kensington</h3>
         <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45"><br/>Wednesday&ndash;Sunday, 10.00&ndash;17.45</div>
+            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45">Wednesday&ndash;Sunday, <br />10.00&ndash;17.45</div>
           </li>
           <li class="b-site-footer__item">
             Admission is free
@@ -165,11 +133,11 @@
             Cromwell Road<br/>
             London SW7 2RL
           </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link" href="#">Plan a visit</a>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">Plan a visit</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link" href="#">Access information</a>
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">Access information</a>
           </li>
         </ul>
       </section>
@@ -178,7 +146,7 @@
         <h3 class="b-site-footer__header">V&amp;A Dundee</h3>
         <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45"><br/>Wednesday&ndash;Sunday, 10.00&ndash;17.45</div>
+            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45">Wednesday&ndash;Sunday, <br />10.00&ndash;17.45</div>
           </li>
           <li class="b-site-footer__item">
             Admission is free
@@ -187,8 +155,8 @@
             1 Riverside Esplanade,<br/>
             Dundee DD1 4EZ
           </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link" href="#">Visit V&amp;A Dundee website</a>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">Visit V&amp;A Dundee website</a>
           </li>
         </ul>
       </section>
@@ -197,7 +165,7 @@
         <h3 class="b-site-footer__header">V&amp;A Wedgwood Collection</h3>
         <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45"><br/>Wednesday&ndash;Sunday, 10.00&ndash;17.45</div>
+            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45">Wednesday&ndash;Sunday, <br />10.00&ndash;17.45</div>
           </li>
           <li class="b-site-footer__item">
             Admission is free
@@ -206,8 +174,8 @@
             Wedgwood Drive, Barlaston,<br/>
             Stoke-on-Trent ST12 9ER
           </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link" href="#">Visit World of Wedgwood website</a>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">Visit World of Wedgwood website</a>
           </li>
         </ul>
       </section>
@@ -221,66 +189,104 @@
           <li class="b-site-footer__item">
             East London
           </li>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">About Young V&amp;A</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="b-site-footer__block">
+        <h3 class="b-site-footer__header">V&amp;A East</h3>
+        <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link" href="#">About Young V&amp;A</a>
+            Opening 2024
+          </li>
+          <li class="b-site-footer__item">
+            East London
+          </li>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">About V&amp;A East</a>
           </li>
         </ul>
       </section>
     </div>
 
-    <div class="b-site-footer__social">
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://www.facebook.com/victoriaandalbertmuseum" aria-label="Facebook">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#facebook"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="https://twitter.com/V_and_A" aria-label="Twitter">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#twitter"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://www.pinterest.com/vamuseum/" aria-label="Pinterest">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#pinterest"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://instagram.com/vamuseum" aria-label="Instagram">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#instagram"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://www.youtube.com/user/vamuseum" aria-label="YouTube">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#youtube"></use>
-          </svg>
-        </div>
-      </a>
+    <div class="b-site-footer__supplementary">
+      <ul class="b-site-footer__contacts b-site-footer__list">
+        <li class="b-site-footer__item">
+          <a class="b-site-footer__link" href="tel:+442079422000">+44 (0)20 7942 2000</a>
+        </li>
+        <li class="b-site-footer__item">
+          <a class="b-site-footer__link" href="mailto:hello@vam.ac.uk">hello@vam.ac.uk</a>
+        </li>
+      </ul>
+
+      <ul class="b-site-footer__social b-site-footer__list">
+        <li>
+          <a class="b-icon-link" href="http://www.facebook.com/victoriaandalbertmuseum" aria-label="Facebook">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#facebook"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="https://twitter.com/V_and_A" aria-label="Twitter">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#twitter"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="http://www.pinterest.com/vamuseum/" aria-label="Pinterest">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#pinterest"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="http://instagram.com/vamuseum" aria-label="Instagram">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#instagram"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="http://www.youtube.com/user/vamuseum" aria-label="YouTube">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#youtube"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+      </ul>
+      
+      <ul class="b-site-footer__legal b-site-footer__list">
+        <li class="b-site-footer__item">
+          <a class="b-site-footer__link" href="/privacy-notice">Privacy policy</a> and <a class="b-site-footer__link" href="/cookies">cookies</a>
+        </li>
+        <li class="b-site-footer__item">
+          <a class="b-site-footer__link" href="/articles/terms-of-use">Terms of use</a>
+        </li>
+        <li class="b-site-footer__item">
+          <a class="b-site-footer__link" href="/info/accessibility-statement">Accessibility statement</a>
+        </li>
+      </ul>
+
+      <p class="b-site-footer__copy">&copy; Victoria and Albert Museum, London, 2022</p> <!--<%= Time.zone.now.year %>-->
+
+      <svg class="b-site-footer__logo" aria-hidden="true">
+        <use xlink:href="/assets/svg/svg-template.svg#valogo-clipped"></use>
+      </svg>
     </div>
-
-    <!--<%= render 'shared/footer_legal_info' %>-->
-    <div class="b-site-footer__legal">
-      <a href="/privacypolicy">Privacy policy</a> and <a href="/cookies">cookies</a>
-      <span class="s-separated">
-        <a href="/articles/terms-of-use">Terms of use</a>
-      </span>
-      <span class="s-separated">
-        &copy; Victoria and Albert Museum, London, 2018 <!--<%= Time.zone.now.year %>-->
-      </span>
-    </div>
-
-    <svg class="b-site-footer__logo" aria-hidden="true">
-      <use xlink:href="/assets/svg/svg-template.svg#valogo-clipped"></use>
-    </svg>
-
   </div>
 
 </footer>

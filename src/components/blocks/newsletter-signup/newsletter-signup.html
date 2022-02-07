@@ -1,5 +1,4 @@
-<a id="signup" name="signup"></a>
-<div class="b-newsletter {% if modifier.length > 0 %}b-newsletter{{ modifier }}{% endif %}">
+<div class="b-newsletter {% if modifier.length > 0 %}b-newsletter--{{ modifier }}{% endif %}">
   {% if modifier.length === 0 %}
     <div class="b-newsletter__logo">
         <svg role="img">
@@ -8,37 +7,37 @@
     </div>
   {% endif %}
 
-  <form name="signup" id="signup" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form{{ modifier }}{% endif %} js-newsletter_form">
-    {% if modifier === "--footer" %}
+  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form">
+    {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container">
     {% endif %}
 
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-title">
     {% endif %}
-    <h1 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline{{ modifier }}{% endif %}">
-      {% if modifier === "--footer" %}
+    <h1 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline--{{ modifier }}{% endif %}">
+      {% if modifier === "footer" %}
         Sign up to our emails
       {% else %}
         Sign up to get the latest V&A news
       {% endif %}
     </h1>
-    <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor{{ modifier }}{% endif %} js-newsletter__descriptor">
-    {% if modifier === "--footer" %}
+    <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor--{{ modifier }}{% endif %} js-newsletter__descriptor">
+    {% if modifier === "footer" %}
       Hear about activities, events and exhibitions from the V&A.
     {% else %}
       Hear about exhibitions, events, offers and opportunities from the V&A and the V&A Museum of Childhood.
     {% endif %}
     </p>
 
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       </div>
     {% endif %}
 
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-form">
     {% endif %}
-    <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields{{ modifier }}{% endif %}">
+    <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields--{{ modifier }}{% endif %}">
       <input type="hidden" name="addressbookid" value="3410112">
       <input type="hidden" name="ci_isconsentform" value="true">
       <input type="hidden" name="userid" value="193690">
@@ -47,20 +46,20 @@
       <input type="hidden" name="ReturnURL" value="http://www.vam.ac.uk/content/email/confirmation/?result=success">
       <!-- Email - the user's email address -->
 
-      <input aria-invalid="false" type="text" placeholder="Enter your email address" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field{{ modifier }}{% endif %}">
-      <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit{{ modifier }}{% endif %} js-newsletter__submit">
+      <input aria-invalid="false" type="text" placeholder="Enter your email address" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field--{{ modifier }}{% endif %}">
+      <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit--{{ modifier }}{% endif %} js-newsletter__submit">
     </div>
-    <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info{{ modifier }}{% endif %}">
-      {% if modifier === "--footer" %}
+    <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info--{{ modifier }}{% endif %}">
+      {% if modifier === "footer" %}
         You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy notice</a>.
       {% else %}
         You can opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy policy.</a>
       {% endif %}
     </div>
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       </div>
     {% endif %}
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       </div>
     {% endif %}
   </form>
