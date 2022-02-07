@@ -1,0 +1,190 @@
+.b-venue-core-info {
+  background-color: red;
+  max-width: 1200px;
+  overflow: auto;
+  width: 100%;
+
+  @include bpMinSmall {
+    display: flex;
+  }
+
+  &__statement {
+
+    @include bpMinXSmall {
+      max-width: 65%;
+      padding-right: 15px;
+    }
+
+    @include bpMinSmall {
+      margin-bottom: 30px;
+      max-width: none;
+    }
+
+    @include bpMinMedium {
+      font-size: 23px;
+    }
+
+    @include bpMinLarge {
+      font-size: 31px;
+    }
+
+    font-size: 17px;
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  &__content {
+    flex-direction: column;
+    position: relative;
+
+    @include bpMinXSmall {
+      flex-direction: row;
+    }
+
+    @include bpMaxSmall {
+      display: flex;
+    }
+
+    @include bpMinSmall {
+      display: block;
+    }
+  }
+
+  &__button-container {
+    @include bpMinXSmall {
+      align-items: self-end;
+      display: flex;
+      flex-direction: column;
+      width: 35%;
+    }
+
+    @include bpMinSmall {
+      display: block;
+      width: auto;
+    }
+  }
+
+  &__content-container {
+    @include bpMinSmall {
+      float: right;
+      padding: 30px 50px 30px;
+      width: 60%;
+    }
+
+    @include bpMinLarge {
+      padding: 50px 50px 100px;
+    }
+
+    height: 100%;
+    overflow: auto;
+    padding: 20px 10px;
+    position: relative;
+    width: 100%;
+
+    button {
+      display: block;
+      font-size: 15px;
+      margin: 0;
+      padding: 5px 10px;
+      position: relative;
+
+      @include bpMinXSmall {
+        margin: auto;
+      }
+
+      @include bpMinSmall {
+        margin: 0;
+        padding: 10px 20px;
+      }
+
+      @include bpMinMedium {
+        float: right;
+      }
+
+      @include bpMinLarge {
+        font-size: 17px;
+      }
+    }
+
+    span {
+      height: 20px;
+      position: relative;
+    }
+
+    svg {
+      @include bpMaxSmall {
+        right: 5px;
+      }
+
+      height: 22px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+    }
+
+    address {
+      @include bpMinXSmall {
+        margin-bottom: 0;
+        margin-left: 35px;
+      }
+
+      @include bpMaxXSmall {
+        font-size: 15px;
+      }
+
+      @include bpMinSmall {
+        display: block;
+        margin-left: 0;
+        padding: 0 0 70px 30px;
+        position: relative;
+        width: auto;
+      }
+
+      @include bpMinLarge {
+        font-size: 23px;
+        padding: 0 0 100px 30px;
+      }
+
+      font-size: 17px;
+      margin-bottom: 30px;
+      margin-left: 25px;
+    }
+  }
+  &__img-container {
+    @include bpMinSmall {
+      float: left;
+      width: 40%;
+    }
+    height: auto;
+    position: relative;
+    width: 100%;
+  }
+  &__img-badge {
+    @include bpMaxSmall {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    @include bpMinSmall {
+      right: 20px;
+      top: 20px;
+    }
+
+    background-color: rgba(255, 255, 255, .8);
+    padding: 3px 6px;
+    position: absolute;
+  }
+
+  &__img {
+    @include bpMinSmall {
+      max-height: none;
+    }
+
+    height: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+}
