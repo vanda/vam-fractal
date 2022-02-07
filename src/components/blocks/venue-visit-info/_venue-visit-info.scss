@@ -2,7 +2,9 @@
   background-color: siteColor(vam-black);
   color: siteColor(vam-white);
   display: flex;
+  max-width: 1200px;
   padding: 30px 0;
+  width: 100%;
 
   @include bpMaxXSmall {
     flex-direction: column;
