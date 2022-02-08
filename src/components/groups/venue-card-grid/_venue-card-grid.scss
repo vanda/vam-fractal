@@ -1,0 +1,78 @@
+.g-venue-card-grid {
+  margin-bottom: 40px;
+  width: 100%;
+
+  &__header {
+    @include typeSetting(5);
+    color: #fff;
+    margin-bottom: 18px;
+    text-align: center;
+
+    @include bpMinMedium {
+      @include typeSetting(6);
+      margin-bottom: 23px;
+    }
+  }
+
+  &__grid {
+    @include bpMinXSmall {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    margin-bottom: 10px;
+
+    @include bpMinXSmall {
+      flex: 0 1 calc((100% - 20px) * .42);
+
+      &:nth-child(n+2) {
+        margin-left: 10px;
+      }
+
+      & > .b-venue-card {
+        height: 100%;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        flex-basis: calc((100% - 20px) * .28);
+
+        & > .b-venue-card {
+          height: 150%;
+        }
+      }
+
+      &:nth-child(5) {
+        margin-right: 20px;
+
+        & > .b-venue-card {
+          top: 50%;
+        }
+      }
+    }
+
+    @include bpMinMedium {
+      flex: 0 1 calc((100% - 40px) * .42);
+      margin-bottom: 20px;
+
+      &:nth-child(n+2) {
+        margin-left: 20px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        flex-basis: calc((100% - 40px) * .28);
+      }
+
+      &:nth-child(5) {
+        margin-right: 40px;
+      }
+    }
+  }
+}
