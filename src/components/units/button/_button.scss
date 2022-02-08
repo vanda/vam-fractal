@@ -1,5 +1,5 @@
 .u-btn {
-  @include typeSetting(1, semi-bold, uppercase);
+  @include typeSetting(1, medium);
   appearance: none;
   background-color: siteColor(primary-green);
   border: 1px solid siteColor(primary-green);
