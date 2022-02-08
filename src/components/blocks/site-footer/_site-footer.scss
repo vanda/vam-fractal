@@ -150,13 +150,17 @@
   }
 
   &__supplementary {
-
     @include bpMinSmall {
-      outline: 1px dotted orange;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      height: 400px;
+      column-gap: 10px;
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: 3fr 1fr;
+      grid-template-areas: 
+        "contacts ."
+        "social ."
+        "legal ."
+        "copy  logo";
+      margin-bottom: 30px;
     }
   }
 
@@ -175,6 +179,7 @@
     }
 
     @include bpMinSmall {
+      grid-area: contacts;
       margin-bottom: 20px;
     }
   }
@@ -184,7 +189,8 @@
     margin-bottom: 50px;
 
     @include bpMinSmall {
-      // flex: 1 1 75%;
+      grid-area: copy;
+      margin-bottom: 0;
     }
   }
 
@@ -201,7 +207,7 @@
     }
 
     @include bpMinSmall {
-      // flex: 1 1 75%;
+      grid-area: social;
     }
   }
 
@@ -214,6 +220,7 @@
     }
 
     @include bpMinSmall {
+      grid-area: legal;
       column-gap: 10px;
       display: flex;
       margin-bottom: 5px;
@@ -233,7 +240,16 @@
     width: 155px;
 
     @include bpMinSmall {
-      // flex: 1 1 25%;
+      align-self: end;
+      grid-area: logo;
+      grid-row: 1 / 5;
+      justify-self: end;
+      margin-bottom: 0;
+    }
+
+    @include bpMinMedium {
+      height: 146px;
+      width: 251px;
     }
   }
 }
