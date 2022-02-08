@@ -130,7 +130,7 @@
 
       &-text {
         &--column, &--row {
-          @include typeSetting(1, bold, uppercase);
+          @include typeSetting(1, bold);
         }
       }
     }

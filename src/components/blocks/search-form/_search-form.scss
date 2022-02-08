@@ -165,7 +165,7 @@
   }
 
   &__submit {
-    @include typeSetting(0, semi-bold, uppercase);
+    @include typeSetting(0, medium);
     align-items: center;
     display: inline-flex;
     margin-top: 15px;
@@ -175,7 +175,7 @@
     }
 
     @include bpMinSmall {
-      @include typeSetting(3, semi-bold, uppercase);
+      @include typeSetting(3, medium);
       margin-top: 28px;
 
       &#{&}--hidden {
@@ -188,7 +188,7 @@
       margin-top: 0;
 
       @include bpMinMedium {
-        @include typeSetting(4, semi-bold, uppercase);
+        @include typeSetting(4, medium);
       }
     }
 
@@ -361,7 +361,7 @@
       width: auto;
     }
 
-    @include typeSetting(2, semi-bold, uppercase);
+    @include typeSetting(2, medium);
     background: transparent;
     border: 1px solid siteColor(vam-white);
     border-radius: 2px;
@@ -454,12 +454,12 @@
   }
 
   &__suggestion-type {
-    @include typeSetting(0, bold, uppercase);
+    @include typeSetting(0, bold);
     display: inline-block;
     margin-right: 16px;
 
     @include bpMinSmall {
-      @include typeSetting(3, bold, uppercase);
+      @include typeSetting(3, bold);
     }
   }
 

@@ -15,17 +15,17 @@
   }
 
   &__title {
-    @include typeSetting(2, bold, uppercase);
+    @include typeSetting(2, bold);
     color: siteColor(vam-black);
     display: block;
     text-align: center;
 
     @include bpMinXSmall {
-      @include typeSetting(3, bold, uppercase);
+      @include typeSetting(3, bold);
     }
 
     @include bpMinSmall {
-      @include typeSetting(5, bold, uppercase);
+      @include typeSetting(5, bold);
     }
 
     .b-section-header--transparent & {
