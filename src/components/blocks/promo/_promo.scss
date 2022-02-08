@@ -92,6 +92,11 @@
   }
 
   &__content {
+    &--newsletter {
+      max-width: none;
+      padding: 0;
+    }
+
     align-items: center;
     color: siteColor(vam-grey-6);
     display: flex;
@@ -107,10 +112,18 @@
     z-index: 1;
 
     @include bpMinSmall {
+      &--newsletter {
+        max-width: none;
+      }
+
       max-width: 670px;
     }
 
     @include bpMinMedium {
+      &--newsletter {
+        max-width: none;
+      }
+
       max-width: 800px;
       min-height: 280px;
     }

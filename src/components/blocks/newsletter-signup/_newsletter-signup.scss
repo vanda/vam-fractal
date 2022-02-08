@@ -78,6 +78,10 @@
     position: relative;
     width: 100%;
 
+    &--component {
+      max-width: none;
+    }
+
     &--footer {
       &-etc {
         border-bottom: 1px solid siteColor(vam-grey-2);
@@ -97,6 +101,9 @@
     @include bpMinSmall {
       max-width: 100%;
       padding: 30px 0 30px 55px;
+      &--component {
+        padding: 30px 0 25px 55px;
+      }
       &--footer {
         padding: 20px 0 30px;
       }
@@ -110,6 +117,13 @@
       &--footer {
         background-color: siteColor(vam-black);
         margin: 0 0 10px;
+      }
+
+      &--component {
+        background-color: transparent;
+      }
+
+      &--footer, &--component {
         width: 100%;
       }
     }
@@ -125,14 +139,24 @@
           justify-content: flex-end;
         }
       }
+      &--component {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 100%;
+      }
 
       &-field {
         @include typeSetting(4, regular);
         border: 1px solid white;
         border-radius: 2px;
         padding: 15px;
-        text-align: center;
         width: 100%;
+
+        &--component {
+          height: 50px;
+        }
 
         &--footer {
           height: 50px;
@@ -152,18 +176,36 @@
         }
 
         @include bpMinXSmall {
+          &--component {
+            margin-right: 0;
+            max-width: 467px;
+          }
           flex-grow: 1;
           height: 50px;
           margin-right: 8px;
           text-align: left;
         }
         @include bpMinMedium {
+          &--component {
+            max-width: 467px;
+          }
           max-width: 355px;
         }
       }
     }
 
     &-submit {
+      &--component {
+        margin: 0 0 0 5px;
+        max-width: 102px;
+        padding: 16px;
+      }
+
+      &--hidden {
+        max-width: 80px;
+        visibility: hidden;
+      }
+
       margin-bottom: 14px;
       margin-top: 8px;
       padding: 15px;
@@ -202,7 +244,11 @@
           max-width: 158px;
           padding-top: 17px;
         }
-
+        
+        &--component {
+          max-width: 102px;
+        }
+        
         margin-top: 0;
         max-width: 150px;
       }
@@ -210,6 +256,12 @@
   }
 
   &__headline {
+
+    &--component {
+      font-size: 23px;
+      font-weight: 500;
+      text-align: center;
+    }
 
     &--footer {
       @include typeSetting(5, regular);
@@ -235,8 +287,14 @@
       margin: 0 0 15px 0;
       max-width: 450px;
       text-align: left;
-    }
 
+      &--component {
+        font-size: 31px;
+        line-height: 1.23;
+        text-align: center;
+      }
+    }
+ 
     & input {
       display: none;
     }
@@ -252,6 +310,30 @@
       color: siteColor(vam-black);
       font-style: 700;
     }
+
+    &--component {
+      margin: auto;
+      max-width: 275px;
+      padding: 10px 0 30px 0;
+    }
+
+    @include bpMinXSmall {
+      @include typeSetting(4, regular);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 26px;
+      margin: 0 0 15px 0;
+      max-width: 450px;
+      text-align: left;
+      &--component {
+        font-size: 17px;
+        line-height: 1.65;
+        max-width: none;
+        padding-bottom: 15px;
+        padding-top: 0;
+        text-align: center;
+      }
+    }
   }
 
   &__info {
@@ -259,15 +341,25 @@
     color: siteColor(vam-grey-2);
     text-align: center;
 
-    &--footer {
+    &--footer, &--component {
       color: siteColor(vam-white);
       font-size: 12px;
       text-align: left;
     }
 
-    @include bpMinSmall {
+    &--component {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    @include bpMinXSmall {
       max-width: 520px;
       text-align: left;
+      &--component {
+        margin: auto;
+        max-width: 575px;
+      }
     }
   }
 

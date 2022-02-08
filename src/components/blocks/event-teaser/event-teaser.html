@@ -1,4 +1,4 @@
-<div class="b-event-teaser" itemscope itemprop="event" itemtype="http://schema.org/Event">
+<div class="b-event-teaser {% if isVenue %}b-event-teaser--venue{% endif %}" itemscope itemprop="{% if not isVenue %}event{% else %}place{% endif %}" itemtype="http://schema.org/{% if not isVenue %}Event{% else %}Place{% endif %}">
 
   <a class="b-event-teaser__link" itemprop="url" content="{{ eventUrl }}" href="{{ eventUrl }}">
 
@@ -6,11 +6,11 @@
     {%- render "@label-tag--book-soon" -%}
     {% endif %}
 
-    <div class="b-event-teaser__media js-object-fit-container">
+    <div class="b-event-teaser__media {% if isVenue %}b-event-teaser__media--venue{% endif %} js-object-fit-container">
       <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
         <link itemprop="url" href="{{ eventImage[960] }}">
         <img alt="{{ eventTitle }}"
-             class="b-event-teaser__media-image"
+             class="b-event-teaser__media-image  {% if isVenue %}b-event-teaser__media-image--venue{% endif %}"
              itemprop="contentUrl"
              sizes="(max-width: 499px) calc(100vw - 20px),
                     (min-width: 500px) calc(50vw - 40px),
@@ -29,39 +29,86 @@
     </div>
 
     <div class="b-event-teaser__description">
-      <span itemprop="description" content="{{ eventDescription }}"></span>
-      <span itemprop="location" itemscope itemtype="http://schema.org/Place">
-        <span itemprop="name" content="Victoria and Albert Museum"></span>
-        <span itemprop="address" content="Victoria and Albert Museum, Cromwell Road, London SW7 2RL, UK"></span>
-      </span>
+      {% if not isVenue %}
+        <span itemprop="description" content="{{ eventDescription }}"></span>
+        <span itemprop="location" itemscope itemtype="http://schema.org/Place">
+          <span itemprop="name" content="Victoria and Albert Museum"></span>
+          <span itemprop="address" content="Victoria and Albert Museum, Cromwell Road, London SW7 2RL, UK"></span>
+        </span>
+      {% endif %}
+
+
 
       <div class="b-event-teaser__label">
         {{ eventType }}
       </div>
 
-      <h1 class="b-event-teaser__title" aria-label="{{ eventTitle }}" itemprop="name" content="{{ eventTitle }}">
-        {{ eventTitle }}
-      </h1>
 
-      <div class="b-event-teaser__data">
-        <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-          <link itemprop="url" href="#">
-          <span itemprop="priceCurrency" content="GBP"></span>
-          <span class="b-event-teaser__price" itemprop="price" content="2360">
-            {{ eventPrice }}
-          </span>
-        </span>
-        <span class="b-event-teaser__date">
-          {{ eventHumanDates }}
-        </span>
-        <span itemprop="startDate" content="{{ eventMachineStartDate }}"></span>
-        <span itemprop="endDate" content="{{ eventMachineEndDate }}"></span>
+      <div class="b-event-teaser__title-container">
+        <h2 class="b-event-teaser__title {% if isVenue %}b-event-teaser__title--venue{% endif %}" aria-label="{{ eventTitle }}" itemprop="name" content="{{ eventTitle }}">
+          {{ eventTitle }}
+        </h2>
+        <svg role="presentation" class="b-event-teaser__title-icon">
+            <use xlink:href="/assets/svg/svg-template.svg#link-external"></use>
+        </svg>
       </div>
 
-      <footer class="b-event-teaser__footer">
+      {% if isVenue %}
+        <p class="b-event-teaser__description--venue" itemprop="description" content="{{ eventDescription }}">
+          {{ eventDescription }}
+        </p>
+      {% endif %}
+
+
+      {% if isVenue %}
+      <ul class='b-icon-list b-icon-list--venue'>
+        {% if address %}
+          <li class='b-icon-list__item b-icon-list__item--venue'>
+            <svg role="presentation" class="b-icon-list__item__icon b-icon-list__item__icon--venue">
+                <use xlink:href="/assets/svg/svg-template.svg#map"></use>
+            </svg>
+            <div class="b-icon-list__item__content">
+                <span itemprop="address" class="b-icon-list__item__heading b-icon-list__item__heading--venue">{{ address }}</span>
+            </div>
+          </li>
+        {% endif %}
+        {% if admission_info %}
+          <li class='b-icon-list__item b-icon-list__item--venue'>
+            <svg role="presentation" class="b-icon-list__item__icon b-icon-list__item__icon--venue">
+                <use xlink:href="/assets/svg/svg-template.svg#clock"></use>
+            </svg>
+            <div class="b-icon-list__item__content" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
+              <span itemprop="description" class="b-icon-list__item__heading b-icon-list__item__heading--venue">{{ admission_info }}</span>
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+
+      {% if eventPrice %}
+        <div class="b-event-teaser__data">
+          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <link itemprop="url" href="#">
+            <span itemprop="priceCurrency" content="GBP"></span>
+            <span class="b-event-teaser__price" itemprop="price" content="2360">
+              {{ eventPrice }}
+            </span>
+          </span>
+          <span class="b-event-teaser__date">
+            {{ eventHumanDates }}
+          </span>
+          <span itemprop="startDate" content="{{ eventMachineStartDate }}"></span>
+          <span itemprop="endDate" content="{{ eventMachineEndDate }}"></span>
+        </div>
+      {% endif %}
+
+      <footer class="b-event-teaser__footer b-event-teaser__footer--venue">
         {% for action in actions %}
         <div class="u-btn u-btn--micro u-btn--outlined">
           {{ action }}
+          <svg role="presentation" class="b-icon-list__item__icon b-icon-list__item__icon--venue b-icon-list__item__icon--venue-button">
+              <use xlink:href="/assets/svg/svg-template.svg#link-external"></use>
+          </svg>
         </div>
         {% endfor %}
       </footer>

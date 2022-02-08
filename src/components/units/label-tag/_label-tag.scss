@@ -44,4 +44,9 @@
   &--closed {
     background: siteColor(vam-grey-2);
   }
+
+  &--venue {
+    background: siteColor(vam-grey-2);
+    color: siteColor(vam-white);
+  }
 }
