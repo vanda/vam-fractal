@@ -3,6 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   height: fit-content;
+  justify-content: center;
   max-width: 1200px;
   width: 100%;
 }
@@ -15,7 +16,10 @@
   justify-content: center;
 
   .b-venue-blog-card {
-    max-width: 380px;
+    max-width: 355px;
+    @include bpMinXSmall {
+      max-width: 380px;
+    }
   }
 }
 
@@ -24,11 +28,27 @@
     @include bpMinXSmall {
       margin-right: 5px;
     }
+
+    @include bpMinSmall {
+      margin-right: 10px;
+    }
+
+    @include bpMinMedium {
+      margin-right: 15px;
+    }
   }
 
   .b-venue-blog-card--50-width:nth-of-type(2) {
     @include bpMinXSmall {
       margin-left: 5px;
+    }
+
+    @include bpMinSmall {
+      margin-left: 10px;
+    }
+
+    @include bpMinMedium {
+      margin-left: 15px;
     }
   }
 
@@ -40,7 +60,6 @@
       .b-venue-blog-card--33-width {
         margin-right: 30px;
         margin-top: 10px;
-        max-width: 380px;
       }
 
       .b-venue-blog-card--50-width:nth-of-type(1) {

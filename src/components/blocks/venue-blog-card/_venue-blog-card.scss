@@ -23,6 +23,11 @@
   }
 
   &--33-width {
+    max-width: 355px;
+
+    @include bpMinXSmall {
+      max-width: 780px;
+    }
     @include bpMinMedium {
       flex-basis: 380px;
       flex-direction: column;
@@ -59,7 +64,7 @@
         width: 50%;
       }
       @include bpMinMedium {
-        padding: 70px 44px 60px 20px;
+        padding: 70px 44px 70px 20px;
         width: 33.3333%;
       }
     }
@@ -109,17 +114,15 @@
       width: 100%;
     }
 
-    @include bpMinMedium {
-      max-height: 250px;
-    }
-
     &--100-width {
       @include bpMinXSmall {
+        overflow: hidden;
         position: relative;
         width: 50%;
       }
 
       @include bpMinMedium {
+        overflow: initial;
         width: 66.666%;
       }
 
@@ -134,9 +137,14 @@
 
     &--33-width {
       @include bpMinMedium {
+        width: 100%;
         img {
           position: relative;
         }
+      }
+
+      @include bpMinLarge {
+        max-width: none;
         width: 100%;
       }
     }
