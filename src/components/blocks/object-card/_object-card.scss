@@ -30,7 +30,7 @@
       }
 
       &__dismiss {
-        @include typeSetting(1, semi-bold, uppercase);
+        @include typeSetting(1, semi-bold);
         background-color: siteColor(vam-black);
         border: 1px solid siteColor(vam-white);
         border-radius: 2px;
