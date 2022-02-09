@@ -114,6 +114,20 @@
       width: 100%;
     }
 
+    &--50-width {
+      @include bpMinXSmall {
+        img {
+          height: 153px;
+        }
+      }
+
+      @include bpMinSmall {
+        img {
+          height: 250px;
+        }
+      }
+    }
+
     &--100-width {
       @include bpMinXSmall {
         overflow: hidden;
@@ -136,6 +150,12 @@
     }
 
     &--33-width {
+      @include bpMinSmall {
+        img {
+          height: 250px;
+        }
+      }
+
       @include bpMinMedium {
         width: 100%;
         img {
