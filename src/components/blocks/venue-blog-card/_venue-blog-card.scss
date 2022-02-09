@@ -111,6 +111,7 @@
 
     &--100-width {
       @include bpMinXSmall {
+        position: relative;
         width: 50%;
       }
 
