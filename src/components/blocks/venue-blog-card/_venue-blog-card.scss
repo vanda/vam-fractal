@@ -109,6 +109,10 @@
       width: 100%;
     }
 
+    @include bpMinMedium {
+      max-height: 250px;
+    }
+
     &--100-width {
       @include bpMinXSmall {
         position: relative;

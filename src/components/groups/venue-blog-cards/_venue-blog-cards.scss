@@ -11,6 +11,12 @@
   & > section {
     margin-top: 10px;
   }
+
+  justify-content: center;
+
+  .b-venue-blog-card {
+    max-width: 380px;
+  }
 }
 
 .g-venue-blog-cards {
@@ -52,9 +58,6 @@
       .g-venue-blog-cards__row {
         flex-basis: 790px;
         padding-left: 0;
-      }
-      .b-venue-blog-card {
-        max-width: 380px;
       }
     }
   }
