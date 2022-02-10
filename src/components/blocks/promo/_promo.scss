@@ -11,6 +11,10 @@
     position: relative;
     width: 100%;
 
+    .b-promo--no-min-height & {
+      min-height: none;
+    }
+
     .b-promo--big & {
       height: 285px;
 
@@ -97,6 +101,8 @@
       padding: 0;
     }
 
+
+
     align-items: center;
     color: siteColor(vam-grey-6);
     display: flex;
@@ -110,6 +116,10 @@
     position: relative;
     text-align: center;
     z-index: 1;
+
+    .b-promo--no-min-height & {
+      min-height: none;
+    }
 
     @include bpMinSmall {
       &--newsletter {
