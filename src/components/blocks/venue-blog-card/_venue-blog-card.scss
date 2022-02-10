@@ -12,6 +12,18 @@
 
     width: 100%;
 
+    &--100-width {
+      @include bpMinXSmall {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      @include bpMinMedium {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+
     &--33-width {
       @include bpMinXSmall {
         display: flex;

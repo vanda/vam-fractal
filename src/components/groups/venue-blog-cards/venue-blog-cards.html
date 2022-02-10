@@ -1,7 +1,7 @@
 <section class="g-venue-blog-cards {% if numberOfCards === 3 %} g-venue-blog-cards--three {% endif %}">
     {% if numberOfCards !== 2 %}
         <section class="b-venue-blog-card b-venue-blog-card--100-width {% if numberOfCards == 3 %} b-venue-blog-card--33-width {% endif %}">
-          <a class="b-venue-blog-card__link {% if numberOfCards == 3 %} b-venue-blog-card__link--33-width {% endif %}" href="">
+          <a class="b-venue-blog-card__link {% if numberOfCards == 3 %} b-venue-blog-card__link--33-width {% else %} b-venue-blog-card__link--100-width {% endif %}" href="">
             <h3 class="b-venue-blog-card__subheading b-venue-blog-card__subheading--100-width {% if numberOfCards == 3 %} b-venue-blog-card__subheading--33-width {% endif %}">
                 Blog post
             </h3>
