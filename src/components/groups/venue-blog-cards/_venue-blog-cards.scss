@@ -15,6 +15,10 @@
 
   justify-content: center;
 
+  @include bpMaxMedium {
+    overflow: hidden;
+  }
+
   .b-venue-blog-card {
     max-width: 355px;
     @include bpMinXSmall {
@@ -24,6 +28,8 @@
 }
 
 .g-venue-blog-cards {
+  overflow: hidden;
+
   .b-venue-blog-card--50-width:nth-of-type(1) {
     @include bpMinXSmall {
       margin-right: 5px;

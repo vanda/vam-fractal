@@ -5,7 +5,23 @@
   width: 100%;
 
   &__link {
+    @include bpMaxXSmall {
+      display: flex;
+      flex-direction: column;
+    }
+
     width: 100%;
+
+    &--33-width {
+      @include bpMinXSmall {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      @include bpMinMedium {
+        display: block;
+      }
+    }
   }
 
   &--50-width {
