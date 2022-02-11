@@ -10,6 +10,12 @@ module.exports = {
       context: {
         themed: ['color', 'border-color']
       }
+    },
+    {
+      name: 'no border',
+      context: {
+        no_border: true
+      }
     }
   ]
 };

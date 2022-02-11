@@ -12,7 +12,7 @@
     width: 100%;
 
     .b-promo--no-min-height & {
-      min-height: none;
+      min-height: auto;
     }
 
     .b-promo--big & {
@@ -118,7 +118,7 @@
     z-index: 1;
 
     .b-promo--no-min-height & {
-      min-height: none;
+      min-height: auto;
     }
 
     @include bpMinSmall {

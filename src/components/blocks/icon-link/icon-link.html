@@ -1,4 +1,4 @@
-<a href="#" class="b-icon-link {% if themed %}{% for t in themed %} s-themed--{{ t }}{% endfor %}{% endif %}">
+<a href="#" class="b-icon-link {% if themed %}{% for t in themed %} s-themed--{{ t }}{% endfor %}{% endif %} {% if no_border %} b-icon-link--no-border {% endif %}">
   <div class="b-icon-link__container">
     <svg class="b-icon-link__icon" role="presentation">
       <use xlink:href="/assets/svg/svg-template.svg#{{ icon }}"></use>
