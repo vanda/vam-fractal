@@ -1,0 +1,45 @@
+.b-venue-social-media {
+  h2 {
+    flex-grow: 2;
+    font-size: 15px;
+
+    @include bpMinSmall {
+      font-size: 17px;
+    }
+
+  }
+
+  &__socials {
+    @include bpMaxXSmall {
+      margin-top: 5px;
+    }
+
+    display: flex;
+    flex-direction: row;
+  }
+  &__content {
+    @include bpMinXSmall {
+      display: flex;
+      flex-direction: row;
+      max-width: none;
+      width: 100%;
+      & *:nth-child(1) {
+        text-align: left;
+      }
+      & *:nth-child(2) {
+        justify-content: right;
+      }
+    }
+    & > * {
+      flex: 1;
+      flex-basis: 0;
+    }
+    padding: 20px 0 10px 0;
+    @include bpMinXSmall {
+      padding: 10px 20px;
+    }
+    @include bpMinSmall {
+      padding: 10px 50px;
+    }
+  }
+}
