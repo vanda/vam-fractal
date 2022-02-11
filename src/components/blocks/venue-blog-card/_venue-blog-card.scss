@@ -28,6 +28,7 @@
       @include bpMinXSmall {
         display: flex;
         flex-direction: row-reverse;
+        height: 244px;
       }
 
       @include bpMinMedium {
@@ -88,10 +89,19 @@
 
     &--100-width {
       @include bpMinXSmall {
-        padding: 50px 30px 30px 15px;
-        width: 50%;
+        flex: 1;
+        flex-basis: 0;
+        flex-grow: 1.75; // N.B. do not know why/how this works
+        max-width: calc(50% - 5px); // N.B. do not know why/how this works
+        padding: 50px 15px 30px 30px;
       }
+      @include bpMinSmall {
+        max-width: calc(50% - 10px);
+      }
+
       @include bpMinMedium {
+        flex-grow: 1;
+        max-width: none;
         padding: 70px 44px 70px 20px;
         width: 33.3333%;
       }
@@ -113,11 +123,16 @@
       @include bpMinXSmall {
         display: block;
         font-size: 13px;
+        height: calc(100% - 35px);
         line-height: 1.38;
+        overflow: hidden;
       }
+
       @include bpMinMedium {
         font-size: 15px;
+        height: auto;
         line-height: 1.4;
+        overflow: initial;
       }
     }
 
@@ -143,12 +158,6 @@
     }
 
     &--50-width {
-      @include bpMinXSmall {
-        img {
-          height: 153px;
-        }
-      }
-
       @include bpMinSmall {
         img {
           height: 250px;
@@ -158,6 +167,10 @@
 
     &--100-width {
       @include bpMinXSmall {
+        flex: 1;
+        flex-basis: 0;
+        flex-grow: 2;
+        max-width: 400px;
         overflow: hidden;
         position: relative;
         width: 50%;
@@ -206,7 +219,7 @@
     &--100-width {
       @include bpMinXSmall {
         background-color: transparent;
-        left: 15px;
+        left: 30px;
         position: absolute;
         top: 15px;
       }
