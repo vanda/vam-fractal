@@ -132,6 +132,7 @@
     &--venue {
       flex-grow: 3;
       font-size: 17px;
+      line-height: 21px;
       margin-bottom: 10px;
     }
 
@@ -166,12 +167,18 @@
 
     &-icon {
       height: 14px;
-      margin-top: 5px;
+      margin-top: 1px;
       position: absolute;
-      right: 14px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
       width: 14px;
+
+
+      @include bpMinXSmall {
+        margin-top: 5px;
+      }
+
       @include bpMinMedium {
         height: 20px;
         margin-top: 4px;
@@ -193,7 +200,11 @@
     &--venue {
       font-size: 17px;
       font-weight: 700;
-      margin: 20px 30px 10px 0;
+      margin: 10px 30px 8px 0;
+      line-height: 1.24;
+      @include bpMinXSmall {
+        margin: 20px 30px 10px 0;
+      }
     }
 
     @include bpMinMedium {
@@ -217,9 +228,26 @@
 
   &__footer {
     &--venue {
-      bottom: 0;
+      @include bpMaxXSmall {
+        position: relative;
+      }
+
       display: inline-block;
       position: absolute;
+
+      .u-btn:nth-of-type(2) {
+        margin-right: 0;
+      }
+
+      .u-btn {
+        width: calc(50% - 7px);
+        @include bpMaxXSmall {
+          padding: 15px 25px;
+        }
+        @include bpMinXSmall {
+          width: auto;
+        }
+      }
     }
     bottom: 10px;
     display: none;

@@ -39,7 +39,7 @@ module.exports = {
         },
         eventDescription: 'The world’s leading museum of art, design and performance.',
         address: 'Cromwell Road, London SW7 2RL',
-        admission_info: 'Open Wed – Sun, 10am – 5.45pm Last admission 16:45',
+        admission_info: 'Open Wed – Sun, 10am – 5.45pm</br>Last admission 16:45',
         actions: ['Plan a visit', 'What\'s on'],
         isVenue: true
       }
