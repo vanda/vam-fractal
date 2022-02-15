@@ -1,11 +1,21 @@
 .b-venue-core-info {
   background-color: red;
+  margin: auto;
   max-width: 1200px;
   overflow: auto;
   width: 100%;
 
   @include bpMinSmall {
     display: flex;
+    height: 312px;
+  }
+
+  @include bpMinMedium {
+    height: 403px;
+  }
+
+  @include bpMinLarge {
+    height: 470px;
   }
 
   &__statement {
@@ -22,20 +32,22 @@
 
     @include bpMinMedium {
       font-size: 23px;
+      line-height: 32px;
     }
 
     @include bpMinLarge {
       font-size: 31px;
+      line-height: 42px;
     }
 
     font-size: 17px;
-    line-height: 1.35;
+    line-height: 28px;
     margin-bottom: 20px;
+    max-width: 555px;
   }
 
   &__content {
     flex-direction: column;
-    position: relative;
 
     @include bpMinXSmall {
       flex-direction: row;
@@ -52,15 +64,12 @@
 
   &__button-container {
     @include bpMinXSmall {
-      align-items: self-end;
-      display: flex;
-      flex-direction: column;
-      width: 35%;
+      width: 30%;
     }
 
     @include bpMinSmall {
       display: block;
-      width: auto;
+      width: 100%;
     }
   }
 
@@ -71,8 +80,13 @@
       width: 60%;
     }
 
+    @include bpMinSmall {
+      flex: 1 2 60%;
+      padding: 50px 50px 30px;
+    }
+
     @include bpMinLarge {
-      padding: 50px 50px 100px;
+      padding: 50px 50px;
     }
 
     height: 100%;
@@ -85,24 +99,58 @@
       display: block;
       font-size: 15px;
       margin: 0;
-      padding: 5px 10px;
       position: relative;
 
+      @include bpMaxXSmall {
+        padding: 5px 10px;
+      }
+
       @include bpMinXSmall {
-        margin: auto;
+        margin-left: 24px;
+        margin-top: 20px;
+      }
+
+      @include bpMaxLarge {
+        padding: 10px 25px 10px 20px;
+      }
+
+      @include bpMaxMedium {
+        padding: 6px 25px 6px 15px;
+        &:after {
+          margin-top: -3px;
+          right: 7px;
+        }
       }
 
       @include bpMinSmall {
+        bottom: 30px;
+        float: right;
         margin: 0;
-        padding: 10px 20px;
+        position: absolute;
+        right: 60px;
+
+        &:after {
+          right: 2px;
+        }
       }
 
       @include bpMinMedium {
-        float: right;
+        bottom: 30px;
+        right: 50px;
+        &:after {
+          margin-top: -3px;
+          right: 7px;
+        }
       }
 
       @include bpMinLarge {
+        bottom: 50px;
         font-size: 17px;
+        right: 50px;
+        &:after {
+          margin-top: -4px;
+          right: 10px;
+        }
       }
     }
 
@@ -127,7 +175,7 @@
     address {
       @include bpMinXSmall {
         margin-bottom: 0;
-        margin-left: 35px;
+        margin-left: 27px;
       }
 
       @include bpMaxXSmall {
@@ -137,9 +185,12 @@
       @include bpMinSmall {
         display: block;
         margin-left: 0;
-        padding: 0 0 70px 30px;
-        position: relative;
+        padding: 0 0 30px 30px;
         width: auto;
+      }
+
+      @include bpMinMedium {
+        padding: 0 0 90px 30px;
       }
 
       @include bpMinLarge {
@@ -160,6 +211,21 @@
     height: auto;
     position: relative;
     width: 100%;
+    @include bpMinXSmall {
+      flex: 0;
+    }
+
+    @include bpMinSmall {
+      flex-basis: 319px;
+    }
+
+    @include bpMinMedium {
+      flex-basis: 412px;
+    }
+
+    @include bpMinLarge {
+      flex-basis: 480px;
+    }
   }
   &__img-badge {
     @include bpMaxSmall {
