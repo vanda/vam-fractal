@@ -19,45 +19,45 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
     }
   }
 
   &__item {
     margin-bottom: 10px;
 
+    & > .b-venue-card {
+      aspect-ratio: 5 / 3;
+    }
+
     @include bpMinXSmall {
-      flex: 0 1 calc((100% - 20px) * .42);
+      flex: 0 1 calc((100% - 20px) * 5 / 11);
 
       &:nth-child(n+2) {
         margin-left: 10px;
       }
 
-      & > .b-venue-card {
-        height: 100%;
-      }
 
       &:nth-child(2),
       &:nth-child(3),
       &:nth-child(4) {
-        flex-basis: calc((100% - 20px) * .28);
+        flex-basis: calc((100% - 20px) * 3 / 11);
 
         & > .b-venue-card {
-          height: 150%;
+          aspect-ratio: 3 / 5;
         }
       }
 
-      &:nth-child(5) {
-        margin-right: 20px;
+      &:nth-child(n):nth-child(4) {
+        margin-left: calc((100% * 2 / 11) - 5px);
 
         & > .b-venue-card {
-          top: 50%;
+          margin-top: (-100% * 2 / 3);
         }
       }
     }
 
     @include bpMinMedium {
-      flex: 0 1 calc((100% - 40px) * .42);
+      flex: 0 1 calc((100% - 40px) * 5 / 11);
       margin-bottom: 20px;
 
       &:nth-child(n+2) {
@@ -67,11 +67,7 @@
       &:nth-child(2),
       &:nth-child(3),
       &:nth-child(4) {
-        flex-basis: calc((100% - 40px) * .28);
-      }
-
-      &:nth-child(5) {
-        margin-right: 40px;
+        flex-basis: calc((100% - 40px) * 3 / 11);
       }
     }
   }
