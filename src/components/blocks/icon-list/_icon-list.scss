@@ -10,6 +10,12 @@ $icon-width: 30px;
 
   &--venue {
     padding-bottom: 15px;
+    @include bpMinXSmall {
+      padding-bottom: 60px;
+    }
+    @include bpMinSmall {
+      padding-bottom: 50px;
+    }
     @include bpMinMedium {
       padding-bottom: 0;
     }
@@ -36,7 +42,7 @@ $icon-width: 30px;
       width: calc(48% - #{$icon-width});
       &--venue {
         float: none;
-        margin-bottom: 0;
+        margin-bottom: 5px;
         margin-left: 16px;
         width: calc(100% - 16px);
         width: 100%;
@@ -51,6 +57,12 @@ $icon-width: 30px;
         margin-bottom: 5px;
         margin-left: 16px;
         width: calc(100% - 16px);
+      }
+    }
+
+    @include bpMinMedium {
+      &--venue {
+        margin-bottom: 10px;
       }
     }
 
@@ -69,12 +81,19 @@ $icon-width: 30px;
       }
 
       &--venue-button {
+        height: 11px;
+        width: 11px;
+
         @include bpMaxXSmall {
-          float: right;
+          float: none;
           margin: 1px 0 0 5px;
           position: relative;
         }
         @include bpMinXSmall {
+          float: right;
+          margin: 1px 0 0 5px;
+        }
+        @include bpMinMedium {
           float: right;
           margin: -3px 0 0 5px;
         }
@@ -83,12 +102,14 @@ $icon-width: 30px;
       @include bpMinMedium {
         &--venue {
           height: 20px;
-          margin: 5px 0 0 -16px;
+          margin: 3px 0 0 -16px;
           width: 20px;
         }
         &--venue-button {
           float: right;
-          margin: -3px 0 0 5px;
+          height: 11px;
+          margin: 4px 0 0 5px;
+          width: 11px;
         }
       }
     }
@@ -104,6 +125,8 @@ $icon-width: 30px;
       @include bpMinMedium {
         &--venue {
           font-size: 17px;
+          line-height: 25.5px;
+          margin-left: 15px;
         }
       }
     }

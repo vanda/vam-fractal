@@ -10,6 +10,14 @@
   &--venue {
     display: flex;
     flex-direction: column;
+
+    .u-btn.u-btn--outlined {
+      border: 1px solid siteColor(vam-black);
+      &:hover {
+        background-color: siteColor(vam-grey-5);
+        outline: none;
+      }
+    }
   }
 
   .no-flexbox & {
@@ -133,6 +141,11 @@
       flex-grow: 3;
       font-size: 17px;
       line-height: 21px;
+
+      @include bpMinXSmall {
+        margin-bottom: 20px;
+      }
+
       margin-bottom: 10px;
     }
 
@@ -147,7 +160,9 @@
     @include bpMinMedium {
       &--venue {
         font-size: 23px;
-        margin-bottom: 20px;
+        font-weight: normal;
+        line-height: 32px;
+        margin-bottom: 15px;
       }
       min-height: 210px;
       padding-bottom: 60px;
@@ -174,16 +189,16 @@
       transform: translateY(-50%);
       width: 14px;
 
-
       @include bpMinXSmall {
-        margin-top: 5px;
+        margin-top: -2px;
+      }
+
+      @include bpMinSmall {
+        margin-top: -3px;
       }
 
       @include bpMinMedium {
-        height: 20px;
-        margin-top: 4px;
-        right: 5px;
-        width: 20px;
+        margin-top: 6px;
       }
     }
 
@@ -199,10 +214,14 @@
 
     &--venue {
       font-size: 17px;
-      font-weight: 700;
+      font-weight: 500;
+      line-height: 32px;
       margin: 10px 30px 8px 0;
-      line-height: 1.24;
       @include bpMinXSmall {
+        margin: 5px 30px 10px 0;
+      }
+
+      @include bpMinMedium {
         margin: 20px 30px 10px 0;
       }
     }
@@ -235,14 +254,14 @@
       display: inline-block;
       position: absolute;
 
-      .u-btn:nth-of-type(2) {
+      .u-btn:nth-of-type(1) {
         margin-right: 0;
       }
 
       .u-btn {
         width: calc(50% - 7px);
         @include bpMaxXSmall {
-          padding: 15px 25px;
+          padding: 10px 25px;
         }
         @include bpMinXSmall {
           width: auto;
