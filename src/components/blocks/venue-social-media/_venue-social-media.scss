@@ -1,21 +1,66 @@
 .b-venue-social-media {
+  svg {
+    height: 23px;
+    width: 23px;
+    @include bpMinSmall {
+      height: 28px;
+      width: 28px;
+    }
+  }
+
   h2 {
     flex-grow: 2;
     font-size: 15px;
+    font-weight: 500;
+    @include bpMaxXSmall {
+      padding-bottom: 10px;
+    }
 
     @include bpMinSmall {
       font-size: 17px;
     }
 
+    @include bpMinMedium {
+      font-size: 23px;
+    }
   }
 
   &__socials {
     @include bpMaxXSmall {
       margin-top: 5px;
     }
-
     display: flex;
     flex-direction: row;
+
+    a {
+      margin-right: 10px;
+      @include bpMinSmall {
+        margin-right: 25px;
+      }
+    }
+
+    a:last-of-type {
+      margin-right: 0;
+    }
+
+    svg {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .b-icon-link__container::after {
+      @include bpMaxSmall {
+        height: 100%;
+        width: 100%;
+      }
+
+      height: 115%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 115%;
+    }
   }
   &__content {
     @include bpMinXSmall {
