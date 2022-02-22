@@ -1,0 +1,37 @@
+<section class="b-shop-touts qa-shop-product-promos" id="shop-items">
+  <h2 class="b-shop-touts__header">V&A shop</h2>
+
+  <div class="b-shop-touts__container">
+    {% for tout in touts %}
+    <figure class="b-shop-touts__item">
+      <a href="{{ tout.url }}">
+        <img
+          alt="{{ tout.title }}"
+          class="b-video-trailer__image"
+          itemprop="image"
+          sizes="100vw"
+          srcset="{{ tout.image["320"] }} 320w, {{ tout.image["640"] }} 640w,"
+          src="{{ tout.image["960"] }}"
+        >
+      </a>
+      <figcaption>
+        <h2 class="b-shop-touts__title">
+          {{ tout.title }}
+        </h2>
+        <p class="b-shop-touts__description">
+          {{ tout.description }}
+        </p>
+        <a href="{{ tout.url }}" aria-label="Buy #{tout[:title]} for £#{tout[:price]}" class="b-shop-touts__button" >
+          {{ tout.price }}<span class="separator"></span> <strong>Buy</strong>
+        </a>
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+
+  <footer class="b-shop-touts__footer">
+    <a href="#" class="u-btn u-btn--block u-btn--black">
+      Browse the V&A Shop
+    </a>
+  </footer>
+</section>

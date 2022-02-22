@@ -1,0 +1,142 @@
+.b-shop-touts {
+  background-color: white;
+  padding: 12px 12px 50px;
+
+  @include bpMinSmall {
+    padding: 12px 80px 100px;
+  }
+
+  @include bpMinMedium {
+    padding: 12px 115px 100px;
+  }
+
+  &__header {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    padding: 32px 0 27px;
+    text-align: center;
+
+    @include bpMinSmall {
+      font-size: 24px;
+      letter-spacing: 8px;
+      padding: 60px 0 42px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+
+    @include bpMinXSmall {
+      align-items: stretch;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @include bpMinSmall {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    .no-flexbox & {
+      text-align: center;
+    }
+  }
+
+  &__item {
+    color: siteColor(vam-black);
+    padding: 1px 0 54px;
+    width: 100%;
+
+    @include bpMinXSmall {
+      padding: 1px 30px 54px;
+      width: 50%;
+    }
+
+    .no-flexbox & {
+      display: inline-block;
+      width: 100%;
+
+      @include bpMinXSmall {
+        width: 49%;
+      }
+
+      @include bpMinSmall {
+        width: 32%;
+      }
+    }
+  }
+
+  &__image {
+    margin: 6px 0 17px;
+    width: 100%;
+
+    @include bpMinSmall {
+      margin: 1px 0 26px;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+
+  &__description {
+    color: siteColor(vam-grey-3);
+    font-size: 13px;
+    line-height: 1.5em;
+    margin: 0 0 25px;
+
+    @include bpMinSmall {
+      margin: 0 0 29px;
+    }
+  }
+
+  &__button {
+    border: 1px solid map-get($theme-colors, $theme-color-default);
+    border-radius: 2px;
+    display: block;
+    font-size: 11px;
+    letter-spacing: .3em;
+    padding: 1.1em 0;
+    text-align: center;
+
+    &:hover {
+      border-color: map-get($theme-colors, $theme-color-default);
+    }
+
+    @include bpMinSmall {
+      font-size: 13px;
+    }
+
+    strong {
+      display: block;
+      font-weight: 700;
+
+      @include bpMinMedium {
+        display: inline;
+      }
+    }
+
+    .separator {
+      display: none;
+
+      @include bpMinMedium {
+        display: inline;
+      }
+    }
+  }
+
+  &__footer {
+    margin: -34px 0 0;
+    text-align: center;
+
+    @include bpMinSmall {
+      margin: 0;
+      padding: 26px 0 0;
+    }
+  }
+}
