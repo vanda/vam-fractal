@@ -38,7 +38,6 @@
 
     @include bpMinSmall {
       flex-wrap: nowrap;
-      justify-content: space-between;
     }
 
     .no-flexbox & {
@@ -47,6 +46,7 @@
   }
 
   &__item {
+
     @include bpMaxXSmall {
       padding: 40px 10px 0;
     }
@@ -60,8 +60,12 @@
     width: 100%;
 
     @include bpMinXSmall {
+      flex: 0 0 50%;
       padding: 1px 15px 50px 15px;
-      width: 50%;
+    }
+
+    @include bpMinSmall {
+      flex: 0 0 33.333333%;
     }
 
     .no-flexbox & {
@@ -78,12 +82,24 @@
     }
   }
 
-  &__image {
-    margin: 6px 0 17px;
+  img {
+    height: 355px;
     width: 100%;
 
+    @include bpMinXSmall {
+      height: 235px;
+    }
+
     @include bpMinSmall {
-      margin: 1px 0 26px;
+      height: 199px;
+    }
+
+    @include bpMinMedium {
+      height: 274px;
+    }
+
+    @include bpMinLarge {
+      height: 366px;
     }
   }
 
