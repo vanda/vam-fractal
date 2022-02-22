@@ -2,6 +2,7 @@ module.exports = {
   title: 'Shop Tout',
   label: 'Shop Tout',
   context: {
+    previewClass: 'fr-bg--dark',
     title: 'Shop Heading',
     touts: [
       {
@@ -48,4 +49,4 @@ module.exports = {
       }
     ]
   }
-}
+};

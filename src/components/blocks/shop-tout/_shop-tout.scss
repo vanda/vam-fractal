@@ -1,26 +1,28 @@
 .b-shop-touts {
   background-color: white;
-  padding: 12px 12px 50px;
+  padding: 0 0 30px;
 
-  @include bpMinSmall {
-    padding: 12px 80px 100px;
+  @include bpMinXSmall {
+    padding: 40px 0 30px 0;
   }
 
-  @include bpMinMedium {
-    padding: 12px 115px 100px;
+  @include bpMinSmall {
+    padding: 60px 30px 50px;
   }
 
   &__header {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 4px;
+    color: siteColor(vam-white);
+    font-size: 23px;
+    font-weight: 500;
     padding: 32px 0 27px;
     text-align: center;
 
     @include bpMinSmall {
-      font-size: 24px;
-      letter-spacing: 8px;
       padding: 60px 0 42px;
+    }
+
+    @include bpMinMedium {
+      font-size: 31px;
     }
   }
 
@@ -32,7 +34,6 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     @include bpMinSmall {
@@ -46,12 +47,20 @@
   }
 
   &__item {
+    @include bpMaxXSmall {
+      padding: 40px 10px 0;
+    }
+
+    a:hover h2 {
+      text-decoration: underline;
+    }
+
     color: siteColor(vam-black);
     padding: 1px 0 54px;
     width: 100%;
 
     @include bpMinXSmall {
-      padding: 1px 30px 54px;
+      padding: 1px 15px 50px 15px;
       width: 50%;
     }
 
@@ -79,19 +88,24 @@
   }
 
   &__title {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.65;
+    margin-top: 20px;
+
+    @include bpMinMedium {
+      margin-top: 10px;
+    }
   }
 
   &__description {
-    color: siteColor(vam-grey-3);
-    font-size: 13px;
-    line-height: 1.5em;
-    margin: 0 0 25px;
+    color: siteColor(vam-black);
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
 
     @include bpMinSmall {
-      margin: 0 0 29px;
+      margin: 0;
     }
   }
 
@@ -131,12 +145,19 @@
   }
 
   &__footer {
-    margin: -34px 0 0;
+    margin: 40px 0 0;
     text-align: center;
 
-    @include bpMinSmall {
+    @include bpMinXSmall {
       margin: 0;
-      padding: 26px 0 0;
+    }
+
+    .u-btn::hover {
+      background-color: siteColor(vam-grey-1);
+    }
+
+    .u-btn--arrowed::after {
+      margin-top: -4px;
     }
   }
 }
