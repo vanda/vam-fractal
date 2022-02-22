@@ -1,0 +1,163 @@
+.b-shop-touts {
+  background-color: white;
+  padding: 0 0 30px;
+
+  @include bpMinXSmall {
+    padding: 40px 0 30px 0;
+  }
+
+  @include bpMinSmall {
+    padding: 60px 30px 50px;
+  }
+
+  &__header {
+    color: siteColor(vam-white);
+    font-size: 23px;
+    font-weight: 500;
+    padding: 32px 0 27px;
+    text-align: center;
+
+    @include bpMinSmall {
+      padding: 60px 0 42px;
+    }
+
+    @include bpMinMedium {
+      font-size: 31px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+
+    @include bpMinXSmall {
+      align-items: stretch;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    @include bpMinSmall {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    .no-flexbox & {
+      text-align: center;
+    }
+  }
+
+  &__item {
+    @include bpMaxXSmall {
+      padding: 40px 10px 0;
+    }
+
+    a:hover h2 {
+      text-decoration: underline;
+    }
+
+    color: siteColor(vam-black);
+    padding: 1px 0 54px;
+    width: 100%;
+
+    @include bpMinXSmall {
+      padding: 1px 15px 50px 15px;
+      width: 50%;
+    }
+
+    .no-flexbox & {
+      display: inline-block;
+      width: 100%;
+
+      @include bpMinXSmall {
+        width: 49%;
+      }
+
+      @include bpMinSmall {
+        width: 32%;
+      }
+    }
+  }
+
+  &__image {
+    margin: 6px 0 17px;
+    width: 100%;
+
+    @include bpMinSmall {
+      margin: 1px 0 26px;
+    }
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.65;
+    margin-top: 20px;
+
+    @include bpMinMedium {
+      margin-top: 10px;
+    }
+  }
+
+  &__description {
+    color: siteColor(vam-black);
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+
+    @include bpMinSmall {
+      margin: 0;
+    }
+  }
+
+  &__button {
+    border: 1px solid map-get($theme-colors, $theme-color-default);
+    border-radius: 2px;
+    display: block;
+    font-size: 11px;
+    letter-spacing: .3em;
+    padding: 1.1em 0;
+    text-align: center;
+
+    &:hover {
+      border-color: map-get($theme-colors, $theme-color-default);
+    }
+
+    @include bpMinSmall {
+      font-size: 13px;
+    }
+
+    strong {
+      display: block;
+      font-weight: 700;
+
+      @include bpMinMedium {
+        display: inline;
+      }
+    }
+
+    .separator {
+      display: none;
+
+      @include bpMinMedium {
+        display: inline;
+      }
+    }
+  }
+
+  &__footer {
+    margin: 40px 0 0;
+    text-align: center;
+
+    @include bpMinXSmall {
+      margin: 0;
+    }
+
+    .u-btn::hover {
+      background-color: siteColor(vam-grey-1);
+    }
+
+    .u-btn--arrowed::after {
+      margin-top: -4px;
+    }
+  }
+}
