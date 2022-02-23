@@ -84,6 +84,7 @@
 
   img {
     height: 355px;
+    object-fit: cover;
     width: 100%;
 
     @include bpMinXSmall {
