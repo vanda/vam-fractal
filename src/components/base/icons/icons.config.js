@@ -76,7 +76,8 @@ module.exports = {
       'person-two',
       'padlock',
       'eye-striked',
-      'eye'
+      'eye',
+      'wordmark-southken'
     ]
   },
   variants: [
