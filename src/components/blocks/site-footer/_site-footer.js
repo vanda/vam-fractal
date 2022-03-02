@@ -1,16 +1,11 @@
-
-const getFullYear = () => {
-    return new Date().getFullYear();
-}
-
 const updateCopyrightYear = () => {
-    const elecopyrightYear = document.querySelector('#copyrightYear');
+  const eleCopyrightYear = document.querySelector('#copyrightYear');
 
-    if (elecopyrightYear) {
-        elecopyrightYear.textContent = getFullYear();
-    }
-}
+  if (eleCopyrightYear) {
+    eleCopyrightYear.textContent = new Date().getFullYear();
+  }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateCopyrightYear();
+  updateCopyrightYear();
 });

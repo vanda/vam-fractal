@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       name: 'footer',
-      label: 'Footer', 
+      label: 'Footer',
       context: {
         title: 'Signup',
         modifier: 'footer'
