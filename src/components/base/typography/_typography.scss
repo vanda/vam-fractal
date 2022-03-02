@@ -72,7 +72,7 @@ $base-font-weight: 'regular';
 
 @mixin fontSize($sizeValue: $base-font-size) {
   font-size: fontSize($sizeValue) + px; // Old browser fallback
-  font-size: (fontSize($sizeValue) / fontSize($base-font-size)) + rem; // Base fontsize is 16px
+  font-size: (fontSize($sizeValue) / fontSize($base-font-size)) + rem; // Base fontsize is 15px
 }
 
 @mixin lineHeight($heightValue: $base-font-size, $weight: $base-font-weight) {

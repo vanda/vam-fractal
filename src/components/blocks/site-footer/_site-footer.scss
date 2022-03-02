@@ -2,7 +2,6 @@
   background-color: siteColor(vam-black);
   color: siteColor(vam-white);
   font-size: 13px;
-  letter-spacing: .3px;
   line-height: 18px;
   margin-top: 32px;
   position: relative;
@@ -55,7 +54,7 @@
     margin: auto;
     max-width: bp(large) + (2 * $spacing-small);
     overflow: hidden;
-    padding: 50px $spacing-small 0;
+    padding: 41px $spacing-small 0;
     position: relative;
 
     &--newsletter {
@@ -63,82 +62,66 @@
     }
 
     @include bpMinSmall {
-      padding-top: 20px;
+      padding: 51px $spacing-large 0;
+
       &--newsletter {
-        padding-top: 0;
+        padding: 0 $spacing-large 0;
       }
     }
   }
 
   &__name {
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 36px;
-    margin-bottom: 42px;
-  }
-
-  &__info-block {
-    margin-bottom: 45px;
-
-    @include bpMinSmall {
-      float: left;
-      width: 33%;
-    }
-
-    @include bpMinMedium {
-      width: 25%;
-    }
+    color: siteColor(vam-white);
+    font-size: 31px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: 1.16;
+    margin-bottom: 20px;
   }
 
   &__blocks {
-    margin: 0 32px 0 -32px;
-    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
 
     @include bpMinSmall {
-      float: left;
-      width: 67%;
-    }
-
-    @include bpMinMedium {
-      width: 75%;
+      gap: 20px
     }
   }
 
   &__block {
     padding-bottom: 18px;
+    width: calc(50% - 5px); // 1 gap
 
-    .b-site-footer__blocks & {
-      float: left;
-      padding-left: 32px;
-      width: 50%;
+    @include bpMinSmall {
+      width: calc(25% - 15px); // 3 gaps
+    }
+  }
 
-      @include bpMaxMedium {
-        &:nth-child(2n+1) {
-          clear: both;
-        }
-      }
+  &__item {
+    color: siteColor(vam-grey-4);
+    line-height: 18px;
+    margin: 0 0 12px;
 
-      @include bpMinMedium {
-        width: 33%;
+    &--first-link {
+      padding-top: 25px;
+    }
+  }
 
-        &:nth-child(4n) {
-          clear: both;
-        }
+  &__item:first-child {
+    @include bpMinMedium {
+      br {
+        display: none
       }
     }
   }
 
-  &__header,
-  &__item {
-    line-height: 18px;
-    margin: 0 0 12px;
-  }
-
   &__header {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    margin-bottom: 18px;
+    @include typeSetting(3, regular);
+    margin: 0 0 10px;
   }
 
   &__list {
@@ -146,63 +129,127 @@
   }
 
   &__link {
-    &.s-themed--color:hover {
-      color: siteColor(vam-white);
+    @include typeSetting(1, regular);
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+
+    &--arrow-right::after {
+      border: 1px solid #b7b8bd;
+      border-left: 0;
+      border-bottom: 0;
+      content: '';
+      display: inline-block;
+      height: 5px;
+      margin: 0 0 2px 5px;
+      position: relative;
+      transform: rotate(45deg);
+      width: 5px;
+    }
+  }
+
+  &__supplementary {
+    @include bpMinSmall {
+      column-gap: 10px;
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-columns: 3fr 1fr;
+      grid-template-areas: 
+        "contacts ."
+        "social ."
+        "legal ."
+        "copy  logo";
+      margin-bottom: 30px;
+    }
+  }
+
+  &__contacts {
+    column-gap: 10px;
+    display: flex;
+
+    a {
+      @include typeSetting(3, regular);
+    }
+
+    li:first-child a::after {
+      content: '\005C \005C';
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    @include bpMinSmall {
+      grid-area: contacts;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__copy {
+    color: siteColor(vam-grey-4);
+    margin-bottom: 50px;
+
+    @include bpMinSmall {
+      grid-area: copy;
+      margin-bottom: 0;
     }
   }
 
   &__social {
-    display: inline-flex;
-    margin: 70px 0 -8px -8px;
+    column-gap: 10px;
+    display: flex;
 
     a {
-      margin: 0 0 8px 8px;
+      color: siteColor(vam-grey-4);
     }
-  }
 
-  &__times {
-    color: siteColor(vam-grey-5);
+    svg {
+      color: siteColor(vam-white);
+    }
+
+    @include bpMinSmall {
+      grid-area: social;
+    }
   }
 
   &__legal {
     color: siteColor(vam-grey-4);
-    margin: 10px 0;
+    margin: 10px 0 25px;
 
     a {
       text-decoration: underline;
     }
 
-    .s-separated {
-      white-space: nowrap;
+    @include bpMinSmall {
+      grid-area: legal;
+      column-gap: 10px;
+      display: flex;
+      margin-bottom: 5px;
 
-      &::before {
-        font-size: 90%;
-      }
-
-      @include bpMaxMedium {
-        &:last-child {
-          display: block;
-          margin-top: 6px;
-
-          &::before {
-            display: none;
-          }
-        }
+      li:not(:last-child)::after {
+        content: '\005C \005C';
+        display: inline-block;
+        margin-left: 10px;
       }
     }
   }
 
   &__logo {
-    color: siteColor(vam-grey-2);
-    float: right;
-    height: 151px;
-    margin-right: -10px;
-    opacity: .4;
-    width: 261px;
-    z-index: -1;
+    color: siteColor(vam-grey-1);
+    height: 90px;
+    margin-bottom: 20px;
+    width: 155px;
 
     @include bpMinSmall {
-      margin-top: -116px;
+      align-self: end;
+      grid-area: logo;
+      grid-row: 1 / 5;
+      justify-self: end;
+      margin-bottom: 0;
+    }
+
+    @include bpMinMedium {
+      height: 146px;
+      width: 251px;
     }
   }
 }
