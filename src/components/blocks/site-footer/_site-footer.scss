@@ -129,7 +129,7 @@
   }
 
   &__link {
-    @include typeSetting(1, regular);
+    @include typeSetting(0, regular);
 
     &:hover, &:focus {
       text-decoration: underline;
@@ -165,17 +165,10 @@
   }
 
   &__contacts {
-    column-gap: 10px;
     display: flex;
 
     a {
       @include typeSetting(3, regular);
-    }
-
-    li:first-child a::after {
-      content: '\005C \005C';
-      display: inline-block;
-      margin-left: 10px;
     }
 
     @include bpMinSmall {
@@ -219,17 +212,10 @@
       text-decoration: underline;
     }
 
-    @include bpMinSmall {      
-      column-gap: 5px;
+    @include bpMinSmall {
       display: flex;
       grid-area: legal;
       margin-bottom: 5px;
-
-      li:not(:last-child)::after {
-        content: '\005C \005C';
-        display: inline-block;
-        margin-left: 5px;
-      }
     }
   }
 
