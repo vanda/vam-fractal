@@ -90,7 +90,7 @@
     }
 
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     padding: 20px 10px;
     position: relative;
     width: 100%;
@@ -101,25 +101,9 @@
       margin: 0;
       position: relative;
 
-      @include bpMaxXSmall {
-        padding: 5px 10px;
-      }
-
       @include bpMinXSmall {
-        margin-left: 24px;
+        margin-left: 3px;
         margin-top: 20px;
-      }
-
-      @include bpMaxLarge {
-        padding: 10px 25px 10px 20px;
-      }
-
-      @include bpMaxMedium {
-        padding: 6px 25px 6px 15px;
-        &:after {
-          margin-top: -3px;
-          right: 7px;
-        }
       }
 
       @include bpMinSmall {
@@ -128,29 +112,17 @@
         margin: 0;
         position: absolute;
         right: 60px;
-
-        &:after {
-          right: 2px;
-        }
       }
 
       @include bpMinMedium {
         bottom: 30px;
         right: 50px;
-        &:after {
-          margin-top: -3px;
-          right: 7px;
-        }
       }
 
       @include bpMinLarge {
         bottom: 50px;
         font-size: 17px;
         right: 50px;
-        &:after {
-          margin-top: -4px;
-          right: 10px;
-        }
       }
     }
 
@@ -239,6 +211,7 @@
     }
 
     background-color: rgba(255, 255, 255, .8);
+    font-size: 14px;
     padding: 3px 6px;
     position: absolute;
   }
