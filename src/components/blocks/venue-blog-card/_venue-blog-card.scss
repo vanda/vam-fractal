@@ -123,6 +123,7 @@
 
   &__desc {
     display: none;
+    padding: 0;
 
     &--100-width {
       @include bpMinXSmall {
@@ -131,6 +132,7 @@
         height: calc(100% - 33px);
         line-height: 1.38;
         overflow: hidden;
+        padding-bottom: 33px;
       }
 
       @include bpMinMedium {

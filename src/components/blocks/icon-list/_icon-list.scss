@@ -17,7 +17,7 @@ $icon-width: 30px;
       padding-bottom: 50px;
     }
     @include bpMinMedium {
-      padding-bottom: 0;
+      padding-bottom: 30px;
     }
   }
 
@@ -91,7 +91,7 @@ $icon-width: 30px;
         }
         @include bpMinXSmall {
           float: right;
-          margin: 1px 0 0 5px;
+          margin: 4px 0 0 5px;
         }
         @include bpMinMedium {
           float: right;
