@@ -66,18 +66,18 @@
   &__subheading, &__text {
     background-color: siteColor(vam-white);
     &--50-width {
-      padding: 20px 30px 30px 30px;
+      padding: 20px;
     }
 
     &--100-width {
       @include bpMaxXSmall {
-        padding: 20px 30px 30px 30px;
+        padding: 20px;
       }
     }
 
     &--33-width {
       @include bpMinMedium {
-        padding: 20px 30px 30px 30px;
+        padding: 20px;
       }
     }
   }
@@ -92,11 +92,7 @@
         flex: 1;
         flex-basis: 0;
         flex-grow: 1.75; // N.B. do not know why/how this works
-        max-width: calc(50% - 5px); // N.B. do not know why/how this works
-        padding: 50px 15px 30px 30px;
-      }
-      @include bpMinSmall {
-        max-width: calc(50% - 10px);
+        padding: 50px 20px 15px;
       }
 
       @include bpMinMedium {
@@ -108,9 +104,18 @@
     }
 
     &--33-width {
+      @include bpMinXSmall {
+        max-width: calc(50% - 5px);
+      }
+
+      @include bpMinSmall {
+        max-width: calc(50% - 10px);
+      }
+
       @include bpMinMedium {
         height: 100%;
-        padding: 20px 30px 30px 30px;
+        max-width: none;
+        padding: 20px;
         width: 100%;
       }
     }
@@ -118,14 +123,16 @@
 
   &__desc {
     display: none;
+    padding: 0;
 
     &--100-width {
       @include bpMinXSmall {
         display: block;
         font-size: 13px;
-        height: calc(100% - 35px);
+        height: calc(100% - 33px);
         line-height: 1.38;
         overflow: hidden;
+        padding-bottom: 33px;
       }
 
       @include bpMinMedium {
@@ -145,7 +152,7 @@
 
   &__img {
     @include bpMaxXSmall {
-      height: 100%;
+      height: 250px;
       max-width: 500px;
       width: 100%;
     }
@@ -158,6 +165,12 @@
     }
 
     &--50-width {
+      @include bpMinXSmall {
+        img {
+          height: 33.3333vw;
+        }
+      }
+
       @include bpMinSmall {
         img {
           height: 250px;
@@ -177,6 +190,7 @@
       }
 
       @include bpMinMedium {
+        max-width: none;
         overflow: initial;
         width: 66.666%;
       }
@@ -212,14 +226,19 @@
   }
 
   &__subheading {
-    font-size: 15px;
+    color: siteColor(vam-grey-2);
+    font-size: 13px;
     font-weight: 500;
     line-height: 1.4;
+
+    @include bpMinMedium {
+      font-size: 15px;
+    }
 
     &--100-width {
       @include bpMinXSmall {
         background-color: transparent;
-        left: 30px;
+        left: 20px;
         position: absolute;
         top: 15px;
       }
@@ -244,6 +263,18 @@
     font-size: 23px;
     font-weight: 500;
     line-height: 1.22;
+
+    @include bpMaxXSmall {
+      margin-bottom: 10px;
+    }
+
+    @include bpMinXSmall {
+      font-size: 15px;
+    }
+
+    @include bpMinMedium {
+      font-size: 23px;
+    }
 
     &--100-width {
       @include bpMinXSmall {

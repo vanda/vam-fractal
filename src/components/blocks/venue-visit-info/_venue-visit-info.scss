@@ -28,21 +28,21 @@
       &:after {
         background-color: siteColor(vam-white-2);
         content: '';
-        height: 178px;
+        height: 100%;
         position: absolute;
         right: 0;
         width: 1px;
       }
       line-height: 18px;
-      padding: 30px 20px 30px 14px;
+      padding: 0 20px 0 14px;
       position: relative;
       width: 33.33%;
     }
     @include bpMinSmall {
       &:after {
-        height: 114px;
+        height: 100%;
       }
-      padding: 30px 24px;
+      padding: 0 24px;
     }
     @include bpMinMedium {
       &:after {
@@ -76,8 +76,14 @@
     width: 18px;
 
     &--ticket {
-      height: 19px;
-      width: 19px;
+      height: 21px;
+      width: 21px;
+    }
+  }
+
+  &__col:first-of-type {
+    @include bpMinSmall {
+      padding-left: 75px;
     }
   }
 
@@ -89,6 +95,9 @@
     }
     .b-venue-visit-info__col-body {
       margin-bottom: 5px;
+    }
+    @include bpMinSmall {
+      padding-right: 75px;
     }
   }
 

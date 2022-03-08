@@ -171,6 +171,12 @@
     .b-event-teaser__link:hover & {
       border-bottom: 1px solid siteColor(vam-grey-4);
     }
+
+    &-second--venue {
+      @include bpMinMedium {
+        padding-bottom: 60px;
+      }
+    }
   }
 
   &__label {
@@ -222,7 +228,7 @@
       }
 
       @include bpMinMedium {
-        margin: 20px 30px 10px 0;
+        margin: 0 30px 10px 0;
       }
     }
 
@@ -251,6 +257,10 @@
         position: relative;
       }
 
+      @include bpMinXSmall {
+        bottom: 30px;
+      }
+
       display: inline-block;
       position: absolute;
 
@@ -259,7 +269,7 @@
       }
 
       .u-btn {
-        width: calc(50% - 7px);
+        width: calc(50% - 12px);
         @include bpMaxXSmall {
           padding: 10px 25px;
         }
@@ -268,6 +278,7 @@
         }
       }
     }
+
     bottom: 10px;
     display: none;
     height: 40px;

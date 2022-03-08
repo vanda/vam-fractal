@@ -46,7 +46,8 @@
   }
 
   &--venue {
-    background: siteColor(vam-grey-2);
+    background: siteColor(vam-black);
     color: siteColor(vam-white);
+    opacity: .8;
   }
 }
