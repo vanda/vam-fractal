@@ -12,6 +12,13 @@
     padding: 30px 20px;
   }
 
+  &--lead {
+    background-color: siteColor(vam-white);
+    color: siteColor(vam-black);
+    flex-direction: column;
+    padding: 0;
+  }
+
   &__col {
     display: flex;
     @include bpMaxXSmall {
@@ -44,6 +51,23 @@
       flex-direction: initial;
     }
     flex-direction: column;
+    &--lead {
+      &:after {
+        content: none;
+      }
+
+      h3 {
+        margin-top: 0;
+      }
+
+      p, address {
+        margin-bottom: 0;
+      }
+
+      flex-direction: row;
+      padding: 0 0 35px 0;
+      width: 100%;
+    }
   }
 
   &__col-svg {
