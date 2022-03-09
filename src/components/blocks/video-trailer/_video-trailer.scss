@@ -1,4 +1,8 @@
 .b-video-trailer {
+  &--venue {
+    background-color: transparent;
+  }
+
   background-color: siteColor(vam-white);
   display: inline-block;
   margin: 5px 0;
