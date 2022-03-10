@@ -20,6 +20,54 @@
   }
 
   &__col {
+    &--lead {
+      &:after {
+        content: none;
+      }
+
+      h3 {
+        margin-top: 0;
+      }
+
+      p, address {
+        margin-bottom: 0;
+      }
+
+      flex-direction: row;
+      padding: 0 0 35px 0;
+      width: 100%;
+
+      &:first-of-type {
+        @include bpMinSmall {
+          padding-left: 0;
+        }
+      }
+      &:last-of-type {
+        @include bpMinSmall {
+          padding-right: 0;
+        }
+      }
+    }
+
+    &:first-of-type {
+      @include bpMinSmall {
+        padding-left: 75px;
+      }
+    }
+    &:last-of-type {
+      @include bpMinXSmall {
+        &:after {
+          content: none;
+        }
+      }
+      .b-venue-visit-info__col-body {
+        margin-bottom: 5px;
+      }
+      @include bpMinSmall {
+        padding-right: 75px;
+      }
+    }
+
     display: flex;
     @include bpMaxXSmall {
       flex-direction: row;
@@ -51,23 +99,6 @@
       flex-direction: initial;
     }
     flex-direction: column;
-    &--lead {
-      &:after {
-        content: none;
-      }
-
-      h3 {
-        margin-top: 0;
-      }
-
-      p, address {
-        margin-bottom: 0;
-      }
-
-      flex-direction: row;
-      padding: 0 0 35px 0;
-      width: 100%;
-    }
   }
 
   &__col-svg {
@@ -78,26 +109,6 @@
     &--ticket {
       height: 21px;
       width: 21px;
-    }
-  }
-
-  &__col:first-of-type {
-    @include bpMinSmall {
-      padding-left: 75px;
-    }
-  }
-
-  &__col:last-of-type {
-    @include bpMinXSmall {
-      &:after {
-        content: none;
-      }
-    }
-    .b-venue-visit-info__col-body {
-      margin-bottom: 5px;
-    }
-    @include bpMinSmall {
-      padding-right: 75px;
     }
   }
 
