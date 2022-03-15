@@ -20,24 +20,6 @@
   }
 
   &__col {
-    &:first-of-type {
-      @include bpMinSmall {
-        padding-left: 75px;
-      }
-    }
-    &:last-of-type {
-      @include bpMinXSmall {
-        &:after {
-          content: none;
-        }
-      }
-      .b-venue-visit-info__col-body {
-        margin-bottom: 5px;
-      }
-      @include bpMinSmall {
-        padding-right: 75px;
-      }
-    }
     &--lead {
       &:after {
         content: none;
@@ -64,6 +46,25 @@
         @include bpMinSmall {
           padding-right: 0;
         }
+      }
+    }
+
+    &:first-of-type {
+      @include bpMinSmall {
+        padding-left: 75px;
+      }
+    }
+    &:last-of-type {
+      @include bpMinXSmall {
+        &:after {
+          content: none;
+        }
+      }
+      .b-venue-visit-info__col-body {
+        margin-bottom: 5px;
+      }
+      @include bpMinSmall {
+        padding-right: 75px;
       }
     }
 
