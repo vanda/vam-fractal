@@ -4,6 +4,7 @@
 
   &--footer {
     background-color: siteColor(vam-black);
+    border-bottom: 1px solid siteColor(vam-grey-4);
     color: siteColor(vam-white);
     margin: auto;
   }
@@ -95,7 +96,7 @@
 
       margin: 0;
       max-width: none;
-      padding: 0 0 50px;
+      padding: 0 0 31px;
     }
 
     @include bpMinSmall {
@@ -110,6 +111,10 @@
     }
 
     @include bpMinLarge {
+      background-color: siteColor(vam-grey-5);
+      margin: 0;
+      width: 50%;
+      
       &--footer {
         background-color: siteColor(vam-black);
         margin: 0 0 10px;
@@ -122,9 +127,6 @@
       &--footer, &--component {
         width: 100%;
       }
-      background-color: siteColor(vam-grey-5);
-      margin: 0;
-      width: 50%;
     }
 
     &-fields {
@@ -147,7 +149,7 @@
       }
 
       &-field {
-        @include typeSetting(3, regular);
+        @include typeSetting(4, regular);
         border: 1px solid white;
         border-radius: 2px;
         padding: 15px;
@@ -209,27 +211,6 @@
       margin-top: 8px;
       padding: 15px;
       width: 100%;
-      z-index: 2;
-      &--footer {
-        background-color: map-get($theme-colors, $theme-color-default);
-        height: 50px;
-        margin: 0 0 14px;
-        max-width: 122px;
-        padding-top: 17px;
-      }
-
-      @include bpMinXSmall {
-        &--footer {
-          max-width: 158px;
-          padding-top: 17px;
-        }
-        &--component {
-          max-width: 102px;
-        }
-        font-size: 13px;
-        margin-top: 0;
-        max-width: 150px;
-      }
 
       &:hover,
       &:focus,
@@ -238,10 +219,45 @@
         border: 1px solid map-get($theme-colors, $theme-color-default);
         color: siteColor(vam-black);
       }
+
+      &--footer {
+        background-color: siteColor(vam-black);
+        border: 1px solid siteColor(vam-white);
+        color: siteColor(vam-white);
+        @include typeSetting(4, regular);
+        height: 50px;
+        line-height: inherit;
+        margin: 0 0 14px;
+        max-width: 122px;
+        padding-top: 17px;
+
+        &:hover,
+        &:focus,
+        .sent & {
+          background-color: siteColor(vam-black);
+          border: 1px solid siteColor(vam-black);
+          color: siteColor(vam-white);
+          }
+        }
+
+      @include bpMinXSmall {
+        &--footer {
+          max-width: 158px;
+          padding-top: 17px;
+        }
+        
+        &--component {
+          max-width: 102px;
+        }
+        
+        margin-top: 0;
+        max-width: 150px;
+      }
     }
   }
 
   &__headline {
+
     &--component {
       font-size: 23px;
       font-weight: 500;
@@ -249,49 +265,37 @@
     }
 
     &--footer {
-      @include typeSetting(4, bold);
-      font-size: 22px;
+      @include typeSetting(5, regular);
       text-align: left;
-      @include bpMinSmall {
-        @include typeSetting(6, bold);
-        font-size: 28px;
-        margin-bottom: 0;
-      }
     }
 
-    @include typeSetting(4, bold);
+    @include typeSetting(4, regular);
     margin: 0;
     text-align: center;
 
     @include bpMinXSmall {
-      @include typeSetting(5, bold);
+      @include typeSetting(5, regular);
       margin-bottom: 10px;
       text-align: left;
     }
+  }
 
-    @include bpMinSmall {
-      &--footer {
-        font-size: 28px;
-      }
+  &__descriptor {
+    @include typeSetting(2, regular);
+    
+    @include bpMinXSmall {
+      @include typeSetting(2, regular);
+      margin: 0 0 15px 0;
+      max-width: 450px;
+      text-align: left;
+
       &--component {
         font-size: 31px;
         line-height: 1.23;
         text-align: center;
       }
-      @include typeSetting(6, bold);
     }
-  }
-
-  &__descriptor {
-    @include typeSetting(3, regular);
-    margin: 0 15px 15px 15px;
-    text-align: center;
-
-    &--footer {
-      margin-left: 0;
-      text-align: left;
-    }
-
+ 
     & input {
       display: none;
     }
@@ -330,6 +334,10 @@
         padding-top: 0;
         text-align: center;
       }
+    }
+
+    &--footer {
+      margin-bottom: 20px;
     }
   }
 
