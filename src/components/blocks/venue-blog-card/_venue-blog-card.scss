@@ -28,7 +28,6 @@
       @include bpMinXSmall {
         display: flex;
         flex-direction: row-reverse;
-        height: 244px;
       }
 
       @include bpMinMedium {
