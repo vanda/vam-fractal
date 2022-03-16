@@ -20,6 +20,55 @@
   }
 
   &__col {
+    &:first-of-type {
+      @include bpMinSmall {
+        padding-left: 75px;
+      }
+    }
+    &:last-of-type {
+      @include bpMinXSmall {
+        &:after {
+          content: none;
+        }
+      }
+      .b-venue-visit-info__col-body {
+        margin-bottom: 5px;
+      }
+      @include bpMinSmall {
+        padding-right: 75px;
+      }
+    }
+    @include bpMaxXSmall {
+      flex-direction: row;
+    }
+    @include bpMinXSmall {
+      &:after {
+        background-color: siteColor(vam-white-2);
+        content: '';
+        height: 100%;
+        position: absolute;
+        right: 0;
+        width: 1px;
+      }
+      display: flex;
+      line-height: 18px;
+      padding: 0 20px 0 14px;
+      position: relative;
+      width: 33.33%;
+    }
+    @include bpMinSmall {
+      &:after {
+        height: 100%;
+      }
+      padding: 0 24px;
+    }
+    @include bpMinMedium {
+      &:after {
+        height: 90px;
+      }
+      flex-direction: initial;
+    }
+
     &--lead {
       &:after {
         content: none;
@@ -47,56 +96,6 @@
           padding-right: 0;
         }
       }
-    }
-
-    &:first-of-type {
-      @include bpMinSmall {
-        padding-left: 75px;
-      }
-    }
-    &:last-of-type {
-      @include bpMinXSmall {
-        &:after {
-          content: none;
-        }
-      }
-      .b-venue-visit-info__col-body {
-        margin-bottom: 5px;
-      }
-      @include bpMinSmall {
-        padding-right: 75px;
-      }
-    }
-
-    display: flex;
-    @include bpMaxXSmall {
-      flex-direction: row;
-    }
-    @include bpMinXSmall {
-      &:after {
-        background-color: siteColor(vam-white-2);
-        content: '';
-        height: 100%;
-        position: absolute;
-        right: 0;
-        width: 1px;
-      }
-      line-height: 18px;
-      padding: 0 20px 0 14px;
-      position: relative;
-      width: 33.33%;
-    }
-    @include bpMinSmall {
-      &:after {
-        height: 100%;
-      }
-      padding: 0 24px;
-    }
-    @include bpMinMedium {
-      &:after {
-        height: 90px;
-      }
-      flex-direction: initial;
     }
     flex-direction: column;
   }
