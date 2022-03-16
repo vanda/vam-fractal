@@ -79,6 +79,10 @@
     letter-spacing: normal;
     line-height: 1.16;
     margin-bottom: 20px;
+
+    @include bpMinSmall {
+      margin-bottom: 30px;
+    }
   }
 
   &__blocks {
@@ -107,7 +111,7 @@
     margin: 0 0 12px;
 
     &--first-link {
-      padding-top: 25px;
+      padding-top: 15px;
     }
   }
 
@@ -166,10 +170,6 @@
 
   &__contacts {
     display: flex;
-
-    a {
-      @include typeSetting(3, regular);
-    }
 
     @include bpMinSmall {
       grid-area: contacts;
