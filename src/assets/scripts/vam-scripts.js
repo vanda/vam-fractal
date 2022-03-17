@@ -19,7 +19,6 @@ require('../../components/blocks/search-form/_search-form.js');
 require('../../components/blocks/search-pagination/_search-pagination.js');
 require('../../components/blocks/search-result/_search-result.js');
 require('../../components/blocks/search-results/_search-results.js');
-require('../../components/blocks/site-footer/_site-footer.js');
 require('../../components/blocks/site-nav/_site-nav.js');
 require('../../components/blocks/toggle-nav/_toggle-nav.js');
 require('../../components/blocks/video-thumbnail/_video-thumbnail.js');
