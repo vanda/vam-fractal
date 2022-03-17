@@ -217,6 +217,12 @@
       grid-area: legal;
       margin-bottom: 5px;
     }
+
+    @include bpMaxSmall {
+      .s-separated::before {
+        display: none;
+      }
+    }
   }
 
   &__logo {
