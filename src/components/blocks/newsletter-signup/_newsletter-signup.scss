@@ -196,6 +196,21 @@
     }
 
     &-submit {
+      height: 50px;
+      line-height: 50px;
+      margin-bottom: 14px;
+      margin-top: 8px;
+      padding: 0 15px;
+      width: 100%;
+
+      &:hover,
+      &:focus,
+      .sent & {
+        background-color: map-get($theme-colors, $theme-color-default);
+        border: 1px solid map-get($theme-colors, $theme-color-default);
+        color: siteColor(vam-black);
+      }
+
       &--component {
         margin: 0 0 0 5px;
         max-width: 102px;
@@ -207,29 +222,13 @@
         visibility: hidden;
       }
 
-      margin-bottom: 14px;
-      margin-top: 8px;
-      padding: 15px;
-      width: 100%;
-
-      &:hover,
-      &:focus,
-      .sent & {
-        background-color: map-get($theme-colors, $theme-color-default);
-        border: 1px solid map-get($theme-colors, $theme-color-default);
-        color: siteColor(vam-black);
-      }
-
       &--footer {
+        @include typeSetting(4);
         background-color: siteColor(vam-black);
         border: 1px solid siteColor(vam-white);
         color: siteColor(vam-white);
-        @include typeSetting(4, regular);
-        height: 50px;
-        line-height: inherit;
         margin: 0 0 14px;
         max-width: 122px;
-        padding-top: 17px;
 
         &:hover,
         &:focus,
@@ -237,13 +236,12 @@
           background-color: siteColor(vam-black);
           border: 1px solid siteColor(vam-black);
           color: siteColor(vam-white);
-          }
         }
+      }
 
       @include bpMinXSmall {
         &--footer {
           max-width: 158px;
-          padding-top: 17px;
         }
         
         &--component {
@@ -257,41 +255,35 @@
   }
 
   &__headline {
+    @include typeSetting(5, bold);
+    margin: 0;
+    text-align: center;
 
     &--component {
-      font-size: 23px;
-      font-weight: 500;
       text-align: center;
     }
 
     &--footer {
-      @include typeSetting(5, regular);
+      @include typeSetting(5);
       text-align: left;
     }
 
-    @include typeSetting(4, regular);
-    margin: 0;
-    text-align: center;
-
     @include bpMinXSmall {
-      @include typeSetting(5, regular);
+      @include typeSetting(6, bold);
       margin-bottom: 10px;
       text-align: left;
     }
   }
 
   &__descriptor {
-    @include typeSetting(2, regular);
+    @include typeSetting(4);
     
     @include bpMinXSmall {
-      @include typeSetting(2, regular);
       margin: 0 0 15px 0;
       max-width: 450px;
       text-align: left;
 
       &--component {
-        font-size: 31px;
-        line-height: 1.23;
         text-align: center;
       }
     }
@@ -303,13 +295,11 @@
     .invalid &,
     .sent & {
       color: siteColor(alert-red);
-      font-style: normal;
       padding: 20px 0 0;
     }
 
     .sent & {
       color: siteColor(vam-black);
-      font-style: 700;
     }
 
     &--component {
@@ -319,16 +309,11 @@
     }
 
     @include bpMinXSmall {
-      @include typeSetting(4, regular);
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 26px;
       margin: 0 0 15px 0;
       max-width: 450px;
       text-align: left;
+
       &--component {
-        font-size: 17px;
-        line-height: 1.65;
         max-width: none;
         padding-bottom: 15px;
         padding-top: 0;
@@ -342,13 +327,13 @@
   }
 
   &__info {
-    @include typeSetting(1, regular);
+    @include typeSetting(1);
     color: siteColor(vam-grey-2);
     text-align: center;
 
-    &--footer, &--component {
+    &--footer, 
+    &--component {
       color: siteColor(vam-white);
-      font-size: 12px;
       text-align: left;
     }
 
@@ -361,6 +346,7 @@
     @include bpMinXSmall {
       max-width: 520px;
       text-align: left;
+
       &--component {
         margin: auto;
         max-width: 575px;
@@ -371,6 +357,7 @@
   &__flex-form-container {
     @include bpMinSmall {
       display: flex;
+
       &-form {
         align-content: center;
         align-items: flex-end;
@@ -385,6 +372,7 @@
   &__flex-form-container-title {
     @include bpMinSmall {
       width: 600px;
+
       h1, p {
         margin-right: 50px;
       }
