@@ -3,7 +3,6 @@ $icon-width: 30px;
 .b-icon-list {
   @include typeSetting(2, regular);
   @include unstyledList;
-
   color: siteColor(vam-black);
 
   &--venue {
@@ -24,38 +23,12 @@ $icon-width: 30px;
   }
 
   &__item {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-left: $icon-width;
 
     &--no-icon {
-      margin-left: 0;
-    }
-
-    &--venue {
-      margin-bottom: 10px;
-      margin-left: 16px;
-    }
-
-    @include bpMinXSmall {
-
-      &--venue {
-        margin-bottom: 5px;
-        margin-left: 16px;
-      }
-    }
-
-    @include bpMinSmall {
-      margin-bottom: 25px;
-
-      &--venue {
-        margin-bottom: 5px;
-        margin-left: 16px;
-      }
-    }
-
-    @include bpMinMedium {
-      &--venue {
-        margin-bottom: 10px;
+      @include bpMaxXSmall {
+        margin-left: 0;
       }
     }
 
@@ -65,61 +38,15 @@ $icon-width: 30px;
       margin-left: -$icon-width;
       margin-top: 5px;
       width: 20px;
-
-      &--venue {
-        height: 16px;
-        margin-left: -16px;
-        margin-top: 2px;
-        width: 16px;
-      }
-
-      &--venue-button {
-        height: 11px;
-        width: 11px;
-
-        @include bpMaxXSmall {
-          float: none;
-          margin: 1px 0 0 5px;
-          position: relative;
-        }
-        @include bpMinXSmall {
-          float: right;
-          margin: 4px 0 0 5px;
-        }
-        @include bpMinMedium {
-          float: right;
-          margin: -3px 0 0 5px;
-        }
-      }
-
-      @include bpMinMedium {
-        &--venue {
-          height: 20px;
-          margin: 3px 0 0 -16px;
-          width: 20px;
-        }
-        &--venue-button {
-          float: right;
-          height: 11px;
-          margin: 4px 0 0 5px;
-          width: 11px;
-        }
-      }
     }
 
     &__heading {
       @include typeSetting(4, regular);
       margin: 0;
-      &--venue {
-        font-size: 13px;
-        line-height: 21px;
-        margin-left: 10px;
-      }
-      @include bpMinMedium {
-        &--venue {
-          font-size: 17px;
-          line-height: 25.5px;
-          margin-left: 15px;
+
+      @include bpMinXSmall {
+        @include bpMaxSmall {
+          @include typeSetting(3, regular);
         }
       }
     }
