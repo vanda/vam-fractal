@@ -58,7 +58,7 @@
   }
 
   &__name {
-    @include typeSetting(5, bold);
+    @include typeSetting(4, bold);
     background-color: siteColor(vam-white);
     border-radius: 0 0 2px 2px;
     color: siteColor(vam-black);
