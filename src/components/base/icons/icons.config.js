@@ -50,6 +50,7 @@ module.exports = {
       'pause',
       'shuffle',
       'view',
+      'venue',
       'make',
       'event-none',
       'point-up',
