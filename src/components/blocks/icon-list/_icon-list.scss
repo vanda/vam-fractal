@@ -1,7 +1,7 @@
 $icon-width: 30px;
 
 .b-icon-list {
-  @include typeSetting(2, regular);
+  @include typeSetting(2);
   @include unstyledList;
   color: siteColor(vam-black);
 
@@ -41,12 +41,12 @@ $icon-width: 30px;
     }
 
     &__heading {
-      @include typeSetting(4, regular);
+      @include typeSetting(4);
       margin: 0;
 
       @include bpMinXSmall {
         @include bpMaxSmall {
-          @include typeSetting(3, regular);
+          @include typeSetting(3);
         }
       }
     }
