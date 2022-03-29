@@ -2,9 +2,6 @@
   background-color: siteColor(vam-white);
   margin: 0 0 $spacing-small;
 
-  @include bpMinMedium {
-    background-color: transparent;
-  }
 
   &--padded {
     margin: 20px 0 0;
@@ -21,6 +18,8 @@
   }
 
   &__header {
+    background-color: siteColor(vam-white);
+    color: siteColor(vam-black);
     padding: $spacing-medium $spacing-small;
     width: 100%;
 
@@ -28,30 +27,18 @@
       padding: 54px $spacing-small;
     }
 
-    @include bpMinMedium {
+    &--transparent {
       background-color: transparent;
+      color: siteColor(vam-white);
     }
   }
 
   &__title {
-    @include typeSetting(3, bold);
-    color: siteColor(vam-black);
-    display: block;
+    @include typeSetting(5, bold);
     text-align: center;
 
     @include bpMinSmall {
-      @include typeSetting(5, bold);
-    }
-
-    @include bpMinMedium {
-      color: siteColor(vam-white);
-      text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
-
-      .b-block-grid--light & {
-        color: siteColor(vam-black);
-        text-shadow: none;
-      }
-
+      @include typeSetting(6, bold);
     }
   }
 

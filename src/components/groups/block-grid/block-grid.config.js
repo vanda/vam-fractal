@@ -3,12 +3,12 @@ module.exports = {
   title: 'Block grid',
   label: 'Block grid',
   context: {
+    previewClass: 'fr-bg--dark',
     title: 'Featured',
     more: {
       action: 'Show more',
       icon: 'plus',
-      modifiers: ['small'],
-      themed: ['background-color', 'background-color--hover']
+      modifiers: ['small']
     }
   },
   variants: [
@@ -113,7 +113,6 @@ module.exports = {
       label: 'Event',
       context: {
         title: 'More to do',
-        theme: 'light',
         revealMoreCount: '6',
         revealMoreTheme: 'light',
         revealMoreTracking: 'events',

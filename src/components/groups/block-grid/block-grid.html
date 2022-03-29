@@ -1,6 +1,6 @@
-<section class="b-block-grid {% if theme %}b-block-grid--{{ theme }}{% endif %}">
+<section class="b-block-grid">
   <header class="b-block-grid__header">
-    <h1 class="b-block-grid__title">{{ title }}</h1>
+    <h2 class="b-block-grid__title">{{ title }}</h2>
   </header>
 
   <div class="b-block-grid__content {% for c in additionalClasses %} {{ c }}{% endfor %}{%if revealMoreCount %} js-grid-reveal-more{% endif %}" {%if revealMoreCount %}data-reveal-more-theme="{{ revealMoreTheme }}" data-reveal-more-counter="{{ revealMoreCount }}" data-tracking-showmorebutton="{{ revealMoreTracking }}" data-icon-url="/assets/svg/svg-template.svg"{% endif %}>
