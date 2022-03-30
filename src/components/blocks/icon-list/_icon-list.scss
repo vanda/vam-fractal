@@ -27,7 +27,7 @@ $icon-width: 30px;
     margin-left: $icon-width;
 
     &--no-icon {
-      @include bpMaxXSmall {
+      @include bpMaxSmall {
         margin-left: 0;
       }
     }
