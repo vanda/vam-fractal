@@ -26,10 +26,18 @@ $icon-width: 30px;
     margin-bottom: 10px;
     margin-left: $icon-width;
 
+    @include bpMaxSmall {
+      margin-bottom: 15px;
+    }
+
     &--no-icon {
       @include bpMaxSmall {
         margin-left: 0;
       }
+    }
+
+    &__content {
+      margin-left: 10px;
     }
 
     &__icon {
