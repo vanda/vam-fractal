@@ -8,6 +8,7 @@ module.exports = {
       'valogo',
       'valogo-clipped',
       'no-img',
+      'tiktok',
       'facebook',
       'instagram',
       'pinterest',
@@ -98,7 +99,8 @@ module.exports = {
           'youtube',
           'tumblr',
           'googleplus',
-          'flickr'
+          'flickr',
+          'tiktok'
         ]
       }
     }
