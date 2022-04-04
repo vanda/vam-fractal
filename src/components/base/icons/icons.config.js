@@ -98,7 +98,8 @@ module.exports = {
           'youtube',
           'tumblr',
           'googleplus',
-          'flickr'
+          'flickr',
+          'tiktok'
         ]
       }
     }
