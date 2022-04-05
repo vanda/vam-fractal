@@ -28,7 +28,7 @@
       {% endif %}
     </div>
 
-    <div class="b-event-teaser__description b-event-teaser__description-second--venue">
+    <div class="b-event-teaser__description">
       {% if not isVenue %}
         <span itemprop="description" content="{{ eventDescription }}"></span>
         <span itemprop="location" itemscope itemtype="http://schema.org/Place">
@@ -37,12 +37,9 @@
         </span>
       {% endif %}
 
-
-
       <div class="b-event-teaser__label">
         {{ eventType }}
       </div>
-
 
       <div class="b-event-teaser__title-container">
         <h2 class="b-event-teaser__title {% if isVenue %}b-event-teaser__title--venue{% endif %}" aria-label="{{ eventTitle }}" itemprop="name" content="{{ eventTitle }}">
@@ -51,13 +48,10 @@
       </div>
 
       {% if isVenue %}
-        <p class="b-event-teaser__description--venue" itemprop="description" content="{{ eventDescription }}">
-          {{ eventDescription }}
-        </p>
-      {% endif %}
+      <p class="b-event-teaser__description--venue" itemprop="description" content="{{ eventDescription }}">
+        {{ eventDescription }}
+      </p>
 
-
-      {% if isVenue %}
       <ul class='b-icon-list b-icon-list--venue'>
         {% if address %}
           <li class='b-icon-list__item b-icon-list__item--venue'>
@@ -83,29 +77,28 @@
       {% endif %}
 
       {% if eventPrice %}
-        <div class="b-event-teaser__data">
-          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            <link itemprop="url" href="#">
-            <span itemprop="priceCurrency" content="GBP"></span>
-            <span class="b-event-teaser__price" itemprop="price" content="2360">
-              {{ eventPrice }}
-            </span>
+      <div class="b-event-teaser__data">
+        <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <link itemprop="url" href="#">
+          <span itemprop="priceCurrency" content="GBP"></span>
+          <span class="b-event-teaser__price" itemprop="price" content="2360">
+            {{ eventPrice }}
           </span>
-          <span class="b-event-teaser__date">
-            {{ eventHumanDates }}
-          </span>
-          <span itemprop="startDate" content="{{ eventMachineStartDate }}"></span>
-          <span itemprop="endDate" content="{{ eventMachineEndDate }}"></span>
-        </div>
+        </span>
+        <span class="b-event-teaser__date">
+          {{ eventHumanDates }}
+        </span>
+        <span itemprop="startDate" content="{{ eventMachineStartDate }}"></span>
+        <span itemprop="endDate" content="{{ eventMachineEndDate }}"></span>
+      </div>
       {% endif %}
 
-      <footer class="b-event-teaser__footer b-event-teaser__footer--venue">
-        {% for action in actions %}
-        <a class="u-btn u-btn--micro u-btn--outlined">
-          {{ action }}
-        </a>
-        {% endfor %}
-      </footer>
+    </div>
+
+    <div class="b-event-teaser__footer">
+      {% for action in actions %}
+      <a class="u-btn u-btn--micro u-btn--outlined" href="#">{{ action }}</a>
+      {% endfor %}
     </div>
   </a>
 </div>

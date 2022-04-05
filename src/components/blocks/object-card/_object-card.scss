@@ -94,7 +94,7 @@
   }
 
   &__caption {
-    @include typeSetting(3, bold);
+    @include typeSetting(2, light);
     display: none;
 
     @include bpMinSmall {
