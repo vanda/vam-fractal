@@ -31,6 +31,8 @@ $icon-width: 30px;
     }
 
     &--no-icon {
+      margin-left: 40px;
+
       @include bpMaxSmall {
         margin-left: 0;
       }
