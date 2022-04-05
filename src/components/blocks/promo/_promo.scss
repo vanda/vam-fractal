@@ -96,13 +96,6 @@
   }
 
   &__content {
-    &--newsletter {
-      max-width: none;
-      padding: 0;
-    }
-
-
-
     align-items: center;
     color: siteColor(vam-grey-6);
     display: flex;
@@ -115,42 +108,43 @@
     padding: $spacing-small;
     position: relative;
     text-align: center;
+    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     z-index: 1;
+
+    &--newsletter {
+      max-width: none;
+      padding: 0;
+    }
 
     .b-promo--no-min-height & {
       min-height: auto;
     }
 
+    .b-promo--white & {
+      color: siteColor(vam-black);
+    }
+
     @include bpMinSmall {
+      max-width: 670px;
+
       &--newsletter {
         max-width: none;
       }
-
-      max-width: 670px;
     }
 
     @include bpMinMedium {
+      max-width: 800px;
+      min-height: 280px;
+
       &--newsletter {
         max-width: none;
       }
-
-      max-width: 800px;
-      min-height: 280px;
-    }
-
-    .b-promo--white & {
-      color: siteColor(vam-black);
     }
   }
 
   &__type {
-    @include typeSetting(2, medium);
+    @include typeSetting(3, bold);
     margin: 0;
-    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
-
-    @include bpMinSmall {
-      @include typeSetting(3, medium);
-    }
 
     .b-promo--white & {
       text-shadow: none;
@@ -158,39 +152,40 @@
   }
 
   &__title {
-    @include typeSetting(3);
+    @include typeSetting(4, bold);
     margin: $spacing-small 0;
     text-align: center;
-    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     width: 100%;
 
-    @include bpMinSmall {
-      @include typeSetting(6);
+    @include bpMinXSmall {
+      @include typeSetting(5, bold);
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(6, bold);
     }
 
     .b-promo--white & {
-      text-shadow: siteColor(vam-white) 1px 0 2px;
+      text-shadow: 1px 0 2px siteColor(vam-white);
     }
   }
 
   &__description {
-    @include typeSetting(4);
+    @include typeSetting(4, bold);
+    width: 100%;
+
     @include bpMaxSmall {
       @include visuallyHidden;
     }
-    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
-    width: 100%;
   }
 
   &__sponsor {
     @include typeSetting(1, light);
     margin: 0 0 20px;
-    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     width: 100%;
   }
 
   &__quote {
-    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
     width: 100%;
 
     &__body {
@@ -208,7 +203,6 @@
     }
 
     &__citation {
-      text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
       @include typeSetting(1);
     }
   }
