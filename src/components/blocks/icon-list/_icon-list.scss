@@ -49,12 +49,12 @@ $icon-width: 30px;
     }
 
     &__heading {
-      @include typeSetting(4);
-      margin: 0;
+      @include typeSetting(4, bold);
+      margin-bottom: 5px;
 
       @include bpMinXSmall {
         @include bpMaxSmall {
-          @include typeSetting(3);
+          @include typeSetting(3, bold);
         }
       }
     }
