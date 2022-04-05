@@ -1,5 +1,5 @@
 .u-label-tag {
-  @include typeSetting(2, medium);
+  @include typeSetting(2, bold);
   background: siteColor(primary-green);
   bottom: initial;
   color: siteColor(vam-black);
