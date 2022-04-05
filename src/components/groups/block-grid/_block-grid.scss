@@ -48,14 +48,6 @@
   }
 
   &__footer {
-    a:focus {
-      box-shadow: none;
-      outline: 0;
-      .b-icon-badge__icon {
-        @include defaultFocus;
-      }
-    }
-
     background-color: siteColor(vam-black);
     clear: both;
     padding: $spacing-small * 2;
@@ -64,7 +56,14 @@
       background-color: siteColor(vam-white);
     }
 
-    svg {
+    > a:focus,
+    > a:hover {
+      .b-icon-badge__icon {
+        @include defaultFocus;
+      }
+    }
+
+    > svg {
       color: siteColor(vam-black);
     }
   }

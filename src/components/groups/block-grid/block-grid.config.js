@@ -113,7 +113,7 @@ module.exports = {
       label: 'Event',
       context: {
         title: 'More to do',
-        revealMoreCount: '6',
+        revealMoreCount: '3',
         revealMoreTheme: 'light',
         revealMoreTracking: 'events',
         events: [
