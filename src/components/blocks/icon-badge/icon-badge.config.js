@@ -23,6 +23,15 @@ module.exports = {
       }
     },
     {
+      name: 'dark',
+      context: {
+        previewClass: 'fr-bg--dark',
+        action: 'Show more',
+        icon: 'plus',
+        modifiers: ['dark']
+      }
+    },
+    {
       name: 'themed',
       context: {
         action: 'Show more',

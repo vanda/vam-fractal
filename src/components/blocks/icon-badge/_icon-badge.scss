@@ -32,11 +32,16 @@
       width: 60px;
     }
 
-    &.s-themed {
+    &.s-themed,
+    .b-icon-badge--dark & {
       color: siteColor(vam-black);
     }
+  
+    .b-icon-badge--dark & {
+      background-color: siteColor(vam-white);
+    }
 
-    svg {
+    > svg {
       height: 16px;
       margin: auto;
       width: 16px;
@@ -44,6 +49,19 @@
       @include bpMinSmall {
         height: 22px;
         width: 22px;
+      }
+      
+      .b-icon-badge--short {
+        > & {
+          height: 24px;
+          margin: auto;
+          width: 24px;
+
+          @include bpMinSmall {
+            height: 34px;
+            width: 34px;
+          }
+        }
       }
     }
   }
@@ -66,18 +84,10 @@
       color: siteColor(vam-black);
       text-shadow: none;
     }
-  }
 
-  &--short {
-    svg {
-      height: 24px;
-      margin: auto;
-      width: 24px;
-
-      @include bpMinSmall {
-        height: 34px;
-        width: 34px;
-      }
+    .b-icon-badge--dark & {
+      color: siteColor(vam-white);
+      text-shadow: none;
     }
   }
 }
