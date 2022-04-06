@@ -4,214 +4,62 @@ module.exports = {
   context: {
     ignore_global_theme: true,
     colors: [
-      {
-        name: 'angry-blue',
-        hex: '#2cf4f6'
-      },
-      {
-        name: 'angry-yellow',
-        hex: '#f3f935'
-      },
-      {
-        name: 'baby-blue',
-        hex: '#c9fbff'
-      },
-      {
-        name: 'black',
-        hex: '#000000'
-      },
-      {
-        name: 'blue-green',
-        hex: '#12d2a0'
-      },
-      {
-        name: 'blue-sky',
-        hex: '#d0e1f9'
-      },
-      {
-        name: 'blue',
-        hex: '#5bb4f9'
-      },
-      {
-        name: 'bright-yellow',
-        hex: '#fcf05b'
-      },
-      {
-        name: 'childs-blue',
-        hex: '#2cd6f6'
-      },
-      {
-        name: 'cream-yellow',
-        hex: '#fff5b3'
-      },
-      {
-        name: 'cyan',
-        hex: '#69d5d7'
-      },
-      {
-        name: 'dark-pink',
-        hex: '#e172c0'
-      },
-      {
-        name: 'dirty-yellow',
-        hex: '#dbde0e'
-      },
-      {
-        name: 'dust-green',
-        hex: '#b3c74b'
-      },
-      {
-        name: 'dusty-purple',
-        hex: '#cec3d6'
-      },
-      {
-        name: 'dusty-yellow',
-        hex: '#e1dfba'
-      },
-      {
-        name: 'egg-yolk',
-        hex: '#ffd717'
-      },
-      {
-        name: 'eggshell',
-        hex: '#b6d5e1'
-      },
-      {
-        name: 'forest-green',
-        hex: '#0ec335'
-      },
-      {
-        name: 'gold',
-        hex: '#edd256'
-      },
-      {
-        name: 'grey-blue',
-        hex: '#e7f4f6'
-      },
-      {
-        name: 'grey-brown',
-        hex: '#cfc4a2'
-      },
-      {
-        name: 'leaf',
-        hex: '#96c99c'
-      },
-      {
-        name: 'light-brown',
-        hex: '#f4e1c8'
-      },
-      {
-        name: 'light-pink',
-        hex: '#ecc9c2'
-      },
-      {
-        name: 'light-purple',
-        hex: '#ce9cef'
-      },
-      {
-        name: 'lime',
-        hex: '#b9ed69'
-      },
-      {
-        name: 'messy-purple',
-        hex: '#a1abc2'
-      },
-      {
-        name: 'mint-green',
-        hex: '#4bc87f'
-      },
-      {
-        name: 'mud-green',
-        hex: '#bcd096'
-      },
-      {
-        name: 'mud-yellow',
-        hex: '#c2af2d'
-      },
-      {
-        name: 'ocean-blue',
-        hex: '#98f5da'
-      },
-      {
-        name: 'ocean-mint',
-        hex: '#07c3b3'
-      },
-      {
-        name: 'orange',
-        hex: '#ff9a00'
-      },
-      {
-        name: 'peach',
-        hex: '#ffb072'
-      },
-      {
-        name: 'pink',
-        hex: '#f6a2d2'
-      },
-      {
-        name: 'postbox-red',
-        hex: '#ff2d2d'
-      },
-      {
-        name: 'raspberry',
-        hex: '#ff7b90'
-      },
-      {
-        name: 'salmon',
-        hex: '#f87a7a'
-      },
-      {
-        name: 'sand-storm',
-        hex: '#e9e0a4'
-      },
-      {
-        name: 'sand',
-        hex: '#ffd281'
-      },
-      {
-        name: 'silent-green',
-        hex: '#ceffd6'
-      },
-      {
-        name: 'sky-purple',
-        hex: '#f4f5ff'
-      },
-      {
-        name: 'soft-pink',
-        hex: '#f5cdea'
-      },
-      {
-        name: 'strawberry',
-        hex: '#fd6060'
-      },
-      {
-        name: 'summer-pink',
-        hex: '#f1a5b3'
-      },
-      {
-        name: 'tangerine',
-        hex: '#ffac3c'
-      },
-      {
-        name: 'teal-blue',
-        hex: '#87c3bd'
-      },
-      {
-        name: 'teal-green',
-        hex: '#0ad6cb'
-      },
-      {
-        name: 'tru-pink',
-        hex: '#ff89b3'
-      },
-      {
-        name: 'velvet',
-        hex: '#8f82c1'
-      },
-      {
-        name: 'winter-blue',
-        hex: '#87c3d6'
-      }
+      { name: "angry-blue", hsl: "hsl(181,91.8%,56.9%)" },
+      { name: "angry-yellow", hsl: "hsl(62,94.2%,59.2%)" },
+      { name: "baby-blue", hsl: "hsl(184,100%,89.4%)" },
+      { name: "black", hsl: "hsl(0,0%,0%)" },
+      { name: "blue-green", hsl: "hsl(164,84.2%,44.7%)" },
+      { name: "blue-sky", hsl: "hsl(215,77.4%,89.6%)" },
+      { name: "blue", hsl: "hsl(206,92.9%,66.7%)" },
+      { name: "bright-yellow", hsl: "hsl(56,96.4%,67.3%)" },
+      { name: "childs-blue", hsl: "hsl(190,91.8%,56.9%)" },
+      { name: "cream-yellow", hsl: "hsl(52,100%,85.1%)" },
+      { name: "cyan", hsl: "hsl(181,57.9%,62.7%)" },
+      { name: "dark-pink", hsl: "hsl(318,64.9%,66.5%)" },
+      { name: "dirty-yellow", hsl: "hsl(61,88.1%,46.3%)" },
+      { name: "dust-green", hsl: "hsl(70,52.5%,53.7%)" },
+      { name: "dusty-purple", hsl: "hsl(275,18.8%,80.2%)" },
+      { name: "dusty-yellow", hsl: "hsl(57,39.4%,80.6%)" },
+      { name: "egg-yolk", hsl: "hsl(50,100%,54.5%)" },
+      { name: "eggshell", hsl: "hsl(197,41.7%,79.8%)" },
+      { name: "electric-indigo", hsl: "hsl(264,100%,43.9%)" },
+      { name: "forest-green", hsl: "hsl(133,86.6%,41%)" },
+      { name: "gold", hsl: "hsl(49,80.7%,63.3%)" },
+      { name: "grey-blue", hsl: "hsl(188,45.5%,93.5%)" },
+      { name: "grey-brown", hsl: "hsl(45,31.9%,72.4%)" },
+      { name: "leaf", hsl: "hsl(127,32.1%,68.8%)" },
+      { name: "light-brown", hsl: "hsl(34,66.7%,87.1%)" },
+      { name: "light-pink", hsl: "hsl(10,52.5%,84.3%)" },
+      { name: "light-purple", hsl: "hsl(276,72.2%,77.5%)" },
+      { name: "lime", hsl: "hsl(84,78.6%,67.1%)" },
+      { name: "messy-purple", hsl: "hsl(222,21.3%,69.6%)" },
+      { name: "mint-green", hsl: "hsl(145,53.2%,53.9%)" },
+      { name: "mud-green", hsl: "hsl(81,38.2%,70.2%)" },
+      { name: "mud-yellow", hsl: "hsl(52,62.3%,46.9%)" },
+      { name: "ocean-blue", hsl: "hsl(163,82.3%,77.8%)" },
+      { name: "ocean-mint", hsl: "hsl(175,93.1%,39.6%)" },
+      { name: "orange", hsl: "hsl(36,100%,50%)" },
+      { name: "peach", hsl: "hsl(26,100%,72.4%)" },
+      { name: "pink", hsl: "hsl(326,82.4%,80%)" },
+      { name: "postbox-red", hsl: "hsl(0,100%,58.8%)" },
+      { name: "raspberry", hsl: "hsl(350,100%,74.1%)" },
+      { name: "rose-white", hsl: "hsl(0,77.8%,98.2%)" },
+      { name: "sale-red", hsl: "hsl(0,100%,45.1%)" },
+      { name: "salmon", hsl: "hsl(0,90%,72.5%)" },
+      { name: "sand-storm", hsl: "hsl(52,61.1%,77.8%)" },
+      { name: "sand", hsl: "hsl(39,100%,75.3%)" },
+      { name: "silent-green", hsl: "hsl(130,100%,90.4%)" },
+      { name: "sky-purple", hsl: "hsl(235,100%,97.8%)" },
+      { name: "soft-pink", hsl: "hsl(317,66.7%,88.2%)" },
+      { name: "strawberry", hsl: "hsl(0,97.5%,68.4%)" },
+      { name: "summer-pink", hsl: "hsl(349,73.1%,79.6%)" },
+      { name: "tangerine", hsl: "hsl(34,100%,61.8%)" },
+      { name: "teal-blue", hsl: "hsl(174,33.3%,64.7%)" },
+      { name: "teal-green", hsl: "hsl(177,91.1%,43.9%)" },
+      { name: "tru-pink", hsl: "hsl(339,100%,76.9%)" },
+      { name: "velvet", hsl: "hsl(252,33.7%,63.3%)" },
+      { name: "winter-blue", hsl: "hsl(194,49.1%,68.4%)" },
+      { name: "white", hsl: "hsl(0,0%,100%)" }
     ]
   }
 };
