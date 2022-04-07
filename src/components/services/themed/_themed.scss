@@ -1,5 +1,5 @@
 :root {
-  --theme-color: map-get($theme-colors, $theme-color-default);
+  --theme-color: #{themeColor($theme-color-default)};
 }
 
 .s-themed {
