@@ -3,35 +3,29 @@
 }
 
 .s-themed {
-  &--color {
+  &#{&}#{&}--color {
     color: var(--theme-color);
     transition: color .2s ease-out, border-color .2s ease-out;
 
-    &--hover:hover { // sass-lint:disable-line class-name-format
-      filter: brightness(.5);
+    &#{&}#{&}--hover:hover { // sass-lint:disable-line class-name-format
+      filter: brightness(.9);
     }
   }
-/*
 
-  .theme-#{$color} &--background-color {
-    background-color: map-get($theme-colors, $color);
+  &#{&}#{&}--background-color {
+    background-color: var(--theme-color);
     transition: background-color .2s ease-out;
 
-    &--hover { // sass-lint:disable-line class-name-format
-      &:hover {
-        background-color: darken(map-get($theme-colors, $color), 10%);
-      }
+    &#{&}#{&}--hover:hover { // sass-lint:disable-line class-name-format
+      filter: brightness(.9);
     }
   }
 
-  .theme-#{$color} &--border-color { // sass-lint:disable-line class-name-format
-    border-color: map-get($theme-colors, $color);
-  }
+  &#{&}#{&}--border-color { // sass-lint:disable-line class-name-format
+    border-color: var(--theme-color);
 
-  // This was breaking when chained with the above.
-  // Duplicated the hover styling into it's own declaration for now.
-  .theme-#{$color} &--border-color--hover:hover { // sass-lint:disable-line class-name-format
-    border-color: darken(map-get($theme-colors, $color), 10%);
+    &#{&}#{&}--hover:hover { // sass-lint:disable-line class-name-format
+      filter: brightness(.9);
+    }
   }
-*/
 }
