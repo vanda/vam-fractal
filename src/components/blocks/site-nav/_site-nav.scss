@@ -1,6 +1,6 @@
 $nav-breakpoints: (
-  small: 575px,
-  medium: 900px,
+  small: 768px,
+  medium: 992px,
   large: 1050px
 );
 
@@ -89,7 +89,7 @@ $nav-breakpoints: (
 
     &--mobile {
       display: inline-block;
-      margin: 10px 10px 0;
+      margin: 20px 10px;
     }
 
     >svg {
@@ -142,11 +142,10 @@ $nav-breakpoints: (
   &__mobile-toggle-text {
     color: siteColor(vam-white);
     float: right;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    padding: 19px 58px 0 0;
-    text-shadow: 0 1px 2px rgba(29, 30, 32, .7);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 26px 62px 0 0;
+    text-shadow: 0 1px 3px rgba(29, 30, 32, .8), 0 -1px 3px rgba(29, 30, 32, .8);
 
     @media (max-width: '286px') {
       display: none;
@@ -187,7 +186,7 @@ $nav-breakpoints: (
 
   &__mobile-bag {
     float: right;
-    margin: 10px 60px 0 0;
+    margin: 20px 60px 0 0;
     position: relative;
   }
 
@@ -257,7 +256,7 @@ $nav-breakpoints: (
     position: absolute;
     right: 0;
     text-align: center;
-    top: 10px;
+    top: 11px;
   }
 
   &__mobile-toggle {
@@ -265,7 +264,7 @@ $nav-breakpoints: (
     position: fixed;
     right: 10px;
     text-align: center;
-    top: 10px;
+    top: 20px;
     transition: all .5s;
     z-index: 3;
 
@@ -353,19 +352,13 @@ $nav-breakpoints: (
   &__core__items {
     align-items: baseline;
     display: none;
-    flex-direction: column;
-    flex-grow: 1;
-    font-size: 24px;
-    justify-content: space-around;
-    padding: 20px 0 75px;
+    font-size: 23px;
+    font-weight: 500;
+    margin: 40px 0 0;
     text-rendering: geometricPrecision;
 
-    @include bpMinNav(small) {
-      display: flex;
-    }
-
     .b-site-nav--open & {
-      display: flex;
+      display: block;
     }
 
     a {
@@ -376,13 +369,14 @@ $nav-breakpoints: (
 
     @include bpMinNav(small) {
       align-items: center;
+      display: flex;
       flex-direction: row;
       font-size: 18px;
       justify-content: center;
       margin: 0;
       padding: 0;
       text-align: center;
-      text-shadow: 0 1px 3px #1d1e20;
+      text-shadow: 0 1px 3px rgba(29, 30, 32, .8), 0 -1px 3px rgba(29, 30, 32, .8);
 
       a {
         border-bottom: 4px solid transparent;
@@ -398,9 +392,7 @@ $nav-breakpoints: (
 
   &__core__item {
     color: siteColor(vam-white);
-    font-weight: 700;
-    margin: 0;
-    padding: 0 15px;
+    margin: 0 20px 30px;
 
     @media (max-width: (map-get($nav-breakpoints, small) - 1)) {
       display: block;
@@ -418,18 +410,19 @@ $nav-breakpoints: (
 
       a {
         &:after {
-          bottom: 1px;
+          bottom: 2px;
           content: '  \0025BC';
+          display: inline-block;
           font-size: .75em;
+          margin-left: 5px;
           position: relative;
-          right: .175em;
         }
       }
 
       &.active {
         a {
           &:after {
-            content: '  \0025B2';
+            transform: rotate(180deg);
           }
         }
       }
@@ -437,10 +430,9 @@ $nav-breakpoints: (
 
     @include bpMinNav(small) {
       display: inline-block;
-      padding: 18px 12px;
+      margin: 23px 12px;
       transition: border .2s;
 
-      &--collections,
       &--learning,
       &--join,
       &--shop {
@@ -449,9 +441,8 @@ $nav-breakpoints: (
     }
 
     @include bpMinNav(medium) {
-      padding: 18px 16px;
+      margin: 23px 16px;
 
-      &--collections,
       &--learning {
         display: inline;
       }
@@ -482,15 +473,15 @@ $nav-breakpoints: (
   }
 
   &__core__overflowitems {
-    background-image: linear-gradient(to top, rgba(0, 0, 0, .9), rgba(0, 0, 0, .78) 24%, rgba(0, 0, 0, 0));
     display: none;
-    font-size: 14px;
+    font-size: 15px;
+    left: -20px;
     list-style-type: none;
+    margin: 0;
     min-width: 175px;
     position: absolute;
-    right: 0;
     text-align: left;
-    top: 100%;
+    top: 32px;
 
     .b-site-nav--solid & {
       background: siteColor(vam-grey-1);
@@ -517,7 +508,7 @@ $nav-breakpoints: (
   }
 
   &__core__overflowitem {
-    padding: 10px 15px;
+    margin: 0 0 8px 20px;
 
     @include bpMinNav(medium) {
       &--collections,
@@ -528,12 +519,13 @@ $nav-breakpoints: (
   }
 
   &__core__search {
-    background-color: siteColor(vam-grey-1);
+    background-color: #000;
     color: siteColor(vam-grey-6);
     display: block;
     padding: 45px 0 10px;
 
     @include bpMinNav(small) {
+      background-color: siteColor(vam-grey-1);
       height: 100vh;
       left: 0;
       padding: 86px 0 5px;

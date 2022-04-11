@@ -165,7 +165,7 @@
   }
 
   &__submit {
-    @include typeSetting(0, medium);
+    @include typeSetting(3, medium);
     align-items: center;
     display: inline-flex;
     margin-top: 15px;
@@ -175,7 +175,6 @@
     }
 
     @include bpMinSmall {
-      @include typeSetting(3, medium);
       margin-top: 28px;
 
       &#{&}--hidden {
