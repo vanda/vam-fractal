@@ -13,7 +13,9 @@
 
     .u-btn.u-btn--outlined {
       border: 1px solid siteColor(vam-black);
-      &:hover {
+      
+      &:hover,
+      &:focus {
         background-color: siteColor(vam-grey-5);
         outline: none;
       }
@@ -50,6 +52,7 @@
 
   &__link {
     display: block;
+    margin-bottom: 10px;
     position: relative;
   }
 
@@ -145,7 +148,7 @@
     }
 
     @include bpMinXSmall {
-      min-height: 200px;
+      min-height: 310px;
     }
 
     @include bpMinSmall {
@@ -178,31 +181,15 @@
     margin: 1px 0 10px;
 
     &-icon {
+      color: siteColor(vam-black);
       height: 14px;
-      margin-top: 1px;
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
       width: 14px;
-
-      @include bpMinXSmall {
-        margin-top: -2px;
-      }
-
-      @include bpMinSmall {
-        margin-top: -3px;
-      }
-
-      @include bpMinMedium {
-        margin-top: 6px;
-      }
     }
 
     &-container {
-      display: inline-flex;
-      flex-direction: row;
-      position: relative;
+      align-items: baseline;
+      column-gap: 10px;
+      display: flex;
     }
 
     @include bpMinSmall {
@@ -213,13 +200,19 @@
       font-size: 17px;
       font-weight: 500;
       line-height: 32px;
-      margin: 10px 30px 8px 0;
+      margin: 10px 0 8px;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
       @include bpMinXSmall {
-        margin: 5px 30px 10px 0;
+        margin: 5px 0 10px;
       }
 
       @include bpMinMedium {
-        margin: 0 30px 10px 0;
+        margin: 0 0 10px ;
       }
     }
 
@@ -255,29 +248,26 @@
     }
 
     .b-event-teaser--venue & {
-      @include bpMaxXSmall {
-        position: relative;
+      column-gap: 10px;
+      display: flex;
+      height: auto;
+      justify-content: space-between;
+      list-style: none;
+      margin-left: 0;
+      padding: 0 10px;
+      position: static;
+
+      .u-btn {
+        column-gap: 6px;
+        display: flex;
+        margin: 10px 0;
       }
 
-      @include bpMinXSmall {
-        bottom: 30px;
-      }
-
-      display: inline-block;
-      position: absolute;
-
-      > .u-btn:nth-of-type(1) {
-        margin-right: 0;
-      }
-
-      > .u-btn {
-        width: calc(50% - 12px);
-        @include bpMaxXSmall {
-          padding: 10px 25px;
-        }
-        @include bpMinXSmall {
-          width: auto;
-        }
+      .b-icon-list__item__icon {
+        color: siteColor(vam-black);
+        float: none;
+        margin-left: 0;
+        margin-top: 0;
       }
     }
   }
