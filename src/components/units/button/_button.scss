@@ -16,10 +16,13 @@
 
   &:hover,
   &:focus {
-    @include defaultFocus;
     background-color: darken(siteColor(primary-green), 10);
     border-color: darken(siteColor(primary-green), 10);
     text-decoration: none;
+  }
+
+  &:focus {
+    @include defaultFocus;
   }
 
   &--arrowed {
