@@ -1,14 +1,10 @@
 .b-venue-visit-lead {
-  align-items: center;
   background-color: siteColor(vam-white);
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
   padding: 10px;
-  width: 100%;
 
   @include bpMinSmall {
-    align-items: self-start;
     flex-direction: row;
     padding: 30px;
   }
@@ -17,41 +13,30 @@
     padding: 40px;
   }
 
-  &__content-container, &__img-container {
-    max-width: 480px;
-    width: 100%;
-  }
-
-  &__content-container {
-    margin-left: 30px;
-    @include bpMinMedium {
-      margin-left: 40px;
-      width: 48%;
-    }
-  }
-
-  &__img-container {
+  &__img {
     height: calc(80vw - 20px);
     margin-bottom: 30px;
     max-height: 374px;
+    object-fit: cover;
+    width: 100%;
 
     @include bpMinSmall {
       margin-bottom: 0;
-      max-height: 374px;
-      width: 100%;
+      width: 56%;
+    }
+  }
+
+  &__content {
+    @include bpMinSmall {
+      margin: 12px 0 0 27px;
     }
 
     @include bpMinMedium {
-      height: 425px;
-      max-height: none;
-      max-width: none;
-      width: auto;
+      margin-left: 42px;
     }
 
-    img {
-      height: 100%;
-      object-fit: cover;
-      width: 100%;
+    @include bpMinLarge {
+      margin: 16px 0 0 53px;
     }
   }
 }
