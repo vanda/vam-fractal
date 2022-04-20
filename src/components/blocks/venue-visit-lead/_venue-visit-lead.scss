@@ -21,11 +21,8 @@
     width: 100%;
 
     @include bpMinSmall {
+      margin-bottom: 0;
       width: 56%;
-    }
-
-    @include bpMinMedium {
-
     }
   }
 
