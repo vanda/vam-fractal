@@ -79,7 +79,21 @@ module.exports = {
       'padlock',
       'eye-striked',
       'eye',
-      'wordmark-southken'
+      'wordmark-academy',
+      'wordmark-americas-foundation',
+      'wordmark-directors-circle',
+      'wordmark-dundee',
+      'wordmark-east-museum',
+      'wordmark-east-storehouse',
+      'wordmark-east',
+      'wordmark-membership',
+      'wordmark-patrons',
+      'wordmark-publishing',
+      'wordmark-shop',
+      'wordmark-southken',
+      'wordmark-wedgwood',
+      'wordmark-young'
+
     ]
   },
   variants: [
