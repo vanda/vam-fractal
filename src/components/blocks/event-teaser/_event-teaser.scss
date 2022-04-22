@@ -54,6 +54,16 @@
     display: block;
     margin-bottom: 10px;
     position: relative;
+
+    &:hover + ul,
+    &:focus + ul {
+      border-bottom: 1px solid siteColor(vam-grey-4);
+    }
+
+    &:hover h2,
+    &:focus h2 {
+      text-decoration: underline;
+    }
   }
 
   &__media {
@@ -131,7 +141,6 @@
   }
 
   &__description {
-    border-bottom: 1px solid siteColor(vam-grey-6);
     color: siteColor(vam-black);
     padding-bottom: 20px;
     position: relative;
@@ -166,10 +175,6 @@
         margin-bottom: 15px;
       }
     }
-
-    .b-event-teaser__link:hover & {
-      border-bottom: 1px solid siteColor(vam-grey-4);
-    }
   }
 
   &__label {
@@ -201,11 +206,6 @@
       font-weight: 500;
       line-height: 32px;
       margin: 10px 0 8px;
-
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-      }
 
       @include bpMinXSmall {
         margin: 5px 0 10px;
@@ -248,13 +248,13 @@
     }
 
     .b-event-teaser--venue & {
+      border-bottom: 1px solid siteColor(vam-grey-6);
       column-gap: 10px;
       display: flex;
       height: auto;
-      justify-content: space-between;
       list-style: none;
       margin-left: 0;
-      padding: 0 10px;
+      padding: 0 0 15px;
       position: static;
 
       .u-btn {
