@@ -11,11 +11,10 @@
     </svg>
     <div class="b-icon-list__item__content">
       <p class="b-icon-list__item__heading">{{ item.title }}</p>
-      <p>{{ item.body | safe }}
-        {% if item.link %}
-        <br><a class="u-link u-link--arrowed" href="#">{{ item.link }}</a>
-        {% endif %}
-      </p>
+      <p>{{ item.body | safe }}</p>
+      {% if item.link %}
+      <p><a class="u-link u-link--arrowed" href="#">{{ item.link }}</a></p>
+      {% endif %}
     </div>
   </li>
   {% endfor %}

@@ -5,30 +5,13 @@ $icon-width: 30px;
   @include unstyledList;
   color: siteColor(vam-black);
 
-  &--venue {
-    padding-bottom: 15px;
-    @include bpMinXSmall {
-      padding-bottom: 60px;
-    }
-    @include bpMinSmall {
-      padding-bottom: 50px;
-    }
-    @include bpMinMedium {
-      padding-bottom: 30px;
-    }
-  }
-
   &--dark {
     color: siteColor(vam-white);
   }
 
   &__item {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     margin-left: $icon-width;
-
-    @include bpMaxSmall {
-      margin-bottom: 15px;
-    }
 
     &--no-icon {
       margin-left: 40px;
@@ -36,10 +19,6 @@ $icon-width: 30px;
       @include bpMaxSmall {
         margin-left: 0;
       }
-    }
-
-    &__content {
-      margin-left: 10px;
     }
 
     &__icon {
@@ -50,13 +29,21 @@ $icon-width: 30px;
       width: 20px;
     }
 
-    &__heading {
-      @include typeSetting(4, bold);
-      margin-bottom: 5px;
+    &__content {
+      margin-left: 10px;
 
-      @include bpMinXSmall {
-        @include bpMaxSmall {
-          @include typeSetting(3, bold);
+      > p {
+        margin-bottom: 5px;
+      }
+
+      &__heading {
+        @include typeSetting(4, bold);
+        margin-bottom: 15px;
+
+        @include bpMinXSmall {
+          @include bpMaxSmall {
+            @include typeSetting(3, bold);
+          }
         }
       }
     }
