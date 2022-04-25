@@ -35,15 +35,15 @@ $icon-width: 30px;
       > p {
         margin-bottom: 5px;
       }
+    }
 
-      &__heading {
-        @include typeSetting(4, bold);
-        margin-bottom: 15px;
+    &  #{&}__heading {
+      @include typeSetting(4, bold);
+      margin-bottom: 15px;
 
-        @include bpMinXSmall {
-          @include bpMaxSmall {
-            @include typeSetting(3, bold);
-          }
+      @include bpMinXSmall {
+        @include bpMaxSmall {
+          @include typeSetting(3, bold);
         }
       }
     }
