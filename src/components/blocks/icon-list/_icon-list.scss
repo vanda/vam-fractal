@@ -39,7 +39,7 @@ $icon-width: 30px;
 
     &  #{&}__heading {
       @include typeSetting(4, bold);
-      margin-bottom: 15px;
+      margin-bottom: 5px;
 
       @include bpMinXSmall {
         @include bpMaxSmall {
