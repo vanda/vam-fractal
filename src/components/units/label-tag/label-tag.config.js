@@ -67,6 +67,13 @@ module.exports = {
         text: 'Book soon',
         modifier: ['book-soon']
       }
+    },
+    {
+      name: 'Venue',
+      context: {
+        text: 'Opening 20xx',
+        modifier: ['venue']
+      }
     }
   ]
 };

@@ -55,6 +55,11 @@
     margin-bottom: 10px;
     position: relative;
 
+    &:hover,
+    &:focus {
+      box-shadow: none;
+    }
+
     &:hover + ul,
     &:focus + ul {
       border-bottom: 1px solid siteColor(vam-grey-4);
@@ -86,7 +91,8 @@
       width: 100%;
       z-index: 0;
 
-      .b-event-teaser__link:hover & {
+      .b-event-teaser__link:hover &,
+      .b-event-teaser__link:focus & {
         opacity: 1;
       }
     }
@@ -147,12 +153,15 @@
 
     &--venue {
       flex-grow: 3;
-      font-size: 17px;
-      line-height: 21px;
+      @include typeSetting(4, regular);
       margin-bottom: 10px;
 
       @include bpMinXSmall {
         margin-bottom: 20px;
+      }
+
+      @include bpMinSmall {
+        @include typeSetting(5, regular);
       }
     }
 
@@ -169,9 +178,7 @@
       padding-bottom: 60px;
 
       &--venue {
-        font-size: 23px;
-        font-weight: normal;
-        line-height: 32px;
+        @include typeSetting(5, regular);
         margin-bottom: 15px;
       }
     }
@@ -202,23 +209,17 @@
     }
 
     &--venue {
-      font-size: 17px;
-      font-weight: 500;
-      line-height: 32px;
-      margin: 10px 0 8px;
+      @include typeSetting(4, bold);
+      margin: 4px 0 8px;
 
       @include bpMinXSmall {
-        margin: 5px 0 10px;
-      }
-
-      @include bpMinMedium {
-        margin: 0 0 10px;
+        margin: 10px 0 10px;
       }
     }
 
-    @include bpMinMedium {
+    @include bpMinSmall {
       &--venue {
-        font-size: 23px;
+        @include typeSetting(5, bold);
       }
     }
   }
