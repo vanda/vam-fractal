@@ -210,7 +210,6 @@
       &--component {
         margin: 0 0 0 5px;
         max-width: 102px;
-        padding: 16px;
       }
 
       &--hidden {
@@ -247,18 +246,18 @@
     margin: 0;
     text-align: center;
 
+    @include bpMinXSmall {
+      @include typeSetting(6, bold);
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
     &--component {
       text-align: center;
     }
 
     &--footer {
       @include typeSetting(5);
-      text-align: left;
-    }
-
-    @include bpMinXSmall {
-      @include typeSetting(6, bold);
-      margin-bottom: 10px;
       text-align: left;
     }
   }

@@ -17,11 +17,11 @@ module.exports = {
       }
     },
     {
-      name: 'component newsletter',
-      label: 'Component Newsletter',
+      name: 'component',
+      label: 'Component',
       context: {
         title: 'Signup',
-        modifier: '--component'
+        modifier: 'component'
       }
     }
   ]

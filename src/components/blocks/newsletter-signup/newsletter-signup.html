@@ -60,17 +60,12 @@
         You can opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy policy.</a>
       {% endif %}
 
-      {% if modifier === "--component" %}
+      {% if modifier === "component" %}
         </div>
-        <div
-        class="u-btn u-btn--black b-newsletter__form-submit b-newsletter__form-submit--component js-newsletter__submit b-newsletter__form-submit--hidden"
-        ></div>
       {% endif %}
     </div>
     {% if modifier === "footer" %}
       </div>
-    {% endif %}
-    {% if modifier === "footer" %}
       </div>
     {% endif %}
   </form>
@@ -79,11 +74,11 @@
   </div>
 {% endif %}
 
-{% if not modifier === "--component" %}
+{% if not modifier === "component" %}
 </div>
 {% endif %}
 
-{% if modifier === "--component" %}
+{% if modifier === "component" %}
   </div>
   </a>
   </article>
