@@ -23,7 +23,7 @@ if (gridRevealMore.length) {
       gridFooterMarkup.innerHTML = `
         <a href="#" aria-label="show more" data-tracking-showmorebutton="${tracking}" class="js-reveal-more-btn">
           <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">
-            <div class="b-icon-badge__icon">
+            <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
               <svg aria-hidden="true">
                 <use xlink:href="${svgURL}#plus"></use>
               </svg>

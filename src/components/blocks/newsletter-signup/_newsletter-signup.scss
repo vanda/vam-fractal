@@ -203,12 +203,8 @@
       padding: 0 15px;
       width: 100%;
 
-      &:hover,
-      &:focus,
-      .sent & {
-        background-color: map-get($theme-colors, $theme-color-default);
-        border: 1px solid map-get($theme-colors, $theme-color-default);
-        color: siteColor(vam-black);
+      &:focus {
+        @include defaultFocus;
       }
 
       &--component {
@@ -229,14 +225,6 @@
         color: siteColor(vam-white);
         margin: 0 0 14px;
         max-width: 122px;
-
-        &:hover,
-        &:focus,
-        .sent & {
-          background-color: siteColor(vam-black);
-          border: 1px solid siteColor(vam-black);
-          color: siteColor(vam-white);
-        }
       }
 
       @include bpMinXSmall {
