@@ -67,6 +67,14 @@
       padding: 30px 50px;
     }
 
+    @include bpMinMedium {
+      @include typeSetting(5, light);
+    }
+
+    @include bpMinLarge {
+      @include typeSetting(6, light);
+    }
+
     &__info {
       @include bpMinXSmall {
         margin: -17px 0 0 30px;
@@ -85,6 +93,14 @@
   &__address {
     @include typeSetting(3, light);
     margin: 20px 0 30px;
+
+    @include bpMinSmall {
+      @include typeSetting(4, light);
+    }
+
+    @include bpMinLarge {
+      @include typeSetting(5, light);
+    }
 
     > svg {
       height: 18px;
