@@ -15,6 +15,7 @@
         display: none;
       }
       display: block;
+      @include typeSetting(3, regular);
       margin-top: 64px;
       position: relative;
       text-align: center;
@@ -40,9 +41,7 @@
     border-radius: 2px;
     color: siteColor(vam-white);
     display: inline-block;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
+    @include typeSetting(3, regular);
     padding: 20px 15px;
 
     &.s-themed--border-color:hover {

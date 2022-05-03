@@ -67,14 +67,12 @@
   }
 
   &__label {
-    @include typeSetting(2);
+    @include typeSetting(4);
     color: siteColor(vam-white);
     display: block;
-    letter-spacing: .25em;
     text-align: center;
-    text-indent: .25em; // Fixes misalignment caused by letter-spacing
     text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
-
+    text-transform: capitalize;
 
     @include bpMinMedium {
       margin-top: $spacing-small;
