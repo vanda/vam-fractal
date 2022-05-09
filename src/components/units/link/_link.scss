@@ -7,15 +7,12 @@
   }
 
   &--arrowed {
-    align-items: center;
-    display: inline-flex;
-
     &::after {
       border: 5px solid transparent;
       border-left-color: currentColor;
       content: '';
-      display: block;
-      margin: 0 0 -1px 7px;
+      display: inline-block;
+      margin-left: 7px;
     }
   }
 
