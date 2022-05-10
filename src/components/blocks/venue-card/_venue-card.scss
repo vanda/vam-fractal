@@ -20,7 +20,6 @@
   }
 
   &__title {
-    @include typeSetting(4);
     color: #fff;
     left: 10px;
     position: absolute;
@@ -28,26 +27,33 @@
     top: 10px;
     z-index: 1;
 
-    @include bpMinXSmall {
-      @include typeSetting(3);
-    }
+    h3 {
+      @include typeSetting(4, bold);
 
-    @include bpMinMedium {
-      @include typeSetting(4);
-    }
+      @include bpMinXSmall {
+        @include typeSetting(3);
+        font-weight: 500;
+      }
+  
+      @include bpMinMedium {
+        @include typeSetting(4);
+        font-weight: 500;
+      }
+  
+      @include bpMinLarge {
+        @include typeSetting(5);
+        font-weight: 500;
+      }
 
-    @include bpMinLarge {
-      @include typeSetting(5);
-    }
-
-    .b-venue-card:hover &,
-    .b-venue-card:focus & {
-      text-decoration: underline;
+      .b-venue-card:hover &,
+      .b-venue-card:focus & {
+        text-decoration: underline;
+      }
     }
   }
   
   &__subtitle {
-    @include typeSetting(4);
+    @include typeSetting(3);
 
     @include bpMinXSmall {
       @include typeSetting(1);
