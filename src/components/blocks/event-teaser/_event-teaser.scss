@@ -37,13 +37,13 @@
   }
 
   @include bpMinMedium {
+    flex-basis: 33.333%;
+    max-width: 33.333%;
+
     &--venue {
       flex-basis: 50%;
       max-width: 520px;
     }
-
-    flex-basis: 33.333%;
-    max-width: 33.333%;
 
     .no-flexbox & {
       width: 33.333%;
@@ -209,7 +209,7 @@
     }
   }
 
-  &__label {
+  &__venue {
     @include typeSetting(2, bold);
   }
 
@@ -254,11 +254,9 @@
     color: siteColor(vam-grey-3);
   }
 
-  &__price {
-    &::after {
-      content: ' | ';
-      margin: 0, .3em;
-    }
+  &__type {
+    display: flex;
+    margin-bottom: 5px;
   }
 
   &__footer {
@@ -271,6 +269,10 @@
 
     @include bpMinMedium {
       display: inline-block;
+    }
+
+    > .u-btn {
+      @include typeSetting(1);
     }
 
     .b-event-teaser--venue & {
