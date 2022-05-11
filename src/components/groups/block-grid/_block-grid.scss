@@ -1,7 +1,5 @@
 .b-block-grid {
-  background-color: siteColor(vam-white);
   margin: 0 0 $spacing-small;
-
 
   &--padded {
     margin: 20px 0 0;
@@ -18,10 +16,17 @@
   }
 
   &__header {
-    background-color: siteColor(vam-white);
-    color: siteColor(vam-black);
+    color: siteColor(vam-white);
     padding: $spacing-medium $spacing-small;
     width: 100%;
+
+    .shop-touts & {
+      color: siteColor(vam-black);
+    }
+  
+    .event-touts & {
+      color: siteColor(vam-black);
+    }
 
     @include bpMinSmall {
       padding: 54px $spacing-small;
