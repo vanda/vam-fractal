@@ -18,20 +18,12 @@
     {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-title">
     {% endif %}
-    <h1 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline--{{ modifier }}{% endif %}">
-      {% if modifier === "footer" %}
+    <h2 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline--{{ modifier }}{% endif %}">
         Sign up to our emails
-      {% else %}
-        Sign up to get the latest V&A news
-      {% endif %}
-    </h1>
+    </h2>
 
     <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor--{{ modifier }}{% endif %} js-newsletter__descriptor">
-    {% if modifier === "footer" %}
-      Hear about activities, events and exhibitions from the V&A.
-    {% else %}
-      Hear about exhibitions, events, offers and opportunities from the V&A and the V&A Museum of Childhood.
-    {% endif %}
+      Hear about collections, exhibitions, courses and events from the V&A and ways you can support us. 
     </p>
 
     {% if modifier === "footer" %}
@@ -59,12 +51,7 @@
     </div>
 
     <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info--{{ modifier }}{% endif %}">
-      {% if modifier === "footer" %}
-        You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. <a href=# class="u-link">Read our full privacy notice</a>.
-      {% else %}
-        You can opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy policy.</a>
-      {% endif %}
-
+      You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=/privacy-notice class="u-link">privacy notice</a>.
       {% if modifier === "component" %}
         </div>
       {% endif %}
