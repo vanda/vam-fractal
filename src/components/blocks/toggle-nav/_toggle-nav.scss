@@ -26,6 +26,7 @@
 
   &__list {
     @include unstyledList;
+    text-align: center;
 
     &::-webkit-scrollbar {
       display: none;
