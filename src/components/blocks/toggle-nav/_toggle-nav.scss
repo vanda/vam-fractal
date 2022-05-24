@@ -26,6 +26,7 @@
 
   &__list {
     @include unstyledList;
+    text-align: center;
 
     &::-webkit-scrollbar {
       display: none;
@@ -44,17 +45,14 @@
   }
 
   &__button {
+    @include typeSetting(4);
     @include unstyledInput;
     border-bottom: 3px solid transparent;
     color: siteColor(vam-black);
     cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .2em;
     padding: 15px 10px 12px;
 
     @include bpMinXSmall {
-      font-size: 14px;
       padding: 25px 15px 22px;
     }
 
