@@ -32,13 +32,28 @@
       width: 60px;
     }
 
-    &.s-themed,
-    .b-icon-badge--dark & {
+    &.s-themed {
       color: siteColor(vam-black);
     }
-  
+
+    .b-icon-badge--light & {
+      background-color: siteColor(vam-black);
+      color: siteColor(vam-white);
+    }
+    
     .b-icon-badge--dark & {
       background-color: siteColor(vam-white);
+      color: siteColor(vam-black);
+    }
+
+    .b-icon-badge--light &:hover {
+      background-color: siteColor(vam-grey-4);
+      color: siteColor(vam-black);
+    }
+
+    .b-icon-badge--dark &:hover {
+      background-color: siteColor(vam-grey-4);
+      color: siteColor(vam-white);
     }
 
     > svg {
@@ -72,7 +87,6 @@
     display: block;
     text-align: center;
     text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
-    text-transform: capitalize;
 
     @include bpMinMedium {
       margin-top: $spacing-small;
@@ -86,6 +100,13 @@
     .b-icon-badge--dark & {
       color: siteColor(vam-white);
       text-shadow: none;
+    }
+  }
+
+  // .b-icon-badge blocks can be contained inside a link
+  a:focus & {
+    .b-icon-badge__icon {
+      @include defaultFocus;
     }
   }
 }

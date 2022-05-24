@@ -17,7 +17,7 @@ module.exports = {
     {
       name: 'light',
       context: {
-        action: 'More events',
+        action: 'Show more',
         icon: 'plus',
         modifiers: ['light']
       }

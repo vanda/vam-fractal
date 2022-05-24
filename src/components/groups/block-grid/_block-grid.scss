@@ -60,20 +60,6 @@
     &--light {
       background-color: siteColor(vam-white);
     }
-
-    .b-icon-badge__icon:hover {
-      background-color: siteColor(vam-grey-4);
-    }
-
-    > a:focus {
-      .b-icon-badge__icon {
-        @include defaultFocus;
-      }
-    }
-
-    > svg {
-      color: siteColor(vam-black);
-    }
   }
 
   &__cols-restarter {
