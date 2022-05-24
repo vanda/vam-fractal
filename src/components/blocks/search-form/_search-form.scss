@@ -70,7 +70,7 @@
   }
 
   &__label {
-    @include typeSetting(3, light);
+    @include typeSetting(3);
     color: siteColor(vam-grey-5);
     display: block;
     margin-bottom: 10px;
@@ -91,10 +91,10 @@
     }
 
     .b-search-form--etc & {
-      @include typeSetting(4);
+      @include typeSetting(3);
 
       @include bpMinSmall {
-        @include typeSetting(5);
+        @include typeSetting(4);
       }
     }
   }
@@ -165,7 +165,7 @@
   }
 
   &__submit {
-    @include typeSetting(3, medium);
+    @include typeSetting(3);
     align-items: center;
     display: inline-flex;
     margin-top: 15px;
@@ -214,13 +214,13 @@
   }
 
   &__filters {
-    @include typeSetting(3);
+    @include typeSetting(2);
     align-items: baseline;
     color: siteColor(vam-white);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0 0 1px;
+    margin: 10px 0 1px;
   }
 
   &__filter-info {
