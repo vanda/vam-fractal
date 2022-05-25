@@ -158,3 +158,8 @@ ol {
 ul {
   list-style-type: disc;
 }
+
+b, 
+strong {
+  @include fontWeight(x-bold);
+}
