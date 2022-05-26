@@ -20,25 +20,19 @@
       width: 80px;
     }
 
-    &--story-box {
-      background-color: themeColor(silent-green);
-      &:hover {
-        background-color: lighten(themeColor(silent-green), 10);
-      }
-    }
-
     .b-icon-badge--small & {
       height: 60px;
       width: 60px;
     }
 
-    &.s-themed,
-    .b-icon-badge--dark & {
-      color: siteColor(vam-black);
-    }
-  
     .b-icon-badge--dark & {
       background-color: siteColor(vam-white);
+      color: siteColor(vam-black);
+    }
+
+    &:hover {
+      background-color: siteColor(vam-grey-4);
+      color: siteColor(vam-black);
     }
 
     > svg {

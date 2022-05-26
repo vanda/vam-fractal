@@ -21,6 +21,7 @@
 
     .theme-#{$color} &#{&}--background-color {
       background-color: map-get($theme-colors, $color);
+      color: siteColor(vam-black);
       transition: background-color .2s ease-out;
 
       &--hover { // sass-lint:disable-line class-name-format
