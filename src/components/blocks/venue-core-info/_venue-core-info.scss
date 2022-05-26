@@ -64,15 +64,17 @@
     @include bpMinSmall {
       flex: 0 1 auto;
       flex-direction: column;
-      padding: 30px 50px;
+      padding: 30px 87px 30px 50px;
     }
 
     @include bpMinMedium {
       @include typeSetting(5, light);
+      padding: 50px 100px 50px 60px;
     }
 
     @include bpMinLarge {
       @include typeSetting(6, light);
+      padding: 50px 94px 50px 70px;
     }
 
     &__info {
