@@ -20,7 +20,7 @@ The `fontFamily()` map also includes a monospaced family, however it isn't expec
 
 ## Font weight
 
-There are four weights avalible to use: `light`, `regular`, `semi-bold` and `bold`. These can be accessed through the Sass function `fontWeight()`:
+There are five weights available to use: `light`, `regular`, `semi-bold`, `bold` and `x-bold`. These can be accessed through the Sass function `fontWeight()`:
 
 ```sass
 .foo {
@@ -28,9 +28,24 @@ There are four weights avalible to use: `light`, `regular`, `semi-bold` and `bol
 }
 ```
 
+Note that the function above will simply return a weight value mapped to the five available weights. However, when using the Spiller font the weight should be declared using the CSS `font-variation-settings` property. This can be accessed through the Sass mixin `fontWeight()` which takes as an argument one of the five font weights detailed above. If no argument is provided the default becomes the base font weight which is `regular`. The mixin provides the full property declaration:
+
+```sass
+.foo {
+  @include fontWeight(x-bold);
+}
+```
+This is processed to:
+
+```css
+.foo {
+  font-variation-settings: "wght" 600;
+}
+```
+
 ## Font weight, size and line height
 
-These three can all be set at the same time using the Sass mixin `typeSetting()`. You must provide both a size and weight for the correct line-height to be set. If no weight is provided the default is regular.
+These three can all be set at the same time using the Sass mixin `typeSetting()`. You must provide both a size and weight for the correct line-height to be set. If no weight is provided the default is regular. Note that this mixin uses the weight specified in the arguments (or the base font weight which is `regular` if not provided) to generate a CSS `font-variation-settings` property rather than a `font-weight` property.
 
 ```sass
 .foo {

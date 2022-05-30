@@ -1,7 +1,15 @@
 @font-face {
   font-display: swap;
   font-family: 'Spiller';
+  font-style: normal;
   src: url('../fonts/Spiller-Upright-weight-VF-Web-V2.woff2') format('woff2'), url('../fonts/Spiller-Upright-weight-VF-Web-V2.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Spiller';
+  font-style: italic;
+  src: url('../fonts/Spiller-Italic-weight-VF-Web.woff2') format('woff2'), url('../fonts/Spiller-Italic-weight-VF-Web.woff') format('woff');
 }
 
 $font-family: (
@@ -12,7 +20,8 @@ $font-family: (
 $font-weight: (
   light: 300,
   regular: 400,
-  bold: 500
+  bold: 500, // an alias for Spiller's 'medium' size
+  x-bold: 600 // an alias for Spiller's 'bold' size
 );
 
 $font-size: (
@@ -25,7 +34,7 @@ $font-size: (
   6: 31,
   7: 41,
   8: 51,
-  9: 62
+  9: 60
 );
 
 $line-height: (
@@ -37,8 +46,21 @@ $line-height: (
   5: 36,
   6: 42,
   7: 52,
-  8: 56,
-  9: 66
+  8: 58,
+  9: 68
+);
+
+$line-height-bold: (
+  0: 16,
+  1: 18,
+  2: 18,
+  3: 18,
+  4: 21,
+  5: 28,
+  6: 36,
+  7: 48,
+  8: 58,
+  9: 68
 );
 
 $base-font-size: 3;
@@ -58,13 +80,7 @@ $base-font-weight: 'regular';
 
 @function lineHeight($size: $base-font-size, $weight: $base-font-weight) {
   @if $weight == "bold" {
-    @if $size < 3 {
-      @return map-get($line-height, $size);
-    } @else if $size > 7 {
-      @return map-get($line-height, $size);
-    } @else {
-      @return map-get($line-height, $size - 1);
-    }
+    @return map-get($line-height-bold, $size);
   } @else {
     @return map-get($line-height, $size);
   }
@@ -80,8 +96,12 @@ $base-font-weight: 'regular';
   line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
 }
 
+@mixin fontWeight($weight: $base-font-weight) {
+  font-variation-settings: 'wght' fontWeight($weight);
+}
+
 @mixin typeSetting($size: $base-font-size, $weight: $base-font-weight) {
   @include fontSize($size);
   @include lineHeight($size, $weight);
-  font-weight: fontWeight($weight);
+  @include fontWeight($weight);
 }
