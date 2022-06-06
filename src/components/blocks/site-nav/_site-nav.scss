@@ -14,21 +14,17 @@ $nav-breakpoints: (
   @include typeSetting(5);
   background-image: linear-gradient(hsla(0, 0, 0, .4), transparent);
   height: 150px;
-  left: 0;
   line-height: 1.7;
   position: relative;
-  top: 0;
-  width: 100%;
   z-index: 100;
 
   @media print {
     display: none;
   }
 
-  &--solid {
-    background: siteColor(vam-grey-1);
+  &--mini {
+    background: none;
     height: auto;
-    margin-bottom: 0;
   }
 
   &__access-nav-link {
