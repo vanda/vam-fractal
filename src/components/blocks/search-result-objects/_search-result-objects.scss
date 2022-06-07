@@ -8,8 +8,9 @@
   &__content {
     max-width: 130px;
     min-width: 100px;
+
     &-credit {
-      @include typeSetting(1, normal);
+      @include typeSetting(2);
       color: siteColor(vam-grey-2);
       overflow: hidden;
       text-overflow: ellipsis;
@@ -28,7 +29,7 @@
     }
 
     &-title {
-      @include typeSetting(1, bold);
+      @include typeSetting(2, bold);
       color: siteColor(vam-grey-2);
       max-height: 32px;
       overflow: hidden;
@@ -36,7 +37,6 @@
       white-space: normal;
 
       @include bpMinSmall {
-        @include typeSetting(2, bold);
         max-height: 38px;
       }
     }

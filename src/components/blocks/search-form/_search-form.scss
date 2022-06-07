@@ -87,7 +87,7 @@
     @include typeSetting(5);
 
     @include bpMinSmall {
-      @include typeSetting(7);
+      @include typeSetting(7, bold);
     }
 
     .b-search-form--etc & {
@@ -165,7 +165,7 @@
   }
 
   &__submit {
-    @include typeSetting(3);
+    @include typeSetting(4);
     align-items: center;
     display: inline-flex;
     margin-top: 15px;

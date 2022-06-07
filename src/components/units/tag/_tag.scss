@@ -1,5 +1,5 @@
 .u-tag {
-  @include typeSetting(1, bold);
+  @include typeSetting(2);
   appearance: none;
   background-color: siteColor(vam-grey-2);
   border-radius: 2px;
@@ -15,7 +15,6 @@
   transition: background-color .2s, color .2s;
 
   @include bpMinLarge {
-    @include typeSetting(2, bold);
     padding: 7px 15px;
   }
 
