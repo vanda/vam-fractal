@@ -17,24 +17,21 @@
     }
 
     &-type {
-      @include typeSetting(0, medium);
+      @include typeSetting(1);
       color: siteColor(vam-grey-2);
       margin-bottom: 4px;
 
 
       @include bpMinXSmall {
-        @include typeSetting(1, medium);
         height: 28px;
-        line-height: 2rem;
         margin-bottom: 0;
         padding-left: 120px;
       }
     }
 
     &-title {
-      @include typeSetting(4, normal);
+      @include typeSetting(3);
       color: siteColor(vam-black);
-      line-height: 1.33rem;
       margin-bottom: 12px;
       max-height: 42px;
       overflow: hidden;
@@ -42,7 +39,7 @@
       white-space: normal;
       
       @include bpMinXSmall {
-        @include typeSetting(5, normal);
+        @include typeSetting(5);
         height: 32px;
         margin-bottom: 4px;
         padding-left: 120px;
@@ -52,10 +49,9 @@
     }
 
     &-description {
-      @include typeSetting(1, normal);
+      @include typeSetting(2, light);
       color: siteColor(vam-grey-2);
       height: 72px;
-      line-height: 18px;
       overflow: hidden;
       padding-right: 5px;
       position: relative;

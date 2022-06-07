@@ -61,7 +61,7 @@
 }
 
 .b-search-sidebar-item__content-text {
-  @include typeSetting(5, normal);
+  @include typeSetting(5, bold);
   color: white;
   display: inline-block;
   position: relative;
@@ -70,7 +70,6 @@
   .b-search-sidebar-item--short & {
     bottom: 14px;
     left: 0;
-    line-height: 1.25;
     position: absolute;
     text-align: left;
     top: auto;
