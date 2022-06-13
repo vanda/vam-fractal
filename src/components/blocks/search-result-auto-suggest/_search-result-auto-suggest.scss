@@ -28,14 +28,12 @@
     @include bpMinSmall {
       @include typeSetting(2, normal);
       font-size: 14px;
-      letter-spacing: 1.5px;
       line-height: .93;
     }
 
     @include bpMaxLarge {
       @include typeSetting(1, normal);
       font-size: 13px;
-      letter-spacing: 1.1px;
       line-height: 1.0;
     }
   }
