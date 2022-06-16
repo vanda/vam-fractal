@@ -348,10 +348,8 @@ $nav-breakpoints: (
   &__core__items {
     align-items: baseline;
     display: none;
-    font-size: 23px;
-    font-weight: 500;
+    @include typeSetting(5, bold);
     margin: 40px 0 0;
-    text-rendering: geometricPrecision;
 
     .b-site-nav--open & {
       display: block;
@@ -367,7 +365,7 @@ $nav-breakpoints: (
       align-items: center;
       display: flex;
       flex-direction: row;
-      font-size: 18px;
+      @include typeSetting(4, regular);
       justify-content: center;
       margin: 0;
       padding: 0;
