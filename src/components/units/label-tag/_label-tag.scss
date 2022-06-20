@@ -10,7 +10,8 @@
   z-index: 1;
 
   &--sold-out,
-  &--ending-soon {
+  &--ending-soon,
+  &--closed {
     background: themeColor(strawberry);
   }
 
@@ -40,10 +41,6 @@
 
   &--book-soon {
     background: themeColor(salmon);
-  }
-
-  &--closed {
-    background: siteColor(vam-grey-2);
   }
 
   &--venue {

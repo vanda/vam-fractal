@@ -20,6 +20,13 @@ module.exports = {
       }
     },
     {
+      name: 'Closed',
+      context: {
+        text: 'Closed',
+        modifier: ['closed']
+      }
+    },
+    {
       name: 'Selling fast',
       context: {
         text: 'Selling fast',
