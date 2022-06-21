@@ -19,23 +19,19 @@
     color: siteColor(vam-white);
     padding: $spacing-medium $spacing-small;
     width: 100%;
-
-    .shop-touts & {
+  
+    &--black {
       color: siteColor(vam-black);
     }
-  
-    .event-touts & {
-      color: siteColor(vam-black);
+
+    &--transparent {
+      background-color: transparent;
     }
 
     @include bpMinSmall {
       padding: 54px $spacing-small;
     }
 
-    &--transparent {
-      background-color: transparent;
-      color: siteColor(vam-white);
-    }
   }
 
   &__title {
