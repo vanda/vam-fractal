@@ -1,8 +1,7 @@
 .b-site-footer {
   background-color: siteColor(vam-black);
   color: siteColor(vam-white);
-  font-size: 13px;
-  line-height: 18px;
+  @include typeSetting(1, regular);
   margin-top: 32px;
   position: relative;
   transform: translate3d(0, 0, 0);
@@ -71,12 +70,7 @@
 
   &__name {
     color: siteColor(vam-white);
-    font-size: 31px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 500;    
-    letter-spacing: normal;
-    line-height: 1.16;
+    @include typeSetting(6, bold);
     margin-bottom: 20px;
 
     @include bpMinSmall {
@@ -110,7 +104,7 @@
     margin: 0 0 12px;
 
     &--first-link {
-      padding-top: 15px;
+      padding-top: 12px;
     }
   }
 
@@ -123,8 +117,8 @@
   }
 
   &__header {
-    @include typeSetting(3, regular);
-    margin: 0 0 10px;
+    @include typeSetting(3, bold);
+    margin: 0 0 12px;
   }
 
   &__list {
