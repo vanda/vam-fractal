@@ -209,8 +209,10 @@
     }
   }
 
-  &__venue {
-    @include typeSetting(2, bold);
+  &__venue,
+  &__label {
+    @include typeSetting(1, regular);
+    margin-bottom: 5px;
   }
 
   &__title {
@@ -230,7 +232,7 @@
     }
 
     @include bpMinSmall {
-      @include typeSetting(5, regular);
+      @include typeSetting(5, bold);
     }
 
     &--venue {
