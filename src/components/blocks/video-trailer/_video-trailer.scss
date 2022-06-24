@@ -1,20 +1,15 @@
 .b-video-trailer {
   background-color: siteColor(vam-white);
-  display: inline-block;
-  margin: 5px 0;
-  padding: 15px 10px;
-  position: relative;
-  width: 100%;
-
-  &--venue {
-    background-color: transparent;
-  }
+  overflow: hidden;
+  padding: 0 10px;
 
   @include bpMinSmall {
-    padding-bottom: 60px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 54px;
+    padding: 0 40px 60px;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    overflow: initial;
   }
 
   &__content  {
