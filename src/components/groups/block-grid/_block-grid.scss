@@ -1,24 +1,27 @@
 .b-block-grid {
-  margin: 0 0 $spacing-small;
+  margin: 12px 0;
 
   &--padded {
-    margin: 20px 0 0;
     overflow: hidden;
-    padding: 0 0 (48px - 10px);
+    padding: 0 0 38px;
 
     @include bpMinSmall {
-      padding: 0 (32px - 10px) (48px - 10px);
+      padding: 0 22px 38px;
     }
 
     @include bpMinMedium {
-      padding: 0 (64px - 10px) (64px - 10px);
+      padding: 0 54px 54px;
     }
   }
 
   &__header {
     color: siteColor(vam-white);
-    padding: $spacing-medium $spacing-small;
+    margin: 50px 0 20px;
     width: 100%;
+
+    @include bpMinSmall {
+      margin: 70px 0 30px;
+    }
   
     &--black {
       color: siteColor(vam-black);
@@ -27,11 +30,6 @@
     &--transparent {
       background-color: transparent;
     }
-
-    @include bpMinSmall {
-      padding: 54px $spacing-small;
-    }
-
   }
 
   &__title {
