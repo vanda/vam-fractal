@@ -38,8 +38,6 @@
       }
     }
 
-
-
     & > #{&}__banner {
       opacity: .8;
     }
@@ -94,7 +92,7 @@
   }
 
   &__caption {
-    @include typeSetting(2, light);
+    @include typeSetting(1, light);
     display: none;
 
     @include bpMinSmall {
