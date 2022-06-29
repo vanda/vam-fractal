@@ -95,4 +95,22 @@
       border: 1px solid lighten(siteColor(vam-black), 20);
     }
   }
+
+  &--stop {
+    align-items: center;
+    border-radius: 8px;
+    display: inline-flex;
+    justify-content: center;
+
+    &::after {
+      background-color: currentColor;
+      content: '';
+      display: block;
+      height: 8px;
+      margin: 0 0 -1px 7px;
+      width: 8px;
+    }
+  }
+
+
 }
