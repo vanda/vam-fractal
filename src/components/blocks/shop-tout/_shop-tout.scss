@@ -1,7 +1,7 @@
 .b-shop-touts {
   background-color: white;
   overflow: hidden;
-  padding: 0 0 30px;
+  padding-bottom: 50px;
 
   @include bpMinSmall {
     padding: 0 30px 50px;
@@ -27,16 +27,8 @@
   }
 
   &__item {
-    @include bpMaxXSmall {
-      padding: 40px 10px 0;
-    }
-
-    a:hover h2 {
-      text-decoration: underline;
-    }
-
     color: siteColor(vam-black);
-    padding: 1px 0 54px;
+    padding: 0 10px 40px;
     width: 100%;
 
     @include bpMinXSmall {
@@ -59,102 +51,48 @@
       @include bpMinSmall {
         width: 32%;
       }
-    }
-  }
 
-  img {
-    height: 355px;
-    object-fit: cover;
-    width: 100%;
-
-    @include bpMinXSmall {
-      height: 235px;
     }
 
-    @include bpMinSmall {
-      height: 199px;
+    > a:hover h2 {
+      text-decoration: underline;
     }
 
-    @include bpMinMedium {
-      height: 274px;
-    }
+    > a > img {
+      height: 355px;
+      object-fit: cover;
+      width: 100%;
 
-    @include bpMinLarge {
-      height: 366px;
+      @include bpMinXSmall {
+        height: 235px;
+      }
+
+      @include bpMinSmall {
+        height: 199px;
+      }
+
+      @include bpMinMedium {
+        height: 274px;
+      }
+
+      @include bpMinLarge {
+        height: 366px;
+      }
     }
   }
 
   &__title {
-    font-size: 17px;
-    font-weight: 500;
-    line-height: 1.65;
-    margin-top: 20px;
-
-    @include bpMinMedium {
-      margin-top: 10px;
-    }
+    @include typeSetting(4, bold);
+    margin: 12px 0 5px;
   }
 
   &__description {
+    @include typeSetting(3);
     color: siteColor(vam-black);
-    font-size: 15px;
-    line-height: 1.4;
     margin: 0;
-
-    @include bpMinSmall {
-      margin: 0;
-    }
-  }
-
-  &__button {
-    border: 1px solid map-get($theme-colors, $theme-color-default);
-    border-radius: 2px;
-    display: block;
-    font-size: 11px;
-    letter-spacing: .3em;
-    padding: 1.1em 0;
-    text-align: center;
-
-    &:hover {
-      border-color: map-get($theme-colors, $theme-color-default);
-    }
-
-    @include bpMinSmall {
-      font-size: 13px;
-    }
-
-    strong {
-      display: block;
-      font-weight: 700;
-
-      @include bpMinMedium {
-        display: inline;
-      }
-    }
-
-    .separator {
-      display: none;
-
-      @include bpMinMedium {
-        display: inline;
-      }
-    }
   }
 
   &__footer {
-    margin: 40px 0 0;
     text-align: center;
-
-    @include bpMinXSmall {
-      margin: 0;
-    }
-
-    .u-btn::hover {
-      background-color: siteColor(vam-grey-1);
-    }
-
-    .u-btn--arrowed::after {
-      margin-top: -4px;
-    }
   }
 }
