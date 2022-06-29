@@ -98,7 +98,9 @@ $nav-breakpoints: (
   &__mobile {
     color: siteColor(vam-white);
     min-height: 60px;
+    position: absolute;
     transform: translate3d(0, 0, 0);
+    width: 100%;
 
     @include bpMinNav(small) {
       display: none;
