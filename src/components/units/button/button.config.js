@@ -68,9 +68,17 @@ module.exports = {
     {
       name: 'themed',
       context: {
-        title: 'themed button',
+        text: 'themed button',
         modifiers: ['arrowed'],
         themed: ['background-color', 'border-color', 'background-color--hover', 'border-color--hover']
+      }
+    },
+    {
+      name: 'stop',
+      label: 'Stop',
+      context: {
+        text: 'Stop button',
+        modifiers: ['stop', 'outlined-inverse', 'micro']
       }
     }
   ]
