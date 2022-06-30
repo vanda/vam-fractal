@@ -25,6 +25,10 @@
     @include defaultFocus;
   }
 
+  .sir-trevor-text & {
+    text-decoration: none;
+  }
+
   &--arrowed {
     align-items: center;
     display: inline-flex;
