@@ -13,6 +13,8 @@
   }
 
   &__col {
+    display: flex;
+
     &:first-of-type {
       @include bpMinSmall {
         padding-left: 75px;
@@ -38,7 +40,6 @@
     }
   
     @include bpMinXSmall {
-      display: flex;
       flex-direction: column;
       line-height: 18px;
       padding: 0 20px 0 14px;
