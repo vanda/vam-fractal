@@ -25,12 +25,10 @@
   }
 
   &__btn {
-    display: block;
-    margin: -24px auto 0 auto;
-    max-width: 178px;
-    top: 50%;
+    margin: auto;
 
     &-container {
+      display: flex;
       height: 100%;
       position: absolute;
       width: 100%;
