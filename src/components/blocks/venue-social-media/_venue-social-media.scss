@@ -1,90 +1,82 @@
 .b-venue-social-media {
-  svg {
-    height: 23px;
-    width: 23px;
-    @include bpMinSmall {
-      height: 28px;
-      width: 28px;
-    }
+  background-color: #000;
+
+  .b-promo__anchor {
+    background-color: siteColor(vam-black);
   }
 
-  h2 {
-    flex-grow: 2;
-    font-size: 15px;
-    font-weight: 500;
-    @include bpMaxXSmall {
-      padding-bottom: 10px;
+  &__content {
+    padding: 20px 0 10px 0;
+
+    @include bpMinXSmall {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: none;
+      padding: 10px 20px;
     }
 
     @include bpMinSmall {
-      font-size: 17px;
+      padding: 10px 50px;
     }
 
-    @include bpMinMedium {
-      font-size: 23px;
+    > h2 {
+      @include typeSetting(3, bold);
+      margin-bottom: 10px;
+
+      @include bpMinSmall {
+        @include typeSetting(4, bold);
+        margin: 0;
+      }
+
+      @include bpMinMedium {
+        @include typeSetting(5, bold);
+      }
     }
   }
 
   &__socials {
-    @include bpMaxXSmall {
-      margin-top: 5px;
-    }
+    @include unstyledList;
     display: flex;
     flex-direction: row;
 
-    a {
-      margin-right: 10px;
-      @include bpMinSmall {
-        margin-right: 25px;
-      }
+    @include bpMaxXSmall {
+      margin-top: 5px;
     }
 
-    a:last-of-type {
-      margin-right: 0;
-    }
+    &__item {
+      #{&} + & {
+        margin-left: 10px;
 
-    svg {
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .b-icon-link__container::after {
-      @include bpMaxSmall {
-        height: 100%;
-        width: 100%;
+        @include bpMinSmall {
+          margin-left: 25px;
+        }
       }
 
-      height: 115%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 115%;
-    }
-  }
-  &__content {
-    @include bpMinXSmall {
-      display: flex;
-      flex-direction: row;
-      max-width: none;
-      width: 100%;
-      & *:nth-child(1) {
-        text-align: left;
+      &__link {
+        border-radius: 50%;
+        display: flex;
+        padding: 11px;
+
+        &:hover {
+          background-color: siteColor(vam-grey-2);
+        }
+
+        &:focus {
+          @include defaultFocus;
+        }
+
+        > svg {
+          height: 23px;
+          margin: auto;
+          width: 23px;
+
+          @include bpMinSmall {
+            height: 28px;
+            width: 28px;
+          }
+        }
       }
-      & *:nth-child(2) {
-        justify-content: right;
-      }
-    }
-    & > * {
-      flex: 1;
-      flex-basis: 0;
-    }
-    padding: 20px 0 10px 0;
-    @include bpMinXSmall {
-      padding: 10px 20px;
-    }
-    @include bpMinSmall {
-      padding: 10px 50px;
     }
   }
 }
