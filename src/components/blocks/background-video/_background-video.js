@@ -11,19 +11,19 @@ if (backgroundVideo) {
 
   const showVideoCredit = () => {
     if (videoCredit) {
-      videoCredit.classList.remove('hidden');
+      videoCredit.classList.remove('s-hidden');
     }
     if (imageCredit) {
-      imageCredit.classList.add('hidden');
+      imageCredit.classList.add('s-hidden');
     }
   };
 
   const hideVideoCredit = () => {
     if (videoCredit) {
-      videoCredit.classList.add('hidden');
+      videoCredit.classList.add('s-hidden');
     }
     if (imageCredit) {
-      imageCredit.classList.remove('hidden');
+      imageCredit.classList.remove('s-hidden');
     }
   };
 
@@ -35,10 +35,15 @@ if (backgroundVideo) {
       backgroundVideoContainer.classList.remove('b-video-background--fade');
       backgroundVideo.pause();
       hideVideoCredit();
+      stopButton.classList.add('s-hidden');
     } else {
       backgroundVideoContainer.classList.add('b-video-background--fade');
       playCounter += 1;
       showVideoCredit();
+      stopButton.classList.remove('s-hidden');
+    }
+    if (backgroundVideoContainer.offsetHeight === 0) {
+      stopButton.classList.add('s-hidden');
     }
   });
 
@@ -47,9 +52,11 @@ if (backgroundVideo) {
     if (backgroundVideoContainer.offsetHeight === 0) {
       backgroundVideo.pause();
       hideVideoCredit();
+      stopButton.classList.add('s-hidden');
     } else {
       backgroundVideo.play();
       showVideoCredit();
+      stopButton.classList.remove('s-hidden');
     }
   };
 
@@ -66,7 +73,7 @@ if (backgroundVideo) {
       backgroundVideo.pause();
       backgroundVideoContainer.classList.remove('b-video-background--fade');
       if (backgroundVideo.paused) {
-        stopButton.classList.add('hidden');
+        stopButton.classList.add('s-hidden');
         hideVideoCredit();
       }
     };

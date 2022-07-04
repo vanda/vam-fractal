@@ -2,14 +2,14 @@ module.exports = {
   title: 'Background Video',
   label: 'Background Video',
   context: {
-    video: 'https://vanda-production-assets.s3.amazonaws.com/2018/05/15/10/27/13/a7bed0db-3d0f-4d30-aa0f-2de60d5ed1d1/TFSH.mp4'
+    video: 'https://vanda-qa-assets.s3.amazonaws.com/2022/06/29/17/21/50/dc02e6d2-edf0-4245-93fd-690195570e0e/test.mp4'
   },
   variants: [
     {
       name: 'Dark Overlay',
       label: 'Dark Overlay',
       context: {
-        video: 'https://vanda-production-assets.s3.amazonaws.com/2018/05/15/10/27/13/a7bed0db-3d0f-4d30-aa0f-2de60d5ed1d1/TFSH.mp4',
+        video: 'https://vanda-qa-assets.s3.amazonaws.com/2022/06/29/17/21/50/dc02e6d2-edf0-4245-93fd-690195570e0e/test.mp4',
         treatment: 'darken'
       }
     }
