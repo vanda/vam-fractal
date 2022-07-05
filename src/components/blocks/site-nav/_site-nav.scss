@@ -159,15 +159,15 @@ $nav-breakpoints: (
   &__core__bag,
   &__core__search-btn {
     background: transparent;
-    border: 1px solid currentColor;
+    border: 2px solid currentColor;
     border-radius: 50%;
-    box-shadow: 0 0 1px 0 currentColor inset, 0 0 1px 0 currentColor;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, .05), 0 0 50px 1px rgba(0, 0, 0, .2), inset 0 0 50px 4px rgba(0, 0, 0, .24);
     display: inline-block;
     height: 40px;
     margin-left: 10px;
     width: 40px;
 
-    svg {
+    > svg {
       height: 16px;
       margin: 11px;
       width: 17px;
@@ -208,24 +208,24 @@ $nav-breakpoints: (
 
   &__mobile-bag,
   &__core__bag {
-    svg {
+    > svg {
       height: 26px;
-      margin: 4px 7px;
+      margin: 4px 6px;
       width: 24px;
     }
   }
 
   &__core__search-btn {
-    & &-open {
+    > #{&}-open {
       height: 22px;
-      margin: 8px;
+      margin: 7px;
       width: 22px;
     }
 
-    & &-close {
+    > #{&}-close {
       display: none;
       height: 16px;
-      margin: 11px;
+      margin: 10px;
       width: 16px;
     }
 
@@ -281,7 +281,7 @@ $nav-breakpoints: (
 
     svg {
       height: 18px;
-      margin: 10px auto;
+      margin: 9px auto;
       width: 18px;
     }
 
