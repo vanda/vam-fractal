@@ -6,18 +6,15 @@
     {%- render "@label-tag--book-soon" -%}
     {% endif %}
 
-    <div class="b-event-teaser__media {% if isVenue %}b-event-teaser__media--venue{% endif %} js-object-fit-container">
-      <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
-        <link itemprop="url" href="{{ eventImage[960] }}">
-        <img alt="{{ eventTitle }}"
-             class="b-event-teaser__media-image  {% if isVenue %}b-event-teaser__media-image--venue{% endif %}"
-             itemprop="contentUrl"
-             sizes="(max-width: 499px) calc(100vw - 20px),
-                    (min-width: 500px) calc(50vw - 40px),
-                    (min-width: 992px) calc(33vw - 40px)"
-             srcset="{% for k, img in eventImage %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
-             src="{{ eventImage[640] }}">
-      </span>
+    <div class="b-event-teaser__media js-object-fit-container">
+      <img alt="{{ eventTitle }}"
+           class="b-event-teaser__media-image"
+           itemprop="image"
+           sizes="(max-width: 499px) calc(100vw - 20px),
+                  (min-width: 500px) calc(50vw - 40px),
+                  (min-width: 992px) calc(33vw - 80px)"
+           srcset="{% for k, img in eventImage %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+           src="{{ eventImage[640] }}">
 
       {% if eventSponsorText %}
       <div class="b-event-teaser__sponsor" itemprop="sponsor" itemtype="http://schema.org/Organization">
