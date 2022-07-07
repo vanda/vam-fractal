@@ -84,7 +84,7 @@
     &:hover,
     &:focus {
       background-color: darken(#fff, 10);
-      border: 1px solid darken(#fff, 10);
+      border-color: siteColor(vam-grey-4);
     }
   }
 
@@ -96,7 +96,7 @@
     &:hover,
     &:focus {
       background-color: lighten(siteColor(vam-black), 20);
-      border: 1px solid lighten(siteColor(vam-black), 20);
+      border-color: #fff;
     }
   }
 
