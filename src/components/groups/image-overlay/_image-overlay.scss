@@ -94,7 +94,7 @@
       z-index: 300;
 
       @include bpMinMedium {
-        background: rgba(29, 30, 32, .9);
+        background: rgba(siteColor(vam-black), .9);
       }
     }
   }
