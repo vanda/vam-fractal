@@ -3,7 +3,7 @@
 
   &--active {
     animation: opacityFadeIn .2s;
-    background-color: rgba(29, 30, 32, .98);
+    background-color: rgba(siteColor(vam-black), .98);
     display: block;
     height: 100%;
     left: 0;

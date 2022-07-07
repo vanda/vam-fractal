@@ -143,7 +143,7 @@ $nav-breakpoints: (
     font-size: 18px;
     font-weight: 500;
     margin: 26px 62px 0 0;
-    text-shadow: 0 1px 3px rgba(29, 30, 32, .8), 0 -1px 3px rgba(29, 30, 32, .8);
+    text-shadow: 0 1px 3px rgba(siteColor(vam-black), .8), 0 -1px 3px rgba(siteColor(vam-black), .8);
 
     @media (max-width: '286px') {
       display: none;
@@ -357,12 +357,6 @@ $nav-breakpoints: (
       display: block;
     }
 
-    a {
-      &:hover {
-        margin-left: 10px;
-      }
-    }
-
     @include bpMinNav(small) {
       align-items: center;
       display: flex;
@@ -372,55 +366,44 @@ $nav-breakpoints: (
       margin: 0;
       padding: 0;
       text-align: center;
-      text-shadow: 0 1px 3px rgba(29, 30, 32, .8), 0 -1px 3px rgba(29, 30, 32, .8);
-
-      a {
-        border-bottom: 4px solid transparent;
-        margin: 4px 0 0;
-        padding: 5px 0;
-
-        &:hover {
-          margin-left: 0;
-        }
-      }
+      text-shadow: 0 1px 3px rgba(siteColor(vam-black), .8), 0 -1px 3px rgba(siteColor(vam-black), .8);
     }
   }
 
   &__core__item {
     color: siteColor(vam-white);
+    display: block;
     margin: 0 20px 30px;
-
-    @media (max-width: (map-get($nav-breakpoints, small) - 1)) {
-      display: block;
-      width: 100%;
-
-      a {
-        display: block;
-        width: 100%;
-      }
-    }
+    width: 100%;
 
     &--more {
       display: none;
       position: relative;
 
-      a {
-        &:after {
-          bottom: 2px;
-          content: '  \0025BC';
-          display: inline-block;
-          font-size: .75em;
-          margin-left: 5px;
-          position: relative;
-        }
+      > a:after {
+        bottom: 2px;
+        content: '  \0025BC';
+        display: inline-block;
+        font-size: .75em;
+        margin-left: 5px;
+        position: relative;
+      }
+
+      &.active > a:after {
+        transform: rotate(180deg);
+      }
+    }
+
+    > a {
+      margin-left: 34px;
+      position: relative;
+
+      &:hover {
+        left: 10px;
       }
 
       &.active {
-        a {
-          &:after {
-            transform: rotate(180deg);
-          }
-        }
+        border-bottom: 2px solid siteColor(vam-white);
       }
     }
 
@@ -428,11 +411,35 @@ $nav-breakpoints: (
       display: inline-block;
       margin: 23px 12px;
       transition: border .2s;
+      width: auto;
 
       &--learning,
       &--join,
       &--shop {
         display: none;
+      }
+
+      > a {
+        margin-left: 0;
+        padding: 5px 0;
+
+        &:hover {
+          color: siteColor(vam-grey-5);
+          left: initial;
+        }
+
+        &.active {
+          border: none;
+
+          &::after {
+            background: siteColor(vam-white);
+            box-shadow: 0 1px 3px 0 rgba(siteColor(vam-black), .8);
+            content: '';
+            display: block;
+            height: 3px;
+            margin: 4px 0 -7px 0;
+          }
+        }
       }
     }
 
@@ -457,11 +464,11 @@ $nav-breakpoints: (
   }
 
   &__core__item__icon {
-    display: inline;
-    height: 20px;
-    margin-right: 10px;
-    padding-top: 3px;
-    width: 20px;
+    height: 18px;
+    left: -34px;
+    position: absolute;
+    top: 5px;
+    width: 18px;
 
     @include bpMinNav(small) {
       display: none;

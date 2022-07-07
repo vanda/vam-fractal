@@ -1,7 +1,7 @@
 .b-facet-box {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: rgba(29, 30, 32, .92);
+  background-color: rgba(siteColor(vam-black), .92);
   color: siteColor(vam-white);
   display: none;
   height: 100%;
