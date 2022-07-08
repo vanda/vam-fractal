@@ -1,7 +1,19 @@
 <section class="b-venue-core-info s-themed--background-color">
   <div class="b-venue-core-info__img-container">
     <div class="b-venue-core-info__img-badge">Opening 2023</div>
-    <img class="b-venue-core-info__img" src="https://vanda-production-assets.s3.amazonaws.com/2021/05/14/09/14/55/3cfa92bd-4f1c-4d13-a0cc-840a3f60bf41/Hotels-header-1280.jpg" />
+    <picture>
+      <source srcset="{% for k, img in imageLandscape %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+          media="(max-width: 768px)">
+      <img class="b-venue-card__image"
+          itemprop="contentUrl"
+          alt="" 
+          data-sizes="(min-width: 1200px) 480px,
+                      (min-width: 992px) 412px,
+                      (min-width: 768px) 320px,
+                      calc(100vw - 20px)"
+          data-srcset="{% for k, img in imageSquare %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+          src="{{ imageSquare[320] }}">
+    </picture>
   </div>
   <div class="b-venue-core-info__content">
     <div>
