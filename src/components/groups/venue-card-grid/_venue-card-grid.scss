@@ -3,13 +3,13 @@
   width: 100%;
 
   &__header {
-    @include typeSetting(5);
+    @include typeSetting(5, bold);
     color: #fff;
     margin-bottom: 18px;
     text-align: center;
 
     @include bpMinMedium {
-      @include typeSetting(6);
+      @include typeSetting(6, bold);
       margin-bottom: 23px;
     }
   }
