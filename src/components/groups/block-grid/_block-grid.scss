@@ -32,6 +32,17 @@
     }
   }
 
+  // sass-lint:disable no-css-comments
+  /* this is required to differentiate from b-block-grid__header being used outside of a b-block-grid, as it is in places - in those cases it gets the default margins defined above */
+  // sass-lint:enable no-css-comments
+  > #{&}__header {
+    margin: 40px 0 50px;
+
+    @include bpMinSmall {
+      margin: 50px 0 70px;
+    }
+  }
+
   &__title {
     @include typeSetting(5, bold);
     text-align: center;
