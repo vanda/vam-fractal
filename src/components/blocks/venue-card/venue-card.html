@@ -1,7 +1,9 @@
 <a class="b-venue-card{% for m in modifiers %} b-venue-card--{{ m }}{% endfor %}" href="{{ href }}">
-  <div class="b-venue-card__title">
-    <h3>{{ title | safe }}</h3>
-    <svg class="b-venue-card__title-icon" role="presentation" aria-label="external link"> <use xlink:href="/assets/svg/svg-template.svg#link-external"></use></svg>
+  <div class="b-venue-card__header">
+    <h3 class="b-venue-card__title">
+      {{ title | safe }}
+      <svg class="b-venue-card__title-icon" role="presentation" aria-label="external link"> <use xlink:href="/assets/svg/svg-template.svg#link-external"></use></svg>
+    </h3>
     <div class="b-venue-card__subtitle">
       {{ subtitle | safe }}
     </div>

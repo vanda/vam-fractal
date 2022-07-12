@@ -19,40 +19,37 @@
     @include defaultFocus;
   }
 
-  &__title {
-    align-items: baseline;
+  &__header {
     color: siteColor(vam-white);
+    padding: 10px;
+    position: absolute;
+    text-shadow: 0 1px 3px siteColor(vam-black);
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__title {
+    @include typeSetting(4, bold);
+    align-items: baseline;
     column-gap: 5px;
     display: flex;
     flex-wrap: wrap;
-    left: 10px;
-    position: absolute;
-    text-shadow: 0 1px 3px siteColor(vam-black);
-    top: 10px;
-    z-index: 1;
 
-    h3 {
+    @include bpMinXSmall {
+      @include typeSetting(3, bold);
+    }
+
+    @include bpMinMedium {
       @include typeSetting(4, bold);
+    }
 
-      @include bpMinXSmall {
-        @include typeSetting(3);
-        font-weight: 500;
-      }
-  
-      @include bpMinMedium {
-        @include typeSetting(4);
-        font-weight: 500;
-      }
-  
-      @include bpMinLarge {
-        @include typeSetting(5);
-        font-weight: 500;
-      }
+    @include bpMinLarge {
+      font-size: 21px;
+    }
 
-      .b-venue-card:hover &,
-      .b-venue-card:focus & {
-        text-decoration: underline;
-      }
+    .b-venue-card:hover &,
+    .b-venue-card:focus & {
+      text-decoration: underline;
     }
   }
 
