@@ -8,7 +8,7 @@
     margin-bottom: 18px;
     text-align: center;
 
-    @include bpMinMedium {
+    @include bpMinSmall {
       @include typeSetting(6, bold);
       margin-bottom: 23px;
     }
