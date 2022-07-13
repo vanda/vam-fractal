@@ -34,6 +34,7 @@
     column-gap: 5px;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 2px;
 
     @include bpMinXSmall {
       @include typeSetting(3, bold);
@@ -45,6 +46,7 @@
 
     @include bpMinLarge {
       font-size: 21px;
+      line-height: 26px;
     }
 
     .b-venue-card:hover &,
