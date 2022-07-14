@@ -117,6 +117,28 @@ module.exports = {
           'tiktok'
         ]
       }
+    },
+    {
+      name: 'wordmark',
+      label: 'Wordmark',
+      context: {
+        icons: [
+          'wordmark-academy',
+          'wordmark-americas-foundation',
+          'wordmark-directors-circle',
+          'wordmark-dundee',
+          'wordmark-east-museum',
+          'wordmark-east-storehouse',
+          'wordmark-east',
+          'wordmark-membership',
+          'wordmark-patrons',
+          'wordmark-publishing',
+          'wordmark-shop',
+          'wordmark-southken',
+          'wordmark-wedgwood',
+          'wordmark-young'
+        ]
+      }
     }
   ]
 };
