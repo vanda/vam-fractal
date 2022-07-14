@@ -141,6 +141,10 @@
         max-width: none;
       }
     }
+
+    > .b-icon-badge {
+      pointer-events: none;
+    }
   }
 
   &__type {
