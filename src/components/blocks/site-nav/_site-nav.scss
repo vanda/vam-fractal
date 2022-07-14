@@ -534,21 +534,20 @@ $nav-breakpoints: (
       padding: 86px 0 5px;
       position: absolute;
       top: -100vh;
-      transition: top .4s ease-out, left .2s ease, width .2s ease;
+      transition: top .2s ease-in;
       width: 100%;
       z-index: -1;
 
       &--active {
         overflow: auto;
         top: 0;
+        transition: top .2s ease-out;
       }
     }
 
     @include bpMinLarge {
-      &--active {
-        left: calc((#{map-get($breakpoints, large)} - 100vw) / 2);
-        width: 100vw;
-      }
+      left: calc((#{map-get($breakpoints, large)} - 100vw) / 2);
+      width: 100vw;
     }
 
     &__wrapper {
