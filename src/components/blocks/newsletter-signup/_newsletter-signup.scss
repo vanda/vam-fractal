@@ -270,7 +270,7 @@
     }
 
     &--footer {
-      @include typeSetting(5);
+      @include typeSetting(5, bold);
       text-align: left;
     }
   }
