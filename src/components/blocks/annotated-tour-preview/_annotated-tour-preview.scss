@@ -13,6 +13,7 @@
   &__overlay {
     background-color: rgba(siteColor(vam-black), .5);
     height: 100%;
+    left: 0;
     width: 100%;
 
     &-container {
@@ -39,6 +40,7 @@
   &__image {
     display: block;
     height: 100%;
+    left: 0;
     margin: auto;
     
     .objectfit & {
