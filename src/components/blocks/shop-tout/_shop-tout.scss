@@ -60,7 +60,7 @@
 
     > a > img {
       height: 355px;
-      object-fit: cover;
+      object-fit: contain;
       width: 100%;
 
       @include bpMinXSmall {
