@@ -31,7 +31,7 @@ $nav-breakpoints: (
     font-size: 0;
     position: absolute;
 
-    &:focus,
+    &:focus-visible,
     &:active {
       background: siteColor(vam-white);
       border: 1px solid siteColor(vam-black);
@@ -44,14 +44,14 @@ $nav-breakpoints: (
       z-index: 9999;
     }
 
-    &--whatson:focus,
+    &--whatson:focus-visible,
     &--whatson:active {
       left: 50%;
       top: -40px;
       transform: translateX(-50%);
     }
 
-    &--home:focus,
+    &--home:focus-visible,
     &--home:active {
       left: 9px;
       position: absolute;
