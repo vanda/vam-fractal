@@ -22,11 +22,16 @@ section {
   display: block;
 }
 
+html {
+  font-size: fontSize($base-font-size) + px;
+}
+
 body {
+  @include typeSetting($base-font-size);
   background-color: siteColor(vam-white);
   color: siteColor(vam-black);
   font-family: fontFamily(text);
-  line-height: 1.7;
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -44,6 +49,7 @@ q {
   &:before,
   &:after {
     content: '';
+    content: none;
   }
 }
 
@@ -83,7 +89,7 @@ ol,
 ul,
 dl,
 iframe {
-  margin-bottom: 10px;
+  margin-bottom: $spacing-small;
 }
 
 a {
@@ -107,6 +113,7 @@ button {
 hr {
   background-color: transparent;
   clear: both;
+  color: siteColor(vam-grey-4);
   font-size: 20px;
   font-weight: 800;
   margin: 0 0 10px;
@@ -152,4 +159,9 @@ ol {
 
 ul {
   list-style-type: disc;
+}
+
+b, 
+strong {
+  @include fontWeight(x-bold);
 }

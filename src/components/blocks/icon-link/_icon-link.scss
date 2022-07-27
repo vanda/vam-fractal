@@ -6,6 +6,10 @@
   position: relative;
   width: 45px;
 
+  &--light {
+    color: siteColor(vam-white);
+  }
+
   &__download {
     border: 1px solid siteColor(vam-black);
     border-radius: 50%;
@@ -35,6 +39,22 @@
       .b-icon-link:hover & {
         opacity: 1;
       }
+
+      .b-icon-link--no-border & {
+        border-width: 0;
+      }
+
+      .b-icon-link--no-border:hover & {
+        @include bpMaxXSmall {
+          background-color: transparent;
+          border-width: 0;
+        }
+
+        background-color: siteColor(vam-black);
+        border: 1px solid siteColor(vam-black);
+        opacity: .6;
+        z-index: 0;
+      }
     }
     &-download {
       &::after {
@@ -53,5 +73,6 @@
     right: 27%;
     top: 27%;
     width: 46%;
+    z-index: 1;
   }
 }

@@ -1,15 +1,6 @@
-{% if modifier === "--component" %}
-<section class="b-promo">
-  <article class="b-promo__item js-object-fit-container">
-    <img srcset="https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_320.jpg 320w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_640.jpg 640w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_960.jpg 960w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_1280.jpg 1280w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_1920.jpg 1920w, https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_2560.jpg 2560w" sizes="(min-width: 1200px) 1200px, 100vw" class="b-promo__image" src="https://vanda-production-assets.s3.amazonaws.com/2016/07/27/10/04/membership_960.jpg" alt="Membership">
-    <a id="signup" name="signup" class=""></a>
-    <div class="b-promo__content b-promo__content--newsletter">
-{% endif %}
 
-{% if not modifier === "--component" %}
-  <a id="signup" name="signup"></a>
-  <div class="b-newsletter {% if modifier.length > 0 %}b-newsletter{{ modifier }}{% endif %}">
-{% endif %}
+<div class="b-newsletter {% if modifier.length > 0 %}b-newsletter--{{ modifier }}{% endif %}">
+
   {% if modifier.length === 0 %}
     <div class="b-newsletter__logo">
         <svg role="img">
@@ -18,37 +9,31 @@
     </div>
   {% endif %}
 
-  <form name="signup" id="signup" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form{{ modifier }}{% endif %} js-newsletter_form {% if modifier === '--component' %} b-promo__anchor {% endif %}">
-    {% if modifier === "--footer" %}
+
+  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form">
+    {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container">
     {% endif %}
 
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-title">
     {% endif %}
-    <h1 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline{{ modifier }}{% endif %}">
-      {% if modifier === "--footer" %}
+    <h2 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline--{{ modifier }}{% endif %}">
         Sign up to our emails
-      {% else %}
-        Sign up to get the latest V&A news
-      {% endif %}
-    </h1>
-    <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor{{ modifier }}{% endif %} js-newsletter__descriptor">
-    {% if (modifier === "--footer") or (modifier === "--component") %}
-      Hear about exhibitions, events, offers and opportunities from V&A South Kensington
-    {% else %}
-      Hear about exhibitions, events, offers and opportunities from the V&A and the V&A Museum of Childhood.
-    {% endif %}
+    </h2>
+
+    <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor--{{ modifier }}{% endif %} js-newsletter__descriptor">
+      Hear about collections, exhibitions, courses and events from the V&A and ways you can support us. 
     </p>
 
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       </div>
     {% endif %}
 
-    {% if modifier === "--footer" %}
+    {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-form">
     {% endif %}
-    <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields{{ modifier }}{% endif %}">
+    <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields--{{ modifier }}{% endif %}">
       <input type="hidden" name="addressbookid" value="3410112">
       <input type="hidden" name="ci_isconsentform" value="true">
       <input type="hidden" name="userid" value="193690">
@@ -56,40 +41,36 @@
       <!-- ReturnURL - when the user hits submit, they'll get sent here -->
       <input type="hidden" name="ReturnURL" value="http://www.vam.ac.uk/content/email/confirmation/?result=success">
       <!-- Email - the user's email address -->
-
-      <input aria-invalid="false" type="text" placeholder="Enter your email address" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field{{ modifier }}{% endif %}">
-      <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit{{ modifier }}{% endif %} js-newsletter__submit">
-    </div>
-    <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info{{ modifier }}{% endif %}">
-      {% if modifier === "--component" %}
-        <div class="b-newsletter__info-statement">
-      {% endif %}
-
-      {% if modifier === "--footer" %}
-        You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy notice</a>.
+      <input aria-invalid="false" type="text" placeholder="name@example.com" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field--{{ modifier }}{% endif %}">
+      
+      {% if modifier === "footer" %}
+        <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit--{{ modifier }}{% endif %} js-newsletter__submit">
       {% else %}
-        You can opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=# class="u-link">privacy policy.</a>
-      {% endif %}
-
-      {% if modifier === "--component" %}
-        </div>
-        <div
-        class="u-btn u-btn--black b-newsletter__form-submit b-newsletter__form-submit--component js-newsletter__submit b-newsletter__form-submit--hidden"
-        ></div>
+        <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--black b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit--{{ modifier }}{% endif %} js-newsletter__submit s-themed s-themed--background-color s-themed--border-color s-themed--background-color--hover s-themed--border-color--hover">
       {% endif %}
     </div>
-    {% if modifier === "--footer" %}
+
+    <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info--{{ modifier }}{% endif %}">
+      You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=/info/privacy-notice class="u-link">privacy notice</a>.
+      {% if modifier === "component" %}
+        </div>
+      {% endif %}
+    </div>
+    {% if modifier === "footer" %}
       </div>
-    {% endif %}
-    {% if modifier === "--footer" %}
       </div>
     {% endif %}
   </form>
-{% if not modifier === "--component" %}
+
+{% if modifier === "footer" %}
+  </div>
+{% endif %}
+
+{% if not modifier === "component" %}
 </div>
 {% endif %}
 
-{% if modifier === "--component" %}
+{% if modifier === "component" %}
   </div>
   </a>
   </article>

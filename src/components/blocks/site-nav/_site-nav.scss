@@ -1,8 +1,7 @@
 $nav-breakpoints: (
-  small: 575px,
-  medium: 860px,
-  large: 900px,
-  larger: 1000px
+  small: 768px,
+  medium: 992px,
+  large: 1050px
 );
 
 @mixin bpMinNav($breakpoint) {
@@ -13,22 +12,26 @@ $nav-breakpoints: (
 
 .b-site-nav {
   @include typeSetting(5);
-  left: 0;
+  background-image: linear-gradient(hsla(0, 0, 0, .4), transparent);
+  height: 150px;
   line-height: 1.7;
   position: relative;
-  top: 0;
-  width: 100%;
   z-index: 100;
 
   @media print {
     display: none;
   }
 
+  &--mini {
+    background: none;
+    height: auto;
+  }
+
   &__access-nav-link {
     font-size: 0;
     position: absolute;
 
-    &:focus,
+    &:focus-visible,
     &:active {
       background: siteColor(vam-white);
       border: 1px solid siteColor(vam-black);
@@ -41,14 +44,14 @@ $nav-breakpoints: (
       z-index: 9999;
     }
 
-    &--whatson:focus,
+    &--whatson:focus-visible,
     &--whatson:active {
       left: 50%;
       top: -40px;
       transform: translateX(-50%);
     }
 
-    &--home:focus,
+    &--home:focus-visible,
     &--home:active {
       left: 9px;
       position: absolute;
@@ -72,11 +75,32 @@ $nav-breakpoints: (
     }
   }
 
+  &__logo {
+    color: siteColor(vam-white);
+    display: none;
+
+    @include bpMinNav(small) {
+      display: inline-block;
+    }
+
+    &--mobile {
+      display: inline-block;
+      margin: 20px 10px;
+    }
+
+    >svg {
+      float: left;
+      height: 40px;
+      width: 71px;
+    }
+  }
+
   &__mobile {
-    background-color: siteColor(vam-grey-1);
-    color: siteColor(vam-grey-6);
+    color: siteColor(vam-white);
     min-height: 60px;
+    position: absolute;
     transform: translate3d(0, 0, 0);
+    width: 100%;
 
     @include bpMinNav(small) {
       display: none;
@@ -89,7 +113,6 @@ $nav-breakpoints: (
       height: 40px;
       letter-spacing: 2px;
       padding: 10px 18px;
-      text-transform: uppercase;
     }
   }
 
@@ -117,11 +140,10 @@ $nav-breakpoints: (
   &__mobile-toggle-text {
     color: siteColor(vam-white);
     float: right;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    padding: 19px 58px 0 0;
-    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 26px 62px 0 0;
+    text-shadow: 0 1px 3px rgba(siteColor(vam-black), .8), 0 -1px 3px rgba(siteColor(vam-black), .8);
 
     @media (max-width: '286px') {
       display: none;
@@ -137,15 +159,15 @@ $nav-breakpoints: (
   &__core__bag,
   &__core__search-btn {
     background: transparent;
-    border: 1px solid currentColor;
+    border: 2px solid currentColor;
     border-radius: 50%;
-    box-shadow: 0 0 1px 0 currentColor inset, 0 0 1px 0 currentColor;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, .05), 0 0 50px 1px rgba(0, 0, 0, .2), inset 0 0 50px 4px rgba(0, 0, 0, .24);
     display: inline-block;
     height: 40px;
-    margin: 10px;
+    margin-left: 10px;
     width: 40px;
 
-    svg {
+    > svg {
       height: 16px;
       margin: 11px;
       width: 17px;
@@ -162,15 +184,12 @@ $nav-breakpoints: (
 
   &__mobile-bag {
     float: right;
-    margin-right: 60px;
+    margin: 20px 60px 0 0;
     position: relative;
   }
 
   &__core__rhs {
     display: none;
-    position: absolute;
-    right: 10px;
-    top: 0;
 
     @include bpMinNav(small) {
       display: inline-block;
@@ -189,24 +208,24 @@ $nav-breakpoints: (
 
   &__mobile-bag,
   &__core__bag {
-    svg {
+    > svg {
       height: 26px;
-      margin: 4px 7px;
+      margin: 4px 6px;
       width: 24px;
     }
   }
 
   &__core__search-btn {
-    & &-open {
+    > #{&}-open {
       height: 22px;
-      margin: 8px;
+      margin: 7px;
       width: 22px;
     }
 
-    & &-close {
+    > #{&}-close {
       display: none;
       height: 16px;
-      margin: 11px;
+      margin: 10px;
       width: 16px;
     }
 
@@ -235,15 +254,15 @@ $nav-breakpoints: (
     position: absolute;
     right: 0;
     text-align: center;
-    top: 10px;
+    top: 11px;
   }
 
   &__mobile-toggle {
     color: siteColor(vam-white);
     position: fixed;
-    right: 0;
+    right: 10px;
     text-align: center;
-    top: 0;
+    top: 20px;
     transition: all .5s;
     z-index: 3;
 
@@ -262,7 +281,7 @@ $nav-breakpoints: (
 
     svg {
       height: 18px;
-      margin: 10px auto;
+      margin: 9px auto;
       width: 18px;
     }
 
@@ -292,9 +311,11 @@ $nav-breakpoints: (
 
   &__core {
     background-color: siteColor(vam-grey-1);
-    color: siteColor(vam-grey-6);
+    color: siteColor(vam-white);
     display: flex;
     flex-direction: column;
+    margin: auto;
+    max-width: 1200px;
     min-height: 60px;
     position: fixed;
     top: -100%;
@@ -303,6 +324,7 @@ $nav-breakpoints: (
     width: 100%;
     z-index: 2;
 
+
     .b-site-nav--open & {
       height: 100vh;
       overflow: auto;
@@ -310,122 +332,126 @@ $nav-breakpoints: (
     }
 
     @include bpMinNav(small) {
-      background-color: siteColor(vam-grey-1);
+      align-items: center;
+      background: none;
+      flex-direction: row;
       height: auto;
+      justify-content: space-between;
+      padding: 0 10px;
       position: relative;
       top: 0;
+    }
+
+    @include bpMinSmall {
+      padding: 0 65px;
     }
   }
 
   &__core__items {
     align-items: baseline;
     display: none;
-    flex-direction: column;
-    flex-grow: 1;
-    font-size: 24px;
-    justify-content: space-around;
-    padding: 20px 0 75px;
-    text-rendering: geometricPrecision;
-
-    @include bpMinNav(small) {
-      display: flex;
-    }
+    @include typeSetting(5, bold);
+    margin: 40px 0 0;
 
     .b-site-nav--open & {
-      display: flex;
-    }
-
-    a {
-      &:hover {
-        margin-left: 10px;
-      }
+      display: block;
     }
 
     @include bpMinNav(small) {
       align-items: center;
+      display: flex;
       flex-direction: row;
-      font-size: 14px;
+      @include typeSetting(4, regular);
       justify-content: center;
-      letter-spacing: 2.5px;
       margin: 0;
       padding: 0;
       text-align: center;
-      text-transform: uppercase;
-
-      a {
-        border-bottom: 4px solid transparent;
-        margin: 4px 0 0;
-        padding: 16px 0;
-
-        &:hover {
-          margin-left: 0;
-        }
-      }
+      text-shadow: 0 1px 3px rgba(siteColor(vam-black), .8), 0 -1px 3px rgba(siteColor(vam-black), .8);
     }
   }
 
   &__core__item {
     color: siteColor(vam-white);
-    font-weight: 700;
-    margin: 0;
-    padding: 0 15px;
-
-    @media (max-width: (map-get($nav-breakpoints, small) - 1)) {
-      display: block;
-      width: 100%;
-
-      a {
-        display: block;
-        width: 100%;
-      }
-    }
+    display: block;
+    margin: 0 20px 30px;
+    width: 100%;
 
     &--more {
       display: none;
       position: relative;
 
-      a {
-        &:after {
-          bottom: 1px;
-          content: '  \0025BC';
-          font-size: .75em;
-          position: relative;
-          right: .175em;
-        }
+      > a:after {
+        bottom: 2px;
+        content: '  \0025BC';
+        display: inline-block;
+        font-size: .75em;
+        margin-left: 5px;
+        position: relative;
+      }
+
+      &.active > a:after {
+        transform: rotate(180deg);
+      }
+    }
+
+    > a {
+      margin-left: 34px;
+      position: relative;
+
+      &:hover {
+        left: 10px;
       }
 
       &.active {
-        a {
-          &:after {
-            content: '  \0025B2';
-          }
-        }
+        border-bottom: 2px solid siteColor(vam-white);
       }
     }
 
     @include bpMinNav(small) {
       display: inline-block;
-      padding: 18px 12px;
+      margin: 23px 12px;
       transition: border .2s;
+      width: auto;
 
-      &--collections,
       &--learning,
       &--join,
       &--shop {
         display: none;
       }
+
+      > a {
+        margin-left: 0;
+        padding: 5px 0;
+
+        &:hover {
+          color: siteColor(vam-grey-5);
+          left: initial;
+        }
+
+        &.active {
+          border: none;
+
+          &::after {
+            background: siteColor(vam-white);
+            box-shadow: 0 1px 3px 0 rgba(siteColor(vam-black), .8);
+            content: '';
+            display: block;
+            height: 3px;
+            margin: 4px 0 -7px 0;
+          }
+        }
+      }
     }
 
     @include bpMinNav(medium) {
-      padding: 18px 16px;
+      margin: 23px 16px;
 
-      &--collections,
       &--learning {
         display: inline;
       }
     }
 
-    @include bpMinNav(larger) {
+    @include bpMinNav(large) {
       &--more {
         display: none;
       }
@@ -438,11 +464,11 @@ $nav-breakpoints: (
   }
 
   &__core__item__icon {
-    display: inline;
-    height: 20px;
-    margin-right: 10px;
-    padding-top: 3px;
-    width: 20px;
+    height: 18px;
+    left: -34px;
+    position: absolute;
+    top: 5px;
+    width: 18px;
 
     @include bpMinNav(small) {
       display: none;
@@ -450,15 +476,19 @@ $nav-breakpoints: (
   }
 
   &__core__overflowitems {
-    background-color: siteColor(vam-grey-1);
     display: none;
-    font-size: 14px;
+    font-size: 15px;
+    left: -20px;
     list-style-type: none;
+    margin: 0;
     min-width: 175px;
     position: absolute;
-    right: 0;
     text-align: left;
-    top: 100%;
+    top: 32px;
+
+    .b-site-nav--solid & {
+      background: siteColor(vam-grey-1);
+    }
 
     .active & {
       display: block;
@@ -475,13 +505,13 @@ $nav-breakpoints: (
       }
     }
 
-    @include bpMinNav(larger) {
+    @include bpMinNav(large) {
       display: none;
     }
   }
 
   &__core__overflowitem {
-    padding: 10px 15px;
+    margin: 0 0 8px 20px;
 
     @include bpMinNav(medium) {
       &--collections,
@@ -498,18 +528,26 @@ $nav-breakpoints: (
     padding: 45px 0 10px;
 
     @include bpMinNav(small) {
+      background-color: siteColor(vam-grey-1);
       height: 100vh;
-      padding: 27px 0 5px;
+      left: 0;
+      padding: 86px 0 5px;
       position: absolute;
       top: -100vh;
-      transition: top .5s;
+      transition: top .2s ease-in;
       width: 100%;
       z-index: -1;
 
       &--active {
         overflow: auto;
-        top: 59px;
+        top: 0;
+        transition: top .2s ease-out;
       }
+    }
+
+    @include bpMinLarge {
+      left: calc((#{map-get($breakpoints, large)} - 100vw) / 2);
+      width: 100vw;
     }
 
     &__wrapper {

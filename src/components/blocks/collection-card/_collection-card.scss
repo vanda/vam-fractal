@@ -52,13 +52,13 @@
   }
 
   &__overlay-text {
-    @include typeSetting(2, semi-bold, uppercase);
+    @include typeSetting(3, bold);
     color: siteColor(vam-white);
     text-shadow: 0 1px 2px rgba(siteColor(vam-black), .5);
   }
 
   &__name {
-    @include typeSetting(5, bold);
+    @include typeSetting(4, bold);
     background-color: siteColor(vam-white);
     border-radius: 0 0 2px 2px;
     color: siteColor(vam-black);

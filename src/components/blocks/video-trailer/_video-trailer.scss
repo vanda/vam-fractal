@@ -1,16 +1,15 @@
 .b-video-trailer {
   background-color: siteColor(vam-white);
-  display: inline-block;
-  margin: 5px 0;
-  padding: 15px 10px;
-  position: relative;
-  width: 100%;
+  overflow: hidden;
+  padding: 0 10px;
 
   @include bpMinSmall {
-    padding-bottom: 60px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 54px;
+    padding: 0 40px 60px;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    overflow: initial;
   }
 
   &__content  {
@@ -22,6 +21,7 @@
   &__image {
     object-fit: cover;
     width: 100%;
+
     .b-video-trailer__link:focus & {
       @include defaultFocus;
     }
@@ -30,6 +30,7 @@
   &__link {
     height: 100%;
     width: 100%;
+
     &:focus {
       outline: 0;
     }
@@ -45,17 +46,18 @@
     }
     
     &-title {
-      @include typeSetting(3, bold, uppercase);
+      @include typeSetting(5, bold);
       margin: auto;
       text-align: center;
 
       @include bpMinSmall {
-        @include typeSetting(5, bold, uppercase);
+        @include typeSetting(6, bold);
       }
     }
   }
 
   &__icon {
+    background-color: #fff;
     border-radius: 50%;
     height: 60px;
     left: 50%;

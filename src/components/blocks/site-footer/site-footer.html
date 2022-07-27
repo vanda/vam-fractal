@@ -2,276 +2,287 @@
   <a name="footernav" id="footernav"></a>
 
   <div class="b-site-footer__backtotop">
-    <a href="#vam_body" class="b-site-footer__backtotop-btn s-themed--border-color">Back to the top</a>
+    <a href="#vam_body" class="b-site-footer__backtotop-btn">Back to the top</a>
   </div>
-  <div class="b-newsletter b-newsletter--footer b-site-footer__content b-site-footer__content--newsletter">
-    <form name="signup-footer" id="signup-footer" action="//email-vam.org.uk/signup.ashx" autocomplete="off" method="POST" class="b-newsletter__form b-newsletter__form--footer b-newsletter__form--footer-main js-newsletter_form">
-      <div class="b-newsletter__flex-form-container">
-        <div class="b-newsletter__flex-form-container-title">
-          <h2 class="b-newsletter__headline b-newsletter__headline--footer">
-            Sign up to our emails
-          </h2>
-          <p aria-live="polite" class="b-newsletter__descriptor b-newsletter__descriptor--footer js-newsletter__descriptor">
-            Hear about collections, exhibitions, courses and events from the V&amp;A and ways you can support us.
-          </p>
-        </div>
-        <div class="b-newsletter__flex-form-container-form">
-          <div class="b-newsletter__form-fields b-newsletter__form-fields--footer">
-            <input type="hidden" name="ci_isconsentform" value="true">
-            <input type="hidden" name="userid" value="193690">
-            <input type="hidden" name="SIG111c61b9060bb903d4d00273e56ca0b7f2a5008ddd91799cf706ed2bbe35672f" value="">
-            <input type="hidden" name="addressbookid" value="23385029">
-            <input type="hidden" name="programid" value="214084">
-            <!-- ReturnURL - when the user hits submit, they'll get sent here -->
-            <input type="hidden" name="ReturnURL" value="https://www.vam.ac.uk/info/va-newsletter">
-            <input type="hidden" name="ci_userConsentText" value="Hear about activities, events and exhibitions from the V&A. You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full privacy notice.">
-            <input type="hidden" id="ci_consenturl_footer" name="ci_consenturl" value="">
-            <!-- Email - the user's email address -->
-            <input aria-invalid="false" type="text" placeholder="name@example.com" name="Email" class="js-emailValidation b-newsletter__form-fields-field b-newsletter__form-fields-field--footer" aria-label="Enter your email address">
-            <input type="hidden" name="ci_userConsentCheckBox" value="on">
-            <input type="submit" value="Sign up" name="btnsubmit" class="u-btn b-newsletter__form-submit b-newsletter__form-submit--footer js-newsletter__submit s-themed s-themed--background-color s-themed--background-color--hover s-themed--border-color s-themed--border-color--hover">
-          </div>
-          <script language="javascript">
-					var urlInput = document.getElementById("ci_consenturl_footer");
-					if (urlInput != null && urlInput != 'undefined') {
-						urlInput.value = encodeURI(window.location.href);
-						}
-			  	</script>
 
-          <div class="b-newsletter__info b-newsletter__info--footer">
-            You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href="/info/privacy-notice" class="u-link">privacy notice</a>.
-          </div>
-        </div>
-      </div>
-    </form>
+  <div class="b-site-footer__content b-site-footer__content--newsletter">
+    {%- render "@newsletter-signup--footer" -%}
   </div>
+  
   <div class="b-site-footer__content">
-    <div class="b-site-footer__name" itemprop="name">
-      Victoria and <br/>Albert Museum
-    </div>
-
-    <section class="b-site-footer__block b-site-footer__info-block" itemscope itemtype="http://schema.org/Organization">
-      <div class="b-site-footer__block">
-        <h2 class="b-site-footer__header">Opening Hours</h2>
-          <div class="b-site-footer__item b-site-footer__times">
-              <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45"><br/>Wednesday&ndash;Sunday, 10.00&ndash;17.45</div>
-              <!--<div itemprop="openingHours" datetime="Fr 10:00-22:00">Friday: 10.00 &ndash; 22.00</div>-->
-          </div>
-        <p class="b-site-footer__item">Admission is free<br><br></p>
-      </div>
-      <address class="b-site-footer__item" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-        <span itemprop="streetAddress">Cromwell Road</span>
-        <br><span itemprop="addressLocality">London</span> <span itemprop="postalCode">SW7 2RL</span>
-      </address>
-      <p class="b-site-footer__item">
-        <a class="b-site-footer__link s-themed--color" itemprop="telephone" href="tel:+44 (0)20 7942 2000">+44 (0)20 7942 2000</a>
-        <!--<%= link_to contact_centre_phone_number, "tel:#{contact_centre_phone_number}", class: 'b-site-footer__link s-themed--color', itemprop: 'telephone' %>-->
-        <br><a class="b-site-footer__link s-themed--color" itemprop="email" href="mailto:hello@vam.ac.uk">hello@vam.ac.uk</a>
-        <!--<%= mail_to 'hello@vam.ac.uk', name = nil, itemprop: 'email', class: 'b-site-footer__link s-themed--color' %>-->
-      </p>
-    </section>
+    <h2 class="b-site-footer__name" itemprop="name">Victoria and <br/>Albert Museum</h2>
 
     <div class="b-site-footer__blocks">
-
       <section class="b-site-footer__block">
-        <h2 class="b-site-footer__header">About the V&amp;A</h2>
+        <h3 class="b-site-footer__header">About the V&amp;A</h3>
         <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/about-us">About us</a>
+            <a class="b-site-footer__link" href="/info/about-us">About us</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/contact-us">Contact us</a>
+            <a class="b-site-footer__link" href="/info/contact-us">Contact us</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/va-national">National work</a>
+            <a class="b-site-footer__link" href="/info/va-national">National work</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/va-international">International work</a>
+            <a class="b-site-footer__link" href="/info/va-international">International work</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/research">Research</a>
+            <a class="b-site-footer__link" href="/info/research">Research</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/conservation">Conservation</a>
+            <a class="b-site-footer__link" href="/conservation">Conservation</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/sustainability">Sustainability</a>
+            <a class="b-site-footer__link" href="/info/sustainability">Sustainability</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/press">Press</a>
+            <a class="b-site-footer__link" href="/info/press">Press</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/jobs">Jobs</a>
+            <a class="b-site-footer__link" href="/info/jobs">Jobs</a>
           </li>
         </ul>
       </section>
 
       <section class="b-site-footer__block">
-        <h2 class="b-site-footer__header">Plan a&nbsp;visit</h2>
+        <h3 class="b-site-footer__header">Join &amp; Support</h3>
         <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/visit/#gettinghere">Getting here</a>
+            <a class="b-site-footer__link" href="/membership">Membership</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/disability-access">Disability &amp; access</a>
+            <a class="b-site-footer__link" href="/info/corporate-partnerships">Corporate partnerships</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/features/digitalmap">Map of the V&amp;A</a>
+            <a class="b-site-footer__link" href="/info/futureplan">FuturePlan</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/visit/#closures">Gallery closures</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/visit/#cafe">Eat &amp; drink</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/friday-late">Friday Late</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/whatson">What's On</a>
+            <a class="b-site-footer__link" href="/info/join-support/#donate">Donate</a>
           </li>
         </ul>
       </section>
 
       <section class="b-site-footer__block">
-        <h2 class="b-site-footer__header">Resources</h2>
+        <h3 class="b-site-footer__header">Resources</h3>
         <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/collections">Explore the Collections</a>
+            <a class="b-site-footer__link" href="/collections">Explore the Collections</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/academy">V&amp;A Academy</a>
+            <a class="b-site-footer__link" href="/info/academy">V&amp;A Academy</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/nationalartlibrary">National Art Library</a>
+            <a class="b-site-footer__link" href="/nationalartlibrary">National Art Library</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/study-rooms">Study Rooms</a>
+            <a class="b-site-footer__link" href="/info/study-rooms">Study Rooms</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/archives">Archives</a>
+            <a class="b-site-footer__link" href="/info/archives">Archives</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/blog">Blog</a>
+            <a class="b-site-footer__link" href="/blog">Blog</a>
           </li>
         </ul>
       </section>
 
       <section class="b-site-footer__block">
-        <h2 class="b-site-footer__header">Join &amp; Support</h2>
+        <h3 class="b-site-footer__header">Commercial</h3>
         <ul class="b-site-footer__list">
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/membership">Membership</a>
+            <a class="b-site-footer__link" href="/shop">Shop</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/corporate-partnerships">Corporate partnerships</a>
+            <a class="b-site-footer__link" href="/info/brand-licensing">Licensing</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/futureplan">FuturePlan</a>
+            <a class="b-site-footer__link" href="/info/publishing">Publishing</a>
           </li>
           <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/join-support/#donate">Donate</a>
+            <a class="b-site-footer__link" href="http://www.vandaimages.com/">V&A images</a>
+          </li>
+          <li class="b-site-footer__item">
+            <a class="b-site-footer__link" href="/info/exhibitions-for-hire">Exhibitions for hire</a>
+          </li>
+          <li class="b-site-footer__item">
+            <a class="b-site-footer__link" href="/info/venue-hire">Venue hire</a>
           </li>
         </ul>
       </section>
-
-      <section class="b-site-footer__block">
-        <h2 class="b-site-footer__header">Commercial</h2>
-        <ul class="b-site-footer__list">
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/shop">Shop</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/brand-licensing">Licensing</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/publishing">Publishing</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="http://www.vandaimages.com/">V&A images</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/exhibitions-for-hire">Exhibitions for hire</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/venue-hire">Venue hire</a>
-          </li>
-        </ul>
-      </section>
-
-      <section class="b-site-footer__block">
-        <h2 class="b-site-footer__header">V&amp;A Family</h2>
-        <ul class="b-site-footer__list">
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/young">Young V&A</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/dundee">V&A Dundee</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/va-at-design-society-shekou">V&A at Design Society, Shekou</a>
-          </li>
-          <li class="b-site-footer__item">
-            <a class="b-site-footer__link s-themed--color" href="/info/va-east">V&A East</a>
-          </li>
-        </ul>
-      </section>
-
     </div>
 
-    <div class="b-site-footer__social">
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://www.facebook.com/victoriaandalbertmuseum" aria-label="Facebook">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#facebook"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="https://twitter.com/V_and_A" aria-label="Twitter">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#twitter"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://www.pinterest.com/vamuseum/" aria-label="Pinterest">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#pinterest"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://instagram.com/vamuseum" aria-label="Instagram">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#instagram"></use>
-          </svg>
-        </div>
-      </a>
-      <a class="b-icon-link s-themed--color s-themed--border-color" href="http://www.youtube.com/user/vamuseum" aria-label="YouTube">
-        <div class="b-icon-link__container">
-          <svg class="b-icon-link__icon" aria-hidden="true">
-            <use xlink:href="/assets/svg/svg-template.svg#youtube"></use>
-          </svg>
-        </div>
-      </a>
+    <h2 class="b-site-footer__name" itemprop="name">Visit the V&amp;A</h2>
+
+    <div class="b-site-footer__blocks">
+      <section class="b-site-footer__block">
+        <h3 class="b-site-footer__header">V&amp;A South Kensington</h3>
+        <ul class="b-site-footer__list">
+          <li class="b-site-footer__item">
+            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45">Wednesday&ndash;Sunday, <br />10.00&ndash;17.45</div>
+          </li>
+          <li class="b-site-footer__item">
+            Admission is free
+          </li>
+          <li class="b-site-footer__item">
+            Cromwell Road<br/>
+            London SW7 2RL
+          </li>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">Plan a visit</a>
+          </li>
+          <li class="b-site-footer__item">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">Access information</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="b-site-footer__block">
+        <h3 class="b-site-footer__header">V&amp;A Dundee</h3>
+        <ul class="b-site-footer__list">
+          <li class="b-site-footer__item">
+            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45">Wednesday&ndash;Sunday, <br />10.00&ndash;17.45</div>
+          </li>
+          <li class="b-site-footer__item">
+            Admission is free
+          </li>
+          <li class="b-site-footer__item">
+            1 Riverside Esplanade,<br/>
+            Dundee DD1 4EZ
+          </li>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">V&amp;A Dundee website</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="b-site-footer__block">
+        <h3 class="b-site-footer__header">V&amp;A Wedgwood Collection</h3>
+        <ul class="b-site-footer__list">
+          <li class="b-site-footer__item">
+            <div itemprop="openingHours" datetime="We,Th,Fr,Sa,Su 10:00-17:45">Wednesday&ndash;Sunday, <br />10.00&ndash;17.45</div>
+          </li>
+          <li class="b-site-footer__item">
+            Admission is free
+          </li>
+          <li class="b-site-footer__item">
+            Wedgwood Drive, Barlaston,<br/>
+            Stoke-on-Trent ST12 9ER
+          </li>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">World of Wedgwood website</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="b-site-footer__block">
+        <h3 class="b-site-footer__header">Young V&amp;A</h3>
+        <ul class="b-site-footer__list">
+          <li class="b-site-footer__item">
+            Opening 2023
+          </li>
+          <li class="b-site-footer__item">
+            East London
+          </li>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">About Young V&amp;A</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="b-site-footer__block">
+        <h3 class="b-site-footer__header">V&amp;A East</h3>
+        <ul class="b-site-footer__list">
+          <li class="b-site-footer__item">
+            Opening 2024
+          </li>
+          <li class="b-site-footer__item">
+            East London
+          </li>
+          <li class="b-site-footer__item b-site-footer__item--first-link">
+            <a class="b-site-footer__link b-site-footer__link--arrow-right" href="#">About V&amp;A East</a>
+          </li>
+        </ul>
+      </section>
     </div>
 
-    <!--<%= render 'shared/footer_legal_info' %>-->
-    <div class="b-site-footer__legal">
-      <a href="/privacypolicy">Privacy policy</a> and <a href="/cookies">cookies</a>
-      <span class="s-separated">
-        <a href="/articles/terms-of-use">Terms of use</a>
-      </span>
-      <span class="s-separated">
-        &copy; Victoria and Albert Museum, London, 2018 <!--<%= Time.zone.now.year %>-->
-      </span>
+    <div class="b-site-footer__supplementary">
+      <ul class="b-site-footer__contacts b-site-footer__list">
+        <li class="b-site-footer__item">
+          <a class="b-site-footer__link" href="tel:+442079422000">+44 (0)20 7942 2000</a>
+        </li>
+        <li class="b-site-footer__item s-separated">
+          <a class="b-site-footer__link" href="mailto:hello@vam.ac.uk">hello@vam.ac.uk</a>
+        </li>
+      </ul>
+
+      <ul class="b-site-footer__social b-site-footer__list">
+        <li>
+          <a class="b-icon-link" href="http://www.facebook.com/victoriaandalbertmuseum" aria-label="Facebook">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#facebook"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="https://twitter.com/V_and_A" aria-label="Twitter">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#twitter"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="http://www.pinterest.com/vamuseum/" aria-label="Pinterest">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#pinterest"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="http://instagram.com/vamuseum" aria-label="Instagram">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#instagram"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="b-icon-link" href="http://www.youtube.com/user/vamuseum" aria-label="YouTube">
+            <div class="b-icon-link__container">
+              <svg class="b-icon-link__icon" aria-hidden="true">
+                <use xlink:href="/assets/svg/svg-template.svg#youtube"></use>
+              </svg>
+            </div>
+          </a>
+        </li>
+      </ul>
+      
+      <ul class="b-site-footer__legal b-site-footer__list">
+        <li class="b-site-footer__item">
+          <a class="b-site-footer__link" href="/privacy-notice">Privacy policy</a> and <a class="b-site-footer__link" href="/cookies">cookies</a>
+        </li>
+        <li class="b-site-footer__item s-separated">
+          <a class="b-site-footer__link" href="/articles/terms-of-use">Terms of use</a>
+        </li>
+        <li class="b-site-footer__item s-separated">
+          <a class="b-site-footer__link" href="/info/accessibility-statement">Accessibility statement</a>
+        </li>
+      </ul>
+
+      <p class="b-site-footer__copy">&copy; Victoria and Albert Museum, London, 2022</p>
+
+      <svg class="b-site-footer__logo" aria-hidden="true">
+        <use xlink:href="/assets/svg/svg-template.svg#valogo-clipped"></use>
+      </svg>
     </div>
-
-    <svg class="b-site-footer__logo" aria-hidden="true">
-      <use xlink:href="/assets/svg/svg-template.svg#valogo-clipped"></use>
-    </svg>
-
   </div>
 
 </footer>

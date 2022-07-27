@@ -1,5 +1,5 @@
 .u-label-tag {
-  @include typeSetting(2, semi-bold, uppercase);
+  @include typeSetting(2, bold);
   background: siteColor(primary-green);
   bottom: initial;
   color: siteColor(vam-black);
@@ -7,9 +7,11 @@
   padding: 5px 12px 4px;
   position: absolute;
   top: 0;
+  z-index: 1;
 
   &--sold-out,
-  &--ending-soon {
+  &--ending-soon,
+  &--closed {
     background: themeColor(strawberry);
   }
 
@@ -41,12 +43,9 @@
     background: themeColor(salmon);
   }
 
-  &--closed {
-    background: siteColor(vam-grey-2);
-  }
-
   &--venue {
-    background: siteColor(vam-grey-2);
+    background: rgba(siteColor(vam-black), .8);
     color: siteColor(vam-white);
+    margin-left: 12px;
   }
 }

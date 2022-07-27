@@ -1,0 +1,82 @@
+.b-venue-social-media {
+  background-color: #000;
+
+  .b-promo__anchor {
+    background-color: siteColor(vam-black);
+  }
+
+  &__content {
+    padding: 20px 0 10px 0;
+
+    @include bpMinXSmall {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: none;
+      padding: 10px 20px;
+    }
+
+    @include bpMinSmall {
+      padding: 10px 50px;
+    }
+
+    > h2 {
+      @include typeSetting(3, bold);
+      margin-bottom: 10px;
+
+      @include bpMinSmall {
+        @include typeSetting(4, bold);
+        margin: 0;
+      }
+
+      @include bpMinMedium {
+        @include typeSetting(5, bold);
+      }
+    }
+  }
+
+  &__socials {
+    @include unstyledList;
+    display: flex;
+    flex-direction: row;
+
+    @include bpMaxXSmall {
+      margin-top: 5px;
+    }
+
+    &__item {
+      #{&} + & {
+        margin-left: 10px;
+
+        @include bpMinSmall {
+          margin-left: 25px;
+        }
+      }
+
+      &__link {
+        border-radius: 50%;
+        display: flex;
+        padding: 11px;
+
+        &:hover {
+          background-color: siteColor(vam-grey-2);
+        }
+
+        &:focus {
+          @include defaultFocus;
+        }
+
+        > svg {
+          height: 23px;
+          margin: auto;
+          width: 23px;
+
+          @include bpMinSmall {
+            height: 28px;
+            width: 28px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,9 +2,8 @@
   bottom: 0;
   display: none;
   left: 0;
-  margin: auto;
   opacity: 0;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
   transition: opacity 2s;
@@ -16,21 +15,10 @@
   &--fade {
     opacity: 1;
   }
-
-  &__stop-button {
-    bottom: 0;
-    height: 30px;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    width: 120px;
-    z-index: 3;
-  }
 }
+
 .b-video-foreground {
   height: 100%;
-  margin: auto;
   object-fit: cover;
   pointer-events: none;
   width: 100%;
@@ -39,9 +27,8 @@
     background: rgba(00, 00, 00, .4);
     height: 100%;
     left: 0;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
-    z-index: 50;
   }
 }

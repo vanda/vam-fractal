@@ -3,26 +3,63 @@
   flex-direction: row;
   flex-wrap: wrap;
   height: fit-content;
+  justify-content: center;
   max-width: 1200px;
   width: 100%;
 }
 
 .g-venue-blog-cards__row {
   & > section {
-    margin-top: 10px;
+    @include bpMaxMedium {
+      margin-top: 20px;
+    }
+    @include bpMaxSmall {
+      margin-top: 10px;
+    }
+  }
+
+  justify-content: center;
+
+  @include bpMaxMedium {
+    overflow: hidden;
+  }
+
+  .b-venue-blog-card {
+    max-width: 355px;
+    @include bpMinXSmall {
+      max-width: 380px;
+    }
   }
 }
 
 .g-venue-blog-cards {
+  overflow: hidden;
+
   .b-venue-blog-card--50-width:nth-of-type(1) {
     @include bpMinXSmall {
       margin-right: 5px;
+    }
+
+    @include bpMinSmall {
+      margin-right: 10px;
+    }
+
+    @include bpMinLarge {
+      margin-right: 15px;
     }
   }
 
   .b-venue-blog-card--50-width:nth-of-type(2) {
     @include bpMinXSmall {
       margin-left: 5px;
+    }
+
+    @include bpMinSmall {
+      margin-left: 10px;
+    }
+
+    @include bpMinLarge {
+      margin-left: 15px;
     }
   }
 
@@ -33,8 +70,9 @@
       flex-wrap: nowrap;
       .b-venue-blog-card--33-width {
         margin-right: 30px;
-        margin-top: 10px;
-        max-width: 380px;
+        @include bpMaxMedium {
+          margin-top: 10px;
+        }
       }
 
       .b-venue-blog-card--50-width:nth-of-type(1) {
@@ -52,9 +90,6 @@
       .g-venue-blog-cards__row {
         flex-basis: 790px;
         padding-left: 0;
-      }
-      .b-venue-blog-card {
-        max-width: 380px;
       }
     }
   }

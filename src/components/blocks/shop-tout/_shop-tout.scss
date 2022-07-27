@@ -1,0 +1,98 @@
+.b-shop-touts {
+  background-color: white;
+  overflow: hidden;
+  padding-bottom: 50px;
+
+  @include bpMinSmall {
+    padding: 0 30px 50px;
+  }
+
+  &__container {
+    width: 100%;
+
+    @include bpMinXSmall {
+      align-items: stretch;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    @include bpMinSmall {
+      flex-wrap: nowrap;
+    }
+
+    .no-flexbox & {
+      text-align: center;
+    }
+  }
+
+  &__item {
+    color: siteColor(vam-black);
+    padding: 0 10px 40px;
+    width: 100%;
+
+    @include bpMinXSmall {
+      flex: 0 0 50%;
+      padding: 1px 15px 50px 15px;
+    }
+
+    @include bpMinSmall {
+      flex: 0 0 33.333333%;
+    }
+
+    .no-flexbox & {
+      display: inline-block;
+      width: 100%;
+
+      @include bpMinXSmall {
+        width: 49%;
+      }
+
+      @include bpMinSmall {
+        width: 32%;
+      }
+
+    }
+
+    > a:hover h2 {
+      text-decoration: underline;
+    }
+
+    > a > img {
+      height: 355px;
+      object-fit: contain;
+      width: 100%;
+
+      @include bpMinXSmall {
+        height: 235px;
+      }
+
+      @include bpMinSmall {
+        height: 199px;
+      }
+
+      @include bpMinMedium {
+        height: 274px;
+      }
+
+      @include bpMinLarge {
+        height: 366px;
+      }
+    }
+  }
+
+  &__title {
+    @include typeSetting(4, bold);
+    margin: 12px 0 5px;
+  }
+
+  &__description {
+    @include typeSetting(3);
+    color: siteColor(vam-black);
+    margin: 0;
+  }
+
+  &__footer {
+    text-align: center;
+  }
+}

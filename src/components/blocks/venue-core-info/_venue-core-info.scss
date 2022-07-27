@@ -1,167 +1,41 @@
 .b-venue-core-info {
-  background-color: red;
-  max-width: 1200px;
-  overflow: auto;
-  width: 100%;
+  background-color: $theme-color-default;
 
   @include bpMinSmall {
     display: flex;
   }
 
-  &__statement {
+  &__img-container {
+    height: 150px;
+    position: relative;
 
     @include bpMinXSmall {
-      max-width: 65%;
-      padding-right: 15px;
+      height: 200px;
     }
 
     @include bpMinSmall {
-      margin-bottom: 30px;
-      max-width: none;
+      flex: 1 0 320px;
+      height: auto;
+      min-height: 310px;
     }
 
     @include bpMinMedium {
-      font-size: 23px;
+      flex-basis: 412px;
+      min-height: 400px;
     }
 
     @include bpMinLarge {
-      font-size: 31px;
-    }
-
-    font-size: 17px;
-    line-height: 1.35;
-    margin-bottom: 20px;
-  }
-
-  &__content {
-    flex-direction: column;
-    position: relative;
-
-    @include bpMinXSmall {
-      flex-direction: row;
-    }
-
-    @include bpMaxSmall {
-      display: flex;
-    }
-
-    @include bpMinSmall {
-      display: block;
+      flex-basis: 480px;
+      min-height: 470px;
     }
   }
 
-  &__button-container {
-    @include bpMinXSmall {
-      align-items: self-end;
-      display: flex;
-      flex-direction: column;
-      width: 35%;
-    }
-
-    @include bpMinSmall {
-      display: block;
-      width: auto;
-    }
-  }
-
-  &__content-container {
-    @include bpMinSmall {
-      float: right;
-      padding: 30px 50px 30px;
-      width: 60%;
-    }
-
-    @include bpMinLarge {
-      padding: 50px 50px 100px;
-    }
-
-    height: 100%;
-    overflow: auto;
-    padding: 20px 10px;
-    position: relative;
-    width: 100%;
-
-    button {
-      display: block;
-      font-size: 15px;
-      margin: 0;
-      padding: 5px 10px;
-      position: relative;
-
-      @include bpMinXSmall {
-        margin: auto;
-      }
-
-      @include bpMinSmall {
-        margin: 0;
-        padding: 10px 20px;
-      }
-
-      @include bpMinMedium {
-        float: right;
-      }
-
-      @include bpMinLarge {
-        font-size: 17px;
-      }
-    }
-
-    span {
-      height: 20px;
-      position: relative;
-    }
-
-    svg {
-      @include bpMaxSmall {
-        right: 5px;
-      }
-
-      height: 22px;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 22px;
-    }
-
-    address {
-      @include bpMinXSmall {
-        margin-bottom: 0;
-        margin-left: 35px;
-      }
-
-      @include bpMaxXSmall {
-        font-size: 15px;
-      }
-
-      @include bpMinSmall {
-        display: block;
-        margin-left: 0;
-        padding: 0 0 70px 30px;
-        position: relative;
-        width: auto;
-      }
-
-      @include bpMinLarge {
-        font-size: 23px;
-        padding: 0 0 100px 30px;
-      }
-
-      font-size: 17px;
-      margin-bottom: 30px;
-      margin-left: 25px;
-    }
-  }
-  &__img-container {
-    @include bpMinSmall {
-      float: left;
-      width: 40%;
-    }
-    height: auto;
-    position: relative;
-    width: 100%;
-  }
   &__img-badge {
+    @include typeSetting(2, light);
+    background-color: rgba(255, 255, 255, .8);
+    padding: 3px 6px;
+    position: absolute;
+
     @include bpMaxSmall {
       bottom: 10px;
       left: 10px;
@@ -171,20 +45,78 @@
       right: 20px;
       top: 20px;
     }
-
-    background-color: rgba(255, 255, 255, .8);
-    padding: 3px 6px;
-    position: absolute;
   }
 
   &__img {
-    @include bpMinSmall {
-      max-height: none;
-    }
-
     height: 100%;
-    max-height: 200px;
     object-fit: cover;
     width: 100%;
+  }
+
+  &__content {
+    @include typeSetting(4, light);
+    padding: 20px 10px;
+
+    @include bpMinXSmall {
+      display: flex;
+    }
+
+    @include bpMinSmall {
+      flex: 0 1 auto;
+      flex-direction: column;
+      padding: 30px 87px 30px 50px;
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(5, light);
+      padding: 50px 100px 50px 60px;
+    }
+
+    @include bpMinLarge {
+      @include typeSetting(6, light);
+      padding: 50px 94px 50px 70px;
+    }
+
+    &__info {
+      @include bpMinXSmall {
+        margin: -17px 0 0 30px;
+      }
+
+      @include bpMinSmall {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0;
+      }
+    }
+  }
+
+  &__address {
+    @include typeSetting(3, light);
+    margin: 20px 0 30px;
+
+    @include bpMinSmall {
+      @include typeSetting(4, light);
+    }
+
+    @include bpMinLarge {
+      @include typeSetting(5, light);
+    }
+
+    > svg {
+      height: 18px;
+      margin: 0 2px 0 -4px;
+      width: 18px;
+    }
+  }
+
+  &__button {
+    margin: 0;
+    white-space: nowrap;
+
+    @include bpMinSmall {
+      align-self: flex-end;
+    }
   }
 }

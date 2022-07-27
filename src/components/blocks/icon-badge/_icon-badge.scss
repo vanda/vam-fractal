@@ -20,23 +20,22 @@
       width: 80px;
     }
 
-    &--story-box {
-      background-color: themeColor(silent-green);
-      &:hover {
-        background-color: lighten(themeColor(silent-green), 10);
-      }
-    }
-
     .b-icon-badge--small & {
       height: 60px;
       width: 60px;
     }
 
-    &.s-themed {
+    .b-icon-badge--dark & {
+      background-color: siteColor(vam-white);
       color: siteColor(vam-black);
     }
 
-    svg {
+    &:hover {
+      background-color: siteColor(vam-grey-4);
+      color: siteColor(vam-black);
+    }
+
+    > svg {
       height: 16px;
       margin: auto;
       width: 16px;
@@ -45,48 +44,42 @@
         height: 22px;
         width: 22px;
       }
+      
+      .b-icon-badge--short {
+        > & {
+          height: 24px;
+          margin: auto;
+          width: 24px;
+
+          @include bpMinSmall {
+            height: 34px;
+            width: 34px;
+          }
+        }
+      }
     }
   }
 
   &__label {
-    @include typeSetting(0, bold, uppercase);
+    @include typeSetting(4);
     color: siteColor(vam-white);
     display: block;
-    letter-spacing: .25em;
     text-align: center;
-    text-indent: .25em; // Fixes misalignment caused by letter-spacing
     text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
-
-
-    @include bpMinSmall {
-      @include typeSetting(1, bold, uppercase);
-    }
+    text-transform: capitalize;
 
     @include bpMinMedium {
-      @include typeSetting(2, bold, uppercase);
       margin-top: $spacing-small;
-    }
-
-    .b-icon-badge--small & {
-      @include typeSetting(1, bold, uppercase);
     }
 
     .b-icon-badge--light & {
       color: siteColor(vam-black);
       text-shadow: none;
     }
-  }
 
-  &--short {
-    svg {
-      height: 24px;
-      margin: auto;
-      width: 24px;
-
-      @include bpMinSmall {
-        height: 34px;
-        width: 34px;
-      }
+    .b-icon-badge--dark & {
+      color: siteColor(vam-white);
+      text-shadow: none;
     }
   }
 }

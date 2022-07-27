@@ -1,57 +1,54 @@
 .b-block-grid {
-  background-color: siteColor(vam-white);
-  margin: 0 0 $spacing-small;
-
-  @include bpMinMedium {
-    background-color: transparent;
-  }
+  margin: 12px 0;
 
   &--padded {
-    margin: 20px 0 0;
     overflow: hidden;
-    padding: 0 0 (48px - 10px);
+    padding: 0 0 38px;
 
     @include bpMinSmall {
-      padding: 0 (32px - 10px) (48px - 10px);
+      padding: 0 22px 38px;
     }
 
     @include bpMinMedium {
-      padding: 0 (64px - 10px) (64px - 10px);
+      padding: 0 54px 54px;
     }
   }
 
   &__header {
-    padding: $spacing-medium $spacing-small;
+    color: siteColor(vam-white);
+    margin: 50px 0 20px;
     width: 100%;
 
     @include bpMinSmall {
-      padding: 54px $spacing-small;
+      margin: 70px 0 30px;
+    }
+  
+    &--black {
+      color: siteColor(vam-black);
     }
 
-    @include bpMinMedium {
+    &--transparent {
       background-color: transparent;
     }
   }
 
+  // sass-lint:disable no-css-comments
+  /* this is required to differentiate from b-block-grid__header being used outside of a b-block-grid, as it is in places - in those cases it gets the default margins defined above */
+  // sass-lint:enable no-css-comments
+  > #{&}__header {
+    margin: 40px 0 50px;
+
+    @include bpMinSmall {
+      margin: 50px 0 70px;
+    }
+  }
+
   &__title {
-    @include typeSetting(3, bold, uppercase);
-    color: siteColor(vam-black);
-    display: block;
+    @include typeSetting(5, bold);
     text-align: center;
 
     @include bpMinSmall {
-      @include typeSetting(5, bold, uppercase);
-    }
-
-    @include bpMinMedium {
-      color: siteColor(vam-white);
-      text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
-
-      .b-block-grid--light & {
-        color: siteColor(vam-black);
-        text-shadow: none;
-      }
-
+      @include typeSetting(6, bold);
     }
   }
 
@@ -61,14 +58,6 @@
   }
 
   &__footer {
-    a:focus {
-      box-shadow: none;
-      outline: 0;
-      .b-icon-badge__icon {
-        @include defaultFocus;
-      }
-    }
-
     background-color: siteColor(vam-black);
     clear: both;
     padding: $spacing-small * 2;
@@ -77,7 +66,15 @@
       background-color: siteColor(vam-white);
     }
 
-    svg {
+    > a:focus {
+      box-shadow: none;
+
+      .b-icon-badge__icon {
+        @include defaultFocus;
+      }
+    }
+
+    > svg {
       color: siteColor(vam-black);
     }
   }

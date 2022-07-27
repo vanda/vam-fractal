@@ -13,6 +13,7 @@
   &__overlay {
     background-color: rgba(siteColor(vam-black), .5);
     height: 100%;
+    left: 0;
     width: 100%;
 
     &-container {
@@ -25,12 +26,10 @@
   }
 
   &__btn {
-    display: block;
-    margin: -24px auto 0 auto;
-    max-width: 178px;
-    top: 50%;
+    margin: auto;
 
     &-container {
+      display: flex;
       height: 100%;
       position: absolute;
       width: 100%;
@@ -41,6 +40,7 @@
   &__image {
     display: block;
     height: 100%;
+    left: 0;
     margin: auto;
     
     .objectfit & {

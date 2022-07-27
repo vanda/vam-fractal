@@ -3,7 +3,7 @@
 
   &--active {
     animation: opacityFadeIn .2s;
-    background-color: rgba(29, 30, 32, .98);
+    background-color: rgba(siteColor(vam-black), .98);
     display: block;
     height: 100%;
     left: 0;
@@ -201,7 +201,7 @@
     text-decoration: none;
 
     &--mobile {
-      @include typeSetting(1, bold, uppercase);
+      @include typeSetting(1, bold);
       border: 1px solid #fff;
       border-radius: 2px;
       display: inline-block;
@@ -269,7 +269,7 @@
     }
 
     @include bpMinMedium {
-      @include typeSetting(0, bold, uppercase);
+      @include typeSetting(0, bold);
       background-color: siteColor(vam-grey-5);
       color: siteColor(vam-black);
       display: flex;

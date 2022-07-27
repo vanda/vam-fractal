@@ -24,22 +24,17 @@
     height: 13px;
     margin-bottom: 4px;
     text-align: left;
-    text-transform: uppercase;
     
     @include bpMinSmall {
       @include typeSetting(2, normal);
       font-size: 14px;
-      letter-spacing: 1.5px;
       line-height: .93;
-      text-transform: uppercase;
     }
 
     @include bpMaxLarge {
       @include typeSetting(1, normal);
       font-size: 13px;
-      letter-spacing: 1.1px;
       line-height: 1.0;
-      text-transform: uppercase;
     }
   }
 

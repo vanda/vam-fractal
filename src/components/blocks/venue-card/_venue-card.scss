@@ -1,0 +1,99 @@
+.b-venue-card {
+  display: block;
+  position: relative;
+
+  &::after {
+    background-image: linear-gradient(to bottom, #000, rgba(0, 0, 0, 0) 36%);
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity .4s ease;
+  }
+
+  &:focus {
+    @include defaultFocus;
+  }
+
+  &__header {
+    color: siteColor(vam-white);
+    padding: 10px;
+    position: absolute;
+    text-shadow: 0 1px 3px siteColor(vam-black);
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__title {
+    @include typeSetting(4, bold);
+    align-items: baseline;
+    column-gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+
+    @include bpMinXSmall {
+      @include typeSetting(3, bold);
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(4, bold);
+    }
+
+    @include bpMinLarge {
+      font-size: 21px;
+      line-height: 26px;
+    }
+
+    .b-venue-card:hover &,
+    .b-venue-card:focus & {
+      text-decoration: underline;
+    }
+  }
+
+  &__title-icon {
+    color: siteColor(vam-white);
+    height: 14px;
+    width: 14px;
+  }
+  
+  &__subtitle {
+    @include typeSetting(3);
+
+    @include bpMinXSmall {
+      @include typeSetting(1);
+    }
+
+    @include bpMinMedium {
+      @include typeSetting(3);
+    }
+
+    width: 100%;
+  }
+
+  &__open {
+    @include typeSetting(0);
+    background-color: siteColor(vam-white);
+    bottom: 10px;
+    color: siteColor(vam-black);
+    left: 10px;
+    opacity: .9;
+    padding: 4px 10px;
+    position: absolute;
+    z-index: 1;
+
+    @include bpMinSmall {
+      @include typeSetting(2);
+    }
+  }
+  
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}

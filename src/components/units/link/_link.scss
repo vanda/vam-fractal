@@ -7,16 +7,12 @@
   }
 
   &--arrowed {
-    display: inline-block;
-    position: relative;
-
     &::after {
-      bottom: 1%;
-      content: '▸';
+      border: 5px solid transparent;
+      border-left-color: currentColor;
+      content: '';
       display: inline-block;
-      position: absolute;
-      right: -14px;
-      transform: scale(.6, 1.25);
+      margin-left: 7px;
     }
   }
 

@@ -3,9 +3,9 @@
   -webkit-font-smoothing: antialiased;
   color: white;
   &__type {
-    @include typeSetting(1, bold, uppercase);
+    @include typeSetting(1, bold);
     @include bpMinSmall {
-      @include typeSetting(3, bold, uppercase);
+      @include typeSetting(3, bold);
     }
   }
   &__name {

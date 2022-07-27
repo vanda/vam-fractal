@@ -30,15 +30,13 @@
       }
 
       &__dismiss {
-        @include typeSetting(1, semi-bold, uppercase);
+        @include typeSetting(1, medium);
         background-color: siteColor(vam-black);
         border: 1px solid siteColor(vam-white);
         border-radius: 2px;
         padding: 4px 12px;
       }
     }
-
-
 
     & > #{&}__banner {
       opacity: .8;
@@ -94,7 +92,7 @@
   }
 
   &__caption {
-    @include typeSetting(3, bold);
+    @include typeSetting(1, light);
     display: none;
 
     @include bpMinSmall {

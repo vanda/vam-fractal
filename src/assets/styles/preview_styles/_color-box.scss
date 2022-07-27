@@ -52,7 +52,7 @@
   }
 
   &__color-name {
-    @include typeSetting(1, bold, uppercase);
+    @include typeSetting(1, bold);
     padding: 0 5px;
   }
 }

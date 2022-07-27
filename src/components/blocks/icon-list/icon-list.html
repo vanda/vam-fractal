@@ -1,4 +1,9 @@
 <ul class='b-icon-list{% if modifier %} b-icon-list--{{ modifier }}{% endif %}'>
+  <li class="b-icon-list__item b-icon-list__item--no-icon">
+    <p class="b-icon-list__item__heading">
+      V&A South Kensington
+    </p>
+  </li>
   {% for item in items %}
   <li class='b-icon-list__item'>
     <svg role="presentation" class="b-icon-list__item__icon">
@@ -6,11 +11,9 @@
     </svg>
     <div class="b-icon-list__item__content">
       <p class="b-icon-list__item__heading">{{ item.title }}</p>
-      <p>{{ item.body }}</p>
+      <p>{{ item.body | safe }}</p>
       {% if item.link %}
-      <p>
-        <a href="#">{{ item.link }}</a>
-      </p>
+      <p><a class="u-link u-link--arrowed" href="#">{{ item.link }}</a></p>
       {% endif %}
     </div>
   </li>

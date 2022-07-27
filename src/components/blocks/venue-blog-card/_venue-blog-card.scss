@@ -6,6 +6,34 @@
 
   &__link {
     width: 100%;
+
+    @include bpMaxXSmall {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--100-width {
+      @include bpMinXSmall {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      @include bpMinMedium {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+
+    &--33-width {
+      @include bpMinXSmall {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      @include bpMinMedium {
+        display: block;
+      }
+    }
   }
 
   &--50-width {
@@ -23,6 +51,11 @@
   }
 
   &--33-width {
+    max-width: 355px;
+
+    @include bpMinXSmall {
+      max-width: 780px;
+    }
     @include bpMinMedium {
       flex-basis: 380px;
       flex-direction: column;
@@ -32,18 +65,18 @@
   &__subheading, &__text {
     background-color: siteColor(vam-white);
     &--50-width {
-      padding: 20px 30px 30px 30px;
+      padding: 20px;
     }
 
     &--100-width {
       @include bpMaxXSmall {
-        padding: 20px 30px 30px 30px;
+        padding: 20px;
       }
     }
 
     &--33-width {
       @include bpMinMedium {
-        padding: 20px 30px 30px 30px;
+        padding: 20px;
       }
     }
   }
@@ -55,19 +88,33 @@
 
     &--100-width {
       @include bpMinXSmall {
-        padding: 50px 30px 30px 15px;
-        width: 50%;
+        flex: 1;
+        flex-basis: 0;
+        flex-grow: 1.75; // N.B. do not know why/how this works
+        padding: 50px 20px 15px;
       }
+
       @include bpMinMedium {
-        padding: 70px 44px 60px 20px;
+        flex-grow: 1;
+        max-width: none;
+        padding: 70px 44px 70px 20px;
         width: 33.3333%;
       }
     }
 
     &--33-width {
+      @include bpMinXSmall {
+        max-width: calc(50% - 5px);
+      }
+
+      @include bpMinSmall {
+        max-width: calc(50% - 10px);
+      }
+
       @include bpMinMedium {
         height: 100%;
-        padding: 20px 30px 30px 30px;
+        max-width: none;
+        padding: 20px;
         width: 100%;
       }
     }
@@ -75,16 +122,23 @@
 
   &__desc {
     display: none;
+    padding: 0;
 
     &--100-width {
       @include bpMinXSmall {
         display: block;
         font-size: 13px;
+        height: calc(100% - 33px);
         line-height: 1.38;
+        overflow: hidden;
+        padding-bottom: 33px;
       }
+
       @include bpMinMedium {
         font-size: 15px;
+        height: auto;
         line-height: 1.4;
+        overflow: initial;
       }
     }
 
@@ -97,7 +151,7 @@
 
   &__img {
     @include bpMaxXSmall {
-      height: 100%;
+      height: 250px;
       max-width: 500px;
       width: 100%;
     }
@@ -109,13 +163,34 @@
       width: 100%;
     }
 
+    &--50-width {
+      @include bpMinXSmall {
+        img {
+          height: 33.3333vw;
+        }
+      }
+
+      @include bpMinSmall {
+        img {
+          height: 250px;
+        }
+      }
+    }
+
     &--100-width {
       @include bpMinXSmall {
+        flex: 1;
+        flex-basis: 0;
+        flex-grow: 2;
+        max-width: 400px;
+        overflow: hidden;
         position: relative;
         width: 50%;
       }
 
       @include bpMinMedium {
+        max-width: none;
+        overflow: initial;
         width: 66.666%;
       }
 
@@ -129,24 +204,40 @@
     }
 
     &--33-width {
+      @include bpMinSmall {
+        img {
+          height: 250px;
+        }
+      }
+
       @include bpMinMedium {
+        width: 100%;
         img {
           position: relative;
         }
+      }
+
+      @include bpMinLarge {
+        max-width: none;
         width: 100%;
       }
     }
   }
 
   &__subheading {
-    font-size: 15px;
+    color: siteColor(vam-grey-2);
+    font-size: 13px;
     font-weight: 500;
     line-height: 1.4;
+
+    @include bpMinMedium {
+      font-size: 15px;
+    }
 
     &--100-width {
       @include bpMinXSmall {
         background-color: transparent;
-        left: 15px;
+        left: 20px;
         position: absolute;
         top: 15px;
       }
@@ -171,6 +262,18 @@
     font-size: 23px;
     font-weight: 500;
     line-height: 1.22;
+
+    @include bpMaxXSmall {
+      margin-bottom: 10px;
+    }
+
+    @include bpMinXSmall {
+      font-size: 15px;
+    }
+
+    @include bpMinMedium {
+      font-size: 23px;
+    }
 
     &--100-width {
       @include bpMinXSmall {

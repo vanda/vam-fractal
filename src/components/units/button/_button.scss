@@ -1,5 +1,5 @@
 .u-btn {
-  @include typeSetting(1, semi-bold, uppercase);
+  @include typeSetting(4);
   appearance: none;
   background-color: siteColor(primary-green);
   border: 1px solid siteColor(primary-green);
@@ -8,7 +8,7 @@
   cursor: pointer;
   display: inline-block;
   margin: 10px 10px 10px 0;
-  padding: 15px 25px;
+  padding: 10px 19px 8px;
   text-align: center;
   text-decoration: none;
   text-shadow: none;
@@ -18,69 +18,103 @@
   &:focus {
     background-color: darken(siteColor(primary-green), 10);
     border-color: darken(siteColor(primary-green), 10);
-    outline: auto;
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include defaultFocus;
+  }
+
+  .sir-trevor-text & {
     text-decoration: none;
   }
 
   &--arrowed {
-    padding-right: 35px;
-    position: relative;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
 
     &::after {
-      border: 4px solid transparent;
+      border: 5px solid transparent;
       border-left-color: currentColor;
       content: '';
-      display: inline-block;
-      margin-top: -5px;
-      position: absolute;
-      right: 20px;
-      top: 50%;
+      display: block;
+      margin: 0 0 -1px 7px;
     }
   }
 
   &--black {
     background-color: siteColor(vam-black);
     border: 1px solid siteColor(vam-black);
-    color: siteColor(vam-white);
+    color: #fff;
 
     &:hover,
     &:focus {
-      background-color: lighten(siteColor(vam-black), 10);
-      border: 1px solid lighten(siteColor(vam-black), 10);
+      background-color: lighten(siteColor(vam-black), 20);
+      border: 1px solid lighten(siteColor(vam-black), 20);
+    }
+  }
 
-      &.s-themed--color--hover {
-        background-color: siteColor(vam-black);
-      }
+  &--white {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: siteColor(vam-black);
+
+    &:hover,
+    &:focus {
+      background-color: darken(#fff, 10);
+      border: 1px solid darken(#fff, 10);
     }
   }
 
   &--micro {
-    padding: 6px 10px;
+    @include typeSetting(3);
+    padding: 4px 10px;
 
     &.u-btn--arrowed {
-      padding-right: 20px;
-
-      &::after {
-        right: 8px;
-      }
+      padding-right: 5px;
     }
   }
 
   &--outlined {
-    background-color: rgba(siteColor(vam-white), .8);
-    border-color: siteColor(vam-grey-6);
+    background-color: #fff;
+    border-color: siteColor(vam-grey-4);
     color: siteColor(vam-black);
-
-    &--primary {
-      background-color: rgba(siteColor(vam-black), .8);
-      border-color: siteColor(primary-green);
-      color: siteColor(vam-white);
-    }
 
     &:hover,
     &:focus {
-      background-color: transparent;
+      background-color: darken(#fff, 10);
       border-color: siteColor(vam-grey-4);
     }
   }
+
+  &--outlined-inverse {
+    background-color: siteColor(vam-black);
+    border-color: #fff;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: lighten(siteColor(vam-black), 20);
+      border-color: #fff;
+    }
+  }
+
+  &--stop {
+    align-items: center;
+    border-radius: 8px;
+    display: inline-flex;
+    justify-content: center;
+
+    &::after {
+      background-color: currentColor;
+      content: '';
+      display: block;
+      height: 8px;
+      margin: 0 0 -1px 7px;
+      width: 8px;
+    }
+  }
+
+
 }

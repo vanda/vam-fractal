@@ -9,19 +9,19 @@ module.exports = {
       }
     },
     {
-      name: 'footer newsletter',
-      label: 'Footer Newsletter',
+      name: 'footer',
+      label: 'Footer',
       context: {
         title: 'Signup',
-        modifier: '--footer'
+        modifier: 'footer'
       }
     },
     {
-      name: 'component newsletter',
-      label: 'Component Newsletter',
+      name: 'component',
+      label: 'Component',
       context: {
         title: 'Signup',
-        modifier: '--component'
+        modifier: 'component'
       }
     }
   ]

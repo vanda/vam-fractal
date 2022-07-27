@@ -8,6 +8,7 @@ module.exports = {
       'valogo',
       'valogo-clipped',
       'no-img',
+      'tiktok',
       'facebook',
       'instagram',
       'pinterest',
@@ -50,6 +51,7 @@ module.exports = {
       'pause',
       'shuffle',
       'view',
+      'venue',
       'make',
       'event-none',
       'point-up',
@@ -76,7 +78,22 @@ module.exports = {
       'person-two',
       'padlock',
       'eye-striked',
-      'eye'
+      'eye',
+      'wordmark-academy',
+      'wordmark-americas-foundation',
+      'wordmark-directors-circle',
+      'wordmark-dundee',
+      'wordmark-east-museum',
+      'wordmark-east-storehouse',
+      'wordmark-east',
+      'wordmark-membership',
+      'wordmark-patrons',
+      'wordmark-publishing',
+      'wordmark-shop',
+      'wordmark-southken',
+      'wordmark-wedgwood',
+      'wordmark-young'
+
     ]
   },
   variants: [
@@ -96,7 +113,30 @@ module.exports = {
           'youtube',
           'tumblr',
           'googleplus',
-          'flickr'
+          'flickr',
+          'tiktok'
+        ]
+      }
+    },
+    {
+      name: 'wordmark',
+      label: 'Wordmark',
+      context: {
+        icons: [
+          'wordmark-academy',
+          'wordmark-americas-foundation',
+          'wordmark-directors-circle',
+          'wordmark-dundee',
+          'wordmark-east-museum',
+          'wordmark-east-storehouse',
+          'wordmark-east',
+          'wordmark-membership',
+          'wordmark-patrons',
+          'wordmark-publishing',
+          'wordmark-shop',
+          'wordmark-southken',
+          'wordmark-wedgwood',
+          'wordmark-young'
         ]
       }
     }

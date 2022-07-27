@@ -70,15 +70,14 @@
   }
 
   &__label {
-    @include typeSetting(3, light);
+    @include typeSetting(3);
     color: siteColor(vam-grey-5);
     display: block;
-    margin-bottom: 10px;
+    margin: 10px 0;
     text-align: center;
 
     @include bpMinSmall {
       @include typeSetting(5, light);
-      margin-bottom: 5px;
     }
   }
 
@@ -87,14 +86,14 @@
     @include typeSetting(5);
 
     @include bpMinSmall {
-      @include typeSetting(7);
+      @include typeSetting(7, bold);
     }
 
     .b-search-form--etc & {
-      @include typeSetting(4);
+      @include typeSetting(3);
 
       @include bpMinSmall {
-        @include typeSetting(5);
+        @include typeSetting(4);
       }
     }
   }
@@ -165,7 +164,7 @@
   }
 
   &__submit {
-    @include typeSetting(0, semi-bold, uppercase);
+    @include typeSetting(4);
     align-items: center;
     display: inline-flex;
     margin-top: 15px;
@@ -175,7 +174,6 @@
     }
 
     @include bpMinSmall {
-      @include typeSetting(3, semi-bold, uppercase);
       margin-top: 28px;
 
       &#{&}--hidden {
@@ -188,7 +186,7 @@
       margin-top: 0;
 
       @include bpMinMedium {
-        @include typeSetting(4, semi-bold, uppercase);
+        @include typeSetting(4, medium);
       }
     }
 
@@ -215,13 +213,13 @@
   }
 
   &__filters {
-    @include typeSetting(3);
+    @include typeSetting(2);
     align-items: baseline;
     color: siteColor(vam-white);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0 0 1px;
+    margin: 10px 0 1px;
   }
 
   &__filter-info {
@@ -361,7 +359,7 @@
       width: auto;
     }
 
-    @include typeSetting(2, semi-bold, uppercase);
+    @include typeSetting(2, medium);
     background: transparent;
     border: 1px solid siteColor(vam-white);
     border-radius: 2px;
@@ -454,12 +452,12 @@
   }
 
   &__suggestion-type {
-    @include typeSetting(0, bold, uppercase);
+    @include typeSetting(0, bold);
     display: inline-block;
     margin-right: 16px;
 
     @include bpMinSmall {
-      @include typeSetting(3, bold, uppercase);
+      @include typeSetting(3, bold);
     }
   }
 

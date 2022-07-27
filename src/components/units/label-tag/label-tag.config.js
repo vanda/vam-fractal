@@ -20,6 +20,13 @@ module.exports = {
       }
     },
     {
+      name: 'Closed',
+      context: {
+        text: 'Closed',
+        modifier: ['closed']
+      }
+    },
+    {
       name: 'Selling fast',
       context: {
         text: 'Selling fast',
@@ -66,6 +73,13 @@ module.exports = {
       context: {
         text: 'Book soon',
         modifier: ['book-soon']
+      }
+    },
+    {
+      name: 'Venue',
+      context: {
+        text: 'Opening 20xx',
+        modifier: ['venue']
       }
     }
   ]

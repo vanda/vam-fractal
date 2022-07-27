@@ -66,7 +66,7 @@
           background-color: siteColor(vam-white);
           color: siteColor(vam-black);
         }
-        @include typeSetting(1, bold, uppercase);
+        @include typeSetting(1, bold);
         border: solid 1px #ffffff;
         border-radius: 2px;
         color: siteColor(vam-white);
@@ -94,7 +94,7 @@
       z-index: 300;
 
       @include bpMinMedium {
-        background: rgba(29, 30, 32, .9);
+        background: rgba(siteColor(vam-black), .9);
       }
     }
   }
