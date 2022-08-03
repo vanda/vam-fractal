@@ -1,7 +1,7 @@
 <div class="b-event-feature{% for m in modifiers %} b-event-feature--{{ m }}{% endfor %}" itemscope itemprop="event" itemtype="http://schema.org/Event" aria-label="{{ eventTitle }}">
   <a class="b-event-feature__link" href="{{ eventUrl }}" itemprop="url" content="{{ eventUrl }}">
 
-    <div class="b-event-feature__media"
+    <div class="b-event-feature__media js-object-fit-container"
       itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
       <link itemprop="url" href="{{ eventImage[960] }}">
       <img alt="{{ eventTitle }}"

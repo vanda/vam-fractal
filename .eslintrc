@@ -3,7 +3,8 @@
     "browser": true
   },
   "globals": {
-    "document": false
+    "document": false,
+    "Modernizr": false
   },
   "extends": "airbnb-base",
   "rules": {
