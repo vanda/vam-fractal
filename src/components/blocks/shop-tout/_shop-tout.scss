@@ -20,6 +20,10 @@
     @include bpMinSmall {
       flex-wrap: nowrap;
     }
+
+    .no-flexbox & {
+      text-align: center;
+    }
   }
 
   &__item {
@@ -34,6 +38,20 @@
 
     @include bpMinSmall {
       flex: 0 0 33.333333%;
+    }
+
+    .no-flexbox & {
+      display: inline-block;
+      width: 100%;
+
+      @include bpMinXSmall {
+        width: 49%;
+      }
+
+      @include bpMinSmall {
+        width: 32%;
+      }
+
     }
 
     > a:hover h2 {

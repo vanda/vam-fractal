@@ -11,11 +11,17 @@
 
     <link rel="stylesheet" href="{{ '/assets/styles/vam-style.css' | path }}" />
     <link rel="stylesheet" href="{{ '/assets/styles/preview.css' | path }}" />
+
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Element.prototype.classList,es6,HTMLPictureElement,Element.prototype.remove,Element.prototype.dataset"></script>
+    <script src="{{ '/assets/scripts/modernizr.custom.min.js' | path }}"></script>
   </head>
 
   <body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%} {% if _target.context.previewClass %} {{ _target.context.previewClass }}{%- endif -%}">
     {{ yield | safe }}
 
+    <!--[if lte IE 8]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <script src="{{ '/assets/scripts/vamscript.js' | path }}"></script>
   </body>
 </html>
