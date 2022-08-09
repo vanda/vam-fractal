@@ -58,6 +58,7 @@
 
   &__anchor {
     display: block;
+    overflow: hidden;
     position: relative;
 
     &::after {
