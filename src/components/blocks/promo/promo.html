@@ -1,7 +1,7 @@
 {% if grouped !== true %}
 <section class="b-promo{% for m in modifiers %} b-promo--{{ m }}{% endfor %}">
 {% endif %}
-  <article class="b-promo__item js-object-fit-container">
+  <article class="b-promo__item">
 
     <img srcset="{{ image['320'] }} 320w, {{ image['640'] }} 640w, {{ image['960'] }} 960w, {{ image['1280'] }} 1280w, {{ image['1920'] }} 1920w, {{ image['2560'] }} 2560w"
          sizes="(min-width: 1200px) 1200px, 100vw"

@@ -31,10 +31,6 @@
     @include bpMinMedium {
       min-height: 300px;
       width: 50%;
-
-      .no-flexbox & {
-        float: left;
-      }
     }
 
     &:last-of-type:nth-of-type(odd) {

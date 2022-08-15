@@ -8,10 +8,6 @@ $gap: 12;
     display: flex;
     flex-wrap: wrap;
     margin: 0 -#{$gap}px;
-
-    .no-flexbox & {
-      overflow: hidden;
-    }
   }
 }
 
@@ -20,28 +16,16 @@ $gap: 12;
   flex: 0 1 auto;
   margin-bottom: 16px;
 
-  .no-flexbox & {
-    float: left;
-  }
-
   @include bpMinXSmall {
     flex-basis: 50%;
     margin-bottom: 23px;
     max-width: 50%;
     padding: 0 #{$gap}px;
-
-    .no-flexbox & {
-      width: 50%;
-    }
   }
 
   @include bpMinMedium {
     flex-basis: percentage(1 / $columns);
     margin-bottom: 16px;
     max-width: percentage(1 / $columns);
-
-    .no-flexbox & {
-      width: percentage(1 / $columns);
-    }
   }
 }
