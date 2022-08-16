@@ -41,7 +41,7 @@
     "browserify": "^16.2.2",
     "cryptiles": "latest",
     "del": "^3.0.0",
-    "eslint": "^4.18.2",
+    "eslint": "^8.22.0",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-import": "^2.26.0",
     "glob": "^7.2.3",
@@ -68,12 +68,10 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "browser-cookies": "^1.2.0",
-    "clamp-js": "^0.7.0",
-    "element-closest-polyfill": "^1.0.5",
-    "openseadragon": "^2.4.2",
-    "smooth-scroll": "git+https://github.com/cferdinandi/smooth-scroll.git#35939c17b602772a1f9abc9272c3f668697be8ba",
-    "svg4everybody": "^2.1.9",
-    "vanilla-lazyload": "^17.8.3"
+    "browser-cookies": "1.x",
+    "clamp-js": "0.x",
+    "openseadragon": "3.x",
+    "svg4everybody": "2.x",
+    "vanilla-lazyload": "17.x"
   }
 }
