@@ -44,19 +44,21 @@ if (gridRevealMore.length) {
 
         // Filter down to just the hidden items
         const hiddenItems = gridItems.filter(el => el.classList.contains('s-visually-hidden'));
-        // in case of column layout, add a colspan separator to preserve item order
-        const columns = window.getComputedStyle(gridBlock).getPropertyValue('column-count');
-        if (columns > 1) {
-          const separator = hiddenItems[0].parentNode.insertBefore(
-            hiddenItems[0].cloneNode(false), hiddenItems[0]
-          );
-          separator.classList.remove('s-visually-hidden');
-          separator.classList.add('b-block-grid__cols-restarter');
+        if (hiddenItems.length) {
+          // in case of column layout, add a colspan separator to preserve item order
+          const columns = window.getComputedStyle(gridBlock).getPropertyValue('column-count');
+          if (columns > 1) {
+            const separator = hiddenItems[0].parentNode.insertBefore(
+              hiddenItems[0].cloneNode(false), hiddenItems[0]
+            );
+            separator.classList.remove('s-visually-hidden');
+            separator.classList.add('b-block-grid__cols-restarter');
+          }
+          // the big reveal
+          hiddenItems.slice(0, noOfItemsToShow).forEach(el => el.classList.remove('s-visually-hidden'));
+          // Remove the footer if we're not going to need the button after this
+          if (hiddenItems.length <= noOfItemsToShow) gridFooterMarkup.remove();
         }
-        // the big reveal
-        hiddenItems.slice(0, noOfItemsToShow).forEach(el => el.classList.remove('s-visually-hidden'));
-        // Remove the footer if we're not going to need the button after this
-        if (hiddenItems.length <= noOfItemsToShow) gridFooterMarkup.remove();
       }, false);
     }
     return true;
