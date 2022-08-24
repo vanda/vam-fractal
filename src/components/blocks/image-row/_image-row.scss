@@ -1,0 +1,25 @@
+.b-image-row {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  &--padded > &__item {
+    @include bpMinSmall {
+      margin: 6px;
+    }
+  }
+
+  &__item:last-child:nth-child(odd) {
+    @include bpMaxSmall {
+      height: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+}
