@@ -12,11 +12,9 @@
     {{ open | safe }}
   </div>
   <picture>
-    <source srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+    <source data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
         media="(max-width: 500px)">
-    <img class="b-venue-card__image"
-        itemprop="contentUrl"
-        alt="" 
+    <img class="b-venue-card__image" alt="" 
         data-sizes="(max-width: 499px) calc(100vw - 10px),
                   (min-width: 500px) calc((100vw - 10px) / 2),
                   (min-width: 500px) 490px"
