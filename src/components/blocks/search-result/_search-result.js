@@ -4,8 +4,9 @@ const searchResultTextTruncate = (textEl) => {
   }
   const fullText = textEl.dataset.fulltext;
   textEl.innerHTML = fullText;
+
   if (textEl.scrollHeight - textEl.clientHeight > 10) {
-    const focus = fullText.indexOf('&lt;/em&gt;');
+    const focus = fullText.indexOf('</em>');
     const maxChars = (textEl.clientHeight / textEl.scrollHeight) * fullText.length;
     const shunt = focus - maxChars;
     let firstChar = 0;
