@@ -6,7 +6,9 @@
   width: 100%;
 
   &__content {
+    min-height: 139px;
     padding: 16px 0;
+
     &-text {
       margin: auto;
     }
@@ -42,16 +44,18 @@
     &-description {
       @include typeSetting(2, light);
       color: siteColor(vam-grey-2);
+      max-height: 5em;
       overflow: hidden;
       padding-right: 5px;
       position: relative;
       
       @include bpMinXSmall {
+        max-height: 2.5em;
         padding-left: 120px;
         padding-right: 0;
       }
 
-      & em {
+      & > em {
         font-style: normal;
         font-weight: 700;
       }
@@ -64,7 +68,7 @@
       width: 72px;
 
       @include bpMinXSmall {
-        float: left;
+        float: none;
         height: 100px;
         margin: 20px 0;
         position: absolute;
