@@ -10,19 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       /* use a style tag so we have media-queries */
       const imgRowStyle = imgRow.parentNode.insertBefore(document.createElement('style'), imgRow);
-      const imgs = imgRow.querySelectorAll('.b-image-row__img');
 
       const rowStyle = () => {
+        const imgsLL = imgRow.querySelectorAll('.b-image-row__img');  // images, including those failed and replaced by LazyLoad
         const aspectRatios = [];
-        const parentRow = imgs[0].closest('.b-image-row');
+        const parentRow = imgsLL[0].closest('.b-image-row');
         const parentRowCS = getComputedStyle(parentRow);
         const rowWidth = parentRow.getBoundingClientRect().width
                           - parseInt(parentRowCS.paddingLeft, 10)
                           - parseInt(parentRowCS.paddingRight, 10);
         let imgRowStyleMobile = '';
         let imgId = 0;
-        Array.from(imgs, (img) => {
-          aspectRatios.push(img.naturalWidth / img.naturalHeight);
+        Array.from(imgsLL, (img) => {
+          if (img.naturalWidth) {
+            aspectRatios.push(img.naturalWidth / img.naturalHeight);
+          } else {
+            // failed image
+            aspectRatios.push(1);
+          }
           imgId += 1;
           if (imgId % 2 === 0) {
             /* apply the same height calculation for mobile as the general rule below,
@@ -50,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       };
 
+      const imgs = imgRow.querySelectorAll('.b-image-row__img');
       const complete = [];
       const loaded = (anyImg) => {
         complete.push(anyImg);
