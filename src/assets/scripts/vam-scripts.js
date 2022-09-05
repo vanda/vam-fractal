@@ -33,8 +33,11 @@ new LazyLoad({
   class_loading: 's-lazyload--blur',
   class_error: 's-lazyload--error',
   callback_error: (el) => {
-    // required for safari which won't apply pseudo elements to replaced elements like IMG
-    el.parentNode.insertBefore(document.createElement('div'), el).className = el.className;
+    /* replace failed img with a div in order to apply styled pseudo elements
+     * (not strictly possible for replaced elements like IMG) */
+    const imgReplaced = el.parentNode.insertBefore(document.createElement('div'), el);
+    imgReplaced.className = el.className;
+    imgReplaced.dataset.imgFailed = el.src;
     el.parentNode.removeChild(el);
   }
 });
