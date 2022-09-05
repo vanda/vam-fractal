@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             // failed image
             aspectRatios.push(1);
+            img.closest('.b-image-row__item').style.flexGrow = 1;
           }
           imgId += 1;
           if (imgId % 2 === 0) {
