@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             // failed image
             aspectRatios.push(1);
-            img.closest('.b-image-row__item').style.flexGrow = 1;
+            img.closest('.b-image-row__item').classList.add('b-image-row__item--failed');
           }
           imgId += 1;
           if (imgId % 2 === 0) {
@@ -67,11 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
         /* wait for LazyLoad to set src attribute for each img */
         const observer = new MutationObserver(() => {
           observer.disconnect();
-          /* then wait for each img to load */
+          /* then wait for each img to load, or fail */
           if (img.complete) {
             loaded(img);
           } else {
-            img.addEventListener('load', () => { loaded(img); }, false);
+            document.addEventListener('load', (e) => {
+              if (e.target === img) loaded(img);
+            }, false);
+            img.addEventListener('error', () => { loaded(img); }, false);
           }
         });
         observer.observe(img, { attributes: true });
