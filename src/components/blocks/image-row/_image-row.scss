@@ -12,6 +12,14 @@
 
   &__item {
     display: flex;
+
+    &--failed {
+      flex-grow: 1;
+
+      @include bpMaxSmall {
+        flex-basis: 20%;
+      }
+    }
   }
 
   &__item:last-child:nth-child(odd) {
