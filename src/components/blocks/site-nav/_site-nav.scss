@@ -487,10 +487,6 @@ $nav-breakpoints: (
     text-align: left;
     top: 32px;
 
-    .b-site-nav--solid & {
-      background: siteColor(vam-grey-1);
-    }
-
     .active & {
       display: block;
     }
