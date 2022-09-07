@@ -397,6 +397,7 @@ $nav-breakpoints: (
     > a {
       margin-left: 34px;
       position: relative;
+      text-decoration: none;
 
       &:hover {
         left: 10px;
