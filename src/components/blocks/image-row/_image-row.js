@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
       Array.from(imgs, (img) => {
         /* wait for LazyLoad to set src attribute for each img */
         const observer = new MutationObserver(() => {
-          observer.disconnect();
           /* then wait for each img to load, or fail */
           if (img.complete) {
             loaded(img);
