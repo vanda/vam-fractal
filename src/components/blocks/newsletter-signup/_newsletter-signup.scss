@@ -84,19 +84,13 @@
     }
 
     &--footer {
-      &-etc {
-        border-bottom: 1px solid siteColor(vam-grey-2);
-        @include bpMinSmall {
-          border-bottom: 1px solid siteColor(vam-grey-4);
-        }
-      }
-      &-main {
-        border-bottom: 1px solid siteColor(vam-grey-4);
-      }
-
       margin: 0;
       max-width: none;
       padding: 0 0 31px;
+
+      &-main {
+        border-bottom: 1px solid siteColor(vam-grey-4);
+      }
     }
 
     @include bpMinSmall {
