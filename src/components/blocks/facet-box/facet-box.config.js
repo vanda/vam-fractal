@@ -4,6 +4,7 @@ module.exports = {
       name: 'default',
       label: 'Default',
       context: {
+        previewClass: 'fr-bg--dark',
         facets: [
           {
             facet: 'Facet 1',
