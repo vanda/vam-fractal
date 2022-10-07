@@ -19,6 +19,7 @@ module.exports = {
       label: 'EtC Search',
       name: 'etc',
       context: {
+        previewClass: 'fr-bg--dark',
         modifiers: ['etc']
       }
     }

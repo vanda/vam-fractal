@@ -93,27 +93,32 @@
   }
 
   &__caption {
-    @include typeSetting(1, light);
     display: none;
 
     @include bpMinSmall {
+      @include typeSetting(3, light);
       color: siteColor(vam-black);
       display: block;
-      display: -webkit-box;
-    }
-
-    .b-object-card--etc & {
-      /*! autoprefixer: off */
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      color: siteColor(vam-white);
-      display: block;
-      display: -webkit-box;
-      overflow: hidden;
     }
 
     &--sub {
-      @include typeSetting(3);
+      margin-top: 5px;
     }
+
+    .b-object-card--etc & {
+      @include typeSetting(1, bold);
+      color: siteColor(vam-white);
+      display: block;
+      overflow: hidden;
+
+      @include bpMinXSmall {
+        @include typeSetting(3, bold);
+      }
+
+      &--sub {
+        @include fontWeight(regular);
+      }
+    }
+
   }
 }
