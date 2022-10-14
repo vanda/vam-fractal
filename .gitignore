@@ -2,4 +2,5 @@ node_modules
 dev
 dist
 www
+src/components/_preview-layouts/_preview.html
 .DS_Store
