@@ -37,7 +37,6 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.16",
-    "postcss-bem-linter": "^3.3.0",
     "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^7.7.2",
     "sass": "^1.54.3",
