@@ -8,7 +8,6 @@ if (backgroundVideo) {
   const imageCredit = document.querySelector('.js-background-image-credit');
   let playCounter = 0;
 
-
   const showVideoCredit = () => {
     if (videoCredit) {
       videoCredit.classList.remove('s-hidden');

@@ -1,8 +1,11 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-icon-badge {
   &__icon {
-    background-color: siteColor(vam-black);
+    background-color: base.sitecolors-siteColor("vam-black");
     border-radius: 100%;
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     display: flex;
     height: 60px;
     margin: 0 auto 5px;
@@ -10,12 +13,12 @@
     text-align: center;
     width: 60px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       height: 70px;
       width: 70px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       height: 80px;
       width: 80px;
     }
@@ -26,13 +29,13 @@
     }
 
     .b-icon-badge--dark & {
-      background-color: siteColor(vam-white);
-      color: siteColor(vam-black);
+      background-color: base.sitecolors-siteColor("vam-white");
+      color: base.sitecolors-siteColor("vam-black");
     }
 
     &:hover {
-      background-color: siteColor(vam-grey-4);
-      color: siteColor(vam-black);
+      background-color: base.sitecolors-siteColor("vam-grey-4");
+      color: base.sitecolors-siteColor("vam-black");
     }
 
     > svg {
@@ -40,18 +43,18 @@
       margin: auto;
       width: 16px;
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         height: 22px;
         width: 22px;
       }
-      
+
       .b-icon-badge--short {
         > & {
           height: 24px;
           margin: auto;
           width: 24px;
 
-          @include bpMinSmall {
+          @include mixins.breakpoints-bpMinSmall {
             height: 34px;
             width: 34px;
           }
@@ -61,24 +64,25 @@
   }
 
   &__label {
-    @include typeSetting(4);
-    color: siteColor(vam-white);
+    @include base.typography-typeSetting(4);
+
+    color: base.sitecolors-siteColor("vam-white");
     display: block;
     text-align: center;
-    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
+    text-shadow: 0 1px 2px base.sitecolors-siteColor("vam-black"), 0 -1px 2px base.sitecolors-siteColor("vam-black");
     text-transform: capitalize;
 
-    @include bpMinMedium {
-      margin-top: $spacing-small;
+    @include mixins.breakpoints-bpMinMedium {
+      margin-top: base.$spacings-spacing-small;
     }
 
     .b-icon-badge--light & {
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
       text-shadow: none;
     }
 
     .b-icon-badge--dark & {
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       text-shadow: none;
     }
   }

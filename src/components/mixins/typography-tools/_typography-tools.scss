@@ -1,0 +1,35 @@
+@use "sass:math";
+@use "sass:string";
+@use "sass:list";
+
+// PX to REM
+// Convert px values to rem values with px fallback - https://github.com/bitmanic/rem
+$baseline-px: 16px;
+
+@mixin rem($property, $px-values) {
+  // Convert the baseline into rems
+  $baseline-rem: math.div($baseline-px, 1rem);
+
+  // Print the first line in pixel values
+  #{$property}: $px-values;
+
+  // If there is only one (numeric) value, return the property/value line for it.
+  @if type-of($px-values) == "number" {
+    #{$property}: math.div($px-values, $baseline-rem);
+  } @else {
+    // Create an empty list that we can dump values into
+    $rem-values: string.unquote("");
+
+    @each $value in $px-values {
+      // If the value is zero, return 0
+      @if $value == 0 {
+        $rem-values: list.append($rem-values, $value);
+      } @else {
+        $rem-values: list.append($rem-values, math.div($value, $baseline-rem));
+      }
+    }
+
+    // Return the property and its list of converted values
+    #{$property}: $rem-values;
+  }
+}

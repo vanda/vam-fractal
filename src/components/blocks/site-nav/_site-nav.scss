@@ -1,7 +1,11 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:map";
+
 $nav-breakpoints: (
-  small: 768px,
-  medium: 992px,
-  large: 1050px
+  "small": 768px,
+  "medium": 992px,
+  "large": 1050px
 );
 
 @mixin bpMinNav($breakpoint) {
@@ -11,8 +15,9 @@ $nav-breakpoints: (
 }
 
 .b-site-nav {
-  @include typeSetting(5);
-  background-image: linear-gradient(hsla(0, 0, 0, .4), transparent);
+  @include base.typography-typeSetting(5);
+
+  background-image: linear-gradient(hsla(0deg, 0%, 0%, 40%), transparent);
   height: 150px;
   line-height: 1.7;
   position: relative;
@@ -33,10 +38,10 @@ $nav-breakpoints: (
 
     &:focus-visible,
     &:active {
-      background: siteColor(vam-white);
-      border: 1px solid siteColor(vam-black);
+      background: base.sitecolors-siteColor("vam-white");
+      border: 1px solid base.sitecolors-siteColor("vam-black");
       box-shadow: none;
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
       font-size: 13px;
       height: 40px;
       padding: 8px 0 0 13px;
@@ -60,7 +65,7 @@ $nav-breakpoints: (
   }
 
   &--access {
-    @include visuallyHidden;
+    @include mixins.elementvisibility-visuallyHidden;
   }
 
   &__extra {
@@ -71,15 +76,15 @@ $nav-breakpoints: (
 
     &__inner {
       margin: 0 auto;
-      max-width: map-get($breakpoints, large);
+      max-width: map.get(mixins.$breakpoints-breakpoints, "large");
     }
   }
 
   &__logo {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     display: none;
 
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       display: inline-block;
     }
 
@@ -96,18 +101,18 @@ $nav-breakpoints: (
   }
 
   &__mobile {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     min-height: 60px;
     position: absolute;
     transform: translate3d(0, 0, 0);
     width: 100%;
 
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       display: none;
     }
 
     &__thin {
-      background-color: siteColor(vam-black);
+      background-color: base.sitecolors-siteColor("vam-black");
       color: #aaabae;
       font-size: 13px;
       height: 40px;
@@ -138,14 +143,16 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle-text {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     float: right;
     font-size: 18px;
     font-weight: 500;
     margin: 26px 62px 0 0;
-    text-shadow: 0 1px 3px rgba(siteColor(vam-black), .8), 0 -1px 3px rgba(siteColor(vam-black), .8);
+    text-shadow:
+      0 1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%),
+      0 -1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%);
 
-    @media (max-width: '286px') {
+    @media (max-width: "286px") {
       display: none;
     }
 
@@ -161,7 +168,10 @@ $nav-breakpoints: (
     background: transparent;
     border: 2px solid currentColor;
     border-radius: 50%;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, .05), 0 0 50px 1px rgba(0, 0, 0, .2), inset 0 0 50px 4px rgba(0, 0, 0, .24);
+    box-shadow:
+      0 0 10px 5px rgba(0, 0, 0, 5%),
+      0 0 50px 1px rgba(0, 0, 0, 20%),
+      inset 0 0 50px 4px rgba(0, 0, 0, 24%);
     display: inline-block;
     height: 40px;
     margin-left: 10px;
@@ -177,7 +187,7 @@ $nav-breakpoints: (
   &__mobile-toggle,
   &__mobile-bag,
   &__core__rhs {
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       display: none;
     }
   }
@@ -191,11 +201,11 @@ $nav-breakpoints: (
   &__core__rhs {
     display: none;
 
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       display: inline-block;
     }
 
-    @include bpMinLarge {
+    @include mixins.breakpoints-bpMinLarge {
       right: calc(50% - 590px);
     }
   }
@@ -246,7 +256,7 @@ $nav-breakpoints: (
 
   &__bag-total {
     bottom: 0;
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     font-size: 12px;
     font-weight: 700;
     left: 0;
@@ -258,24 +268,24 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     position: fixed;
     right: 10px;
     text-align: center;
     top: 20px;
-    transition: all .5s;
+    transition: all 0.5s;
     z-index: 3;
 
     &--solo {
-      background: siteColor(vam-black);
-      box-shadow: 0 0 3px rgba(siteColor(vam-white), .75);
+      background: base.sitecolors-siteColor("vam-black");
+      box-shadow: 0 0 3px rgba(base.sitecolors-siteColor("vam-white"), 75%);
     }
 
     &--static {
       position: absolute;
     }
 
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       display: none;
     }
 
@@ -293,25 +303,25 @@ $nav-breakpoints: (
       background: transparent;
       border: none;
       box-shadow: none;
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
     }
 
     .b-site-nav--open &__icon--hamburger {
       display: none;
     }
 
-    .b-site-nav__mobile-toggle:focus &__icon--close {
-      @include defaultFocus;
-    }
-
     .b-site-nav--open &__icon--close {
       display: block;
+    }
+
+    .b-site-nav__mobile-toggle:focus &__icon--close {
+      @include mixins.focus-defaultFocus;
     }
   }
 
   &__core {
-    background-color: siteColor(vam-grey-1);
-    color: siteColor(vam-white);
+    background-color: base.sitecolors-siteColor("vam-grey-1");
+    color: base.sitecolors-siteColor("vam-white");
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -320,10 +330,9 @@ $nav-breakpoints: (
     position: fixed;
     top: -100%;
     transform: translate3d(0, 0, 0);
-    transition: top .5s;
+    transition: top 0.5s;
     width: 100%;
     z-index: 2;
-
 
     .b-site-nav--open & {
       height: 100vh;
@@ -331,7 +340,7 @@ $nav-breakpoints: (
       top: 0;
     }
 
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       align-items: center;
       background: none;
       flex-direction: row;
@@ -342,7 +351,7 @@ $nav-breakpoints: (
       top: 0;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       padding: 0 65px;
     }
   }
@@ -350,28 +359,69 @@ $nav-breakpoints: (
   &__core__items {
     align-items: baseline;
     display: none;
-    @include typeSetting(5, bold);
+
+    @include base.typography-typeSetting(5, "bold");
+
     margin: 40px 0 0;
 
     .b-site-nav--open & {
       display: block;
     }
 
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       align-items: center;
       display: flex;
       flex-direction: row;
-      @include typeSetting(4, regular);
+
+      @include base.typography-typeSetting(4, "regular");
+
       justify-content: center;
       margin: 0;
       padding: 0;
       text-align: center;
-      text-shadow: 0 1px 3px rgba(siteColor(vam-black), .8), 0 -1px 3px rgba(siteColor(vam-black), .8);
+      text-shadow:
+        0 1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%),
+        0 -1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%);
+    }
+  }
+
+  &__core__overflowitems {
+    display: none;
+    font-size: 15px;
+    left: -20px;
+    list-style-type: none;
+    margin: 0;
+    min-width: 175px;
+    position: absolute;
+    text-align: left;
+    top: 32px;
+
+    .b-site-nav--solid & {
+      background: base.sitecolors-siteColor("vam-grey-1");
+    }
+
+    .active & {
+      display: block;
+    }
+
+    a {
+      border: none;
+      display: block;
+      padding: 0;
+
+      &::after {
+        content: "";
+        display: none;
+      }
+    }
+
+    @include bpMinNav("large") {
+      display: none;
     }
   }
 
   &__core__item {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     display: block;
     margin: 0 20px 30px;
     width: 100%;
@@ -380,16 +430,16 @@ $nav-breakpoints: (
       display: none;
       position: relative;
 
-      > a:after {
+      > a::after {
         bottom: 2px;
-        content: '  \0025BC';
+        content: "  \0025BC";
         display: inline-block;
-        font-size: .75em;
+        font-size: 0.75em;
         margin-left: 5px;
         position: relative;
       }
 
-      &.active > a:after {
+      &.active > a::after {
         transform: rotate(180deg);
       }
     }
@@ -403,14 +453,14 @@ $nav-breakpoints: (
       }
 
       &.active {
-        border-bottom: 2px solid siteColor(vam-white);
+        border-bottom: 2px solid base.sitecolors-siteColor("vam-white");
       }
     }
 
-    @include bpMinNav(small) {
+    @include bpMinNav("small") {
       display: inline-block;
       margin: 23px 12px;
-      transition: border .2s;
+      transition: border 0.2s;
       width: auto;
 
       &--learning,
@@ -424,7 +474,7 @@ $nav-breakpoints: (
         padding: 5px 0;
 
         &:hover {
-          color: siteColor(vam-grey-5);
+          color: base.sitecolors-siteColor("vam-grey-5");
           left: initial;
         }
 
@@ -432,18 +482,18 @@ $nav-breakpoints: (
           border: none;
 
           &::after {
-            background: siteColor(vam-white);
-            box-shadow: 0 1px 3px 0 rgba(siteColor(vam-black), .8);
-            content: '';
+            background: base.sitecolors-siteColor("vam-white");
+            box-shadow: 0 1px 3px 0 rgba(base.sitecolors-siteColor("vam-black"), 80%);
+            content: "";
             display: block;
             height: 3px;
-            margin: 4px 0 -7px 0;
+            margin: 4px 0 -7px;
           }
         }
       }
     }
 
-    @include bpMinNav(medium) {
+    @include bpMinNav("medium") {
       margin: 23px 16px;
 
       &--learning {
@@ -451,7 +501,7 @@ $nav-breakpoints: (
       }
     }
 
-    @include bpMinNav(large) {
+    @include bpMinNav("large") {
       &--more {
         display: none;
       }
@@ -470,42 +520,7 @@ $nav-breakpoints: (
     top: 5px;
     width: 18px;
 
-    @include bpMinNav(small) {
-      display: none;
-    }
-  }
-
-  &__core__overflowitems {
-    display: none;
-    font-size: 15px;
-    left: -20px;
-    list-style-type: none;
-    margin: 0;
-    min-width: 175px;
-    position: absolute;
-    text-align: left;
-    top: 32px;
-
-    .b-site-nav--solid & {
-      background: siteColor(vam-grey-1);
-    }
-
-    .active & {
-      display: block;
-    }
-
-    a {
-      border: none;
-      display: block;
-      padding: 0;
-
-      &:after {
-        content: '';
-        display: none;
-      }
-    }
-
-    @include bpMinNav(large) {
+    @include bpMinNav("small") {
       display: none;
     }
   }
@@ -513,7 +528,7 @@ $nav-breakpoints: (
   &__core__overflowitem {
     margin: 0 0 8px 20px;
 
-    @include bpMinNav(medium) {
+    @include bpMinNav("medium") {
       &--collections,
       &--learning {
         display: none;
@@ -523,39 +538,43 @@ $nav-breakpoints: (
 
   &__core__search {
     background-color: #000;
-    color: siteColor(vam-grey-6);
+    color: base.sitecolors-siteColor("vam-grey-6");
     display: block;
     padding: 45px 0 10px;
 
-    @include bpMinNav(small) {
-      background-color: siteColor(vam-grey-1);
+    @include bpMinNav("small") {
+      background-color: base.sitecolors-siteColor("vam-grey-1");
       height: 100vh;
       left: 0;
       padding: 86px 0 5px;
       position: absolute;
       top: -100vh;
-      transition: top .2s ease-in;
+      transition: top 0.2s ease-in;
       width: 100%;
       z-index: -1;
 
       &--active {
         overflow: auto;
         top: 0;
-        transition: top .2s ease-out;
+        transition: top 0.2s ease-out;
       }
     }
 
-    @include bpMinLarge {
-      left: calc((#{map-get($breakpoints, large)} - 100vw) / 2);
+    @include mixins.breakpoints-bpMinLarge {
+      left: calc((#{map.get(mixins.$breakpoints-breakpoints, large)} - 100vw) / 2);
       width: 100vw;
     }
 
     &__wrapper {
       display: none;
 
+      // All files in the site-nav component contain non-standard BEM classes and
+      // should be refactored. NB, 28/9/2022
+      /* stylelint-disable selector-class-pattern */
       .b-site-nav__core__search--active & {
         display: block;
       }
+      /* stylelint-enable selector-class-pattern */
     }
 
     &__container {
@@ -563,31 +582,33 @@ $nav-breakpoints: (
       max-width: 536px;
       padding: 0 20px 65px;
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         max-width: 630px;
         padding: 0 20px 40px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         max-width: 838px;
       }
 
       &--results {
-        background: siteColor(vam-black);
+        background: base.sitecolors-siteColor("vam-black");
         margin-bottom: 38px;
         overflow: auto;
         padding: 0;
 
-        @include bpMinSmall {
+        @include mixins.breakpoints-bpMinSmall {
           height: 0;
           max-height: 100%;
           overflow: hidden;
-          transition: height .5s;
+          transition: height 0.5s;
         }
 
+        /* stylelint-disable selector-class-pattern */
         .b-site-nav__core__search--active & {
           height: 100%;
         }
+        /* stylelint-enable selector-class-pattern */
       }
 
       &--hidden {

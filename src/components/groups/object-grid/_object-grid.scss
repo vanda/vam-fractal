@@ -1,14 +1,17 @@
+@use "../../mixins";
+
 .g-object-grid {
-  @include unstyledList;
+  @include mixins.unstyledelements-unstyledList;
+
   margin-bottom: 40px;
   width: 100%;
 
-  @include bpMinXSmall {
+  @include mixins.breakpoints-bpMinXSmall {
     column-count: 2;
     column-gap: 30px;
   }
 
-  @include bpMinMedium {
+  @include mixins.breakpoints-bpMinMedium {
     column-count: 3;
   }
 

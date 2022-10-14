@@ -1,13 +1,16 @@
-.b-section-header {
-  background: siteColor(vam-white);
-  padding: 21px $spacing-small 25px;
+@use "../../mixins";
+@use "../../base";
 
-  @include bpMinXSmall {
-    padding: 28px $spacing-small 32px;
+.b-section-header {
+  background: base.sitecolors-siteColor("vam-white");
+  padding: 21px base.$spacings-spacing-small 25px;
+
+  @include mixins.breakpoints-bpMinXSmall {
+    padding: 28px base.$spacings-spacing-small 32px;
   }
 
-  @include bpMinSmall {
-    padding: 47px $spacing-small $spacing-medium;
+  @include mixins.breakpoints-bpMinSmall {
+    padding: 47px base.$spacings-spacing-small base.$spacings-spacing-medium;
   }
 
   &--transparent {
@@ -15,17 +18,18 @@
   }
 
   &__title {
-    @include typeSetting(5, bold);
-    color: siteColor(vam-black);
+    @include base.typography-typeSetting(5, "bold");
+
+    color: base.sitecolors-siteColor("vam-black");
     display: block;
     text-align: center;
 
-    @include bpMinSmall {
-      @include typeSetting(6, bold);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6, "bold");
     }
 
     .b-section-header--transparent & {
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
     }
   }
 }

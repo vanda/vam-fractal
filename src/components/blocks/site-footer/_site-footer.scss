@@ -1,7 +1,12 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-site-footer {
-  background-color: siteColor(vam-black);
-  color: siteColor(vam-white);
-  @include typeSetting(1, regular);
+  background-color: base.sitecolors-siteColor("vam-black");
+  color: base.sitecolors-siteColor("vam-white");
+
+  @include base.typography-typeSetting(1, "regular");
+
   margin-top: 32px;
   position: relative;
   transform: translate3d(0, 0, 0);
@@ -9,21 +14,25 @@
   &__backtotop {
     display: none;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       @media print {
         display: none;
       }
+
       display: block;
-      @include typeSetting(3, regular);
+
+      @include base.typography-typeSetting(3, "regular");
+
       margin-top: 64px;
       position: relative;
       text-align: center;
       top: -32px;
     }
+
     &--etc {
-      &:after {
-        border-bottom: 1px siteColor(vam-grey-2) solid;
-        content: ' ';
+      &::after {
+        border-bottom: 1px base.sitecolors-siteColor("vam-grey-2") solid;
+        content: " ";
         height: 1px;
         left: 0;
         position: absolute;
@@ -35,45 +44,49 @@
   }
 
   &__backtotop-btn {
-    background: siteColor(vam-black);
-    border: 1px solid siteColor(vam-white);
+    background: base.sitecolors-siteColor("vam-black");
+    border: 1px solid base.sitecolors-siteColor("vam-white");
     border-radius: 2px;
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     display: inline-block;
-    @include typeSetting(3, regular);
+
+    @include base.typography-typeSetting(3, "regular");
+
     padding: 20px 15px;
 
     &.s-themed--border-color:hover {
-      border-color: siteColor(vam-white);
+      border-color: base.sitecolors-siteColor("vam-white");
     }
   }
 
   &__content {
     margin: auto;
-    max-width: bp(large) + (2 * $spacing-small);
+    max-width: bp(large) + (2 * base.$spacings-spacing-small);
     overflow: hidden;
-    padding: 41px $spacing-small 0;
+    padding: 41px base.$spacings-spacing-small 0;
     position: relative;
 
     &--newsletter {
-      padding: 32px $spacing-small 0;
+      padding: 32px base.$spacings-spacing-small 0;
     }
 
-    @include bpMinSmall {
-      padding: 51px $spacing-large 0;
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 51px base.$spacings-spacing-large 0;
 
       &--newsletter {
-        padding: 0 $spacing-large 0;
+        padding: 0 base.$spacings-spacing-large 0;
       }
     }
   }
 
   &__name {
-    color: siteColor(vam-white);
-    @include typeSetting(6, bold);
+    color: base.sitecolors-siteColor("vam-white");
+
+    @include base.typography-typeSetting(6, "bold");
+
     margin-bottom: 18px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-bottom: 30px;
     }
   }
@@ -84,7 +97,7 @@
     gap: 10px;
     margin-bottom: 42px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       gap: 20px;
     }
   }
@@ -93,13 +106,13 @@
     padding-bottom: 18px;
     width: calc(50% - 5px); // 1 gap
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       width: calc(25% - 15px); // 3 gaps
     }
   }
 
   &__item {
-    color: siteColor(vam-grey-4);
+    color: base.sitecolors-siteColor("vam-grey-4");
     margin: 0 0 12px;
 
     &--first-link {
@@ -108,7 +121,7 @@
   }
 
   &__item:first-child {
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       br {
         display: none;
       }
@@ -116,26 +129,28 @@
   }
 
   &__header {
-    @include typeSetting(3, bold);
+    @include base.typography-typeSetting(3, "bold");
+
     margin: 0 0 12px;
   }
 
   &__list {
-    @include unstyledList;
+    @include mixins.unstyledelements-unstyledList;
   }
 
   &__link {
-    @include typeSetting(1, regular);
+    @include base.typography-typeSetting(1, "regular");
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       text-decoration: underline;
     }
 
     &--arrow-right::after {
       border: 1px solid #b7b8bd;
       border-bottom: none;
-      border-left: none; 
-      content: '';
+      border-left: none;
+      content: "";
       display: inline-block;
       height: 5px;
       margin: 0 0 2px 5px;
@@ -146,16 +161,14 @@
   }
 
   &__supplementary {
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       column-gap: 10px;
       display: grid;
-      grid-template-areas: 
-      "contacts ."
-      "social ."
-      "legal ."
-      "copy  logo";
-      grid-template-columns: 3fr 1fr;
-      grid-template-rows: auto;     
+      grid-template:
+        "contacts ."
+        "social ."
+        "legal ."
+        "copy logo" auto / 3fr 1fr;
       margin-bottom: 30px;
     }
   }
@@ -163,17 +176,17 @@
   &__contacts {
     display: flex;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       grid-area: contacts;
       margin-bottom: 20px;
     }
   }
 
   &__copy {
-    color: siteColor(vam-grey-4);
+    color: base.sitecolors-siteColor("vam-grey-4");
     margin-bottom: 50px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       grid-area: copy;
       margin-bottom: 0;
     }
@@ -184,33 +197,33 @@
     display: flex;
 
     a {
-      color: siteColor(vam-grey-4);
+      color: base.sitecolors-siteColor("vam-grey-4");
     }
 
     svg {
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       grid-area: social;
     }
   }
 
   &__legal {
-    color: siteColor(vam-grey-4);
+    color: base.sitecolors-siteColor("vam-grey-4");
     margin: 10px 0 25px;
 
     a {
       text-decoration: underline;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       display: flex;
       grid-area: legal;
       margin-bottom: 5px;
     }
 
-    @include bpMaxSmall {
+    @include mixins.breakpoints-bpMaxSmall {
       .s-separated::before {
         display: none;
       }
@@ -218,12 +231,12 @@
   }
 
   &__logo {
-    color: siteColor(vam-grey-1);
+    color: base.sitecolors-siteColor("vam-grey-1");
     height: 90px;
     margin-bottom: 20px;
     width: 155px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       align-self: end;
       grid-area: logo;
       grid-row: 1 / 5;
@@ -231,7 +244,7 @@
       margin-bottom: 0;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       height: 146px;
       width: 251px;
     }

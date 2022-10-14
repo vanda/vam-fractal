@@ -1,14 +1,16 @@
+@use "../../mixins";
+
 .b-collection-grid {
   &__items {
-    @include unstyledList;
-    @include tiles;
+    @include mixins.unstyledelements-unstyledList;
+    @include mixins.tiles-tiles;
   }
 
   &__item {
-    @include tilesItem(3);
+    @include mixins.tiles-tilesItem(3);
 
     &--featured {
-      @include tilesItem(4);
+      @include mixins.tiles-tilesItem(4);
     }
   }
 
@@ -17,4 +19,3 @@
     max-width: 950px;
   }
 }
-

@@ -1,3 +1,5 @@
+@use "../../base";
+
 .b-pagination {
   text-align: center;
 
@@ -5,21 +7,23 @@
     display: inline-block;
 
     &-content {
-      @include typeSetting(4, normal);
-      color: siteColor(vam-grey-2);
+      @include base.typography-typeSetting(4, "normal");
+
+      color: base.sitecolors-siteColor("vam-grey-2");
       margin: 0 4px;
       text-decoration: underline;
-      transition: color .2s;
+      transition: color 0.2s;
 
       &--active {
-        @include typeSetting(4, normal);
-        color: siteColor(vam-grey-2);
+        @include base.typography-typeSetting(4, "normal");
+
+        color: base.sitecolors-siteColor("vam-grey-2");
         margin: 0 4px;
-        transition: color .2s;
+        transition: color 0.2s;
       }
 
       &:hover {
-        color: siteColor(vam-grey-4);
+        color: base.sitecolors-siteColor("vam-grey-4");
       }
     }
   }
@@ -29,39 +33,38 @@
   }
 
   &__pointer {
-    background-color: siteColor(vam-grey-2);
+    background-color: base.sitecolors-siteColor("vam-grey-2");
     border-radius: 50%;
     display: inline-block;
     height: 52px;
     margin: 0 20px;
     position: relative;
     top: 4px;
-    transition: all .2s;
+    transition: all 0.2s;
     width: 52px;
-    
+
     &:not(&--deactivated):hover {
-      background-color: siteColor(vam-grey-3);
+      background-color: base.sitecolors-siteColor("vam-grey-3");
     }
 
     &--deactivated {
-      background-color: siteColor(vam-grey-5);
+      background-color: base.sitecolors-siteColor("vam-grey-5");
       height: 40px;
       top: 2px;
       width: 40px;
     }
 
     &-arrow {
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       height: 40%;
       margin-left: 1px;
       margin-top: 15px;
       width: 100%;
 
       .b-pagination__pointer--deactivated & {
-        color: siteColor(vam-grey-4);
+        color: base.sitecolors-siteColor("vam-grey-4");
         margin-top: 12px;
       }
     }
   }
 }
-

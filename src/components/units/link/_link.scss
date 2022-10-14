@@ -10,7 +10,7 @@
     &::after {
       border: 5px solid transparent;
       border-left-color: currentColor;
-      content: '';
+      content: "";
       display: inline-block;
       margin-left: 7px;
     }
@@ -23,7 +23,6 @@
     top: 2px;
     width: 16px;
   }
-
 }
 
 @media print {

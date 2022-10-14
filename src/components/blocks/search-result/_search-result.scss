@@ -1,6 +1,9 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-search-result {
-  background-color: siteColor(vam-white);
-  border-bottom: 1px solid siteColor(vam-grey-5);
+  background-color: base.sitecolors-siteColor("vam-white");
+  border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-5");
   display: block;
   position: relative;
   width: 100%;
@@ -14,26 +17,29 @@
     }
 
     &-type {
-      @include typeSetting(1);
-      color: siteColor(vam-grey-2);
+      @include base.typography-typeSetting(1);
+
+      color: siteColor("vam-grey-2");
       margin-bottom: 4px;
 
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         margin-bottom: 0;
         padding-left: 120px;
       }
     }
 
     &-title {
-      @include typeSetting(3, bold);
-      color: siteColor(vam-black);
+      @include base.typography-typeSetting(3, "bold");
+
+      color: siteColor("vam-black");
       margin-bottom: 12px;
       overflow: hidden;
       text-overflow: clip;
       white-space: normal;
-      
-      @include bpMinXSmall {
-        @include typeSetting(4, bold);
+
+      @include mixins.breakpoints-bpMinXSmall {
+        @include base.typography-typeSetting(4, "bold");
+
         margin-bottom: 4px;
         padding-left: 120px;
         text-overflow: ellipsis;
@@ -42,14 +48,15 @@
     }
 
     &-description {
-      @include typeSetting(2, light);
+      @include base.typography-typeSetting(2, "light");
+
       color: siteColor(vam-grey-2);
       max-height: 5em;
       overflow: hidden;
       padding-right: 5px;
       position: relative;
-      
-      @include bpMinXSmall {
+
+      @include mixins.breakpoints-bpMinXSmall {
         max-height: 2.5em;
         padding-left: 120px;
         padding-right: 0;
@@ -67,7 +74,7 @@
       object-fit: cover;
       width: 72px;
 
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         float: none;
         height: 100px;
         margin: 20px 0;

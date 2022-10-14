@@ -1,3 +1,7 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
 .b-search-results {
   position: relative;
 
@@ -11,44 +15,50 @@
   }
 
   &__offensive-warning {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       margin-left: 0;
     }
+
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     margin-left: -12px;
     padding: 0 10px;
     position: absolute;
     width: 100%;
-    &-text {
-      @include bpMinXSmall {
-        margin-top: auto;
-        max-width: 800px;
-      }
 
-      @include typeSetting(2);
-      color: siteColor(vam-white);
-      font-size: 14px;
-      margin-top: -15px;
-      padding: 10px 10px;
-      width: 100%;
-
-      &:hover .b-search-results__offensive-warning-button {
-        background-color: siteColor(vam-black);
-      }
-    }
     &-button {
-      @include typeSetting(1, bold);
-      border: solid 1px siteColor(vam-white);
+      @include base.typography-typeSetting(1, "bold");
+
+      border: solid 1px base.sitecolors-siteColor("vam-white");
       border-radius: 2px;
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       cursor: pointer;
       height: 24px;
       margin-top: 10px;
       pointer-events: none;
       width: 121px;
+
       &:hover {
-        background-color: siteColor(vam-black);
+        background-color: base.sitecolors-siteColor("vam-black");
+      }
+    }
+
+    &-text {
+      @include mixins.breakpoints-bpMinXSmall {
+        margin-top: auto;
+        max-width: 800px;
+      }
+
+      @include base.typography-typeSetting(2);
+
+      color: siteColor("vam-white");
+      font-size: 14px;
+      margin-top: -15px;
+      padding: 10px;
+      width: 100%;
+
+      &:hover .b-search-results__offensive-warning-button {
+        background-color: base.sitecolors-siteColor("vam-black");
       }
     }
   }
@@ -57,22 +67,22 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     border-collapse: collapse;
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     display: table;
     margin-top: 0;
     width: 100%;
   }
 
   &__count {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       font-size: 21px;
     }
 
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     font-size: 18px;
 
-    @include bpMinSmall {
-      @include typeSetting(5, regular);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(5, "regular");
     }
   }
 
@@ -82,56 +92,66 @@
       box-shadow: none;
     }
 
-    @include typeSetting(3, light);
+    @include base.typography-typeSetting(3, "light");
+
     box-shadow: none;
     display: table-cell;
 
     &-img {
       vertical-align: middle;
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         height: 120px;
       }
-
     }
+
     line-height: 20px;
     padding: 0 15px;
-    @include bpMinLarge {
+
+    @include mixins.breakpoints-bpMinLarge {
       padding-left: 0;
       padding-right: 20px;
     }
+
     position: relative;
     vertical-align: baseline;
+
     &--full {
       display: none;
-      @include bpMinLarge {
+
+      @include mixins.breakpoints-bpMinLarge {
         display: table-cell;
       }
     }
+
     &-span {
-      @include typeSetting(2, light);
+      @include base.typography-typeSetting(2, "light");
+
       &--emphasis {
-        @include typeSetting(2, bold);
+        @include base.typography-typeSetting(2, "bold");
       }
 
-      @include bpMinXSmall {
-        @include typeSetting(3, light);
+      @include mixins.breakpoints-bpMinXSmall {
+        @include base.typography-typeSetting(3, "light");
+
         &--emphasis {
-          @include typeSetting(3, bold);
+          @include base.typography-typeSetting(3, "bold");
         }
       }
 
       &--responsive {
         display: block;
-        @include bpMinMedium {
+
+        @include mixins.breakpoints-bpMinMedium {
           max-width: 552px;
         }
 
-        @include bpMinLarge {
+        @include mixins.breakpoints-bpMinLarge {
           display: none;
         }
       }
     }
+
     &-content {
       line-height: 20px;
 
@@ -139,6 +159,7 @@
         display: flex;
         flex-direction: column;
       }
+
       &-container {
         margin: auto 0;
         padding: 12px 0;
@@ -151,13 +172,13 @@
         margin: auto;
         text-align: center;
 
-        @include bpMinMedium {
+        @include mixins.breakpoints-bpMinMedium {
           &--no-img {
             height: 150px;
           }
         }
 
-        @include bpMinXSmall {
+        @include mixins.breakpoints-bpMinXSmall {
           height: 120px;
           min-width: 120px;
           text-align: center;
@@ -173,7 +194,8 @@
         &-image {
           max-height: 60px;
           max-width: 60px;
-          @include bpMinXSmall {
+
+          @include mixins.breakpoints-bpMinXSmall {
             max-height: 100px;
             max-width: 100px;
           }
@@ -188,8 +210,8 @@
         transform: translate(-50%, -50%);
         width: 0;
 
-        &:after {
-          @include bpMinXSmall {
+        &::after {
+          @include mixins.breakpoints-bpMinXSmall {
             background-position-x: -105px;
             background-position-y: -85px;
             background-size: 400px;
@@ -225,34 +247,127 @@
           width: 60px;
         }
       }
+
       padding: 20px 0;
     }
+
     &--emphasis {
-      @include typeSetting(3, bold);
+      @include base.typography-typeSetting(3, "bold");
+
       line-height: 20px;
     }
+
     &--responsive {
       display: table-cell;
       line-height: 1.8px;
       vertical-align: middle;
       width: 100%;
-      @include bpMinLarge {
+
+      @include mixins.breakpoints-bpMinLarge {
         display: none;
       }
     }
   }
 
-  &__body {
+  &__head {
+    @include base.typography-typeSetting(4, "medium");
 
+    display: table-row;
+
+    &-cell {
+      &:focus {
+        @include mixins.focus-insetFocus;
+      }
+
+      display: none;
+
+      @include mixins.breakpoints-bpMinLarge {
+        display: table-cell;
+
+        &[data-sortable*="1"] {
+          text-decoration: underline;
+        }
+
+        &[data-sortable*="1"]:hover {
+          cursor: pointer;
+          font-weight: 800;
+        }
+
+        &--sort {
+          &-asc,
+          &-desc {
+            font-weight: 800;
+            position: relative;
+            text-decoration: underline;
+
+            &::after {
+              font-size: 8px;
+              margin-left: 5px;
+              position: absolute;
+            }
+          }
+
+          &-asc {
+            &::after {
+              content: "▲";
+            }
+          }
+
+          &-desc {
+            &::after {
+              content: "▼";
+            }
+          }
+        }
+      }
+    }
+
+    &-responsive {
+      display: table-cell;
+
+      @include mixins.breakpoints-bpMinLarge {
+        display: none;
+      }
+
+      width: 100%;
+    }
+
+    &-image {
+      @include mixins.breakpoints-bpMinXSmall {
+        width: 135px;
+      }
+
+      width: 120px;
+    }
+
+    &-title {
+      width: 350px;
+    }
+
+    &-artist {
+      width: 300px;
+    }
+
+    &-date {
+      width: 100px;
+    }
+
+    &-place {
+      width: 300px;
+    }
+  }
+
+  &__body {
     &--filters-closed {
       .b-search-results__cell-content-img--no-img {
-        @include bpMinLarge {
+        @include mixins.breakpoints-bpMinLarge {
           margin: 10px 0;
         }
       }
+
       .b-search-results__cell-content-no-img {
-        &:after {
-          @include bpMinLarge {
+        &::after {
+          @include mixins.breakpoints-bpMinLarge {
             background-position-x: -105px;
             background-position-y: -85px;
             background-size: 450px;
@@ -268,36 +383,41 @@
           }
         }
       }
+
       .b-search-results__cell-content-img-image {
-        @include bpMinLarge {
+        @include mixins.breakpoints-bpMinLarge {
           max-height: 120px;
           max-width: 120px;
         }
       }
+
       .b-search-results__head-image {
-        @include bpMinMedium {
+        @include mixins.breakpoints-bpMinMedium {
           width: 170px;
         }
       }
 
       .b-search-results__head {
         &-title {
-          @include bpMinLarge {
+          @include mixins.breakpoints-bpMinLarge {
             width: 300px;
           }
         }
+
         &-artist {
-          @include bpMinLarge {
+          @include mixins.breakpoints-bpMinLarge {
             width: 250px;
           }
         }
+
         &-date {
-          @include bpMinLarge {
+          @include mixins.breakpoints-bpMinLarge {
             width: 200px;
           }
         }
+
         &-place {
-          @include bpMinLarge {
+          @include mixins.breakpoints-bpMinLarge {
             width: 300px;
           }
         }
@@ -314,13 +434,13 @@
         position: relative;
 
         td {
-          background-color: rgba(57, 59, 63, .8);
+          background-color: color.scale(rgb(57, 59, 63), $alpha: -20%);
           filter: blur(10px);
           pointer-events: none;
         }
 
         img {
-          filter: brightness(.5);
+          filter: brightness(0.5);
         }
       }
 
@@ -334,81 +454,8 @@
       }
 
       &:focus {
-        @include insetFocus;
+        @include mixins.focus-insetFocus;
       }
-    }
-  }
-
-  &__head {
-    @include typeSetting(4, medium);
-    display: table-row;
-
-
-    &-cell {
-      &:focus {
-        @include insetFocus;
-      }
-      display: none;
-      @include bpMinLarge {
-        display: table-cell;
-
-        &[data-sortable*="1"] {
-          text-decoration: underline;
-        }
-
-        &[data-sortable*="1"]:hover {
-          cursor: pointer;
-          font-weight: 800;
-        }
-
-        &--sort {
-          &-asc, &-desc {
-            font-weight: 800;
-            position: relative;
-            text-decoration: underline;
-            &:after {
-              font-size: 8px;
-              margin-left: 5px;
-              position: absolute;
-            }
-          }
-          &-asc {
-            &:after {
-              content: '▲';
-            }
-          }
-          &-desc {
-            &:after {
-              content: '▼';
-            }
-          }
-        }
-      }
-    }
-    &-responsive {
-      display: table-cell;
-      @include bpMinLarge {
-        display: none;
-      }
-      width: 100%;
-    }
-    &-image {
-      @include bpMinXSmall {
-        width: 135px;
-      }
-      width: 120px;
-    }
-    &-title {
-      width: 350px;
-    }
-    &-artist {
-      width: 300px;
-    }
-    &-date {
-      width: 100px;
-    }
-    &-place {
-      width: 300px;
     }
   }
 }

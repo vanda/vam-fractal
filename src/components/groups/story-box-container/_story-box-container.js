@@ -7,7 +7,7 @@ const clampText = () => {
     textToClamp.forEach((el) => {
       Clamp(el, {
         clamp: 'auto',
-        splitOnChars: ['.', ',', ' ']
+        splitOnChars: ['.', ',', ' '],
       });
     });
   } else {
@@ -28,7 +28,7 @@ const initRevealer = () => {
   boxes.slice(0, 2).forEach(
     (el) => {
       el.classList.add('b-story-box--active');
-    }
+    },
   );
 
   const button = document.querySelector('.b-story-box-container__reveal-btn');
@@ -40,15 +40,14 @@ const initRevealer = () => {
       Array.from(document.querySelectorAll('.b-story-box')).slice(currentBoxes, currentBoxes + 2).forEach(
         (el) => {
           el.classList.add('b-story-box--active');
-        }
+        },
       );
 
       if (Array.from((document.querySelectorAll('.b-story-box--active'))).length === boxes.length) {
         document.querySelector('.b-story-box-container__reveal-container').classList.remove('b-story-box-container__reveal-container--active');
       } else {
-        const textContentBoxes = columnBoxes.slice(
-          currentBoxes - 1, currentBoxes + 2
-        ).map(el => el.querySelector('.b-story-box__content-text'));
+        const textContentBoxes = columnBoxes.slice(currentBoxes - 1, currentBoxes + 2)
+          .map((el) => el.querySelector('.b-story-box__content-text'));
 
         const tallestInRow = textContentBoxes[
           (textContentBoxes[0].offsetHeight > textContentBoxes[1].offsetHeight ? 0 : 1)

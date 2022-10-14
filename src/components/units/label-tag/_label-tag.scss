@@ -1,8 +1,12 @@
+@use "../../base";
+@use "sass:color";
+
 .u-label-tag {
-  @include typeSetting(2, bold);
-  background: siteColor(primary-green);
+  @include base.typography-typeSetting(2, "bold");
+
+  background: base.sitecolors-siteColor("primary-green");
   bottom: initial;
-  color: siteColor(vam-black);
+  color: base.sitecolors-siteColor(vam-black);
   margin: 12px 12px 12px 0;
   padding: 5px 12px 4px;
   position: absolute;
@@ -12,40 +16,40 @@
   &--sold-out,
   &--ending-soon,
   &--closed {
-    background: themeColor(strawberry);
+    background: base.themecolors-themeColor("strawberry");
   }
 
   &--selling-fast {
-    background: themeColor(cyan);
+    background: base.themecolors-themeColor("cyan");
   }
 
   &--family-friendly {
-    background: themeColor(blue-green);
+    background: base.themecolors-themeColor("blue-green");
   }
 
   &--members-only {
-    background: themeColor(velvet);
+    background: base.themecolors-themeColor("velvet");
   }
 
   &--more-tickets-added {
-    background: themeColor(teal-blue);
+    background: base.themecolors-themeColor("teal-blue");
   }
 
   &--last-few-tickets {
-    background: themeColor(blue);
+    background: base.themecolors-themeColor("blue");
   }
 
   &--last-few-days {
-    background: themeColor(orange);
+    background: base.themecolors-themeColor("orange");
   }
 
   &--book-soon {
-    background: themeColor(salmon);
+    background: base.themecolors-themeColor("salmon");
   }
 
   &--venue {
-    background: rgba(siteColor(vam-black), .8);
-    color: siteColor(vam-white);
+    background: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: -20%);
+    color: base.sitecolors-siteColor("vam-white");
     margin-left: 12px;
   }
 }

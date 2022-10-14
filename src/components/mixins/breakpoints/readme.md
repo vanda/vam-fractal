@@ -23,10 +23,10 @@ The breakpoints can be accessed by the Sass function `bp()`. Eg:
 
 Alternatively the following mixins provide a shorthand for this:
 
-- `bpMinXSmall` / `bpMaxXSmall`
-- `bpMinSmall` / `bpMaxSmall`
-- `bpMinMedium` / `bpMaxMedium`
-- `bpMinLarge` / `bpMaxLarge`
+- `bp-min-x-small` / `bp-max-x-small`
+- `bp-min-small` / `bp-max-small`
+- `bp-min-medium` / `bp-max-medium`
+- `bp-min-large` / `bp-max-large`
 
 They can be used as follows:
 
@@ -34,19 +34,19 @@ They can be used as follows:
 .foo {
   padding: 1em;
 
-  @include bpMinXSmall {
+  @include bp-min-x-small {
     padding: 1.2em;
   }
 
-  @include bpMinSmall {
+  @include bp-min-small {
     padding: 1.4em;
   }
 
-  @include bpMinMedium {
+  @include bp-min-medium {
     padding: 1.6em;
   }
 
-  @include bpMinLarge {
+  @include bp-min-large {
     padding: 2em;
   }
 }

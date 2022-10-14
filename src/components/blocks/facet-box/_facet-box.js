@@ -87,7 +87,6 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   button.setAttribute('role', 'switch');
   button.setAttribute('aria-checked', 'false');
 
-
   const hiddenInput = document.createElement('INPUT');
   hiddenInput.type = 'checkbox';
   hiddenInput.className = 'b-facet-box__hidden-input';
@@ -119,7 +118,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     }
 
     e.target.querySelector(`.${facetTermTick}`).classList.toggle(
-      `${facetTermTick}--active`
+      `${facetTermTick}--active`,
     );
 
     if (!e.detail.refreshing_page) {
@@ -144,7 +143,9 @@ const revealMoreFacets = (e) => {
   e.preventDefault();
   const linkEl = e.target.parentNode;
   const facetContainer = e.target.parentNode.parentNode;
-  const { terms, index, facet, paramName } = facetsWithIndex[e.target.dataset.facet];
+  const {
+    terms, index, facet, paramName,
+  } = facetsWithIndex[e.target.dataset.facet];
 
   terms.slice(index, index + 5).forEach(({ term, count, value }) => {
     facetContainer.appendChild(termCheckbox(facet, paramName, term, value, count));
@@ -159,7 +160,6 @@ const revealMoreFacets = (e) => {
 
   Array.from(facetContainer.querySelectorAll('.b-facet-box__facet-term-toggle-button')).slice(-1)[0].focus();
 };
-
 
 const createFacets = (activeFacets) => {
   const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
@@ -176,7 +176,9 @@ const createFacets = (activeFacets) => {
     return res;
   }, {});
 
-  Object.values(facetsWithIndex).forEach(({ facet, terms, paramName, index }) => {
+  Object.values(facetsWithIndex).forEach(({
+    facet, terms, paramName, index,
+  }) => {
     const newFacet = document.createElement('DIV');
     newFacet.className = 'b-facet-box__facet';
     newFacet.setAttribute('data-param-name', paramName);
@@ -193,7 +195,7 @@ const createFacets = (activeFacets) => {
       }
     });
 
-    const termValues = terms.map(t => t.value);
+    const termValues = terms.map((t) => t.value);
 
     let newIndex = (facetToTerm[paramName] && facetToTerm[paramName].reduce((current, term) => {
       const test = termValues.indexOf(term);
@@ -228,26 +230,30 @@ const createFacets = (activeFacets) => {
 
 const newTermToggleEvent = (detail, bubbles = true) => new CustomEvent('termToggle', {
   detail,
-  bubbles
+  bubbles,
 });
 
 const initialiseFacetOverlay = () => {
-  const toggleTerm = ({ id, facet, term, paramName }) => {
+  const toggleTerm = ({
+    id, facet, term, paramName,
+  }) => {
     if (id) {
       const termButtons = Array.from(document.querySelectorAll(`button[data-id='${id}']`)).filter(
-        el => !el.classList.contains('b-facet-box__facet-term-toggle-button')
+        (el) => !el.classList.contains('b-facet-box__facet-term-toggle-button'),
       );
       // if term already exists, get rid of it
 
       if (termButtons.length) {
-        termButtons.forEach(el => el.remove());
+        termButtons.forEach((el) => el.remove());
         if (!document.querySelector('.b-search-form__facets').children.length) {
           document.querySelector('.b-search-form__facet-pane').classList.remove('b-search-form__facet-pane--active');
         }
         window.dispatchEvent(new Event('resize'));
       } else {
         const newTermOnClick = () => {
-          Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach(el => el.dispatchEvent(newTermToggleEvent({ id, facet, term, paramName })));
+          Array.from(document.querySelectorAll(`button[data-id='${id}']`)).forEach((el) => el.dispatchEvent(newTermToggleEvent({
+            id, facet, term, paramName,
+          })));
         };
 
         const newTerm = document.createElement('button');
@@ -297,16 +303,16 @@ const initialiseFacetOverlay = () => {
 
   document.querySelector('.b-facet-box').addEventListener('newFacets', (e) => {
     // need this step to prevent keeping in memory some facets...
-    Object.keys(facetsWithIndex).forEach(facetKey => delete facetsWithIndex[facetKey]);
+    Object.keys(facetsWithIndex).forEach((facetKey) => delete facetsWithIndex[facetKey]);
 
     const { facets, activeFacets } = e.detail;
     facets.forEach((facet) => {
       Object.assign(facetsWithIndex, {
-        [facet.facet]: Object.assign(facet, { index: 0 })
+        [facet.facet]: Object.assign(facet, { index: 0 }),
       });
     });
 
-    Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach(el => el.remove());
+    Array.from(document.querySelectorAll('.b-facet-box__hidden-input')).forEach((el) => el.remove());
 
     const facetBoxContainer = document.querySelector('.b-facet-box__facet-container');
     facetBoxContainer.innerHTML = '';
@@ -323,8 +329,9 @@ const initialiseFacetOverlay = () => {
       ev.preventDefault();
       if (ev.target.classList.contains(facetTextClass)) {
         const currentExpanded = dateFacet.getAttribute('aria-expanded');
-        dateFacet.setAttribute('aria-expanded',
-          currentExpanded === 'true' ? 'false' : 'true'
+        dateFacet.setAttribute(
+          'aria-expanded',
+          currentExpanded === 'true' ? 'false' : 'true',
         );
         ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
@@ -337,13 +344,11 @@ const initialiseFacetOverlay = () => {
 
       const inputs = Array.from(document.querySelectorAll('.b-facet-box__facet-date-container input'));
 
-      inputs.forEach(input => input.classList.remove('b-facet-box__facet-date-input--error'));
+      inputs.forEach((input) => input.classList.remove('b-facet-box__facet-date-input--error'));
 
-      const dates = inputs.map(el =>
-        el.value
-      );
+      const dates = inputs.map((el) => el.value);
 
-      if (dates.filter(value => value.length).length !== 2) {
+      if (dates.filter((value) => value.length).length !== 2) {
         dates.forEach((date, i) => {
           if (!date.length) {
             inputs[i].classList.add('b-facet-box__facet-date-input--error');
@@ -355,9 +360,9 @@ const initialiseFacetOverlay = () => {
         hiddenDateInput.type = 'hidden';
         hiddenDateInput.className = 'b-search-results__hidden-date';
 
-        document.querySelectorAll('.b-search-results__hidden-date').forEach(el => el.remove());
+        document.querySelectorAll('.b-search-results__hidden-date').forEach((el) => el.remove());
 
-        const isBCDate = date => (parseInt(date, 10) < 0 ? `${date * -1} BC` : date);
+        const isBCDate = (date) => (parseInt(date, 10) < 0 ? `${date * -1} BC` : date);
 
         if (document.querySelector('button[data-id="date_terms"]')) {
           termList.dispatchEvent(newTermToggleEvent(
@@ -366,9 +371,9 @@ const initialiseFacetOverlay = () => {
               id: 'date_terms',
               paramName: 'date_terms',
               refreshing_page: false,
-              term: `${isBCDate(dates[0])} - ${isBCDate(dates[1])}`
+              term: `${isBCDate(dates[0])} - ${isBCDate(dates[1])}`,
             },
-            true
+            true,
           ));
         }
         document.querySelector('.b-facet-box__facet-term-container-text--warning').setAttribute('disabled', 'true');
@@ -390,9 +395,9 @@ const initialiseFacetOverlay = () => {
             id: 'date_terms',
             paramName: 'date_terms',
             refreshing_page: false,
-            term: `${isBCDate(dates[0])} - ${isBCDate(dates[1])}`
+            term: `${isBCDate(dates[0])} - ${isBCDate(dates[1])}`,
           },
-          true
+          true,
         ));
       }
     });
@@ -408,26 +413,25 @@ const initialiseFacetOverlay = () => {
         const splitFacetId = facetId.split('-');
         if (target) {
           target.dispatchEvent(newTermToggleEvent(
-            Object.assign(target.dataset, { refreshing_page: true }))
-          );
+            Object.assign(target.dataset, { refreshing_page: true }),
+          ));
           document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(target.dataset));
         } else {
           while (
-            !document.querySelector(`button[data-id='${facetId}']`) &&
-            document.querySelector(`div[data-param-name="${splitFacetId[0]}"] .b-facet-box__term-more`)
+            !document.querySelector(`button[data-id='${facetId}']`)
+            && document.querySelector(`div[data-param-name="${splitFacetId[0]}"] .b-facet-box__term-more`)
           ) {
             document.querySelector(`div[data-param-name="${splitFacetId[0]}"] .b-facet-box__term-more`).click();
             document.querySelector(`button[data-id='${facetId}'`).dispatchEvent(newTermToggleEvent(
-              Object.assign(document.querySelector(`button[data-id='${facetId}'`).dataset, { refreshing_page: true }))
-            );
+              Object.assign(document.querySelector(`button[data-id='${facetId}'`).dataset, { refreshing_page: true }),
+            ));
             document.querySelector(`.${termListClass}`).dispatchEvent(newTermToggleEvent(document.querySelector(`button[data-id='${facetId}'`).dataset));
           }
         }
 
         let key;
         if (
-          (splitFacetId[0] === 'year_made_from') ||
-          (splitFacetId[0] === 'year_made_to')
+          (splitFacetId[0] === 'year_made_from') || (splitFacetId[0] === 'year_made_to')
         ) {
           key = splitFacetId[0];
           dateFacet.querySelector(`input[name="${key}"]`).value = splitFacetId.length !== 2 ? `-${splitFacetId[2]}` : splitFacetId[1];
@@ -446,7 +450,7 @@ const initialiseFacetOverlay = () => {
     if (e.target.classList.contains(facetCloseClass)) {
       e.preventDefault();
       e.target.dispatchEvent(new Event('closeFacetOverlay', {
-        bubbles: true
+        bubbles: true,
       }));
     }
 
@@ -511,7 +515,7 @@ if (document.querySelector('.b-facet-box')) {
   instruction.innerHTML = 'Use Escape Key to close filters';
 
   if (document.querySelector('.b-facet-box__modal-button-open')) {
-    document.querySelectorAll('.b-facet-box__modal-button-open').forEach(el => el.addEventListener('click', (e) => {
+    document.querySelectorAll('.b-facet-box__modal-button-open').forEach((el) => el.addEventListener('click', (e) => {
       e.preventDefault();
       document.querySelector('.b-facet-box').classList.add('b-facet-box--active');
       window.addEventListener('keydown', focusHandler);
@@ -560,4 +564,3 @@ if (document.querySelector('.b-facet-box')) {
     }
   });
 }
-

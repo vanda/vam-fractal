@@ -10,10 +10,10 @@ const pageSizeHiddenInput = document.querySelector('input[name="page_size"]');
 
 const currentButtonClass = 'b-search-pagination__page-button--current';
 
-const datasetToInts = dataset => Object.entries(dataset).reduce((total, pair) => {
+const datasetToInts = (dataset) => Object.entries(dataset).reduce((total, pair) => {
   const [key, value] = pair;
   return Object.assign(total, {
-    [key]: +value
+    [key]: +value,
   });
 }, {});
 
@@ -59,7 +59,7 @@ const updateDisplayCounter = () => {
 
 if (paginationElement) {
   const callback = (mutations) => {
-    if (mutations.filter(mutation => mutation.attributeName === 'data-page-size').length) {
+    if (mutations.filter((mutation) => mutation.attributeName === 'data-page-size').length) {
       if (document.querySelector(`button[data-page-size="${paginationElement.dataset.pageSize}"]`)) {
         document.querySelector('.b-search-pagination__page-size--active').classList.remove('b-search-pagination__page-size--active');
         document.querySelector(`button[data-page-size="${paginationElement.dataset.pageSize}"]`).classList.add('b-search-pagination__page-size--active');
@@ -67,7 +67,7 @@ if (paginationElement) {
       }
     }
 
-    if (mutations.filter(mutation => mutation.attributeName === 'data-pages').length) {
+    if (mutations.filter((mutation) => mutation.attributeName === 'data-pages').length) {
       const { pages } = datasetToInts(paginationElement.dataset);
 
       buttons.forEach((button, i) => {
@@ -83,14 +83,15 @@ if (paginationElement) {
       });
 
       const lastButton = buttons.slice(
-        buttons.filter(button => !button.getAttribute('disabled')).length - 1
+        buttons.filter((button) => !button.getAttribute('disabled')).length - 1,
       )[0];
 
       populateButton(lastButton, pages);
+      // eslint-disable-next-line no-self-assign
       paginationElement.dataset.pageIndex = paginationElement.dataset.pageIndex;
     }
 
-    if (mutations.filter(mutation => mutation.attributeName === 'data-page-index').length) {
+    if (mutations.filter((mutation) => mutation.attributeName === 'data-page-index').length) {
       const { pageIndex, pages } = datasetToInts(paginationElement.dataset);
       const currentButton = document.querySelector(`.${currentButtonClass}`);
 
@@ -122,34 +123,34 @@ if (paginationElement) {
       }
 
       if (pages > 5) {
-        buttons.slice(1, 4).filter(el => !el.getAttribute('disabled')).forEach((button, i) => {
-          const newIndex =
-          i + (pageIndex < 3 ? 2 : 0) +
-            (dynamicButtonCheck ? pageIndex - 1 : 0) +
-              ((pageIndex >= (pages - 1)) ? pages - 2 : 0);
+        buttons.slice(1, 4).filter((el) => !el.getAttribute('disabled')).forEach((button, i) => {
+          const newIndex = i
+          + (pageIndex < 3 ? 2 : 0)
+          + (dynamicButtonCheck ? pageIndex - 1 : 0)
+          + ((pageIndex >= (pages - 1)) ? pages - 2 : 0);
 
           populateButton(button, newIndex);
         });
       }
 
       currentButton.classList.remove(currentButtonClass);
-      buttons.filter(button => +button.dataset.pageIndex ===
-        pageIndex)[0].classList.add(currentButtonClass);
+      buttons.filter((button) => +button.dataset.pageIndex
+      === pageIndex)[0].classList.add(currentButtonClass);
       updateDisplayCounter();
       checkNavigationLinks();
     }
 
-    if (mutations.filter(mutation => mutation.attributeName === 'data-total-count').length) {
+    if (mutations.filter((mutation) => mutation.attributeName === 'data-total-count').length) {
       updateDisplayCounter();
     }
   };
 
   paginationElement.addEventListener('click', ({ target }) => {
     if (
-      (target.closest('.b-search-pagination__page-button') ||
-      target.closest('.b-search-pagination__prev-link') ||
-      target.closest('.b-search-pagination__next-link')) &&
-      !target.getAttribute('disabled')
+      (target.closest('.b-search-pagination__page-button')
+      || target.closest('.b-search-pagination__prev-link')
+      || target.closest('.b-search-pagination__next-link'))
+      && !target.getAttribute('disabled')
     ) {
       const { pageIndex } = target.dataset;
       paginationElement.dataset.pageIndex = pageIndex;
@@ -173,7 +174,10 @@ if (paginationElement) {
 
   const observer = new MutationObserver(callback);
   observer.observe(paginationElement, { attributes: true });
+
+  /* eslint-disable no-self-assign */
   paginationElement.dataset.pages = paginationElement.dataset.pages;
   paginationElement.dataset.totalCount = paginationElement.dataset.totalCount;
   paginationElement.dataset.pageIndex = paginationElement.dataset.pageIndex;
+  /* eslint-enable no-self-assign */
 }

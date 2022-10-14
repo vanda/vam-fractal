@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+      "font-family-name-quotes": "always-unless-keyword",
+      "string-no-newline": null,
+      "color-function-notation": "legacy",
+      "declaration-no-important": [true, {
+          "severity": "warning"
+        }
+      ],
+      "function-name-case": [
+          "lower", {
+          "ignoreFunctions": ["/siteColor/", "/themeColor/", "/fontSize/", "/fontFamily/", "/fontWeight/"]
+        }
+      ],
+      "scss/at-mixin-pattern": null,
+      "scss/at-function-pattern": null,
+      "scss/dollar-variable-pattern": null,
+      "value-keyword-case": [
+        "lower", {
+        "camelCaseSvgKeywords": true
+        }
+      ],
+      "selector-class-pattern": [
+        "^([a-z][a-z0-9]*)(-[a-z0-9]+)*((__([a-z][a-z0-9]*)(-[a-z0-9]+)*)?(--([a-z][a-z0-9]*)(-[a-z0-9]+)*)?)$",
+        {
+          "message": "Expected class selector to be lowercase, hyphen-delimited words and/or in BEM format: block-name__elem-name--mod-name"
+        }
+      ]
+  }
+}

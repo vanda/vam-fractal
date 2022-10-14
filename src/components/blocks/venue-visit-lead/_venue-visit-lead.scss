@@ -1,15 +1,18 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-venue-visit-lead {
-  background-color: siteColor(vam-white);
+  background-color: base.sitecolors-siteColor("vam-white");
   display: flex;
   flex-direction: column;
   padding: 10px;
 
-  @include bpMinSmall {
+  @include mixins.breakpoints-bpMinSmall {
     flex-direction: row;
     padding: 30px;
   }
 
-  @include bpMinMedium {
+  @include mixins.breakpoints-bpMinMedium {
     padding: 40px;
   }
 
@@ -17,7 +20,7 @@
     margin-bottom: 30px;
     width: 100%;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-bottom: 0;
       width: 56%;
     }
@@ -31,15 +34,15 @@
   }
 
   &__content {
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin: 12px 0 0 27px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       margin-left: 42px;
     }
 
-    @include bpMinLarge {
+    @include mixins.breakpoints-bpMinLarge {
       margin: 16px 0 0 53px;
     }
   }

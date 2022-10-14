@@ -1,24 +1,32 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-global-bar {
-  background-color: siteColor(vam-black);
+  background-color: base.sitecolors-siteColor("vam-black");
   position: relative;
-  @include rem(height, 70px);
-  @include bpMinSmall {
-    @include rem(height, 40px);
+
+  @include mixins.typographytools-rem(height, 70px);
+
+  @include mixins.breakpoints-bpMinSmall {
+    @include mixins.typographytools-rem(height, 40px);
   }
 
   .b-back {
-    color: siteColor(vam-grey-5);
+    color: base.sitecolors-siteColor("vam-grey-5");
     position: absolute;
-    @include rem(left, 5px);
-    @include rem(top, 10px);
-    @include bpMinSmall {
+
+    @include mixins.typographytools-rem(left, 5px);
+    @include mixins.typographytools-rem(top, 10px);
+
+    @include mixins.breakpoints-bpMinSmall {
       position: relative;
-      @include rem(left, 12px);
-      @include rem(top, 7px);
+
+      @include mixins.typographytools-rem(left, 12px);
+      @include mixins.typographytools-rem(top, 7px);
     }
 
-    @include bpMinMedium {
-      @include rem(left, 60px);
+    @include mixins.breakpoints-bpMinMedium {
+      @include mixins.typographytools-rem(left, 60px);
     }
 
     &:hover {
@@ -26,29 +34,31 @@
     }
 
     .u-back__icon {
-      @include rem(height, 8px);
-      @include rem(margin, 0 $spacing-xsmall);
-      @include rem(width, 10px);
+      @include mixins.typographytools-rem(height, 8px);
+      @include mixins.typographytools-rem(margin, 0 base.$spacings-spacing-xsmall);
+      @include mixins.typographytools-rem(width, 10px);
     }
 
     .u-back__text {
-      @include rem(letter-spacing, 2px);
-      @include typeSetting(0, normal);
+      @include mixins.typographytools-rem(letter-spacing, 2px);
+      @include base.typography-typeSetting(0, "normal");
     }
   }
 
   .u-logo {
-    color: siteColor(vam-grey-5);
+    color: base.sitecolors-siteColor("vam-grey-5");
     position: absolute;
-    @include rem(right, 5px);
-    @include rem(top, 20px);
-    @include bpMinSmall {
+
+    @include mixins.typographytools-rem(right, 5px);
+    @include mixins.typographytools-rem(top, 20px);
+
+    @include mixins.breakpoints-bpMinSmall {
       display: none;
     }
 
     .u-logo__icon {
-      @include rem(height, 50px);
-      @include rem(width, 100px);
+      @include mixins.typographytools-rem(height, 50px);
+      @include mixins.typographytools-rem(width, 100px);
     }
   }
 }

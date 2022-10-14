@@ -1,5 +1,7 @@
+@use "../../base";
+
 .b-input-select {
-  background: siteColor(vam-white);
+  background: base.sitecolors-siteColor("vam-white");
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -8,8 +10,8 @@
 
   &::after {
     border: 6px solid transparent;
-    border-top: 10px solid siteColor(vam-black);
-    content: '';
+    border-top: 10px solid base.sitecolors-siteColor("vam-black");
+    content: "";
     display: inline-block;
     margin-top: -4px;
     position: absolute;
@@ -19,8 +21,8 @@
   }
 
   &::before {
-    background: siteColor(vam-grey-5);
-    content: '';
+    background: base.sitecolors-siteColor("vam-grey-5");
+    content: "";
     display: inline-block;
     height: 60%;
     position: absolute;
@@ -31,12 +33,13 @@
 }
 
 .b-input-select-field {
-  @include typeSetting(3, normal);
+  @include base.typography-typeSetting(3, "normal");
+
   appearance: none;
   background-color: transparent;
-  border: 1px solid siteColor(vam-black);
+  border: 1px solid base.sitecolors-siteColor("vam-black");
   border-radius: 2px;
-  color: siteColor(vam-black);
+  color: base.sitecolors-siteColor("vam-black");
   cursor: pointer;
   display: block;
   margin: 0;
@@ -47,10 +50,9 @@
   &::-ms-expand {
     display: none;
   }
-  
+
   & option {
-    background-color: siteColor(vam-white);
+    background-color: base.sitecolors-siteColor("vam-white");
     line-height: 50px;
   }
-
 }

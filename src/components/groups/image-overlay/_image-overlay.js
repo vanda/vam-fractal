@@ -5,12 +5,12 @@ const isMobile = {
   Opera: () => navigator.userAgent.match(/Opera Mini/i),
   Windows: () => navigator.userAgent.match(/IEMobile/i),
   any: () => (
-    isMobile.Android() ||
-    isMobile.BlackBerry() ||
-    isMobile.iOS() ||
-    isMobile.Opera() ||
-    isMobile.Windows()
-  )
+    isMobile.Android()
+    || isMobile.BlackBerry()
+    || isMobile.iOS()
+    || isMobile.Opera()
+    || isMobile.Windows()
+  ),
 };
 
 const imageOverlayContainer = document.querySelector('.b-image-overlay__container');
@@ -27,7 +27,7 @@ const offensiveConcealer = () => {
       document.querySelector('.b-image-overlay__preview--offensive').classList.remove('b-image-overlay__preview--offensive');
       document.querySelector('.b-image-overlay__preview-image--offensive').classList.remove('b-image-overlay__preview-image--offensive');
       document.querySelector('.b-image-overlay__preview-concealer').remove();
-      document.querySelectorAll('.b-image-overlay__preview--hidden').forEach(el => el.classList.remove('b-image-overlay__preview--hidden'));
+      document.querySelectorAll('.b-image-overlay__preview--hidden').forEach((el) => el.classList.remove('b-image-overlay__preview--hidden'));
     };
   }
 };
@@ -38,7 +38,7 @@ const openObjectOverlay = () => {
   imageOverlayContainer.style.height = `${window.innerHeight}px`;
   if (window.innerWidth <= 1000 && isMobile.any()) {
     body.style.position = 'fixed';
-    figCaption.style.marginBottom = `${screen.height - window.innerHeight}px`;
+    figCaption.style.marginBottom = `${window.screen.height - window.innerHeight}px`;
   } else {
     figCaption.style.marginBottom = '0px';
   }
@@ -62,14 +62,14 @@ const initObjectOverlay = () => {
       // what follows is a hack for mobile phone browsers, if this does not look good on desktop,
       // trust me it works on phones...
       if (window.innerWidth <= 1000 && isMobile.any()) {
-        figCaption.style.marginBottom = `${screen.height - window.innerHeight}px`;
+        figCaption.style.marginBottom = `${window.screen.height - window.innerHeight}px`;
       } else {
         figCaption.style.marginBottom = '0px';
       }
     });
 
     window.addEventListener('keydown', (e) => {
-      if (e.keyCode === 27) {
+      if (e.key === 27) {
         if (!document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')) {
           closeObjectOverlay();
         } else {
@@ -78,16 +78,16 @@ const initObjectOverlay = () => {
       }
 
       if (
-        !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus') &&
-        e.keyCode === 9
+        !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')
+        && e.key === 9
       ) {
         // stackoverflow answer 60031728
         const focusable = Array.from(document.querySelector('.b-image-overlay__content').querySelectorAll('button')).filter(
-          el => !el.getAttribute('disabled')
+          (el) => !el.getAttribute('disabled'),
         ).filter(
-          el => !el.closest('.js-modal')
+          (el) => !el.closest('.js-modal'),
         ).filter(
-          el => el.offsetHeight > 0
+          (el) => el.offsetHeight > 0,
         );
 
         const first = focusable[0];

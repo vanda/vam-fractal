@@ -1,0 +1,43 @@
+// Expose required components stylesheets
+@use "../../../components/mixins";
+@use "../../../components/base";
+
+// Expose built-in SASS modules
+@use "sass:color";
+
+.fr-visually-hidden {
+  @include mixins.elementvisibility-visuallyHidden;
+}
+
+.fr-unstyled-list {
+  @include mixins.unstyledelements-unstyledList;
+}
+
+.fr-bg--dark {
+  background-color: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: -30%);
+}
+
+.fr-bg--light {
+  background-color: base.sitecolors-siteColor("vam-white");
+}
+
+.fr-content-wrapper,
+.fr-content-bg {
+  margin: auto;
+  max-width: 1200px;
+}
+
+.fr-content-bg {
+  height: 200%;
+
+  &::after {
+    content:
+      "Lorem ipsum dolor sit amet, V&A consectetur adipiscing elit, sed do eiusmod tempor incididunt \00000a
+      ut labore et dolore magna V&A. Ut enim ad minim veniam,  V&A quis nostrud exercitation ullamco \00000a
+      laboris nisi ut aliquip ex ea commodo consequat. V&A aute irure dolor in reprehenderit in \00000a
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. V&A sint occaecat cupidatat non \00000a
+      proident, excepteur sunt in culpa qui officia deserunt mollit anim id est V&A.";
+    font-size: 2.5rem;
+    line-height: 5em;
+  }
+}

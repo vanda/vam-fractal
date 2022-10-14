@@ -15,7 +15,7 @@ if (gridRevealMore.length) {
       }
 
       // Hide all but the first `noOfItemsToShow`
-      gridItems.slice(noOfItemsToShow).forEach(el => el.classList.add('s-visually-hidden'));
+      gridItems.slice(noOfItemsToShow).forEach((el) => el.classList.add('s-visually-hidden'));
 
       // Add in a show more button at the bottom
       const gridFooterMarkup = document.createElement('footer');
@@ -43,19 +43,18 @@ if (gridRevealMore.length) {
         gridBlock.revealMoreClicks += 1;
 
         // Filter down to just the hidden items
-        const hiddenItems = gridItems.filter(el => el.classList.contains('s-visually-hidden'));
+        const hiddenItems = gridItems.filter((el) => el.classList.contains('s-visually-hidden'));
         if (hiddenItems.length) {
           // in case of column layout, add a colspan separator to preserve item order
           const columns = window.getComputedStyle(gridBlock).getPropertyValue('column-count');
           if (columns > 1) {
-            const separator = hiddenItems[0].parentNode.insertBefore(
-              hiddenItems[0].cloneNode(false), hiddenItems[0]
-            );
+            const separator = hiddenItems[0].parentNode
+              .insertBefore(hiddenItems[0].cloneNode(false), hiddenItems[0]);
             separator.classList.remove('s-visually-hidden');
             separator.classList.add('b-block-grid__cols-restarter');
           }
           // the big reveal
-          hiddenItems.slice(0, noOfItemsToShow).forEach(el => el.classList.remove('s-visually-hidden'));
+          hiddenItems.slice(0, noOfItemsToShow).forEach((el) => el.classList.remove('s-visually-hidden'));
           // Remove the footer if we're not going to need the button after this
           if (hiddenItems.length <= noOfItemsToShow) gridFooterMarkup.remove();
         }
@@ -70,15 +69,15 @@ if (gridRevealMore.length) {
       revealMoreClicks.push(gridBlock.revealMoreClicks);
       return true;
     });
-    history.replaceState({ revealMoreClicks }, 'revealMoreClicks');
+    window.history.replaceState({ revealMoreClicks }, 'revealMoreClicks');
   }, false);
 
   window.addEventListener('load', () => {
-    if (history.state && history.state.revealMoreClicks) {
+    if (window.history.state && window.history.state.revealMoreClicks) {
       const buttons = document.querySelectorAll('.js-reveal-more-btn');
-      for (let r = 0; r < history.state.revealMoreClicks.length; r += 1) {
+      for (let r = 0; r < window.history.state.revealMoreClicks.length; r += 1) {
         let c = 0;
-        while (c < history.state.revealMoreClicks[r]) {
+        while (c < window.history.state.revealMoreClicks[r]) {
           buttons[r].click();
           c += 1;
         }

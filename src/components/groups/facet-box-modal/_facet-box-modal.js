@@ -7,9 +7,9 @@ const initFacetOverlayModal = () => {
   }
 
   if (document.querySelector('.b-facet-box-modal__button')) {
-    document.addEventListener('closeFacetOverlay', () =>
-      document.querySelector('.b-facet-box-modal__container').classList.toggle('b-facet-box-modal__container--active')
-    );
+    document.addEventListener('closeFacetOverlay', () => {
+      document.querySelector('.b-facet-box-modal__container').classList.toggle('b-facet-box-modal__container--active');
+    });
   }
 };
 

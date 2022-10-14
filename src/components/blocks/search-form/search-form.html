@@ -5,7 +5,7 @@
   <div class="b-search-form__inner">
     {% if not modifiers %}
     <svg class="b-search-form__icon" aria-hidden="true" role="img">
-      <use xlink:href="/assets/svg/svg-template.svg#search"></use>
+      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
     </svg>
     {% endif %}
     <div class="b-search-form__input-wrapper">
@@ -19,7 +19,7 @@
     </button>
     {% if not modifiers %}
     <svg role="img" class="b-search-form__clear b-search-form__clear--hidden" aria-hidden="true">
-      <use xlink:href="/assets/svg/svg-template.svg#close"></use>
+      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#close"></use>
     </svg>
     {% endif %}
   </div>

@@ -2,17 +2,17 @@ import cookies from 'browser-cookies';
 
 const modals = document.querySelectorAll('.js-modal');
 
-function modalTracking (category, action) {
+function modalTracking(category, action) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: 'myClick',
     category,
-    action
+    action,
   });
 }
 
 Array.from(modals, (modal) => {
-  const modalCampaign = modal.dataset.modalCampaign;
+  const modalCampaign = modal.dataset.modalCampaign == null ? 'modalCampaign-not-set' : modal.dataset.modalCampaign;
   const focusable = modal.querySelectorAll('a');
 
   const closeModal = () => {
@@ -25,7 +25,7 @@ Array.from(modals, (modal) => {
   };
 
   const focusHandler = (e) => {
-    if (e.keyCode === 9) {
+    if (e.key === 9) {
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       const shift = e.shiftKey;
@@ -46,8 +46,8 @@ Array.from(modals, (modal) => {
   };
 
   if (
-    (!modal.dataset.modalOnceOnly || !cookies.get(modalCampaign)) &&
-     !modal.dataset.notOnLoad
+    (!modal.dataset.modalOnceOnly || !cookies.get(modalCampaign))
+    && !modal.dataset.notOnLoad
   ) {
     document.body.appendChild(modal);
     modal.setAttribute('tabindex', '0');
@@ -68,7 +68,7 @@ Array.from(modals, (modal) => {
       cookies.set(modalCampaign, 'seen', { domain: modal.dataset.modalDomain, expires: 365 });
     }
     if (e.target !== modal) {
-      if (!!(Array.from(e.target.classList).find(c => c === 'js-modal-action')) || e.target.closest('.js-modal-action')) {
+      if (!!(Array.from(e.target.classList).find((c) => c === 'js-modal-action')) || e.target.closest('.js-modal-action')) {
         modalTracking(modalCampaign, `clicked: ${e.target.textContent}`);
       } else {
         modal.removeEventListener('keydown', focusHandler);

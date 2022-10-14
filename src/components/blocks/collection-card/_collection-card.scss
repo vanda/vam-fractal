@@ -1,3 +1,7 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
 .b-collection-card {
   &__anchor {
     &:focus {
@@ -7,26 +11,28 @@
   }
 
   &__media {
-    @include constrainedImage(7 4);
+    @include mixins.constrainedimage-constrainedImage(7 4);
 
     .b-collection-card--transparent & {
-      box-shadow: 0 1px 2px 0 rgba(siteColor(vam-black), .5);
+      box-shadow: 0 1px 2px 0 color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
     }
   }
 
   &__media-inner {
-    @include constrainedImageInner;
+    @include mixins.constrainedimage-constrainedImageInner;
+
     overflow: hidden;
   }
 
   &__media-image {
-    @include constrainedImageImage;
+    @include mixins.constrainedimage-constrainedImageImage;
+
     border-radius: 2px 2px 0 0;
   }
 
   &__overlay {
     align-items: center;
-    background-color: rgba(siteColor(vam-black), .5);
+    background-color: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
     border-radius: 2px 2px 0 0;
     bottom: 0;
     display: flex;
@@ -42,7 +48,7 @@
     z-index: 1;
 
     .b-collection-card__anchor:focus & {
-      @include defaultFocus;
+      @include mixins.focus-defaultFocus;
     }
 
     .b-collection-card__anchor:hover &,
@@ -52,16 +58,18 @@
   }
 
   &__overlay-text {
-    @include typeSetting(3, bold);
-    color: siteColor(vam-white);
-    text-shadow: 0 1px 2px rgba(siteColor(vam-black), .5);
+    @include base.typography-typeSetting(3, "bold");
+
+    color: base.sitecolors-siteColor("vam-white");
+    text-shadow: 0 1px 2px color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
   }
 
   &__name {
-    @include typeSetting(4, bold);
-    background-color: siteColor(vam-white);
+    @include base.typography-typeSetting(4, "bold");
+
+    background-color: base.sitecolors-siteColor("vam-white");
     border-radius: 0 0 2px 2px;
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     min-height: 84px;
     padding: 5px 10px;
 

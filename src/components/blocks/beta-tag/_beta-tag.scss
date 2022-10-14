@@ -1,26 +1,31 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-beta-tag {
   &:focus div {
-    @include defaultFocus;
+    @include mixins.focus-defaultFocus;
   }
 
   &__tag {
     &:hover {
       cursor: pointer;
+
       span {
         text-decoration: underline;
       }
     }
 
-    @include typeSetting(2, medium);
-    background-color: themeColor(silent-green);
-    color: siteColor(vam-black);
+    @include base.typography-typeSetting(2, "medium");
+
+    background-color: base.themecolors-themeColor("silent-green");
+    color: base.sitecolors-siteColor("vam-black");
     height: 23px;
     padding-top: 1px;
     position: relative;
     text-align: center;
     width: 54px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       height: 90px;
       width: 60px;
     }
@@ -29,11 +34,11 @@
   &__text {
     padding-top: 60px;
     pointer-events: none;
-    @include bpMinSmall {
+
+    @include mixins.breakpoints-bpMinSmall {
       left: 10px;
       position: absolute;
       top: 0;
     }
   }
 }
-

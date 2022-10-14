@@ -1,14 +1,25 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-object-card {
+  &__image {
+    height: auto;
+    margin: 0 0 10px;
+    max-height: 586px;
+    object-fit: cover;
+    width: 100%;
+  }
+
   &__warning {
     min-height: 232px;
     overflow: hidden;
     position: relative;
 
-    &__banner  {
+    &__banner {
       align-items: center;
-      background-color: siteColor(vam-black);
+      background-color: base.sitecolors-siteColor("vam-black");
       bottom: 0;
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -19,32 +30,34 @@
       position: absolute;
       right: 0;
       top: 0;
-      transition: opacity .4s ease;
+      transition: opacity 0.4s ease;
       z-index: 1;
 
       &__text {
-        @include typeSetting(2, regular);
+        @include base.typography-typeSetting(2, "regular");
+
         margin-bottom: 20px;
         max-width: 224px;
         text-align: center;
       }
 
       &__dismiss {
-        @include typeSetting(1, medium);
-        background-color: siteColor(vam-black);
-        border: 1px solid siteColor(vam-white);
+        @include base.typography-typeSetting(1, "medium");
+
+        background-color: base.sitecolors-siteColor("vam-black");
+        border: 1px solid base.sitecolors-siteColor("vam-white");
         border-radius: 2px;
         padding: 4px 12px;
       }
     }
 
     & > #{&}__banner {
-      opacity: .8;
+      opacity: 0.8;
     }
 
     &:hover > #{&}__banner,
     &:focus > #{&}__banner {
-      opacity: .9;
+      opacity: 0.9;
     }
 
     & > .b-object-card__image {
@@ -62,58 +75,49 @@
     position: relative;
 
     &::after {
-      background-image: linear-gradient(siteColor(vam-black), transparent 80%);
+      background-image: linear-gradient(base.sitecolors-siteColor("vam-black"), transparent 80%);
       bottom: 0;
-      content: '';
+      content: "";
       display: block;
       left: 0;
       opacity: 0;
       position: absolute;
       right: 0;
       top: 0;
-      transition: opacity .1s;
+      transition: opacity 0.1s;
     }
 
     &:focus {
-      @include defaultFocus;
+      @include mixins.focus-defaultFocus;
     }
 
     &:hover::after,
     &:focus::after {
-      opacity: .3;
+      opacity: 0.3;
     }
   }
 
-  &__image {
-    height: auto;
-    margin: 0 0 10px;
-    max-height: 586px;
-    object-fit: cover;
-    width: 100%;
-  }
-
   &__caption {
-    @include typeSetting(1, light);
+    @include base.typography-typeSetting(1, "light");
+
     display: none;
 
-    @include bpMinSmall {
-      color: siteColor(vam-black);
-      display: block;
-      display: -webkit-box;
+    @include mixins.breakpoints-bpMinSmall {
+      color: base.sitecolors-siteColor("vam-black");
+      display: block; /* display: -webkit-box; */
     }
 
     .b-object-card--etc & {
       /*! autoprefixer: off */
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
-      color: siteColor(vam-white);
-      display: block;
-      display: -webkit-box;
+      color: base.sitecolors-siteColor("vam-white");
+      display: block; /* display: -webkit-box; */
       overflow: hidden;
     }
 
     &--sub {
-      @include typeSetting(3);
+      @include base.typography-typeSetting(3);
     }
   }
 }

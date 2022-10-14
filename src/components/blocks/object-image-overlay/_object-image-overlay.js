@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 const oicInit = () => {
   const oicSeeds = Array.from(document.querySelectorAll('.js-object-image-overlay-item'));
 
@@ -14,23 +13,23 @@ const oicInit = () => {
 
     oic.addItem = (index, prepend = false) => {
       const seed = oicSeeds[index] || oicSeeds[0];
-      const data = seed.dataset.objectImageOverlay ?
-        JSON.parse(seed.dataset.objectImageOverlay)
+      const data = seed.dataset.objectImageOverlay
+        ? JSON.parse(seed.dataset.objectImageOverlay)
         : null;
-      const museumNumber = data && data.museumNumber ?
-        `Museum number: <span itemprop="identifier">${data.museumNumber}</span>`
+      const museumNumber = data && data.museumNumber
+        ? `Museum number: <span itemprop="identifier">${data.museumNumber}</span>`
         : '';
-      const copyright = data && data.copyright ?
-        `<br/><span itemprop="copyrightHolder">${data.copyright}</span>`
+      const copyright = data && data.copyright
+        ? `<br/><span itemprop="copyrightHolder">${data.copyright}</span>`
         : '';
-      const numberCopyright = museumNumber || copyright ?
-        `<div class="b-object-image-overlay__numbercopyright">
+      const numberCopyright = museumNumber || copyright
+        ? `<div class="b-object-image-overlay__numbercopyright">
           ${museumNumber}
           ${copyright}
         </div>`
         : '';
-      const onDisplay = data && data.onDisplay ?
-        `<div class="b-object-image-overlay__location-status">
+      const onDisplay = data && data.onDisplay
+        ? `<div class="b-object-image-overlay__location-status">
           <svg role="img" viewBox="0 0 52 52">
             <path d="M51.59 25.348C45.15 15.57 35.838 10 26 10S6.851 15.57.41 25.348L0 26l.41.652C6.85 36.43 16.162 42 26 42s19.149-5.57 25.59-15.348L52 26l-.41-.652zM25.5 35c-5.225 0-9.5-4.275-9.5-9.5s4.275-9.5 9.5-9.5 9.5 4.275 9.5 9.5-4.275 9.5-9.5 9.5z" fill="currentColor"/>
           </svg>
@@ -41,22 +40,22 @@ const oicInit = () => {
       if (data && data.onDisplay) {
         locationCopy = data.displayOverride;
         if (!locationCopy) {
-          const locationSite = data.locationSite ?
-            `<div class="b-object-image-overlay__location-site">${data.locationSite}</div>`
+          const locationSite = data.locationSite
+            ? `<div class="b-object-image-overlay__location-site">${data.locationSite}</div>`
             : '';
-          const locationRoom = data.locationRoom ?
-            data.locationRoom
+          const locationRoom = data.locationRoom
+            ? data.locationRoom
             : '';
           locationCopy = locationSite + locationRoom;
         }
       } else if (data && data.onDisplay !== null && !data.onDisplay) {
         locationCopy = data.storageOverride || 'This object is currently not on display';
       }
-      const visitLink = data && data.visitUrl ?
-        `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">Find out how to visit this object</a>`
+      const visitLink = data && data.visitUrl
+        ? `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">Find out how to visit this object</a>`
         : '';
-      const location = locationCopy || visitLink ?
-        `<div class="b-object-image-overlay__location">
+      const location = locationCopy || visitLink
+        ? `<div class="b-object-image-overlay__location">
           ${onDisplay}
           <div class="b-object-image-overlay__location-copy">${locationCopy}</div>
           ${visitLink}
@@ -64,8 +63,8 @@ const oicInit = () => {
         ` : '';
       const objectUrl = seed.querySelector('a').getAttribute('href');
       const objectImg = seed.querySelector('img');
-      const objectImgHTML = objectImg ?
-        `<img class="b-object-image-overlay__image"
+      const objectImgHTML = objectImg
+        ? `<img class="b-object-image-overlay__image"
            itemprop="contentUrl"
            alt="${objectImg.alt}"
            sizes="(max-width: 991px) calc(100vw - 20px),
@@ -75,11 +74,11 @@ const oicInit = () => {
            src="${objectImg.src}">
         `
         : '<div class="s-lazyload--error"></div>';
-      const ctaScreen = objectUrl.length > 1 ?
-        `<br/><a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
+      const ctaScreen = objectUrl.length > 1
+        ? `<br/><a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
         : '';
-      const ctaMobile = objectUrl.length > 1 ?
-        `<a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
+      const ctaMobile = objectUrl.length > 1
+        ? `<a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
         : '';
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
@@ -142,9 +141,9 @@ const oicInit = () => {
     oic.buttonInit = (rewind) => {
       // need to disable all buttons and links on screen first then re-enable
       // buttons that are on screen
-      oic.querySelectorAll('button').forEach(el => el.setAttribute('disabled', true));
+      oic.querySelectorAll('button').forEach((el) => el.setAttribute('disabled', true));
 
-      oic.querySelectorAll('a').forEach(el => el.setAttribute('tabindex', '-1'));
+      oic.querySelectorAll('a').forEach((el) => el.setAttribute('tabindex', '-1'));
 
       if (window.innerWidth > 991) {
         oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
@@ -171,7 +170,7 @@ const oicInit = () => {
         }
       }
 
-      item.querySelectorAll('a').forEach(el => el.removeAttribute('tabindex'));
+      item.querySelectorAll('a').forEach((el) => el.removeAttribute('tabindex'));
 
       // different cta for mobile and desktop which are both
       // focusable without this step
@@ -186,11 +185,11 @@ const oicInit = () => {
       }
 
       oic.focusable = [
-        document.querySelector('.b-object-image-overlay__dismiss')
+        document.querySelector('.b-object-image-overlay__dismiss'),
       ].concat(Array.from(
         item.querySelectorAll(
-          'button:not([disabled]), a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])'
-        )
+          'button:not([disabled]), a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])',
+        ),
       ));
 
       const focusHierarchy = (first, second, last) => {
@@ -207,13 +206,13 @@ const oicInit = () => {
         focusHierarchy(
           item.querySelector('.b-object-image-overlay__next:not([disabled]'),
           item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
-          oic.focusable[0]
+          oic.focusable[0],
         );
       } else if (rewind) {
         focusHierarchy(
           item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
           item.querySelector('.b-object-image-overlay__next:not([disabled]'),
-          oic.focusable[0]
+          oic.focusable[0],
         );
       }
     };
@@ -235,7 +234,7 @@ const oicInit = () => {
       window.dataLayer.push({
         event: 'OIC',
         object: oicSeeds[index].querySelector('figcaption').textContent.trim(),
-        museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber
+        museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber,
       });
     };
 
@@ -309,6 +308,5 @@ const oicInit = () => {
     }, false);
   }
 };
-export { oicInit as default };
 
-/* eslint-enable no-underscore-dangle */
+export default oicInit;

@@ -1,13 +1,15 @@
+@use "../../base";
+
 .s-lazyload {
   width: 100%;
 
   &--blur {
-    filter: blur(.3rem);
+    filter: blur(0.3rem);
     height: auto;
   }
 
   &--error {
-    // sass-lint:disable no-important
+    /* stylelint-disable declaration-no-important */
     display: block !important;
     font-size: 0 !important;
     height: 0 !important;
@@ -16,7 +18,7 @@
     padding-top: 100% !important;
     position: relative !important;
     visibility: hidden !important;
-    // sass-lint:enable no-important
+    /* stylelint-enable declaration-no-important */
 
     &::before {
       background-color: #505354;
@@ -24,7 +26,7 @@
       background-position: 50% 50%;
       background-repeat: no-repeat;
       background-size: cover;
-      content: '';
+      content: "";
       display: block;
       padding-top: 100%;
       position: absolute;
@@ -34,9 +36,10 @@
     }
 
     &::after {
-      @include typeSetting(4, bold);
+      @include base.typography-typeSetting(4, "bold");
+
       color: #fff;
-      content: 'Image unavailable';
+      content: "Image unavailable";
       left: 0;
       position: absolute;
       text-align: center;
@@ -48,6 +51,6 @@
   }
 
   &--abort {
-    display: none !important; // sass-lint:disable-line no-important
+    display: none !important; /* stylelint-disable-line declaration-no-important */
   }
 }

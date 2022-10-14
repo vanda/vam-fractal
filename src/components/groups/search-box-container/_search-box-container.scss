@@ -1,16 +1,19 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-search-box-container {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background-color: #242424;
   margin: auto;
-  padding: 34px 10px 34px 10px;
+  padding: 34px 10px;
   text-align: center;
 
-  @include bpMinXSmall {
+  @include mixins.breakpoints-bpMinXSmall {
     padding: 32px 43px 34px 41px;
   }
 
-  @include bpMinMedium {
+  @include mixins.breakpoints-bpMinMedium {
     max-width: 1200px;
   }
 
@@ -21,35 +24,39 @@
 
   &-header {
     margin-bottom: 24px;
-    &__title {
-      color: siteColor(vam-white);
 
+    &__title {
+      color: base.sitecolors-siteColor("vam-white");
       font-size: 16px;
       font-weight: 700;
       letter-spacing: 3.38px;
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         font-size: 18px;
         font-weight: 700;
         letter-spacing: 3.38px;
       }
     }
+
     &__subtitle {
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       font-size: 16px;
       font-weight: 500;
     }
+
     &__logo {
       &-container {
-        @include bpMinXSmall {
+        @include mixins.breakpoints-bpMinXSmall {
           display: none;
         }
+
         display: block;
         margin-bottom: -7px;
         text-align: right;
         width: 100%;
       }
-      color: siteColor(vam-grey-3);
+
+      color: base.sitecolors-siteColor("vam-grey-3");
       height: 46px;
       width: 80px;
     }

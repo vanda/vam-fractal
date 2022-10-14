@@ -1,9 +1,12 @@
+@use "sass:math";
+@use "sass:list";
+
 @mixin constrainedImage($ratio: 6 4) {
   @if length($ratio) < 2 or length($ratio) > 2 {
     @warn "#{inspect($ratio)} must be a list with two values.";
   }
 
-  padding-top: percentage(nth($ratio, 2) / nth($ratio, 1));
+  padding-top: math.percentage(math.div(list.nth($ratio, 2), list.nth($ratio, 1)));
   position: relative;
 }
 
@@ -16,7 +19,6 @@
 }
 
 @mixin constrainedImageImage {
-  -ms-interpolation-mode: bicubic; // <= IE7
   display: block;
   height: 100%;
   object-fit: cover;

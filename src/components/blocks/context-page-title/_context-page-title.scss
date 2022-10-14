@@ -1,35 +1,47 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-context-page-title {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: white;
+  color: base.sitecolors-siteColor("vam-white");
+
   &__type {
-    @include typeSetting(1, bold);
-    @include bpMinSmall {
-      @include typeSetting(3, bold);
+    @include base.typography-typeSetting(1, "bold");
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(3, "bold");
     }
   }
+
   &__name {
     font-size: 20px;
     font-weight: 700;
 
-    @include bpMinXSmall {
-      @include typeSetting(6, bold);
+    @include mixins.breakpoints-bpMinXSmall {
+      @include base.typography-typeSetting(6, "bold");
     }
-    @include bpMinSmall {
-      @include typeSetting(8, bold);
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(8, "bold");
     }
   }
-  &__alternative-name, &__info, &__dates {
+
+  &__alternative-name,
+  &__info,
+  &__dates {
     font-size: 18px;
-    @include bpMinXSmall {
+
+    @include mixins.breakpoints-bpMinXSmall {
       font-size: 20px;
     }
-    @include bpMinSmall {
+
+    @include mixins.breakpoints-bpMinSmall {
       font-size: 30px;
     }
   }
 }
 
 .context-page-bg {
-  background-color: black;
+  background-color: #000;
 }

@@ -1,14 +1,18 @@
+@use "../../mixins";
+@use "../../base";
+
 .etc-background {
-  background-color: siteColor(vam-grey-1);
+  background-color: base.sitecolors-siteColor("vam-grey-1");
 }
 
 .etc-details {
-  color: siteColor(vam-grey-4);
+  color: base.sitecolors-siteColor("vam-grey-4");
   width: 100%;
+
   &__cell-concealer-button {
-    background-color: themeColor(silent-green);
+    background-color: base.themecolors-themeColor("silent-green");
     border-radius: 10px;
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     font-size: 22px;
     height: 14px;
     line-height: 0;
@@ -18,56 +22,64 @@
     vertical-align: middle;
     width: 15px;
   }
+
   &__cell-free-content {
     word-break: break-word;
+
     &--hidden {
       height: 200px;
       overflow: hidden;
       word-break: break-word;
     }
   }
+
   &__title {
-    @include typeSetting(4, bold);
-    color: siteColor(vam-white);
+    @include base.typography-typeSetting(4, "bold");
+
+    color: base.sitecolors-siteColor("vam-white");
     letter-spacing: 3.38px;
     padding-bottom: 35px;
     text-align: center;
   }
+
   &__row {
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       flex-direction: row;
     }
 
-    border-color: siteColor(vam-grey-3);
+    border-color: base.sitecolors-siteColor("vam-grey-3");
     border-style: dashed;
-    border-width: 1px 0 0 0;
+    border-width: 1px 0 0;
     display: flex;
     flex-direction: column;
     min-height: 46px;
 
     &:nth-last-of-type(1) {
-      border-width: 1px 0 1px 0;
+      border-width: 1px 0;
     }
-
   }
+
   &__cell {
     padding: 12px 10px 10px 0;
   }
+
   &__cell-name {
-    @include typeSetting(2, bold);
-    color: siteColor(vam-white);
+    @include base.typography-typeSetting(2, "bold");
+
+    color: base.sitecolors-siteColor("vam-white");
     flex-shrink: 0;
     padding-bottom: 3px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       padding-bottom: 10px;
       width: 165px;
     }
   }
-  &__cell-data {
-    @include typeSetting(3, light);
 
-    @include bpMinSmall {
+  &__cell-data {
+    @include base.typography-typeSetting(3, "light");
+
+    @include mixins.breakpoints-bpMinSmall {
       padding-left: 20px;
       padding-top: 10px;
     }
@@ -75,27 +87,20 @@
     padding-left: 0;
     padding-top: 0;
   }
+
   &__controlled-vocab-string-container {
     padding-bottom: 8px;
   }
+
   &__cell-concealer-text {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     pointer-events: none;
   }
-  &__cell-concealer, &__cell-revealer {
-    height: 40px;
-    padding: 10px 10px 0 0;
-    position: relative;
-    text-align: left;
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
+
   &__cell-concealer {
     &::before {
-      background-image: linear-gradient(rgba(57, 59, 63, 0), #393b3f);
-      content: '';
+      background-image: linear-gradient(rgba(57, 59, 63, 0%), #393b3f);
+      content: "";
       height: 100px;
       left: 0;
       position: absolute;
@@ -103,35 +108,48 @@
       width: 100%;
     }
   }
+
+  &__cell-concealer,
+  &__cell-revealer {
+    height: 40px;
+    padding: 10px 10px 0 0;
+    position: relative;
+    text-align: left;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
   &__controlled-vocab {
     &-container {
       display: flex;
       flex: auto;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
     }
 
     &-content {
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         line-height: 1.3rem;
         margin-bottom: 2px;
         margin-right: 10px;
         margin-top: 2px;
-        padding: 2px 7px 2px 7px;
+        padding: 2px 7px;
       }
 
-      @include typeSetting(1, light);
+      @include base.typography-typeSetting(1, "light");
 
-      border: solid themeColor(silent-green) 1px;
+      border: solid base.themecolors-themeColor("silent-green") 1px;
       border-radius: 4px;
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       margin-right: 10px;
       margin-top: 5px;
       padding: 10px 13px;
 
       &:hover {
-        background-color: themeColor(silent-green);
-        color: siteColor(vam-grey-1);
+        background-color: base.themecolors-themeColor("silent-green");
+        color: base.sitecolors-siteColor("vam-grey-1");
         cursor: pointer;
       }
     }

@@ -1,5 +1,7 @@
+@use "../../mixins";
+
 .u-list {
   &--unstyled {
-    @include unstyledList;
+    @include mixins.unstyledelements-unstyledList;
   }
 }

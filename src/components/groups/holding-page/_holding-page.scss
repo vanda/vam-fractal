@@ -1,3 +1,6 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-holding-page {
   margin: auto;
   max-width: 1440px;
@@ -8,7 +11,7 @@
     position: absolute;
     top: 50px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin: 0 50px;
       top: 100px;
     }
@@ -20,7 +23,7 @@
     margin-bottom: 0;
     width: 128px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       height: 120px;
       margin-bottom: 20px;
       width: 200px;
@@ -28,42 +31,47 @@
   }
 
   &-heading {
-    @include typeSetting(6, regular);
+    @include base.typography-typeSetting(6, "regular");
+
     color: white;
     line-height: 2.5rem;
 
-    @include bpMinSmall {
-      @include typeSetting(8, regular);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(8, "regular");
+
       line-height: 4rem;
     }
   }
 
   &-message {
-    @include typeSetting(3, regular);
+    @include base.typography-typeSetting(3, "regular");
+
     color: white;
     line-height: 1.5rem;
     margin-bottom: 10px;
     max-width: 700px;
 
-    @include bpMinSmall {
-      @include typeSetting(5, light);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(5, "light");
+
       line-height: 2.25rem;
     }
   }
 
   &-return {
-    @include typeSetting(3, light);
+    @include base.typography-typeSetting(3, "light");
+
     color: white;
 
-    @include bpMinSmall {
-      @include typeSetting(4, light);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4, "light");
     }
   }
 
   &-info {
     margin-bottom: 40px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-bottom: 60px;
     }
   }

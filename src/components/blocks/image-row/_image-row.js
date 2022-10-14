@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 document.addEventListener('DOMContentLoaded', () => {
   const imgRows = document.querySelectorAll('.b-image-row');
   if (imgRows.length) {
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgRowStyle = imgRow.parentNode.insertBefore(document.createElement('style'), imgRow);
 
       const rowStyle = () => {
-        const imgsLL = imgRow.querySelectorAll('.b-image-row__img');  // images, including those failed and replaced by LazyLoad
+        const imgsLL = imgRow.querySelectorAll('.b-image-row__img'); // images, including those failed and replaced by LazyLoad
         const aspectRatios = [];
         const parentRow = imgsLL[0].closest('.b-image-row');
         const parentRowCS = getComputedStyle(parentRow);
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
              * but in batches of 2 images, and with rounding and a tiny reduction to
              * ensure no pair is wider than a wrapped row */
             imgRowStyleMobile += `
-              .b-image-row-${parentRow._imageRowId} .b-image-row__item:nth-child(${imgId - 1}),
+              .b-image-row-${parentRow._imageRowId} .b-image-row__item:nth-child(${imgId - 1}), 
               .b-image-row-${parentRow._imageRowId} .b-image-row__item:nth-child(${imgId}) {
                 height: ${Math.round((rowWidth / (aspectRatios[imgId - 2] + aspectRatios[imgId - 1])) - 1.5)}px;
               }
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         imgRowStyle.innerHTML = `
           @media screen and (max-width: 768px) {
-            .b-image-row-${parentRow._imageRowId} {
+            .b-image-row-${parentRow._imageRowId} { 
               flex-wrap: wrap;
             }
             ${imgRowStyleMobile}
@@ -85,5 +84,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 }, true);
-
-/* eslint-enable no-underscore-dangle */

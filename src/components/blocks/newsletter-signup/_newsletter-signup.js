@@ -1,4 +1,4 @@
-function isEmail (t) {
+function isEmail(t) {
   const e = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   return e.test(t);
 }
@@ -24,8 +24,7 @@ Array.from(document.querySelectorAll('.js-newsletter_form'), (signupForm) => {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
           if (httpRequest.status === 200) {
             emailBtn.value = 'Thank you!';
-            emailDescriptor.innerHTML =
-              'A confirmation email will be sent to this address shortly&hellip;';
+            emailDescriptor.innerHTML = 'A confirmation email will be sent to this address shortly&hellip;';
             signupForm.classList.remove('invalid');
             signupForm.classList.add('sent');
           } else {

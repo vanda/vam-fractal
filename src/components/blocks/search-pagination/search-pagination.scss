@@ -1,19 +1,26 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-search-pagination {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+
   &__container {
     align-items: center;
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     display: flex;
     flex-direction: row;
     justify-content: center;
     position: relative;
+
     &--display-counter {
       justify-content: left;
     }
+
     &--page-size {
       margin-top: 20px;
     }
+
     &--col {
       flex-direction: column;
     }
@@ -23,11 +30,13 @@
     cursor: pointer;
     margin-left: 10px;
     text-decoration: underline;
+
     &--active {
       cursor: default;
       font-weight: 800;
       text-decoration: none;
     }
+
     &:hover {
       font-weight: 600;
     }
@@ -36,24 +45,29 @@
   &__prev-link {
     left: 0;
   }
+
   &__next-link {
     right: 0;
   }
-  &__prev-link, &__next-link {
-    @include typeSetting(2, bold);
-    @include bpMinMedium {
+
+  &__prev-link,
+  &__next-link {
+    @include base.typography-typeSetting(2, "bold");
+
+    @include mixins.breakpoints-bpMinMedium {
       top: 11px;
-      @include typeSetting(3, bold);
+
+      @include base.typography-typeSetting(3, "bold");
     }
 
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     cursor: pointer;
     position: absolute;
     top: 11px;
     user-select: none;
 
     &[disabled] {
-      color: siteColor(vam-grey-4);
+      color: base.sitecolors-siteColor("vam-grey-4");
       cursor: initial;
     }
   }
@@ -62,19 +76,80 @@
     &-caret {
       text-decoration: none;
     }
+
     &-text {
       pointer-events: none;
       text-decoration: underline;
     }
   }
 
+  &__page-button,
+  &__page-button-start,
+  &__page-button-last {
+    @include base.typography-typeSetting(3, "medium");
+
+    @include mixins.breakpoints-bpMinMedium {
+      height: 44px;
+      margin-right: 8px;
+    }
+
+    border: 1px solid base.sitecolors-siteColor("vam-white");
+    border-radius: 0;
+    color: base.sitecolors-siteColor("vam-white");
+    height: 40px;
+    margin-right: 6px;
+    min-width: 32px;
+    padding: 0 5px;
+
+    &-seperator {
+      &-start,
+      &-middle,
+      &-last {
+        color: base.sitecolors-siteColor("vam-white");
+        margin-right: 8px;
+        margin-top: 6px;
+        user-select: none;
+      }
+
+      &[disabled] {
+        display: none;
+      }
+    }
+
+    &--current {
+      background-color: base.themecolors-themeColor("silent-green");
+      border-color: base.themecolors-themeColor("silent-green");
+      border-radius: 0;
+      color: base.sitecolors-siteColor("vam-black");
+    }
+
+    &-container {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
   &__page-button {
     display: block;
+
     &[disabled] {
       display: none;
     }
+
     &:last-of-type {
       margin-right: 0;
+    }
+
+    &:hover {
+      background-color: base.sitecolors-siteColor("vam-grey-3");
+      cursor: pointer;
+    }
+  }
+
+  &__page-button-start {
+    &:hover {
+      background-color: base.sitecolors-siteColor("vam-grey-3");
+      cursor: pointer;
     }
   }
 
@@ -82,49 +157,10 @@
     &[disabled] {
       display: none;
     }
-  }
-
-  &__page-button, &__page-button-start, &__page-button-last {
-    @include typeSetting(3, medium);
-    @include bpMinMedium {
-      height: 44px;
-      margin-right: 8px;
-    }
-
-    border: 1px solid siteColor(vam-white);
-    border-radius: 0;
-    color: siteColor(vam-white);
-    height: 40px;
-    margin-right: 6px;
-    min-width: 32px;
-    padding: 0 5px;
-    &-seperator {
-      &-start, &-middle, &-last {
-        color: siteColor(vam-white);
-        margin-right: 8px;
-        margin-top: 6px;
-        user-select: none;
-      }
-      &[disabled] {
-        display: none;
-      }
-    }
 
     &:hover {
-      background-color: siteColor(vam-grey-3);
+      background-color: base.sitecolors-siteColor("vam-grey-3");
       cursor: pointer;
-    }
-
-    &--current {
-      background-color: themeColor(silent-green);
-      border-color: themeColor(silent-green);
-      border-radius: 0;
-      color: siteColor(vam-black);
-    }
-
-    &-container {
-      display: flex;
-      flex-direction: row;
     }
   }
 }

@@ -1,16 +1,19 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-image-carousel {
-  background: siteColor(vam-black);
+  background: base.sitecolors-siteColor("vam-black");
   display: block;
   position: relative;
   width: 400px;
 
-  @include bpMinLarge {
+  @include mixins.breakpoints-bpMinLarge {
     width: 710px;
   }
 
   &__conceal-left,
   &__conceal-right {
-    content: '';
+    content: "";
     height: 100px;
     position: absolute;
     top: 0;
@@ -19,12 +22,12 @@
   }
 
   &__conceal-left {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0), siteColor(vam-black));
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0%), base.sitecolors-siteColor("vam-black"));
     left: 0;
   }
 
   &__conceal-right {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), siteColor(vam-black));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0%), base.sitecolors-siteColor("vam-black"));
     right: 0;
   }
 
@@ -38,7 +41,7 @@
   &__image-carousel {
     display: none;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       align-items: center;
       display: flex;
       flex-direction: row;
@@ -65,12 +68,12 @@
     position: relative;
 
     &:focus {
-      @include defaultFocus;
+      @include mixins.focus-defaultFocus;
     }
 
     &:hover {
       cursor: pointer;
-      opacity: .3;
+      opacity: 0.3;
     }
 
     &--selected {
@@ -80,9 +83,9 @@
 
   &__prev,
   &__next {
-    border: 1px solid siteColor(vam-white);
+    border: 1px solid base.sitecolors-siteColor("vam-white");
     border-radius: 100%;
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     display: inline-flex;
     flex: none;
     height: 30px;
@@ -103,21 +106,6 @@
       }
     }
 
-    &[disabled] {
-      border: 1px solid siteColor(vam-grey-5);
-      color: siteColor(vam-grey-5);
-      cursor: default;
-      opacity: .4;
-
-      &:hover {
-        background: inherit;
-
-        svg {
-          color: inherit;
-        }
-      }
-    }
-
     svg {
       height: 12px;
       margin: auto;
@@ -126,9 +114,25 @@
     }
 
     &:hover {
-      background: siteColor(vam-white);
+      background: base.sitecolors-siteColor("vam-white");
+
       svg {
-        color: siteColor(vam-black);
+        color: base.sitecolors-siteColor("vam-black");
+      }
+    }
+
+    &[disabled] {
+      border: 1px solid base.sitecolors-siteColor("vam-grey-5");
+      color: base.sitecolors-siteColor("vam-grey-5");
+      cursor: default;
+      opacity: 0.4;
+
+      &:hover {
+        background: inherit;
+
+        svg {
+          color: inherit;
+        }
       }
     }
   }

@@ -27,7 +27,7 @@
           itemsDataFeed: encodeURI(shufflerData[i].feed),
           itemsIndex: 0,
           transitionDurationItem,
-          transitionDurationImg
+          transitionDurationImg,
         };
 
         // setup each deck
@@ -104,7 +104,8 @@
     setSize: (item) => {
       // number of columns determined by item width * 2 rows
       const cols = Math.floor(
-        item.parentNode.getBoundingClientRect().width / item.getBoundingClientRect().width);
+        item.parentNode.getBoundingClientRect().width / item.getBoundingClientRect().width,
+      );
       return cols * 2;
     },
     getData: (deck) => {
@@ -114,7 +115,7 @@
         deck._props.apiPage = deck._props.apiPage + 1 || 1; // increment api page
         const dataURI = `${deck._props.itemsDataFeed}&page_size=${dataSize}&page=${deck._props.apiPage}`;
         const promise = fetch(dataURI)
-          .then(response => response.json())
+          .then((response) => response.json())
           .then((data) => {
             Array.from(data.records, (record) => {
               if (record.systemNumber !== deck._props.itemsExclude) {
@@ -125,17 +126,17 @@
                     img: {
                       srcset: `${imgPath}250,/0/default.jpg 250w, ${imgPath}350,/0/default.jpg 350w, ${imgPath}450,/0/default.jpg 450w, ${imgPath}550,/0/default.jpg 550w, ${imgPath}700,/0/default.jpg 700w, ${imgPath}900,/0/default.jpg 900w`,
                       src: `${imgPath}350,/0/default.jpg`,
-                      alt: title
+                      alt: title,
                     },
                     title,
-                    href: `/item/${record.systemNumber}/`
-                  }
+                    href: `/item/${record.systemNumber}/`,
+                  },
                 );
               }
               return true;
             });
           })
-          .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+          .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
         return promise;
       }
       return Promise.resolve(true);
@@ -199,7 +200,7 @@
         item.setAttribute('aria-hidden', !index);
         return true;
       });
-    }
+    },
   };
 
   let observer = null;

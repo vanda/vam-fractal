@@ -1,0 +1,36 @@
+@use "../../../components/base";
+@use "sass:map";
+
+.fr-icon-group {
+  background-color: #fff;
+  color: #444;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.fr-icon-box {
+  border-radius: 4px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.2s background-color;
+
+  &__icon {
+    color: map.get(base.$sitecolors-site-colors, "vam-black");
+    max-height: 50px;
+    transition: 0.2s color;
+    width: 50%;
+  }
+
+  &__name {
+    font-size: 0.825em;
+  }
+
+  &:hover {
+    background-color: map.get(base.$sitecolors-site-colors, "vam-grey-6");
+
+    .fr-icon-box__icon {
+      color: map.get(base.$sitecolors-site-colors, "primary-green");
+    }
+  }
+}

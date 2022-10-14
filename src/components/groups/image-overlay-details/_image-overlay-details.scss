@@ -1,21 +1,24 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-image-overlay-detail {
   align-items: center;
-  background: siteColor(vam-black);
-  color: siteColor(vam-white);
+  background: base.sitecolors-siteColor("vam-black");
+  color: base.sitecolors-siteColor("vam-white");
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
   width: 100%;
 
-  @include bpMinMedium {
+  @include mixins.breakpoints-bpMinMedium {
     padding: 22px 30px 24px;
   }
 
   &__navigation-container {
     margin-bottom: 10px;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       display: none;
     }
   }
@@ -25,11 +28,12 @@
   }
 
   &__image-counter {
-    @include typeSetting(3, bold);
+    @include base.typography-typeSetting(3, "bold");
   }
 
   &__copyright-holder {
-    @include typeSetting(0, light);
+    @include base.typography-typeSetting(0, "light");
+
     line-height: 22px;
   }
 
@@ -42,7 +46,7 @@
     flex: 1 0 auto;
     text-align: left;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       max-width: 371px;
     }
   }
@@ -50,7 +54,7 @@
   &__carousel-container {
     display: none;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       display: block;
       left: 50%;
       margin: 33px 0 24px;
@@ -64,7 +68,7 @@
     position: absolute;
     top: 20px;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       left: auto;
       margin: 0 20px 0 auto;
       position: relative;
@@ -76,11 +80,11 @@
   &__zoom-out {
     background: #fff;
     border-radius: 50%;
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     cursor: default;
-    display: flex !important; // sass-lint:disable-line no-important
+    display: flex !important; /* stylelint-disable-line declaration-no-important */
     height: 32px;
-    opacity: .4;
+    opacity: 0.4;
     width: 32px;
 
     > svg {
@@ -95,7 +99,7 @@
 
       &:hover,
       &:focus {
-        background: siteColor(vam-grey-5);
+        background: base.sitecolors-siteColor("vam-grey-5");
       }
     }
   }
@@ -105,16 +109,14 @@
   }
 
   &__zoomnavigator {
-    // sass-lint:disable no-important
-    display: none !important;
+    display: none !important; /* stylelint-disable-line declaration-no-important */
 
-    @include bpMinMedium {
-      border: 1px solid siteColor(vam-grey-7) !important;
-      display: block !important;
+    @include mixins.breakpoints-bpMinMedium {
+      /* stylelint-disable-next-line declaration-no-important */
+      border: 1px solid base.sitecolors-siteColor("vam-grey-7") !important;
+      display: block !important; /* stylelint-disable-line declaration-no-important */
       height: 104px;
       width: 156px;
     }
-    // sass-lint:enable no-important
   }
 }
-

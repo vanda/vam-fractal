@@ -1,39 +1,41 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-shop-touts {
   background-color: white;
   overflow: hidden;
   padding-bottom: 50px;
 
-  @include bpMinSmall {
+  @include mixins.breakpoints-bpMinSmall {
     padding: 0 30px 50px;
   }
 
   &__container {
     width: 100%;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       align-items: stretch;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       flex-wrap: nowrap;
     }
   }
 
   &__item {
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     padding: 0 10px 40px;
     width: 100%;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       flex: 0 0 50%;
-      padding: 1px 15px 50px 15px;
+      padding: 1px 15px 50px;
     }
 
-    @include bpMinSmall {
-      flex: 0 0 33.333333%;
+    @include mixins.breakpoints-bpMinSmall {
+      flex: 0 0 33.3333%;
     }
 
     > a:hover h2 {
@@ -45,32 +47,34 @@
       object-fit: contain;
       width: 100%;
 
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         height: 235px;
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         height: 199px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         height: 274px;
       }
 
-      @include bpMinLarge {
+      @include mixins.breakpoints-bpMinLarge {
         height: 366px;
       }
     }
   }
 
   &__title {
-    @include typeSetting(4, bold);
+    @include base.typography-typeSetting(4, "bold");
+
     margin: 12px 0 5px;
   }
 
   &__description {
-    @include typeSetting(3);
-    color: siteColor(vam-black);
+    @include base.typography-typeSetting(3);
+
+    color: base.sitecolors-siteColor("vam-black");
     margin: 0;
   }
 

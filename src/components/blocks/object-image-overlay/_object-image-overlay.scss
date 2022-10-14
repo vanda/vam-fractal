@@ -1,9 +1,12 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-object-image-overlay {
   display: none;
 
   &--active {
-    animation: opacityFadeIn .2s;
-    background-color: rgba(siteColor(vam-black), .98);
+    animation: opacityFadeIn 0.2s;
+    background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.98);
     display: block;
     height: 100%;
     left: 0;
@@ -28,7 +31,7 @@
     &::before,
     &::after {
       background: #fff;
-      content: '';
+      content: "";
       height: 100%;
       margin: auto;
       position: absolute;
@@ -49,10 +52,9 @@
     position: relative;
     width: 300vw;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       padding: 0;
     }
-
   }
 
   &__item {
@@ -74,7 +76,7 @@
     overflow: auto;
     position: relative;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       display: flex;
       flex-grow: 1;
       height: 100%;
@@ -89,7 +91,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       background: #292a2b;
       padding: 32px 60px;
       width: 65%;
@@ -102,20 +104,21 @@
     max-width: 100%;
     object-fit: contain;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       max-height: 85%;
     }
   }
 
   &__figcaption {
-    @include typeSetting(2, regular);
-    border: solid siteColor(vam-grey-3);
+    @include base.typography-typeSetting(2, "regular");
+
+    border: solid base.sitecolors-siteColor("vam-grey-3");
     border-width: 0 0 1px;
     display: flex;
     line-height: 1.7;
     padding: 8px 60px 8px 0;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       border-width: 1px 0 0;
       margin-top: 50px;
       padding: 4px 0 0;
@@ -125,7 +128,7 @@
   &__prevnext {
     display: none;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       display: block;
       flex: 1 0 auto;
       text-align: right;
@@ -141,7 +144,7 @@
     display: inline-flex;
     height: 30px;
     margin: 10px 0 10px 10px;
-    opacity: .4;
+    opacity: 0.4;
     width: 30px;
 
     svg {
@@ -167,7 +170,7 @@
   }
 
   &__details {
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       background: #393b3f;
       display: inline-flex;
       flex-direction: column;
@@ -182,46 +185,50 @@
   }
 
   &__caption {
-    @include typeSetting(3, regular);
+    @include base.typography-typeSetting(3, "regular");
+
     display: block;
     line-height: 1.56;
     max-width: 600px;
     padding: 15px 0 12px;
 
-    @include bpMinMedium {
-      @include typeSetting(4, regular);
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(4, "regular");
+
       line-height: 1.56;
       padding: 30px;
     }
   }
 
   &__cta {
-    color: siteColor(vam-grey-5);
+    color: base.sitecolors-siteColor("vam-grey-5");
     position: relative;
     text-decoration: none;
 
     &--mobile {
-      @include typeSetting(1, bold);
+      @include base.typography-typeSetting(1, "bold");
+
       border: 1px solid #fff;
       border-radius: 2px;
       display: inline-block;
       margin: 22px 0;
       padding: 8px 24px 6px 12px;
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         display: none;
       }
     }
 
     &--screen {
-      @include typeSetting(2, regular);
-      border: 1px solid siteColor(vam-grey-3);
+      @include base.typography-typeSetting(2, "regular");
+
+      border: 1px solid base.sitecolors-siteColor("vam-grey-3");
       border-width: 0 0 1px;
       display: block;
       margin: 0;
       padding: 15px 0 10px;
 
-      @include bpMaxMedium {
+      @include mixins.breakpoints-bpMaxMedium {
         display: none;
       }
     }
@@ -233,15 +240,15 @@
     }
 
     &::after {
-      content: '►';
+      content: "►";
       display: inline-block;
       font-size: 11px;
       position: absolute;
       right: 10px;
       top: 26%;
-      transform: scale(.5, .9);
+      transform: scale(0.5, 0.9);
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         margin: 4px 0 0 6px;
         right: auto;
       }
@@ -249,7 +256,7 @@
   }
 
   &__location {
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       background: #505054;
       padding: 35px 30px;
       position: relative;
@@ -257,21 +264,23 @@
   }
 
   &__location-status {
-    @include typeSetting(3, regular);
+    @include base.typography-typeSetting(3, "regular");
+
     display: inline;
 
     &::after {
-      content: ' at ';
+      content: " at ";
     }
 
     svg {
       display: none;
     }
 
-    @include bpMinMedium {
-      @include typeSetting(0, bold);
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(0, "bold");
+
       background-color: siteColor(vam-grey-5);
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
       display: flex;
       left: 0;
       padding: 3px 10px 2px 7px;
@@ -292,11 +301,12 @@
   }
 
   &__location-copy {
-    @include typeSetting(3, regular);
+    @include base.typography-typeSetting(3, "regular");
+
     display: inline-block;
     margin: 0 0 14px;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       display: block;
       margin: 0 0 7px;
     }
@@ -306,11 +316,12 @@
     display: inline;
 
     &::after {
-      content: ', ';
+      content: ", ";
     }
 
-    @include bpMinMedium {
-      @include typeSetting(3, bold);
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(3, "bold");
+
       display: block;
       margin: 0 0 7px;
 
@@ -321,7 +332,8 @@
   }
 
   &__visit {
-    @include typeSetting(3, regular);
+    @include base.typography-typeSetting(3, "regular");
+
     display: block;
     text-decoration: underline;
   }

@@ -1,7 +1,7 @@
 <div class="b-icon-badge{% for m in modifiers %} b-icon-badge--{{ m }}{% endfor %}">
   <div class="b-icon-badge__icon{% if themed %} s-themed{% for t in themed %} s-themed--{{ t }}{% endfor %}{% endif %}">
     <svg role="presentation">
-      <use xlink:href="/assets/svg/svg-template.svg#{{ icon }}"></use>
+      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ icon }}"></use>
     </svg>
   </div>
   <small class="b-icon-badge__label">

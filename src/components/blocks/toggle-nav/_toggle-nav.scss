@@ -1,21 +1,24 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-toggle-nav {
-  background-color: siteColor(vam-white);
-  box-shadow: 0 1px 2px siteColor(vam-grey-4);
+  background-color: base.sitecolors-siteColor("vam-white");
+  box-shadow: 0 1px 2px base.sitecolors-siteColor("vam-grey-4");
   margin: 0 0 32px;
   overflow: hidden;
   position: relative;
 
-  @include bpMinSmall {
+  @include mixins.breakpoints-bpMinSmall {
     margin: 0 0 64px;
   }
 
-  @include bpMinLarge {
+  @include mixins.breakpoints-bpMinLarge {
     padding: 0 40px;
   }
 
   &::after {
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 23px);
-    content: ' ';
+    background: linear-gradient(to right, rgba(255, 255, 255, 0%), #fff 23px);
+    content: " ";
     display: block;
     height: 100%;
     position: absolute;
@@ -25,7 +28,8 @@
   }
 
   &__list {
-    @include unstyledList;
+    @include mixins.unstyledelements-unstyledList;
+
     text-align: center;
 
     &::-webkit-scrollbar {
@@ -45,28 +49,29 @@
   }
 
   &__button {
-    @include typeSetting(4);
-    @include unstyledInput;
+    @include base.typography-typeSetting(4);
+    @include mixins.unstyledelements-unstyledInput;
+
     border-bottom: 3px solid transparent;
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     cursor: pointer;
     padding: 15px 10px 12px;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       padding: 25px 15px 22px;
     }
 
     &--active,
     &:hover {
-      border-color: siteColor(vam-grey-2);
+      border-color: base.sitecolors-siteColor("vam-grey-2");
     }
 
     &:hover {
-      color: siteColor(vam-grey-2);
+      color: base.sitecolors-siteColor("vam-grey-2");
     }
 
     &:focus {
-      @include insetFocus;
+      @include mixins.focus-insetFocus;
     }
   }
 }

@@ -1,7 +1,9 @@
-.g-venue-blog-cards, .g-venue-blog-cards__row {
+@use "../../mixins";
+
+.g-venue-blog-cards,
+.g-venue-blog-cards__row {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   height: fit-content;
   justify-content: center;
   max-width: 1200px;
@@ -10,23 +12,25 @@
 
 .g-venue-blog-cards__row {
   & > section {
-    @include bpMaxMedium {
+    @include mixins.breakpoints-bpMaxMedium {
       margin-top: 20px;
     }
-    @include bpMaxSmall {
+
+    @include mixins.breakpoints-bpMaxSmall {
       margin-top: 10px;
     }
   }
 
   justify-content: center;
 
-  @include bpMaxMedium {
+  @include mixins.breakpoints-bpMaxMedium {
     overflow: hidden;
   }
 
   .b-venue-blog-card {
     max-width: 355px;
-    @include bpMinXSmall {
+
+    @include mixins.breakpoints-bpMinXSmall {
       max-width: 380px;
     }
   }
@@ -35,57 +39,67 @@
 .g-venue-blog-cards {
   overflow: hidden;
 
+  /* stylelint-disable selector-class-pattern */
+  // the following is accepted by the rule:
+  // .b-venue-blog-card--width-50:nth-of-type(1)
   .b-venue-blog-card--50-width:nth-of-type(1) {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       margin-right: 5px;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-right: 10px;
     }
 
-    @include bpMinLarge {
+    @include mixins.breakpoints-bpMinLarge {
       margin-right: 15px;
     }
   }
+  /* stylelint-enable selector-class-pattern */
 
+  /* stylelint-disable selector-class-pattern */
   .b-venue-blog-card--50-width:nth-of-type(2) {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       margin-left: 5px;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-left: 10px;
     }
 
-    @include bpMinLarge {
+    @include mixins.breakpoints-bpMinLarge {
       margin-left: 15px;
     }
   }
+  /* stylelint-enable selector-class-pattern */
 
   &--three {
     flex-wrap: wrap;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       flex-wrap: nowrap;
+
+      /* stylelint-disable selector-class-pattern */
       .b-venue-blog-card--33-width {
         margin-right: 30px;
-        @include bpMaxMedium {
+
+        @include mixins.breakpoints-bpMaxMedium {
           margin-top: 10px;
         }
       }
 
       .b-venue-blog-card--50-width:nth-of-type(1) {
-        @include bpMinXSmall {
+        @include mixins.breakpoints-bpMinXSmall {
           margin-right: 15px;
         }
       }
 
       .b-venue-blog-card--50-width:nth-of-type(2) {
-        @include bpMinXSmall {
+        @include mixins.breakpoints-bpMinXSmall {
           margin-left: 15px;
         }
       }
+      /* stylelint-enable selector-class-pattern */
 
       .g-venue-blog-cards__row {
         flex-basis: 790px;

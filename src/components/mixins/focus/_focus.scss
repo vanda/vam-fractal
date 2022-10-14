@@ -8,9 +8,10 @@
   outline: 0;
 }
 
-
 .example-focus {
-  a, button, input {
+  a,
+  button,
+  input {
     &:focus {
       @include defaultFocus;
     }

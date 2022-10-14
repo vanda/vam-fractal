@@ -1,8 +1,11 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-facet-box {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: rgba(siteColor(vam-black), .92);
-  color: siteColor(vam-white);
+  background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.92);
+  color: siteColor("vam-white");
   display: none;
   height: 100%;
   left: 0;
@@ -23,12 +26,13 @@
     display: block;
     overflow-y: auto;
     z-index: 9999;
-    @include bpMinMedium {
+
+    @include mixins.breakpoints-bpMinMedium {
       z-index: 0;
     }
   }
 
-  @include bpMinMedium {
+  @include mixins.breakpoints-bpMinMedium {
     background-color: transparent;
     display: block;
     opacity: 1;
@@ -41,25 +45,27 @@
   }
 
   &__modal-button {
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       display: none;
     }
+
     background-color: transparent;
-    border-color: themeColor(silent-green);
-    color: siteColor(vam-white);
+    border-color: base.themecolors-themeColor("silent-green");
+    color: base.sitecolors-siteColor("vam-white");
     display: block;
     padding-right: 36px;
     position: relative;
+
     &:hover {
-      background-color:  themeColor(silent-green);
-      border-color: themeColor(silent-green);
-      color: siteColor(vam-black);
+      background-color: base.themecolors-themeColor("silent-green");
+      border-color: base.themecolors-themeColor("silent-green");
+      color: base.sitecolors-siteColor("vam-black");
     }
 
     &-close {
-      border: .7px solid themeColor(silent-green);
+      border: 0.7px solid base.themecolors-themeColor("silent-green");
       border-radius: 19.5px;
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       font-size: 36px;
       height: 40px;
       position: relative;
@@ -69,12 +75,13 @@
 
   &__modal-content {
     &-close {
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       height: 19px;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 18px;
     }
+
     &-open {
       height: 34px;
       margin-top: -1px;
@@ -82,11 +89,11 @@
     }
 
     .b-facet-box__modal-button:hover & {
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       filter: invert(100%);
     }
 
-    color: themeColor(silent-green);
+    color: base.themecolors-themeColor("silent-green");
     left: calc(100% - 34px);
     pointer-events: none;
     position: absolute;
@@ -96,17 +103,20 @@
 
   &__modal {
     &-container {
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         display: none;
       }
+
       &--close {
-        @include bpMinMedium {
+        @include mixins.breakpoints-bpMinMedium {
           display: none;
         }
+
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
       }
+
       padding-right: 20px;
       padding-top: 20px;
       text-align: right;
@@ -117,31 +127,35 @@
     &:nth-of-type(1) {
       margin-top: 0;
     }
+
     border-radius: 2px;
     margin-bottom: 15px;
     margin-top: 15px;
 
-    &-date-start-container, &-date-end-container {
+    &-date-start-container,
+    &-date-end-container {
       display: flex;
       flex-direction: column;
     }
 
     &-text {
-      @include typeSetting(3, bold);
+      @include base.typography-typeSetting(3, "bold");
+
       &:hover {
-        background-color: siteColor(vam-grey-1);
+        background-color: base.sitecolors-siteColor("vam-grey-1");
         cursor: pointer;
       }
 
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       padding: 10px;
       position: relative;
       text-align: left;
       width: 100%;
 
       &::after {
-        @include typeSetting(6, light);
-        content: '+';
+        @include base.typography-typeSetting(6, "light");
+
+        content: "+";
         display: inline-block;
         position: absolute;
         right: 10px;
@@ -150,13 +164,14 @@
       }
 
       &--active {
-        background-color: siteColor(vam-grey-1);
+        background-color: base.sitecolors-siteColor("vam-grey-1");
         padding-bottom: 1px;
 
         &::after {
-          @include typeSetting(8, light);
-          background-color: white;
-          content: ' ';
+          @include base.typography-typeSetting(8, "light");
+
+          background-color: base.sitecolors-siteColor("vam-white");
+          content: " ";
           height: 2px;
           width: 12px;
         }
@@ -164,10 +179,11 @@
     }
 
     &-container {
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         margin-top: 0;
         padding: 0;
       }
+
       margin: auto;
       margin-top: 37px;
       max-width: 530px;
@@ -181,32 +197,41 @@
         max-width: 270px;
         padding-bottom: 10px;
 
-        @include bpMinXSmall {
+        @include mixins.breakpoints-bpMinXSmall {
           max-width: none;
         }
-        &-start, &-end {
+
+        &-start,
+        &-end {
           flex-basis: 30%;
           margin-right: 8px;
-          @include bpMinXSmall {
+
+          @include mixins.breakpoints-bpMinXSmall {
             flex-basis: 30%;
           }
         }
+
         &-button {
           flex-basis: 10%;
         }
-        &-start, &-end, &-button {
+
+        &-start,
+        &-end,
+        &-button {
           display: flex;
           flex-direction: column;
         }
       }
+
       &-button {
         background-color: #ceffd6;
         border-radius: 2px;
         height: 44px;
         position: relative;
         width: 44px;
+
         &-icon {
-          color: siteColor(vam-black);
+          color: base.sitecolors-siteColor("vam-black");
           height: 100%;
           left: 50%;
           padding: 10px;
@@ -216,28 +241,24 @@
           width: 100%;
         }
       }
+
       &-input {
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: inner-spin-button;
-          margin-left: 5px;
-          opacity: 1;
-        }
-        background-color: siteColor(vam-white);
+        background-color: base.sitecolors-siteColor("vam-white");
         border: solid 1px #979797;
         border-radius: 2px;
         font-size: 18px;
         height: 44px;
         padding-left: 10px;
         width: 95px;
+
         &--error {
-          border-color: red;
+          border-color: base.sitecolors-siteColor("alert-red");
         }
       }
     }
 
     &-term-container {
-      background-color: siteColor(vam-grey-1);
+      background-color: base.sitecolors-siteColor("vam-grey-1");
       display: none;
       flex-direction: row;
       list-style: none;
@@ -246,12 +267,15 @@
       width: 100%;
 
       &-text {
-        @include typeSetting(2, light);
+        @include base.typography-typeSetting(2, "light");
+
         padding-bottom: 10px;
+
         &--warning {
-          color: white;
+          color: base.sitecolors-siteColor("vam-white");
           padding-bottom: 0;
         }
+
         &[disabled] {
           display: none;
         }
@@ -265,10 +289,10 @@
 
     &-term-toggle {
       &:hover {
-        color: siteColor(vam-white);
+        color: base.sitecolors-siteColor("vam-white");
       }
 
-      color: siteColor(vam-grey-5);
+      color: base.sitecolors-siteColor("vam-grey-5");
       cursor: pointer;
       display: flex;
       flex-basis: 100%;
@@ -278,9 +302,10 @@
       position: relative;
 
       &-text {
-        @include bpMinMedium {
+        @include mixins.breakpoints-bpMinMedium {
           max-width: 167px;
         }
+
         flex-grow: 1;
         text-align: left;
       }
@@ -288,20 +313,21 @@
       &-tick use {
         display: none;
       }
+
       &-tick {
-        border: 1px siteColor(vam-white) solid;
+        border: 1px base.sitecolors-siteColor("vam-white") solid;
         border-radius: 3px;
 
         &--active {
-          background-color: themeColor(silent-green);
-          border-color: themeColor(silent-green);
+          background-color: base.themecolors-themeColor("silent-green");
+          border-color: base.themecolors-themeColor("silent-green");
         }
 
         &--active use {
           display: block;
         }
 
-        color: siteColor(vam-black);
+        color: base.sitecolors-siteColor("vam-black");
         height: 25px;
         left: 0;
         pointer-events: none;
@@ -320,8 +346,9 @@
 
       &-checkbox {
         margin-left: 40px;
-        &:before {
-          content: '';
+
+        &::before {
+          content: "";
           cursor: pointer;
           height: 25px;
           left: 0;
@@ -330,6 +357,7 @@
           width: 25px;
         }
       }
+
       &-result {
         flex-shrink: 1;
         padding-left: 10px;
@@ -347,11 +375,11 @@
       text-decoration: underline;
     }
 
-    @include typeSetting(3, light);
+    @include base.typography-typeSetting(3, "light");
 
-    border: solid themeColor(silent-green) 1px;
+    border: solid base.themecolors-themeColor("silent-green") 1px;
     border-radius: 4px;
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     margin-bottom: 5px;
     margin-right: 10px;
     margin-top: 5px;
@@ -363,13 +391,15 @@
     }
 
     &--form {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         display: block;
       }
-      border: solid siteColor(vam-black) 1px;
-      color: siteColor(vam-black);
+
+      border: solid base.sitecolors-siteColor("vam-black") 1px;
+      color: base.sitecolors-siteColor("vam-black");
       display: none;
       width: fit-content;
+
       &-revealer {
         display: block;
         padding-right: 13px;
@@ -377,22 +407,23 @@
     }
 
     &:hover {
-      background-color: siteColor(vam-grey-5);
-      color: siteColor(vam-grey-1);
+      background-color: base.sitecolors-siteColor("vam-grey-5");
+      color: base.sitecolors-siteColor("vam-grey-1");
       cursor: pointer;
     }
 
     &--mobile {
       &:hover {
-        background-color: themeColor(silent-green);
+        background-color: base.themecolors-themeColor("silent-green");
       }
     }
 
-    // this button/container gets reused a lot of places...I should really make this a mixin... see also controlled vocab
+    // this button/container gets reused a lot of places...I should really make
+    // this a mixin... see also controlled vocab
 
     &-text {
       &::after {
-        content: '\2715';
+        content: "\2715";
         display: inline-block;
         font-size: 14px;
         position: absolute;
@@ -400,28 +431,29 @@
         top: 50%;
         transform: translateY(-50%);
       }
+
       &--no-cross {
         font-weight: 800;
         text-decoration: underline;
+
         &::after {
-          content: '';
+          content: "";
         }
       }
     }
 
     &-list {
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         display: none;
         margin-top: 15px;
       }
 
       display: flex;
       flex: auto;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
       margin: auto;
       max-width: 530px;
-      padding: 40px 20px 0 20px;
+      padding: 40px 20px 0;
     }
   }
 }

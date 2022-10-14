@@ -145,7 +145,7 @@ if (siteNav) {
           const expires = new Date();
           const storedSearchResults = {
             expires: new Date(expires.setMinutes(expires.getMinutes() + 15)),
-            results: httpRequest.responseText
+            results: httpRequest.responseText,
           };
           sessionStorage.setItem('storedSearch', JSON.stringify(storedSearchResults));
           storedSearch = JSON.parse(sessionStorage.getItem('storedSearch'));
@@ -159,7 +159,7 @@ if (siteNav) {
       event: 'autosuggest search',
       eventCategory: this.tracking.eventCategory,
       eventAction: this.tracking.eventAction,
-      eventLabel: this.tracking.eventLabel
+      eventLabel: this.tracking.eventLabel,
     });
   };
 
@@ -204,7 +204,7 @@ if (siteNav) {
           suggestion.tracking = {
             eventCategory: `search - autosuggest - ${result.suggestions[i].type}`,
             eventAction: term,
-            eventLabel: result.suggestions[i].url
+            eventLabel: result.suggestions[i].url,
           };
           suggestion.addEventListener('click', trackAutosuggest);
           navSearchSuggest.appendChild(suggestion);
@@ -234,7 +234,7 @@ if (siteNav) {
             const httpRequest = new XMLHttpRequest();
             httpRequest.open(
               'GET',
-              `${searchHost}services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`
+              `${searchHost}services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`,
             );
             httpRequest.send();
             httpRequest.onreadystatechange = () => {

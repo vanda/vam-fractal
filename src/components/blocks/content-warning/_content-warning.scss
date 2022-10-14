@@ -1,14 +1,19 @@
+@use "../../base";
+
 .b-content-warning {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: siteColor(vam-grey-2);
-  color: siteColor(vam-white);
+  background-color: base.sitecolors-siteColor("vam-grey-2");
+  color: base.sitecolors-siteColor("vam-white");
   padding: 30px;
+
   &__header {
     display: flex;
     flex-direction: column;
     text-align: center;
-    @include typeSetting(2, bold);
+
+    @include base.typography-typeSetting(2, "bold");
+
     &-icon {
       height: 41px;
       margin: auto;
@@ -16,8 +21,10 @@
       width: 36px;
     }
   }
+
   &__content {
     padding-top: 10px;
-    @include typeSetting(4, regular);
+
+    @include base.typography-typeSetting(4, "regular");
   }
 }

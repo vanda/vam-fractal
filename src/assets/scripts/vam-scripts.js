@@ -1,5 +1,5 @@
+// V&A front-end component scripts
 import LazyLoad from 'vanilla-lazyload';
-import svg4everybody from 'svg4everybody';
 import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
 import contentWarningsInit from '../../components/blocks/object-card/_object-card';
 
@@ -39,10 +39,9 @@ new LazyLoad({
     imgReplaced.className = el.className;
     imgReplaced.dataset.imgFailed = el.src;
     el.parentNode.removeChild(el);
-  }
+  },
 });
+/* eslint-enable no-new */
 
 contentWarningsInit();
 oicInit();
-
-svg4everybody();

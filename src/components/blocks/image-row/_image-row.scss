@@ -1,14 +1,10 @@
+@use "../../mixins";
+
 .b-image-row {
   align-items: flex-end;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-
-  &--padded > &__item {
-    @include bpMinSmall {
-      margin: 6px;
-    }
-  }
 
   &__item {
     display: flex;
@@ -16,14 +12,20 @@
     &--failed {
       flex-grow: 1;
 
-      @include bpMaxSmall {
+      @include mixins.breakpoints-bpMaxSmall {
         flex-basis: 20%;
       }
     }
   }
 
+  &--padded > &__item {
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 6px;
+    }
+  }
+
   &__item:last-child:nth-child(odd) {
-    @include bpMaxSmall {
+    @include mixins.breakpoints-bpMaxSmall {
       height: auto;
       margin-right: auto;
     }

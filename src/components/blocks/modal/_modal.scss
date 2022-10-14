@@ -1,5 +1,8 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-modal {
-  background-color: rgba(siteColor(vam-black), .85);
+  background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.85);
   bottom: 0;
   display: none;
   height: 100%;
@@ -11,7 +14,7 @@
   z-index: 9999;
 
   &--active {
-    animation: opacityFadeIn 1s;
+    animation: opacity-fade-in 1s;
     display: block;
   }
 
@@ -29,7 +32,7 @@
       right: 8px;
       width: 18px;
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         height: 20px;
         right: 0;
         top: -32px;
@@ -39,13 +42,13 @@
 
     &-icon {
       bottom: 0;
-      color: siteColor(vam-white);
+      color: base.sitecolors-siteColor("vam-white");
       height: 18px;
       position: absolute;
       right: 0;
       width: 18px;
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         height: 20px;
         width: 20px;
       }
@@ -53,9 +56,9 @@
   }
 
   &__content {
-    background-color: siteColor(vam-white);
+    background-color: base.sitecolors-siteColor("vam-white");
     border-radius: 2px;
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     left: 50%;
     margin: auto;
     max-width: 300px;
@@ -66,12 +69,12 @@
     transform: translate(-50%, -50%);
     width: 100%;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       max-width: 670px;
-      padding: 55px 65px 55px;
+      padding: 55px 65px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       max-width: 820px;
     }
 
@@ -85,17 +88,17 @@
       padding: 10px;
       width: 100%;
 
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         max-width: 500px;
         padding: 30px 20px 24px;
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         max-width: 500px;
-        padding: 25px 35px 25px;
+        padding: 25px 35px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         height: auto;
         max-width: 670px;
         min-height: 250px;
@@ -104,30 +107,33 @@
   }
 
   &__title {
-    @include typeSetting(5, bold);
-    color: siteColor(vam-black);
+    @include base.typography-typeSetting(5, "bold");
+
+    color: base.sitecolors-siteColor("vam-black");
     margin: 0 0 12px;
     white-space: nowrap;
 
-    @include bpMinSmall {
-      @include typeSetting(7, regular);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "regular");
+
       margin: 0 0 14px;
     }
   }
 
   &__description,
   &__dismiss {
-    @include typeSetting(1, regular);
+    @include base.typography-typeSetting(1, "regular");
+
     line-height: 1.35rem;
     margin: 0 0 16px;
 
-    @include bpMinSmall {
-      @include typeSetting(4, regular);
-      color: siteColor(vam-grey-2);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4, "regular");
+
+      color: base.sitecolors-siteColor("vam-grey-2");
       margin: 0 0 18px;
     }
   }
-
 
   &__dismiss {
     line-height: 1rem;

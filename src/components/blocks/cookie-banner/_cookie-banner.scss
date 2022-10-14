@@ -1,10 +1,13 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-cookie-banner {
-  background-color: siteColor(vam-white);
-  border-top: solid 2px siteColor(vam-grey-4); 
+  background-color: base.sitecolors-siteColor("vam-white");
+  border-top: solid 2px base.sitecolors-siteColor("vam-grey-4");
   bottom: 0;
   padding-top: 8px;
   position: fixed;
-  transition: transform .2s;
+  transition: transform 0.2s;
   width: 100%;
   z-index: 10;
 
@@ -18,8 +21,9 @@
     width: 100%;
 
     &-text {
-      @include typeSetting(2, regular);
-      color: siteColor(vam-black);
+      @include base.typography-typeSetting(2, "regular");
+
+      color: base.sitecolors-siteColor("vam-black");
       display: inline-block;
       height: 100%;
       line-height: 24px;
@@ -29,9 +33,10 @@
       overflow: auto;
       padding-left: 10px;
       width: calc(100% - 50px);
-      
-      @include bpMinSmall {
-        @include typeSetting(4, regular);
+
+      @include mixins.breakpoints-bpMinSmall {
+        @include base.typography-typeSetting(4, "regular");
+
         padding-left: 65px;
       }
     }
@@ -50,8 +55,8 @@
       position: absolute;
       right: 8px;
       width: 18px;
-  
-      @include bpMinSmall {
+
+      @include mixins.breakpoints-bpMinSmall {
         bottom: calc(50% - 10px);
         height: 20px;
         right: 18px;
@@ -61,13 +66,13 @@
 
     &-icon {
       bottom: 0;
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
       height: 18px;
       position: absolute;
       right: 0;
       width: 18px;
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         height: 20px;
         width: 20px;
       }

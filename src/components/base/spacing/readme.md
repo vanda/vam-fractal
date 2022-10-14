@@ -1,6 +1,6 @@
 # Spacing
 
-Several standard spacing varibles are avalible to use across compontents
+Several standard spacing variables are available across components.
 
 ```scss
 $spacing-xsmall: 5px;

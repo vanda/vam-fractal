@@ -1,5 +1,8 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-promo {
-  color: siteColor(vam-white);
+  color: base.sitecolors-siteColor("vam-white");
   display: flex;
   flex-wrap: wrap;
   margin: 12px 0;
@@ -8,7 +11,7 @@
     background-position: center center;
     background-size: cover;
     min-height: 250px;
-    padding: $spacing-small;
+    padding: base.$spacings-spacing-small;
     position: relative;
     width: 100%;
 
@@ -19,16 +22,16 @@
     .b-promo--big & {
       height: 285px;
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         height: 480px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         height: 560px;
       }
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       min-height: 300px;
       width: 50%;
     }
@@ -48,53 +51,9 @@
     width: 100%;
   }
 
-  &__anchor {
-    background-color: rgba(siteColor(vam-black), .5);
-    display: block;
-    height: 100%;
-    position: relative;
-    transition: background-color .3s;
-
-    &:focus .u-btn {
-      @include defaultFocus;
-    }
-
-    &:focus .b-icon-badge {
-      @include defaultFocus;
-    }
-
-    &:hover,
-    &:focus {
-      background-color: rgba(siteColor(vam-black), .6);
-      box-shadow: none;
-    }
-
-    .b-promo--white & {
-      background-color: transparent;
-      background-image: none;
-
-      &::after {
-        background-image: linear-gradient(rgba(siteColor(vam-white), 0), rgba(siteColor(vam-black), .5));
-        content: '';
-        height: 100%;
-        left: 0;
-        opacity: 1;
-        position: absolute;
-        top: 0;
-        transition: opacity .3s;
-        width: 100%;
-      }
-
-      &:hover::after,
-      &:focus:after {
-        opacity: 0;
-      }
-    }
-  }
-
   &__content {
     align-items: center;
-    color: siteColor(vam-grey-6);
+    color: base.sitecolors-siteColor("vam-grey-6");
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -102,10 +61,10 @@
     margin: auto;
     max-width: 470px;
     min-height: 230px;
-    padding: $spacing-small;
+    padding: base.$spacings-spacing-small;
     position: relative;
     text-align: center;
-    text-shadow: 0 1px 2px siteColor(vam-black), 0 -1px 2px siteColor(vam-black);
+    text-shadow: 0 1px 2px base.sitecolors-siteColor("vam-black"), 0 -1px 2px base.sitecolors-siteColor("vam-black");
     z-index: 1;
 
     &--newsletter {
@@ -118,10 +77,10 @@
     }
 
     .b-promo--white & {
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       max-width: 670px;
 
       &--newsletter {
@@ -129,7 +88,7 @@
       }
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       max-width: 800px;
       min-height: 280px;
 
@@ -143,8 +102,57 @@
     }
   }
 
+  &__anchor {
+    background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.5);
+    display: block;
+    height: 100%;
+    position: relative;
+    transition: background-color 0.3s;
+
+    &:focus .u-btn {
+      @include mixins.focus-defaultFocus;
+    }
+
+    &:focus .b-icon-badge {
+      @include mixins.focus-defaultFocus;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.6);
+      box-shadow: none;
+    }
+
+    .b-promo--white & {
+      background-color: transparent;
+      background-image: none;
+
+      &::after {
+        background-image:
+          linear-gradient(
+            rgba(base.sitecolors-siteColor("vam-white"), 0),
+            rgba(base.sitecolors-siteColor("vam-black"), 0.5)
+          );
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.3s;
+        width: 100%;
+      }
+
+      &:hover::after,
+      &:focus::after {
+        opacity: 0;
+      }
+    }
+  }
+
   &__type {
-    @include typeSetting(3, bold);
+    @include base.typography-typeSetting(3, "bold");
+
     margin: 0;
 
     .b-promo--white & {
@@ -153,35 +161,38 @@
   }
 
   &__title {
-    @include typeSetting(4, bold);
-    margin: $spacing-small 0;
+    @include base.typography-typeSetting(4, "bold");
+
+    margin: base.$spacings-spacing-small 0;
     text-align: center;
     width: 100%;
 
-    @include bpMinXSmall {
-      @include typeSetting(5, bold);
+    @include mixins.breakpoints-bpMinXSmall {
+      @include base.typography-typeSetting(5, "bold");
     }
 
-    @include bpMinMedium {
-      @include typeSetting(6, bold);
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(6, "bold");
     }
 
     .b-promo--white & {
-      text-shadow: 1px 0 2px siteColor(vam-white);
+      text-shadow: 1px 0 2px base.sitecolors-siteColor("vam-white");
     }
   }
 
   &__description {
-    @include typeSetting(4, bold);
+    @include base.typography-typeSetting(4, "bold");
+
     width: 100%;
 
-    @include bpMaxSmall {
-      @include visuallyHidden;
+    @include mixins.breakpoints-bpMaxSmall {
+      @include mixins.elementvisibility-visuallyHidden;
     }
   }
 
   &__sponsor {
-    @include typeSetting(1, light);
+    @include base.typography-typeSetting(1, "light");
+
     margin: 0 0 20px;
     width: 100%;
   }
@@ -190,21 +201,22 @@
     width: 100%;
 
     &__body {
-      @include typeSetting(2);
+      @include base.typography-typeSetting(2);
+
       font-style: italic;
       margin: 0;
 
-      &:before {
-        content: '\201C';
+      &::before {
+        content: "\201C";
       }
 
-      &:after {
-        content: '\201D';
+      &::after {
+        content: "\201D";
       }
     }
 
     &__citation {
-      @include typeSetting(1);
+      @include base.typography-typeSetting(1);
     }
   }
 }

@@ -1,0 +1,51 @@
+@use "../../../components/mixins";
+@use "../../../components/base";
+
+.fr-breakpoint {
+  @include base.typography-typeSetting(3, "regular");
+
+  background-color: base.themecolors-themeColor("angry-blue");
+  padding: 1rem;
+
+  &::after {
+    content: "(default)";
+  }
+
+  @include mixins.breakpoints-bpMinXSmall {
+    background-color: base.themecolors-themeColor("angry-yellow");
+
+    &::after {
+      content: "(x-small)";
+    }
+  }
+
+  @include mixins.breakpoints-bpMinSmall {
+    @include base.typography-typeSetting(4, "regular");
+
+    background-color: base.themecolors-themeColor("blue-green");
+
+    &::after {
+      content: "(small)";
+    }
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    @include base.typography-typeSetting(5, "regular");
+
+    background-color: base.themecolors-themeColor("cyan");
+
+    &::after {
+      content: "(medium)";
+    }
+  }
+
+  @include mixins.breakpoints-bpMinLarge {
+    @include base.typography-typeSetting(6, "regular");
+
+    background-color: base.themecolors-themeColor("dark-pink");
+
+    &::after {
+      content: "(large)";
+    }
+  }
+}

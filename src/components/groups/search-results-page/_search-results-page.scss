@@ -1,12 +1,20 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-search-results-page {
-  background-color: siteColor(vam-black);
+  background-color: base.sitecolors-siteColor("vam-black");
   padding-bottom: 48px;
+
   &__search {
-    &-box-container, &-results-container, &-pagination-container {
+    &-box-container,
+    &-results-container,
+    &-pagination-container {
       margin: auto;
+      padding-left: 20px;
+      padding-right: 20px;
       width: 100%;
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         max-width: 1200px;
       }
     }
@@ -21,7 +29,7 @@
     &-pagination-container {
       margin-top: 24px;
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         margin-top: 48px;
       }
     }
@@ -29,18 +37,13 @@
     &-results-container {
       padding-top: 100px;
 
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         padding-top: 60px;
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         padding-top: 80px;
       }
-    }
-
-    &-results-container, &-box-container, &-pagination-container {
-      padding-left: 20px;
-      padding-right: 20px;
     }
   }
 }

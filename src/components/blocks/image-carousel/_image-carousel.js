@@ -16,16 +16,17 @@ const desktopPrevNextButtons = document.querySelectorAll('.b-image-carousel__pre
 let images = [];
 
 if (imageCarousel) {
-  images = (imageCarousel.dataset.images ?
-    JSON.parse(imageCarousel.dataset.images) : { images: [] }).images;
+  images = (imageCarousel.dataset.images
+    ? JSON.parse(imageCarousel.dataset.images) : { images: [] }).images;
 }
 
 if (imageCarousel && images.length) {
   const changeViewIndex = (index) => {
     const numberOfContainers = document.querySelectorAll('.b-image-carousel__image-preview-container').length;
+
     if (index > 0) {
-      imageCarousel.dataset.viewIndex = index > (images.length - numberOfContainers) ?
-        images.length - numberOfContainers : index;
+      imageCarousel.dataset.viewIndex = index > (images.length - numberOfContainers)
+        ? images.length - numberOfContainers : index;
     } else {
       imageCarousel.dataset.viewIndex = 0;
     }
@@ -45,7 +46,7 @@ if (imageCarousel && images.length) {
 
   const initImageCarouselContainers = (newSelection) => {
     const carouselContainers = Array.from(
-      document.querySelectorAll('.b-image-carousel__image-preview-container')
+      document.querySelectorAll('.b-image-carousel__image-preview-container'),
     );
 
     const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
@@ -72,9 +73,7 @@ if (imageCarousel && images.length) {
 
       container.appendChild(thumbs[index]);
 
-      container.onclick = () => {
-        changeIndex(index);
-      };
+      container.addEventListener('click', () => { changeIndex(index); }, false);
     });
   };
 
@@ -87,7 +86,7 @@ if (imageCarousel && images.length) {
     showNavigator: true,
     navigatorId: 'js-image-overlay__zoomnavigator',
     navigatorDisplayRegionColor: '#b7b8bd',
-    navigatorAutoFade: false
+    navigatorAutoFade: false,
   });
   const zoomNav = document.querySelector('#js-image-overlay__zoomnavigator');
   zoomNav.parentNode.parentNode.insertBefore(zoomNav, zoomNav.parentNode);
@@ -113,21 +112,21 @@ if (imageCarousel && images.length) {
   const osdArgs = {};
 
   const callback = (mutations) => {
-    if (mutations.filter(mutation => mutation.attributeName === 'data-view-index').length) {
+    if (mutations.filter((mutation) => mutation.attributeName === 'data-view-index').length) {
       const viewIndex = parseInt(imageCarousel.dataset.viewIndex, 10);
       concealLeft.style.display = (viewIndex > 0) ? 'block' : 'none';
       concealRight.style.display = ((viewIndex + document.querySelectorAll('.b-image-carousel__image-preview-container').length) >= images.length) ? 'none' : 'block';
     }
 
-    if (mutations.filter(mutation => mutation.attributeName === 'data-image-id').length) {
-      const imageId = imageCarousel.dataset.imageId;
-      const imageIdIndex = images.findIndex(img => img.imageId === imageId);
+    if (mutations.filter((mutation) => mutation.attributeName === 'data-image-id').length) {
+      const { imageId } = imageCarousel.dataset.imageId;
+      const imageIdIndex = images.findIndex((img) => img.imageId === imageId);
       if (imageIdIndex > -1) {
         changeIndex(imageIdIndex);
       }
     }
 
-    if (mutations.filter(mutation => mutation.attributeName === 'data-index').length) {
+    if (mutations.filter((mutation) => mutation.attributeName === 'data-index').length) {
       const index = parseInt(imageCarousel.dataset.index, 10);
 
       changeViewIndex(index - Math.floor(document.querySelectorAll('.b-image-carousel__image-preview-container').length / 2));
@@ -174,16 +173,16 @@ if (imageCarousel && images.length) {
   const observer = new MutationObserver(callback);
   observer.observe(imageCarousel, { attributes: true });
 
-  document.addEventListener('keydown', () => {
+  document.addEventListener('keydown', (e) => {
     if (document.querySelector('.b-image-overlay__container--active')
       && document.activeElement !== osd.canvas) {
-      if (event.keyCode === 37) {
+      if (e.key === 37) {
         const index = parseInt(imageCarousel.dataset.index, 10) - 1;
         if (index >= 0) {
           changeIndex(index);
         }
       }
-      if (event.keyCode === 39) {
+      if (e.key === 39) {
         const index = parseInt(imageCarousel.dataset.index, 10) + 1;
         if (index < images.length) {
           changeIndex(index);
@@ -210,8 +209,8 @@ if (imageCarousel && images.length) {
     if (imageCarousel) {
       if (window.innerWidth < 1200) {
         if (
-          document.querySelectorAll('.b-image-carousel__image-preview-container').length > 3 ||
-          document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
+          document.querySelectorAll('.b-image-carousel__image-preview-container').length > 3
+          || document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
         ) {
           document.querySelector('.b-image-carousel__image-carousel').innerHTML = '';
           for (let i = 0; i < 3 && i !== images.length; i += 1) {
@@ -221,8 +220,8 @@ if (imageCarousel && images.length) {
       } else if (window.innerWidth > 1199) {
         if (
           (
-            document.querySelectorAll('.b-image-carousel__image-preview-container').length < 5 ||
-            document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
+            document.querySelectorAll('.b-image-carousel__image-preview-container').length < 5
+            || document.querySelectorAll('.b-image-carousel__image-preview-container').length === 0
           )
           && images.length !== document.querySelectorAll('.b-image-carousel__image-preview-container').length
         ) {
@@ -270,24 +269,23 @@ if (imageCarousel && images.length) {
   };
 
   prevButton.forEach((el) => {
-    el.onclick = () => {
+    el.addEventListener('click', () => {
       const index = parseInt(imageCarousel.dataset.index, 10);
       changeIndex(index - 1);
-    };
+    }, false);
   });
 
   nextButton.forEach((el) => {
-    el.onclick = () => {
+    el.addEventListener('click', () => {
       const index = parseInt(imageCarousel.dataset.index, 10);
       changeIndex(index + 1);
-    };
+    }, false);
   });
 
   window.addEventListener('resize', () => {
     initImageCarousel();
     changeIndex(parseInt(imageCarousel.dataset.index, 10));
     disableHiddenNavButtons();
-    imageCarousel.dataset.index = imageCarousel.dataset.index;
     initImageCarouselContainers();
     zoomOut.classList.add('b-image-overlay-detail__zoom-out--enabled');
     zoomIn.classList.add('b-image-overlay-detail__zoom-in--enabled');
@@ -295,6 +293,5 @@ if (imageCarousel && images.length) {
 
   disableHiddenNavButtons();
   initImageCarousel();
-  imageCarousel.dataset.index = imageCarousel.dataset.index;
   initImageCarouselContainers();
 }

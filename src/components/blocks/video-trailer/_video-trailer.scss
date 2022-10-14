@@ -1,9 +1,12 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-video-trailer {
-  background-color: siteColor(vam-white);
+  background-color: base.sitecolors-siteColor("vam-white");
   overflow: hidden;
   padding: 0 10px;
 
-  @include bpMinSmall {
+  @include mixins.breakpoints-bpMinSmall {
     padding: 0 40px 60px;
   }
 
@@ -12,7 +15,7 @@
     overflow: initial;
   }
 
-  &__content  {
+  &__content {
     height: 100%;
     position: relative;
     width: 100%;
@@ -23,7 +26,7 @@
     width: 100%;
 
     .b-video-trailer__link:focus & {
-      @include defaultFocus;
+      @include mixins.focus-defaultFocus;
     }
   }
 
@@ -40,18 +43,19 @@
     margin-bottom: 20px;
     margin-top: 12px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-bottom: 50px;
       margin-top: 0;
     }
-    
+
     &-title {
-      @include typeSetting(5, bold);
+      @include base.typography-typeSetting(5, "bold");
+
       margin: auto;
       text-align: center;
 
-      @include bpMinSmall {
-        @include typeSetting(6, bold);
+      @include mixins.breakpoints-bpMinSmall {
+        @include base.typography-typeSetting(6, "bold");
       }
     }
   }
@@ -67,7 +71,7 @@
     top: 50%;
     width: 60px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       height: 80px;
       margin-left: -40px;
       margin-top: -40px;
@@ -80,7 +84,7 @@
       margin-top: 20px;
       width: 20px;
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         height: 26px;
         margin-left: 29px;
         margin-top: 27px;

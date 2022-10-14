@@ -1,3 +1,6 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-block-grid {
   margin: 12px 0;
 
@@ -5,26 +8,26 @@
     overflow: hidden;
     padding: 0 0 38px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       padding: 0 22px 38px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       padding: 0 54px 54px;
     }
   }
 
   &__header {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
     margin: 50px 0 20px;
     width: 100%;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin: 70px 0 30px;
     }
-  
+
     &--black {
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
     }
 
     &--transparent {
@@ -32,23 +35,23 @@
     }
   }
 
-  // sass-lint:disable no-css-comments
-  /* this is required to differentiate from b-block-grid__header being used outside of a b-block-grid, as it is in places - in those cases it gets the default margins defined above */
-  // sass-lint:enable no-css-comments
+  // this is required to differentiate from b-block-grid__header being used outside of a b-block-grid,
+  // as it is in places - in those cases it gets the default margins defined above
   > #{&}__header {
     margin: 40px 0 50px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin: 50px 0 70px;
     }
   }
 
   &__title {
-    @include typeSetting(5, bold);
+    @include base.typography-typeSetting(5, "bold");
+
     text-align: center;
 
-    @include bpMinSmall {
-      @include typeSetting(6, bold);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6, "bold");
     }
   }
 
@@ -58,32 +61,30 @@
   }
 
   &__footer {
-    background-color: siteColor(vam-black);
+    background-color: base.sitecolors-siteColor("vam-black");
     clear: both;
-    padding: $spacing-small * 2;
+    padding: base.$spacings-spacing-small * 2;
 
     &--light {
-      background-color: siteColor(vam-white);
+      background-color: base.sitecolors-siteColor("vam-white");
     }
 
     > a:focus {
       box-shadow: none;
 
       .b-icon-badge__icon {
-        @include defaultFocus;
+        @include mixins.focus-defaultFocus;
       }
     }
 
     > svg {
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
     }
   }
 
   &__cols-restarter {
-    // sass-lint:disable no-important
-    column-span: all !important;
-    height: 0 !important;
-    padding: 0 !important;
-    // sass-lint:enable no-important
+    column-span: all !important; /* stylelint-disable-line declaration-no-important */
+    height: 0 !important; /* stylelint-disable-line declaration-no-important */
+    padding: 0 !important; /* stylelint-disable-line declaration-no-important */
   }
 }

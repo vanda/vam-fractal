@@ -1,17 +1,20 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-search-result-auto-suggest {
-  background-color: siteColor(vam-black);
-  border-bottom: 1px solid siteColor(vam-grey-5);
+  background-color: base.sitecolors-siteColor("vam-black");
+  border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-5");
   display: block;
   height: 124px;
   width: 100%;
 
-  @include bpMaxLarge {
+  @include mixins.breakpoints-bpMaxLarge {
     height: 92px;
   }
- 
+
   &:hover,
   &:focus {
-    background-color: #000000;
+    background-color: #000;
   }
 
   &-content {
@@ -19,28 +22,32 @@
   }
 
   &-content-type {
-    @include typeSetting(0, normal);
-    color: siteColor(primary-green);
+    @include base.typography-typeSetting(0, "normal");
+
+    color: base.sitecolors-siteColor("primary-green");
     height: 13px;
     margin-bottom: 4px;
     text-align: left;
-    
-    @include bpMinSmall {
-      @include typeSetting(2, normal);
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(2, "normal");
+
       font-size: 14px;
-      line-height: .93;
+      line-height: 0.93;
     }
 
-    @include bpMaxLarge {
-      @include typeSetting(1, normal);
+    @include mixins.breakpoints-bpMaxLarge {
+      @include base.typography-typeSetting(1, "normal");
+
       font-size: 13px;
-      line-height: 1.0;
+      line-height: 1;
     }
   }
 
   &-title {
-    @include typeSetting(3, light);
-    color: siteColor(vam-white);
+    @include base.typography-typeSetting(3, "light");
+
+    color: base.sitecolors-siteColor("vam-white");
     height: 42px;
     line-height: 1.33;
     overflow: hidden;
@@ -48,14 +55,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    @include bpMinSmall {
-      @include typeSetting(4, light);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4, "light");
+
       height: 48px;
       line-height: 1.2;
     }
 
-    @include bpMinLarge {
-      @include typeSetting(5, light);
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(5, "light");
+
       height: 58px;
     }
   }
@@ -66,12 +75,12 @@
     margin-left: -2px;
     position: relative;
 
-    @include bpMaxLarge {
+    @include mixins.breakpoints-bpMaxLarge {
       bottom: 14px;
       margin-left: 4px;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       bottom: 8px;
       margin-left: 2px;
     }
@@ -89,7 +98,7 @@
     object-fit: cover;
     width: 100px;
 
-    @include bpMaxLarge {
+    @include mixins.breakpoints-bpMaxLarge {
       height: 72px;
       margin: 10px;
       width: 72px;

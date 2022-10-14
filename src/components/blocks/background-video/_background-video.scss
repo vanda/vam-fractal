@@ -1,3 +1,6 @@
+@use "../../mixins";
+@use "sass:color";
+
 .b-video-background {
   bottom: 0;
   display: none;
@@ -8,10 +11,10 @@
   top: 0;
   transition: opacity 2s;
 
-  @include bpMinLarge {
+  @include mixins.breakpoints-bpMinLarge {
     display: block;
   }
-  
+
   &--fade {
     opacity: 1;
   }
@@ -24,7 +27,7 @@
   width: 100%;
 
   &--darken {
-    background: rgba(00, 00, 00, .4);
+    background: color.scale(#000, $alpha: -40%);
     height: 100%;
     left: 0;
     position: absolute;

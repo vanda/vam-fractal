@@ -1,16 +1,14 @@
-/* eslint-disable no-underscore-dangle */
 Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'), (searchForm) => {
   const searchInput = searchForm.querySelector('.b-search-form__input');
 
   if (searchForm.classList.contains('js-search-site')) {
     /* Main site search */
     searchForm._props = {
-      type: 'siteSearch'
+      type: 'siteSearch',
     };
     const searchUnderscore = searchForm.querySelector('.b-search-form__underscore');
     const searchSubmit = searchForm.querySelector('.b-search-form__submit');
     const searchClear = searchForm.querySelector('.b-search-form__clear');
-
 
     const searchDecorate = () => {
       /* underline input field value */
@@ -48,7 +46,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     searchForm._props = {
       type: 'etcGatewaySearch',
       suggestionsTop: 'https://collections.vam.ac.uk/assets/data/suggestions.json',
-      suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search'
+      suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search',
     };
 
     const loadSuggestions = (formEl) => {
@@ -57,16 +55,16 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       if (!formEl._props.storedSuggestions
         || now.getTime() > formEl._props.storedSuggestions.expires) {
         const promise = fetch(formEl._props.suggestionsTop, { cache: 'no-cache' })
-          .then(response => response.json())
+          .then((response) => response.json())
           .then((data) => {
             const suggestions = {
               expires: now.getTime() + (15 * 60000),
-              data
+              data,
             };
             formEl._props.storedSuggestions = suggestions;
             sessionStorage.setItem(`storedSuggestions_${formEl._props.type}`, JSON.stringify(formEl._props.storedSuggestions));
           })
-          .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+          .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
         return promise;
       }
       return Promise.resolve(true);
@@ -77,7 +75,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
         event: e.target.tracking.event,
         eventCategory: e.target.tracking.eventCategory,
         eventAction: e.target.tracking.eventAction,
-        eventLabel: e.target.tracking.eventLabel
+        eventLabel: e.target.tracking.eventLabel,
       });
     };
 
@@ -101,7 +99,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
           event: 'autosuggest EtC landing',
           eventCategory: `search - autosuggest - ${suggestion.index}`,
           eventAction: term,
-          eventLabel: url
+          eventLabel: url,
         };
         suggestEl.addEventListener('click', trackAutosuggest);
         suggestionsEl.appendChild(suggestEl);
@@ -143,7 +141,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
               aborter = new window.AbortController();
               setTimeout(() => aborter.abort(), 500);
               fetch(`${searchForm._props.suggestionsAPI}?q=${encodeURI(term)}&page_size=10`, { signal: aborter.signal })
-                .then(response => response.json())
+                .then((response) => response.json())
                 .then((data) => {
                   if (data.info.record_count > 0) {
                     searchForm.setAttribute('suggesting', true);
@@ -153,12 +151,12 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
                     });
                   }
                 })
-                .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+                .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
             }
           }
         }, false);
       })
-      .catch(e => console.error(e.name, e.message)); // eslint-disable-line no-console
+      .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
 
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === 13 && document.activeElement.closest('.b-search-form__filter-toggle')) {
@@ -188,4 +186,3 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
   }
   return true;
 });
-/* eslint-enable no-underscore-dangle */

@@ -1,5 +1,8 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-modal__description-license-contact:focus {
-  @include insetFocus;
+  @include mixins.focus-insetFocus;
 }
 
 .b-image-overlay {
@@ -13,9 +16,11 @@
       cursor: auto;
     }
 
+    /* stylelint-disable selector-max-id, declaration-no-important */
     &--hidden {
-      display: none !important; // sass-lint:disable-line no-important
+      display: none !important;
     }
+    /* stylelint-enable selector-max-id, declaration-no-important */
 
     &-image {
       height: 100%;
@@ -28,9 +33,7 @@
         filter: blur(10px);
       }
 
-      @include bpMinMedium {
-        max-height: -webkit-fit-content;
-        max-height: -moz-fit-content;
+      @include mixins.breakpoints-bpMinMedium {
         max-height: fit-content;
         min-height: 300px;
         width: 100%;
@@ -40,19 +43,21 @@
     &-concealer {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
-      background-color: rgba(57, 59, 63, .8);
+      background-color: rgba(57, 59, 63, 80%);
       height: 100%;
       left: 0;
       position: absolute;
       top: 0;
       width: 100%;
+
       &-text {
-        @include typeSetting(3);
-        @include bpMinXSmall {
-          @include typeSetting(4);
+        @include base.typography-typeSetting(3);
+
+        @include mixins.breakpoints-bpMinXSmall {
+          @include base.typography-typeSetting(4);
         }
 
-        color: siteColor(vam-white);
+        color: base.sitecolors-siteColor("vam-white");
         height: 56px;
         left: 50%;
         position: absolute;
@@ -61,15 +66,18 @@
         transform: translate(-50%, -50%);
         width: 238px;
       }
+
       &-button {
         &:hover {
-          background-color: siteColor(vam-white);
-          color: siteColor(vam-black);
+          background-color: base.sitecolors-siteColor("vam-white");
+          color: base.sitecolors-siteColor("vam-black");
         }
-        @include typeSetting(1, bold);
-        border: solid 1px #ffffff;
+
+        @include base.typography-typeSetting(1, "bold");
+
+        border: solid 1px #fff;
         border-radius: 2px;
-        color: siteColor(vam-white);
+        color: base.sitecolors-siteColor("vam-white");
         cursor: pointer;
         height: 24px;
         left: 50%;
@@ -93,8 +101,8 @@
       top: 0;
       z-index: 300;
 
-      @include bpMinMedium {
-        background: rgba(siteColor(vam-black), .9);
+      @include mixins.breakpoints-bpMinMedium {
+        background: rgba(base.sitecolors-siteColor("vam-black"), 90%);
       }
     }
   }
@@ -123,20 +131,21 @@
     width: 100%;
 
     > .openseadragon-container {
-      overflow: visible !important; // sass-lint:disable-line no-important
+      overflow: visible !important; /* stylelint-disable-line declaration-no-important */
     }
   }
 
   &__figcaption {
-    @include typeSetting(2, regular);
-    background: siteColor(vam-black);
+    @include base.typography-typeSetting(2, "regular");
+
+    background: base.sitecolors-siteColor("vam-black");
     display: flex;
     line-height: 1.7;
     max-height: 50%;
     transition: max-height 450ms;
     width: 100%;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       position: relative;
     }
 
@@ -146,8 +155,8 @@
 
     &__handle {
       appearance: none;
-      background: siteColor(vam-black);
-      border: 1px solid siteColor(primary-green);
+      background: base.sitecolors-siteColor("vam-black");
+      border: 1px solid base.sitecolors-siteColor("primary-green");
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -161,7 +170,7 @@
       width: 32px;
       z-index: 1;
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         display: none;
       }
 
@@ -169,7 +178,7 @@
         border: solid #fff;
         border-width: 0 2px 2px 0;
         box-sizing: border-box;
-        content: '';
+        content: "";
         display: block;
         height: 34%;
         margin: auto;
@@ -197,7 +206,8 @@
   }
 
   &__caption {
-    @include typeSetting(4, regular);
+    @include base.typography-typeSetting(4, "regular");
+
     display: block;
     line-height: 1.56;
     max-width: 600px;

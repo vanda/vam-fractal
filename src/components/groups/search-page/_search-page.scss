@@ -1,22 +1,25 @@
+@use "../../mixins";
+
 .b-search-page {
   -webkit-font-smoothing: antialiased;
   margin: auto;
   max-width: 1200px;
   width: 100%;
 
-  @include bpMinSmall {
+  @include mixins.breakpoints-bpMinSmall {
     padding: 0 27px;
   }
 
   &-content-container {
     margin-bottom: 120px;
-    @include bpMinMedium {
+
+    @include mixins.breakpoints-bpMinMedium {
       margin-bottom: 140px;
     }
   }
 
   &-title {
-    color: #ffffff;
+    color: #fff;
     font-size: 48px;
     font-stretch: normal;
     font-style: normal;
@@ -24,38 +27,39 @@
     letter-spacing: normal;
     line-height: normal;
     margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 50%);
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       font-size: 54px;
     }
   }
 
-  &-subtitle, &-title {
+  &-subtitle,
+  &-title {
     padding: 0 12px;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       padding: 0;
     }
   }
 
   &-subtitle {
-    color: #ffffff;
+    color: #fff;
     font-size: 18px;
     font-stretch: normal;
     font-style: normal;
     font-weight: normal;
     letter-spacing: normal;
     line-height: 1.25;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 50%);
     width: 100%;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       height: 118px;
       width: 476px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       font-size: 24px;
     }
   }

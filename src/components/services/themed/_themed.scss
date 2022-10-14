@@ -1,44 +1,50 @@
-.s-themed {
-  @each $color in map-keys($theme-colors) {
-    .theme-#{$color} &#{&}--color {
-      color: map-get($theme-colors, $color);
-      transition: color .2s ease-out, border-color .2s ease-out;
+@use "../../base";
+@use "sass:color";
+@use "sass:map";
 
-      &--hover { // sass-lint:disable-line class-name-format
+/* stylelint-disable no-duplicate-selectors */
+.s-themed {
+  @each $color in map.keys(base.$themecolors-theme-colors) {
+    .theme-#{$color} &#{&}--color {
+      color: map.get(base.$themecolors-theme-colors, $color);
+      transition: color 0.2s ease-out, border-color 0.2s ease-out;
+
+      &--hover {
         &:hover {
-          color: darken(map-get($theme-colors, $color), 10%);
+          color: color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%);
         }
       }
     }
 
-    .theme-#{$color} &#{&}--color--hover { // sass-lint:disable-line class-name-format
-      transition: color .2s ease-out;
+    .theme-#{$color} &#{&}--color--hover {
+      transition: color 0.2s ease-out;
 
       &:hover {
-        color: map-get($theme-colors, $color);
+        color: map.get(base.$themecolors-theme-colors, $color);
       }
     }
 
     .theme-#{$color} &#{&}--background-color {
-      background-color: map-get($theme-colors, $color);
-      color: siteColor(vam-black);
-      transition: background-color .2s ease-out;
+      background-color: map.get(base.$themecolors-theme-colors, $color);
+      color: base.sitecolors-siteColor(vam-black);
+      transition: background-color 0.2s ease-out;
 
-      &--hover { // sass-lint:disable-line class-name-format
+      &--hover {
         &:hover {
-          background-color: darken(map-get($theme-colors, $color), 10%);
+          background-color: color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%);
         }
       }
     }
 
-    .theme-#{$color} &#{&}--border-color { // sass-lint:disable-line class-name-format
-      border-color: map-get($theme-colors, $color);
+    .theme-#{$color} &#{&}--border-color {
+      border-color: map.get(base.$themecolors-theme-colors, $color);
     }
 
     // This was breaking when chained with the above.
     // Duplicated the hover styling into it's own declaration for now.
-    .theme-#{$color} &#{&}--border-color--hover:hover { // sass-lint:disable-line class-name-format
-      border-color: darken(map-get($theme-colors, $color), 10%);
+    .theme-#{$color} &#{&}--border-color--hover:hover {
+      border-color: color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%);
     }
   }
 }
+/* stylelint-enable no-duplicate-selectors */

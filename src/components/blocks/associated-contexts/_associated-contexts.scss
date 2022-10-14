@@ -1,20 +1,25 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-associated-contexts {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: #ffffff;
+  color: #fff;
 
-  @include bpMinSmall {
+  @include mixins.breakpoints-bpMinSmall {
     width: 246px;
   }
 
   &-background {
     background-color: black;
   }
+
   &__controlled-vocab-container {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       margin-top: 40px;
     }
   }
+
   &__title {
     font-size: 14px;
     font-weight: bold;
@@ -22,23 +27,26 @@
     line-height: 2.29;
     margin-bottom: 15px;
     text-align: center;
-    @include bpMinSmall {
+
+    @include mixins.breakpoints-bpMinSmall {
       text-align: left;
     }
   }
+
   &__container {
     list-style-type: none;
     margin: 0;
   }
+
   &__link {
     display: none;
     margin-bottom: 10px;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       display: inline-block;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       display: block;
     }
 
@@ -48,27 +56,30 @@
       height: 65px;
       width: 65px;
     }
+
     &-container {
       align-items: center;
       display: flex;
       flex-direction: row;
     }
+
     &-text {
       margin-left: 16px;
 
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         width: 124px;
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         width: auto;
       }
 
       &-title {
-        @include typeSetting(4, regular);
+        @include base.typography-typeSetting(4, "regular");
       }
+
       &-subtitle {
-        @include typeSetting(2, regular);
+        @include base.typography-typeSetting(2, "regular");
       }
     }
   }

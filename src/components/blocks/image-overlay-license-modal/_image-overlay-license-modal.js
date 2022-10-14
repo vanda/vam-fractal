@@ -21,7 +21,7 @@ const elements = [
   iconLinkContainer,
   checkmark,
   imageIconLink,
-  agreeToTerms
+  agreeToTerms,
 ];
 
 const modal = document.querySelector(`.${prefix}${modalClass}`);
@@ -78,23 +78,22 @@ window.addEventListener('click', (e) => {
 
   if (e.target.closest(`.${prefix}${checkboxContainer}`)) {
     if (e.target.closest(`.${prefix}${agreeToTerms}`) === document.querySelector(`.${prefix}${agreeToTerms}`)) {
-      document.querySelector(`.${prefix}${agreeCheckbox}`).checked =
-        !document.querySelector(`.${prefix}${agreeCheckbox}`).checked;
+      document.querySelector(`.${prefix}${agreeCheckbox}`).checked = !document.querySelector(`.${prefix}${agreeCheckbox}`).checked;
 
       document.querySelector(`.${prefix}${agreeToTerms}`).classList.remove(`${prefix}${agreeToTerms}${warning}`);
 
       if (document.querySelector(`.${prefix}${agreeCheckbox}`).checked) {
         document.querySelector(`.${prefix}${agreeToTermsReminder}`).style.display = 'none';
-        elements.forEach(c =>
-          document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.add(`${prefix}${c}--active`)
-        );
+        elements.forEach((c) => {
+          document.querySelector(`.${prefix}${c}`).classList.add(`${prefix}${c}--active`);
+        });
         document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.add('b-icon-link--active');
         downloadLink.setAttribute('data-tracking-collections', 'image download');
         downloadButton.setAttribute('data-tracking-collections', 'image download');
       } else {
-        elements.forEach(c =>
-          document.querySelector(`.${prefix}${c}`) && document.querySelector(`.${prefix}${c}`).classList.remove(`${prefix}${c}--active`)
-        );
+        elements.forEach((c) => {
+          document.querySelector(`.${prefix}${c}`).classList.remove(`${prefix}${c}--active`);
+        });
         document.querySelector('.b-image-overlay-license-modal__download-link .b-icon-link').classList.remove('b-icon-link--active');
         downloadLink.removeAttribute('data-tracking-collections');
         downloadButton.removeAttribute('data-tracking-collections');
@@ -112,12 +111,12 @@ window.addEventListener('click', (e) => {
 
 window.addEventListener('keydown', (e) => {
   const activeModal = (document.querySelector(`.${prefix}${modalClass}.b-modal--active`));
-  const activeContent = document.querySelector(`.${prefix}${downloadContentClass}.${prefix}${downloadContentClass}${active}`) ||
-    document.querySelector(`.${prefix}${contactContentClass}.${prefix}${contactContentClass}${active}`);
+  const activeContent = document.querySelector(`.${prefix}${downloadContentClass}.${prefix}${downloadContentClass}${active}`)
+  || document.querySelector(`.${prefix}${contactContentClass}.${prefix}${contactContentClass}${active}`);
 
   if (activeModal) {
     // https://stackoverflow.com/a/60031728 w/ modifications
-    if (e.keyCode === 9) {
+    if (e.key === 9) {
       const focusable = activeContent.querySelectorAll(`
         .b-image-overlay-license-modal__close-container,
         .b-image-overlay-license-modal__title-section a,
@@ -144,11 +143,11 @@ window.addEventListener('keydown', (e) => {
     }
   }
 
-  if (e.keyCode === 13 && document.activeElement.classList.contains('b-image-overlay-license-modal__contact-modal-open')) {
+  if (e.key === 13 && document.activeElement.classList.contains('b-image-overlay-license-modal__contact-modal-open')) {
     document.activeElement.click();
   }
 
-  if (activeModal && e.keyCode === 27) {
+  if (activeModal && e.key === 27) {
     modal.classList.remove('b-modal--active');
     modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
     e.preventDefault();

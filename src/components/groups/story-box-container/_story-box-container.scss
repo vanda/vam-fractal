@@ -1,16 +1,18 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-story-box-container {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 
   &-background {
-    background-color: siteColor(vam-grey-1);
-    max-width: 712px; // for test
+    background-color: base.sitecolors-siteColor("vam-grey-1");
+    max-width: 712px;
   }
 
   &__story-boxes {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
   }
 
@@ -37,19 +39,20 @@
     display: none;
     margin-top: 20px;
     text-align: center;
+
     &--active {
       display: block;
     }
   }
 
   &__col-break {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       flex-basis: 24px;
     }
   }
 
   &__row-break {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       width: 100%;
     }
   }

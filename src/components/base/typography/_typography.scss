@@ -1,53 +1,54 @@
+@use "sass:map";
+@use "sass:math";
+
 @font-face {
   font-display: swap;
-  font-family: 'Spiller';
+  font-family: "Spiller";
   font-style: normal;
-  src: url('../fonts/Spiller-Upright-weight-VF-Web-V2.woff2') format('woff2');
+  src: url("../fonts/Spiller-Upright-weight-VF-Web-V2.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Spiller';
+  font-family: "Spiller";
   font-style: italic;
-  src: url('../fonts/Spiller-Italic-weight-VF-Web.woff2') format('woff2');
+  src: url("../fonts/Spiller-Italic-weight-VF-Web.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'SpillerContrast';
-  src: url('../fonts/SpillerContrast-Upright-contrast_weight-VF-Web.woff2') format('woff2');
+  font-family: "SpillerContrast";
+  src: url("../fonts/SpillerContrast-Upright-contrast_weight-VF-Web.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'SpillerContrastItalic';
-  src: url('../fonts/SpillerContrast-Italic-contrast_weight-VF-Web.woff2') format('woff2');
+  font-family: "SpillerContrastItalic";
+  src: url("../fonts/SpillerContrast-Italic-contrast_weight-VF-Web.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'SpillerWidth';
-  src: url('../fonts/SpillerWidth-Upright-width_weight-VF-Web.woff2') format('woff2');
+  font-family: "SpillerWidth";
+  src: url("../fonts/SpillerWidth-Upright-width_weight-VF-Web.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'SpillerWidthItalic';
-  src: url('../fonts/SpillerWidth-Italic-width_weight-VF-Web.woff2') format('woff2');
+  font-family: "SpillerWidthItalic";
+  src: url("../fonts/SpillerWidth-Italic-width_weight-VF-Web.woff2") format("woff2");
 }
 
 $font-family: (
-  text: ('Spiller', Arial, Helvetica, sans-serif),
-  code: (Consolas, Menlo, Monaco, 'Courier New', monospace)
+  text: ("Spiller", "Arial", "Helvetica", sans-serif),
+  code: ("Consolas", "Menlo", "Monaco", "Courier New", monospace)
 );
-
 $font-weight: (
   light: 300,
   regular: 400,
   bold: 500, // an alias for Spiller's 'medium' size
   x-bold: 600 // an alias for Spiller's 'bold' size
 );
-
 $font-size: (
   0: 12,
   1: 13,
@@ -60,7 +61,6 @@ $font-size: (
   8: 51,
   9: 60
 );
-
 $line-height: (
   0: 16,
   1: 18,
@@ -73,7 +73,6 @@ $line-height: (
   8: 58,
   9: 68
 );
-
 $line-height-bold: (
   0: 16,
   1: 18,
@@ -86,46 +85,45 @@ $line-height-bold: (
   8: 58,
   9: 68
 );
-
 $base-font-size: 3;
-$base-font-weight: 'regular';
+$base-font-weight: "regular";
 
 @function fontFamily($type: text) {
-  @return map-get($font-family, $type);
+  @return map.get($font-family, $type);
 }
 
 @function fontSize($size: $base-font-size) {
-  @return map-get($font-size, $size);
+  @return map.get($font-size, $size);
 }
 
 @function fontWeight($w: $base-font-weight) {
-  @return map-get($font-weight, $w);
+  @return map.get($font-weight, $w);
 }
 
-@function lineHeight($size: $base-font-size, $weight: $base-font-weight) {
+@function lineheight($size: $base-font-size, $weight: $base-font-weight) {
   @if $weight == "bold" {
-    @return map-get($line-height-bold, $size);
+    @return map.get($line-height-bold, $size);
   } @else {
-    @return map-get($line-height, $size);
+    @return map.get($line-height, $size);
   }
 }
 
 @mixin fontSize($sizeValue: $base-font-size) {
   font-size: fontSize($sizeValue) + px; // Old browser fallback
-  font-size: (fontSize($sizeValue) / fontSize($base-font-size)) + rem; // Base fontsize is 15px
+  font-size: math.div(fontSize($sizeValue), fontSize($base-font-size)) + rem; // Base fontsize is 15px
 }
 
-@mixin lineHeight($heightValue: $base-font-size, $weight: $base-font-weight) {
-  line-height: lineHeight($heightValue, $weight) + px; // Old browser fallback
-  line-height: (lineHeight($heightValue, $weight) / fontSize($base-font-size)) + rem;
+@mixin lineheight($heightValue: $base-font-size, $weight: $base-font-weight) {
+  line-height: lineheight($heightValue, $weight) + px; // Old browser fallback
+  line-height: math.div(lineheight($heightValue, $weight), fontSize($base-font-size)) + rem;
 }
 
 @mixin fontWeight($weight: $base-font-weight) {
-  font-variation-settings: 'wght' fontWeight($weight);
+  font-variation-settings: "wght" fontWeight($weight);
 }
 
 @mixin typeSetting($size: $base-font-size, $weight: $base-font-weight) {
   @include fontSize($size);
-  @include lineHeight($size, $weight);
+  @include lineheight($size, $weight);
   @include fontWeight($weight);
 }

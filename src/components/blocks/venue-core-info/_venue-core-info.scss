@@ -1,7 +1,10 @@
-.b-venue-core-info {
-  background-color: $theme-color-default;
+@use "../../mixins";
+@use "../../base";
 
-  @include bpMinSmall {
+.b-venue-core-info {
+  background-color: base.$themecolors-theme-color-default;
+
+  @include mixins.breakpoints-bpMinSmall {
     display: flex;
   }
 
@@ -9,39 +12,40 @@
     height: 150px;
     position: relative;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       height: 200px;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       flex: 1 0 320px;
       height: auto;
       min-height: 310px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       flex-basis: 412px;
       min-height: 400px;
     }
 
-    @include bpMinLarge {
+    @include mixins.breakpoints-bpMinLarge {
       flex-basis: 480px;
       min-height: 470px;
     }
   }
 
   &__img-badge {
-    @include typeSetting(2, light);
-    background-color: rgba(255, 255, 255, .8);
+    @include base.typography-typeSetting(2, "light");
+
+    background-color: rgba(255, 255, 255, 80%);
     padding: 3px 6px;
     position: absolute;
 
-    @include bpMaxSmall {
+    @include mixins.breakpoints-bpMaxSmall {
       bottom: 10px;
       left: 10px;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       right: 20px;
       top: 20px;
     }
@@ -54,35 +58,38 @@
   }
 
   &__content {
-    @include typeSetting(4, light);
+    @include base.typography-typeSetting(4, "light");
+
     padding: 20px 10px;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       display: flex;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       flex: 0 1 auto;
       flex-direction: column;
       padding: 30px 87px 30px 50px;
     }
 
-    @include bpMinMedium {
-      @include typeSetting(5, light);
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(5, "light");
+
       padding: 50px 100px 50px 60px;
     }
 
-    @include bpMinLarge {
-      @include typeSetting(6, light);
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(6, "light");
+
       padding: 50px 94px 50px 70px;
     }
 
     &__info {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         margin: -17px 0 0 30px;
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         display: flex;
         flex: 1;
         flex-direction: column;
@@ -93,15 +100,16 @@
   }
 
   &__address {
-    @include typeSetting(3, light);
+    @include base.typography-typeSetting(3, "light");
+
     margin: 20px 0 30px;
 
-    @include bpMinSmall {
-      @include typeSetting(4, light);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4, "light");
     }
 
-    @include bpMinLarge {
-      @include typeSetting(5, light);
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(5, "light");
     }
 
     > svg {
@@ -115,7 +123,7 @@
     margin: 0;
     white-space: nowrap;
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       align-self: flex-end;
     }
   }

@@ -1,12 +1,16 @@
+@use "../../mixins";
+@use "../../base";
+
 $icon-width: 30px;
 
 .b-icon-list {
-  @include typeSetting(2);
-  @include unstyledList;
-  color: siteColor(vam-black);
+  @include base.typography-typeSetting(2);
+  @include mixins.unstyledelements-unstyledList;
+
+  color: base.sitecolors-siteColor("vam-black");
 
   &--dark {
-    color: siteColor(vam-white);
+    color: base.sitecolors-siteColor("vam-white");
   }
 
   &__item {
@@ -16,35 +20,36 @@ $icon-width: 30px;
     &--no-icon {
       margin-left: 40px;
 
-      @include bpMaxSmall {
+      @include mixins.breakpoints-bpMaxSmall {
         margin-left: 0;
       }
     }
+  }
 
-    &__icon {
-      float: left;
-      height: 20px;
-      margin-left: -$icon-width;
-      margin-top: 5px;
-      width: 20px;
-    }
+  &__icon {
+    float: left;
+    height: 20px;
+    margin-left: -$icon-width;
+    margin-top: 5px;
+    width: 20px;
+  }
 
-    &__content {
-      margin-left: 10px;
+  &__content {
+    margin-left: 10px;
 
-      > p {
-        margin-bottom: 5px;
-      }
-    }
-
-    &  #{&}__heading {
-      @include typeSetting(4, bold);
+    > p {
       margin-bottom: 5px;
+    }
+  }
 
-      @include bpMinXSmall {
-        @include bpMaxSmall {
-          @include typeSetting(3, bold);
-        }
+  &  #{&}__heading {
+    @include base.typography-typeSetting(4, "bold");
+
+    margin-bottom: 5px;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      @include mixins.breakpoints-bpMaxSmall {
+        @include base.typography-typeSetting(3, "bold");
       }
     }
   }

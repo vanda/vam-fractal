@@ -1,24 +1,28 @@
+@use "../../mixins";
+@use "../../base";
+
 .g-venue-card-grid {
   margin-bottom: 40px;
   width: 100%;
 
   &__header {
-    @include typeSetting(5, bold);
+    @include base.typography-typeSetting(5, "bold");
+
     color: #fff;
     margin-bottom: 18px;
     text-align: center;
 
-    @include bpMinSmall {
-      @include typeSetting(6, bold);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6, "bold");
+
       margin-bottom: 23px;
     }
   }
 
   &__grid {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
     }
   }
 
@@ -29,13 +33,12 @@
       aspect-ratio: 5 / 3;
     }
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       flex: 0 1 calc((100% - 20px) * 5 / 11);
 
       &:nth-child(n+2) {
         margin-left: 10px;
       }
-
 
       &:nth-child(2),
       &:nth-child(3),
@@ -51,12 +54,12 @@
         margin-left: calc((100% * 2 / 11) - 5px);
 
         & > .b-venue-card {
-          margin-top: (-100% * 2 / 3);
+          margin-top: calc(-100% * 2 / 3);
         }
       }
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       flex: 0 1 calc((100% - 40px) * 5 / 11);
       margin-bottom: 20px;
 

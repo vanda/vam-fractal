@@ -1,19 +1,20 @@
-.b-image-overlay-license-modal {
-  a:focus {
-    @include defaultFocus;
-  }
+@use "../../mixins";
+@use "../../base";
 
-  &__download-button, &__contact-button {
+.b-image-overlay-license-modal {
+  &__download-button,
+  &__contact-button {
     padding: 13px 10px;
-    @include bpMinMedium {
+
+    @include mixins.breakpoints-bpMinMedium {
       padding: 6px 10px;
     }
   }
 
   &__modal-content {
-    background-color: siteColor(vam-white);
+    background-color: base.sitecolors-siteColor("vam-white");
     border-radius: 2px;
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     left: 50%;
     margin: auto;
     position: absolute;
@@ -33,13 +34,14 @@
     cursor: pointer;
     height: 29px;
     left: 100%;
-    margin: 10px 10px 50px 10px;
+    margin: 10px 10px 50px;
     pointer-events: all;
     position: fixed;
     right: 0;
     top: -50px;
     width: 29px;
     z-index: 99999;
+
     &:disabled {
       display: none;
     }
@@ -83,10 +85,13 @@
   }
 
   &__title {
-    @include typeSetting(3, bold);
+    @include base.typography-typeSetting(3, "bold");
+
     margin-bottom: 10px;
-    @include bpMinSmall {
-      @include typeSetting(5, bold);
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(5, "bold");
+
       margin-bottom: 18px;
     }
   }
@@ -97,11 +102,11 @@
   }
 
   &__image-button-description {
-    @include typeSetting(3, light);
+    @include base.typography-typeSetting(3, "light");
   }
 
   &__description-container {
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       padding: 22px;
     }
 
@@ -126,10 +131,9 @@
   }
 
   &__download-icon-link {
-    border-color: siteColor(vam-grey-5);
+    border-color: base.sitecolors-siteColor("vam-grey-5");
     height: 50px;
     width: 50px;
-
   }
 
   &__download-link {
@@ -138,37 +142,43 @@
   }
 
   &__download-link-text a {
-    @include typeSetting(2, light);
-    @include bpMinSmall {
-      @include typeSetting(3, light);
+    @include base.typography-typeSetting(2, "light");
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(3, "light");
     }
 
     text-underline-position: under;
   }
 
+  a:focus {
+    @include mixins.focus-defaultFocus;
+  }
+
   &__image-info {
-    color: siteColor(vam-grey-3);
+    color: base.sitecolors-siteColor("vam-grey-3");
     font-style: italic;
   }
 
   &__image-size {
-    color: siteColor(vam-grey-3);
+    color: base.sitecolors-siteColor("vam-grey-3");
   }
 
-  &__title-section, &__footer-section {
+  &__title-section,
+  &__footer-section {
     margin: 5px;
 
-    @include bpMinSmall {
-      margin: 15px 25px 0 25px;
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 15px 25px 0;
     }
   }
 
   &__footer-section {
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-top: 30px;
     }
 
-    border-top: 1px solid rgba(0, 0, 0, .3);
+    border-top: 1px solid rgba(0, 0, 0, 30%);
     margin-top: 10px;
   }
 
@@ -177,16 +187,17 @@
   }
 
   &__checkbox-container {
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       margin-bottom: 0;
     }
+
     margin: 15px 0;
     position: relative;
   }
 
   &__image-icon-link {
     bottom: 30%;
-    color: siteColor(vam-grey-3);
+    color: base.sitecolors-siteColor("vam-grey-3");
     height: 60%;
     left: 21%;
     pointer-events: none;
@@ -195,9 +206,10 @@
     top: 18%;
     width: 60%;
     z-index: 999;
+
     &--active {
       background-color: #12d2a0;
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
       pointer-events: none;
     }
   }
@@ -212,35 +224,39 @@
     top: 0;
     width: 26px;
     z-index: 99;
+
     &--active {
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
       display: block;
     }
   }
 
   &__agree-to-terms-reminder {
-    @include typeSetting(2, light);
+    @include base.typography-typeSetting(2, "light");
+
     box-shadow: none;
-    color: siteColor(alert-red);
+    color: base.sitecolors-siteColor("alert-red");
     display: none;
+
     &:focus svg {
-      @include defaultFocus;
+      @include mixins.focus-defaultFocus;
     }
   }
 
   &__agree-to-terms {
-    @include typeSetting(4, regular);
+    @include base.typography-typeSetting(4, "regular");
+
     box-shadow: none;
     cursor: pointer;
     margin-left: 40px;
 
     &-text {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         margin-top: 5px;
         width: 500px;
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         margin-top: 0;
       }
 
@@ -248,17 +264,11 @@
       width: 160px;
     }
 
-    &:focus {
-      &:before {
-        @include defaultFocus;
-      }
-    }
-
-    &:before {
-      background-color: siteColor(vam-white);
-      border: 1px siteColor(vam-black) solid;
+    &::before {
+      background-color: base.sitecolors-siteColor("vam-white");
+      border: 1px base.sitecolors-siteColor("vam-black") solid;
       border-radius: 3px;
-      content: '';
+      content: "";
       cursor: pointer;
       height: 25px;
       left: 0;
@@ -267,17 +277,23 @@
       width: 25px;
     }
 
+    &:focus {
+      &::before {
+        @include mixins.focus-defaultFocus;
+      }
+    }
+
     &--warning {
-      &:before {
-        background-color: rgba(255, 80, 83, .1);
-        border-color: siteColor(alert-red);
+      &::before {
+        background-color: rgba(255, 80, 83, 10%);
+        border-color: base.sitecolors-siteColor("alert-red");
       }
     }
 
     &--active {
       &::before {
-        background-color: siteColor(secondary-green);
-        border-color: siteColor(secondary-green);
+        background-color: base.sitecolors-siteColor("secondary-green");
+        border-color: base.sitecolors-siteColor("secondary-green");
       }
     }
   }

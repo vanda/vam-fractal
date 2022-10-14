@@ -1,11 +1,13 @@
-import querystring from 'querystring';
-
 const toggleNav = document.querySelector('.js-toggle-nav');
 
 if (toggleNav) {
   const toggleNavBtns = toggleNav.querySelectorAll('.js-toggle-nav-btn');
-  const qs = querystring.parse(window.location.search.replace('?', ''));
-  const qsToggleType = qs.type;
+  const urlParams = new URLSearchParams(window.location.search);
+  let qsToggleType = '';
+
+  if (urlParams.has('type') === true) {
+    qsToggleType = urlParams.get('type');
+  }
 
   Array.from(toggleNavBtns, (tog) => {
     const tnToggees = document.querySelectorAll(tog.dataset.toggeesSelector);

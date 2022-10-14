@@ -17,7 +17,7 @@
 
   <button class="u-btn u-btn--micro u-btn--outlined b-facet-box__modal-button-open b-facet-box__modal-button">
      <svg class="b-facet-box__modal-content b-facet-box__modal-content-open" aria-label="open-facet-box" role="img">
-          <use xlink:href="/assets/svg/svg-template.svg#settings"></use>
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#settings"></use>
       </svg>
       show filters
   </button>
@@ -29,7 +29,7 @@
   <div class="b-facet-box__modal-container b-facet-box__modal-container--close b-facet-box__close-container">
     <div class="b-facet-box__modal-button b-facet-box__modal-button-close b-facet-box__close-button">
        <svg class="b-facet-box__modal-content b-facet-box__modal-content-close" aria-label="close-facet-box" role="img">
-            <use xlink:href="/assets/svg/svg-template.svg#close"></use>
+            <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#close"></use>
         </svg>
     </div>
   </div>
@@ -53,7 +53,7 @@
             <li class="b-facet-box__facet-term-toggle" data-id="{{ facet.facet }}-{{ term.term }}-{{loop.index0}}" data-facet="{{ facet.facet }}" data-term="{{ term.term }}">
               <a class="b-facet-box__facet-term-toggle-checkbox" href="javascript:void(0);">
                 <svg class="b-facet-box__facet-term-toggle-tick" role="img">
-                  <use xlink:href="/assets/svg/svg-template.svg#tick"></use>
+                  <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#tick"></use>
                 </svg>
               </a>
               <span class="b-facet-box__facet-term-toggle-text">
@@ -91,7 +91,7 @@
           </label>
           <button class="b-facet-box__facet-date-button">
             <svg class="b-facet-box__facet-date-button-icon" role="img">
-              <use xlink:href="/assets/svg/svg-template.svg#search"></use>
+              <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
             </svg>
           </button>
         </div>

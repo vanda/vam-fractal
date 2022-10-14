@@ -1,5 +1,91 @@
+@use "../site-color/site-color";
+@use "../typography/typography";
+@use "../spacing/spacing";
+@use "../../mixins/element-visibility/element-visibility";
+
 // http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, hr, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   border: none;
   font: inherit;
   margin: 0;
@@ -7,30 +93,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, hr, p, bl
   vertical-align: baseline;
 }
 
-// HTML5 display-role reset for older browsers
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
 html {
-  font-size: fontSize($base-font-size) + px;
+  font-size: typography.fontSize(typography.$base-font-size) + px;
 }
 
 body {
-  @include typeSetting($base-font-size);
-  background-color: siteColor(vam-white);
-  color: siteColor(vam-black);
-  font-family: fontFamily(text);
+  @include typography.typeSetting(typography.$base-font-size);
+
+  background-color: site-color.siteColor("vam-white");
+  color: site-color.siteColor("vam-black");
+  font-family: typography.fontFamily("text");
   overflow-x: hidden;
   width: 100%;
 }
@@ -46,9 +118,9 @@ blockquote,
 q {
   quotes: none;
 
-  &:before,
-  &:after {
-    content: '';
+  &::before,
+  &::after {
+    content: "";
     content: none;
   }
 }
@@ -57,6 +129,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 // end resets, start defaults
 
 html,
@@ -66,15 +139,15 @@ body {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 input,
 select,
 option {
-  font-family: fontFamily(text);
+  font-family: typography.fontFamily(text);
 }
 
 img,
@@ -89,7 +162,7 @@ ol,
 ul,
 dl,
 iframe {
-  margin-bottom: $spacing-small;
+  margin-bottom: spacing.$spacing-small;
 }
 
 a {
@@ -113,19 +186,19 @@ button {
 hr {
   background-color: transparent;
   clear: both;
-  color: siteColor(vam-grey-4);
+  color: site-color.siteColor("vam-grey-4");
   font-size: 20px;
   font-weight: 800;
   margin: 0 0 10px;
 
   &::after {
-    content: '\\\00a0\00a0\\';
+    content: "\\\00a0\00a0\\";
   }
 }
 
 abbr,
 acronym {
-  border-bottom: 1px dotted siteColor(vam-grey-5);
+  border-bottom: 1px dotted site-color.siteColor("vam-grey-5");
 }
 
 i,
@@ -146,11 +219,11 @@ sup {
 }
 
 sub {
-  bottom: -.3em;
+  bottom: -0.3em;
 }
 
 sup {
-  top: -.3em;
+  top: -0.3em;
 }
 
 ol {
@@ -161,7 +234,15 @@ ul {
   list-style-type: disc;
 }
 
-b, 
+b,
 strong {
-  @include fontWeight(x-bold);
+  @include typography.fontWeight("x-bold");
+}
+
+.s-visually-hidden {
+  @include element-visibility.visuallyHidden;
+}
+
+.s-hidden {
+  @include element-visibility.hidden-all;
 }

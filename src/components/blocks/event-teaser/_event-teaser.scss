@@ -1,3 +1,7 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
 .b-event-teaser {
   box-sizing: border-box;
   flex: 0 1 auto;
@@ -12,22 +16,22 @@
     flex-direction: column;
 
     .u-btn.u-btn--outlined {
-      border: 1px solid siteColor(vam-black);
-      
+      border: 1px solid base.sitecolors-siteColor("vam-black");
+
       &:hover,
       &:focus {
-        background-color: siteColor(vam-grey-5);
+        background-color: base.sitecolors-siteColor("vam-grey-5");
         outline: none;
       }
     }
   }
 
-  @include bpMinXSmall {
+  @include mixins.breakpoints-bpMinXSmall {
     margin-bottom: 32px;
     width: 50%;
   }
 
-  @include bpMinMedium {
+  @include mixins.breakpoints-bpMinMedium {
     width: 33.333%;
 
     &--venue {
@@ -47,7 +51,7 @@
 
     &:hover + ul,
     &:focus + ul {
-      border-bottom: 1px solid siteColor(vam-grey-4);
+      border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
     }
 
     &:hover h2,
@@ -62,20 +66,24 @@
     padding-top: 66.67%;
     position: relative;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       margin-bottom: 10px;
     }
 
-    &:after {
-      background-image: linear-gradient(rgba(siteColor(vam-black), .35), rgba(siteColor(vam-black), 0));
-      content: '';
+    &::after {
+      background-image:
+        linear-gradient(
+          rgba(base.sitecolors-siteColor("vam-black"), 0.35),
+          rgba(base.sitecolors-siteColor("vam-black"), 0)
+        );
+      content: "";
       display: block;
       height: 100%;
       left: 0;
       opacity: 0;
       position: absolute;
       top: 0;
-      transition: opacity .35s ease;
+      transition: opacity 0.35s ease;
       width: 100%;
       z-index: 0;
 
@@ -87,7 +95,7 @@
 
     &--fallback {
       filter: grayscale(1);
-      opacity: .4;
+      opacity: 0.4;
     }
   }
 
@@ -98,17 +106,13 @@
     position: absolute;
     top: 0;
     width: 100%;
-
-    &.s-lazyload--error {
-      margin-top: -66.67%;
-      padding-top: 66.67% !important; // sass-lint:disable-line no-important
-    }
   }
 
   &__sponsor {
-    @include typeSetting(0, regular);
-    background-color: rgba(siteColor(vam-black), .4);
-    color: siteColor(vam-white);
+    @include base.typography-typeSetting(0, "regular");
+
+    background-color: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: -60%);
+    color: base.sitecolors-siteColor("vam-white");
     height: 32px;
     margin: -32px 0 0;
     overflow: hidden;
@@ -119,38 +123,40 @@
   }
 
   &__description {
-    color: siteColor(vam-black);
+    color: base.sitecolors-siteColor("vam-black");
     padding-bottom: 20px;
     position: relative;
 
     &--venue {
-      @include typeSetting(4, regular);
+      @include base.typography-typeSetting(4, "regular");
+
       flex-grow: 3;
       margin-bottom: 10px;
 
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         margin-bottom: 20px;
       }
 
-      @include bpMinSmall {
-        @include typeSetting(5, regular);
+      @include mixins.breakpoints-bpMinSmall {
+        @include base.typography-typeSetting(5, "regular");
       }
     }
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       min-height: 310px;
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       min-height: 150px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       min-height: 210px;
       padding-bottom: 60px;
 
       &--venue {
-        @include typeSetting(5, regular);
+        @include base.typography-typeSetting(5, "regular");
+
         margin-bottom: 15px;
       }
     }
@@ -159,22 +165,22 @@
       .b-icon-list {
         &__item {
           margin-bottom: 15px;
+        }
 
-          &__content {
-            margin-left: 0;
-            padding-top: 5px;
+        &__content {
+          margin-left: 0;
+          padding-top: 5px;
 
-            @include bpMinSmall {
-              padding-top: 0;
-            }
+          @include mixins.breakpoints-bpMinSmall {
+            padding-top: 0;
           }
-        
-          &__heading {
-            @include typeSetting(1, regular);
+        }
 
-            @include bpMinSmall {
-              @include typeSetting(4, regular);
-            }
+        &__heading {
+          @include base.typography-typeSetting(1, "regular");
+
+          @include mixins.breakpoints-bpMinSmall {
+            @include base.typography-typeSetting(4, "regular");
           }
         }
       }
@@ -183,16 +189,18 @@
 
   &__venue,
   &__label {
-    @include typeSetting(1, regular);
+    @include base.typography-typeSetting(1, "regular");
+
     margin-bottom: 5px;
   }
 
   &__title {
-    @include typeSetting(5, bold);
+    @include base.typography-typeSetting(5, "bold");
+
     margin: 1px 0 10px;
 
     &-icon {
-      color: siteColor(vam-black);
+      color: base.sitecolors-siteColor("vam-black");
       height: 14px;
       width: 14px;
     }
@@ -203,29 +211,31 @@
       display: flex;
     }
 
-    @include bpMinSmall {
-      @include typeSetting(5, bold);
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(5, "bold");
     }
 
     &--venue {
-      @include typeSetting(4, bold);
+      @include base.typography-typeSetting(4, "bold");
+
       margin: 4px 0 8px;
 
-      @include bpMinXSmall {
-        margin: 10px 0 10px;
+      @include mixins.breakpoints-bpMinXSmall {
+        margin: 10px 0;
       }
     }
 
-    @include bpMinSmall {
+    @include mixins.breakpoints-bpMinSmall {
       &--venue {
-        @include typeSetting(5, bold);
+        @include base.typography-typeSetting(5, "bold");
       }
     }
   }
 
   &__data {
-    @include typeSetting(1, light);
-    color: siteColor(vam-grey-3);
+    @include base.typography-typeSetting(1, "light");
+
+    color: base.sitecolors-siteColor("vam-grey-3");
   }
 
   &__type {
@@ -241,16 +251,16 @@
     width: 100%;
     z-index: 1;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       display: inline-block;
     }
 
     > .u-btn {
-      @include typeSetting(1);
+      @include base.typography-typeSetting(1);
     }
 
     .b-event-teaser--venue & {
-      border-bottom: 1px solid siteColor(vam-grey-6);
+      border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-6");
       column-gap: 10px;
       display: flex;
       height: auto;
@@ -265,8 +275,8 @@
         margin: 10px 0;
       }
 
-      .b-icon-list__item__icon {
-        color: siteColor(vam-black);
+      .b-icon-list__icon {
+        color: base.sitecolors-siteColor("vam-black");
         float: none;
         margin-left: 0;
         margin-top: 0;

@@ -1,0 +1,21 @@
+@use "../../../components/base";
+
+.fr-type-block {
+  margin-bottom: 1em;
+
+  &__label {
+    @include base.typography-typeSetting(0, "bold");
+  }
+}
+
+@each $weight in map-keys(base.$typography-font-weight) {
+  .fr-font-weight--#{$weight} {
+    font-weight: base.typography-fontWeight(#{$weight});
+  }
+
+  @for $i from 0 through 9 {
+    .fr-font-#{$weight}-#{$i} {
+      @include base.typography-typeSetting($i, $weight);
+    }
+  }
+}

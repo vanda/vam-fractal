@@ -1,13 +1,21 @@
+@use "../breakpoints/breakpoints";
+@use "sass:math";
+
 $gap: 12;
 
 @mixin tiles($gap: $gap) {
   $gap: $gap !global;
+
   margin: 0;
 
-  @include bpMinXSmall {
+  @include breakpoints.bpMinXSmall {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -#{$gap}px;
+
+    .no-flexbox & {
+      overflow: hidden;
+    }
   }
 }
 
@@ -16,16 +24,28 @@ $gap: 12;
   flex: 0 1 auto;
   margin-bottom: 16px;
 
-  @include bpMinXSmall {
+  .no-flexbox & {
+    float: left;
+  }
+
+  @include breakpoints.bpMinXSmall {
     flex-basis: 50%;
     margin-bottom: 23px;
     max-width: 50%;
     padding: 0 #{$gap}px;
+
+    .no-flexbox & {
+      width: 50%;
+    }
   }
 
-  @include bpMinMedium {
-    flex-basis: percentage(1 / $columns);
+  @include breakpoints.bpMinMedium {
+    flex-basis: math.percentage(math.div(1, $columns));
     margin-bottom: 16px;
-    max-width: percentage(1 / $columns);
+    max-width: math.percentage(math.div(1, $columns));
+
+    .no-flexbox & {
+      width: math.percentage(math.div(1, $columns));
+    }
   }
 }

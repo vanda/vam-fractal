@@ -1,3 +1,6 @@
+@use "../../mixins";
+@use "../../base";
+
 .b-venue-blog-card {
   display: flex;
   flex-direction: column;
@@ -7,44 +10,44 @@
   &__link {
     width: 100%;
 
-    @include bpMaxXSmall {
+    @include mixins.breakpoints-bpMaxXSmall {
       display: flex;
       flex-direction: column;
     }
 
     &--100-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         display: flex;
         flex-direction: row-reverse;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         display: flex;
         flex-direction: row-reverse;
       }
     }
 
     &--33-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         display: flex;
         flex-direction: row-reverse;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         display: block;
       }
     }
   }
 
   &--50-width {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       flex: 1;
       flex-basis: 0;
     }
   }
 
   &--100-width {
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       flex-direction: row-reverse;
       max-width: 1200px;
     }
@@ -53,29 +56,32 @@
   &--33-width {
     max-width: 355px;
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       max-width: 780px;
     }
-    @include bpMinMedium {
+
+    @include mixins.breakpoints-bpMinMedium {
       flex-basis: 380px;
       flex-direction: column;
     }
   }
 
-  &__subheading, &__text {
-    background-color: siteColor(vam-white);
+  &__subheading,
+  &__text {
+    background-color: base.sitecolors-siteColor("vam-white");
+
     &--50-width {
       padding: 20px;
     }
 
     &--100-width {
-      @include bpMaxXSmall {
+      @include mixins.breakpoints-bpMaxXSmall {
         padding: 20px;
       }
     }
 
     &--33-width {
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         padding: 20px;
       }
     }
@@ -87,14 +93,14 @@
     }
 
     &--100-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         flex: 1;
         flex-basis: 0;
-        flex-grow: 1.75; // N.B. do not know why/how this works
+        flex-grow: 1.75;
         padding: 50px 20px 15px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         flex-grow: 1;
         max-width: none;
         padding: 70px 44px 70px 20px;
@@ -103,15 +109,15 @@
     }
 
     &--33-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         max-width: calc(50% - 5px);
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         max-width: calc(50% - 10px);
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         height: 100%;
         max-width: none;
         padding: 20px;
@@ -125,7 +131,7 @@
     padding: 0;
 
     &--100-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         display: block;
         font-size: 13px;
         height: calc(100% - 33px);
@@ -134,7 +140,7 @@
         padding-bottom: 33px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         font-size: 15px;
         height: auto;
         line-height: 1.4;
@@ -143,14 +149,14 @@
     }
 
     &--33-width {
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         display: none;
       }
     }
   }
 
   &__img {
-    @include bpMaxXSmall {
+    @include mixins.breakpoints-bpMaxXSmall {
       height: 250px;
       max-width: 500px;
       width: 100%;
@@ -164,13 +170,13 @@
     }
 
     &--50-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         img {
           height: 33.3333vw;
         }
       }
 
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         img {
           height: 250px;
         }
@@ -178,7 +184,7 @@
     }
 
     &--100-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         flex: 1;
         flex-basis: 0;
         flex-grow: 2;
@@ -188,14 +194,14 @@
         width: 50%;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         max-width: none;
         overflow: initial;
         width: 66.666%;
       }
 
       img {
-        @include bpMaxXSmall {
+        @include mixins.breakpoints-bpMaxXSmall {
           position: relative;
         }
 
@@ -204,20 +210,21 @@
     }
 
     &--33-width {
-      @include bpMinSmall {
+      @include mixins.breakpoints-bpMinSmall {
         img {
           height: 250px;
         }
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         width: 100%;
+
         img {
           position: relative;
         }
       }
 
-      @include bpMinLarge {
+      @include mixins.breakpoints-bpMinLarge {
         max-width: none;
         width: 100%;
       }
@@ -225,32 +232,32 @@
   }
 
   &__subheading {
-    color: siteColor(vam-grey-2);
+    color: base.sitecolors-siteColor("vam-grey-2");
     font-size: 13px;
     font-weight: 500;
     line-height: 1.4;
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       font-size: 15px;
     }
 
     &--100-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         background-color: transparent;
         left: 20px;
         position: absolute;
         top: 15px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         left: 20px;
         top: 20px;
       }
     }
 
     &--33-width {
-      @include bpMinMedium {
-        background-color: siteColor(vam-white);
+      @include mixins.breakpoints-bpMinMedium {
+        background-color: base.sitecolors-siteColor("vam-white");
         left: auto;
         position: relative;
         top: auto;
@@ -263,30 +270,30 @@
     font-weight: 500;
     line-height: 1.22;
 
-    @include bpMaxXSmall {
+    @include mixins.breakpoints-bpMaxXSmall {
       margin-bottom: 10px;
     }
 
-    @include bpMinXSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       font-size: 15px;
     }
 
-    @include bpMinMedium {
+    @include mixins.breakpoints-bpMinMedium {
       font-size: 23px;
     }
 
     &--100-width {
-      @include bpMinXSmall {
+      @include mixins.breakpoints-bpMinXSmall {
         margin-bottom: 10px;
       }
 
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         margin-bottom: 17px;
       }
     }
 
     &--33-width {
-      @include bpMinMedium {
+      @include mixins.breakpoints-bpMinMedium {
         margin-bottom: 0;
       }
     }

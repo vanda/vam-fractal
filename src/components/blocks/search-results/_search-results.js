@@ -17,7 +17,7 @@ const toggleSort = (el) => {
 
   const newSort = {
     'b-search-results__head-cell--sort-asc': 'b-search-results__head-cell--sort-desc',
-    'b-search-results__head-cell--sort-desc': 'b-search-results__head-cell--sort-none'
+    'b-search-results__head-cell--sort-desc': 'b-search-results__head-cell--sort-none',
   }[currentClass];
 
   Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((e) => {
@@ -91,17 +91,9 @@ if (document.querySelector('.etc-template__results-container')) {
   document.querySelector('.etc-template__results-container').addEventListener('initSorts', () => {
     Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
       if (parseInt(el.dataset.sortable, 10)) {
-        el.onclick = e => toggleSort(e.target);
+        el.onclick = (e) => toggleSort(e.target);
       }
     });
   });
   document.querySelector('.etc-template__results-container').dispatchEvent(new Event('initSorts'));
 }
-
-
-// Array.from(document.querySelectorAll('.b-search-results__head-cell')).forEach((el) => {
-//   if (parseInt(el.dataset.sortable, 10)) {
-//     el.onclick = e => toggleSort(e.target);
-//   }
-// });
-

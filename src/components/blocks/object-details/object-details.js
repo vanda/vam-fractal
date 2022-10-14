@@ -1,14 +1,14 @@
-const revealEl = document.createElement('DIV');
+const revealEl = document.createElement('div');
 const classes = [
   'etc-details__cell-concealer',
-  'etc-details__cell-revealer'
+  'etc-details__cell-revealer',
 ];
 const html = [
   '<span class="etc-details__cell-concealer-text">Read More</span><button class="etc-details__cell-concealer-button">+</button>',
-  '<span class="etc-details__cell-concealer-text">Read Less</span><button class="etc-details__cell-concealer-button">-</button>'
+  '<span class="etc-details__cell-concealer-text">Read Less</span><button class="etc-details__cell-concealer-button">-</button>',
 ];
 
-function clickFunction (e) {
+function clickFunction(e) {
   const hiddenClass = 'etc-details__cell-free-content--hidden';
   const textEl = e.target.parentElement.querySelector('.etc-details__cell-free-content');
   const textElConcealed = textEl.classList.contains(hiddenClass);
@@ -25,7 +25,7 @@ function clickFunction (e) {
   }
 }
 
-function initRevealer () {
+function initRevealer() {
   revealEl.className = classes[0];
   revealEl.innerHTML = html[0];
   revealEl.setAttribute('data-tracking-collections', 'read more');
