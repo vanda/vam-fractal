@@ -23,7 +23,9 @@
     "pub": "NODE_ENV=production npm run build-prod:webpack && node ./fractal-builder && npm run pub-prod:surge",
     "build-dev:webpack": "webpack --config ./webpack.dev.js --watch",
     "build-prod:webpack": "webpack --config ./webpack.prod.js",
-    "pub-prod:surge": "surge --project www --domain vam-design-guide.surge.sh"
+    "pub-prod:surge": "surge --project www --domain vam-design-guide.surge.sh",
+    "ci-lint:sass": "node_modules/.bin/stylelint src/**/*.scss",
+    "ci-lint:js": "eslint src || true"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",

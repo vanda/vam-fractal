@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run tests
           command:
-            npm run lint
+            npm run ci-lint:sass
       - run:
           name: Build static site
           command:
