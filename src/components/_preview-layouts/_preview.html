@@ -1,1 +1,14 @@
-<!doctype html><html lang="en-gb" dir="ltr" prefix="og: http://ogp.me/ns#"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><meta name="format-detection" content="telephone=no"><title>V&amp;A Fractal component library</title><script defer="defer" src="../../../dev/scripts/vanda.53b4f730204d50038a05.js"></script><link href="../../../dev/styles/fractal.3df6b502765a9b89da19.css" rel="stylesheet"><link href="../../../dev/styles/vanda.421cfa284e3c9946e163.css" rel="stylesheet"></head><body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%} {% if _target.context.previewClass %} {{ _target.context.previewClass }}{%- endif -%}">{{ yield | safe }}</body></html>
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>V&amp;A Fractal component library</title>
+  <script defer src="../../../dev/scripts/vanda.js"></script><link href="../../../dev/styles/fractal.css" rel="stylesheet"><link href="../../../dev/styles/vanda.css" rel="stylesheet"></head>
+  <body class="{% if _target.context.ignore_global_theme !== true %}theme-{{ global_theme_color }}{%- endif -%} {% if _target.context.previewClass %} {{ _target.context.previewClass }}{%- endif -%}">
+
+    {{ yield | safe }}
+
+  </body>
+</html>

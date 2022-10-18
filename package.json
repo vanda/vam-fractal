@@ -28,6 +28,7 @@
     "ci-lint:js": "eslint src || true"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.3",
     "@babel/eslint-parser": "^7.18.9",
     "concurrently": "^7.3.0",
     "css-loader": "^6.7.1",
