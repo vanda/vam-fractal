@@ -24,8 +24,7 @@
     "build-dev:webpack": "webpack --config ./webpack.dev.js --watch",
     "build-prod:webpack": "webpack --config ./webpack.prod.js",
     "pub-prod:surge": "surge --project www --domain vam-design-guide.surge.sh",
-    "ci-lint:sass": "node_modules/.bin/stylelint src/**/*.scss",
-    "ci-lint:js": "eslint src || true"
+    "ci-lint:sass": "node_modules/.bin/stylelint src/**/*.scss"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
