@@ -1,5 +1,6 @@
 node_modules
-dev
+!dev/
+dev/*
+!dev/svg
 www
-src/components/_preview-layouts/_preview.html
 .DS_Store
