@@ -4,14 +4,14 @@ const paths = {
   // HTML build destination : Fractal 'builder' deployment for Surge publication
   pub: `${__dirname}/www`,
   // local development build destination : Fractal 'static' deployment
-  static: `${__dirname}/dev`,
+  static: `${__dirname}/build`,
   // local source files
   src: `${__dirname}/src`,
   components: `${__dirname}/src/components`,
   docs: `${__dirname}/src/docs`
 };
 
-const buildDir = 'dev';
+const buildDir = 'build';
 
 // Required modules
 const fractal = module.exports = require('@frctl/fractal').create();
@@ -31,12 +31,12 @@ fractal.docs.set('ext', '.md');
 fractal.docs.set('path', paths.docs);
 
 // Web UI config.
-fractal.web.set('server.port', 3001);
+fractal.web.set('server.port', 8000);
 fractal.web.set('server.sync', true);
 
 // Local development environment
 fractal.web.set('static.path', paths.static);
-fractal.web.set('static.mount', 'dev');
+fractal.web.set('static.mount', 'build');
 
 // Distribution environment
 fractal.web.set('builder.dest', paths.pub);

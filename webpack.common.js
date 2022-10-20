@@ -31,7 +31,7 @@ const config = {
   output: {
     clean: true,
     filename: process.env.NODE_ENV === 'production' ? 'scripts/[name].[contenthash].js' : 'scripts/[name].js',
-    path: path.resolve(__dirname, 'dev')
+    path: path.resolve(__dirname, 'build')
   },
   optimization: {
     minimizer: [
