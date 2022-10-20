@@ -4,8 +4,8 @@ const classes = [
   'b-object-details__cell-revealer'
 ];
 const html = [
-  '<span class="b-object-details__cell-concealer-text">Read more</span><button class="b-object-details__cell-concealer-button b-object-details__cell-concealer-button--more"></button>',
-  '<span class="b-object-details__cell-concealer-text">Read less</span><button class="b-object-details__cell-concealer-button"></button>'
+  '<span class="b-object-details__cell-concealer-text">Read more</span><button class="b-object-details__cell-concealer-button b-object-details__cell-concealer-button--more" aria-label="Read more"></button>',
+  '<span class="b-object-details__cell-concealer-text">Read less</span><button class="b-object-details__cell-concealer-button" aria-label="Read less"></button>'
 ];
 
 function clickFunction (e) {
