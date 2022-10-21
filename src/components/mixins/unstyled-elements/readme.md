@@ -1,30 +1,30 @@
-# Unstyled input (mixin)
+# Unstyled elements
 
 ## Background and usage
 
-Resets an input (`button` or `a`) to appeared unstyled
+Reset styling of specific elements to the local reset or default user-agent styling.
 
 ## Implementation
 
-```sass
-.foo{
-  @include unstyled-input;
-}
-```
-
-# Unstyled list (mixin)
-
-## Background and usage
-
-Resets a list (`ol` or `ul`) to appeared unstyled
-
-## Implementation
+Unstyled input (mixin). Resets an input (`button` or `a`) to appeared unstyled
 
 ```sass
+@use "[path]/mixins";
+
 .foo{
-  @include unstyledList;
+  @include mixins.unstyledelements-unstyled-input;
 }
 ```
+Unstyled list (mixin). Resets a list (`ol` or `ul`) to appeared unstyled
+
+```sass
+@use "[path]/mixins";
+
+.foo{
+  @include mixins.unstyledelements-unstyledList;
+}
+```
+For details on the format of this SASS namespaced property please see the repository root ReadMe file.
 
 ## References
 

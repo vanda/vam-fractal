@@ -23,23 +23,26 @@ In order for Wordmarks to scale properly they need `preserveAspectRatio="xMinYMa
         ```
 
   ### Including the new icon
-  1. Add the new icon to `/src/assets/svg` which is a directory polled by `watch()` in `gulpfile.js`
-  2. SVG icon is optimised, processed in a `<symbol>` container with the icon `Id` and a `viewbox` attribute (position and dimensional information). Eg. 
+  To add a new SVG icon and add it to the SVG sprite:
 
-        ```html
-        <symbol id="south-kensington" viewBox="0 0 100 100"><path d="..." fill="currentColor"/></symbol>
-        ```
-  3. Gulp is automated to add the `<symbol>` container to the SVG sprite at `/tmp/assets/svg/svg-template.svg`
-  4. Update the icon configuration file at `/src/components/base/icons/icons.config.js` with the new icon name (`<symbol> Id`)
+  1. Save the SVG file into the src/assets/svg directory
+  
+     If a development build has been run and Webpack is watching files in `src/assets` then the new SVG icon will be bundled immediately into the SVG sprite at `build/svg/vam-sprite.svg`
 
+     Running either the development build or creating a Fractal 'static build' will incorporate the new SVG icon into the SVG sprite. 
+
+     The SVG icon is optimised before addition into the sprite and processed in a `<symbol>` container with the icon `Id` and a `viewbox` attribute (position and dimensional information). Eg. 
+
+     ```html
+     <symbol id="south-kensington" viewBox="0 0 100 100"><path d="..." fill="currentColor"/></symbol>
+     ```
+
+     The SVG icon is optimised before addition into the sprite and the sprite itself is then minified for distribution.
+  
+  2. Edit `src/components/base/icons/icons.config.js`, adding the name of the icon taken from the `<symbol>` 'id' attribute to the array
 
   ### Previewing the new icon
-  The new icon should be viewable along with existing icons in the [SVG sprite](http://localhost:8000/components/detail/icons--all) of a local build of vam-fractal.
-
-
-  ### Distributing the updated icon sprite
-  1. Execute `npm run build` so that the SVG sprite is copied into the `/dist/svg/` as `vamicons.svg` (Note: change of filename).
-  2. Push the feature branch to the vam-fractal repository so that the new icon changes can be referenced by the name of the feature branch elsewhere.
+  The new icon should be viewable along with existing icons in the SVG sprite of a local build of vam-fractal at `build/svg/vam-sprite.svg`.
 
 ## References
 
