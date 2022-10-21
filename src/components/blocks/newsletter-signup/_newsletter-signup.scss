@@ -1,6 +1,10 @@
 .b-newsletter {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  background-color: siteColor(vam-grey-5);
+  color: siteColor(vam-black);
+  margin: 25px 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 
   &--footer {
     background-color: siteColor(vam-black);
@@ -8,13 +12,6 @@
     color: siteColor(vam-white);
     margin: auto;
   }
-
-  background-color: siteColor(vam-grey-5);
-  color: siteColor(vam-black);
-  margin: 25px 0;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
 
   @include bpMinXSmall {
     flex-direction: row;
@@ -44,6 +41,7 @@
         width: 100%;
       }
     }
+
     @include bpMinLarge {
       background-color: siteColor(vam-grey-5);
       opacity: 1;
@@ -131,11 +129,13 @@
         flex-direction: row;
         width: 100%;
       }
+
       &--footer {
         @include bpMinMedium {
           justify-content: flex-end;
         }
       }
+
       &--component {
         display: flex;
         flex-direction: row;
@@ -174,20 +174,23 @@
         }
 
         @include bpMinXSmall {
-          &--component {
-            margin-right: 0;
-            max-width: 467px;
-          }
           flex-grow: 1;
           height: 50px;
           margin-right: 8px;
           text-align: left;
+
+          &--component {
+            margin-right: 0;
+            max-width: 467px;
+          }
         }
+
         @include bpMinMedium {
+          max-width: 355px;
+
           &--component {
             max-width: 467px;
           }
-          max-width: 355px;
         }
       }
     }
@@ -225,16 +228,16 @@
       }
 
       @include bpMinXSmall {
+        margin-top: 0;
+        max-width: 150px;
+
         &--footer {
           max-width: 158px;
         }
         
         &--component {
           max-width: 102px;
-        }
-        
-        margin-top: 0;
-        max-width: 150px;
+        }        
       }
     }
   }

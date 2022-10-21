@@ -1,6 +1,4 @@
 .b-associated-contexts {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   color: #ffffff;
 
   @include bpMinSmall {
@@ -10,11 +8,13 @@
   &-background {
     background-color: black;
   }
+
   &__controlled-vocab-container {
     @include bpMinXSmall {
       margin-top: 40px;
     }
   }
+
   &__title {
     font-size: 14px;
     font-weight: bold;
@@ -22,14 +22,17 @@
     line-height: 2.29;
     margin-bottom: 15px;
     text-align: center;
+
     @include bpMinSmall {
       text-align: left;
     }
   }
+
   &__container {
     list-style-type: none;
     margin: 0;
   }
+
   &__link {
     display: none;
     margin-bottom: 10px;
@@ -48,11 +51,13 @@
       height: 65px;
       width: 65px;
     }
+
     &-container {
       align-items: center;
       display: flex;
       flex-direction: row;
     }
+
     &-text {
       margin-left: 16px;
 
@@ -67,6 +72,7 @@
       &-title {
         @include typeSetting(4, regular);
       }
+
       &-subtitle {
         @include typeSetting(2, regular);
       }
