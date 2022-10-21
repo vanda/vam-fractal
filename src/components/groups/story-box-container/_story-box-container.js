@@ -1,20 +1,17 @@
 import Clamp from 'clamp-js';
 
 const clampText = () => {
-  const textToClamp = Array.from(document.querySelectorAll('.b-story-box__content-text'));
-
-  if (window.innerWidth > 499) {
-    textToClamp.forEach((el) => {
+  Array.from(document.querySelectorAll('.b-story-box__content-text'), (el) => {
+    if (window.innerWidth > 499) {
       Clamp(el, {
         clamp: 'auto',
         splitOnChars: ['.', ',', ' ']
       });
-    });
-  } else {
-    textToClamp.forEach((el) => {
+    } else {
       el.style.display = 'none';
-    });
-  }
+    }
+    return true;
+  });
 };
 
 const initRevealer = () => {
