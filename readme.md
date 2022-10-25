@@ -16,7 +16,7 @@ Add the following to your project `package.json` file, replacing the branch name
 "vam-fractal": "vanda/vam-fractal#master"
 ```
 
-Component modules have their own SASS and can also contain Javascript files which are imported directly from the vam-fractal node-module installed as a dependency in your project `package.json` file. These assets should be compiled within the project itself.
+Component modules have their own SASS and can also contain Javascript files which are imported directly from the vam-fractal node-module directory installed as a dependency in your project `package.json` file. These assets should be compiled as required within the project itself.
 
 Font and SVG (as an icon sprite) assets can be accessed by creation of symlinks.
 
@@ -108,6 +108,16 @@ New Fractal modular [components](http://fractal.build/guide/components) are adde
 3. The `[name].html` document should use the [Nunjucks](https://mozilla.github.io/nunjucks/) Javascript templating language
 
 4. Set variants of the component in the `[name].config.js` Fractal configuration file
+
+## Linting
+
+The SASS is linted via [stylelint](https://stylelint.io/). The configuration and custom rule set is found in `/.stylelint.json`. When modifying or adding to the SASS please read through [the documentation around the rules](https://stylelint.io/user-guide/rules). 
+
+The standard shareable SASS configuration for styleint, [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss) is used. In an effort to adhere to this standard please only add to the `/.stylelint.json` configuration if agreed and absolutely necessary.
+
+The deployment and distribution will fail if the SASS linting fails.
+
+
 
 ## Adding a new SVG icon asset
 
