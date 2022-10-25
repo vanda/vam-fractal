@@ -20,11 +20,12 @@
   "scripts": {
     "dev": "NODE_ENV=development concurrently 'node ./fractal-server' 'npm run build-dev:webpack'",
     "build": "NODE_ENV=production npm run build-prod:webpack && node ./fractal-builder",
-    "pub": "NODE_ENV=production npm run build-prod:webpack && node ./fractal-builder && npm run pub-prod:surge",
+    "pub": "NODE_ENV=production npm run build-prod:webpack && node ./fractal-builder && npm run pub-prod:surge && npm run clean",
     "build-dev:webpack": "webpack --config ./webpack.dev.js --watch",
     "build-prod:webpack": "webpack --config ./webpack.prod.js",
     "pub-prod:surge": "surge --project www --domain vam-design-guide.surge.sh",
-    "ci-lint:sass": "node_modules/.bin/stylelint src/**/*.scss"
+    "ci-lint:sass": "node_modules/.bin/stylelint src/**/*.scss",
+    "clean": "node ./fractal-clean"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
