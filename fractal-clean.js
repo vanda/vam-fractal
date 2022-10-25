@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 try {
-  const buildDirs = ['www', 'build'];
+  const buildDirs = ['www', 'build/scripts', 'build/styles'];
 
   for (const dir of buildDirs) {
     if (fs.existsSync(dir)) {
