@@ -3,5 +3,6 @@ node_modules
 build/*
 !build/svg
 !build/fonts
+src/components/_preview-layouts/_preview.html
 www
 .DS_Store
