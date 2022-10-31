@@ -79,6 +79,18 @@ $ npm run pub
 
 Upon successful authentication the 'static build' site is uploaded to [vam-design-guide.surge.sh](https://vam-design-guide.surge.sh)
 
+After publication all generated local build directories and files are automatically deleted. This resets your build environment but does not touch modified component files under the `/src` directory.
+
+## Resetting build environments
+
+If you wish to remove all and only directories and files that are generated during a development build or a Fractal 'static build' then in a terminal enter:
+
+```bash
+$ npm run clean
+```
+
+Note that this is an automatic process after publication to Surge.
+
 ## Adding a new Fractal component
 
 New Fractal modular [components](http://fractal.build/guide/components) are added in `src/components`
