@@ -6,7 +6,7 @@ module.exports = {
     previewClass: 'fr-bg--dark',
     jsHook: 'js-search-site',
     inputId: 'q',
-    placeholder: 'Type your search here',
+    placeholder: 'Search the website',
     action: 'https://www.vam.ac.uk/search'
   },
   variants: [

@@ -23,6 +23,16 @@
     </svg>
     {% endif %}
   </div>
+  {% if not modifiers %}
+  <div class="b-search-form__link-to-collections">
+    <span class="b-search-form__link-to-collections--desktop">
+      Alternatively search more than 1.25 million objects from the <a href="https://collections.vam.ac.uk/">V&A Collections</a>
+    </span>
+    <span class="b-search-form__link-to-collections--mobile">
+      <a href="https://collections.vam.ac.uk/">Search the collections</a>
+    </span>
+  </div>
+  {% endif %}
 
   {# Collections Landing pg #}
   {% if modifiers and 'etc-gateway' in modifiers %}
