@@ -19,28 +19,28 @@ const termButtonHTML = (facet, term) => `
 `;
 
 const dateFacetHTML = () => `
-    <button tabindex="0" class="b-facet-box__facet-text" data-facet-text="dates">
+    <button tabindex="0" class="b-facet-box__facet-text" data-facet-text="dates" aria-expanded="false" aria-controls="b-facet-box__facet-term-container--date">
       Dates
     </button>
-    <div class="b-facet-box__facet-term-container">
+    <div class="b-facet-box__facet-term-container" id="b-facet-box__facet-term-container--date">
       <span class="b-facet-box__facet-term-container-text">
         Use a hyphen to indicate dates BC. For example -800 is 800 BC.
       </span>
       <form class="b-facet-box__facet-date-container">
         <div class="b-facet-box__facet-date-container-start">
-          <label class="b-facet-box__facet-date-label">
+          <label class="b-facet-box__facet-term-container-text">
             From year:
           </label>
           <input class="b-facet-box__facet-date-input" placeholder="-800" type="number" name="year_made_from">
         </div>
         <div class="b-facet-box__facet-date-container-end">
-          <label class="b-facet-box__facet-date-label">
+          <label class="b-facet-box__facet-term-container-text">
             To year:
           </label>
           <input class="b-facet-box__facet-date-input" placeholder="2000" type="number" name="year_made_to">
         </div>
         <div class="b-facet-box__facet-date-container-button">
-          <label class="b-facet-box__facet-date-label">
+          <label class="b-facet-box__facet-term-container-text">
             &nbsp;
           </label>
           <button class="b-facet-box__facet-date-button">
@@ -83,7 +83,6 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   button.dataset.term = term;
   button.dataset.value = value;
   button.dataset.count = count;
-  button.setAttribute('aria-labelledby', `${paramName.replace(' ', '')}-${term.replace(' ', '')}-checkbox-label`);
   button.setAttribute('role', 'switch');
   button.setAttribute('aria-checked', 'false');
 
@@ -130,15 +129,21 @@ const termCheckbox = (facet, paramName, term, value, count) => {
   return checkbox;
 };
 
-const facetHTML = (facet, seeMore) => `
-  <button class="b-facet-box__facet-text" data-facet-text="${facet}">
-    ${facet}
-  </button>
-  <ul data-facet="${facet}" class="b-facet-box__facet-term-container">${
-  seeMore ? `<li class="b-facet-box__term-more-container">
-    <button data-facet="${facet}" class="b-facet-box__term-more" aria-label="see more terms of facet ${facet}">See more</button>
-  </li>` : ''
-}</ul>`;
+let facetExpanderID = 0;
+const facetHTML = (facet, seeMore) => {
+  facetExpanderID += 1;
+  return `
+    <button class="b-facet-box__facet-text" data-facet-text="${facet}" aria-expanded="false" aria-controls="b-facet-box__facet-term-container_${facetExpanderID}">
+      ${facet}
+    </button>
+    <ul data-facet="${facet}" class="b-facet-box__facet-term-container" id="b-facet-box__facet-term-container_${facetExpanderID}">${
+      seeMore ? `<li class="b-facet-box__term-more-container">
+        <button data-facet="${facet}" class="b-facet-box__term-more" aria-label="see more terms of facet ${facet}">See more</button>
+      </li>` : ''
+    }
+    </ul>
+  `;
+};
 
 const revealMoreFacets = (e) => {
   e.preventDefault();
@@ -181,14 +186,12 @@ const createFacets = (activeFacets) => {
     newFacet.className = 'b-facet-box__facet';
     newFacet.setAttribute('data-param-name', paramName);
     newFacet.innerHTML = facetHTML(facet, terms.length > 5);
-    newFacet.setAttribute('aria-haspopup', 'true');
-    newFacet.setAttribute('aria-expanded', 'false');
 
     newFacet.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.classList.contains(facetTextClass)) {
-        e.target.parentNode.setAttribute('aria-expanded', String(!(e.target.parentNode.getAttribute('aria-expanded') === 'true')));
-        e.target.classList.toggle(`${e.target.classList[0]}--active`);
+        e.target.setAttribute('aria-expanded', String(!(e.target.getAttribute('aria-expanded') === 'true')));
+        e.target.classList.toggle(`${facetTextClass}--active`);
         e.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
     });
@@ -316,17 +319,12 @@ const initialiseFacetOverlay = () => {
 
     const dateFacet = document.createElement('DIV');
     dateFacet.className = 'b-facet-box__facet b-facet-box__facet-date';
-    dateFacet.setAttribute('aria-haspopup', 'true');
-    dateFacet.setAttribute('aria-expanded', 'false');
     dateFacet.innerHTML = dateFacetHTML();
     dateFacet.querySelector('button').addEventListener('click', (ev) => {
       ev.preventDefault();
       if (ev.target.classList.contains(facetTextClass)) {
-        const currentExpanded = dateFacet.getAttribute('aria-expanded');
-        dateFacet.setAttribute('aria-expanded',
-          currentExpanded === 'true' ? 'false' : 'true'
-        );
-        ev.target.classList.toggle(`${ev.target.classList[0]}--active`);
+        ev.target.setAttribute('aria-expanded', String(!(ev.target.getAttribute('aria-expanded') === 'true')));
+        ev.target.classList.toggle(`${facetTextClass}--active`);
         ev.target.parentNode.querySelector(`.${facetTermContainerClass}`).classList.toggle(`${facetTermContainerClass}--active`);
       }
     });
@@ -560,4 +558,3 @@ if (document.querySelector('.b-facet-box')) {
     }
   });
 }
-

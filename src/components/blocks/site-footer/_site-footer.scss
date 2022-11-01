@@ -20,6 +20,7 @@
       text-align: center;
       top: -32px;
     }
+
     &--etc {
       &:after {
         border-bottom: 1px siteColor(vam-grey-2) solid;
@@ -184,10 +185,6 @@
     display: flex;
 
     a {
-      color: siteColor(vam-grey-4);
-    }
-
-    svg {
       color: siteColor(vam-white);
     }
 

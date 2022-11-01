@@ -1,19 +1,26 @@
 .b-search-pagination {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  @include typeSetting(1);
+
+  @include bpMinSmall {
+    @include typeSetting(3);
+  }
+
   &__container {
-    align-items: center;
     color: siteColor(vam-white);
     display: flex;
     flex-direction: row;
     justify-content: center;
     position: relative;
+
     &--display-counter {
       justify-content: left;
+      margin-bottom: 20px;
     }
+
     &--page-size {
       margin-top: 20px;
     }
+
     &--col {
       flex-direction: column;
     }
@@ -23,34 +30,38 @@
     cursor: pointer;
     margin-left: 10px;
     text-decoration: underline;
+
     &--active {
+      @include fontWeight(x-bold);
       cursor: default;
-      font-weight: 800;
       text-decoration: none;
     }
+
     &:hover {
-      font-weight: 600;
+      @include fontWeight(x-bold);
     }
   }
 
   &__prev-link {
     left: 0;
   }
+
   &__next-link {
     right: 0;
   }
+
   &__prev-link, &__next-link {
     @include typeSetting(2, bold);
-    @include bpMinMedium {
-      top: 11px;
-      @include typeSetting(3, bold);
-    }
-
     color: siteColor(vam-white);
     cursor: pointer;
     position: absolute;
-    top: 11px;
+    top: 15px;
     user-select: none;
+
+    @include bpMinSmall {
+      @include typeSetting(4, bold);
+      top: 11px;
+    }
 
     &[disabled] {
       color: siteColor(vam-grey-4);
@@ -62,6 +73,7 @@
     &-caret {
       text-decoration: none;
     }
+
     &-text {
       pointer-events: none;
       text-decoration: underline;
@@ -70,49 +82,45 @@
 
   &__page-button {
     display: block;
+
     &[disabled] {
       display: none;
     }
+
     &:last-of-type {
       margin-right: 0;
     }
   }
 
-  &__page-button-last {
-    &[disabled] {
-      display: none;
-    }
-  }
-
   &__page-button, &__page-button-start, &__page-button-last {
-    @include typeSetting(3, medium);
-    @include bpMinMedium {
+    @include typeSetting(3);
+    border: 1px solid siteColor(vam-white);
+    color: siteColor(vam-white);
+    height: 50px;
+    margin-right: 9px;
+    min-width: 36px;
+    padding: 0 10px;
+
+    @include bpMinSmall {
       height: 44px;
       margin-right: 8px;
-    }
-
-    border: 1px solid siteColor(vam-white);
-    border-radius: 0;
-    color: siteColor(vam-white);
-    height: 40px;
-    margin-right: 6px;
-    min-width: 32px;
-    padding: 0 5px;
-    &-seperator {
-      &-start, &-middle, &-last {
-        color: siteColor(vam-white);
-        margin-right: 8px;
-        margin-top: 6px;
-        user-select: none;
-      }
-      &[disabled] {
-        display: none;
-      }
     }
 
     &:hover {
       background-color: siteColor(vam-grey-3);
       cursor: pointer;
+    }
+
+    &-seperator {
+      &-start, &-middle, &-last {
+        color: siteColor(vam-white);
+        margin: 8px 9px 0 0;
+        user-select: none;
+      }
+
+      &[disabled] {
+        display: none;
+      }
     }
 
     &--current {
@@ -126,5 +134,9 @@
       display: flex;
       flex-direction: row;
     }
+  }
+
+  &__page-button-last[disabled] {
+    display: none;
   }
 }

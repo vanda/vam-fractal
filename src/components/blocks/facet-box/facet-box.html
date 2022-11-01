@@ -1,7 +1,7 @@
 <form id="vam-etc-search">
 {% if testEvent %}
   <a class="add-facet-button" > add facets </a>
-  <div class="b-search-form__facet-pane" style="width: calc(100% - 235px); max-width: 1080px;">
+  <div class="b-search-form__facet-pane">
     <div class="b-search-form__facets-container">
       <div class="b-search-form__facets">
       </div>
@@ -107,8 +107,6 @@
 
   <script type="text/javascript">
     document.onload = (() => {
-
-      document.body.style.backgroundColor = 'black';
 
       window.active_facets = new Set();
 

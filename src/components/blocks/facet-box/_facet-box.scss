@@ -1,6 +1,4 @@
 .b-facet-box {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   background-color: rgba(siteColor(vam-black), .92);
   color: siteColor(vam-white);
   display: none;
@@ -23,6 +21,7 @@
     display: block;
     overflow-y: auto;
     z-index: 9999;
+
     @include bpMinMedium {
       z-index: 0;
     }
@@ -41,15 +40,13 @@
   }
 
   &__modal-button {
-    @include bpMinMedium {
-      display: none;
-    }
     background-color: transparent;
     border-color: themeColor(silent-green);
     color: siteColor(vam-white);
     display: block;
     padding-right: 36px;
     position: relative;
+
     &:hover {
       background-color:  themeColor(silent-green);
       border-color: themeColor(silent-green);
@@ -65,9 +62,20 @@
       position: relative;
       width: 40px;
     }
+
+    @include bpMinMedium {
+      display: none;
+    }
   }
 
   &__modal-content {
+    color: themeColor(silent-green);
+    left: calc(100% - 34px);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
     &-close {
       color: siteColor(vam-white);
       height: 19px;
@@ -75,6 +83,7 @@
       transform: translate(-50%, -50%);
       width: 18px;
     }
+
     &-open {
       height: 34px;
       margin-top: -1px;
@@ -85,41 +94,38 @@
       color: siteColor(vam-white);
       filter: invert(100%);
     }
-
-    color: themeColor(silent-green);
-    left: calc(100% - 34px);
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
   &__modal {
     &-container {
-      @include bpMinMedium {
-        display: none;
-      }
-      &--close {
-        @include bpMinMedium {
-          display: none;
-        }
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-      }
       padding-right: 20px;
       padding-top: 20px;
       text-align: right;
+
+      @include bpMinMedium {
+        display: none;
+      }
+
+      &--close {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        @include bpMinMedium {
+          display: none;
+        }
+      }
     }
   }
 
   &__facet {
-    &:nth-of-type(1) {
-      margin-top: 0;
-    }
     border-radius: 2px;
     margin-bottom: 15px;
     margin-top: 15px;
+
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
 
     &-date-start-container, &-date-end-container {
       display: flex;
@@ -127,17 +133,21 @@
     }
 
     &-text {
-      @include typeSetting(3, bold);
-      &:hover {
-        background-color: siteColor(vam-grey-1);
-        cursor: pointer;
-      }
-
+      @include typeSetting(4, bold);
       color: siteColor(vam-white);
       padding: 10px;
       position: relative;
       text-align: left;
       width: 100%;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+
+      &:hover {
+        background-color: siteColor(vam-grey-1);
+        cursor: pointer;
+      }
 
       &::after {
         @include typeSetting(6, light);
@@ -151,10 +161,9 @@
 
       &--active {
         background-color: siteColor(vam-grey-1);
-        padding-bottom: 1px;
+        padding-bottom: 3px;
 
         &::after {
-          @include typeSetting(8, light);
           background-color: white;
           content: ' ';
           height: 2px;
@@ -164,14 +173,15 @@
     }
 
     &-container {
-      @include bpMinMedium {
-        margin-top: 0;
-        padding: 0;
-      }
       margin: auto;
       margin-top: 37px;
       max-width: 530px;
       padding: 0 20px;
+
+      @include bpMinMedium {
+        margin-top: 0;
+        padding: 0;
+      }
     }
 
     &-date {
@@ -184,27 +194,33 @@
         @include bpMinXSmall {
           max-width: none;
         }
+
         &-start, &-end {
           flex-basis: 30%;
           margin-right: 8px;
+
           @include bpMinXSmall {
             flex-basis: 30%;
           }
         }
+
         &-button {
           flex-basis: 10%;
         }
+
         &-start, &-end, &-button {
           display: flex;
           flex-direction: column;
         }
       }
+
       &-button {
         background-color: #ceffd6;
         border-radius: 2px;
         height: 44px;
         position: relative;
         width: 44px;
+
         &-icon {
           color: siteColor(vam-black);
           height: 100%;
@@ -216,13 +232,8 @@
           width: 100%;
         }
       }
+
       &-input {
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: inner-spin-button;
-          margin-left: 5px;
-          opacity: 1;
-        }
         background-color: siteColor(vam-white);
         border: solid 1px #979797;
         border-radius: 2px;
@@ -230,6 +241,14 @@
         height: 44px;
         padding-left: 10px;
         width: 95px;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: inner-spin-button;
+          margin-left: 5px;
+          opacity: 1;
+        }
+
         &--error {
           border-color: red;
         }
@@ -246,12 +265,14 @@
       width: 100%;
 
       &-text {
-        @include typeSetting(2, light);
+        @include typeSetting(2);
         padding-bottom: 10px;
+
         &--warning {
           color: white;
           padding-bottom: 0;
         }
+
         &[disabled] {
           display: none;
         }
@@ -264,10 +285,6 @@
     }
 
     &-term-toggle {
-      &:hover {
-        color: siteColor(vam-white);
-      }
-
       color: siteColor(vam-grey-5);
       cursor: pointer;
       display: flex;
@@ -277,20 +294,35 @@
       margin-top: 10px;
       position: relative;
 
+      &:hover {
+        color: siteColor(vam-white);
+      }
+
       &-text {
+        @include typeSetting(2);
+        flex-grow: 1;
+        text-align: left;
+
         @include bpMinMedium {
           max-width: 167px;
         }
-        flex-grow: 1;
-        text-align: left;
       }
 
       &-tick use {
         display: none;
       }
+
       &-tick {
         border: 1px siteColor(vam-white) solid;
         border-radius: 3px;
+        color: siteColor(vam-black);
+        height: 25px;
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
 
         &--active {
           background-color: themeColor(silent-green);
@@ -300,15 +332,6 @@
         &--active use {
           display: block;
         }
-
-        color: siteColor(vam-black);
-        height: 25px;
-        left: 0;
-        pointer-events: none;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 25px;
       }
 
       &-button {
@@ -320,6 +343,7 @@
 
       &-checkbox {
         margin-left: 40px;
+
         &:before {
           content: '';
           cursor: pointer;
@@ -330,6 +354,7 @@
           width: 25px;
         }
       }
+
       &-result {
         flex-shrink: 1;
         padding-left: 10px;
@@ -340,15 +365,7 @@
   }
 
   &__term {
-    &-more {
-      cursor: pointer;
-      font-weight: 700;
-      margin: 10px 0;
-      text-decoration: underline;
-    }
-
-    @include typeSetting(3, light);
-
+    @include typeSetting(3);
     border: solid themeColor(silent-green) 1px;
     border-radius: 4px;
     color: siteColor(vam-white);
@@ -358,18 +375,27 @@
     padding: 10px 33px 10px 13px;
     position: relative;
 
+    &-more {
+      @include fontWeight(bold);
+      cursor: pointer;
+      margin: 10px 0;
+      text-decoration: underline;
+    }
+
     &:last-of-type {
       margin-right: 0;
     }
 
     &--form {
-      @include bpMinXSmall {
-        display: block;
-      }
       border: solid siteColor(vam-black) 1px;
       color: siteColor(vam-black);
       display: none;
       width: fit-content;
+
+      @include bpMinXSmall {
+        display: block;
+      }
+
       &-revealer {
         display: block;
         padding-right: 13px;
@@ -400,9 +426,8 @@
         top: 50%;
         transform: translateY(-50%);
       }
+
       &--no-cross {
-        font-weight: 800;
-        text-decoration: underline;
         &::after {
           content: '';
         }
@@ -410,11 +435,6 @@
     }
 
     &-list {
-      @include bpMinMedium {
-        display: none;
-        margin-top: 15px;
-      }
-
       display: flex;
       flex: auto;
       flex-direction: row;
@@ -422,6 +442,11 @@
       margin: auto;
       max-width: 530px;
       padding: 40px 20px 0 20px;
+
+      @include bpMinMedium {
+        display: none;
+        margin-top: 15px;
+      }
     }
   }
 }

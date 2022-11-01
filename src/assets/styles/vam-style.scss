@@ -15,12 +15,12 @@
 @import '../../components/base/theme-color/theme-color';
 @import '../../components/base/typography/typography';
 @import '../../components/base/spacing/spacing';
-@import '../../components/base/reset/reset'; // Must come after colour and type
+@import '../../components/base/reset/reset'; // Must come after colour typography spacing
 
 // Utility
-@import '../../components/services/animation/animation'; // Must come after colour and type
-@import '../../components/services/svg_icon/svg_icon'; // Must come after colour and type
-@import '../../components/services/themed/themed'; // Must come after colour and type
+@import '../../components/services/animation/animation'; // Must come after colour and typography
+@import '../../components/services/svg_icon/svg_icon'; // Must come after colour and typography
+@import '../../components/services/themed/themed'; // Must come after colour and typography
 @import '../../components/services/lazyload/lazyload';
 @import '../../components/services/separated/separated';
 
@@ -62,6 +62,7 @@
 @import '../../components/blocks/review/review';
 @import '../../components/blocks/section-header/section-header';
 @import '../../components/blocks/search-form/search-form';
+@import '../../components/blocks/search-pagination/search-pagination';
 @import '../../components/blocks/search-result/search-result';
 @import '../../components/blocks/search-result-auto-suggest/search-result-auto-suggest';
 @import '../../components/blocks/search-result-objects/search-result-objects';
@@ -75,8 +76,6 @@
 @import '../../components/blocks/video-thumbnail/video-thumbnail';
 @import '../../components/blocks/video-trailer/video-trailer';
 @import '../../components/blocks/image-overlay-license-modal/image-overlay-license-modal';
-@import '../../components/blocks/search-results/search-results';
-@import '../../components/blocks/search-pagination/search-pagination';
 @import '../../components/blocks/associated-contexts/associated-contexts';
 @import '../../components/blocks/context-page-title/context-page-title';
 @import '../../components/blocks/shop-tout/shop-tout';

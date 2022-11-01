@@ -4,6 +4,7 @@ module.exports = {
       name: 'default',
       label: 'Default',
       context: {
+        previewClass: 'fr-bg--etc',
         pages: 99
       }
     }

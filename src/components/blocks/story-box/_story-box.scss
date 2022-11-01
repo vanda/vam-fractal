@@ -1,6 +1,4 @@
 .b-story-box {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   background-color: siteColor(vam-grey-2);
   color: siteColor(vam-white);
   cursor: pointer;
@@ -42,21 +40,25 @@
   }
 
   &__container-text {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+
     @include bpMinXSmall {
       margin-top: 20px;
     }
 
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
     &--column {
-      @include bpMinXSmall {
-        height: 190px;
-      }
       width: 100%;
+
+      @include bpMinXSmall {
+        height: 186px;
+      }
     }
+
     &--row {
       width: 100%;
+
       @include bpMinXSmall {
         width: 459px;
       }
@@ -108,7 +110,7 @@
     &-title,
     &-text {
       &--column, &--row {
-        margin-bottom: 20px;
+        margin-bottom: 26px;
         margin-left: 15px;
         margin-right: 15px;
       }
@@ -117,47 +119,49 @@
     &-type {
       &-container {
         &--column, &--row {
-          @include bpMinXSmall {
-            margin-bottom: 14px;
-          }
-
           display: flex;
           margin-bottom: 10px;
           margin-left: 15px;
           margin-right: 15px;
+
+          @include bpMinXSmall {
+            margin-bottom: 14px;
+          }
         }
       }
 
       &-text {
         &--column, &--row {
           @include typeSetting(1, bold);
+
+          &::first-letter {
+            text-transform: uppercase;
+          }
         }
       }
     }
 
     &-title {
       &--column, &--row {
+        @include typeSetting(4, bold);
+        margin-bottom: 0;
+        position: relative;
+
         @include bpMinXSmall {
           margin-bottom: 0;
         }
 
-        @include typeSetting(3, bold);
-        margin-bottom: 0;
-        position: relative;
-
         &:after {
-          @include bpMinXSmall {
-            display: block;
-          }
-
           background-color: siteColor(vam-white);
-          bottom: -9px;
           content: '';
           display: none;
           height: 2px;
-          left: 2px;
-          position: absolute;
+          margin: 16px 0 0 2px;
           width: 28px;
+
+          @include bpMinXSmall {
+            display: block;
+          }
         }
       }
     }
@@ -167,20 +171,16 @@
         max-height: 120px;
       }
 
-      &--column {
-        height: 96px;
-      }
       &--column, &--row {
+        @include typeSetting(3, regular);
+        display: none;
+        margin-top: 7px;
+        overflow: hidden;
+        word-break: normal;
+
         @include bpMinXSmall {
           display: block;
         }
-
-        @include typeSetting(3, regular);
-
-        display: none;
-        margin-top: 20px;
-        overflow: hidden;
-        word-break: normal;
       }
     }
   }
@@ -191,6 +191,7 @@
       object-fit: cover;
       width: 100%;
     }
+
     &--column {
       @include bpMinXSmall {
         height: 194px;

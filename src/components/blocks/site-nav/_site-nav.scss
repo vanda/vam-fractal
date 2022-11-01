@@ -397,6 +397,7 @@ $nav-breakpoints: (
     > a {
       margin-left: 34px;
       position: relative;
+      text-decoration: none;
 
       &:hover {
         left: 10px;
@@ -485,10 +486,6 @@ $nav-breakpoints: (
     position: absolute;
     text-align: left;
     top: 32px;
-
-    .b-site-nav--solid & {
-      background: siteColor(vam-grey-1);
-    }
 
     .active & {
       display: block;

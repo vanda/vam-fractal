@@ -34,7 +34,7 @@
     }
 
     &::after {
-      @include typeSetting(4, bold);
+      @include typeSetting(3);
       color: #fff;
       content: 'Image unavailable';
       left: 0;

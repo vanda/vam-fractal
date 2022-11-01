@@ -38,8 +38,6 @@
     }
 
     &-concealer {
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
       background-color: rgba(57, 59, 63, .8);
       height: 100%;
       left: 0;
@@ -94,7 +92,7 @@
       z-index: 300;
 
       @include bpMinMedium {
-        background: rgba(siteColor(vam-black), .9);
+        background: rgba(siteColor(vam-black), .94);
       }
     }
   }
