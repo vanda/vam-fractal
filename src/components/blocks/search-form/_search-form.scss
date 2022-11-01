@@ -507,4 +507,44 @@
       display: none;
     }
   }
+
+  &__link-to-collections {
+    @include typeSetting(3);
+    color: siteColor(vam-grey-4);
+    display: inline-block;
+    margin-top: 16px;
+    position: relative;
+
+    @include bpMinSmall {
+      @include typeSetting(4);
+    }
+
+    &--mobile {
+      @include bpMinMedium {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+      @include bpMinMedium {
+        display: inline;
+      }
+    }
+
+    &--mobile,
+    &--desktop {
+      &::after {
+        border: 4px solid transparent;
+        border-left-color: currentColor;
+        content: '';
+        display: inline-block;
+        margin-left: 4px;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
 }
