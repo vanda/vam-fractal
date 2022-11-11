@@ -1,0 +1,9 @@
+@use "../../../components/mixins";
+
+.fr-unstyled-input {
+  @include mixins.unstyledelements-unstyledInput;
+}
+
+.fr-unstyled-list {
+  @include mixins.unstyledelements-unstyledList;
+}

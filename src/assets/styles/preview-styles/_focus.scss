@@ -1,0 +1,14 @@
+@use "../../../components/mixins";
+
+.fr-default-focus {
+  @include mixins.focus-defaultFocus;
+}
+
+.fr-inset-focus {
+  @include mixins.focus-insetFocus;
+}
+
+.fr-seperator-focus {
+  margin: 20px;
+  padding: 10px 15px;
+}
