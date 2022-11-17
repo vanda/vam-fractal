@@ -27,6 +27,13 @@ module.exports = {
       context: {
         name: 'bold'
       }
+    },
+    {
+      name: 'x-bold',
+      label: 'Bold',
+      context: {
+        name: 'x-bold'
+      }
     }
   ]
 };
