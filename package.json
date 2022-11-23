@@ -46,7 +46,7 @@
     "eslint-plugin-import": "^2.26.0",
     "glob": "^7.2.3",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^5.0.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^7.0.1",
     "gulp-cli": "^2.0.1",
     "gulp-concat": "^2.6.1",
