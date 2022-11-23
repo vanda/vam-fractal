@@ -1,23 +1,5 @@
 # V&A Typography - Spiller
 
-## Font family
-
-The V&A font is called Spiller. The font family can be referenced by the Sass function `fontFamily()`:
-
-```sass
-.foo {
-  font-family: fontFamily(text);
-}
-```
-
-The `fontFamily()` map also includes a monospaced family, however it isn't expected that it will be used often (if at all) outside of this document:
-
-```sass
-.bar {
-  font-family: fontFamily(code);
-}
-```
-
 ## Font weight, size and line height
 
 These three can all be set at the same time using the Sass mixin `typeSetting()`. You must provide both a size and weight for the correct line-height to be set. If no weight is provided the default is regular. Note that this mixin uses the weight specified in the arguments (or the base font weight which is `regular` if not provided) to generate a CSS `font-variation-settings` property rather than a `font-weight` property.
@@ -53,3 +35,24 @@ This is processed to:
   font-variation-settings: "wght" 600;
 }
 ```
+
+
+## Font family
+
+The V&A font is called Spiller, and the `typeSetting()` mixin uses the basic Spiller font-family by default. The font family can be referenced by the Sass function `fontFamily()`:
+
+```sass
+.foo {
+  font-family: fontFamily(text);
+}
+```
+
+The `fontFamily()` map also includes a few other variants of the Spiller font family, none of which are used by default but are made available for design customisations relating to some exhibitions
+
+```sass
+.foo {
+  font-family: fontFamily(SpillerContrast);
+}
+```
+
+
