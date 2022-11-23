@@ -3,7 +3,7 @@ module.exports = {
   label: 'Typography',
   default: 'regular',
   context: {
-    heading: 'The quick brown fox jumps over the lazy dog.',
+    heading: 'The quick brown fox jumps over the lazy Tycho.',
     sizes: ['0', '1', '2', '3', '4', '5', '6', '7']
   },
   variants: [
