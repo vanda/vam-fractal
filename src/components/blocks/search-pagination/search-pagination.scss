@@ -2,11 +2,13 @@
 @use "../../base";
 
 .b-search-pagination {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  @include base.typography-typeSetting(1);
+
+  @include mixins.breakpoints-bpMinSmall {
+    @include base.typography-typeSetting(3);
+  }
 
   &__container {
-    align-items: center;
     color: base.sitecolors-siteColor("vam-white");
     display: flex;
     flex-direction: row;
@@ -15,6 +17,7 @@
 
     &--display-counter {
       justify-content: left;
+      margin-bottom: 20px;
     }
 
     &--page-size {
@@ -32,13 +35,14 @@
     text-decoration: underline;
 
     &--active {
+      @include base.typography-fontWeight("x-bold");
+
       cursor: default;
-      font-weight: 800;
       text-decoration: none;
     }
 
     &:hover {
-      font-weight: 600;
+      @include base.typography-fontWeight("x-bold");
     }
   }
 
@@ -54,17 +58,17 @@
   &__next-link {
     @include base.typography-typeSetting(2, "bold");
 
-    @include mixins.breakpoints-bpMinMedium {
-      top: 11px;
-
-      @include base.typography-typeSetting(3, "bold");
-    }
-
     color: base.sitecolors-siteColor("vam-white");
     cursor: pointer;
     position: absolute;
-    top: 11px;
+    top: 15px;
     user-select: none;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4, "bold");
+
+      top: 11px;
+    }
 
     &[disabled] {
       color: base.sitecolors-siteColor("vam-grey-4");
@@ -86,28 +90,26 @@
   &__page-button,
   &__page-button-start,
   &__page-button-last {
-    @include base.typography-typeSetting(3, "medium");
+    @include base.typography-typeSetting(3);
 
-    @include mixins.breakpoints-bpMinMedium {
+    border: 1px solid base.sitecolors-siteColor("vam-white");
+    color: base.sitecolors-siteColor("vam-white");
+    height: 50px;
+    margin-right: 9px;
+    min-width: 36px;
+    padding: 0 10px;
+
+    @include mixins.breakpoints-bpMinSmall {
       height: 44px;
       margin-right: 8px;
     }
-
-    border: 1px solid base.sitecolors-siteColor("vam-white");
-    border-radius: 0;
-    color: base.sitecolors-siteColor("vam-white");
-    height: 40px;
-    margin-right: 6px;
-    min-width: 32px;
-    padding: 0 5px;
 
     &-seperator {
       &-start,
       &-middle,
       &-last {
         color: base.sitecolors-siteColor("vam-white");
-        margin-right: 8px;
-        margin-top: 6px;
+        margin: 8px 9px 0 0;
         user-select: none;
       }
 
@@ -146,21 +148,15 @@
     }
   }
 
-  &__page-button-start {
+  &__page-button-start,
+  &__page-button-last {
     &:hover {
       background-color: base.sitecolors-siteColor("vam-grey-3");
       cursor: pointer;
     }
   }
 
-  &__page-button-last {
-    &[disabled] {
-      display: none;
-    }
-
-    &:hover {
-      background-color: base.sitecolors-siteColor("vam-grey-3");
-      cursor: pointer;
-    }
+  &__page-button-last[disabled] {
+    display: none;
   }
 }

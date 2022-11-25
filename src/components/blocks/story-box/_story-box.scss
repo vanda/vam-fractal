@@ -2,8 +2,6 @@
 @use "../../base";
 
 .b-story-box {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   background-color: base.sitecolors-siteColor("vam-grey-2");
   color: base.sitecolors-siteColor("vam-white");
   cursor: pointer;
@@ -45,20 +43,20 @@
   }
 
   &__container-text {
-    @include mixins.breakpoints-bpMinXSmall {
-      margin-top: 20px;
-    }
-
     display: flex;
     flex-direction: column;
     margin-top: 15px;
 
-    &--column {
-      @include mixins.breakpoints-bpMinXSmall {
-        height: 190px;
-      }
+    @include mixins.breakpoints-bpMinXSmall {
+      margin-top: 20px;
+    }
 
+    &--column {
       width: 100%;
+
+      @include mixins.breakpoints-bpMinXSmall {
+        height: 186px;
+      }
     }
 
     &--row {
@@ -117,7 +115,7 @@
     &-text {
       &--column,
       &--row {
-        margin-bottom: 20px;
+        margin-bottom: 26px;
         margin-left: 15px;
         margin-right: 15px;
       }
@@ -127,14 +125,14 @@
       &-container {
         &--column,
         &--row {
-          @include mixins.breakpoints-bpMinXSmall {
-            margin-bottom: 14px;
-          }
-
           display: flex;
           margin-bottom: 10px;
           margin-left: 15px;
           margin-right: 15px;
+
+          @include mixins.breakpoints-bpMinXSmall {
+            margin-bottom: 14px;
+          }
         }
       }
 
@@ -142,6 +140,10 @@
         &--column,
         &--row {
           @include base.typography-typeSetting(1, "bold");
+
+          &::first-letter {
+            text-transform: uppercase;
+          }
         }
       }
     }
@@ -149,28 +151,26 @@
     &-title {
       &--column,
       &--row {
-        @include mixins.breakpoints-bpMinXSmall {
-          margin-bottom: 0;
-        }
-
-        @include base.typography-typeSetting(3, "bold");
+        @include base.typography-typeSetting(4, "bold");
 
         margin-bottom: 0;
         position: relative;
 
-        &::after {
-          @include mixins.breakpoints-bpMinXSmall {
-            display: block;
-          }
+        @include mixins.breakpoints-bpMinXSmall {
+          margin-bottom: 0;
+        }
 
+        &::after {
           background-color: base.sitecolors-siteColor("vam-white");
-          bottom: -9px;
           content: "";
           display: none;
           height: 2px;
-          left: 2px;
-          position: absolute;
+          margin: 16px 0 0 2px;
           width: 28px;
+
+          @include mixins.breakpoints-bpMinXSmall {
+            display: block;
+          }
         }
       }
     }
@@ -180,22 +180,18 @@
         max-height: 120px;
       }
 
-      &--column {
-        height: 96px;
-      }
-
       &--column,
       &--row {
-        @include mixins.breakpoints-bpMinXSmall {
-          display: block;
-        }
-
         @include base.typography-typeSetting(3, "regular");
 
         display: none;
-        margin-top: 20px;
+        margin-top: 7px;
         overflow: hidden;
         word-break: normal;
+
+        @include mixins.breakpoints-bpMinXSmall {
+          display: block;
+        }
       }
     }
   }

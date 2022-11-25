@@ -2,9 +2,6 @@
 @use "../../base";
 
 .b-story-box-container {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-
   &-background {
     background-color: base.sitecolors-siteColor("vam-grey-1");
     max-width: 712px;

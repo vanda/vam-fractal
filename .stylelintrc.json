@@ -20,7 +20,8 @@
       "scss/dollar-variable-pattern": null,
       "value-keyword-case": [
         "lower", {
-        "camelCaseSvgKeywords": true
+        "camelCaseSvgKeywords": true,
+        "ignoreKeywords": ["SpillerContrast", "SpillerContrastItalic", "SpillerWidth", "SpillerWidthItalic", "SpillerRounded", "SpillerSerif", "SpillerSerifItalic"]
         }
       ],
       "selector-class-pattern": [

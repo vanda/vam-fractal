@@ -17,6 +17,10 @@
   background-color: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: -30%);
 }
 
+.fr-bg--etc {
+  background-color: base.sitecolors-siteColor("vam-black");
+}
+
 .fr-bg--light {
   background-color: base.sitecolors-siteColor("vam-white");
 }

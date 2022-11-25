@@ -1,18 +1,16 @@
 @use "../../base";
 
 .b-content-warning {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   background-color: base.sitecolors-siteColor("vam-grey-2");
   color: base.sitecolors-siteColor("vam-white");
   padding: 30px;
 
   &__header {
+    @include base.typography-typeSetting(2, "bold");
+
     display: flex;
     flex-direction: column;
     text-align: center;
-
-    @include base.typography-typeSetting(2, "bold");
 
     &-icon {
       height: 41px;

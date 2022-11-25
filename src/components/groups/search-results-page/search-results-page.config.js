@@ -4,6 +4,7 @@ module.exports = {
       name: 'default',
       label: 'Default',
       context: {
+        previewClass: 'fr-bg--dark',
         modifier: 'listing',
         pages: 40,
         items: [

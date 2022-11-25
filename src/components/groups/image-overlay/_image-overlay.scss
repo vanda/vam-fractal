@@ -16,11 +16,9 @@
       cursor: auto;
     }
 
-    /* stylelint-disable selector-max-id, declaration-no-important */
     &--hidden {
-      display: none !important;
+      display: none !important; /* stylelint-disable-line declaration-no-important */
     }
-    /* stylelint-enable selector-max-id, declaration-no-important */
 
     &-image {
       height: 100%;
@@ -41,8 +39,6 @@
     }
 
     &-concealer {
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
       background-color: rgba(57, 59, 63, 80%);
       height: 100%;
       left: 0;
@@ -102,7 +98,7 @@
       z-index: 300;
 
       @include mixins.breakpoints-bpMinMedium {
-        background: rgba(base.sitecolors-siteColor("vam-black"), 90%);
+        background: rgba(base.sitecolors-siteColor("vam-black"), 94%);
       }
     }
   }

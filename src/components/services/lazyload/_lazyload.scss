@@ -36,7 +36,7 @@
     }
 
     &::after {
-      @include base.typography-typeSetting(4, "bold");
+      @include base.typography-typeSetting(3);
 
       color: #fff;
       content: "Image unavailable";

@@ -70,7 +70,11 @@
     display: block;
     text-align: center;
     text-shadow: 0 1px 2px base.sitecolors-siteColor("vam-black"), 0 -1px 2px base.sitecolors-siteColor("vam-black");
-    text-transform: capitalize;
+    text-transform: lowercase;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
     @include mixins.breakpoints-bpMinMedium {
       margin-top: base.$spacings-spacing-small;

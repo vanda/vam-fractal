@@ -2,8 +2,6 @@
 @use "../../base";
 
 .b-context-page-title {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   color: base.sitecolors-siteColor("vam-white");
 
   &__type {

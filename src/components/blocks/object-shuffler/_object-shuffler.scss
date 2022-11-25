@@ -9,7 +9,7 @@
   width: 100%;
 
   &__heading {
-    @include base.typography-typeSetting(4, "bold");
+    @include base.typography-typeSetting(5, "bold");
 
     margin-bottom: 20px;
 
@@ -38,7 +38,7 @@
     width: 20px;
 
     &::before {
-      @include base.typography-typeSetting(3, "bold");
+      @include base.typography-typeSetting(4, "bold");
 
       bottom: 46px;
       content: attr(title);
@@ -167,7 +167,7 @@
   }
 
   &__more {
-    @include base.typography-typeSetting(1, "bold");
+    @include base.typography-typeSetting(3, "bold");
 
     align-items: center;
     cursor: pointer;

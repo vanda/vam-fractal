@@ -98,26 +98,31 @@
   }
 
   &__caption {
-    @include base.typography-typeSetting(1, "light");
-
     display: none;
 
     @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(3, "light");
+
       color: base.sitecolors-siteColor("vam-black");
-      display: block; /* display: -webkit-box; */
+      display: block;
     }
 
     .b-object-card--etc & {
-      /*! autoprefixer: off */
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
+      @include base.typography-typeSetting(1, "bold");
+
       color: base.sitecolors-siteColor("vam-white");
-      display: block; /* display: -webkit-box; */
+      display: block;
       overflow: hidden;
     }
 
     &--sub {
-      @include base.typography-typeSetting(3);
+      @include mixins.breakpoints-bpMinXSmall {
+        @include base.typography-typeSetting(3, "bold");
+      }
+
+      &--sub {
+        @include base.typography-fontWeight("regular");
+      }
     }
   }
 }

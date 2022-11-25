@@ -13,7 +13,7 @@ Array.from(videoThumbs, (vidThumb) => {
     popupClose.className = 'b-video-thumbnail__popup-close';
     popupClose.innerHTML = `
       <svg role="img">
-        <use xlink:href="/assets/svg/svg-template.svg#close"></use>
+        <use xlink:href="../../build/svg/vam-sprite.svg#close"></use>
       </svg>`;
     popup.appendChild(popupClose);
     document.body.appendChild(popup);

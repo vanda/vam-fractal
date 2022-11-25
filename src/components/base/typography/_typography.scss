@@ -15,6 +15,10 @@
   src: url("../fonts/Spiller-Italic-weight-VF-Web.woff2") format("woff2");
 }
 
+// the following fonts are not used by this component, but are available for
+// the custom styling of Exhibitions via their TychoCMS admin page
+// e.g. https://www.vam.ac.uk/exhibitions/africa-fashion
+
 @font-face {
   font-display: swap;
   font-family: "SpillerContrast";
@@ -39,15 +43,40 @@
   src: url("../fonts/SpillerWidth-Italic-width_weight-VF-Web.woff2") format("woff2");
 }
 
+@font-face {
+  font-display: swap;
+  font-family: "SpillerRounded";
+  src: url("../fonts/SpillerRounded-Upright-weight-VF-Web.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "SpillerSerif";
+  src: url("../fonts/SpillerSerif-Upright-weight-VF-Web.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "SpillerSerifItalic";
+  src: url("../fonts/SpillerSerif-Italic-weight-VF-Web.woff2") format("woff2");
+}
+
 $font-family: (
   text: ("Spiller", "Arial", "Helvetica", sans-serif),
-  code: ("Consolas", "Menlo", "Monaco", "Courier New", monospace)
+  code: ("Consolas", "Menlo", "Monaco", "Courier New", monospace),
+  SpillerContrast: ("SpillerContrast", "Spiller", arial, helvetica, sans-serif),
+  SpillerContrastItalic: ("SpillerContrastItalic", "Spiller", arial, helvetica, sans-serif),
+  SpillerWidth: ("SpillerWidth", "Spiller", arial, helvetica, sans-serif),
+  SpillerWidthItalic: ("SpillerWidthItalic", "Spiller", arial, helvetica, sans-serif),
+  SpillerRounded: ("SpillerRounded", "Spiller", arial, helvetica, sans-serif),
+  SpillerSerif: ("SpillerSerif", "Spiller", arial, helvetica, sans-serif),
+  SpillerSerifItalic: ("SpillerSerifItalic", "Spiller", arial, helvetica, sans-serif)
 );
 $font-weight: (
   light: 300,
   regular: 400,
-  bold: 500, // an alias for Spiller's 'medium' size
-  x-bold: 600 // an alias for Spiller's 'bold' size
+  bold: 500, // an alias for Spiller's 'medium' weight
+  x-bold: 600 // an alias for Spiller's 'bold' weight
 );
 $font-size: (
   0: 12,

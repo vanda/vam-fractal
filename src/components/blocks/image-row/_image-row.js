@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (img.naturalWidth) {
             aspectRatios.push(img.naturalWidth / img.naturalHeight);
           } else {
-            // failed image
+            /* failed images have been replaced with a div by Lazyload */
             aspectRatios.push(1);
             img.closest('.b-image-row__item').classList.add('b-image-row__item--failed');
           }
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const imgs = imgRow.querySelectorAll('.b-image-row__img');
       const complete = [];
-      const loaded = (anyImg) => {
-        complete.push(anyImg);
+      const loaded = (loadedImg) => {
+        complete.push(loadedImg);
         if (complete.length === imgs.length) rowStyle();
       };
 
@@ -72,7 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('load', (e) => {
               if (e.target === img) loaded(img);
             }, false);
-            img.addEventListener('error', () => { loaded(img); }, false);
+            img.addEventListener('error', () => {
+              loaded(img);
+            }, false);
           }
         });
         observer.observe(img, { attributes: true });

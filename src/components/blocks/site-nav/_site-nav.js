@@ -132,12 +132,10 @@ if (siteNav) {
     }, false);
   }
 
-  const searchHost = document.location.host.indexOf('localhost') === 0 ? 'https://www.vam.ac.uk/' : '/';
-
   let storedSearch = JSON.parse(sessionStorage.getItem('storedSearch'));
   if (!storedSearch || Date.parse(new Date()) > Date.parse(storedSearch.expires)) {
     const httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', `${searchHost}services/search/suggest/promoted`);
+    httpRequest.open('GET', 'https://www.vam.ac.uk/services/search/suggest/promoted');
     httpRequest.send();
     httpRequest.onreadystatechange = () => {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -234,7 +232,7 @@ if (siteNav) {
             const httpRequest = new XMLHttpRequest();
             httpRequest.open(
               'GET',
-              `${searchHost}services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`,
+              `https://www.vam.ac.uk/services/search/suggest/popular?q=${encodeURI(navSearchInput.value)}`,
             );
             httpRequest.send();
             httpRequest.onreadystatechange = () => {

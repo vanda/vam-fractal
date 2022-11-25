@@ -2,8 +2,12 @@
 @use "../../base";
 
 .b-newsletter {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  background-color: base.sitecolors-siteColor("vam-grey-5");
+  color: base.sitecolors-siteColor("vam-black");
+  margin: 25px 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 
   &--footer {
     background-color: base.sitecolors-siteColor("vam-black");
@@ -11,13 +15,6 @@
     color: base.sitecolors-siteColor("vam-white");
     margin: auto;
   }
-
-  background-color: base.sitecolors-siteColor("vam-grey-5");
-  color: base.sitecolors-siteColor("vam-black");
-  margin: 25px 0;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
 
   @include mixins.breakpoints-bpMinXSmall {
     flex-direction: row;
@@ -190,23 +187,23 @@
         }
 
         @include mixins.breakpoints-bpMinXSmall {
-          &--component {
-            margin-right: 0;
-            max-width: 467px;
-          }
-
           flex-grow: 1;
           height: 50px;
           margin-right: 8px;
           text-align: left;
+
+          &--component {
+            margin-right: 0;
+            max-width: 467px;
+          }
         }
 
         @include mixins.breakpoints-bpMinMedium {
+          max-width: 355px;
+
           &--component {
             max-width: 467px;
           }
-
-          max-width: 355px;
         }
       }
     }
@@ -246,6 +243,9 @@
       }
 
       @include mixins.breakpoints-bpMinXSmall {
+        margin-top: 0;
+        max-width: 150px;
+
         &--footer {
           max-width: 158px;
         }
@@ -253,9 +253,6 @@
         &--component {
           max-width: 102px;
         }
-
-        margin-top: 0;
-        max-width: 150px;
       }
     }
   }
