@@ -14,5 +14,14 @@ module.exports = {
     title: 'V&A South Kensington',
     subtitle: 'London, England',
     open: 'Opening 1852'
-  }
+  },
+  variants: [
+    {
+      label: 'Portrait',
+      name: 'portrait',
+      context: {
+        isPortrait: true
+      }
+    }
+  ]
 };

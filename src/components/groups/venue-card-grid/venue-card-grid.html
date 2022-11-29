@@ -5,7 +5,11 @@
   <div class="g-venue-card-grid__grid">
     {% for n in [1, 2, 3, 4, 5] %}
     <div class="g-venue-card-grid__item">
-      {%- render "@venue-card" -%}
+      {% if n === 1 or n === 5 %}
+        {%- render "@venue-card" -%}
+      {% else %}
+        {%- render "@venue-card--portrait" -%}
+      {% endif %}
     </div>
     {% endfor %}
   </div>
