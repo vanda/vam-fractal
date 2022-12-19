@@ -1,4 +1,4 @@
-<div class="b-event-teaser" itemscope itemprop="event" itemtype="http://schema.org/Event">
+<div class="b-event-teaser{% for m in modifiers %} b-event-teaser--{{ m }}{% endfor %}" itemscope itemprop="event" itemtype="http://schema.org/Event">
 
   <a class="b-event-teaser__link" itemprop="url" content="{{ eventUrl }}" href="{{ eventUrl }}">
 
@@ -32,34 +32,45 @@
         <span itemprop="address" content="Victoria and Albert Museum, Cromwell Road, London SW7 2RL, UK"></span>
       </span>
 
-      <div class="b-event-teaser__venue">
-        V&A South Kensington
+      <div class="b-event-teaser__type">
+        {{ eventType }}
       </div>
 
       <h2 class="b-event-teaser__title" itemprop="name" content="{{ eventTitle }}">
         {{ eventTitle }}
       </h2>
 
-      <div class="b-event-teaser__data">
-        <div class="b-event-teaser__type">
-          <div>{{ eventType }}</div>
-          <div class="s-separated" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            <meta itemprop="priceCurrency" content="GBP"/>
-            <span itemprop="price" value="{{ eventPrice }}">{{ eventPrice }}</span>
-          </div>
-        </div>
-        <div class="b-event-teaser__date">
-          <meta itemprop="startDate" content="{{ eventMachineStartDate }}"/>
-          <meta itemprop="endDate" content="{{ eventMachineEndDate }}"/>
-          {{ eventHumanDates }}
+      <div class='b-event-teaser__data'>
+        <svg class="b-event-teaser__data__icon" aria-hidden="true">
+          <use xlink:href="/assets/svg/svg-template.svg#calendar"></use>
+        </svg>
+        <meta itemprop="startDate" content="{{ eventMachineStartDate }}"/>
+        <meta itemprop="endDate" content="{{ eventMachineEndDate }}"/>
+        {{ eventHumanDates }}
+      </div>
+      <div class='b-event-teaser__data'>
+        <svg class="b-event-teaser__data__icon" aria-hidden="true">
+          <use xlink:href="/assets/svg/svg-template.svg#pin"></use>
+        </svg>
+        {{ eventVenue }}
+      </div>
+    </div>
+
+    <div class="b-event-teaser__footer">
+      <div class='b-event-teaser__data'>
+        <svg class="b-event-teaser__data__icon" aria-hidden="true">
+          <use xlink:href="/assets/svg/svg-template.svg#ticket"></use>
+        </svg>
+        <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="GBP"/>
+          <span itemprop="price" content="{{ eventPrice }}">{{ eventPrice }}</span>
+        </span>
+      </div>
+      <div class="b-event-teaser__footer__buttons">
+        <div class="u-btn u-btn--micro {% if modifiers and 'dark' in modifiers %}u-btn--outlined-inverse{% else %}u-btn--outlined{% endif %}" href="#">
+          More info
         </div>
       </div>
     </div>
   </a>
-
-  <div class="b-event-teaser__footer">
-    {% for action in actions %}
-    <a class="u-btn u-btn--micro u-btn--outlined" href="#">{{ action }}</a>
-    {% endfor %}
-  </div>
 </div>

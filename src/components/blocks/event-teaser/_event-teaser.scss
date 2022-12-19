@@ -1,17 +1,21 @@
 .b-event-teaser {
-  margin-bottom: 10px;
+  color: siteColor(vam-black);
+  margin-bottom: 32px;
   overflow: hidden;
   padding: 0 10px;
   position: relative;
   width: 100%;
 
   @include bpMinXSmall {
-    margin-bottom: 32px;
     width: 50%;
   }
 
   @include bpMinMedium {
     width: 33.333%;
+  }
+
+  &--dark {
+    color: siteColor(vam-white);
   }
 
   &__link {
@@ -22,11 +26,6 @@
     &:hover,
     &:focus {
       box-shadow: none;
-    }
-
-    &:hover + ul,
-    &:focus + ul {
-      border-bottom: 1px solid siteColor(vam-grey-4);
     }
 
     &:hover h2,
@@ -93,39 +92,22 @@
   }
 
   &__description {
-    color: siteColor(vam-black);
     padding-bottom: 20px;
     position: relative;
 
     @include bpMinXSmall {
-      min-height: 310px;
-    }
-
-    @include bpMinSmall {
-      min-height: 150px;
-    }
-
-    @include bpMinMedium {
-      min-height: 210px;
-      padding-bottom: 60px;
+      min-height: 200px;
     }
   }
 
-  &__venue,
-  &__label {
+  &__type {
     @include typeSetting(1, regular);
     margin-bottom: 5px;
   }
 
   &__title {
     @include typeSetting(5, bold);
-    margin: 1px 0 10px;
-
-    &-icon {
-      color: siteColor(vam-black);
-      height: 14px;
-      width: 14px;
-    }
+    margin: 1px 0 15px;
 
     @include bpMinSmall {
       @include typeSetting(5, bold);
@@ -133,29 +115,32 @@
   }
 
   &__data {
-    @include typeSetting(1, light);
-    color: siteColor(vam-grey-3);
-  }
-
-  &__type {
+    @include typeSetting(2, bold);
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+
+    &__icon {
+      height: 20px;
+      margin-right: 10px;
+      width: 20px;
+    }
   }
 
   &__footer {
-    bottom: 10px;
-    display: none;
-    height: 40px;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
+    align-items: center;
+    border-bottom: 1px solid siteColor(vam-grey-7);
+    display: flex;
+    justify-content: space-between;
 
-    @include bpMinMedium {
-      display: inline-block;
-    }
+    &__buttons > .u-btn {
+      @include typeSetting(3);
+      margin: 0 0 10px 10px;
 
-    .u-btn {
-      @include typeSetting(1);
+      .b-event-teaser__link:hover &,
+      .b-event-teaser__link:focus & {
+        background-color: #e6e6e6;
+        border-color: #b7b8bd;
+      }
     }
   }
 }

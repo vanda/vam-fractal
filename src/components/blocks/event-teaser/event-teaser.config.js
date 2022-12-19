@@ -1,9 +1,9 @@
 module.exports = {
   title: 'Event teaser',
-  default: 'simple',
   context: {
     eventUrl: 'https://www.vam.ac.uk/exhibitions/pink-floyd',
     eventType: 'Exhibition',
+    eventVenue: 'V&A South Kensington',
     eventTitle: 'Pink Floyd: Their Mortal Remains',
     eventDescription: 'The first international retrospective of one of the world’s most iconic and influential bands. Presented by the V&A, Pink Floyd and Iconic Entertainment Studios.',
     eventImage: {
@@ -15,20 +15,14 @@ module.exports = {
       2560: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/24/10/34/06/2301b297-d9e0-49cb-a16a-f0a6cecb9b13/2560.jpg'
     },
     eventPrice: '£20–24',
-    eventHumanDates: 'From 13 May 2017 until 1 Oct 2017',
+    eventHumanDates: 'On now until Friday, 23 December 2034',
     eventMachineStartDate: '2017-05-13',
-    eventMachineEndDate: '2017-10-01',
-    actions: ['More info']
+    eventMachineEndDate: '2017-10-01'
   },
   variants: [
     {
-      name: 'simple'
-    },
-    {
       name: 'With sponsor',
       context: {
-        eventTitle: 'Lockwood Kipling: Arts and Crafts in the Punjab and London',
-        eventHumanDates: 'From 14 Jan 2017 until 2 Apr 2017',
         eventSponsorText: 'Supported by Friends of the V&A'
       }
     },
@@ -39,9 +33,13 @@ module.exports = {
       }
     },
     {
-      name: 'With booking button',
+      label: 'On dark',
+      name: 'dark',
       context: {
-        actions: ['More info', 'Book now']
+        previewClass: 'fr-bg--dark',
+        modifiers: ['dark'],
+        eventSponsorText: 'Supported by Friends of the V&A',
+        eventTag: true
       }
     }
   ]
