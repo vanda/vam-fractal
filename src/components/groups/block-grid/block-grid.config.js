@@ -120,6 +120,7 @@ module.exports = {
           {
             eventUrl: 'https://www.vam.ac.uk/exhibitions/pink-floyd',
             eventType: 'Exhibition',
+            eventVenue: 'V&A South Kensington',
             eventTitle: 'Pink Floyd: Their Mortal Remains',
             eventDescription: 'The first international retrospective of one of the world’s most iconic and influential bands. Presented by the V&A, Pink Floyd and Iconic Entertainment Studios.',
             eventImage: {
@@ -139,6 +140,7 @@ module.exports = {
           {
             eventUrl: 'https://www.vam.ac.uk/exhibitions/balenciaga-shaping-fashion',
             eventType: 'Exhibition',
+            eventVenue: 'V&A South Kensington',
             eventTitle: 'Balenciaga: Shaping Fashion',
             eventImage: {
               320: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/30/14/24/38/9a628c65-56b7-4bff-875a-3fddc1a479cc/320.jpg',
@@ -158,6 +160,7 @@ module.exports = {
           {
             eventUrl: 'https://www.vam.ac.uk/event/GQzOG8PZ/curator-talk-balenciaga-shaping-fashion',
             eventType: 'Talk',
+            eventVenue: 'V&A South Kensington',
             eventTitle: 'Curator Talk: Balenciaga: Shaping Fashion',
             eventImage: {
               320: 'https://vanda-production-assets.s3.amazonaws.com/2017/03/12/16/00/20/7b58c3be-64d2-4722-afd1-d8a4105520ee/curator-talk-balenciaga-shaping-fashion_320.jpg',
@@ -177,6 +180,7 @@ module.exports = {
           {
             eventUrl: 'https://www.vam.ac.uk/event/lAE6JqZN/contemporary-korean-ceramics',
             eventType: 'Display',
+            eventVenue: 'V&A South Kensington',
             eventTitle: 'Contemporary Korean Ceramics',
             eventImage: {
               320: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/19/11/31/07/ce7f981c-21f9-4aa3-b032-ec22cec630ba/contemporary-korean-ceramics_320.jpg',
@@ -195,6 +199,7 @@ module.exports = {
           {
             eventUrl: 'https://www.vam.ac.uk/event/YRnWAm3y/digital-design-drop-in',
             eventType: 'Drop-in',
+            eventVenue: 'V&A South Kensington',
             eventTitle: 'Digital Design Drop-in',
             eventImage: {
               320: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/17/10/21/14/60112fc1-0a21-415c-bc9c-ab1e65ecba12/digital-design-drop-in_320.jpg',

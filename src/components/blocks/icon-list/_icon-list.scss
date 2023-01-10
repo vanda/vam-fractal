@@ -24,32 +24,32 @@ $icon-width: 30px;
         margin-left: 0;
       }
     }
-  }
 
-  &__icon {
-    float: left;
-    height: 20px;
-    margin-left: -$icon-width;
-    margin-top: 5px;
-    width: 20px;
-  }
-
-  &__content {
-    margin-left: 10px;
-
-    > p {
-      margin-bottom: 5px;
+    &__icon {
+      float: left;
+      height: 20px;
+      margin-left: -$icon-width;
+      margin-top: 5px;
+      width: 20px;
     }
-  }
 
-  &  #{&}__heading {
-    @include base.typography-typeSetting(4, "bold");
+    &__content {
+      margin-left: 10px;
 
-    margin-bottom: 5px;
+      > p {
+        margin-bottom: 5px;
+      }
+    }
 
-    @include mixins.breakpoints-bpMinXSmall {
-      @include mixins.breakpoints-bpMaxSmall {
-        @include base.typography-typeSetting(3, "bold");
+    &  #{&}__heading {
+      @include base.typography-typeSetting(4, "bold");
+
+      margin-bottom: 5px;
+
+      @include mixins.breakpoints-bpMinXSmall {
+        @include mixins.breakpoints-bpMaxSmall {
+          @include base.typography-typeSetting(3, "bold");
+        }
       }
     }
   }

@@ -41,7 +41,6 @@
 
   /* stylelint-disable selector-class-pattern */
   // the following is accepted by the rule:
-  // .b-venue-blog-card--width-50:nth-of-type(1)
   .b-venue-blog-card--50-width:nth-of-type(1) {
     @include mixins.breakpoints-bpMinXSmall {
       margin-right: 5px;
