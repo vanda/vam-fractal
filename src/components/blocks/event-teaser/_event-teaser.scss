@@ -1,38 +1,21 @@
 .b-event-teaser {
-  box-sizing: border-box;
-  flex: 0 1 auto;
-  margin-bottom: 10px;
+  color: siteColor(vam-black);
+  margin-bottom: 32px;
   overflow: hidden;
   padding: 0 10px;
   position: relative;
   width: 100%;
 
-  &--venue {
-    display: flex;
-    flex-direction: column;
-
-    .u-btn.u-btn--outlined {
-      border: 1px solid siteColor(vam-black);
-      
-      &:hover,
-      &:focus {
-        background-color: siteColor(vam-grey-5);
-        outline: none;
-      }
-    }
-  }
-
   @include bpMinXSmall {
-    margin-bottom: 32px;
     width: 50%;
   }
 
   @include bpMinMedium {
     width: 33.333%;
+  }
 
-    &--venue {
-      width: 50%;
-    }
+  &--dark {
+    color: siteColor(vam-white);
   }
 
   &__link {
@@ -43,11 +26,6 @@
     &:hover,
     &:focus {
       box-shadow: none;
-    }
-
-    &:hover + ul,
-    &:focus + ul {
-      border-bottom: 1px solid siteColor(vam-grey-4);
     }
 
     &:hover h2,
@@ -84,11 +62,6 @@
         opacity: 1;
       }
     }
-
-    &--fallback {
-      filter: grayscale(1);
-      opacity: .4;
-    }
   }
 
   &__media-image {
@@ -119,157 +92,54 @@
   }
 
   &__description {
-    color: siteColor(vam-black);
     padding-bottom: 20px;
     position: relative;
 
-    &--venue {
-      @include typeSetting(4, regular);
-      flex-grow: 3;
-      margin-bottom: 10px;
-
-      @include bpMinXSmall {
-        margin-bottom: 20px;
-      }
-
-      @include bpMinSmall {
-        @include typeSetting(5, regular);
-      }
-    }
-
     @include bpMinXSmall {
-      min-height: 310px;
-    }
-
-    @include bpMinSmall {
-      min-height: 150px;
-    }
-
-    @include bpMinMedium {
-      min-height: 210px;
-      padding-bottom: 60px;
-
-      &--venue {
-        @include typeSetting(5, regular);
-        margin-bottom: 15px;
-      }
-    }
-
-    .b-event-teaser--venue & {
-      .b-icon-list {
-        &__item {
-          margin-bottom: 15px;
-
-          &__content {
-            margin-left: 0;
-            padding-top: 5px;
-
-            @include bpMinSmall {
-              padding-top: 0;
-            }
-          }
-        
-          &__heading {
-            @include typeSetting(1, regular);
-
-            @include bpMinSmall {
-              @include typeSetting(4, regular);
-            }
-          }
-        }
-      }
+      min-height: 200px;
     }
   }
 
-  &__venue,
-  &__label {
+  &__type {
     @include typeSetting(1, regular);
     margin-bottom: 5px;
   }
 
   &__title {
     @include typeSetting(5, bold);
-    margin: 1px 0 10px;
-
-    &-icon {
-      color: siteColor(vam-black);
-      height: 14px;
-      width: 14px;
-    }
-
-    &-container {
-      align-items: baseline;
-      column-gap: 5px;
-      display: flex;
-    }
+    margin: 1px 0 15px;
 
     @include bpMinSmall {
       @include typeSetting(5, bold);
     }
-
-    &--venue {
-      @include typeSetting(4, bold);
-      margin: 4px 0 8px;
-
-      @include bpMinXSmall {
-        margin: 10px 0 10px;
-      }
-    }
-
-    @include bpMinSmall {
-      &--venue {
-        @include typeSetting(5, bold);
-      }
-    }
   }
 
   &__data {
-    @include typeSetting(1, light);
-    color: siteColor(vam-grey-3);
-  }
-
-  &__type {
+    @include typeSetting(2, bold);
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+
+    &__icon {
+      height: 20px;
+      margin-right: 10px;
+      width: 20px;
+    }
   }
 
   &__footer {
-    bottom: 10px;
-    display: none;
-    height: 40px;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
+    align-items: center;
+    border-bottom: 1px solid siteColor(vam-grey-7);
+    display: flex;
+    justify-content: space-between;
 
-    @include bpMinMedium {
-      display: inline-block;
-    }
+    &__buttons > .u-btn {
+      @include typeSetting(3);
+      margin: 0 0 10px 10px;
 
-    > .u-btn {
-      @include typeSetting(1);
-    }
-
-    .b-event-teaser--venue & {
-      border-bottom: 1px solid siteColor(vam-grey-6);
-      column-gap: 10px;
-      display: flex;
-      height: auto;
-      list-style: none;
-      margin-left: 0;
-      padding: 0 6px 15px;
-      position: static;
-
-      .u-btn {
-        column-gap: 6px;
-        display: flex;
-        margin: 10px 0;
-      }
-
-      .b-icon-list__item__icon {
-        color: siteColor(vam-black);
-        float: none;
-        margin-left: 0;
-        margin-top: 0;
+      .b-event-teaser__link:hover &,
+      .b-event-teaser__link:focus & {
+        background-color: #e6e6e6;
+        border-color: #b7b8bd;
       }
     }
   }

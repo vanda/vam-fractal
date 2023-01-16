@@ -53,6 +53,7 @@
   }
 
   &__content {
+    @include unstyledList;
     display: flex;
     flex-wrap: wrap;
   }
