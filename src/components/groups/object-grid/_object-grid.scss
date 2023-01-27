@@ -3,13 +3,10 @@
 .g-object-grid {
   @include mixins.unstyledelements-unstyledList;
 
+  column-count: 2;
+  column-gap: 30px;
   margin-bottom: 40px;
   width: 100%;
-
-  @include mixins.breakpoints-bpMinXSmall {
-    column-count: 2;
-    column-gap: 30px;
-  }
 
   @include mixins.breakpoints-bpMinMedium {
     column-count: 3;
