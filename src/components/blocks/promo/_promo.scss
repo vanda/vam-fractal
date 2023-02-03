@@ -161,15 +161,11 @@
   }
 
   &__title {
-    @include base.typography-typeSetting(4, "bold");
+    @include base.typography-typeSetting(5, "bold");
 
     margin: base.$spacings-spacing-small 0;
     text-align: center;
     width: 100%;
-
-    @include mixins.breakpoints-bpMinXSmall {
-      @include base.typography-typeSetting(5, "bold");
-    }
 
     @include mixins.breakpoints-bpMinMedium {
       @include base.typography-typeSetting(6, "bold");
