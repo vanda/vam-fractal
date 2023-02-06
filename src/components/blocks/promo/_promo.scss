@@ -153,14 +153,10 @@
   }
 
   &__title {
-    @include typeSetting(4, bold);
+    @include typeSetting(5, bold);
     margin: $spacing-small 0;
     text-align: center;
     width: 100%;
-
-    @include bpMinXSmall {
-      @include typeSetting(5, bold);
-    }
 
     @include bpMinMedium {
       @include typeSetting(6, bold);
