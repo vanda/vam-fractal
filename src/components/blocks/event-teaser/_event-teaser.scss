@@ -23,11 +23,6 @@
     margin-bottom: 10px;
     position: relative;
 
-    &:hover,
-    &:focus {
-      box-shadow: none;
-    }
-
     &:hover h2,
     &:focus h2 {
       text-decoration: underline;
@@ -138,8 +133,14 @@
 
       .b-event-teaser__link:hover &,
       .b-event-teaser__link:focus & {
-        background-color: #e6e6e6;
-        border-color: #b7b8bd;
+        background-color: darken(#fff, 10);
+        border-color: siteColor(vam-grey-4);
+      }
+
+      .b-event-teaser--dark .b-event-teaser__link:hover &,
+      .b-event-teaser--dark .b-event-teaser__link:focus & {
+        background-color: lighten(siteColor(vam-black), 20);
+        border-color: #fff;
       }
     }
   }
