@@ -81,6 +81,13 @@ module.exports = {
         text: 'Opening 20xx',
         modifier: ['venue']
       }
+    },
+    {
+      name: 'Featured',
+      context: {
+        text: 'Featured',
+        modifier: ['featured']
+      }
     }
   ]
 };
