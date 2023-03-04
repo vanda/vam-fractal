@@ -1,0 +1,33 @@
+<ul class="b-events-featured {% for m in modifiers %} b-events-featured--{{ m }}{% endfor %}" aria-label="{{ title }}">
+  {% for item in items %}
+    <li class="b-events-featured__item">
+        <a href="{{ item.url }}" class="b-events-featured__anchor">
+          {%- render "@label-tag--featured" -%}
+          <img
+            alt="{{ item.title }}"
+            sizes="100vw"
+            srcset="{{ item.image["320"] }} 320w, 
+                    {{ item.image["640"] }} 640w,
+                    {{ item.image[960] }} 960w,
+                    {{ item.image[1280] }} 1280w"
+            src="{{ item.image["960"] }}"
+            class="b-events-featured__img"
+          >
+          <div class="b-events-featured__description">
+            <h2 class="b-events-featured__title">
+              {{ item.title }}
+            </h2>
+            <p class="b-events-featured__type">
+              {{ item.type }}
+            </p>
+            <p class="b-events-featured__date">
+              {{ item.date }}
+            </p>
+            <p class="b-events-featured__venue">
+              {{ item.venue }}
+            </p>
+          </div>
+        </a>
+    </li>
+  {% endfor %}
+</ul>

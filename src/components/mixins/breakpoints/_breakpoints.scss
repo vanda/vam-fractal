@@ -34,25 +34,25 @@ $breakpoints: (
 }
 
 @mixin bpMaxXSmall {
-  @media (max-width: bp(x-small) - 1) {
+  @media (max-width: (bp(x-small) - 1)) {
     @content;
   }
 }
 
 @mixin bpMaxSmall {
-  @media (max-width: bp(small) - 1) {
+  @media (max-width: (bp(small) - 1)) {
     @content;
   }
 }
 
 @mixin bpMaxMedium {
-  @media (max-width: bp(medium) - 1) {
+  @media (max-width: (bp(medium) - 1)) {
     @content;
   }
 }
 
 @mixin bpMaxLarge {
-  @media (max-width: bp(large) - 1) {
+  @media (max-width: (bp(large) - 1)) {
     @content;
   }
 }

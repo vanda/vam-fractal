@@ -48,4 +48,15 @@
     color: siteColor(vam-white);
     margin-left: 12px;
   }
+
+  &--featured {
+    @include typeSetting(0, 'bold');
+
+    background: siteColor(primary-green);
+    margin-top: 10px;
+
+    @include bpMinSmall {
+      @include typeSetting(2, 'bold');
+    }
+  }
 }
