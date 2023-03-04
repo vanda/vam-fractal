@@ -48,4 +48,11 @@
     color: siteColor(vam-white);
     margin-left: 12px;
   }
+
+  &--featured {
+    @include typeSetting(0);
+
+    background: siteColor(primary-green);
+    padding: 4px 10px 4px 12px;
+  }
 }
