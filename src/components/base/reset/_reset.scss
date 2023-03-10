@@ -246,3 +246,7 @@ strong {
 .s-hidden {
   @include element-visibility.hidden-all;
 }
+
+[hidden] {
+  display: none !important; // sass-lint:disable-line no-important
+}
