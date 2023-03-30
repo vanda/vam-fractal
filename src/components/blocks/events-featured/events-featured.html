@@ -5,7 +5,10 @@
           {%- render "@label-tag--featured" -%}
           <img
             alt="{{ item.title }}"
-            sizes="100vw"
+            sizes="(min-width: 500px) {{ (12 / (12 + (2 * (items.length - 1)))) * 100 }}vw,
+                   (min-width: 992px) {{ (8 / (8 + (2 * (items.length - 1)))) * 100 }}vw,
+                   (min-width: 1200px) {{ (6 / (6 + (2 * (items.length - 1)))) * 1200 }}px,
+                   calc(100vw - 120px)"
             srcset="{{ item.image["320"] }} 320w, 
                     {{ item.image["640"] }} 640w,
                     {{ item.image[960] }} 960w,
