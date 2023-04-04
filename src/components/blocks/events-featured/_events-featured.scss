@@ -1,0 +1,211 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-events-featured {
+  @include mixins.unstyledelements-unstyledList;
+
+  display: flex;
+  gap: 5px;
+  margin: 0 auto;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  @include mixins.breakpoints-bpMinXSmall {
+    height: 210px;
+    overflow: visible;
+  }
+
+  @include mixins.breakpoints-bpMinSmall {
+    height: 240px;
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    height: 285px;
+  }
+
+  &__item {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      flex: 2;
+      transition: 0.5s;
+
+      & .u-label-tag--featured {
+        opacity: 0;
+      }
+
+      &:hover {
+        flex: 12;
+
+        .u-label-tag--featured {
+          opacity: 1;
+          transition: opacity 1s ease-in-out;
+        }
+
+        .b-events-featured__description {
+          opacity: 1;
+          transition: opacity 1s ease-in-out;
+        }
+      }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      &:hover {
+        flex: 8;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      &:hover {
+        flex: 6;
+      }
+    }
+  }
+
+  &__title {
+    @include base.typography-typeSetting(4, "bold");
+
+    display: flex;
+    order: 2;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-bottom: 6px;
+      text-shadow: 0 -1px 2px rgba(29, 30, 32, 50%), 0 1px 2px rgba(29, 30, 32, 50%);
+    }
+  }
+
+  &__anchor {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    width: calc(100vw - 120px); // 60px either side
+
+    @include mixins.breakpoints-bpMinXSmall {
+      height: 100%;
+      width: 100%;
+    }
+
+    &:hover,
+    &:focus {
+      .b-events-featured__title {
+        text-decoration: underline;
+      }
+    }
+
+    &:focus {
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+
+    &::after {
+      background-image:
+        linear-gradient(
+          to top,
+          #000,
+          rgba(10, 10, 11, 88%) 24%,
+          rgba(36, 37, 39, 47%) 66%,
+          rgba(62, 64, 67, 0%)
+        );
+      bottom: 0;
+      content: "";
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__description {
+    bottom: 0;
+    color: base.sitecolors-siteColor("vam-white");
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 10px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      opacity: 0;
+    }
+  }
+
+  &__type {
+    @include base.typography-typeSetting(0, "bold");
+
+    display: flex;
+    margin-bottom: 3px;
+    order: 1;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-bottom: 8px;
+      text-shadow: 0 -1px 2px rgba(29, 30, 32, 50%), 0 1px 2px rgba(29, 30, 32, 50%);
+    }
+  }
+
+  &__date {
+    @include mixins.breakpoints-bpMaxSmall {
+      @include mixins.elementvisibility-visuallyHidden;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      text-shadow: 0 -1px 2px rgba(29, 30, 32, 50%), 0 1px 2px rgba(29, 30, 32, 50%);
+    }
+
+    @include base.typography-typeSetting(1, "bold");
+
+    display: flex;
+    margin-bottom: 6px;
+    order: 3;
+  }
+
+  &__venue {
+    @include mixins.breakpoints-bpMaxSmall {
+      @include mixins.elementvisibility-visuallyHidden;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      text-shadow: 0 -1px 2px rgba(29, 30, 32, 50%), 0 1px 2px rgba(29, 30, 32, 50%);
+    }
+
+    @include base.typography-typeSetting(1, "bold");
+
+    display: flex;
+    margin-bottom: 0;
+    order: 4;
+  }
+}
+
+.js-events-featured--concertina {
+  .js-events-featured__item--active {
+    flex: 12;
+
+    @include mixins.breakpoints-bpMinMedium {
+      flex: 8;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      flex: 6;
+    }
+
+    .u-label-tag--featured {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .b-events-featured__description {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+  }
+}

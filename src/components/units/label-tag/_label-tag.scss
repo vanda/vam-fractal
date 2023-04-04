@@ -1,4 +1,5 @@
 @use "../../base";
+@use "../../mixins";
 @use "sass:color";
 
 .u-label-tag {
@@ -51,5 +52,16 @@
     background: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: -20%);
     color: base.sitecolors-siteColor("vam-white");
     margin-left: 12px;
+  }
+
+  &--featured {
+    @include base.typography-typeSetting(0, "bold");
+
+    background: base.sitecolors-siteColor("primary-green");
+    margin-top: 10px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(2, "bold");
+    }
   }
 }

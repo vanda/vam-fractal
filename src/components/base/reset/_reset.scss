@@ -147,7 +147,7 @@ body {
 input,
 select,
 option {
-  font-family: typography.fontFamily(text);
+  font-family: typography.fontFamily("text");
 }
 
 img,

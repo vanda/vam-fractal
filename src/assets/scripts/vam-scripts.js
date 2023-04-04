@@ -22,6 +22,7 @@ require('../../components/blocks/site-nav/_site-nav');
 require('../../components/blocks/toggle-nav/_toggle-nav');
 require('../../components/blocks/video-thumbnail/_video-thumbnail');
 require('../../components/blocks/video-trailer/_video-trailer');
+require('../../components/blocks/events-featured/_events-featured');
 require('../../components/groups/facet-box-modal/_facet-box-modal');
 require('../../components/groups/image-overlay/_image-overlay');
 require('../../components/groups/story-box-container/_story-box-container');
