@@ -196,14 +196,11 @@
   }
 
   &__image-icon-link {
-    bottom: 30%;
     color: base.sitecolors-siteColor("vam-grey-3");
     height: 60%;
-    left: 21%;
+    inset: 18% 27% 30% 21%;
     pointer-events: none;
     position: absolute;
-    right: 27%;
-    top: 18%;
     width: 60%;
     z-index: 999;
 

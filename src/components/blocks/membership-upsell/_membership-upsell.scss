@@ -135,15 +135,12 @@
 
   &__overlay {
     background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.5);
-    bottom: 0;
     cursor: pointer;
     display: table;
     height: 100%;
-    left: 0;
+    inset: 0;
     margin: auto;
     position: fixed;
-    right: 0;
-    top: 0;
     width: 100%;
     z-index: 2;
   }

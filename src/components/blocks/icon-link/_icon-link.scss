@@ -70,12 +70,9 @@
   }
 
   &__icon {
-    bottom: 27%;
     height: 46%;
-    left: 27%;
+    inset: 27%;
     position: absolute;
-    right: 27%;
-    top: 27%;
     width: 46%;
     z-index: 1;
   }

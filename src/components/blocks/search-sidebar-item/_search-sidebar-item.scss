@@ -20,14 +20,11 @@
 
     &::after {
       background-image: linear-gradient(rgba(0, 0, 0, 0%), rgba(0, 0, 0, 0%), rgba(0, 0, 0, 80%), rgba(0, 0, 0, 100%));
-      bottom: 0;
       content: "";
       display: block;
-      left: 0;
+      inset: 0;
       opacity: 0.8;
       position: absolute;
-      right: 0;
-      top: 0;
       transition: opacity 0.35s ease;
       width: 100%;
       z-index: 0;

@@ -255,16 +255,13 @@ $nav-breakpoints: (
   }
 
   &__bag-total {
-    bottom: 0;
     color: base.sitecolors-siteColor("vam-white");
     font-size: 12px;
     font-weight: 700;
-    left: 0;
+    inset: 11px 0 0;
     margin: auto;
     position: absolute;
-    right: 0;
     text-align: center;
-    top: 11px;
   }
 
   &__mobile-toggle {

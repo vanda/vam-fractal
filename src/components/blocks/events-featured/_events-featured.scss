@@ -109,13 +109,10 @@
           rgba(36, 37, 39, 47%) 66%,
           rgba(62, 64, 67, 0%)
         );
-      bottom: 0;
       content: "";
       display: block;
-      left: 0;
+      inset: 0;
       position: absolute;
-      right: 0;
-      top: 0;
     }
   }
 
