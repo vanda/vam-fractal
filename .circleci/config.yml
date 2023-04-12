@@ -5,6 +5,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages
+      - node-version: '18.1.0'
       - run:
           command: npm run test
   deploy:
@@ -27,7 +28,7 @@ jobs:
             ./node_modules/.bin/surge --project www --domain vam-fractal-<<pipeline.git.branch>>.surge.sh
 
 orbs:
-  node: circleci/node@4.0.0
+  node: circleci/node@5.1.0
 
 version: 2.1
 
