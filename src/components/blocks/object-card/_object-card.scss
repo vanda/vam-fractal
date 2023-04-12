@@ -101,21 +101,23 @@
       display: block;
     }
 
+    &--sub {
+      margin-top: 5px;
+    }
+
     .b-object-card--etc & {
       @include base.typography-typeSetting(1, "bold");
 
       color: base.sitecolors-siteColor("vam-white");
       display: block;
       overflow: hidden;
-    }
 
-    &--sub {
       @include mixins.breakpoints-bpMinXSmall {
-        @include base.typography-typeSetting(3, "bold");
+        @include base.typography-typeSetting(3, bold);
       }
 
       &--sub {
-        @include base.typography-fontWeight("regular");
+        @include base.typography-fontWeight(regular);
       }
     }
   }

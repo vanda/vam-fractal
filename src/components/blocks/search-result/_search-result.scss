@@ -19,7 +19,7 @@
     &-type {
       @include base.typography-typeSetting(1);
 
-      color: siteColor("vam-grey-2");
+      color: base.sitecolors-siteColor("vam-grey-2");
       margin-bottom: 4px;
 
       @include mixins.breakpoints-bpMinXSmall {
@@ -31,7 +31,7 @@
     &-title {
       @include base.typography-typeSetting(3, "bold");
 
-      color: siteColor("vam-black");
+      color: base.sitecolors-siteColor("vam-black");
       margin-bottom: 12px;
       overflow: hidden;
       text-overflow: clip;
@@ -50,7 +50,7 @@
     &-description {
       @include base.typography-typeSetting(2, "light");
 
-      color: siteColor(vam-grey-2);
+      color: base.sitecolors-siteColor("vam-grey-2");
       max-height: 5em;
       overflow: hidden;
       padding-right: 5px;

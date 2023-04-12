@@ -195,7 +195,7 @@
       margin-top: 0;
 
       @include mixins.breakpoints-bpMinMedium {
-        @include base.typography-typeSetting(4, "medium");
+        @include base.typography-typeSetting(4, "regular");
       }
     }
 
@@ -425,7 +425,7 @@
   }
 
   &__filter-select {
-    @include base.typography-typeSetting(2, "medium");
+    @include base.typography-typeSetting(2, "regular");
 
     appearance: none;
     background: transparent;

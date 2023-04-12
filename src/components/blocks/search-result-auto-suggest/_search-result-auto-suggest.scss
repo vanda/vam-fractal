@@ -22,7 +22,7 @@
   }
 
   &-content-type {
-    @include base.typography-typeSetting(0, "normal");
+    @include base.typography-typeSetting(0, "regular");
 
     color: base.sitecolors-siteColor("primary-green");
     height: 13px;
@@ -30,14 +30,14 @@
     text-align: left;
 
     @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(2, "normal");
+      @include base.typography-typeSetting(2, "regular");
 
       font-size: 14px;
       line-height: 0.93;
     }
 
     @include mixins.breakpoints-bpMaxLarge {
-      @include base.typography-typeSetting(1, "normal");
+      @include base.typography-typeSetting(1, "regular");
 
       font-size: 13px;
       line-height: 1;

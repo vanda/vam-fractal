@@ -23,6 +23,16 @@
     </svg>
     {% endif %}
   </div>
+  {% if not modifiers %}
+  <div class="b-search-form__link-to-collections">
+    <span class="b-search-form__link-to-collections--desktop">
+      Alternatively search more than 1.25 million objects from the <a href="https://collections.vam.ac.uk/">V&A Collections</a>
+    </span>
+    <span class="b-search-form__link-to-collections--mobile">
+      <a href="https://collections.vam.ac.uk/">Search the collections</a>
+    </span>
+  </div>
+  {% endif %}
 
   {# Collections Landing pg #}
   {% if modifiers and 'etc-gateway' in modifiers %}
@@ -75,11 +85,11 @@
   </div>
   <div class="b-search-form__filters" aria-label="search filters" role="form">
     <div class="b-search-form__filter">
-      <input class="b-search-form__filter-input" type="checkbox" name="with_image" id="with_image" >
+      <input class="b-search-form__filter-input" type="checkbox" name="with_image" id="with_image">
       <label for="with_image">With image</label>
     </div>
     <div class="b-search-form__filter">
-      <input class="b-search-form__filter-input b-search-form__location-toggle" type="checkbox" name="on_display" id="on_display" >
+      <input class="b-search-form__filter-input b-search-form__location-toggle" type="checkbox" name="on_display" id="on_display">
       <label for="on_display">On display</label>
       <div class="b-search-form__filter b-search-form__location-wrapper">
         <select class="b-search-form__filter-select" name="location">

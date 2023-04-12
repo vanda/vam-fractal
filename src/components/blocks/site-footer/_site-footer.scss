@@ -61,7 +61,7 @@
 
   &__content {
     margin: auto;
-    max-width: bp(large) + (2 * base.$spacings-spacing-small);
+    max-width: mixins.breakpoints-bp(large) + (2 * base.$spacings-spacing-small);
     overflow: hidden;
     padding: 41px base.$spacings-spacing-small 0;
     position: relative;

@@ -1,6 +1,5 @@
 @use "../../mixins";
 @use "../../base";
-@use "sass:color";
 
 .b-collection-card {
   &__anchor {
@@ -14,7 +13,7 @@
     @include mixins.constrainedimage-constrainedImage(7 4);
 
     .b-collection-card--transparent & {
-      box-shadow: 0 1px 2px 0 color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
+      box-shadow: 0 1px 2px 0 rgba(base.sitecolors-siteColor("vam-black"), 50%);
     }
   }
 
@@ -32,7 +31,7 @@
 
   &__overlay {
     align-items: center;
-    background-color: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
+    background-color: rgba(base.sitecolors-siteColor("vam-black"), 50%);
     border-radius: 2px 2px 0 0;
     display: flex;
     inset: 0;
@@ -58,7 +57,7 @@
     @include base.typography-typeSetting(3, "bold");
 
     color: base.sitecolors-siteColor("vam-white");
-    text-shadow: 0 1px 2px color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
+    text-shadow: 0 1px 2px rgba(base.sitecolors-siteColor("vam-black"), 50%);
   }
 
   &__name {

@@ -19,10 +19,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(2, "normal");
-      }
     }
 
     &-image {

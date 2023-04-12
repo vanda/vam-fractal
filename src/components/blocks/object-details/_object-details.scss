@@ -13,7 +13,12 @@
     text-align: center;
   }
 
+  &__summary {
+    @include base.typography-typeSetting(4, "light");
+  }
+
   &__row {
+    align-items: baseline;
     border-color: base.sitecolors-siteColor("vam-grey-3");
     border-style: dashed;
     border-width: 1px 0 0;
@@ -39,11 +44,14 @@
   }
 
   &__cell-name {
-    @include base.typography-typeSetting(3, "bold");
+    @include base.typography-typeSetting(1);
 
     color: base.sitecolors-siteColor("vam-white");
     flex-shrink: 0;
+    font-size: 13px;
+    letter-spacing: 2px;
     padding-bottom: 3px;
+    text-transform: uppercase;
 
     @include mixins.breakpoints-bpMinSmall {
       padding-bottom: 14px;
@@ -52,7 +60,7 @@
   }
 
   &__cell-data {
-    @include base.typography-typeSetting(4);
+    @include base.typography-typeSetting(3);
 
     padding-left: 0;
     padding-top: 0;
@@ -82,7 +90,7 @@
       color: base.sitecolors-siteColor("vam-white");
       margin-right: 10px;
       margin-top: 12px;
-      padding: 9px 10px 11px;
+      padding: 9px 10px 10px;
 
       &:hover {
         background-color: base.themecolors-themeColor("silent-green");
@@ -94,7 +102,7 @@
         margin-bottom: 2px;
         margin-right: 10px;
         margin-top: 6px;
-        padding: 3px 9px 6px 11px;
+        padding: 3px 9px 5px 11px;
       }
     }
   }
@@ -143,7 +151,7 @@
 
   &__cell-concealer-button {
     align-items: center;
-    background-color: themeColor(silent-green);
+    background-color: base.themecolors-themeColor("silent-green");
     border-radius: 100%;
     display: inline-flex;
     height: 14px;

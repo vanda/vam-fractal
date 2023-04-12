@@ -25,8 +25,8 @@ const config = {
   mode: process.env.NODE_ENV,
   context: path.resolve(__dirname, 'src'),
   entry: {
-    fractal: './assets/styles/fractal-preview.scss',
-    vanda: './assets-vanda.js'
+    vanda: './assets-vanda.js',
+    fractal: './assets/styles/fractal-preview.scss'
   },
   output: {
     clean: true,
