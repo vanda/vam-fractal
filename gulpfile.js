@@ -81,6 +81,7 @@ function styles() {
   return gulp.src(`${paths.src}/assets/styles/*.scss`)
     .pipe(sourcemaps.init())
     .pipe(sass({
+      precision: 10,
       outputStyle: 'compressed'
     }).on('error', sass.logError))
     .pipe(autoprefixer())
