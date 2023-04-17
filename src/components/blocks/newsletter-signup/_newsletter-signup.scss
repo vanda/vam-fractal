@@ -84,21 +84,13 @@
     }
 
     &--footer {
-      &-etc {
-        border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-2");
-
-        @include mixins.breakpoints-bpMinSmall {
-          border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
-        }
-      }
+      margin: 0;
+      max-width: none;
+      padding: 0 0 31px;
 
       &-main {
         border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
       }
-
-      margin: 0;
-      max-width: none;
-      padding: 0 0 31px;
     }
 
     @include mixins.breakpoints-bpMinSmall {
