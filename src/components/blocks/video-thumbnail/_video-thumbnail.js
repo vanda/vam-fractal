@@ -1,3 +1,4 @@
+const svgSprite = document.getElementById('vam-svg-sprite-path');
 const videoThumbs = document.querySelectorAll('.js-video-thumbnail');
 
 Array.from(videoThumbs, (vidThumb) => {
@@ -13,7 +14,7 @@ Array.from(videoThumbs, (vidThumb) => {
     popupClose.className = 'b-video-thumbnail__popup-close';
     popupClose.innerHTML = `
       <svg role="img">
-        <use xlink:href="../../build/svg/vam-sprite.svg#close"></use>
+        <use xlink:href="${svgSprite.href}#close"></use>
       </svg>`;
     popup.appendChild(popupClose);
     document.body.appendChild(popup);
