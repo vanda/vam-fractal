@@ -1,3 +1,4 @@
+const svgSprite = document.getElementById('vam-svg-sprite-path');
 const facetClass = 'b-facet-box__facet';
 const facetTerm = `${facetClass}-term-toggle`;
 const facetTermTick = `${facetTerm}-tick`;
@@ -45,7 +46,7 @@ const dateFacetHTML = () => `
           </label>
           <button class="b-facet-box__facet-date-button">
             <svg class="b-facet-box__facet-date-button-icon" aria-label="apply-date-facet" role="img">
-              <use xlink:href="/assets/svg/vamicons.svg#search"></use>
+              <use xlink:href="${svgSprite.href}#search"></use>
             </svg>
           </button>
         </div>
@@ -64,7 +65,7 @@ const termCheckbox = (facet, paramName, term, value, count) => {
     <button class="b-facet-box__facet-term-toggle-button">
       <div class="b-facet-box__facet-term-toggle-checkbox">
         <svg class="b-facet-box__facet-term-toggle-tick" aria-hidden="true" role="img">
-          <use xlink:href="/assets/svg/vamicons.svg#tick"></use>
+          <use xlink:href="${svgSprite.href}#tick"></use>
         </svg>
       </div>
       <span id="${paramName.replace(' ', '')}-${term.replace(' ', '')}-checkbox-label" class="b-facet-box__facet-term-toggle-text">
