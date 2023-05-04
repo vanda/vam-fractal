@@ -4,7 +4,8 @@
   display: flex;
   gap: 5px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 
