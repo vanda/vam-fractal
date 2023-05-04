@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgRowStyle = imgRow.parentNode.insertBefore(document.createElement('style'), imgRow);
 
       const rowStyle = () => {
-        const imgsLL = imgRow.querySelectorAll('.b-image-row__img');  // images, including those failed and replaced by LazyLoad
+        const imgsLL = imgRow.querySelectorAll('.b-image-row__img'); // images, including those failed and replaced by LazyLoad
         const aspectRatios = [];
         const parentRow = imgsLL[0].closest('.b-image-row');
         const parentRowCS = getComputedStyle(parentRow);
