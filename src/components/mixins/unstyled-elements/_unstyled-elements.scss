@@ -12,6 +12,14 @@
   padding: 0;
 }
 
+@mixin inlineList {
+  @include unstyledList;
+
+  > * {
+    display: inline-block;
+  }
+}
+
 @mixin unstyledAnchor {
   margin: 0;
   padding: 0;
