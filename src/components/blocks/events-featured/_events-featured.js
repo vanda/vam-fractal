@@ -55,9 +55,6 @@ const featuredEventsComponent = {
     // set the active list item by index parameter
     elesListItems[listItemIndex].classList.add('js-events-featured__item--active');
 
-    // centre scroll active list item when viewport width is reduced below $component.config.bp
-    elesListItems[listItemIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-
     // add events for moving active list item, centred horizontally in viewport
     elesListAnchors.forEach((ele, idx) => {
       ele.eleAnchor = ele;

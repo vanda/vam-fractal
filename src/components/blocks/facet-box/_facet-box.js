@@ -139,8 +139,7 @@ const facetHTML = (facet, seeMore) => {
     <ul data-facet="${facet}" class="b-facet-box__facet-term-container" id="b-facet-box__facet-term-container_${facetExpanderID}">
     ${seeMore ? `<li class="b-facet-box__term-more-container">
         <button data-facet="${facet}" class="b-facet-box__term-more" aria-label="see more terms of facet ${facet}">See more</button>
-      </li>` : ''
-    }
+      </li>` : ''}
     </ul>
   `;
 };
