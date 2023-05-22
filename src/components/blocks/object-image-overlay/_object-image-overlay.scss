@@ -279,7 +279,7 @@
     @include mixins.breakpoints-bpMinMedium {
       @include base.typography-typeSetting(0, "bold");
 
-      background-color: siteColor(vam-grey-5);
+      background-color: base.sitecolors-siteColor("vam-grey-5");
       color: base.sitecolors-siteColor("vam-black");
       display: flex;
       left: 0;
