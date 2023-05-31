@@ -1,11 +1,11 @@
 <a class="b-venue-card" href="{{ href }}">
   <div class="b-venue-card__header">
-    <h3 class="b-venue-card__title">
-      {{ title | safe }}
-      <svg class="b-venue-card__title-icon" role="presentation" aria-label="external link"> <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#link-external"></use></svg>
+    <h3>
+      <svg class="b-venue-card__wordmark" role="img" aria-label="{{ title | safe }}"> <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ wordmark }}"></use></svg>
     </h3>
     <div class="b-venue-card__subtitle">
       {{ subtitle | safe }}
+      <svg class="b-venue-card__subtitle-external" role="img" aria-label="external link"> <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#link-external"></use></svg>
     </div>
   </div>
   <div class="b-venue-card__open">

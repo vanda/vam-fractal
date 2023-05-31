@@ -21,63 +21,69 @@
 
   &__header {
     color: base.sitecolors-siteColor("vam-white");
-    padding: 10px;
+    padding: 20px 10px;
     position: absolute;
     text-shadow: 0 1px 3px base.sitecolors-siteColor("vam-black");
     width: 100%;
     z-index: 1;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      padding: 20px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 20px 10px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 20px;
+    }
   }
 
-  &__title {
-    @include base.typography-typeSetting(4, "bold");
+  &__wordmark {
+    height: 18px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      height: 13px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      height: 18px;
+    }
+  }
+
+  &__subtitle {
+    @include base.typography-typeSetting(2);
 
     align-items: baseline;
     column-gap: 5px;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 2px;
-
-    @include mixins.breakpoints-bpMinXSmall {
-      @include base.typography-typeSetting(3, "bold");
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      @include base.typography-typeSetting(4, "bold");
-    }
-
-    @include mixins.breakpoints-bpMinLarge {
-      font-size: 21px;
-      line-height: 26px;
-    }
-
-    .b-venue-card:hover &,
-    .b-venue-card:focus & {
-      text-decoration: underline;
-    }
-  }
-
-  &__title-icon {
-    color: base.sitecolors-siteColor("vam-white");
-    height: 14px;
-    width: 14px;
-  }
-
-  &__subtitle {
-    @include base.typography-typeSetting(3);
-
-    @include mixins.breakpoints-bpMinXSmall {
-      @include base.typography-typeSetting(1);
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      @include base.typography-typeSetting(3);
-    }
-
     width: 100%;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(0);
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(2);
+    }
+
+    > #{&}-external {
+      color: base.sitecolors-siteColor("vam-white");
+      height: 11px;
+      width: 11px;
+
+      @include mixins.breakpoints-bpMinMedium {
+        height: 13px;
+        width: 13px;
+      }
+    }
+
   }
 
   &__open {
-    @include base.typography-typeSetting(0);
+    @include base.typography-typeSetting(2);
 
     background-color: base.sitecolors-siteColor("vam-white");
     bottom: 10px;
@@ -88,8 +94,20 @@
     position: absolute;
     z-index: 1;
 
+    @include mixins.breakpoints-bpMinXSmall {
+      left: 20px;
+    }
+
     @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(0);
+
+      left: 10px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
       @include base.typography-typeSetting(2);
+
+      left: 20px;
     }
   }
 
