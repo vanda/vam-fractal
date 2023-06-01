@@ -139,10 +139,18 @@
     display: flex;
     justify-content: space-between;
 
+    .b-event-teaser--dark & {
+      border-color: base.sitecolors-siteColor("vam-grey-2");
+    }
+
     &__buttons > .u-btn {
       @include base.typography-typeSetting(3);
 
       margin: 0 0 10px 10px;
+
+      .b-event-teaser--dark & {
+        border-color: base.sitecolors-siteColor("vam-grey-2");
+      }
 
       .b-event-teaser__link:hover &,
       .b-event-teaser__link:focus & {
