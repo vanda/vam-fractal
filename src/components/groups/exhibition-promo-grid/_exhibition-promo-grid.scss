@@ -1,0 +1,18 @@
+@use "../../mixins";
+
+.b-exhibition-promo__list {
+  @include mixins.unstyledelements-unstyledList;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include mixins.breakpoints-bpMinMedium {
+    column-gap: 20px;
+    flex-direction: row;
+  }
+
+  @include mixins.breakpoints-bpMinLarge {
+    column-gap: 30px;
+  }
+}

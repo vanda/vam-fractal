@@ -17,6 +17,7 @@
 @use "../../components/blocks/event-feature/event-feature";
 @use "../../components/blocks/events-featured/events-featured";
 @use "../../components/blocks/event-teaser/event-teaser";
+@use "../../components/blocks/exhibition-promo/exhibition-promo";
 @use "../../components/blocks/icon-badge/icon-badge";
 @use "../../components/blocks/icon-link/icon-link";
 @use "../../components/blocks/icon-list/icon-list";
@@ -66,6 +67,7 @@
 // Groups
 @use "../../components/groups/block-grid/block-grid";
 @use "../../components/groups/collection-grid/collection-grid";
+@use "../../components/groups/exhibition-promo-grid/exhibition-promo-grid";
 @use "../../components/groups/horizontal-scroll-grid/horizontal-scroll-grid";
 @use "../../components/groups/holding-page/holding-page";
 @use "../../components/groups/image-overlay/image-overlay";

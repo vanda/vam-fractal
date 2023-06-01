@@ -1,0 +1,18 @@
+<article class="b-exhibition-promo{% for m in modifiers %} b-exhibition-promo--{{ m }}{% endfor %}" itemscope itemprop="exhibition" itemtype="https://schema.org/ExhibitionEvent">
+  <a href="{{ url }}" class="b-exhibition-promo__anchor">
+    <img
+      class="b-exhibition-promo__img"
+      alt="{{ title }}"
+      srcset="{% for k, img in imageSrc %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+      src="{{ imageSrc["640"] }}"
+      sizes=""
+    >
+    <div class="b-exhibition-promo__information">
+      <h3 class="b-exhibition-promo__title">{{ title }}</h3>
+      <p class="b-exhibition-promo__type">{{ eventType }}</p>
+      <p class="b-exhibition-promo__description">{{ description }}</p>
+      <p class="b-exhibition-promo__date">{{ date }}</p>
+      <p class="b-exhibition-promo__venue">{{ venue }}</p>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,209 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-exhibition-promo {
+  &__title {
+    @include base.typography-typeSetting(6, "bold");
+
+    display: -webkit-box;
+    margin-bottom: 0;
+    order: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "bold");
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(8, "bold");
+    }
+  }
+
+  &--double &__title {
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(5, "bold");
+    }
+  }
+  
+  &__anchor {
+    aspect-ratio: 0.78;
+    display: block;
+    position: relative;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      aspect-ratio: 1;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      aspect-ratio: 1.78;
+    }
+
+    &:hover,
+    &:focus {
+      .b-exhibition-promo__title {
+        text-decoration: underline;
+      }
+    }
+
+    &::after {
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(238, 238, 238, 0%),
+          rgba(0, 0, 0, 67%) 67%,
+          rgba(0, 0, 0, 78%)
+        );
+      content: "";
+      display: block;
+      inset: 0;
+      position: absolute;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__information {    
+    bottom: 0;
+    color: base.sitecolors-siteColor("vam-white");
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 30px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      padding: 0 80px 20px 20px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 0 120px 40px 65px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 0 80px 40px 40px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      padding: 0 440px 60px 60px;
+    }
+  }
+
+  &__type {
+    @include base.typography-typeSetting(3, "bold");
+
+    order: 1;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      @include base.typography-typeSetting(2, "bold");
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(3, "bold");
+    }
+  }
+
+  &__description {
+    @include base.typography-typeSetting(4);
+
+    display: -webkit-box;
+    margin-bottom: 0;
+    margin-top: 4px;
+    order: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-top: 2px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(5);
+    }
+  }
+
+  &__date {
+    @include base.typography-typeSetting(2, "bold");
+
+    margin-bottom: 5px;
+    margin-top: 20px;
+    order: 4;
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(3);
+
+      margin-bottom: 10px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-top: 30px;
+    }
+  }
+
+  &__venue {
+    @include base.typography-typeSetting(2, "bold");
+
+    margin-bottom: 0;
+    order: 5;
+    text-transform: capitalize;
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(3);
+    }
+  }
+
+  &--double &__information {
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 0 20px 20px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      padding: 0 178px 30px 30px;
+    }
+  }
+
+  &--double &__type {
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(2, "bold");
+
+      margin-bottom: 0;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-bottom: 5px;
+    }
+  }
+
+  &--double &__description {
+    @include mixins.breakpoints-bpMinMedium {
+      @include mixins.elementvisibility-visuallyHidden;
+    }
+  }
+
+  &--double &__date {
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(2, "bold");
+
+      margin-bottom: 5px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-top: 20px;
+    }
+  }
+
+  &--double &__venue {
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(2, "bold");
+    }
+  }
+}
