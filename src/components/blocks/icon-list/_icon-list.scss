@@ -40,13 +40,7 @@ $icon-width: 30px;
     &  #{&}__heading {
       @include base.typography-typeSetting(4, "bold");
 
-      margin-bottom: 5px;
-
-      @include mixins.breakpoints-bpMinXSmall {
-        @include mixins.breakpoints-bpMaxSmall {
-          @include base.typography-typeSetting(3, "bold");
-        }
-      }
+      margin-bottom: 10px;
     }
   }
 }

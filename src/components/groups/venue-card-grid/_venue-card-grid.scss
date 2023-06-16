@@ -20,7 +20,7 @@
   }
 
   &__grid {
-    @include mixins.breakpoints-bpMinXSmall {
+    @include mixins.breakpoints-bpMinSmall {
       display: flex;
       flex-flow: row wrap;
     }
@@ -33,7 +33,7 @@
       aspect-ratio: 5 / 3;
     }
 
-    @include mixins.breakpoints-bpMinXSmall {
+    @include mixins.breakpoints-bpMinSmall {
       flex: 0 1 calc((100% - 20px) * 5 / 11);
 
       &:nth-child(n+2) {
