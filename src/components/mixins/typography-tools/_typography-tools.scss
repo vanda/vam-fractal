@@ -4,7 +4,7 @@
 
 // PX to REM
 // Convert px values to rem values with px fallback - https://github.com/bitmanic/rem
-$baseline-px: 16px;
+$baseline-px: 15px;
 
 @mixin rem($property, $px-values) {
   // Convert the baseline into rems
