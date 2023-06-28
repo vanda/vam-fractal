@@ -157,17 +157,13 @@ const oicInit = () => {
       const itemPrev = item.querySelector('.b-object-image-overlay__prev');
       const itemNext = item.querySelector('.b-object-image-overlay__next');
 
-      // buttons only appear on desktop but still are present and
-      // focusable on mobile view
-      if (window.innerWidth > 991) {
-        if (oic._index > 0) {
-          itemPrev.classList.add('b-object-image-overlay__prev--enabled');
-          itemPrev.removeAttribute('disabled');
-        }
-        if (oic._index < oicSeeds.length - 1) {
-          itemNext.classList.add('b-object-image-overlay__next--enabled');
-          itemNext.removeAttribute('disabled');
-        }
+      if (oic._index > 0) {
+        itemPrev.classList.add('b-object-image-overlay__prev--enabled');
+        itemPrev.removeAttribute('disabled');
+      }
+      if (oic._index < oicSeeds.length - 1) {
+        itemNext.classList.add('b-object-image-overlay__next--enabled');
+        itemNext.removeAttribute('disabled');
       }
 
       item.querySelectorAll('a').forEach((el) => el.removeAttribute('tabindex'));
