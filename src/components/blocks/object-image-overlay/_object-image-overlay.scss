@@ -64,6 +64,10 @@
     justify-content: space-around;
     width: 100vw;
 
+    @media (pointer: coarse) {
+      transition: margin .35s ease;
+    }
+
     &:first-of-type {
       margin-left: -100vw;
     }
