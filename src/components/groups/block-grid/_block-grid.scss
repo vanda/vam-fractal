@@ -19,11 +19,11 @@
 
   &__header {
     color: base.sitecolors-siteColor("vam-white");
-    margin: 50px 0 20px;
+    margin: 40px 0 20px;
     width: 100%;
 
     @include mixins.breakpoints-bpMinSmall {
-      margin: 70px 0 30px;
+      margin: 60px 0 30px;
     }
 
     &--black {
