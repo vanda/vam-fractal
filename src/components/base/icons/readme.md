@@ -47,4 +47,3 @@ In order for Wordmarks to scale properly they need `preserveAspectRatio="xMinYMa
 ## References
 
 - [SVG 'symbol' a good choice for icons](https://css-tricks.com/svg-symbol-good-choice-icons/)
-- [SVG4Everyone](https://www.npmjs.com/package/svg4everybody)
