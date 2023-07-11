@@ -157,17 +157,13 @@ const oicInit = () => {
       const itemPrev = item.querySelector('.b-object-image-overlay__prev');
       const itemNext = item.querySelector('.b-object-image-overlay__next');
 
-      // buttons only appear on desktop but still are present and
-      // focusable on mobile view
-      if (window.innerWidth > 991) {
-        if (oic._index > 0) {
-          itemPrev.classList.add('b-object-image-overlay__prev--enabled');
-          itemPrev.removeAttribute('disabled');
-        }
-        if (oic._index < oicSeeds.length - 1) {
-          itemNext.classList.add('b-object-image-overlay__next--enabled');
-          itemNext.removeAttribute('disabled');
-        }
+      if (oic._index > 0) {
+        itemPrev.classList.add('b-object-image-overlay__prev--enabled');
+        itemPrev.removeAttribute('disabled');
+      }
+      if (oic._index < oicSeeds.length - 1) {
+        itemNext.classList.add('b-object-image-overlay__next--enabled');
+        itemNext.removeAttribute('disabled');
       }
 
       item.querySelectorAll('a').forEach((el) => el.removeAttribute('tabindex'));
@@ -303,6 +299,37 @@ const oicInit = () => {
             e2.preventDefault();
             oic.advance(true);
           }
+        };
+
+        oic.ontouchstart = (e4) => {
+          const startXY = [e4.touches[0].pageX, e4.touches[0].pageY];
+          oic.ontouchmove = (e5) => {
+            const deltaXY = [e5.touches[0].pageX - startXY[0], e5.touches[0].pageY - startXY[1]];
+            if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
+              && (
+                (deltaXY[0] < 0 && oic._index < oicSeeds.length - 1)
+                || (deltaXY[0] > 0 && oic._index > 0)
+              )) {
+              if (Math.abs(deltaXY[0]) < 74) {
+                window.requestAnimationFrame(() => {
+                  items.style.marginLeft = `${deltaXY[0]}px`;
+                });
+              } else {
+                oic.ontouchmove = null;
+                if (deltaXY[0] < 0) {
+                  oic.advance();
+                } else {
+                  oic.advance(true);
+                }
+              }
+            }
+          };
+          oic.ontouchend = () => {
+            window.requestAnimationFrame(() => {
+              items.style.marginLeft = 0;
+              items.style.transition = 'all .35s';
+            });
+          };
         };
       }
     }, false);
