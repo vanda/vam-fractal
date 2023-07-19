@@ -10,23 +10,19 @@
   }
 
   &__media {
-    @include mixins.constrainedimage-constrainedImage(7 4);
+    aspect-ratio: 7 / 4;
+    position: relative;
 
     .b-collection-card--transparent & {
       box-shadow: 0 1px 2px 0 rgba(base.sitecolors-siteColor("vam-black"), 50%);
     }
   }
 
-  &__media-inner {
-    @include mixins.constrainedimage-constrainedImageInner;
-
-    overflow: hidden;
-  }
-
   &__media-image {
-    @include mixins.constrainedimage-constrainedImageImage;
-
     border-radius: 2px 2px 0 0;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 
   &__overlay {
