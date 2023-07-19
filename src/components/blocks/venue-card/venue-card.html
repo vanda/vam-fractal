@@ -13,17 +13,10 @@
   </div>
   <picture>
     <source data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-        media="(max-width: 499px)">
+        media="(max-width: 767px)">
     <img class="b-venue-card__image" alt="" 
-        {% if isPortrait %}
-        data-sizes="(min-width: 500px) calc((100vw - 20px) * 3 / 11),
-                    (min-width: 992px) calc((100vw - 40px) * 3 / 11),
-                    (min-width: 1200px) 320px"
-        {% else %}
-        data-sizes="(min-width: 500px) calc((100vw - 20px) * 5 / 11),
-                    (min-width: 9920px) calc((100vw - 40px) * 5 / 11),
-                    (min-width: 1200px) 530px"
-        {% endif %}
+        data-sizes="(min-width: 1200px) {% if isPortrait %}284px{% else %}473px{% endif %},
+                    (min-width: 768px) {% if isPortrait %}26vw{% else %}43vw{% endif %}"
         data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
         src="{{ image[320] }}">
   </picture>
