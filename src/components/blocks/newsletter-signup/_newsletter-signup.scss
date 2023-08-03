@@ -20,10 +20,6 @@
     flex-direction: row;
   }
 
-  @include mixins.breakpoints-bpMinLarge {
-    background-color: transparent;
-  }
-
   &__logo {
     color: base.sitecolors-siteColor("vam-grey-4");
     height: 200px;
@@ -42,32 +38,6 @@
       & svg {
         height: 100%;
         width: 100%;
-      }
-    }
-
-    @include mixins.breakpoints-bpMinLarge {
-      background-color: base.sitecolors-siteColor("vam-grey-5");
-      opacity: 1;
-      right: 0;
-      width: 50%;
-
-      svg {
-        filter: invert(100%);
-        height: 120%;
-        margin-top: -5%;
-      }
-
-      @supports (mask-repeat: repeat) {
-        height: 100%;
-        mask-image: url("https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/valogo_mask.svg");
-        mask-position: 20% 73%;
-        mask-repeat: no-repeat;
-        mask-size: 131%;
-        top: 0;
-
-        svg {
-          display: none;
-        }
       }
     }
   }
