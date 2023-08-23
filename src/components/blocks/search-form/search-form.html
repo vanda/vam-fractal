@@ -2,11 +2,26 @@
 <label class="b-search-form__label" for="{{ inputId }}">Search more than 1.2 million objects</label>
 {% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" name="search" action="{{ action }}" method="get" role="search">
+  {# Collections Landing and Collections search pages #}
+  {% if modifiers and 'etc' in modifiers %}
+  <button type="button" class="b-search-form__advanced-search-toggle" aria-expanded="false" aria-label="Advanced search by category" aria-controls="advanced-search-wrapper">Advanced search</button>
+  {% endif %}
   <div class="b-search-form__inner">
     {% if not modifiers %}
     <svg class="b-search-form__icon" aria-hidden="true" role="img">
       <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
     </svg>
+    {% endif %}
+    {# Collections Landing and Collections search pages #}
+    {% if modifiers and 'etc' in modifiers %}
+    <div class="b-search-form__advanced-search-wrapper b-search-form__location-wrapper" id="advanced-search-wrapper">
+      <label class="b-search-form__label b-search-form__advanced-search-label" for="{{ selectId }}">Advanced search</label>
+      <select name="{{ selectId }}" class="b-search-form__filter-select">
+        {% for option in selectOptions %}
+          <option value="{{ option.value }}">{{ option.textContent }}</option>
+        {% endfor %}
+      </select>
+    </div>
     {% endif %}
     <div class="b-search-form__input-wrapper">
       <input type="text" class="b-search-form__input" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
@@ -14,7 +29,7 @@
       <div class="b-search-form__underscore" aria-hidden="true"></div>
       {% endif %}
     </div>
-    <button class="b-search-form__submit {% if modifiers and 'etc-gateway' in modifiers %}u-btn{% endif %}" aria-label="Search submit">
+    <button class="b-search-form__submit {% if modifiers and 'etc' in modifiers %}u-btn{% endif %}" aria-label="Search submit">
       Search
     </button>
     {% if not modifiers %}
@@ -63,7 +78,6 @@
   {# Collections Search pg #}
   {% elif modifiers and 'etc' in modifiers %}
   <div class="b-search-form__facet-pane b-search-form__facet-pane--active">
-    <div class="b-search-form__facets-seperator"></div>
     <div class="b-search-form__facets-container">
       <div class="b-search-form__facets">
         {% for facet in facets %}
