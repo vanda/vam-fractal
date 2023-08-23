@@ -12,6 +12,13 @@ module.exports = {
       context: {
         modifiers: ['transparent']
       }
+    },
+    {
+      name: 'Transparent compact',
+      label: 'Transparent compact',
+      context: {
+        modifiers: ['compact', 'transparent']
+      }
     }
   ]
 };

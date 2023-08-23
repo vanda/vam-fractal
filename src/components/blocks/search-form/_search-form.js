@@ -49,6 +49,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search',
     };
 
+    // eslint-disable-next-line consistent-return
     const loadSuggestions = (formEl) => {
       formEl._props.storedSuggestions = JSON.parse(sessionStorage.getItem(`storedSuggestions_${formEl._props.type}`));
       const now = new Date();
@@ -80,29 +81,38 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     };
 
     const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
+    const searchFocus = searchForm.querySelector('#sel_etc');
 
     const autoSuggest = (term, suggestion) => {
-      const suggestEl = document.createElement('a');
-      if (suggestionsEl.childElementCount < 10) {
-        const title = suggestion.displayName || suggestion.displayTerm;
-        const url = `https://collections.vam.ac.uk/search/?id_${suggestion.recordType}=${suggestion.systemNumber}`;
-        suggestEl.className = 'b-search-form__suggestion';
-        suggestEl.href = url;
-        suggestEl.tabindex = 0;
-        suggestEl.innerHTML = `
-          <div class="b-search-form__suggestion-type">
-            ${suggestion.recordType}
-          </div>
-          ${title}
-        `;
-        suggestEl.tracking = {
-          event: 'autosuggest EtC landing',
-          eventCategory: `search - autosuggest - ${suggestion.index}`,
-          eventAction: term,
-          eventLabel: url,
-        };
-        suggestEl.addEventListener('click', trackAutosuggest);
-        suggestionsEl.appendChild(suggestEl);
+      /* Enable Autosuggest only for unfocussed (default) search forms */
+      // if (searchFocus.selectedIndex === 0) {
+      if (!searchInput.name.startsWith('q_')) {
+        const suggestEl = document.createElement('a');
+        if (suggestionsEl.childElementCount < 10) {
+          const title = suggestion.displayName || suggestion.displayTerm;
+          const url = `https://collections.vam.ac.uk/search/?id_${suggestion.recordType}=${suggestion.systemNumber}`;
+
+          suggestEl.className = 'b-search-form__suggestion';
+          suggestEl.href = url;
+          suggestEl.tabindex = 0;
+          suggestEl.innerHTML = `
+            <div class="b-search-form__suggestion-type">
+              ${suggestion.recordType}
+            </div>
+            ${title}
+          `;
+          suggestEl.tracking = {
+            event: 'autosuggest EtC landing',
+            eventCategory: `search - autosuggest - ${suggestion.index}`,
+            eventAction: term,
+            eventLabel: url,
+          };
+          suggestEl.addEventListener('click', trackAutosuggest);
+
+          suggestionsEl.appendChild(suggestEl);
+        }
+      } else {
+        searchForm.removeAttribute('suggesting');
       }
     };
 
@@ -134,7 +144,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
               });
               return true;
             });
-            if (searchInput.value.length > 4) {
+            if (searchInput.value.length > 4 && searchFocus.selectedIndex === 0) {
               // cancel pending request if any
               if (aborter) aborter.abort();
               // make our request cancellable
@@ -158,31 +168,125 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       })
       .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
 
-    document.addEventListener('keydown', (e) => {
-      if (e.keyCode === 13 && document.activeElement.closest('.b-search-form__filter-toggle')) {
-        document.activeElement.click();
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.b-search-form__filter-date-btn-show')) {
+        const eleFilterDate = document.querySelector('.b-search-form__filter-date');
+        const eleFilterDateCtrl = eleFilterDate.querySelector('.b-search-form__filter-date-btn-show');
+        const eleFilterDateContainer = eleFilterDate.querySelector('.b-search-form__filter-date-container');
+        const eleFilterDateState = !(eleFilterDateCtrl.getAttribute('aria-expanded') === 'true');
+        const elesNumInput = eleFilterDate.querySelectorAll('.b-search-form__filter-input--date');
+
+        if (eleFilterDateContainer.classList.contains('open')) {
+          eleFilterDateContainer.classList.remove('open');
+        } else {
+          eleFilterDateContainer.classList.add('open');
+        }
+
+        eleFilterDateCtrl.setAttribute('aria-expanded', eleFilterDateState);
+
+        // clear the date fields
+        if (elesNumInput.length) {
+          elesNumInput.forEach((eleInput) => {
+            eleInput.value = '';
+          });
+        }
       }
     });
 
-    document.addEventListener('click', (e) => {
-      if (e.target.closest('.b-search-form__filter-toggle')) {
-        const toggleSet = e.target.closest('.b-search-form__filter-toggle-set');
-        toggleSet.toggleAttribute('active');
+    const searchInputWrapper = searchForm.querySelector('.b-search-form__input-wrapper');
+    const searchformInner = searchForm.querySelector('.b-search-form__inner');
+    const removeValidationmessage = () => {
+      searchInputWrapper.querySelector('input').classList.remove('b-search-form__input--validation-error');
+      if (document.querySelector('.b-search-form__input__input-error-label')) {
+        document.querySelector('.b-search-form__input__input-error-label').remove();
+      }
+    };
 
-        // make sure only the visible toggle link is aria visible and focusable
-        const toggleLinks = Array.from(document.querySelectorAll('.b-search-form__filter-toggle'));
-        const tabIndexIndex = toggleLinks.indexOf(document.querySelector('[tabindex="0"]'));
-        toggleLinks[tabIndexIndex].setAttribute('tabindex', -1);
-        toggleLinks[tabIndexIndex].setAttribute('aria-hidden', true);
-        toggleLinks[([1, 0])[tabIndexIndex]].setAttribute('tabindex', 0);
-        toggleLinks[([1, 0])[tabIndexIndex]].removeAttribute('aria-hidden');
+    const addValidationmessage = () => {
+      const loading = document.createElement('label');
+      loading.classList.add('b-search-form__input__input-error-label');
+      loading.appendChild(document.createTextNode('Enter 3 or more characters'));
+      loading.setAttribute('id', 'form-input-error-label');
+      loading.setAttribute('role', 'alert');
+      loading.setAttribute('aria-live', 'polite');
+      return loading;
+    };
+    const enableSearchSubmit = () => {
+      removeValidationmessage();
+      if (document.querySelector('.b-search-form__input--validation-error')) {
+        searchInputWrapper.querySelector('input').classList.remove('b-search-form__input--validation-error');
+      }
+      searchformInner.classList.remove('b-search-form__inner--focused-search-validation-error');
+    };
 
-        Array.from(toggleSet.querySelectorAll('input'), (input) => {
-          input.value = '';
+    const disableSearchSubmit = (validationMess) => {
+      if (document.querySelector('.b-search-form__input__input-error-label') != null) {
+        // input error already built. dont need to build again.
+        // focus on input
+        searchInputWrapper.querySelector('input').focus();
+      } else {
+        searchInputWrapper.querySelector('input').setAttribute('aria-labelledby', 'form-input-error-label');
+        searchformInner.classList.add('b-search-form__inner--focused-search-validation-error');
+        searchInputWrapper.querySelector('input').focus();
+        searchInputWrapper.querySelector('input').classList.add('b-search-form__input--validation-error');
+        searchInputWrapper.insertAdjacentHTML('beforeend', validationMess.outerHTML);
+      }
+    };
+
+    searchForm.addEventListener('change', (e) => {
+      if (e && e.target.name === 'sel_etc') {
+        const focusedSearchOption = e.target.value;
+
+        if (focusedSearchOption !== 'all_fields' && e.target.value.startsWith('q_')) {
+          searchInput.setAttribute('name', e.target.value);
+          searchForm.removeAttribute('suggesting');
+
+          if (searchInput.value.length < 3) {
+            const validation = addValidationmessage();
+            disableSearchSubmit(validation);
+          }
+        } else {
+          searchInput.setAttribute('name', 'q');
+          enableSearchSubmit();
+        }
+      }
+    });
+
+    searchForm.addEventListener('input', (e) => {
+      const isFocusedSearch = e.target.name.toString().startsWith('q_');
+      if (e.target.value.length < 3) {
+        // Value is shorter than 3 chars
+
+        if (isFocusedSearch) {
+          const validation = addValidationmessage();
+          disableSearchSubmit(validation);
+        }
+      } else {
+        // if textvalue is 3 chars or more
+        enableSearchSubmit();
+      }
+    });
+
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(searchForm);
+
+      // focused search + 3 or more chars
+      // normal search any values.
+      const validSearchCriteria = formData.has('q') || (formData.get('sel_etc').toString().startsWith('q_') && searchInput.value.length > 2);
+
+      if (validSearchCriteria) {
+        let etcQuery = '';
+        Array.from(formData.entries(), (pair) => {
+          if (pair[0] === 'sel_etc') return true;
+          if (searchFocus.selectedIndex > 0 && pair[0] === 'q') pair[0] = formData.get('sel_etc');
+          etcQuery += (etcQuery.length > 1 ? '&' : '') + `${pair[0]}=${pair[1]}`; // eslint-disable-line prefer-template
           return true;
         });
+
+        window.location.href = `${searchForm.action}?${etcQuery}`;
       }
-    }, false);
+    });
   }
   return true;
 });
