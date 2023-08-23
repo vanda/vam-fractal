@@ -6,6 +6,33 @@ module.exports = {
     previewClass: 'fr-bg--dark',
     jsHook: 'js-search-site',
     inputId: 'q',
+    selectId: 'sel_etc',
+    selectOptions: [
+      {
+        value: 'all_fields',
+        textContent: 'All fields'
+      },
+      {
+        value: 'q_object_name',
+        textContent: 'Type/title'
+      },
+      {
+        value: 'q_actor',
+        textContent: 'Artist/maker'
+      },
+      {
+        value: 'q_material_technique',
+        textContent: 'Materials and Techniques'
+      },
+      {
+        value: 'q_place_name',
+        textContent: 'Place of origin'
+      },
+      {
+        value: 'q_accession_number',
+        textContent: 'Accession number'
+      }
+    ],
     placeholder: 'Search the website',
     action: 'https://www.vam.ac.uk/search'
   },
@@ -14,7 +41,7 @@ module.exports = {
       name: 'Collections Search',
       label: 'Collections Search',
       context: {
-        modifiers: ['etc'],
+        modifiers: ['etc', 'etc-search'],
         jsHook: 'js-search-etc',
         inputId: 'q-etc',
         placeholder: 'Search by object, artist, maker&hellip;',
@@ -41,7 +68,7 @@ module.exports = {
       context: {
         modifiers: ['etc', 'etc-gateway'],
         jsHook: 'js-search-etc-gateway',
-        inputId: 'q-etc',
+        inputId: 'q_etc',
         placeholder: 'Search by object, artist, maker&hellip;',
         action: 'https://collections.vam.ac.uk/search/'
       }

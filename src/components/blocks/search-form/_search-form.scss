@@ -9,7 +9,7 @@
     padding: 10px;
     position: relative;
 
-    &[suggesting] {
+    &[suggesting]:not(&--adv-search-active) {
       background: base.sitecolors-siteColor("vam-grey-2");
     }
   }
@@ -19,20 +19,26 @@
     position: relative;
 
     .b-search-form--etc & {
-      align-items: center;
-      background: base.sitecolors-siteColor("vam-white");
+      background: transparent;
       border: none;
       border-radius: 2px;
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 7px 0;
       overflow: hidden;
-      padding: 7px 9px;
+      padding: 0;
     }
 
-    .b-search-form--etc-gateway & {
-      @include mixins.breakpoints-bpMinSmall {
-        padding: 11px 10px;
-      }
+    .b-search-form--etc-search & {
+      margin-bottom: 0;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 11px 10px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      flex-wrap: nowrap;
     }
   }
 
@@ -64,10 +70,20 @@
     }
 
     .b-search-form--etc & {
+      background: base.sitecolors-siteColor("vam-white");
+      border: 1px solid base.sitecolors-siteColor("vam-white");
+      border-radius: 2px 0 0 2px;
+      flex: 1;
       width: calc(100% - 94px);
 
       @include mixins.breakpoints-bpMinSmall {
         width: calc(100% - 168px);
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        &--adv-search {
+          border-radius: 0;
+        }
       }
     }
   }
@@ -85,16 +101,81 @@
     }
   }
 
+  &__advanced-search-label {
+    @include mixins.elementvisibility-visuallyHidden;
+  }
+
+  &__advanced-search-toggle {
+    color: base.sitecolors-siteColor("vam-white");
+    cursor: pointer;
+    display: block;
+    margin: 0 0 10px auto;
+    text-decoration: underline;
+    width: fit-content;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(3);
+    }
+
+    &:focus {
+      @include mixins.focus-defaultFocus;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &::after {
+      background: base.sitecolors-siteColor("vam-white");
+      border-radius: 50%;
+      color: base.sitecolors-siteColor("vam-black");
+      content: "+";
+      display: inline-block;
+      font-size: 16px;
+      height: 16px;
+      line-height: 16px;
+      margin-left: 10px;
+      text-align: center;
+      text-decoration: none;
+      width: 16px;
+    }
+
+    &--active {
+      &::after {
+        content: "-";
+      }
+    }
+  }
+
+  &__advanced-search-toggle--open {
+    &::after {
+      content: "-";
+    }
+  }
+
+  &__input,
+  &__underscore {
+    @include base.typography-typeSetting(5);
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "bold");
+    }
+  }
+
   &__input {
+    @include base.typography-typeSetting(2);
+
     background-color: transparent;
     border: none;
     caret-color: base.sitecolors-siteColor("primary-green");
     color: base.sitecolors-siteColor("vam-white");
-    height: 100%;
-    margin: 4px 0;
-    width: 100%;
+    height: auto;
+    margin: 10px 10px 9px;
+    width: calc(100% - 20px);
 
     @include mixins.breakpoints-bpMinSmall {
+      margin: 7px 10px;
       padding-left: 10px;
     }
 
@@ -122,16 +203,6 @@
     }
   }
 
-  &__input,
-  &__underscore {
-    @include base.typography-typeSetting(5);
-
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(7, "bold");
-    }
-  }
-
-  // this feels like it should be in EtC...
   &--etc {
     .b-search-form__input {
       color: base.sitecolors-siteColor("vam-black");
@@ -182,6 +253,14 @@
       @include mixins.focus-insetFocus;
     }
 
+    &::after {
+      border: 6px solid transparent;
+      border-left-color: currentColor;
+      content: "";
+      display: inline-block;
+      margin-left: 8px;
+    }
+
     @include mixins.breakpoints-bpMinSmall {
       margin-top: 28px;
 
@@ -192,6 +271,7 @@
 
     .b-search-form--etc & {
       color: base.sitecolors-siteColor("vam-black");
+      float: none;
       margin-top: 0;
 
       @include mixins.breakpoints-bpMinMedium {
@@ -200,27 +280,32 @@
     }
 
     .b-search-form--etc-gateway & {
+      @include base.typography-typeSetting(2);
+
       border-radius: 0 2px 2px 0;
-      height: 100%;
       margin: 0;
-      padding: 0 5px 0 12px;
-      position: absolute;
-      right: 0;
+      padding: 13px 10px 13px 16px;
 
       @include mixins.breakpoints-bpMinSmall {
-        padding: 0 30px 0 37px;
+        @include base.typography-typeSetting(4);
+
+        padding: 13px 30px 13px 35px;
+      }
+
+      &::after {
+        border-width: 4px;
+        margin-left: 8px;
       }
     }
 
-    &::after {
-      border: 6px solid transparent;
-      border-left-color: currentColor;
-      content: "";
-      display: inline-block;
-      margin-left: 8px;
+    .b-search-form--etc-search & {
+      background: base.sitecolors-siteColor("vam-white");
+      margin: 0;
+      padding-right: 10px;
     }
   }
 
+  // &--etc-gateway
   &__suggestions {
     background: base.sitecolors-siteColor("vam-grey-2");
     border-radius: 0 0 2px 2px;
@@ -233,6 +318,10 @@
     width: 100%;
     z-index: 1;
 
+    &--inactive {
+      display: none;
+    }
+
     .b-search-form[suggesting] & {
       max-height: 74vh;
       opacity: 1;
@@ -241,6 +330,7 @@
     }
   }
 
+  // &--etc-gateway
   &__suggestion {
     @include base.typography-typeSetting(3);
 
@@ -264,6 +354,7 @@
     }
   }
 
+  // &--etc-gateway
   &__suggestion-type {
     @include base.typography-typeSetting(0, "bold");
 
@@ -306,12 +397,14 @@
     }
   }
 
+  // &--etc-gateway
   &__filter-info {
     @include base.typography-typeSetting(2);
 
     color: base.sitecolors-siteColor("vam-grey-5");
   }
 
+  // &--etc-gateway
   &__filter-toggle {
     cursor: pointer;
     margin-bottom: 20px;
@@ -351,6 +444,7 @@
     }
   }
 
+  // &--etc-gateway
   &__filter-toggle-pane {
     display: none;
 
@@ -437,6 +531,17 @@
 
     @include mixins.breakpoints-bpMinXSmall {
       width: auto;
+
+      .b-search-form--etc & {
+        width: 100%;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      .b-search-form--etc & {
+        border-radius: 2px 0 0 2px;
+        padding: 17px 40px 17px 20px;
+      }
     }
 
     > option {
@@ -456,6 +561,15 @@
     @include mixins.breakpoints-bpMinXSmall {
       margin-left: 20px;
       width: auto;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      .b-search-form--etc & {
+        &::after {
+          content: "⌄";
+          top: 20%;
+        }
+      }
     }
 
     &::after {
@@ -482,13 +596,46 @@
       margin: 0 20px 10px;
     }
   }
+  
+  &__advanced-search-wrapper {
+    color: base.sitecolors-siteColor("vam-white");
+    display: block;
+    flex: 0 0 100%;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    visibility: hidden;
+    width: 0;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      margin-left: 0;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+    }
+
+    &--active {
+      height: auto;
+      margin: 0 0 12px;
+      opacity: 1;
+      visibility: visible;
+      width: auto;
+
+      @include mixins.breakpoints-bpMinMedium {
+        margin: 0;
+      }
+    }
+  }
 
   &__facet-pane {
     background: base.sitecolors-siteColor("vam-white");
     border-radius: 0 0 2px 2px;
     color: base.sitecolors-siteColor("vam-black");
     display: none;
-    margin-top: -7px;
+    margin-top: 10px;
     padding: 7px 9px;
 
     &--active {
@@ -498,14 +645,6 @@
 
   &__facets-container {
     display: flex;
-  }
-
-  &__facets-seperator {
-    border-top: 1px solid #979797;
-
-    @include mixins.breakpoints-bpMinXSmall {
-      border-width: 2px;
-    }
   }
 
   &__facets {
