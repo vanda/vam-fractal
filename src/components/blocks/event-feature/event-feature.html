@@ -1,3 +1,5 @@
+{% for n in [1, 2, 3] %}
+  {% if (modifiers and (('third-width' in modifiers) or ('half-width' in modifiers and (n === 1 or n === 2)))) or n === 1 %}
 <div class="b-event-feature{% for m in modifiers %} b-event-feature--{{ m }}{% endfor %}" itemscope itemprop="event" itemtype="http://schema.org/Event" aria-label="{{ eventTitle }}">
   <a class="b-event-feature__link" href="{{ eventUrl }}" itemprop="url" content="{{ eventUrl }}">
 
@@ -36,3 +38,5 @@
     </div>
   </a>
 </div>
+  {% endif %}
+{% endfor %}
