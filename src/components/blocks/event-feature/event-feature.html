@@ -19,20 +19,11 @@
       <div class="b-event-feature__info">
         <div class="b-event-feature__type">
           {{ eventType }}
-          <span class="b-event-feature__date s-separated">{{ eventHumanDates }}</span>
-          <span itemprop="startDate" content="{{ eventMachineStartDate }}"></span>
-          <span itemprop="endDate" content="{{ eventMachineEndDate }}"></span>
         </div>
         <div class="b-event-feature__name" itemprop="name" content="{{ eventTitle }}">
           {{ eventTitle }}
           <div class="b-event-feature__date">{{ eventHumanDates }}</div>
-        </div>
-        <div class="b-event-feature__cta">
-          {% for action in actions %}
-          <div class="u-btn u-btn--micro u-btn--outlined-inverse">
-            {{ action }}
-          </div>
-          {% endfor %}
+          <div class="b-event-feature__date">{{ eventVenue }}</div>
         </div>
       </div>
     </div>

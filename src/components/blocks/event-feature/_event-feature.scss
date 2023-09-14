@@ -114,78 +114,10 @@
 
     margin: 6px 0 0;
 
-    &::before {
-      margin-left: 2px;
-    }
-
-    .b-event-feature__type & {
-      display: none;
-    }
-
-    @include mixins.breakpoints-bpMinSmall {
-      &::before {
-        margin-left: -1px;
-      }
-
-      .b-event-feature__type & {
-        display: inline-block;
-      }
-
-      .b-event-feature__name & {
-        display: none;
-      }
-
-      .b-event-feature--half-width:nth-of-type(n+2) &,
-      .b-event-feature--third-width:nth-of-type(n+2) & {
-        &::before {
-          margin-left: 2px;
-        }
-      }
-
-      .b-event-feature--half-width-fixed .b-event-feature__type &,
-      .b-event-feature--half-width:nth-of-type(n+2) .b-event-feature__type &,
-      .b-event-feature--third-width:nth-of-type(n+2) .b-event-feature__type & {
-        display: none;
-      }
-
-      .b-event-feature--half-width:nth-of-type(n+2) .b-event-feature__name &,
-      .b-event-feature--third-width:nth-of-type(n+2) .b-event-feature__name & {
-        display: block;
-      }
-    }
-
     @include mixins.breakpoints-bpMinMedium {
       .b-event-feature--half-width &,
       .b-event-feature--third-width & {
         @include base.typography-typeSetting(1, bold);
-
-        &::before {
-          margin-left: 2px;
-        }
-      }
-
-      .b-event-feature--half-width:nth-of-type(1) .b-event-feature__type &,
-      .b-event-feature--third-width:nth-of-type(1) .b-event-feature__type & {
-        display: none;
-      }
-
-      .b-event-feature--half-width:nth-of-type(1) .b-event-feature__name &,
-      .b-event-feature--third-width:nth-of-type(1) .b-event-feature__name & {
-        display: block;
-      }
-    }
-  }
-
-  &__cta {
-    margin: 10px 0 0;
-
-    > .u-btn {
-      margin-top: 0;
-
-      &:nth-child(n+2) {
-        @include mixins.breakpoints-bpMaxXSmall {
-          display: none;
-        }
       }
     }
   }
