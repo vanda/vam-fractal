@@ -38,21 +38,6 @@ module.exports = {
       }
     },
     {
-      name: 'Half Width Fixed',
-      label: 'Half Width Fixed',
-      context: {
-        modifiers: ['half-width-fixed'],
-        eventImageSrcs: {
-          320: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/24/10/34/05/b880499d-6c90-4199-bb00-e2d8d04a730e/320.jpg',
-          640: 'https://vanda-production-assets.s3.amazonaws.com/2017/05/24/10/34/05/124d3d7a-37c4-494a-8d56-f86581ecb9aa/640.jpg'
-        },
-        eventImageSizes: `(max-width: 499px) calc(100vw - 20px),
-                          (min-width: 500px) calc(50vw - 64px),
-                          (min-width: 992px) calc(50vw - 150px),
-                          (min-width: 1200px) 525px`
-      }
-    },
-    {
       name: 'Third Width',
       label: 'Third Width',
       context: {

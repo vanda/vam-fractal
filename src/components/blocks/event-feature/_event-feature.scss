@@ -15,7 +15,6 @@
     margin-bottom: 20px;
     max-height: 545px;
 
-    &--half-width-fixed,
     &--third-width:nth-of-type(n+2) {
       float: left;
       height: 400px;
@@ -96,7 +95,6 @@
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(6, "bold");
 
-      .b-event-feature--half-width-fixed &,
       .b-event-feature--half-width:nth-of-type(n+2) &,
       .b-event-feature--third-width:nth-of-type(n+2) & {
         @include base.typography-typeSetting(5, "bold");
@@ -137,16 +135,11 @@
         display: none;
       }
 
-      .b-event-feature--half-width-fixed &,
       .b-event-feature--half-width:nth-of-type(n+2) &,
       .b-event-feature--third-width:nth-of-type(n+2) & {
         &::before {
           margin-left: 2px;
         }
-      }
-
-      .b-event-feature--half-width-fixed .b-event-feature__name & {
-        display: block;
       }
 
       .b-event-feature--half-width-fixed .b-event-feature__type &,
@@ -162,8 +155,8 @@
     }
 
     @include mixins.breakpoints-bpMinMedium {
-      .b-event-feature--half-width:nth-of-type(1) &,
-      .b-event-feature--third-width:nth-of-type(1) & {
+      .b-event-feature--half-width &,
+      .b-event-feature--third-width & {
         @include base.typography-typeSetting(1, bold);
 
         &::before {
