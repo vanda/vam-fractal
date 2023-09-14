@@ -155,8 +155,8 @@
     }
 
     @include mixins.breakpoints-bpMinMedium {
-      .b-event-feature--half-width:nth-of-type(1) &,
-      .b-event-feature--third-width:nth-of-type(1) & {
+      .b-event-feature--half-width &,
+      .b-event-feature--third-width & {
         @include base.typography-typeSetting(1, bold);
 
         &::before {
