@@ -6,9 +6,25 @@
   overflow: hidden;
   padding: 0 10px;
 
-  @include mixins.breakpoints-bpMinSmall {
+
+ @include bpMinSmall {
     padding: 0 40px 60px;
   }
+
+
+  &--venue {
+    padding: 0px ;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      padding: 0 10px;
+    }
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 0px;
+    }
+  
+  }
+
+
 
   &--transparent {
     background-color: transparent;
