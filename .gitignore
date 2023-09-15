@@ -6,3 +6,4 @@ build/*
 src/components/_preview-layouts/_preview.html
 www
 .DS_Store
+.vscode/
