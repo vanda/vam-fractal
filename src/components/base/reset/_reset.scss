@@ -246,7 +246,3 @@ strong {
 .s-hidden {
   @include element-visibility.hidden-all;
 }
-
-[hidden] {
-  display: none !important; /* stylelint-disable-line declaration-no-important */
-}
