@@ -1,4 +1,4 @@
-<section class="g-venue-blog-cards {% if numberOfCards === 3 %} g-venue-blog-cards--three {% endif %}">
+<section class="g-venue-blog-cards {% if numberOfCards === 3 %} g-venue-blog-cards--three {% endif %} {% if numberOfCards == 1 %} g-venue-blog-cards--single {% endif %}">
     {% if numberOfCards !== 2 %}
         <section class="b-venue-blog-card b-venue-blog-card--100-width {% if numberOfCards == 3 %} b-venue-blog-card--33-width {% endif %}">
           <a class="b-venue-blog-card__link {% if numberOfCards == 3 %} b-venue-blog-card__link--33-width {% else %} b-venue-blog-card__link--100-width {% endif %}" href="">
@@ -6,15 +6,25 @@
                 Blog post
             </h3>
             <div class="b-venue-blog-card__img b-venue-blog-card__img--100-width {% if numberOfCards == 3 %} b-venue-blog-card__img--33-width {% endif %}">
-                <img alt="" src="http://localhost:3000/dragonfly/development/2022/03/03/24x73ijzfw_61a2dEHs1NL._AC_SL1500_.jpg">
+                <img alt="" src="https://assets-cdn.vam.ac.uk/2022/07/18/10/43/04/1d1d02e9-ef6f-4ada-bc85-cc092f656808/640.jpg">
             </div>
             <div class="b-venue-blog-card__text b-venue-blog-card__text--100-width {% if numberOfCards == 3 %} b-venue-blog-card__text--33-width {% endif %}">
+                {% if numberOfCards == 1 %} 
+                <h3 class="b-venue-blog-card__posttype">
+                    Blog post
+                </h3>
+                {% endif %}
                 <h2 class="b-venue-blog-card__heading b-venue-blog-card__heading--100-width {% if numberOfCards == 3 %} b-venue-blog-card__heading--33-width {% endif %}">
-                    Title
+                    Young V&A – Countdown to Summer 2023
                 </h2>
                 <article class="b-venue-blog-card__desc b-venue-blog-card__desc--100-width {% if numberOfCards == 3 %} b-venue-blog-card__desc--33-width {% endif %}">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam eniam v eniam eniameniam  eniam eniam eniam v eniam v eniam v eniameniamv  eniam eniam
+                    After seven intensive years of dedicated planning and design, we can announce that Young V&amp;A will open its doors in Bethnal Green on Saturday 1 July – in time for the summer holidays!
                 </article>
+                {% if numberOfCards == 1 %} 
+                <div class="b-venue-blog-card__cta">
+                    Read More
+                </div> 
+                {% endif %}
             </div>
             </a>
         </section>

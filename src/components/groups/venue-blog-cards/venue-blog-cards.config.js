@@ -1,8 +1,8 @@
 module.exports = {
   variants: [
     {
-      name: 'Default',
-      label: 'Default',
+      name: 'Single Card',
+      label: 'Single card',
       context: {
         previewClass: 'fr-bg--dark',
         numberOfCards: 1
