@@ -13,18 +13,17 @@
 
 
   &--venue {
-    padding: 0px ;
+    padding: 0;
 
     @include mixins.breakpoints-bpMinXSmall {
       padding: 0 10px;
     }
+
     @include mixins.breakpoints-bpMinSmall {
-      padding: 0px;
+      padding: 0;
     }
   
   }
-
-
 
   &--transparent {
     background-color: transparent;
