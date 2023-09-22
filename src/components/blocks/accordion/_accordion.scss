@@ -1,0 +1,39 @@
+@use "../../base";
+
+.b-accordion {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 689px;
+
+  &__section {
+    border-top: 1px solid base.sitecolors-siteColor("vam-black");
+    overflow: hidden;
+  }
+
+  &__section-header {
+    background: base.sitecolors-siteColor("vam-white");
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__section-toggle {
+    appearance: none;
+    cursor: pointer;
+    flex-basis: 100%;
+    margin: 6px;
+  }
+
+  &__section-content {
+    max-width: 689px;
+    padding: 20px 0;
+    transform: translateY(0);
+    transition: transform 0.2s ease, padding 0.2s ease-out;
+  }
+
+  &__section--shut > &__section-content {
+    padding: 0;
+    transform: translateY(-20%);
+  }
+}
