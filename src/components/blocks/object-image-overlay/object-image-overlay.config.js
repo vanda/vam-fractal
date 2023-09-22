@@ -64,12 +64,12 @@ module.exports = {
       {
         objectImageOverlayItem: true,
         image: {
-          320: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/00e4d6c7-df8a-4bac-928e-002837524fe1/320.jpg',
-          640: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/ce6a17c4-dfb2-4dad-9d36-9e92187e2ad1/640.jpg',
-          960: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/c72bd651-e26f-4765-8f70-764a0e274c55/960.jpg',
-          1280: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/d73d930a-42a8-4acb-ac5f-6c03561bbfa6/1280.jpg',
-          1920: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/c8d09cd6-c361-460f-a388-f2118ee44c1d/1920.jpg',
-          2560: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/4f6d683f-854e-4576-a0dd-6f54c78ae7b0/2560.jpg'
+          320: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/09/53245d3a-cfdf-4207-82bd-b4548f9d4cc7/Normski_2012FK2755.jpg',
+          640: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/09/120d5dca-7e12-4f05-a898-86704f37807a/Normski_2012FK2755.jpg',
+          960: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/09/58732305-2fd8-4e57-bb0b-a9c04c3256d8/Normski_2012FK2755.jpg',
+          1280: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/10/da59339d-64f8-44bf-b056-8ce62e002fe3/Normski_2012FK2755.jpg',
+          1920: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/10/80d89a0b-1356-4036-ba41-0311c5f0e03a/Normski_2012FK2755.jpg',
+          2560: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/10/c63d3199-d391-46a0-b4c4-9bde18c23a9a/Normski_2012FK2755.jpg'
         },
         caption: 'The Research Institute, Lego set, designed by Ellen Kooijman, 2015, Denmark.',
         physicalDescription: 'A Research Institute made of Lego.',
@@ -82,6 +82,57 @@ module.exports = {
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 74a, Rapid Response Collecting',
           visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?highlightId=FAC0000_263251&latlng=-2869%2C2944&floor=2&zoom=4'
+        }
+      },
+      {
+        objectImageOverlayItem: true,
+        image: {
+          320: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/ef8b1e1a-c8e9-420a-b278-a80fe2010c83/320.jpg',
+          640: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/d63b33f5-9500-416a-9d5d-1714015fc097/640.jpg',
+          960: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/65179005-be92-4292-a387-62fb15c5d888/960.jpg',
+          1280: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/f5128c47-1d15-4869-910a-dcbb1ed7378e/1280.jpg',
+          1920: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/8e244833-8b78-4701-9b77-2639312dbf94/1920.jpg',
+          2560: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/41/7dfc2083-58d3-4928-ba07-3cf428eadad6/2560.jpg'
+        },
+        caption: 'African Homeboy - Brixton, photograph, Fujifilm C-type print, by Normski, 1987',
+        physicalDescription: 'A wallpaper print design.',
+        objectImageOverlayData: {
+          onDisplay: false,
+          storageMessage: 'Some storage message'
+        }
+      },
+      {
+        objectImageOverlayItem: true,
+        image: {
+          320: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/27/37/5395a1f3-cd77-4057-8be4-9ca19bde423c/poppy_2006AU5024.jpg',
+          640: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/27/38/abbe5131-8624-4fb6-ad6a-ebe538be77bd/poppy_2006AU5024.jpg',
+          960: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/27/38/1ad43eec-932b-4359-9b4a-690c17c421a9/poppy_2006AU5024.jpg',
+          1280: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/27/38/4c749403-adbf-4520-849d-872e097f33cc/poppy_2006AU5024.jpg',
+          1920: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/27/38/5ee8646e-4e02-47a9-84db-5c9396079f11/poppy_2006AU5024.jpg',
+          2560: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/27/38/831d5b11-933a-4d5a-be6b-70071a47b829/poppy_2006AU5024.jpg'
+        },
+        caption: 'Papaver Orientale, photograph, by Anna Atkins, cyanotype, 1852 – 54, Britain.',
+        physicalDescription: 'A wallpaper print design.',
+        objectImageOverlayData: {
+          onDisplay: false,
+          storageMessage: 'Some storage message'
+        }
+      },
+      {
+        objectImageOverlayItem: true,
+        image: {
+          320: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/03/56/1e6aa331-762c-4e5f-83ad-5b6fa14a07b5/Cecil-beaton_2006AL1129.jpg',
+          640: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/03/56/5fc6c83e-904d-4c0a-aa62-8ebab8cd4ba1/Cecil-beaton_2006AL1129.jpg',
+          960: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/03/56/a6676136-35c6-4bdd-b1fb-3e4a6a9ceea1/Cecil-beaton_2006AL1129.jpg',
+          1280: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/03/57/abbf0e45-083d-4824-b82f-cf9d207146e0/Cecil-beaton_2006AL1129.jpg',
+          1920: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/03/57/0552b9b5-c866-4c6f-8b43-eff5099d217f/Cecil-beaton_2006AL1129.jpg',
+          2560: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/03/57/3693ea7e-115b-492c-8498-a662dd02abe0/Cecil-beaton_2006AL1129.jpg'
+        },
+        caption: 'Queen Elizabeth II, photograph, C-type print, by Cecil Beaton, 1953, London, England.  On display at South Kensington Prints & Drawings Study Room, level F',
+        physicalDescription: 'A wallpaper print design.',
+        objectImageOverlayData: {
+          onDisplay: false,
+          storageMessage: 'Some storage message'
         }
       }
     ]
