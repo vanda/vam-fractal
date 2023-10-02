@@ -1,54 +1,33 @@
-const accordionInit = () => {
-  /* Accordion section toggle logic */
-  const toggleSection = (accordionSection) => {
-    accordionSection.classList.toggle('b-accordion__section--shut');
+const accordions = document.querySelectorAll('.b-accordion');
 
-    const accordionContent = accordionSection.querySelector('.b-accordion__section-content');
-    if (accordionContent.hasAttribute('hidden')) {
-      accordionContent.removeAttribute('hidden');
-    } else {
-      accordionContent.setAttribute('hidden', 'until-found');
-    }
+if (accordions.length) {
+  /* Accordion section toggle animation hack
+   * this is to force the CSS animation styling onto the details-content element,
+   * which gets slotted into the shadow DOM */
+  const accordionToggleSection = (section, sectionContent) => {
+    const styles = window.getComputedStyle(sectionContent);
 
-    const accordionToggle = accordionSection.querySelector('.b-accordion__section-toggle');
-    accordionToggle.setAttribute('aria-expanded', String(!(accordionToggle.getAttribute('aria-expanded') === 'true')));
+    window.requestAnimationFrame(() => {
+      section.classList.toggle('b-accordion__section--open');
+      sectionContent.style.transition = styles.getPropertyValue('transition');
+    });
   };
 
-  /* Accordion markup can only be tranformed into an initially collapsed
-   * Accordion UI here, knowing that JS is enabled
-   */
-  let n = 0;
-  Array.from(document.querySelectorAll('.b-accordion__section'), (section) => {
-    n += 1;
-
-    section.classList.add('b-accordion__section--shut');
-
-    const sectionHeader = section.querySelector('.b-accordion__section-header');
-    const sectionToggle = sectionHeader.appendChild(document.createElement('button'));
-    sectionToggle.appendChild(sectionHeader.firstChild);
-    sectionToggle.className = 'b-accordion__section-toggle';
-    sectionToggle.setAttribute('aria-controls', `b-accordion__section-content-${n}`);
-    sectionToggle.setAttribute('aria-expanded', 'false');
-
-    const sectionContent = section.querySelector('.b-accordion__section-content');
-    sectionContent.setAttribute('hidden', 'until-found');
-    sectionContent.id = `b-accordion__section-content-${n}`;
-
-    /* Handle Accordion section toggle clicks */
-    sectionToggle.addEventListener('click', () => {
-      toggleSection(section);
+  /* Apply toggle animation whenever Accordion section is disclosed/closed
+   * by any means, including its content is found by a text-search. */
+  const accordionObserver = new MutationObserver((mutationList) => {
+    mutationList.forEach((mutation) => {
+      if (mutation.attributeName === 'open') {
+        const section = mutation.target;
+        const sectionContent = section.firstElementChild.nextElementSibling;
+        accordionToggleSection(section, sectionContent);
+      }
     });
+  });
 
-    /* Open Accordion section when its content is found by a text-search.
-    * https://developer.mozilla.org/en-US/docs/Web/API/Element/beforematch_event */
-    sectionContent.addEventListener('beforematch', () => {
-      toggleSection(section);
-    });
-
+  /* prep Accordion sections for animation styling */
+  Array.from(accordions, (accordion) => {
+    accordionObserver.observe(accordion, { attributes: true, subtree: true });
     return true;
   });
-};
-
-accordionInit();
-
-export default accordionInit;
+}
