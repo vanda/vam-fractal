@@ -63,6 +63,11 @@ const oicInit = () => {
         ` : '';
       const objectUrl = seed.querySelector('a').getAttribute('href');
       const objectImg = seed.querySelector('img');
+      // Object Image Overlay SRC and SRCSET attributes using data- attributes
+      // when lazyloading images not triggered by out of viewport images.
+      const objectImgSrc = objectImg.classList.contains('loaded') ? objectImg.src : objectImg.dataset.src;
+      const objectImgSrcSet = objectImg.classList.contains('loaded') ? objectImg.srcset : objectImg.dataset.srcset;
+
       const objectImgHTML = objectImg
         ? `<img class="b-object-image-overlay__image"
            itemprop="contentUrl"
@@ -70,8 +75,8 @@ const oicInit = () => {
            sizes="(max-width: 991px) calc(100vw - 20px),
                   (min-width: 992px) calc(70vw - 145px),
                   (min-width: 1200px) 710px"
-           srcset="${objectImg.srcset}"
-           src="${objectImg.src}">
+           srcset="${objectImgSrcSet}"
+           src="${objectImgSrc}">
         `
         : '<div class="s-lazyload--error"></div>';
       const ctaScreen = objectUrl.length > 1
