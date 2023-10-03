@@ -6,8 +6,23 @@
   overflow: hidden;
   padding: 0 10px;
 
-  @include mixins.breakpoints-bpMinSmall {
+
+ @include mixins.breakpoints-bpMinSmall {
     padding: 0 40px 60px;
+  }
+
+
+  &--venue {
+    padding: 0;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      padding: 0 10px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 0;
+    }
+  
   }
 
   &--transparent {
