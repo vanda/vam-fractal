@@ -106,4 +106,207 @@
       }
     }
   }
+
+  &--single {
+      /* stylelint-disable */
+
+    padding:0 10px;
+  
+    @include mixins.breakpoints-bpMinSmall {
+      padding:0 65px;
+    }    
+
+    .b-venue-blog-card{
+      //Flexbox overrides 
+      &__text--100-width,
+      &__img--100-width{
+        @include mixins.breakpoints-bpMinXSmall {
+          width:50%;
+          flex-basis:50%;
+          flex-grow:1;
+        }
+      }
+      
+      &__text{
+        display:flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        align-items:  flex-start;
+      }
+      &__posttype{
+        flex-grow:0;
+      }
+
+      &__desc--100-width{
+        height: initial;
+        flex-grow:1;
+      }
+    }
+
+    
+
+    .b-venue-blog-card{
+      // Text styles
+      
+      &__posttype{
+        margin-bottom:5px;
+        font-size:12px;
+        line-height:16px;
+
+        @include mixins.breakpoints-bpMinXSmall {
+          font-size:12px;
+          line-height:16px;
+        }  
+
+        @include mixins.breakpoints-bpMinSmall {
+          font-size:13px;
+          line-height:18px;
+        }
+
+        @include mixins.breakpoints-bpMinMedium{
+          font-size:15px;
+          line-height:18px;
+        }
+
+        @include mixins.breakpoints-bpMinLarge {
+          font-size:17px;
+          line-height:21px;
+        }
+      }
+
+      &__heading{
+        font-size:23px;
+        line-height:28px;
+
+        @include mixins.breakpoints-bpMinXSmall {
+          font-size:17px;
+          line-height:21px;
+        }
+
+        @include mixins.breakpoints-bpMinSmall {
+          font-size:17px;
+          line-height:21px;
+        }
+
+        @include mixins.breakpoints-bpMinMedium {
+          font-size:23px;
+          line-height:28px;
+        }
+
+        @include mixins.breakpoints-bpMinLarge {
+          font-size:31px;
+          line-height:36px;
+        }
+      }
+
+      &__desc{
+        
+        @include mixins.breakpoints-bpMinSmall {
+          font-size:12px;
+          line-height:16px;
+        }
+        @include mixins.breakpoints-bpMinMedium {
+          font-size:15px;
+          line-height:21px;
+        }
+        @include mixins.breakpoints-bpMinLarge {
+          font-size:17px;
+          line-height:28px;
+        }
+      }
+
+      &__cta{
+        font-size:13px;
+        line-height:18px;
+
+        @include mixins.breakpoints-bpMinMedium {
+          font-size:14px;
+          line-height:28px;
+        }
+      }
+    }
+
+    .b-venue-blog-card{
+
+      &__desc{
+
+        @include mixins.breakpoints-bpMinXSmall {
+          display:none;
+        }
+
+        @include mixins.breakpoints-bpMinSmall {
+          display:block;
+        }
+      }
+
+      &__text--100-width{
+
+        @include mixins.breakpoints-bpMinXSmall {
+          padding: 20px;
+        }
+
+        @include mixins.breakpoints-bpMinMedium {
+          padding:30px;
+        }
+
+        @include mixins.breakpoints-bpMinLarge {
+          padding:40px;
+        }
+      }
+
+
+      &__img {
+
+        &--100-width{
+          max-width:600px;
+        }
+
+        img {
+          position:relative;
+
+          @include mixins.breakpoints-bpMinXSmall {
+            height:100%;
+          }
+        } 
+      }
+   }
+
+    .b-venue-blog-card{
+      //New layout components
+
+      &__subheading{
+          display:none;
+        }
+
+        &__link:hover,
+        &__link:focus {
+          .b-venue-blog-card__cta{
+            text-decoration:underline;
+          }
+        }
+
+        &__cta{
+          align-items: center;
+          display: inline-flex;
+          justify-content: center;
+          margin-top:auto;
+        
+          &::after{
+            border: 5px solid transparent;
+            border-left-color: currentColor;
+            content: "";
+            display: block;
+            margin: 0 0 0 7px;
+          }
+        }
+
+        &__link--100-width{
+          @include mixins.breakpoints-bpMinXSmall {
+            flex-direction: row;
+          }
+        }
+      }
+
+    /* stylelint-enable */
+  }
 }
