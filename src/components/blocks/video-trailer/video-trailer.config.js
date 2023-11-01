@@ -3,7 +3,7 @@ module.exports = {
   label: 'Video Trailer',
   context: {
     previewClass: 'fr-bg--dark',
-    title: 'Ocean Liners',
-    youtubeID: 'qlb7Roty1FQ'
+    title: 'Video Trailer',
+    youtubeID: '5PihMjzxMlk'
   }
 };
