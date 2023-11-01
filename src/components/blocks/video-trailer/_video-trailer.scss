@@ -54,27 +54,6 @@
     }
   }
 
-  &__header {
-    margin-bottom: 20px;
-    margin-top: 12px;
-
-    @include mixins.breakpoints-bpMinSmall {
-      margin-bottom: 50px;
-      margin-top: 0;
-    }
-
-    &-title {
-      @include base.typography-typeSetting(5, "bold");
-
-      margin: auto;
-      text-align: center;
-
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(6, "bold");
-      }
-    }
-  }
-
   &__icon {
     background-color: #fff;
     border-radius: 50%;
