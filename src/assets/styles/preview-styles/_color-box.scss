@@ -14,40 +14,11 @@
   border-radius: 4px;
   text-align: center;
 
-  @each $color in map.keys(base.$sitecolors-site-colors) {
-    &.theme-#{$color} {
-      border-color: map.get(base.$sitecolors-site-colors, $color);
-    }
-  }
-
-  @each $color in map.keys(base.$themecolors-theme-colors) {
-    &.theme-#{$color} {
-      @if index(base.$themecolors-pale-theme-colors, $color) {
-        border-color: color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -30%);
-      } @else {
-        border-color: map.get(base.$themecolors-theme-colors, $color);
-      }
-    }
-  }
-
   &__color {
     border-radius: 4px 4px 0 0;
     height: 0;
     padding-bottom: 50%;
     width: 100%;
-
-    // Only needed for preview in Fractal
-    @each $color in map.keys(base.$sitecolors-site-colors) {
-      .theme-#{$color} & {
-        background-color: map.get(base.$sitecolors-site-colors, $color);
-      }
-    }
-
-    @each $color in map.keys(base.$themecolors-theme-colors) {
-      .theme-#{$color} & {
-        background-color: map.get(base.$themecolors-theme-colors, $color);
-      }
-    }
   }
 
   &__color-code {
@@ -60,5 +31,12 @@
     @include base.typography-typeSetting(1, "bold");
 
     padding: 0 5px;
+  }
+}
+
+// Only needed for SiteColor preview in Fractal
+@each $color in map.keys(base.$sitecolors-site-colors) {
+  .theme-#{$color} {
+    --theme-color: #{map.get(base.$sitecolors-site-colors, $color)};
   }
 }

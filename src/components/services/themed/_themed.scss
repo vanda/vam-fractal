@@ -2,49 +2,47 @@
 @use "sass:color";
 @use "sass:map";
 
-/* stylelint-disable no-duplicate-selectors */
+@each $color in map.keys(base.$themecolors-theme-colors) {
+  .theme-#{$color} {
+    --theme-color: #{map.get(base.$themecolors-theme-colors, $color)};
+    --theme-color-darkened: #{color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%)};
+  }
+}
+
 .s-themed {
-  @each $color in map.keys(base.$themecolors-theme-colors) {
-    .theme-#{$color} &#{&}--color {
-      color: map.get(base.$themecolors-theme-colors, $color);
-      transition: color 0.2s ease-out, border-color 0.2s ease-out;
+  &--color {
+    &#{&} {
+      color: var(--theme-color, map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}));
+      transition: color 0.2s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out;
 
       &--hover {
         &:hover {
-          color: color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%);
+          color: var(--theme-color-darkened, #{color.scale(map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}), $lightness: -10%)});
         }
       }
     }
+  }
 
-    .theme-#{$color} &#{&}--color--hover {
-      transition: color 0.2s ease-out;
+  &--background-color {
+    &#{&} {
+      background-color: var(--theme-color, map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}));
+      color: base.sitecolors-siteColor(vam-black);
+
+      &--hover {
+        &:hover {
+          background-color: var(--theme-color-darkened, #{color.scale(map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}), $lightness: -10%)});
+        }
+      }
+    }
+  }
+
+  &--border-color {
+    &#{&} {
+      border-color: var(--theme-color, map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}));
 
       &:hover {
-        color: map.get(base.$themecolors-theme-colors, $color);
+        border-color: var(--theme-color-darkened, #{color.scale(map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}), $lightness: -10%)});
       }
-    }
-
-    .theme-#{$color} &#{&}--background-color {
-      background-color: map.get(base.$themecolors-theme-colors, $color);
-      color: base.sitecolors-siteColor(vam-black);
-      transition: background-color 0.2s ease-out;
-
-      &--hover {
-        &:hover {
-          background-color: color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%);
-        }
-      }
-    }
-
-    .theme-#{$color} &#{&}--border-color {
-      border-color: map.get(base.$themecolors-theme-colors, $color);
-    }
-
-    // This was breaking when chained with the above.
-    // Duplicated the hover styling into it's own declaration for now.
-    .theme-#{$color} &#{&}--border-color--hover:hover {
-      border-color: color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%);
     }
   }
 }
-/* stylelint-enable no-duplicate-selectors */

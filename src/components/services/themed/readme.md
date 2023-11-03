@@ -2,11 +2,11 @@
 
 This provides several utility classes to provide basic theming for elements. This is broken down into three main areas:
 
-1. Text color (`s-themed--color`)
-2. Background color (`s-themed--background-color`)
-3. Border color (`s-themed--border-color`)
+1. Text colour (`s-themed--color`)
+2. Background colour (`s-themed--background-color`)
+3. Border colour (`s-themed--border-color`)
 
-Based on the page theme color (applied in the body tag with `class="theme-peach"`) these utility classes will then modify the related element the correct theme.
+These utility classes will colour the specific aspects of an element, based on its theme colour (applied with a class in the format `theme-<colour-name>` either directly to an element or via one of its ancestors, see [theme colors](/components/detail/theme-color)).
 
 ```html
 <h1 class="s-themed--color">
@@ -14,7 +14,7 @@ Based on the page theme color (applied in the body tag with `class="theme-peach"
 </h1>
 ```
 
-Each utility class has a matching `:hover` modifier to adjust the theme color as a user interacts with the element.
+Each utility class has a matching `--hover` modifier to be applied optionally for adjusting the theme colour on hover interaction.
 
 ```html
 <a class="btn s-themed--background-color s-themed--background-color--hover">
@@ -22,4 +22,3 @@ Each utility class has a matching `:hover` modifier to adjust the theme color as
 </a>
 ```
 
-For more details about further uses and implementation of theming see [theme colors](/components/detail/theme-color).

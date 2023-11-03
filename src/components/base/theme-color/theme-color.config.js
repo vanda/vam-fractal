@@ -2,7 +2,6 @@ module.exports = {
   title: 'Theme colors',
   label: 'Theme color',
   context: {
-    ignore_global_theme: true,
     colors: [
       {
         name: 'angry-blue',
