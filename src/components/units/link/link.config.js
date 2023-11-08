@@ -14,7 +14,7 @@ module.exports = {
     },
     {
       name: 'arrowed',
-      label: 'arrowed',
+      label: 'Arrowed',
       context: {
         text: 'The following link is for use as a stand alone element',
         modifiers: ['arrowed']
@@ -26,6 +26,14 @@ module.exports = {
       context: {
         external: true,
         text: 'The following link is for use as a stand alone element'
+      }
+    },
+    {
+      name: 'section',
+      label: 'Section',
+      context: {
+        section: true,
+        text: 'The following link is for use as a page section stand alone element (hover/focus for pilcrow)'
       }
     }
   ]
