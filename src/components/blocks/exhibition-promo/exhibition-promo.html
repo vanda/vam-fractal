@@ -1,5 +1,10 @@
 <article class="b-exhibition-promo{% for m in modifiers %} b-exhibition-promo--{{ m }}{% endfor %}" itemscope itemprop="exhibition" itemtype="https://schema.org/ExhibitionEvent">
   <a href="{{ url }}" class="b-exhibition-promo__anchor">
+    
+    {% if eventTag %}
+      {%- render "@label-tag--sold-out" -%}
+    {% endif %}
+    
     <img
       class="b-exhibition-promo__img"
       alt="{{ title }}"

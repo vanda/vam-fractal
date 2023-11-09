@@ -24,6 +24,13 @@ module.exports = {
       context: {
         modifiers: ['double']
       }
+    },
+    {
+      name: 'With Tag',
+      label: 'With Tag',
+      context: {
+        eventTag: true
+      }
     }
   ]
 };
