@@ -16,16 +16,6 @@
     width: 16px;
   }
 
-  &__section-pilcrow {
-    bottom: 2px;
-    display: inline-block;
-    margin-left: 5px;
-    opacity: 0;
-    position: relative;
-    text-decoration: none;
-    transition: opacity 0.2s ease-out;
-  }
-
   &--arrowed {
     padding-right: 14px;
 
@@ -40,10 +30,21 @@
   }
 
   &--section {
+    position: relative;
     text-decoration: none;
 
-    &:hover .u-link__section-pilcrow,
-    &:focus .u-link__section-pilcrow {
+    &::after {
+      bottom: 0.1em;
+      content: "¶";
+      line-height: 1;
+      margin-left: 7px;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.2s ease-out;
+    }
+
+    &:hover::after,
+    &:focus::after {
       opacity: 0.75;
     }
   }
