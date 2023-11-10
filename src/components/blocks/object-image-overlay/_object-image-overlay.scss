@@ -135,7 +135,7 @@
     margin: 0 -60px 0 auto;
 
     @include mixins.breakpoints-bpMinMedium {
-      margin: 0;
+      margin-right: 0;
       text-align: right;
     }
   }
