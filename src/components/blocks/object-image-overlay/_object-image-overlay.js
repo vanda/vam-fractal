@@ -63,10 +63,10 @@ const oicInit = () => {
         ` : '';
       const objectUrl = seed.querySelector('a').getAttribute('href');
       const objectImg = seed.querySelector('img');
-      // Object Image Overlay SRC and SRCSET attributes using data- attributes
-      // when lazyloading images not triggered by out of viewport images.
-      const objectImgSrc = objectImg.classList.contains('loaded') ? objectImg.src : objectImg.dataset.src;
-      const objectImgSrcSet = objectImg.classList.contains('loaded') ? objectImg.srcset : objectImg.dataset.srcset;
+      /* Must work with standard or LazyLoaded IMG tags
+       * including LazyLoaded imgs which are yet to load. */
+      const objectImgSrc = !objectImg.dataset.src || objectImg.classList.contains('loaded') ? objectImg.src : objectImg.dataset.src;
+      const objectImgSrcSet = !objectImg.dataset.srcset || objectImg.classList.contains('loaded') ? objectImg.srcset : objectImg.dataset.srcset;
 
       const objectImgHTML = objectImg
         ? `<img class="b-object-image-overlay__image"
