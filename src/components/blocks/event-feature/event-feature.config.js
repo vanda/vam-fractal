@@ -19,7 +19,8 @@ module.exports = {
     eventHumanDates: 'On Now, ends November 2059',
     eventMachineStartDate: '2017-08-23',
     eventMachineEndDate: '2059-11-23',
-    actions: ['More info', 'Book now']
+    eventVenue: 'V&A South Kensington',
+    actions: ['More info', 'Book now'],
   },
   variants: [
     {
