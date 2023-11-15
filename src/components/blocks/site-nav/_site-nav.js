@@ -180,6 +180,11 @@ if (siteNav) {
           }
           const suggestion = document.createElement('li');
           if (liveResult) { suggestion.classList.add('js-live-result'); }
+          const venue = (result.suggestions[i].venue) ? `
+            <div class="b-search-result-auto-suggest-content-type b-search-result-auto-suggest-content-venue">
+              ${result.suggestions[i].venue}
+            </div>
+          ` : '';
           suggestion.innerHTML = `
             <div class="b-search-result-auto-suggest">
               <a class="b-search-result-auto-suggest-content"
@@ -195,6 +200,7 @@ if (siteNav) {
                   <div class="b-search-result-auto-suggest-title">
                     ${result.suggestions[i].title}
                   </div>
+                  ${venue}
                 </div>
               </a>
             </div>

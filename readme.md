@@ -1,24 +1,24 @@
 # V&A Visual Style Guide
 
-View online at [vam-design-guide.surge.sh](https://vam-design-guide.surge.sh).
+View online at [vam-fractal-main.surge.sh](https://vam-fractal-main.surge.sh/).
 
 ## Requirements
 
-This visual style guide is built on top of [Fractal](https://github.com/frctl/fractal), a project by [Clearleft](http://clearleft.com/). For active development [Node.js](https://nodejs.org/) must be installed.
+This visual style guide is built on top of [Fractal](https://github.com/frctl/fractal), a project by [Clearleft](http://clearleft.com/). Active development requires the latest LTS version (18.x) of [Node.js](https://nodejs.org/) to be installed.
 
 The [documentation for Fractal](http://fractal.build/guide) is *super* useful. Have a read through the *Core Concept* documentation before modifying.
 
 ## Including in other projects
 
-Add the following to your project `package.json` file, replacing the branch name (i.e., #master) if required, with any feature branch name or commit Id in the vam-fractal project that you want to use:
+Add the following to your project `package.json` file, replacing the branch name (i.e., #main) if required, with any feature branch name or commit ID in the vam-fractal project that you want to use:
 
-```
-"vam-fractal": "vanda/vam-fractal#master"
+```json
+"vam-fractal": "vanda/vam-fractal#main"
 ```
 
 Component modules have their own SASS and can also contain Javascript files which are imported directly from the vam-fractal node-module directory installed as a dependency in your project `package.json` file. These assets should be compiled as required within the project itself.
 
-Font and SVG (as an icon sprite) assets can be accessed by creation of symlinks.
+Font and SVG (as an icon sprite) assets can be accessed by creation of symlinks. For example,
 
 SVGs:
 ```bash
@@ -56,7 +56,7 @@ $ npm run dev
 
 ## Creating a Fractal 'static build'
 
-A build intended for publication can be created and tested before uploading to Surge at [vam-design-guide.surge.sh](https://vam-design-guide.surge.sh)
+It is possible to create a static build like that hosted at [vam-fractal-main.surge.sh](https://vam-fractal-main.surge.sh)
 
 In a terminal enter:
 
@@ -67,29 +67,6 @@ $ npm run build
 2. Node.js environment variable is set to: `NODE_ENV=production` and compiled assets are minified. No code sourcemaps are produced. Filenames are appended with a 'cache busting' hash number
 3. A Fractal 'static build' is generated using the component modules and the generated assets in the `/build` directory. This is processed into a new root directoy, `/www` 
 
-## Publishing a Fractal 'static build' to Surge
-
-Ensure that you have access to deploy to Surge first.
-
-In a terminal enter:
-
-```bash
-$ npm run pub
-```
-
-Upon successful authentication the 'static build' site is uploaded to [vam-design-guide.surge.sh](https://vam-design-guide.surge.sh)
-
-After publication all generated local build directories and files are automatically deleted. This resets your build environment but does not touch modified component files under the `/src` directory.
-
-## Resetting build environments
-
-If you wish to remove all and only directories and files that are generated during a development build or a Fractal 'static build' then in a terminal enter:
-
-```bash
-$ npm run clean
-```
-
-Note that this is an automatic process after publication to Surge.
 
 ## Adding a new Fractal component
 

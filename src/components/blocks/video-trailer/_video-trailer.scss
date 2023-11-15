@@ -6,8 +6,23 @@
   overflow: hidden;
   padding: 0 10px;
 
-  @include mixins.breakpoints-bpMinSmall {
+
+ @include mixins.breakpoints-bpMinSmall {
     padding: 0 40px 60px;
+  }
+
+
+  &--venue {
+    padding: 0;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      padding: 0 10px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 0;
+    }
+  
   }
 
   &--transparent {
@@ -36,27 +51,6 @@
 
     &:focus {
       outline: 0;
-    }
-  }
-
-  &__header {
-    margin-bottom: 20px;
-    margin-top: 12px;
-
-    @include mixins.breakpoints-bpMinSmall {
-      margin-bottom: 50px;
-      margin-top: 0;
-    }
-
-    &-title {
-      @include base.typography-typeSetting(5, "bold");
-
-      margin: auto;
-      text-align: center;
-
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(6, "bold");
-      }
     }
   }
 

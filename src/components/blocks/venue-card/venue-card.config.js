@@ -12,6 +12,7 @@ module.exports = {
       2560: 'https://picsum.photos/id/1040/2560/1707'
     },
     title: 'V&A South Kensington',
+    wordmark: 'wordmark-southken',
     subtitle: 'London, England',
     open: 'Opening 1852'
   },

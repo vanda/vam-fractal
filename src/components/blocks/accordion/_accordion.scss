@@ -1,0 +1,93 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-accordion {
+  background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  @include mixins.breakpoints-bpMinSmall {
+    row-gap: 12px;
+  }
+
+  &__section {
+    background-color: inherit;
+  }
+
+  &__section-header {
+    @include base.typography-typeSetting(4, bold);
+
+    background-color: inherit;
+    border-top: 1px solid base.sitecolors-siteColor("vam-grey-4");
+    column-gap: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 8px 12px;
+    position: relative;
+    transition: background-color 0.2s ease;
+    z-index: 1;
+
+    &:hover,
+    &:focus {
+      background-color: base.sitecolors-siteColor("vam-grey-7");
+      border-top: 1px solid base.sitecolors-siteColor("vam-black");
+    }
+
+    &:focus {
+      @include mixins.focus-defaultFocus;
+    }
+
+    /* webkit doesn't yet support the list-style rule above */
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      border: solid base.sitecolors-siteColor("vam-black");
+      border-width: 0 2px 2px 0;
+      content: "";
+      flex: 0 0 auto;
+      height: 6px;
+      margin-top: .35em;
+      transform: rotate(45deg);
+      width: 6px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(5, bold);
+
+      padding: 12px;
+    }
+  }
+
+  &__section--open > &__section-header::after {
+    transform: translateY(4px) rotate(225deg);
+  }
+
+  &__section-content {
+    @include base.typography-typeSetting(3);
+
+    opacity: 0;
+    margin: 0 12px;
+    padding: 0;
+    transform: translateY(-5%);
+    transition: transform 0.2s ease, opacity 0.2s ease, padding 0.2s ease-out;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4);
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section--open > &__section-content {
+    opacity: 1;
+    padding: 16px 0;
+    transform: translateY(0);
+  }
+}

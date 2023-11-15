@@ -1,3 +1,5 @@
+@use "../../base";
+
 .u-link {
   color: inherit;
   text-decoration: underline;
@@ -6,22 +8,45 @@
     color: inherit;
   }
 
+  &__external-icon {
+    height: 16px;
+    margin-right: 2px;
+    position: relative;
+    top: 2px;
+    width: 16px;
+  }
+
   &--arrowed {
+    padding-right: 14px;
+
     &::after {
       border: 5px solid transparent;
       border-left-color: currentColor;
       content: "";
       display: inline-block;
       margin-left: 7px;
+      margin-right: -25px;
     }
   }
 
-  &--external-icon {
-    height: 16px;
-    margin-right: 2px;
+  &--section {
     position: relative;
-    top: 2px;
-    width: 16px;
+    text-decoration: none;
+
+    &::after {
+      bottom: 0.1em;
+      content: "¶";
+      line-height: 1;
+      margin-left: 7px;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.2s ease-out;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      opacity: 0.75;
+    }
   }
 }
 

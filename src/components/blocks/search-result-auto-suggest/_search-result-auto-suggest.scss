@@ -44,11 +44,15 @@
     }
   }
 
+  &-content-venue {
+    color: base.sitecolors-siteColor("vam-white");
+  }
+
   &-title {
     @include base.typography-typeSetting(3, "light");
 
     color: base.sitecolors-siteColor("vam-white");
-    height: 42px;
+    height: 25px;
     line-height: 1.33;
     overflow: hidden;
     text-align: left;
@@ -58,14 +62,14 @@
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(4, "light");
 
-      height: 48px;
+      height: 20px;
       line-height: 1.2;
     }
 
     @include mixins.breakpoints-bpMinLarge {
       @include base.typography-typeSetting(5, "light");
 
-      height: 58px;
+      height: 40px;
     }
   }
 

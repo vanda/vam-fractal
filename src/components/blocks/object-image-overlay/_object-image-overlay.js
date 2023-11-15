@@ -63,6 +63,11 @@ const oicInit = () => {
         ` : '';
       const objectUrl = seed.querySelector('a').getAttribute('href');
       const objectImg = seed.querySelector('img');
+      /* Must work with standard or LazyLoaded IMG tags
+       * including LazyLoaded imgs which are yet to load. */
+      const objectImgSrc = !objectImg.dataset.src || objectImg.classList.contains('loaded') ? objectImg.src : objectImg.dataset.src;
+      const objectImgSrcSet = !objectImg.dataset.srcset || objectImg.classList.contains('loaded') ? objectImg.srcset : objectImg.dataset.srcset;
+
       const objectImgHTML = objectImg
         ? `<img class="b-object-image-overlay__image"
            itemprop="contentUrl"
@@ -70,8 +75,8 @@ const oicInit = () => {
            sizes="(max-width: 991px) calc(100vw - 20px),
                   (min-width: 992px) calc(70vw - 145px),
                   (min-width: 1200px) 710px"
-           srcset="${objectImg.srcset}"
-           src="${objectImg.src}">
+           srcset="${objectImgSrcSet}"
+           src="${objectImgSrc}">
         `
         : '<div class="s-lazyload--error"></div>';
       const ctaScreen = objectUrl.length > 1
@@ -157,17 +162,13 @@ const oicInit = () => {
       const itemPrev = item.querySelector('.b-object-image-overlay__prev');
       const itemNext = item.querySelector('.b-object-image-overlay__next');
 
-      // buttons only appear on desktop but still are present and
-      // focusable on mobile view
-      if (window.innerWidth > 991) {
-        if (oic._index > 0) {
-          itemPrev.classList.add('b-object-image-overlay__prev--enabled');
-          itemPrev.removeAttribute('disabled');
-        }
-        if (oic._index < oicSeeds.length - 1) {
-          itemNext.classList.add('b-object-image-overlay__next--enabled');
-          itemNext.removeAttribute('disabled');
-        }
+      if (oic._index > 0) {
+        itemPrev.classList.add('b-object-image-overlay__prev--enabled');
+        itemPrev.removeAttribute('disabled');
+      }
+      if (oic._index < oicSeeds.length - 1) {
+        itemNext.classList.add('b-object-image-overlay__next--enabled');
+        itemNext.removeAttribute('disabled');
       }
 
       item.querySelectorAll('a').forEach((el) => el.removeAttribute('tabindex'));
@@ -303,6 +304,37 @@ const oicInit = () => {
             e2.preventDefault();
             oic.advance(true);
           }
+        };
+
+        oic.ontouchstart = (e4) => {
+          const startXY = [e4.touches[0].pageX, e4.touches[0].pageY];
+          oic.ontouchmove = (e5) => {
+            const deltaXY = [e5.touches[0].pageX - startXY[0], e5.touches[0].pageY - startXY[1]];
+            if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
+              && (
+                (deltaXY[0] < 0 && oic._index < oicSeeds.length - 1)
+                || (deltaXY[0] > 0 && oic._index > 0)
+              )) {
+              if (Math.abs(deltaXY[0]) < 74) {
+                window.requestAnimationFrame(() => {
+                  items.style.marginLeft = `${deltaXY[0]}px`;
+                });
+              } else {
+                oic.ontouchmove = null;
+                if (deltaXY[0] < 0) {
+                  oic.advance();
+                } else {
+                  oic.advance(true);
+                }
+              }
+            }
+          };
+          oic.ontouchend = () => {
+            window.requestAnimationFrame(() => {
+              items.style.marginLeft = 0;
+              items.style.transition = 'all .35s';
+            });
+          };
         };
       }
     }, false);
