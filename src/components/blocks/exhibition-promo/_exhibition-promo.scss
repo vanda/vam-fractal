@@ -2,6 +2,36 @@
 @use "../../base";
 
 .b-exhibition-promo {
+  .u-label-tag {
+    margin: 0 12px 12px 0;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      margin-left: 10px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-left: 55px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      margin-left: 30px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-left: 50px;
+    }
+  }
+
+  &--double .u-label-tag {
+    @include mixins.breakpoints-bpMinMedium {
+      margin-left: 10px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-left: 20px;
+    }
+  }
+
   &__title {
     @include base.typography-typeSetting(6, "bold");
 
@@ -27,7 +57,7 @@
       @include base.typography-typeSetting(5, "bold");
     }
   }
-  
+
   &__anchor {
     aspect-ratio: 0.78;
     display: block;
@@ -96,6 +126,16 @@
     }
   }
 
+  &--double &__information {
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 0 20px 20px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      padding: 0 178px 30px 30px;
+    }
+  }
+
   &__type {
     @include base.typography-typeSetting(3, "bold");
 
@@ -107,6 +147,18 @@
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(3, "bold");
+    }
+  }
+
+  &--double &__type {
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(2, "bold");
+
+      margin-bottom: 0;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-bottom: 5px;
     }
   }
 
@@ -131,6 +183,12 @@
     }
   }
 
+  &--double &__description {
+    @include mixins.breakpoints-bpMinMedium {
+      @include mixins.elementvisibility-visuallyHidden;
+    }
+  }
+
   &__date {
     @include base.typography-typeSetting(2, "bold");
 
@@ -149,46 +207,6 @@
     }
   }
 
-  &__venue {
-    @include base.typography-typeSetting(2, "bold");
-
-    margin-bottom: 0;
-    order: 5;
-    text-transform: capitalize;
-
-    @include mixins.breakpoints-bpMinMedium {
-      @include base.typography-typeSetting(3);
-    }
-  }
-
-  &--double &__information {
-    @include mixins.breakpoints-bpMinMedium {
-      padding: 0 20px 20px;
-    }
-
-    @include mixins.breakpoints-bpMinLarge {
-      padding: 0 178px 30px 30px;
-    }
-  }
-
-  &--double &__type {
-    @include mixins.breakpoints-bpMinMedium {
-      @include base.typography-typeSetting(2, "bold");
-
-      margin-bottom: 0;
-    }
-
-    @include mixins.breakpoints-bpMinLarge {
-      margin-bottom: 5px;
-    }
-  }
-
-  &--double &__description {
-    @include mixins.breakpoints-bpMinMedium {
-      @include mixins.elementvisibility-visuallyHidden;
-    }
-  }
-
   &--double &__date {
     @include mixins.breakpoints-bpMinMedium {
       @include base.typography-typeSetting(2, "bold");
@@ -198,6 +216,18 @@
 
     @include mixins.breakpoints-bpMinLarge {
       margin-top: 20px;
+    }
+  }
+
+  &__venue {
+    @include base.typography-typeSetting(2, "bold");
+
+    margin-bottom: 0;
+    order: 5;
+    text-transform: capitalize;
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(3);
     }
   }
 

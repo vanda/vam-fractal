@@ -1,7 +1,11 @@
 <ul class="b-exhibition-promo__list">
   {% for n in [1, 2] %}
-    <li>  
-      {%- render "@exhibition-promo--double" -%}
+    <li>
+      {% if eventTag %}
+        {%- render "@exhibition-promo--double", { eventTag: true }, merge=true -%}
+      {% else %}
+        {%- render "@exhibition-promo--double" -%}
+      {% endif %}
     </li>
   {% endfor %}
 </ul>
