@@ -21,7 +21,7 @@
     .b-search-form--etc & {
       background: transparent;
       border: none;
-      border-radius: 2px;
+      // border-radius: 2px;
       display: flex;
       flex-wrap: wrap;
       margin: 7px 0;
@@ -81,6 +81,8 @@
       }
 
       @include mixins.breakpoints-bpMinMedium {
+        border-radius: 0;
+
         &--adv-search {
           border-radius: 0;
         }
@@ -224,6 +226,9 @@
       color: base.sitecolors-siteColor("vam-black");
       float: none;
       margin-top: 0;
+      
+      border-radius: 0 2px 2px 0;
+
 
       @include mixins.breakpoints-bpMinMedium {
         @include base.typography-typeSetting(4, "regular");
@@ -473,10 +478,10 @@
     @include base.typography-typeSetting(2, "regular");
 
     appearance: none;
-    background: transparent;
-    border: 1px solid base.sitecolors-siteColor("vam-white");
+    background-color:base.sitecolors-siteColor("vam-grey-6");
+    border: 1px solid base.sitecolors-siteColor("vam-grey-6");
     border-radius: 2px;
-    color: base.sitecolors-siteColor("vam-white");
+    color: base.sitecolors-siteColor("vam-black");
     padding: 10px 40px 10px 20px;
     width: 100%;
 
@@ -549,7 +554,7 @@
   }
   
   &__advanced-search-wrapper {
-    color: base.sitecolors-siteColor("vam-white");
+    color: base.sitecolors-siteColor("vam-black");
     display: block;
     flex: 0 0 100%;
     height: auto;
