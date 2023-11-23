@@ -105,55 +105,6 @@
     @include mixins.elementvisibility-visuallyHidden;
   }
 
-  &__advanced-search-toggle {
-    color: base.sitecolors-siteColor("vam-white");
-    cursor: pointer;
-    display: block;
-    margin: 0 0 10px auto;
-    text-decoration: underline;
-    width: fit-content;
-
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(3);
-    }
-
-    &:focus {
-      @include mixins.focus-defaultFocus;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
-
-    &::after {
-      background: base.sitecolors-siteColor("vam-white");
-      border-radius: 50%;
-      color: base.sitecolors-siteColor("vam-black");
-      content: "+";
-      display: inline-block;
-      font-size: 16px;
-      height: 16px;
-      line-height: 16px;
-      margin-left: 10px;
-      text-align: center;
-      text-decoration: none;
-      width: 16px;
-    }
-
-    &--active {
-      &::after {
-        content: "-";
-      }
-    }
-  }
-
-  &__advanced-search-toggle--open {
-    &::after {
-      content: "-";
-    }
-  }
-
   &__input,
   &__underscore {
     @include base.typography-typeSetting(5);
@@ -601,12 +552,11 @@
     color: base.sitecolors-siteColor("vam-white");
     display: block;
     flex: 0 0 100%;
-    height: 0;
-    margin: 0;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s linear;
-    visibility: hidden;
-    width: 0;
+    height: auto;
+    margin: 0 0 12px;
+    opacity: 1;
+    visibility: visible;
+    width: auto;
 
     @include mixins.breakpoints-bpMinXSmall {
       margin-left: 0;
@@ -615,18 +565,6 @@
     @include mixins.breakpoints-bpMinMedium {
       flex: 0 0 auto;
       margin-bottom: 0;
-    }
-
-    &--active {
-      height: auto;
-      margin: 0 0 12px;
-      opacity: 1;
-      visibility: visible;
-      width: auto;
-
-      @include mixins.breakpoints-bpMinMedium {
-        margin: 0;
-      }
     }
   }
 

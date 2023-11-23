@@ -191,33 +191,33 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
         });
       }
 
-      // advanced search <select> visibility
-      if (e.target.closest('.b-search-form__advanced-search-toggle')) {
-        const expanded = e.target.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
+      // // advanced search <select> visibility
+      // if (e.target.closest('.b-search-form__advanced-search-toggle')) {
+      //   const expanded = e.target.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
 
-        if (expanded === 'true') {
-          searchInputContainer.classList.add('b-search-form__input-wrapper--adv-search');
+      //   if (expanded === 'true') {
+      //     searchInputContainer.classList.add('b-search-form__input-wrapper--adv-search');
 
-          // prevent auto-suggest
-          searchSuggestionsContainer.classList.add('b-search-form__suggestions--inactive');
-          searchForm.classList.add('b-search-form--etc-gateway--adv-search-active');
-        } else {
-          searchInputContainer.classList.remove('b-search-form__input-wrapper--adv-search');
+      //     // prevent auto-suggest
+      //     searchSuggestionsContainer.classList.add('b-search-form__suggestions--inactive');
+      //     searchForm.classList.add('b-search-form--etc-gateway--adv-search-active');
+      //   } else {
+      //     searchInputContainer.classList.remove('b-search-form__input-wrapper--adv-search');
 
-          advSearchSelect.selectedIndex = 0;
+      //     advSearchSelect.selectedIndex = 0;
 
-          // reinstate auto-suggest
-          searchSuggestionsContainer.classList.remove('b-search-form__suggestions--inactive');
-          searchForm.classList.remove('b-search-form--etc-gateway--adv-search-active');
-        }
+      //     // reinstate auto-suggest
+      //     searchSuggestionsContainer.classList.remove('b-search-form__suggestions--inactive');
+      //     searchForm.classList.remove('b-search-form--etc-gateway--adv-search-active');
+      //   }
 
-        advSearchSelectContainer.classList.toggle('b-search-form__advanced-search-wrapper--active');
+      //   advSearchSelectContainer.classList.toggle('b-search-form__advanced-search-wrapper--active');
 
-        e.target.classList.toggle('b-search-form__advanced-search-toggle--active');
-        e.target.setAttribute('aria-expanded', expanded);
+      //   e.target.classList.toggle('b-search-form__advanced-search-toggle--active');
+      //   e.target.setAttribute('aria-expanded', expanded);
 
-        e.preventDefault();
-      }
+      //   e.preventDefault();
+      // }
 
       if (e.target.closest('.b-search-form__submit')) {
         const formInputs = searchForm.querySelectorAll('input, select');
@@ -251,23 +251,23 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
 
     document.addEventListener('click', (e) => {
       // advanced search <select> visibility
-      if (e.target.closest('.b-search-form__advanced-search-toggle')) {
-        const expanded = e.target.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
+      // if (e.target.closest('.b-search-form__advanced-search-toggle')) {
+      //   const expanded = e.target.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
 
-        if (expanded === 'true') {
-          searchInputContainer.classList.add('b-search-form__input-wrapper--adv-search');
-        } else {
-          searchInputContainer.classList.remove('b-search-form__input-wrapper--adv-search');
-          advSearchSelect.selectedIndex = 0;
-        }
+      //   if (expanded === 'true') {
+      //     searchInputContainer.classList.add('b-search-form__input-wrapper--adv-search');
+      //   } else {
+      //     searchInputContainer.classList.remove('b-search-form__input-wrapper--adv-search');
+      //     advSearchSelect.selectedIndex = 0;
+      //   }
 
-        advSearchSelectContainer.classList.toggle('b-search-form__advanced-search-wrapper--active');
+      //   advSearchSelectContainer.classList.toggle('b-search-form__advanced-search-wrapper--active');
 
-        e.target.classList.toggle('b-search-form__advanced-search-toggle--active');
-        e.target.setAttribute('aria-expanded', expanded);
+      //   e.target.classList.toggle('b-search-form__advanced-search-toggle--active');
+      //   e.target.setAttribute('aria-expanded', expanded);
 
-        e.preventDefault();
-      }
+      //   e.preventDefault();
+      // }
     });
   }
   return true;

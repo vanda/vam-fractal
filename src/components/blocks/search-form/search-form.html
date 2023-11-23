@@ -3,9 +3,6 @@
 {% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" name="search" action="{{ action }}" method="get" role="search">
   {# Collections Landing and Collections search pages #}
-  {% if modifiers and 'etc' in modifiers %}
-  <button type="button" class="b-search-form__advanced-search-toggle" aria-expanded="false" aria-label="Advanced search by category" aria-controls="advanced-search-wrapper">Advanced search</button>
-  {% endif %}
   <div class="b-search-form__inner">
     {% if not modifiers %}
     <svg class="b-search-form__icon" aria-hidden="true" role="img">
