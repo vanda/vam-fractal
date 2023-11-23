@@ -21,6 +21,7 @@
     .b-search-form--etc & {
       background: transparent;
       border: none;
+
       // border-radius: 2px;
       display: flex;
       flex-wrap: wrap;
@@ -226,9 +227,7 @@
       color: base.sitecolors-siteColor("vam-black");
       float: none;
       margin-top: 0;
-      
       border-radius: 0 2px 2px 0;
-
 
       @include mixins.breakpoints-bpMinMedium {
         @include base.typography-typeSetting(4, "regular");

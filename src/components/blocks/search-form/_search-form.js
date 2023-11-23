@@ -43,11 +43,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
     searchClear.addEventListener('click', searchReset, false);
   } else if (searchForm.classList.contains('js-search-etc-gateway')) {
     /* EtC landing pg search */
-    const searchInputContainer = searchForm.querySelector('.b-search-form__input-wrapper');
-    const searchSuggestionsContainer = searchForm.querySelector('.b-search-form__suggestions');
-    const advSearchSelectContainer = searchForm.querySelector('.b-search-form__advanced-search-wrapper');
-    const advSearchSelect = advSearchSelectContainer.querySelector('select');
-
     searchForm._props = {
       type: 'etcGatewaySearch',
       suggestionsTop: 'https://collections.vam.ac.uk/assets/data/suggestions.json',
@@ -191,34 +186,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
         });
       }
 
-      // // advanced search <select> visibility
-      // if (e.target.closest('.b-search-form__advanced-search-toggle')) {
-      //   const expanded = e.target.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
-
-      //   if (expanded === 'true') {
-      //     searchInputContainer.classList.add('b-search-form__input-wrapper--adv-search');
-
-      //     // prevent auto-suggest
-      //     searchSuggestionsContainer.classList.add('b-search-form__suggestions--inactive');
-      //     searchForm.classList.add('b-search-form--etc-gateway--adv-search-active');
-      //   } else {
-      //     searchInputContainer.classList.remove('b-search-form__input-wrapper--adv-search');
-
-      //     advSearchSelect.selectedIndex = 0;
-
-      //     // reinstate auto-suggest
-      //     searchSuggestionsContainer.classList.remove('b-search-form__suggestions--inactive');
-      //     searchForm.classList.remove('b-search-form--etc-gateway--adv-search-active');
-      //   }
-
-      //   advSearchSelectContainer.classList.toggle('b-search-form__advanced-search-wrapper--active');
-
-      //   e.target.classList.toggle('b-search-form__advanced-search-toggle--active');
-      //   e.target.setAttribute('aria-expanded', expanded);
-
-      //   e.preventDefault();
-      // }
-
       if (e.target.closest('.b-search-form__submit')) {
         const formInputs = searchForm.querySelectorAll('input, select');
         const formData = {};
@@ -243,32 +210,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
         e.preventDefault();
       }
     }, false);
-  } else if (searchForm.classList.contains('js-search-etc')) {
-    /* EtC collections pg search */
-    const searchInputContainer = searchForm.querySelector('.b-search-form__input-wrapper');
-    const advSearchSelectContainer = searchForm.querySelector('.b-search-form__advanced-search-wrapper');
-    const advSearchSelect = advSearchSelectContainer.querySelector('select');
-
-    document.addEventListener('click', (e) => {
-      // advanced search <select> visibility
-      // if (e.target.closest('.b-search-form__advanced-search-toggle')) {
-      //   const expanded = e.target.getAttribute('aria-expanded') === 'false' ? 'true' : 'false';
-
-      //   if (expanded === 'true') {
-      //     searchInputContainer.classList.add('b-search-form__input-wrapper--adv-search');
-      //   } else {
-      //     searchInputContainer.classList.remove('b-search-form__input-wrapper--adv-search');
-      //     advSearchSelect.selectedIndex = 0;
-      //   }
-
-      //   advSearchSelectContainer.classList.toggle('b-search-form__advanced-search-wrapper--active');
-
-      //   e.target.classList.toggle('b-search-form__advanced-search-toggle--active');
-      //   e.target.setAttribute('aria-expanded', expanded);
-
-      //   e.preventDefault();
-      // }
-    });
   }
   return true;
 });
