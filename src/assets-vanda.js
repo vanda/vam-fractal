@@ -11,9 +11,9 @@ import './components/_preview-layouts/_preview-template.html';
 
 // Helper function to import SVG assets
 function requireAll(r) {
-  r.keys().forEach((icon) => {
+  r.keys().forEach((icon) => { // eslint-disable-line
     if (process.env.NODE_ENV !== 'production') {
-      console.log('V&A SVG asset: ', icon); // eslint-disable-line
+      // console.log('V&A SVG asset: ', icon); // eslint-disable-line
     }
   });
 }
