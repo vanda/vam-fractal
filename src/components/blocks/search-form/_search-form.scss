@@ -578,6 +578,9 @@
       top: 10%;
       transform: scaleX(1.5);
       width: 10px;
+      @include mixins.breakpoints-bpMinMedium {
+        top: 20%;
+      }
     }
 
     @include mixins.breakpoints-bpMinXSmall {
