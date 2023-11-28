@@ -482,8 +482,6 @@
     padding: 10px 40px 10px 20px;
     width: 100%;
 
-    
-
     @include mixins.breakpoints-bpMinXSmall {
       width: auto;
 
@@ -496,10 +494,6 @@
       .b-search-form--etc & {
         border-radius: 2px 0 0 2px;
         padding: 17px 40px 17px 20px;
-      }
-      
-      .b-search-form__location-wrapper &{
-        border-radius: 2px;
       }
     }
 
@@ -543,6 +537,12 @@
       transform: scaleX(1.5);
       width: 10px;
     }
+
+    .b-search-form__filter-select{
+      background-color:transparent;
+      border: 1px solid base.sitecolors-siteColor("vam-white");
+      color: base.sitecolors-siteColor("vam-white");
+    }
   }
 
   &__location-toggle:checked ~ &__location-wrapper {
@@ -565,6 +565,20 @@
     opacity: 1;
     visibility: visible;
     width: auto;
+    position: relative;
+
+    &::after {
+      content: "⌄";
+      font-size: 20px;
+      font-weight: 100;
+      height: 10px;
+      pointer-events: none;
+      position: absolute;
+      right: 20px;
+      top: 10%;
+      transform: scaleX(1.5);
+      width: 10px;
+    }
 
     @include mixins.breakpoints-bpMinXSmall {
       margin-left: 0;
