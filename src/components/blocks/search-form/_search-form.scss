@@ -21,17 +21,15 @@
     .b-search-form--etc & {
       background: transparent;
       border: none;
-
-      // border-radius: 2px;
       display: flex;
       flex-wrap: wrap;
-      margin: 7px 0;
+      margin: 0;
       overflow: hidden;
       padding: 0;
     }
 
     .b-search-form--etc-search & {
-      margin-bottom: 0;
+      margin: 0;
     }
 
     @include mixins.breakpoints-bpMinSmall {
@@ -484,6 +482,8 @@
     padding: 10px 40px 10px 20px;
     width: 100%;
 
+    
+
     @include mixins.breakpoints-bpMinXSmall {
       width: auto;
 
@@ -496,6 +496,10 @@
       .b-search-form--etc & {
         border-radius: 2px 0 0 2px;
         padding: 17px 40px 17px 20px;
+      }
+      
+      .b-search-form__location-wrapper &{
+        border-radius: 2px;
       }
     }
 
