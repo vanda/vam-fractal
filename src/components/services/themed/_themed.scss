@@ -2,22 +2,24 @@
 @use "sass:color";
 @use "sass:map";
 
-@each $color in map.keys(base.$themecolors-theme-colors) {
-  .theme-#{$color} {
-    --theme-color: #{map.get(base.$themecolors-theme-colors, $color)};
-    --theme-color-darkened: #{color.scale(map.get(base.$themecolors-theme-colors, $color), $lightness: -10%)};
+@each $palette, $map in base.$themecolors-theme-colors {
+  @each $color in map.keys($map) {
+    .theme-#{$color} {
+      --theme-color: #{map.get($map, $color)};
+      --theme-color-darkened: #{color.scale(map.get($map, $color), $lightness: -10%)};
+    }
   }
 }
 
 .s-themed {
   &--color {
     &#{&} {
-      color: var(--theme-color, map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}));
+      color: var(--theme-color, map.get(map.get(base.$themecolors-theme-colors, global), #{base.$themecolors-theme-color-default}));
       transition: color 0.2s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out;
 
       &--hover {
         &:hover {
-          color: var(--theme-color-darkened, #{color.scale(map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}), $lightness: -10%)});
+          color: var(--theme-color-darkened, #{color.scale(map.get(map.get(base.$themecolors-theme-colors, global), #{base.$themecolors-theme-color-default}), $lightness: -10%)});
         }
       }
     }
@@ -25,12 +27,12 @@
 
   &--background-color {
     &#{&} {
-      background-color: var(--theme-color, map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}));
+      background-color: var(--theme-color, map.get(map.get(base.$themecolors-theme-colors, global), #{base.$themecolors-theme-color-default}));
       color: base.sitecolors-siteColor(vam-black);
 
       &--hover {
         &:hover {
-          background-color: var(--theme-color-darkened, #{color.scale(map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}), $lightness: -10%)});
+          background-color: var(--theme-color-darkened, #{color.scale(map.get(map.get(base.$themecolors-theme-colors, global), #{base.$themecolors-theme-color-default}), $lightness: -10%)});
         }
       }
     }
@@ -38,10 +40,10 @@
 
   &--border-color {
     &#{&} {
-      border-color: var(--theme-color, map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}));
+      border-color: var(--theme-color, map.get(map.get(base.$themecolors-theme-colors, global), #{base.$themecolors-theme-color-default}));
 
       &:hover {
-        border-color: var(--theme-color-darkened, #{color.scale(map.get(base.$themecolors-theme-colors, #{base.$themecolors-theme-color-default}), $lightness: -10%)});
+        border-color: var(--theme-color-darkened, #{color.scale(map.get(map.get(base.$themecolors-theme-colors, global), #{base.$themecolors-theme-color-default}), $lightness: -10%)});
       }
     }
   }

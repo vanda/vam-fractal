@@ -2,6 +2,10 @@
 @use "sass:color";
 @use "sass:map";
 
+.fr-color-box-heading {
+  margin: 20px 10px 10px;
+}
+
 .fr-color-box-group {
   display: grid;
   grid-gap: 10px;
@@ -38,5 +42,6 @@
 @each $color in map.keys(base.$sitecolors-site-colors) {
   .theme-#{$color} {
     --theme-color: #{map.get(base.$sitecolors-site-colors, $color)};
+    --theme-color-darkened: #{color.scale(map.get(base.$sitecolors-site-colors, $color), $lightness: -10%)};
   }
 }

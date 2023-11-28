@@ -37,7 +37,7 @@ For more deatils on this, see [themed](/components/detail/themed).
 
 As with the `site-color` component in the SASS `base` namespace, `theme-color` exists as a SASS map and can be accessed via `map.get`. Note that `sass:map` is now a built-in module that needs to be exposed to the stylesheet before any map functions can be used.
 
-**Nb:** Be aware the removing items from this list would cause themed elements to revert back to the default colour.
+**Nb:** Removing items from this list would cause themed elements to revert back to the default colour.
 
 ## References
 
