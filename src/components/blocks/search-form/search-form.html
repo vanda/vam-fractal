@@ -11,8 +11,8 @@
     {% endif %}
     {# Collections Landing and Collections search pages #}
     {% if modifiers and 'etc' in modifiers %}
-    <div class="b-search-form__advanced-search-wrapper" id="advanced-search-wrapper">
-      <label class="b-search-form__label b-search-form__advanced-search-label" for="{{ selectId }}">Advanced search</label>
+    <div class="b-search-form__advanced-search-wrapper">
+      <label class="b-search-form__label b-search-form__advanced-search-label" for="{{ selectId }}">Focused search</label>
       <select name="{{ selectId }}" class="b-search-form__filter-select">
         {% for option in selectOptions %}
           <option value="{{ option.value }}">{{ option.textContent }}</option>

@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         value: 'q_object_name',
-        textContent: 'Type/title'
+        textContent: 'Object Type/title'
       },
       {
         value: 'q_actor',

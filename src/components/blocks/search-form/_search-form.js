@@ -49,6 +49,10 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
       suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search',
     };
 
+    const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
+    const searchSelect = searchForm.querySelector('.b-search-form__filter-select');
+    let flagAutoSuggest = true;
+
     // eslint-disable-next-line consistent-return
     const loadSuggestions = (formEl) => {
       if (formEl) {
@@ -82,30 +86,34 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
       });
     };
 
-    const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
-
     const autoSuggest = (term, suggestion) => {
-      const suggestEl = document.createElement('a');
-      if (suggestionsEl.childElementCount < 10) {
-        const title = suggestion.displayName || suggestion.displayTerm;
-        const url = `https://collections.vam.ac.uk/search/?id_${suggestion.recordType}=${suggestion.systemNumber}`;
-        suggestEl.className = 'b-search-form__suggestion';
-        suggestEl.href = url;
-        suggestEl.tabindex = 0;
-        suggestEl.innerHTML = `
-          <div class="b-search-form__suggestion-type">
-            ${suggestion.recordType}
-          </div>
-          ${title}
-        `;
-        suggestEl.tracking = {
-          event: 'autosuggest EtC landing',
-          eventCategory: `search - autosuggest - ${suggestion.index}`,
-          eventAction: term,
-          eventLabel: url,
-        };
-        suggestEl.addEventListener('click', trackAutosuggest);
-        suggestionsEl.appendChild(suggestEl);
+      if (flagAutoSuggest === true) {
+        const suggestEl = document.createElement('a');
+        if (suggestionsEl.childElementCount < 10) {
+          const title = suggestion.displayName || suggestion.displayTerm;
+          const url = `https://collections.vam.ac.uk/search/?id_${suggestion.recordType}=${suggestion.systemNumber}`;
+
+          suggestEl.className = 'b-search-form__suggestion';
+          suggestEl.href = url;
+          suggestEl.tabindex = 0;
+          suggestEl.innerHTML = `
+            <div class="b-search-form__suggestion-type">
+              ${suggestion.recordType}
+            </div>
+            ${title}
+          `;
+          suggestEl.tracking = {
+            event: 'autosuggest EtC landing',
+            eventCategory: `search - autosuggest - ${suggestion.index}`,
+            eventAction: term,
+            eventLabel: url,
+          };
+          suggestEl.addEventListener('click', trackAutosuggest);
+
+          suggestionsEl.appendChild(suggestEl);
+        }
+      } else {
+        searchForm.removeAttribute('suggesting');
       }
     };
 
@@ -160,6 +168,18 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
         }, false);
       })
       .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
+
+    document.addEventListener('change', (e) => {
+      if (e.target.closest('.b-search-form__filter-select')) {
+        if (searchSelect.selectedIndex === 0) {
+          flagAutoSuggest = true;
+        } else {
+          flagAutoSuggest = false;
+        }
+
+        searchForm.removeAttribute('suggesting');
+      }
+    });
 
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === 13 && document.activeElement.closest('.b-search-form__filter-toggle')) {
