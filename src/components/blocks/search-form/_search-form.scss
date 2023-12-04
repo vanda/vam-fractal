@@ -6,7 +6,7 @@
 
   &--etc-gateway {
     border-radius: 2px;
-    padding: 10px;
+    margin: 0 10px 10px;
     position: relative;
 
     &[suggesting] {
@@ -94,7 +94,7 @@
 
     color: base.sitecolors-siteColor("vam-grey-5");
     display: block;
-    margin: 10px 0;
+    margin: 10px 0 20px;
     text-align: center;
 
     @include mixins.breakpoints-bpMinSmall {

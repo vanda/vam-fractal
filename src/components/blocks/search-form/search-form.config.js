@@ -5,7 +5,6 @@ module.exports = {
   context: {
     previewClass: 'fr-bg--dark',
     jsHook: 'js-search-site',
-    inputId: 'q',
     selectOptions: [
       {
         value: 'all_fields',
@@ -42,7 +41,6 @@ module.exports = {
       context: {
         modifiers: ['etc', 'etc-search'],
         jsHook: 'js-search-etc',
-        inputId: 'q-etc',
         placeholder: 'Search by object, artist, maker&hellip;',
         action: 'https://collections.vam.ac.uk/search/',
         facets: [
@@ -67,7 +65,6 @@ module.exports = {
       context: {
         modifiers: ['etc', 'etc-gateway'],
         jsHook: 'js-search-etc-gateway',
-        inputId: 'q_etc',
         placeholder: 'Search by object, artist, maker&hellip;',
         action: 'https://collections.vam.ac.uk/search/'
       }

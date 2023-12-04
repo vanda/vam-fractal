@@ -1,8 +1,8 @@
-{# Collections Landing pg #}
-{% if modifiers and 'etc-gateway' in modifiers %}
-<label class="b-search-form__label" for="{{ inputId }}">Search more than 1.2 million objects</label>
-{% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" name="search" action="{{ action }}" method="get" role="search">
+  {# Collections Landing pg #}
+  {% if modifiers and 'etc-gateway' in modifiers %}
+  <label class="b-search-form__label" for="etc-gateway-search-input">Search more than 1.2 million objects</label>
+  {% endif %}
   <div class="b-search-form__inner">
     {# SiteSearch #}
     {% if not modifiers %}
@@ -22,7 +22,7 @@
     </div>
     {% endif %}
     <div class="b-search-form__input-wrapper">
-      <input type="text" class="b-search-form__input" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
+      <input type="text" class="b-search-form__input" name="q" {% if modifiers and 'etc-gateway' in modifiers %} id="etc-gateway-search-input"{% endif %} placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
       {% if not modifiers %}
       <div class="b-search-form__underscore" aria-hidden="true"></div>
       {% endif %}

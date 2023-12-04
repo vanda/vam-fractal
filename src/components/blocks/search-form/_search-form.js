@@ -191,31 +191,23 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
           return true;
         });
       }
+    });
 
-      if (e.target.closest('.b-search-form__submit')) {
-        const formInputs = searchForm.querySelectorAll('input, select');
-        const formData = {};
-        let formUrl = '';
+    searchForm.addEventListener('submit', (e) => {
+      if (searchFocus.selectedIndex > 0) {
+        e.preventDefault();
 
-        formInputs.forEach((eleOpt) => {
-          const key = eleOpt.getAttribute('name');
-
-          if (key) {
-            formData[key] = eleOpt.value;
-          }
+        const formData = new FormData(searchForm);
+        let etcQuery = '';
+        Array.from(formData.entries(), (pair) => {
+          if (pair[0] === 'sel_etc') return;
+          if (pair[0] === 'q') pair[0] = formData.get('sel_etc');
+          etcQuery += (etcQuery.length > 1 ? '&' : '') + `${pair[0]}=${pair[1]}`;
         });
 
-        if (formData.sel_etc === 'all_fields') {
-          formUrl = `${searchForm.action}?q=${formData.q_etc}&year_made_from=${formData.year_made_from}&year_made_to=${formData.year_made_to}`;
-        } else {
-          formUrl = `${searchForm.action}?${formData.sel_etc}=${formData.q_etc}&year_made_from=${formData.year_made_from}&year_made_to=${formData.year_made_to}`;
-        }
-
-        window.location.href = formUrl;
-
-        e.preventDefault();
+        window.location.href = `${searchForm.action}?${etcQuery}`;
       }
-    }, false);
+    });
   }
   return true;
 });
