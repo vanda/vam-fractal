@@ -6,7 +6,6 @@ module.exports = {
     previewClass: 'fr-bg--dark',
     jsHook: 'js-search-site',
     inputId: 'q',
-    selectId: 'sel_etc',
     selectOptions: [
       {
         value: 'all_fields',

@@ -1,9 +1,10 @@
+{# Collections Landing pg #}
 {% if modifiers and 'etc-gateway' in modifiers %}
 <label class="b-search-form__label" for="{{ inputId }}">Search more than 1.2 million objects</label>
 {% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" name="search" action="{{ action }}" method="get" role="search">
-  {# Collections Landing and Collections search pages #}
   <div class="b-search-form__inner">
+    {# SiteSearch #}
     {% if not modifiers %}
     <svg class="b-search-form__icon" aria-hidden="true" role="img">
       <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
@@ -12,8 +13,8 @@
     {# Collections Landing and Collections search pages #}
     {% if modifiers and 'etc' in modifiers %}
     <div class="b-search-form__advanced-search-wrapper">
-      <label class="b-search-form__label b-search-form__advanced-search-label" for="{{ selectId }}">Focused search</label>
-      <select name="{{ selectId }}" class="b-search-form__filter-select">
+      <label class="b-search-form__label b-search-form__advanced-search-label" for="sel_etc">Focused search</label>
+      <select name="sel_etc" id="sel_etc" class="b-search-form__filter-select">
         {% for option in selectOptions %}
           <option value="{{ option.value }}">{{ option.textContent }}</option>
         {% endfor %}
@@ -46,7 +47,6 @@
   </div>
   {% endif %}
 
-  {# Collections Landing pg #}
   {% if modifiers and 'etc-gateway' in modifiers %}
   <div class="b-search-form__suggestions" aria-label="search suggestions">
     <button>Start by entering a search term</button>

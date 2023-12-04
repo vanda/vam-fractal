@@ -9,7 +9,7 @@
     padding: 10px;
     position: relative;
 
-    &[suggesting]:not(&--adv-search-active) {
+    &[suggesting] {
       background: base.sitecolors-siteColor("vam-grey-2");
     }
   }

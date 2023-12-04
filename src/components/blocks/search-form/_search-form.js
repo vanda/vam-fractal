@@ -1,6 +1,5 @@
-Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .js-search-etc'), (searchForm) => {
+Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'), (searchForm) => {
   const searchInput = searchForm.querySelector('.b-search-form__input');
-  const searchSubmit = searchForm.querySelector('.b-search-form__submit');
 
   if (searchForm.classList.contains('js-search-site')) {
     /* Main site search */
@@ -8,6 +7,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
       type: 'siteSearch',
     };
     const searchUnderscore = searchForm.querySelector('.b-search-form__underscore');
+    const searchSubmit = searchForm.querySelector('.b-search-form__submit');
     const searchClear = searchForm.querySelector('.b-search-form__clear');
 
     const searchDecorate = () => {
@@ -49,32 +49,26 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
       suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search',
     };
 
-    const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
-    const searchSelect = searchForm.querySelector('.b-search-form__filter-select');
-    let flagAutoSuggest = true;
-
     // eslint-disable-next-line consistent-return
     const loadSuggestions = (formEl) => {
-      if (formEl) {
-        formEl._props.storedSuggestions = JSON.parse(sessionStorage.getItem(`storedSuggestions_${formEl._props.type}`));
-        const now = new Date();
-        if (!formEl._props.storedSuggestions
-          || now.getTime() > formEl._props.storedSuggestions.expires) {
-          const promise = fetch(formEl._props.suggestionsTop, { cache: 'no-cache' })
-            .then((response) => response.json())
-            .then((data) => {
-              const suggestions = {
-                expires: now.getTime() + (15 * 60000),
-                data,
-              };
-              formEl._props.storedSuggestions = suggestions;
-              sessionStorage.setItem(`storedSuggestions_${formEl._props.type}`, JSON.stringify(formEl._props.storedSuggestions));
-            })
-            .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
-          return promise;
-        }
-        return Promise.resolve(true);
+      formEl._props.storedSuggestions = JSON.parse(sessionStorage.getItem(`storedSuggestions_${formEl._props.type}`));
+      const now = new Date();
+      if (!formEl._props.storedSuggestions
+        || now.getTime() > formEl._props.storedSuggestions.expires) {
+        const promise = fetch(formEl._props.suggestionsTop, { cache: 'no-cache' })
+          .then((response) => response.json())
+          .then((data) => {
+            const suggestions = {
+              expires: now.getTime() + (15 * 60000),
+              data,
+            };
+            formEl._props.storedSuggestions = suggestions;
+            sessionStorage.setItem(`storedSuggestions_${formEl._props.type}`, JSON.stringify(formEl._props.storedSuggestions));
+          })
+          .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
+        return promise;
       }
+      return Promise.resolve(true);
     };
 
     const trackAutosuggest = (e) => {
@@ -86,8 +80,12 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
       });
     };
 
+    const suggestionsEl = searchForm.querySelector('.b-search-form__suggestions');
+    const searchFocus = searchForm.querySelector('#sel_etc');
+
     const autoSuggest = (term, suggestion) => {
-      if (flagAutoSuggest === true) {
+      /* Enable Autosuggest only for unfocussed (default) search forms */
+      if (searchFocus.selectedIndex === 0) {
         const suggestEl = document.createElement('a');
         if (suggestionsEl.childElementCount < 10) {
           const title = suggestion.displayName || suggestion.displayTerm;
@@ -168,18 +166,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway, .
         }, false);
       })
       .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
-
-    document.addEventListener('change', (e) => {
-      if (e.target.closest('.b-search-form__filter-select')) {
-        if (searchSelect.selectedIndex === 0) {
-          flagAutoSuggest = true;
-        } else {
-          flagAutoSuggest = false;
-        }
-
-        searchForm.removeAttribute('suggesting');
-      }
-    });
 
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === 13 && document.activeElement.closest('.b-search-form__filter-toggle')) {
