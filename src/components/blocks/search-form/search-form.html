@@ -22,7 +22,7 @@
     </div>
     {% endif %}
     <div class="b-search-form__input-wrapper">
-      <input type="text" class="b-search-form__input" name="q" {% if modifiers and 'etc-gateway' in modifiers %} id="etc-gateway-search-input"{% endif %} placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
+      <input type="text" class="b-search-form__input" name="q" {% if modifiers and 'etc-gateway' in modifiers %} id="etc-gateway-search-input"{% endif %} placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" value="" {% if not modifiers or (modifiers and 'etc-gateway' in modifiers) %}autocomplete="off"{% endif %}>
       {% if not modifiers %}
       <div class="b-search-form__underscore" aria-hidden="true"></div>
       {% endif %}
