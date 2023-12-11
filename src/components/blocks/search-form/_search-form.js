@@ -167,29 +167,28 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       })
       .catch((e) => console.error(e.name, e.message)); // eslint-disable-line no-console
 
-    document.addEventListener('keydown', (e) => {
-      if (e.keyCode === 13 && document.activeElement.closest('.b-search-form__filter-toggle')) {
-        document.activeElement.click();
-      }
-    });
-
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.b-search-form__filter-toggle')) {
-        const toggleSet = e.target.closest('.b-search-form__filter-toggle-set');
-        toggleSet.toggleAttribute('active');
+      if (e.target.closest('.b-search-form__filter-date-btn-show')) {
+        const eleFilterDate = document.querySelector('.b-search-form__filter-date');
+        const eleFilterDateCtrl = eleFilterDate.querySelector('.b-search-form__filter-date-btn-show');
+        const eleFilterDateContainer = eleFilterDate.querySelector('.b-search-form__filter-date-container');
+        const eleFilterDateState = !(eleFilterDateCtrl.getAttribute('aria-expanded') === 'true');
+        const elesNumInput = eleFilterDate.querySelectorAll('.b-search-form__filter-input--date');
 
-        // make sure only the visible toggle link is aria visible and focusable
-        const toggleLinks = Array.from(document.querySelectorAll('.b-search-form__filter-toggle'));
-        const tabIndexIndex = toggleLinks.indexOf(document.querySelector('[tabindex="0"]'));
-        toggleLinks[tabIndexIndex].setAttribute('tabindex', -1);
-        toggleLinks[tabIndexIndex].setAttribute('aria-hidden', true);
-        toggleLinks[([1, 0])[tabIndexIndex]].setAttribute('tabindex', 0);
-        toggleLinks[([1, 0])[tabIndexIndex]].removeAttribute('aria-hidden');
+        if (eleFilterDateContainer.classList.contains('open')) {
+          eleFilterDateContainer.classList.remove('open');
+        } else {
+          eleFilterDateContainer.classList.add('open');
+        }
 
-        Array.from(toggleSet.querySelectorAll('input'), (input) => {
-          input.value = '';
-          return true;
-        });
+        eleFilterDateCtrl.setAttribute('aria-expanded', eleFilterDateState);
+
+        // clear the date fields
+        if (elesNumInput.length) {
+          elesNumInput.forEach((eleInput) => {
+            eleInput.value = '';
+          });
+        }
       }
     });
 

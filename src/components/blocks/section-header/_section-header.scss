@@ -17,6 +17,10 @@
     background: transparent;
   }
 
+  &--compact {
+    padding-bottom: base.$spacings-spacing-xsmall;
+  }
+
   &__title {
     @include base.typography-typeSetting(5, "bold");
 
