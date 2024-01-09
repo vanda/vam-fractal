@@ -1,11 +1,13 @@
 <div class="b-image-row{% for m in modifiers %} b-image-row--{{ m }}{% endfor %}">
   {% for item in items %}
   <div class="b-image-row__item">
-    <img class="b-image-row__img" alt="" 
-         sizes="(min-width: 768px) {{ 150 / items.length }}vw,
-                50vw"
-         data-srcset="{% for k, img in item.image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-         src="{{ item.image[320] }}">
+    <a class="b-image-row__link" href="#0">
+      <img class="b-image-row__img" alt=""
+           sizes="(min-width: 768px) {{ 150 / items.length }}vw,
+                  50vw"
+           data-srcset="{% for k, img in item.image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+           src="{{ item.image[320] }}">
+    </a>
   </div>
   {% endfor %}
 </div>

@@ -6,6 +6,13 @@
   flex-wrap: nowrap;
   justify-content: center;
 
+  &--padded {
+    @include mixins.breakpoints-bpMinSmall {
+      margin-left: -6px;
+      margin-right: -6px;
+    }
+  }
+
   &__item {
     display: flex;
 
@@ -29,6 +36,11 @@
       height: auto;
       margin-right: auto;
     }
+  }
+
+  &__link {
+    height: 100%;
+    width: 100%;
   }
 
   &__img {
