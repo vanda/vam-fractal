@@ -258,6 +258,16 @@ module.exports = {
           name: 'east-orange',
           hex: '#fe6f00'
         }
+      ],
+      'Shop': [
+        {
+          name: 'camel',
+          hex: '#e0c7a3'
+        },
+        {
+          name: 'sale-red',
+          hex: '#e30613'
+        }
       ]
     }
   }
