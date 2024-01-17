@@ -1,52 +1,48 @@
 <div class="b-search-pagination" data-page-index="1" data-page-size="15" data-pages="1234" data-total-count="12000">
-  <div class="b-search-pagination__container b-search-pagination__container--display-counter">
+  <div class="b-search-pagination__display-counter-container">
     <p class="b-search-pagination__display-counter"></p>
     <input class="b-search-pagination__hidden-input" type="hidden" name="page" />
     <input class="b-search-pagination__hidden-input" type="hidden" name="page_size" />
   </div>
   <div class="b-search-pagination__container">
-    <button data-page-index="0" class="b-search-pagination__prev-link">
+    <button data-page-index="0" class="b-search-pagination__prev-link" aria-label="previous page">
         <span class="b-search-pagination__caret">
             <</span> <span class="b-search-pagination__link-text">Prev
         </span>
     </button>
-    <div class="b-search-pagination__container b-search-pagination__container--col">
-      <div class="b-search-pagination__page-button-container">
-        <button data-page-index="1" value="1" class="b-search-pagination__page-button b-search-pagination__page-button--current">
-            01
-        </button>
-        <div class="b-search-pagination__page-button-seperator-start b-search-pagination__page-button-seperator">
-            ...
-        </div>
-        <button data-page-index="2" value="2" class="b-search-pagination__page-button">
-            02
-        </button>
-        <button data-page-index="3" value="3" class="b-search-pagination__page-button">
-            03
-        </button>
-        <span class="b-search-pagination__page-button-seperator-middle b-search-pagination__page-button-seperator">
-            ...
-        </span>
-        <button data-page-index="4" value="4" class="b-search-pagination__page-button b-search-pagination__page-button">
-            04
-        </button>
-        <span class="b-search-pagination__page-button-seperator-last b-search-pagination__page-button-seperator">
-            ...
-        </span>
-        <button data-page-index="7" value="6" class="b-search-pagination__page-button">
-            08
-        </button>
+    <div class="b-search-pagination__page-button-container">
+      <button data-page-index="1" value="1" class="b-search-pagination__page-button b-search-pagination__page-button--current">
+          01
+      </button>
+      <div class="b-search-pagination__page-button-seperator-start b-search-pagination__page-button-seperator">
+          ...
       </div>
-      <div class="b-search-pagination__container b-search-pagination__container--page-size">
-        <div class="b-search-pagination__page-size-container">
-          <span class="b-search-pagination__page-size-label">Results per page:</span>
-          <button data-page-size="15" class="b-search-pagination__page-size b-search-pagination__page-size--active">15</button>
-          <button data-page-size="100" class="b-search-pagination__page-size">100</button>
-        </div>
-      </div>
+      <button data-page-index="2" value="2" class="b-search-pagination__page-button">
+          02
+      </button>
+      <button data-page-index="3" value="3" class="b-search-pagination__page-button">
+          03
+      </button>
+      <span class="b-search-pagination__page-button-seperator-middle b-search-pagination__page-button-seperator">
+          ...
+      </span>
+      <button data-page-index="4" value="4" class="b-search-pagination__page-button b-search-pagination__page-button">
+          04
+      </button>
+      <span class="b-search-pagination__page-button-seperator-last b-search-pagination__page-button-seperator">
+          ...
+      </span>
+      <button data-page-index="7" value="6" class="b-search-pagination__page-button">
+          08
+      </button>
     </div>
-    <button data-page-index="2" class="b-search-pagination__next-link">
+    <button data-page-index="2" class="b-search-pagination__next-link" aria-label="next page">
         <span class="b-search-pagination__link-text">Next</span> <span class="b-search-pagination__link-caret">></span>
     </button>
+  </div>  
+  <div class="b-search-pagination__page-size-container">
+    <span class="b-search-pagination__page-size-label">Results per page:</span>
+    <button data-page-size="15" class="b-search-pagination__page-size b-search-pagination__page-size--active">15</button>
+    <button data-page-size="100" class="b-search-pagination__page-size">100</button>
   </div>
 </div>

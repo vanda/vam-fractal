@@ -2,6 +2,8 @@
 @use "../../base";
 
 .b-search-pagination {
+  color: base.sitecolors-siteColor("vam-white");
+
   @include base.typography-typeSetting(1);
 
   @include mixins.breakpoints-bpMinSmall {
@@ -9,24 +11,28 @@
   }
 
   &__container {
-    color: base.sitecolors-siteColor("vam-white");
     display: flex;
+    margin-bottom: 20px;
     flex-direction: row;
     justify-content: center;
-    position: relative;
 
-    &--display-counter {
-      justify-content: left;
-      margin-bottom: 20px;
+    @include mixins.breakpoints-bpMinXSmall {
+      flex-direction: row;
+      justify-content: space-between;
     }
+  }
 
-    &--page-size {
-      margin-top: 20px;
-    }
+  &__display-counter-container {
+    margin-bottom: 30px;
+  }
 
-    &--col {
-      flex-direction: column;
-    }
+  &__display-counter {
+    margin-bottom: 0;
+  }
+
+  &__page-size-container {
+    margin: 0 auto;
+    width: fit-content;
   }
 
   &__page-size {
@@ -46,33 +52,40 @@
     }
   }
 
-  &__prev-link {
-    left: 0;
-  }
-
-  &__next-link {
-    right: 0;
-  }
-
   &__prev-link,
   &__next-link {
     @include base.typography-typeSetting(2, "bold");
 
     color: base.sitecolors-siteColor("vam-white");
     cursor: pointer;
-    position: absolute;
-    top: 15px;
+    padding: 15px;
     user-select: none;
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(4, "bold");
-
-      top: 11px;
     }
 
     &[disabled] {
       color: base.sitecolors-siteColor("vam-grey-4");
       cursor: initial;
+    }
+  }
+
+  &__prev-link {
+    margin-right: 5px;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      margin: 0;
+      padding-left: 0;
+    }
+  }
+
+  &__next-link {
+    margin-left: 5px;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      margin: 0;
+      padding-right: 0;
     }
   }
 
@@ -82,8 +95,13 @@
     }
 
     &-text {
+      display: none;
       pointer-events: none;
       text-decoration: underline;
+
+      @include mixins.breakpoints-bpMinXSmall {
+        display: inline-block;
+      }
     }
   }
 
