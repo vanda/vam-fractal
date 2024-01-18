@@ -49,15 +49,13 @@
       }
 
       .b-icon-badge--short {
-        > & {
-          height: 24px;
-          margin: auto;
-          width: 24px;
+        height: 24px;
+        margin: auto;
+        width: 24px;
 
-          @include mixins.breakpoints-bpMinSmall {
-            height: 34px;
-            width: 34px;
-          }
+        @include mixins.breakpoints-bpMinSmall {
+          height: 34px;
+          width: 34px;
         }
       }
     }
