@@ -12,12 +12,13 @@
     {{ open | safe }}
   </div>
   <picture>
-    <source data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+    <source srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
         media="(max-width: 767px)">
     <img class="b-venue-card__image" alt="" 
-        data-sizes="(min-width: 1200px) {% if isPortrait %}284px{% else %}473px{% endif %},
+        sizes="(min-width: 1200px) {% if isPortrait %}284px{% else %}473px{% endif %},
                     (min-width: 768px) {% if isPortrait %}26vw{% else %}43vw{% endif %}"
-        data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-        src="{{ image[320] }}">
+        srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+        src="{{ image[320] }}"
+        loading="lazy">
   </picture>
 </a>

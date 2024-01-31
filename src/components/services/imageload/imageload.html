@@ -1,0 +1,14 @@
+<h1>Script to catch and handle any image loading errors</h1>
+<br><br>
+
+<h2>Failed image fallback</h2>
+By default, failed images are automatically replaced with a styled placeholder
+<img src="image-missing" alt="" loading="lazy">
+<br><br>
+
+<h2>Failed image hide</h2>
+In special cases, you may want a failed image to be completely hidden. This can be set by assigning the class `s-imageload--error-hide` to any image. 
+Images with this class will then be hidden completely if they fail to load, by receiving the class `s-imageload--error-hidden`. 
+↓↓↓ Look, no image! ↓↓↓
+<img class="s-imageload--error-hide" src="image-missing" alt="" loading="lazy">
+<br><br>

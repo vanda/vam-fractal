@@ -192,7 +192,8 @@ if (siteNav) {
                 <img class="b-search-result-auto-suggest-image"
                     src="${imgSrc}"
                     alt=""
-                    aria-hidden="true">
+                    aria-hidden="true"
+                    loading="lazy">
                 <div class="b-search-result-auto-suggest-text">
                   <div class="b-search-result-auto-suggest-content-type">
                     ${result.suggestions[i].type}

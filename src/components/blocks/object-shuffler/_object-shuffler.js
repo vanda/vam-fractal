@@ -153,11 +153,6 @@
         item.setAttribute('aria-hidden', true);
         item.dataset.trackingCollections = 'you may also like object';
         img.alt = deck._props.itemsData[dataIndex].img.alt;
-        img.classList.remove('s-lazyload--abort');
-        img.onerror = () => {
-          img.classList.add('s-lazyload--abort');
-          return true;
-        };
         img.srcset = deck._props.itemsData[dataIndex].img.srcset;
         img.src = deck._props.itemsData[dataIndex].img.src;
         // scatter effect

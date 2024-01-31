@@ -11,7 +11,8 @@
            itemprop="contentUrl"
            sizes="{{ eventImageSizes }}"
            srcset="{% for k, img in eventImageSrcs %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
-           src="{{ eventImage[640] }}">
+           src="{{ eventImage[640] }}"
+           loading="lazy">
     </div>
 
     <div class="b-event-feature__content">
