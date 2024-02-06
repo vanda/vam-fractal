@@ -170,6 +170,23 @@
     }
   }
 
+  &--etc-search{
+    margin:auto;
+    width:100%;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      width:100%;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      max-width:530px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium{
+      max-width:720px;
+    }
+  }
+
   &__submit,
   &__clear {
     border: none;
