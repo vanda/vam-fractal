@@ -6,8 +6,16 @@
 
   &--etc-gateway {
     border-radius: 2px;
-    padding: 0 10px 10px;
+    padding: 10px 10px 8px;
     position: relative;
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 10px 64px 8px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 10px 64px 16px;
+    }
 
     &[suggesting] {
       background: base.sitecolors-siteColor("vam-grey-2");
@@ -24,16 +32,11 @@
       display: flex;
       flex-wrap: wrap;
       margin: 0;
-      overflow: hidden;
       padding: 0;
     }
 
     .b-search-form--etc-search & {
       margin: 0;
-    }
-
-    @include mixins.breakpoints-bpMinSmall {
-      padding: 11px 10px;
     }
 
     @include mixins.breakpoints-bpMinMedium {
@@ -58,6 +61,19 @@
       margin: 0 4px -5px 0;
       width: 34px;
     }
+
+    &--etc {
+      color: base.sitecolors-siteColor("vam-black");
+      height: 20px;
+      margin: 0;
+      opacity: 1;
+      width: 20px;
+
+      @include mixins.breakpoints-bpMinMedium {
+        height: 28px;
+        width: 28px;
+      }
+    }
   }
 
   &__input-wrapper {
@@ -70,16 +86,11 @@
 
     .b-search-form--etc & {
       background: base.sitecolors-siteColor("vam-white");
-      border: 1px solid base.sitecolors-siteColor("vam-white");
       border-radius: 2px 0 0 2px;
-      flex: 1;
-      width: calc(100% - 94px);
+      flex: 1 0 auto;
+      width: auto;
 
       @include mixins.breakpoints-bpMinSmall {
-        width: calc(100% - 168px);
-      }
-
-      @include mixins.breakpoints-bpMinMedium {
         border-radius: 0;
 
         &--adv-search {
@@ -90,15 +101,17 @@
   }
 
   &__label {
-    @include base.typography-typeSetting(3);
+    @include base.typography-typeSetting(4);
 
     color: base.sitecolors-siteColor("vam-grey-5");
     display: block;
-    margin: 10px 0 20px;
+    margin-bottom: 2px;
     text-align: center;
 
     @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(5, "light");
+      @include base.typography-typeSetting(5);
+
+      margin-bottom: 10px;
     }
   }
 
@@ -116,18 +129,15 @@
   }
 
   &__input {
-    @include base.typography-typeSetting(2);
-
     background-color: transparent;
     border: none;
     caret-color: base.sitecolors-siteColor("primary-green");
     color: base.sitecolors-siteColor("vam-white");
-    height: auto;
-    margin: 10px 10px 9px;
-    width: calc(100% - 20px);
+    height: 100%;
+    margin: 4px 0;
+    width: 100%;
 
     @include mixins.breakpoints-bpMinSmall {
-      margin: 7px 10px;
       padding-left: 10px;
     }
 
@@ -156,16 +166,25 @@
   }
 
   &--etc {
-    .b-search-form__input {
-      color: base.sitecolors-siteColor("vam-black");
-    }
-
     .b-search-form__input,
     .b-search-form__underscore {
-      @include base.typography-typeSetting(3);
+      @include base.typography-typeSetting(4);
 
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(5);
+      @include mixins.breakpoints-bpMinMedium {
+        @include base.typography-typeSetting(5, "regular");
+      }
+    }
+
+    .b-search-form__input {
+      color: base.sitecolors-siteColor("vam-black");
+      margin: 0;
+      padding: 8px 16px;
+
+      &:focus {
+        @include mixins.focus-defaultFocus;
+
+        border-radius: 3px;
+        width: calc(100% - 6px);
       }
     }
   }
@@ -221,40 +240,34 @@
       }
     }
 
+    .b-search-form--etc-gateway & {
+      border-radius: 0 2px 2px 0;
+    }
+
     .b-search-form--etc & {
+      background: base.sitecolors-siteColor("vam-white");
+      border-radius: 0 2px 2px 0;
       color: base.sitecolors-siteColor("vam-black");
       float: none;
-      margin-top: 0;
-      border-radius: 0 2px 2px 0;
+      margin: 0;
+      padding: 12px;
 
       @include mixins.breakpoints-bpMinMedium {
         @include base.typography-typeSetting(4, "regular");
+
+        padding: 16px;
       }
-    }
 
-    .b-search-form--etc-gateway & {
-      @include base.typography-typeSetting(2);
+      &:focus {
+        @include mixins.focus-defaultFocus;
 
-      border-radius: 0 2px 2px 0;
-      margin: 0;
-      padding: 13px 10px 13px 16px;
-
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(4);
-
-        padding: 13px 30px 13px 35px;
+        background: base.sitecolors-siteColor("vam-grey-7");
+        border-radius: 3px;
       }
 
       &::after {
-        border-width: 4px;
-        margin-left: 8px;
+        display: none;
       }
-    }
-
-    .b-search-form--etc-search & {
-      background: base.sitecolors-siteColor("vam-white");
-      margin: 0;
-      padding-right: 10px;
     }
   }
 
@@ -276,10 +289,15 @@
     }
 
     .b-search-form[suggesting] & {
+      margin-top: 6px;
       max-height: 74vh;
       opacity: 1;
       padding: 10px;
       transition: max-height 0.4s ease-out, opacity 0.2s ease;
+
+      @include mixins.breakpoints-bpMinSmall {
+        padding: 10px 64px;
+      }
     }
   }
 
@@ -324,7 +342,7 @@
     color: base.sitecolors-siteColor("vam-white");
     display: flex;
     flex-flow: row wrap;
-    margin: 10px 0 1px;
+    margin: 8px 0 0;
   }
 
   &__filter {
@@ -354,55 +372,61 @@
   &__filter-info {
     @include base.typography-typeSetting(2);
 
-    color: base.sitecolors-siteColor("vam-grey-5");
+    color: base.sitecolors-siteColor("vam-white");
+
+    br {
+      display: none;
+    }
+
+    @include mixins.breakpoints-bpMinXSmall {
+      align-self: flex-end;
+
+      br {
+        display: inline;
+      }
+    }
   }
 
   // &--etc-gateway
-  &__filter-toggle {
-    cursor: pointer;
-    margin-bottom: 20px;
-    text-decoration: underline;
+  &__filter-date-btn-show {
+    @include base.typography-typeSetting(3);
+
+    margin-bottom: 8px;
 
     &:focus {
       @include mixins.focus-defaultFocus;
+
+      border-radius: 3px;
+      width: fit-content;
     }
 
-    &:hover,
-    &:focus {
-      text-decoration: none;
+    svg {
+      height: 8px;
+      margin-left: 8px;
+      width: 8px;
     }
 
-    &::after {
-      background: base.sitecolors-siteColor("vam-white");
-      border-radius: 50%;
-      color: base.sitecolors-siteColor("vam-black");
-      content: "+";
-      display: inline-block;
-      font-size: 16px;
-      height: 16px;
-      line-height: 16px;
-      margin-left: 10px;
-      text-align: center;
-      text-decoration: none;
-      width: 16px;
-    }
-
-    &--off::after {
-      content: "-";
-      font-weight: bold;
-    }
-
-    .b-search-form__filter-toggle-set[active] > &:not(&--off) {
-      display: none;
+    &[aria-expanded="true"] svg {
+      transform: rotate(180deg);
     }
   }
 
-  // &--etc-gateway
-  &__filter-toggle-pane {
+  &__filter-date-container {
+    column-gap: 17px;
     display: none;
+    margin-bottom: 8px;
 
-    .b-search-form__filter-toggle-set[active] > & {
+    &.open {
+      display: flex;
+    }
+  }
+
+  &__filter-detail {
+    @include base.typography-typeSetting(1);
+
+    label {
       display: block;
+      margin-bottom: 4px;
     }
   }
 
@@ -462,12 +486,17 @@
     }
 
     &--date {
+      @include base.typography-typeSetting(2);
+
       border: none;
-      color: base.sitecolors-siteColor("vam-black");
-      display: block;
-      margin-top: 6px;
-      padding: 6px 4px 6px 14px;
-      width: 100px;
+      color: base.sitecolors-siteColor("vam-grey-3");
+      padding: 8px 12px;
+
+      &:focus {
+        @include mixins.focus-defaultFocus;
+
+        border-radius: 3px;
+      }
     }
   }
 
@@ -475,26 +504,16 @@
     @include base.typography-typeSetting(2, "regular");
 
     appearance: none;
-    background-color:base.sitecolors-siteColor("vam-grey-6");
-    border: 1px solid base.sitecolors-siteColor("vam-grey-6");
+    background: transparent;
+    border: 1px solid base.sitecolors-siteColor("vam-white");
     border-radius: 2px;
-    color: base.sitecolors-siteColor("vam-black");
+    color: base.sitecolors-siteColor("vam-white");
     padding: 10px 40px 10px 20px;
+    text-overflow: ellipsis;
     width: 100%;
 
     @include mixins.breakpoints-bpMinXSmall {
       width: auto;
-
-      .b-search-form--etc & {
-        width: 100%;
-      }
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      .b-search-form--etc & {
-        border-radius: 2px 0 0 2px;
-        padding: 17px 40px 17px 20px;
-      }
     }
 
     > option {
@@ -561,7 +580,7 @@
     display: block;
     flex: 0 0 100%;
     height: auto;
-    margin: 0 0 12px;
+    margin: 0 0 8px;
     opacity: 1;
     visibility: visible;
     width: auto;
@@ -574,13 +593,22 @@
       height: 10px;
       pointer-events: none;
       position: absolute;
-      right: 20px;
-      top: 10%;
+      right: 18px;
+      top: 12%;
       transform: scaleX(1.5);
       width: 10px;
       
+      @include mixins.breakpoints-bpMinSmall {
+        top: 12%;
+      }
+
       @include mixins.breakpoints-bpMinMedium {
-        top: 20%;
+        top: 24%;
+
+        // when the child <select> gains focus it is stacked above the adjacent
+        // <input> to allow the focus effects to be seen without cropping. Same 
+        // applied to the pseudo-element:
+        z-index: 1;
       }
     }
 
@@ -588,9 +616,55 @@
       margin-left: 0;
     }
 
-    @include mixins.breakpoints-bpMinMedium {
-      flex: 0 0 auto;
+    @include mixins.breakpoints-bpMinSmall {
+      flex: 0 0 10em;
       margin-bottom: 0;
+    }
+
+    .b-search-form__filter-select {
+      @include base.typography-typeSetting(4, "regular");
+
+      background-color:base.sitecolors-siteColor("vam-grey-6");
+      border: 1px solid base.sitecolors-siteColor("vam-grey-6");
+      color: base.sitecolors-siteColor("vam-black");
+      padding: 8px 40px 8px 16px;
+
+      &:focus {
+        @include mixins.focus-defaultFocus;
+
+        border-radius: 3px;
+      }
+
+      @include mixins.breakpoints-bpMinXSmall {
+        .b-search-form--etc & {
+          width: 100%;
+        }
+      }
+
+      @include mixins.breakpoints-bpMinSmall {
+        .b-search-form--etc & {
+          border-radius: 2px 0 0 2px;
+
+          &:focus {
+            border-radius: 3px;
+            width: calc(100% - 6px);
+          }
+        }
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        padding: 15px 48px 15px 20px;
+
+        .b-search-form--etc & {
+          width: 12em;
+
+          &:focus {
+            position: relative;
+            width: 12em;
+            z-index: 1;
+          }
+        }
+      }
     }
   }
 
