@@ -37,6 +37,10 @@
 
     .b-search-form--etc-search & {
       margin: 0;
+
+      &--focused-search-validation-error{
+        margin-bottom:40px;
+      }
     }
 
     @include mixins.breakpoints-bpMinMedium {
@@ -186,6 +190,37 @@
         border-radius: 3px;
         width: calc(100% - 6px);
       }
+
+      &--validation-error{
+        &, &:focus{
+          box-shadow: 0 0 0 3px  base.sitecolors-siteColor("alert-red"), 0 0 0 6px base.sitecolors-siteColor("vam-black");
+          outline: 0;
+          border-radius: 3px;
+          width: calc(100% - 6px);
+        }
+      }
+
+      &__input-error-label{
+        background-color: base.sitecolors-siteColor("alert-red");
+        color:base.sitecolors-siteColor("vam-black");
+        display: block;
+        position: absolute;
+        padding: 4px 12px;
+      }
+    }
+  }
+  
+  &--etc-search{
+    margin:auto;
+    width:100%;
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding:0 12%;
+    }
+
+    @include mixins.breakpoints-bpMinLarge{
+      padding:0 20%;
+
     }
   }
 
