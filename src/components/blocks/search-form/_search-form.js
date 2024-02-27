@@ -269,17 +269,23 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
 
     searchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
       const formData = new FormData(searchForm);
-      let etcQuery = '';
-      Array.from(formData.entries(), (pair) => {
-        if (pair[0] === 'sel_etc') return true;
-        if (searchFocus.selectedIndex > 0 && pair[0] === 'q') pair[0] = formData.get('sel_etc');
-        etcQuery += (etcQuery.length > 1 ? '&' : '') + `${pair[0]}=${pair[1]}`; // eslint-disable-line prefer-template
-        return true;
-      });
 
-      window.location.href = `${searchForm.action}?${etcQuery}`;
+      // focused search + 3 or more chars
+      // normal search any values.
+      const validSearchCriteria = formData.has('q') || (formData.get('sel_etc').toString().startsWith('q_') && searchInput.value.length > 2);
+
+      if (validSearchCriteria) {
+        let etcQuery = '';
+        Array.from(formData.entries(), (pair) => {
+          if (pair[0] === 'sel_etc') return true;
+          if (searchFocus.selectedIndex > 0 && pair[0] === 'q') pair[0] = formData.get('sel_etc');
+          etcQuery += (etcQuery.length > 1 ? '&' : '') + `${pair[0]}=${pair[1]}`; // eslint-disable-line prefer-template
+          return true;
+        });
+
+        window.location.href = `${searchForm.action}?${etcQuery}`;
+      }
     });
   }
   return true;
