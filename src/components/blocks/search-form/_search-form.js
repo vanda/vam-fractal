@@ -85,7 +85,8 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
 
     const autoSuggest = (term, suggestion) => {
       /* Enable Autosuggest only for unfocussed (default) search forms */
-      if (searchFocus.selectedIndex === 0) {
+      // if (searchFocus.selectedIndex === 0) {
+      if (!searchInput.name.startsWith('q_')) {
         const suggestEl = document.createElement('a');
         if (suggestionsEl.childElementCount < 10) {
           const title = suggestion.displayName || suggestion.displayTerm;
@@ -189,6 +190,80 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
             eleInput.value = '';
           });
         }
+      }
+    });
+
+    const searchInputWrapper = searchForm.querySelector('.b-search-form__input-wrapper');
+    const searchformInner = searchForm.querySelector('.b-search-form__inner');
+    const removeValidationmessage = () => {
+      searchInputWrapper.querySelector('input').classList.remove('b-search-form__input--validation-error');
+      if (document.querySelector('.b-search-form__input__input-error-label')) {
+        document.querySelector('.b-search-form__input__input-error-label').remove();
+      }
+    };
+
+    const addValidationmessage = () => {
+      const loading = document.createElement('label');
+      loading.classList.add('b-search-form__input__input-error-label');
+      loading.appendChild(document.createTextNode('Enter at least 3 characters'));
+      loading.setAttribute('id', 'form-input-error-label');
+      loading.setAttribute('role', 'alert');
+      loading.setAttribute('aria-live', 'polite');
+      return loading;
+    };
+    const enableSearchSubmit = () => {
+      removeValidationmessage();
+      if (document.querySelector('.b-search-form__input--validation-error')) {
+        searchInputWrapper.querySelector('input').classList.remove('b-search-form__input--validation-error');
+      }
+      searchformInner.classList.remove('b-search-form__inner--focused-search-validation-error');
+    };
+
+    const disableSearchSubmit = (validationMess) => {
+      if (document.querySelector('.b-search-form__input__input-error-label') != null) {
+        // input error already built. dont need to build again.
+        // focus on input
+        searchInputWrapper.querySelector('input').focus();
+      } else {
+        searchInputWrapper.querySelector('input').setAttribute('aria-labeledby', 'form-input-error-label');
+        searchformInner.classList.add('b-search-form__inner--focused-search-validation-error');
+        searchInputWrapper.querySelector('input').focus();
+        searchInputWrapper.querySelector('input').classList.add('b-search-form__input--validation-error');
+        searchInputWrapper.insertAdjacentHTML('beforeend', validationMess.outerHTML);
+      }
+    };
+
+    searchForm.addEventListener('change', (e) => {
+      if (e && e.target.name === 'sel_etc') {
+        const focusedSearchOption = e.target.value;
+
+        if (focusedSearchOption !== 'all_fields' && e.target.value.startsWith('q_')) {
+          searchInput.setAttribute('name', e.target.value);
+          searchForm.removeAttribute('suggesting');
+
+          if (searchInput.value.length < 3) {
+            const validation = addValidationmessage();
+            disableSearchSubmit(validation);
+          }
+        } else {
+          searchInput.setAttribute('name', 'q');
+          enableSearchSubmit();
+        }
+      }
+    });
+
+    searchForm.addEventListener('input', (e) => {
+      const isFocusedSearch = e.target.name.toString().startsWith('q_');
+      if (e.target.value.length < 3) {
+        // Value is shorter than 3 chars
+
+        if (isFocusedSearch) {
+          const validation = addValidationmessage();
+          disableSearchSubmit(validation);
+        }
+      } else {
+        // if textvalue is 3 chars or more
+        enableSearchSubmit();
       }
     });
 
