@@ -205,7 +205,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     const addValidationmessage = () => {
       const loading = document.createElement('label');
       loading.classList.add('b-search-form__input__input-error-label');
-      loading.appendChild(document.createTextNode('Enter at least 3 characters'));
+      loading.appendChild(document.createTextNode('Enter 3 or more characters'));
       loading.setAttribute('id', 'form-input-error-label');
       loading.setAttribute('role', 'alert');
       loading.setAttribute('aria-live', 'polite');
