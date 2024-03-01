@@ -159,4 +159,11 @@
   &__page-button-last[disabled] {
     display: none;
   }
+
+  @include mixins.breakpoints-bpMaxXSmall {
+    &__page-button-seperator-start:not([disabled]) + &__page-button,
+    &__page-button-seperator-middle[disabled] + &__page-button {
+      display: none;
+    }
+  }
 }
