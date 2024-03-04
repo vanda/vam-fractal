@@ -136,13 +136,6 @@
     @include mixins.breakpoints-bpMinXSmall {
       margin: 10px 0;
     }
-
-    &-icon {
-      color: base.sitecolors-siteColor("vam-black");
-      height: 14px;
-      margin-left: 5px;
-      width: 14px;
-    }
   }
 
   &__description {
@@ -184,12 +177,6 @@
       &:focus {
         background-color: base.sitecolors-siteColor("vam-grey-5");
         outline: none;
-      }
-    }
-
-    .b-icon-list__item {
-      &__icon {
-        margin: 0;
       }
     }
   }
