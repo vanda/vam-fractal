@@ -21,7 +21,7 @@ if (gridRevealMore.length) {
       const gridFooterMarkup = document.createElement('footer');
       gridFooterMarkup.setAttribute('class', `b-block-grid__footer b-block-grid__footer--${theme}`);
       gridFooterMarkup.innerHTML = `
-        <a href="#" aria-label="show more" data-tracking-showmorebutton="${tracking}" class="js-reveal-more-btn">
+        <button href="#" aria-label="show more" data-tracking-showmorebutton="${tracking}" class="js-reveal-more-btn">
           <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">
             <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
               <svg aria-hidden="true">
@@ -32,7 +32,7 @@ if (gridRevealMore.length) {
               Show more
             </small>
           </div>
-        </a>
+        </button>
       `;
       putAfter.parentNode.insertBefore(gridFooterMarkup, putAfter.nextSibling);
 

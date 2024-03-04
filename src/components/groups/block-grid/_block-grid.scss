@@ -65,22 +65,20 @@
   &__footer {
     background-color: base.sitecolors-siteColor("vam-black");
     clear: both;
+    display: flex;
+    justify-content: center;
     padding: base.$spacings-spacing-small * 2;
 
     &--light {
       background-color: base.sitecolors-siteColor("vam-white");
     }
 
-    > a:focus {
+    > button:focus {
       box-shadow: none;
 
       .b-icon-badge__icon {
         @include mixins.focus-defaultFocus;
       }
-    }
-
-    > svg {
-      color: base.sitecolors-siteColor("vam-black");
     }
   }
 
