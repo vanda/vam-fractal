@@ -74,11 +74,7 @@
     }
 
     > button:focus {
-      box-shadow: none;
-
-      .b-icon-badge__icon {
-        @include mixins.focus-defaultFocus;
-      }
+      @include mixins.focus-defaultFocus;
     }
   }
 
