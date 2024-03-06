@@ -1,22 +1,44 @@
 {% if modifiers and 'etc-gateway' in modifiers %}
-<label class="b-search-form__label" for="{{ inputId }}">Search more than 1.2 million objects</label>
+  <p class="b-search-form__label" id="etc-gateway-search-input">Search more than 1.2 million objects</p>
 {% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" name="search" action="{{ action }}" method="get" role="search">
+  {# Collections Landing pg #}
   <div class="b-search-form__inner">
+    {# SiteSearch #}
     {% if not modifiers %}
     <svg class="b-search-form__icon" aria-hidden="true" role="img">
       <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
     </svg>
     {% endif %}
+    {# Collections Landing and Collections search pages #}
+    {% if modifiers and 'etc' in modifiers %}
+    <div class="b-search-form__advanced-search-wrapper">
+      <label class="b-search-form__label b-search-form__advanced-search-label" for="sel_etc">Focused search</label>
+      <select name="sel_etc" id="sel_etc" class="b-search-form__filter-select">
+        {% for option in selectOptions %}
+          <option value="{{ option.value }}">{{ option.textContent }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
     <div class="b-search-form__input-wrapper">
-      <input type="text" class="b-search-form__input" name="{{ inputId }}" placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" autocomplete="off" value="">
+      <input type="text" class="b-search-form__input" name="q" {% if modifiers and 'etc-gateway' in modifiers %} aria-labelledby="etc-gateway-search-input"{% endif %} placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" value="" {% if not modifiers or (modifiers and 'etc-gateway' in modifiers) %}autocomplete="off"{% endif %}>
       {% if not modifiers %}
       <div class="b-search-form__underscore" aria-hidden="true"></div>
       {% endif %}
     </div>
-    <button class="b-search-form__submit {% if modifiers and 'etc-gateway' in modifiers %}u-btn{% endif %}" aria-label="Search submit">
+
+    <button class="b-search-form__submit {% if modifiers and 'etc' in modifiers %}b-search-form__submit--etc{% endif %}" aria-label="Search submit">
+      {% if not modifiers %}
       Search
-    </button>
+      {% endif %}
+      {% if modifiers and 'etc' in modifiers %}
+      <svg class="b-search-form__icon b-search-form__icon--etc" aria-hidden="true" role="img">
+        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
+      </svg>
+      {% endif %}
+    </button>    
+    
     {% if not modifiers %}
     <svg role="img" class="b-search-form__clear b-search-form__clear--hidden" aria-hidden="true">
       <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#close"></use>
@@ -34,36 +56,35 @@
   </div>
   {% endif %}
 
-  {# Collections Landing pg #}
   {% if modifiers and 'etc-gateway' in modifiers %}
-  <div class="b-search-form__suggestions" aria-label="search suggestions">
-    <button>Start by entering a search term</button>
-  </div>
-  <div class="b-search-form__filters" aria-label="search filters" role="form">
-    <div class="b-search-form__filter-toggle-set">
-      <div tabindex="0" class="b-search-form__filter-toggle js-pane-toggle" aria-hidden="true">Add dates</div>
-      <div class="b-search-form__filter-toggle-pane">
-        <div class="b-search-form__filter-toggle b-search-form__filter-toggle--off" aria-hidden="true">Remove dates</div>
+  <div class="b-search-form__suggestions"></div>
+  <div class="b-search-form__filters" aria-label="search filters">
+    <div class="b-search-form__filter-date">
+      <button type="button" aria-expanded="false" class="b-search-form__filter-date-btn-show" aria-controls="search-form__filter-date-container" id="search-form__filter-date-control">
+        By dates
+        <svg role="presentation">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-down"></use>
+        </svg>
+      </button>
+      <div class="b-search-form__filter-date-container" id="search-form__filter-date-container" aria-labelledby="search-form__filter-date-control">
+        <div class="b-search-form__filter-detail">
+          <label for="year_made_from">From</label>
+          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_from" name="year_made_from" min="-4000" max="2050" step="1" placeholder="Year" value="">
+        </div>
+        <div class="b-search-form__filter-detail">
+          <label for="year_made_to">To</label>
+          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_to" name="year_made_to" min="-4000" max="2050" step="1" placeholder="Year" value="">
+        </div>
         <div class="b-search-form__filter-info">
           Use a hyphen to indicate dates BC.
           <br>For example -800 is 800BC
         </div>
-        <div class="b-search-form__filter">
-          <label for="year_made_from">From year:</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" name="year_made_from" min="-4000" max="2050" step="1" placeholder="Year" value="">
-        </div>
-        <div class="b-search-form__filter">
-          <label for="year_made_to">To year:</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" name="year_made_to" min="-4000" max="2050" step="1" placeholder="Year" value="">
-        </div>
       </div>
     </div>
   </div>
-
   {# Collections Search pg #}
   {% elif modifiers and 'etc' in modifiers %}
   <div class="b-search-form__facet-pane b-search-form__facet-pane--active">
-    <div class="b-search-form__facets-seperator"></div>
     <div class="b-search-form__facets-container">
       <div class="b-search-form__facets">
         {% for facet in facets %}

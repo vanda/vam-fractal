@@ -6,8 +6,16 @@
 
   &--etc-gateway {
     border-radius: 2px;
-    padding: 10px;
+    padding: 10px 10px 8px;
     position: relative;
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 10px auto 8px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 10px auto 16px;
+    }
 
     &[suggesting] {
       background: base.sitecolors-siteColor("vam-grey-2");
@@ -19,20 +27,24 @@
     position: relative;
 
     .b-search-form--etc & {
-      align-items: center;
-      background: base.sitecolors-siteColor("vam-white");
+      background: transparent;
       border: none;
-      border-radius: 2px;
       display: flex;
-      justify-content: space-between;
-      overflow: hidden;
-      padding: 7px 9px;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
     }
 
-    .b-search-form--etc-gateway & {
-      @include mixins.breakpoints-bpMinSmall {
-        padding: 11px 10px;
+    .b-search-form--etc-search & {
+      margin: 0;
+
+      &--focused-search-validation-error{
+        margin-bottom:40px;
       }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      flex-wrap: nowrap;
     }
   }
 
@@ -53,6 +65,19 @@
       margin: 0 4px -5px 0;
       width: 34px;
     }
+
+    &--etc {
+      color: base.sitecolors-siteColor("vam-black");
+      height: 20px;
+      margin: 0;
+      opacity: 1;
+      width: 20px;
+
+      @include mixins.breakpoints-bpMinMedium {
+        height: 28px;
+        width: 28px;
+      }
+    }
   }
 
   &__input-wrapper {
@@ -64,24 +89,46 @@
     }
 
     .b-search-form--etc & {
-      width: calc(100% - 94px);
+      background: base.sitecolors-siteColor("vam-white");
+      border-radius: 2px 0 0 2px;
+      flex: 1 0 auto;
+      width: auto;
 
       @include mixins.breakpoints-bpMinSmall {
-        width: calc(100% - 168px);
+        border-radius: 0;
+
+        &--adv-search {
+          border-radius: 0;
+        }
       }
     }
   }
 
   &__label {
-    @include base.typography-typeSetting(3);
+    @include base.typography-typeSetting(4);
 
     color: base.sitecolors-siteColor("vam-grey-5");
     display: block;
-    margin: 10px 0;
+    margin-bottom: 2px;
     text-align: center;
 
     @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(5, "light");
+      @include base.typography-typeSetting(5);
+
+      margin-bottom: 10px;
+    }
+  }
+
+  &__advanced-search-label {
+    @include mixins.elementvisibility-visuallyHidden;
+  }
+
+  &__input,
+  &__underscore {
+    @include base.typography-typeSetting(5);
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "bold");
     }
   }
 
@@ -122,28 +169,59 @@
     }
   }
 
-  &__input,
-  &__underscore {
-    @include base.typography-typeSetting(5);
+  &--etc {
+    .b-search-form__input,
+    .b-search-form__underscore {
+      @include base.typography-typeSetting(4);
 
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(7, "bold");
+      @include mixins.breakpoints-bpMinMedium {
+        @include base.typography-typeSetting(5, "regular");
+      }
+    }
+
+    .b-search-form__input {
+      color: base.sitecolors-siteColor("vam-black");
+      margin: 0;
+      padding: 8px 16px;
+
+      &:focus {
+        @include mixins.focus-defaultFocus;
+
+        border-radius: 3px;
+        width: calc(100% - 6px);
+      }
+
+      &--validation-error{
+        &, &:focus{
+          box-shadow: 0 0 0 3px  base.sitecolors-siteColor("alert-red"), 0 0 0 6px base.sitecolors-siteColor("vam-black");
+          outline: 0;
+          border-radius: 3px;
+          width: calc(100% - 6px);
+        }
+      }
+
+      &__input-error-label{
+        background-color: base.sitecolors-siteColor("alert-red");
+        color:base.sitecolors-siteColor("vam-black");
+        display: block;
+        position: absolute;
+        padding: 4px 12px;
+      }
     }
   }
 
-  // this feels like it should be in EtC...
-  &--etc {
-    .b-search-form__input {
-      color: base.sitecolors-siteColor("vam-black");
+  &--etc-gateway,
+  &--etc-search{
+    margin:auto;
+    width:100%;
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding:0 12%;
     }
 
-    .b-search-form__input,
-    .b-search-form__underscore {
-      @include base.typography-typeSetting(3);
+    @include mixins.breakpoints-bpMinLarge {
+      padding:0 20%;
 
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(5);
-      }
     }
   }
 
@@ -182,6 +260,14 @@
       @include mixins.focus-insetFocus;
     }
 
+    &::after {
+      border: 6px solid transparent;
+      border-left-color: currentColor;
+      content: "";
+      display: inline-block;
+      margin-left: 8px;
+    }
+
     @include mixins.breakpoints-bpMinSmall {
       margin-top: 28px;
 
@@ -190,37 +276,38 @@
       }
     }
 
+    .b-search-form--etc-gateway & {
+      border-radius: 0 2px 2px 0;
+    }
+
     .b-search-form--etc & {
+      background: base.sitecolors-siteColor("vam-white");
+      border-radius: 0 2px 2px 0;
       color: base.sitecolors-siteColor("vam-black");
-      margin-top: 0;
+      float: none;
+      margin: 0;
+      padding: 12px;
 
       @include mixins.breakpoints-bpMinMedium {
         @include base.typography-typeSetting(4, "regular");
+
+        padding: 16px;
       }
-    }
 
-    .b-search-form--etc-gateway & {
-      border-radius: 0 2px 2px 0;
-      height: 100%;
-      margin: 0;
-      padding: 0 5px 0 12px;
-      position: absolute;
-      right: 0;
+      &:focus {
+        @include mixins.focus-defaultFocus;
 
-      @include mixins.breakpoints-bpMinSmall {
-        padding: 0 30px 0 37px;
+        background: base.sitecolors-siteColor("vam-grey-7");
+        border-radius: 3px;
       }
-    }
 
-    &::after {
-      border: 6px solid transparent;
-      border-left-color: currentColor;
-      content: "";
-      display: inline-block;
-      margin-left: 8px;
+      &::after {
+        display: none;
+      }
     }
   }
 
+  // &--etc-gateway
   &__suggestions {
     background: base.sitecolors-siteColor("vam-grey-2");
     border-radius: 0 0 2px 2px;
@@ -233,14 +320,24 @@
     width: 100%;
     z-index: 1;
 
+    &--inactive {
+      display: none;
+    }
+
     .b-search-form[suggesting] & {
+      margin-top: 6px;
       max-height: 74vh;
       opacity: 1;
       padding: 10px;
       transition: max-height 0.4s ease-out, opacity 0.2s ease;
+
+      @include mixins.breakpoints-bpMinSmall {
+        padding: 10px 64px;
+      }
     }
   }
 
+  // &--etc-gateway
   &__suggestion {
     @include base.typography-typeSetting(3);
 
@@ -264,6 +361,7 @@
     }
   }
 
+  // &--etc-gateway
   &__suggestion-type {
     @include base.typography-typeSetting(0, "bold");
 
@@ -280,7 +378,7 @@
     color: base.sitecolors-siteColor("vam-white");
     display: flex;
     flex-flow: row wrap;
-    margin: 10px 0 1px;
+    margin: 8px 0 0;
   }
 
   &__filter {
@@ -306,56 +404,65 @@
     }
   }
 
+  // &--etc-gateway
   &__filter-info {
     @include base.typography-typeSetting(2);
 
-    color: base.sitecolors-siteColor("vam-grey-5");
+    color: base.sitecolors-siteColor("vam-white");
+
+    br {
+      display: none;
+    }
+
+    @include mixins.breakpoints-bpMinXSmall {
+      align-self: flex-end;
+
+      br {
+        display: inline;
+      }
+    }
   }
 
-  &__filter-toggle {
-    cursor: pointer;
-    margin-bottom: 20px;
-    text-decoration: underline;
+  // &--etc-gateway
+  &__filter-date-btn-show {
+    @include base.typography-typeSetting(3);
+
+    margin-bottom: 8px;
 
     &:focus {
       @include mixins.focus-defaultFocus;
+
+      border-radius: 3px;
+      width: fit-content;
     }
 
-    &:hover,
-    &:focus {
-      text-decoration: none;
+    svg {
+      height: 8px;
+      margin-left: 8px;
+      width: 8px;
     }
 
-    &::after {
-      background: base.sitecolors-siteColor("vam-white");
-      border-radius: 50%;
-      color: base.sitecolors-siteColor("vam-black");
-      content: "+";
-      display: inline-block;
-      font-size: 16px;
-      height: 16px;
-      line-height: 16px;
-      margin-left: 10px;
-      text-align: center;
-      text-decoration: none;
-      width: 16px;
-    }
-
-    &--off::after {
-      content: "-";
-      font-weight: bold;
-    }
-
-    .b-search-form__filter-toggle-set[active] > &:not(&--off) {
-      display: none;
+    &[aria-expanded="true"] svg {
+      transform: rotate(180deg);
     }
   }
 
-  &__filter-toggle-pane {
+  &__filter-date-container {
+    column-gap: 17px;
     display: none;
+    margin-bottom: 8px;
 
-    .b-search-form__filter-toggle-set[active] > & {
+    &.open {
+      display: flex;
+    }
+  }
+
+  &__filter-detail {
+    @include base.typography-typeSetting(1);
+
+    label {
       display: block;
+      margin-bottom: 4px;
     }
   }
 
@@ -415,12 +522,17 @@
     }
 
     &--date {
+      @include base.typography-typeSetting(2);
+
       border: none;
-      color: base.sitecolors-siteColor("vam-black");
-      display: block;
-      margin-top: 6px;
-      padding: 6px 4px 6px 14px;
-      width: 100px;
+      color: base.sitecolors-siteColor("vam-grey-3");
+      padding: 8px 12px;
+
+      &:focus {
+        @include mixins.focus-defaultFocus;
+
+        border-radius: 3px;
+      }
     }
   }
 
@@ -429,10 +541,11 @@
 
     appearance: none;
     background: transparent;
-    border: 1px solid base.sitecolors-siteColor("vam-white");
+    border: 2px solid base.sitecolors-siteColor("vam-white");
     border-radius: 2px;
     color: base.sitecolors-siteColor("vam-white");
     padding: 10px 40px 10px 20px;
+    text-overflow: ellipsis;
     width: 100%;
 
     @include mixins.breakpoints-bpMinXSmall {
@@ -458,6 +571,15 @@
       width: auto;
     }
 
+    @include mixins.breakpoints-bpMinMedium {
+      .b-search-form--etc & {
+        &::after {
+          content: "⌄";
+          top: 20%;
+        }
+      }
+    }
+
     &::after {
       content: "⌄";
       font-size: 20px;
@@ -469,6 +591,12 @@
       top: 10%;
       transform: scaleX(1.5);
       width: 10px;
+    }
+
+    .b-search-form__filter-select{
+      background-color:transparent;
+      border: 2px solid base.sitecolors-siteColor("vam-white");
+      color: base.sitecolors-siteColor("vam-white");
     }
   }
 
@@ -482,13 +610,106 @@
       margin: 0 20px 10px;
     }
   }
+  
+  &__advanced-search-wrapper {
+    color: base.sitecolors-siteColor("vam-black");
+    display: block;
+    flex: 0 0 100%;
+    height: auto;
+    margin: 0 0 8px;
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    position: relative;
+
+    &::after {
+      content: "⌄";
+      font-size: 20px;
+      font-weight: 100;
+      height: 10px;
+      pointer-events: none;
+      position: absolute;
+      right: 18px;
+      top: 12%;
+      transform: scaleX(1.5);
+      width: 10px;
+      
+      @include mixins.breakpoints-bpMinSmall {
+        top: 12%;
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        top: 24%;
+
+        // when the child <select> gains focus it is stacked above the adjacent
+        // <input> to allow the focus effects to be seen without cropping. Same 
+        // applied to the pseudo-element:
+        z-index: 1;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinXSmall {
+      margin-left: 0;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex: 0 0 10em;
+      margin-bottom: 0;
+    }
+
+    .b-search-form__filter-select {
+      @include base.typography-typeSetting(4, "regular");
+
+      background-color:base.sitecolors-siteColor("vam-grey-6");
+      border: 2px solid base.sitecolors-siteColor("vam-grey-6");
+      color: base.sitecolors-siteColor("vam-black");
+      padding: 8px 40px 8px 16px;
+
+      &:focus {
+        @include mixins.focus-defaultFocus;
+
+        border-radius: 3px;
+      }
+
+      @include mixins.breakpoints-bpMinXSmall {
+        .b-search-form--etc & {
+          width: 100%;
+        }
+      }
+
+      @include mixins.breakpoints-bpMinSmall {
+        .b-search-form--etc & {
+          border-radius: 2px 0 0 2px;
+
+          &:focus {
+            border-radius: 3px;
+            width: calc(100% - 6px);
+          }
+        }
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        padding: 15px 48px 15px 20px;
+
+        .b-search-form--etc & {
+          width: 12em;
+
+          &:focus {
+            position: relative;
+            width: 12em;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
 
   &__facet-pane {
     background: base.sitecolors-siteColor("vam-white");
     border-radius: 0 0 2px 2px;
     color: base.sitecolors-siteColor("vam-black");
     display: none;
-    margin-top: -7px;
+    margin-top: 10px;
     padding: 7px 9px;
 
     &--active {
@@ -498,14 +719,6 @@
 
   &__facets-container {
     display: flex;
-  }
-
-  &__facets-seperator {
-    border-top: 1px solid #979797;
-
-    @include mixins.breakpoints-bpMinXSmall {
-      border-width: 2px;
-    }
   }
 
   &__facets {
