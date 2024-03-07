@@ -2,7 +2,6 @@ module.exports = {
   title: 'Site colors',
   label: 'Site color',
   context: {
-    ignore_global_theme: true,
     colors: [
       {
         name: 'vam-black',

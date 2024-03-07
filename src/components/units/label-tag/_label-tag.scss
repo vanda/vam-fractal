@@ -4,12 +4,12 @@
 
 .u-label-tag {
   @include base.typography-typeSetting(2, "bold");
-
+ 
   background: base.sitecolors-siteColor("primary-green");
   bottom: initial;
   color: base.sitecolors-siteColor(vam-black);
   margin: 12px 12px 12px 0;
-  padding: 5px 12px 4px;
+  padding: 4px 10px;
   position: absolute;
   top: 0;
   z-index: 1;
