@@ -10,11 +10,13 @@
     position: relative;
 
     @include mixins.breakpoints-bpMinSmall {
-      padding: 10px auto 8px;
+      padding-top: 10px;
+      padding-bottom: 8px;
     }
 
     @include mixins.breakpoints-bpMinMedium {
-      padding: 10px auto 16px;
+      padding-top: 10px;
+      padding-bottom: 16px;
     }
 
     &[suggesting] {
@@ -114,8 +116,9 @@
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(5);
-
-      margin-bottom: 10px;
+      
+      margin-top:4px;
+      margin-bottom: 6px;
     }
   }
 
@@ -216,12 +219,13 @@
     width:100%;
 
     @include mixins.breakpoints-bpMinSmall {
-      padding:0 12%;
+      padding-left: 12%;
+      padding-right: 12%;
     }
 
     @include mixins.breakpoints-bpMinLarge {
-      padding:0 20%;
-
+      padding-left: 20%;
+      padding-right: 20%;
     }
   }
 
@@ -378,7 +382,7 @@
     color: base.sitecolors-siteColor("vam-white");
     display: flex;
     flex-flow: row wrap;
-    margin: 8px 0 0;
+    margin: 16px 0 0;
   }
 
   &__filter {
@@ -575,7 +579,7 @@
       .b-search-form--etc & {
         &::after {
           content: "⌄";
-          top: 20%;
+          top: 15%;
         }
       }
     }
