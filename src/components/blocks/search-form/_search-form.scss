@@ -8,17 +8,10 @@
     border-radius: 2px;
     padding: 10px 10px 8px;
     position: relative;
-
-    @include mixins.breakpoints-bpMinSmall {
-      padding-top: 10px;
-      padding-bottom: 8px;
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      padding-top: 10px;
-      padding-bottom: 16px;
-    }
-
+    margin:auto;
+    width:100%;
+    max-width: 720px;
+    
     &[suggesting] {
       background: base.sitecolors-siteColor("vam-grey-2");
     }
@@ -213,7 +206,6 @@
     }
   }
 
-  &--etc-gateway,
   &--etc-search{
     margin:auto;
     width:100%;
@@ -334,10 +326,6 @@
       opacity: 1;
       padding: 10px;
       transition: max-height 0.4s ease-out, opacity 0.2s ease;
-
-      @include mixins.breakpoints-bpMinSmall {
-        padding: 10px 64px;
-      }
     }
   }
 
