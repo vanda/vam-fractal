@@ -40,6 +40,7 @@
 
   &__link {
     height: 100%;
+    width: 100%;
   }
 
   &__img {
@@ -48,6 +49,10 @@
   
     &#{&} {
       width: auto;
+
+      .b-image-row--failed & {
+        width: 100%; // required for imgs replaced by s-imageload
+      }
     }
   }
 }

@@ -6,12 +6,13 @@
     <img class="b-object-card__image"
          itemprop="contentUrl"
          alt="{{ physicalDescription }}" 
-         data-sizes="(max-width: 499px) calc(100vw - 24px),
+         sizes="(max-width: 499px) calc(100vw - 24px),
                 (min-width: 500px) calc(50vw - 36px),
                 (min-width: 992px) calc(34vw - 340px),
                 (min-width: 1200px) calc(1200px - 340px)"
-         data-srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-         src="{{ image[320] }}">
+         srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+         src="{{ image[320] }}"
+         loading="lazy">
 
     <figcaption>
       <div class="b-object-card__caption">{{ caption | safe }}</div>

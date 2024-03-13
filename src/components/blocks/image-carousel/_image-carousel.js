@@ -41,6 +41,7 @@ if (imageCarousel && images.length) {
     newImage.src = `https://framemark.vam.ac.uk/collections/${imageId}/full/!100,100/0/default.jpg`;
     newImage.alt = `thumbnail for ${alt}`;
     newImage.className = 'b-image-carousel__image-preview';
+    newImage.setAttribute('loading', 'lazy');
     return newImage;
   });
 

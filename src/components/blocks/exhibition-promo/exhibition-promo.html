@@ -11,7 +11,7 @@
       srcset="{% for k, img in imageSrc %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
       src="{{ imageSrc["640"] }}"
       sizes=""
-    >
+      loading="lazy">
     <div class="b-exhibition-promo__information">
       <h3 class="b-exhibition-promo__title">{{ title }}</h3>
       <p class="b-exhibition-promo__type">{{ eventType }}</p>

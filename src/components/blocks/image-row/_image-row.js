@@ -1,88 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const imgRows = document.querySelectorAll('.b-image-row');
-  if (imgRows.length) {
-    let rowId = 0;
-    Array.from(imgRows, (imgRow) => {
-      rowId += 1;
-      imgRow.classList.add(`b-image-row-${rowId}`);
-      imgRow._imageRowId = rowId;
+  let rowId = 0;
+  Array.from(document.querySelectorAll('.b-image-row'), (imgRow) => {
+    rowId += 1;
+    imgRow.classList.add(`b-image-row-${rowId}`);
+    imgRow._imageRowId = rowId;
 
-      /* use a style tag so we have media-queries */
-      const imgRowStyle = imgRow.parentNode.insertBefore(document.createElement('style'), imgRow);
+    /* use a style tag so we have media-queries */
+    const imgRowStyle = imgRow.parentNode.insertBefore(document.createElement('style'), imgRow);
 
-      const rowStyle = () => {
-        const imgsLL = imgRow.querySelectorAll('.b-image-row__img'); // images, including those failed and replaced by LazyLoad
-        const aspectRatios = [];
-        const parentRow = imgsLL[0].closest('.b-image-row');
-        const parentRowCS = getComputedStyle(parentRow);
-        const rowWidth = parentRow.getBoundingClientRect().width
-                          - parseInt(parentRowCS.paddingLeft, 10)
-                          - parseInt(parentRowCS.paddingRight, 10);
-        let imgRowStyleMobile = '';
-        let imgId = 0;
-        Array.from(imgsLL, (img) => {
-          if (img.naturalWidth) {
-            aspectRatios.push(img.naturalWidth / img.naturalHeight);
-          } else {
-            /* failed images have been replaced with a div by Lazyload */
-            aspectRatios.push(1);
-            img.closest('.b-image-row__item').classList.add('b-image-row__item--failed');
-          }
-          imgId += 1;
-          if (imgId % 2 === 0) {
-            /* apply the same height calculation for mobile as the general rule below,
-             * but in batches of 2 images, and with rounding and a tiny reduction to
-             * ensure no pair is wider than a wrapped row */
-            imgRowStyleMobile += `
-              .b-image-row-${parentRow._imageRowId} .b-image-row__item:nth-child(${imgId - 1}), 
-              .b-image-row-${parentRow._imageRowId} .b-image-row__item:nth-child(${imgId}) {
-                height: ${Math.round((rowWidth / (aspectRatios[imgId - 2] + aspectRatios[imgId - 1])) - 1.5)}px;
-              }
-            `;
-          }
-          return true;
-        });
-        imgRowStyle.innerHTML = `
-          @media screen and (max-width: 768px) {
-            .b-image-row-${parentRow._imageRowId} { 
-              flex-wrap: wrap;
+    const styleImgRow = () => {
+      const rowAspectRatios = [];
+      const rowCS = getComputedStyle(imgRow);
+      const rowWidth = imgRow.getBoundingClientRect().width
+                        - parseInt(rowCS.paddingLeft, 10)
+                        - parseInt(rowCS.paddingRight, 10);
+      let imgRowStyleMobile = '';
+      let imgId = 0;
+      Array.from(imgRow.querySelectorAll('.b-image-row__img'), (img) => {
+        if (img.naturalWidth) {
+          /* add images that have loaded successfully */
+          rowAspectRatios.push(img.naturalWidth / img.naturalHeight);
+        } else {
+          /* handle any failed images that have been replaced with a styled div by s-imageload */
+          rowAspectRatios.push(1);
+          img.closest('.b-image-row__item').classList.add('b-image-row__item--failed');
+        }
+        imgId += 1;
+        if (imgId % 2 === 0) {
+          /* apply the same height calculation for mobile as the general rule below,
+           * but in batches of 2 images, and with rounding plus a tiny reduction to
+           * ensure no pair is wider than a wrapped row */
+          imgRowStyleMobile += `
+            .b-image-row-${imgRow._imageRowId} .b-image-row__item:nth-child(${imgId - 1}), 
+            .b-image-row-${imgRow._imageRowId} .b-image-row__item:nth-child(${imgId}) {
+              height: ${Math.round((rowWidth / (rowAspectRatios[imgId - 2] + rowAspectRatios[imgId - 1])) - 1.5)}px;
             }
-            ${imgRowStyleMobile}
-          }
-          .b-image-row-${parentRow._imageRowId} .b-image-row__item {
-            height: ${rowWidth / aspectRatios.reduce((a, b) => a + b)}px;
-          }
-        `;
-      };
-
-      const imgs = imgRow.querySelectorAll('.b-image-row__img');
-      const complete = [];
-      const loaded = (loadedImg) => {
-        complete.push(loadedImg);
-        if (complete.length === imgs.length) rowStyle();
-      };
-
-      Array.from(imgs, (img) => {
-        /* wait for LazyLoad to set src attribute for each img */
-        const observer = new MutationObserver(() => {
-          /* then wait for each img to load, or fail */
-          if (img.complete) {
-            loaded(img);
-          } else {
-            document.addEventListener('load', (e) => {
-              if (e.target === img) loaded(img);
-            }, false);
-            img.addEventListener('error', () => {
-              loaded(img);
-            }, false);
-          }
-        });
-        observer.observe(img, { attributes: true });
+          `;
+        }
         return true;
       });
 
-      window.addEventListener('resize', rowStyle, false);
+      imgRowStyle.innerHTML = `
+        @media screen and (max-width: 768px) {
+          .b-image-row-${imgRow._imageRowId} { 
+            flex-wrap: wrap;
+          }
+          ${imgRowStyleMobile}
+        }
+        .b-image-row-${imgRow._imageRowId} .b-image-row__item {
+          height: ${rowWidth / rowAspectRatios.reduce((a, b) => a + b)}px;
+        }
+      `;
+    };
+
+    /* Iterate all the row's images and set a trigger
+     * to style the row once the final image has loaded */
+    const imgRowImgs = imgRow.querySelectorAll('.b-image-row__img');
+    const imgRowImagesLoaded = [];
+
+    const addLoadedImg = (loadedImg) => {
+      imgRowImagesLoaded.push(loadedImg);
+      /* if this is the final img, style the row */
+      if (imgRowImagesLoaded.length === imgRowImgs.length) {
+        styleImgRow();
+      }
+    };
+
+    Array.from(imgRowImgs, (img) => {
+      if (img.complete || img.tagName !== 'IMG') {
+        /* add imgs which have already loaded,
+         * and imgs already failed and replaced by s-imageload) */
+        addLoadedImg(img);
+      } else {
+        /* wait for imgs yet to load or fail */
+        img.addEventListener('load', () => {
+          addLoadedImg(img);
+        });
+        img.addEventListener('error', () => {
+          addLoadedImg(img);
+        });
+      }
       return true;
     });
-  }
-}, true);
+
+    window.addEventListener('resize', styleImgRow, false);
+    return true;
+  });
+});
