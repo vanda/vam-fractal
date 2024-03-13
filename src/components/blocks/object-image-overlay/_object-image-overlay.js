@@ -63,11 +63,6 @@ const oicInit = () => {
         ` : '';
       const objectUrl = seed.querySelector('a').getAttribute('href');
       const objectImg = seed.querySelector('img');
-      /* Must work with standard or LazyLoaded IMG tags
-       * including LazyLoaded imgs which are yet to load. */
-      const objectImgSrc = !objectImg.dataset.src || objectImg.classList.contains('loaded') ? objectImg.src : objectImg.dataset.src;
-      const objectImgSrcSet = !objectImg.dataset.srcset || objectImg.classList.contains('loaded') ? objectImg.srcset : objectImg.dataset.srcset;
-
       const objectImgHTML = objectImg
         ? `<img class="b-object-image-overlay__image"
            itemprop="contentUrl"
@@ -75,8 +70,9 @@ const oicInit = () => {
            sizes="(max-width: 991px) calc(100vw - 20px),
                   (min-width: 992px) calc(70vw - 145px),
                   (min-width: 1200px) 710px"
-           srcset="${objectImgSrcSet}"
-           src="${objectImgSrc}">
+           srcset="${objectImg.srcset}"
+           src="${objectImg.src}"
+           loading="lazy">
         `
         : '<div class="s-lazyload--error"></div>';
       const ctaScreen = objectUrl.length > 1

@@ -12,7 +12,8 @@
                   (min-width: 500px) calc(50vw - 40px),
                   (min-width: 992px) calc(33vw - 80px)"
            srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
-           src="{{ image[640] }}">
+           src="{{ image[640] }}"
+           loading="lazy">
     </div>
 
     <div class="b-venue-teaser__info">

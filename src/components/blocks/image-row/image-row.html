@@ -5,8 +5,9 @@
       <img class="b-image-row__img" alt=""
            sizes="(min-width: 768px) {{ 150 / items.length }}vw,
                   50vw"
-           data-srcset="{% for k, img in item.image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
-           src="{{ item.image[320] }}">
+           srcset="{% for k, img in item.image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+           src="{{ item.image[320] }}"
+           loading="lazy">
     </a>
   </div>
   {% endfor %}

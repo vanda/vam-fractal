@@ -74,11 +74,6 @@
     position: absolute;
     top: 0;
     width: 100%;
-
-    &.s-lazyload--error {
-      margin-top: -66.67%;
-      padding-top: 66.67% !important; /* stylelint-disable-line declaration-no-important */
-    }
   }
 
   &__sponsor {

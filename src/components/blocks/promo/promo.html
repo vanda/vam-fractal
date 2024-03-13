@@ -7,7 +7,8 @@
          sizes="(min-width: 1200px) 1200px, 100vw"
          class="b-promo__image"
          src="{{ image['960'] }}"
-         alt="{{ title }}">
+         alt="{{ title }}"
+         loading="lazy">
 
     <a class="b-promo__anchor" data-tracking="promobox-{{ title | slugify }}" href="{{ url }}">
 

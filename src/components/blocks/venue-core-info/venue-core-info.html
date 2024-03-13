@@ -7,12 +7,13 @@
       <img class="b-venue-card__image"
           itemprop="contentUrl"
           alt="" 
-          data-sizes="(min-width: 1200px) 480px,
+          sizes="(min-width: 1200px) 480px,
                       (min-width: 992px) 412px,
                       (min-width: 768px) 320px,
                       calc(100vw - 20px)"
-          data-srcset="{% for k, img in imageSquare %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-          src="{{ imageSquare[320] }}">
+          srcset="{% for k, img in imageSquare %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+          src="{{ imageSquare[320] }}"
+          loading="lazy">
     </picture>
   </div>
   <div class="b-venue-core-info__content">
