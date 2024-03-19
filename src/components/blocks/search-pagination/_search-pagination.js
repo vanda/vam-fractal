@@ -152,7 +152,8 @@ if (paginationElement) {
       || target.closest('.b-search-pagination__next-link'))
       && !target.getAttribute('disabled')
     ) {
-      const { pageIndex } = target.dataset;
+      const { pageIndex } = target.closest('button').dataset;
+
       paginationElement.dataset.pageIndex = pageIndex;
       pageHiddenInput.value = pageIndex;
       // directly changing the value of hidden input, does not trigger a change event
