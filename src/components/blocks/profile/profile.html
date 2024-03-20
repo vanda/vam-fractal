@@ -1,0 +1,22 @@
+<div class="b-profile{% for m in modifiers %} b-profile--{{ m }}{% endfor %}">
+  <img
+    class="b-profile__background-image"
+    alt=""
+    srcset="{% for k, img in backgroundImageSrc %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+    src="{{ imageSrc[" 640"] }}"
+    sizes=""
+    loading="lazy"
+  />
+
+  <div class="b-profile__content">
+    <div class="b-profile__content-wrapper">
+      <div class="b-profile__content-inner">
+        <img class="b-profile__image" alt="{{ name }}"
+          srcset="{% for k, img in profileImageSrc %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+          src="{{ imageSrc[" 640"] }}" sizes="" loading="lazy" />
+        <h3 class="b-profile__name">{{ name }}</h2>
+        <p class="b-profile__job-title">{{ jobTitle }}</p>
+      </div> 
+    </div>
+  </div>
+</div>

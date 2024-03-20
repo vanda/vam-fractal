@@ -1,0 +1,122 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.b-profile {
+  height: 516px;
+  position: relative;
+  overflow: hidden;
+
+  @include mixins.breakpoints-bpMinSmall {
+    height: 492px;
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    height: 476px;
+  }
+
+  @include mixins.breakpoints-bpMinLarge {
+    height: 496px;
+  }
+
+  &::before {
+    content: "";
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 100%) 0%,
+      rgba(10, 10, 11, 88%) 25%,
+      rgba(36, 37, 39, 48%) 65%,
+      rgba(62, 64, 67, 0%) 100%);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__background-image {
+    filter: blur(28px);
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.2);
+    width: 100%;
+  }
+
+  &__content {
+    bottom: 0;
+    color: base.sitecolors-siteColor("vam-white");
+    padding-bottom: 20px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    
+    @include mixins.breakpoints-bpMinSmall {
+      padding-bottom: 40px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      padding-bottom: 30px;
+    }
+    
+    @include mixins.breakpoints-bpMinLarge {
+      padding-bottom: 50px;
+    }
+    
+    &-wrapper {
+      @include base.grid-gridContainer;
+    }
+
+    &-inner {
+      @include base.grid-colSpan(6);
+      
+        @include mixins.breakpoints-bpMinSmall {
+          @include base.grid-colSpan(10);
+        }
+      
+        @include mixins.breakpoints-bpMinMedium {
+          @include base.grid-colSpan(8);
+        }
+    }
+  }
+
+  &__image {
+    border-radius: 100px;
+    height: 96px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 16px;
+    width: 96px;
+    
+    @include mixins.breakpoints-bpMinMedium {
+      border-radius: 120px;
+      height: 120px;
+      width: 120px;
+    }
+  }
+
+  &__name {
+    @include base.typography-typeSetting(6, "bold");
+    
+    margin-bottom: 8px;
+    
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "bold");
+    }
+    
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(8, "bold");
+    }
+  }
+
+  &__job-title {
+    @include base.typography-typeSetting(5);
+
+    margin: 0;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6);
+    }
+  }
+}
