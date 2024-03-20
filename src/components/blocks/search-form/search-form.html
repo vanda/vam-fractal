@@ -1,5 +1,5 @@
 {% if modifiers and 'etc-gateway' in modifiers %}
-  <p class="b-search-form__label" id="etc-gateway-search-input">Search more than 1.2 million objects</p>
+  <p class="b-search-form__label" id="etc-gateway-search-input">Search more than 1.25 million objects</p>
 {% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" name="search" action="{{ action }}" method="get" role="search">
   {# Collections Landing pg #}
@@ -16,7 +16,7 @@
       <label class="b-search-form__label b-search-form__advanced-search-label" for="sel_etc">Focused search</label>
       <select name="sel_etc" id="sel_etc" class="b-search-form__filter-select">
         {% for option in selectOptions %}
-          <option value="{{ option.value }}">{{ option.textContent }}</option>
+          <option data-focused-category-label="{{ option.textContent }}" value="{{ option.value }}">{{ option.textContent }}</option>
         {% endfor %}
       </select>
     </div>
