@@ -1,0 +1,17 @@
+<div class="b-hero{% for m in modifiers %} b-hero--{{ m }}{% endfor %}">
+  <img
+    class="b-hero__image"
+    alt="{{ heading }}"
+    srcset="{% for k, img in imageSrc %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+    src="{{ imageSrc[" 640"] }}"
+    sizes=""
+    loading="lazy"
+  />
+  <div class="b-hero__text">
+    <div class="b-hero__text-inner">
+      <p class="b-hero__subheading">{{ subheading }}</p>
+      <h2 class="b-hero__heading">{{ heading }}</h2>
+      <p class="b-hero__body">{{ body }}</p>
+    </div>
+  </div>
+</div>

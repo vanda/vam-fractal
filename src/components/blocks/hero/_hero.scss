@@ -1,0 +1,114 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.b-hero {
+  height: 480px;
+  position: relative;
+
+  @include mixins.breakpoints-bpMinSmall {
+    height: 560px;
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    height: 680px;
+  }
+
+  &::before {
+    content: "";
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 100%) 0%,
+      rgba(10, 10, 11, 88%) 25%,
+      rgba(36, 37, 39, 48%) 65%,
+      rgba(62, 64, 67, 0%) 100%);
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+  }
+
+  &__text {
+    bottom: 0;
+    color: base.sitecolors-siteColor("vam-white");
+    padding-bottom: 20px;
+    position: absolute;
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding-bottom: 40px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      padding-bottom: 50px;
+    }
+
+    &-inner {
+      @include base.grid-gridContainer;
+    }
+  }
+
+  &__subheading,
+  &__heading,
+  &__body {
+    @include base.grid-colSpan(6);
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.grid-colSpan(12);
+    }
+    
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.grid-colSpan(8);
+    }
+  }
+
+  &__subheading {
+    @include base.typography-typeSetting(4, "bold");
+
+    margin-bottom: 8px;
+  }
+  
+  &__heading {
+    @include base.typography-typeSetting(6, "bold");
+    
+    margin-bottom: 16px;
+    
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "bold");
+    }
+    
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(8, "bold");
+    }
+  }
+
+  &__body {
+    @include base.typography-typeSetting(4);
+
+    margin: 0;
+
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(5);
+    }
+  }
+
+  &--slim {
+    height: 360px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      height: 400px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      height: 480px;
+    }
+  }
+}
