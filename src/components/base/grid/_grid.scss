@@ -1,0 +1,66 @@
+@use "sass:map";
+@use "../../mixins";
+
+$breakpoints: (
+  "small": 834px,
+  "medium": 1024px,
+  "large": 1440px
+);
+$container-sizes: (
+  "small": 640px,
+  "medium": 868px,
+  "large": 1200px
+);
+$gutters: (
+  "small": 16px,
+  "medium": 20px,
+  "large": 30px
+);
+
+// Set number of columns for element to span.
+// Optionally set a column to start from.
+@mixin colSpan($cols, $start: null) {
+  @if $start {
+    grid-column: $start / span $cols;
+  } @else {
+    grid-column: span $cols / span $cols;
+  }
+}
+
+// Create the grid template with specified number of columns.
+@mixin gridCols($cols: 12) {
+  grid-template-columns: repeat($cols, minmax(0, 1fr));
+}
+
+@mixin grid($cols: 12, $gap: 20px) {
+  @include gridCols($cols);
+  
+  display: grid;
+  column-gap: $gap;
+}
+
+@mixin gridContainer {
+  @include grid(6, map.get($gutters, "small"));
+  
+  max-width: 100%;
+  padding: 0 map.get($gutters, "small");
+  
+  @include mixins.breakpoints-bpMinSmall {
+    @include grid(12, map.get($gutters, "medium"));
+  
+    margin: 0 auto;
+    max-width: calc(map.get($container-sizes, "small") + (map.get($gutters, "medium") * 2));
+    padding: 0 map.get($gutters, "medium");
+  }
+  
+  @include mixins.breakpoints-bpMinMedium {
+    max-width: calc(map.get($container-sizes, "medium") + (map.get($gutters, "medium") * 2));
+  }
+  
+  @include mixins.breakpoints-bpMinLarge {
+    @include grid(12, map.get($gutters, "large"));
+  
+    max-width: calc(map.get($container-sizes, "large") + (map.get($gutters, "large") * 2));
+    padding: 0 map.get($gutters, "large");
+  }
+}
