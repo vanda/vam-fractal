@@ -82,17 +82,28 @@
   }
 
   &__image {
+    background-color: base.sitecolors-siteColor("vam-grey-4");
     border-radius: 100px;
     height: 96px;
-    object-fit: cover;
-    object-position: center;
     margin-bottom: 16px;
     width: 96px;
+    overflow: hidden;
     
     @include mixins.breakpoints-bpMinMedium {
       border-radius: 120px;
       height: 120px;
       width: 120px;
+    }
+    
+    img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+    }
+
+    .s-imageload--error {
+      display: none;
     }
   }
 

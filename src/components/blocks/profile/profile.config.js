@@ -5,16 +5,32 @@ module.exports = {
     name: "Joanna Norman",
     jobTitle: "Head of VARI",
     backgroundImageSrc: {
-      320: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/49/4faaa806-b6da-4b1d-a02c-4396b570854e/fuschia-dress-hero2.jpg",
-      640: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/49/5b67a685-dc19-40c9-8275-2d25464c0c25/fuschia-dress-hero2.jpg",
-      960: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/49/496e08f0-0030-4d7b-967e-6c1643ddcabc/fuschia-dress-hero2.jpg",
-      1280: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/49/15aeaa6d-3f45-47e4-bff3-58ccc0f454c5/fuschia-dress-hero2.jpg",
-      1920: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/49/7cc228d7-e435-4aa1-b70a-128508f08456/fuschia-dress-hero2.jpg",
-      2560: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/50/2965930c-892c-4962-bb2b-ac3de86674e6/fuschia-dress-hero2.jpg",
+      320: "https://assets-cdn.vam.ac.uk/2017/03/15/14/20/53/e8ae69a7-6128-48a0-8843-3dd7e73fd1b0/2560.jpg",
+      640: "https://assets-cdn.vam.ac.uk/2017/03/15/14/20/53/e8ae69a7-6128-48a0-8843-3dd7e73fd1b0/2560.jpg",
+      960: "https://assets-cdn.vam.ac.uk/2017/03/15/14/20/53/e8ae69a7-6128-48a0-8843-3dd7e73fd1b0/2560.jpg",
+      1280: "https://assets-cdn.vam.ac.uk/2017/03/15/14/20/53/e8ae69a7-6128-48a0-8843-3dd7e73fd1b0/2560.jpg",
+      1920: "https://assets-cdn.vam.ac.uk/2017/03/15/14/20/53/e8ae69a7-6128-48a0-8843-3dd7e73fd1b0/2560.jpg",
+      2560: "https://assets-cdn.vam.ac.uk/2017/03/15/14/20/53/e8ae69a7-6128-48a0-8843-3dd7e73fd1b0/2560.jpg",
     },
     profileImageSrc: {
       320: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/49/4faaa806-b6da-4b1d-a02c-4396b570854e/fuschia-dress-hero2.jpg",
       640: "https://vanda-production-assets.s3.amazonaws.com/2017/02/01/12/17/49/5b67a685-dc19-40c9-8275-2d25464c0c25/fuschia-dress-hero2.jpg",
     },
   },
+  variants: [
+    {
+      name: "default",
+      label: "Default",
+    },
+    {
+      name: "no-profile-image",
+      label: "No profile image",
+      context: {
+        profileImageSrc: {
+          320: "",
+          640: "",
+        },
+      },
+    },
+  ],
 };
