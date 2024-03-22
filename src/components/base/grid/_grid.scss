@@ -1,15 +1,11 @@
 @use "sass:map";
 @use "../../mixins";
 
-$breakpoints: (
-  "small": 834px,
-  "medium": 1024px,
-  "large": 1440px
-);
 $container-sizes: (
   "small": 640px,
   "medium": 868px,
-  "large": 1200px
+  "large": 960px,
+  "wide": 1200px
 );
 $gutters: (
   "small": 16px,
@@ -62,5 +58,9 @@ $gutters: (
   
     max-width: calc(map.get($container-sizes, "large") + (map.get($gutters, "large") * 2));
     padding: 0 map.get($gutters, "large");
+  }
+
+  @include mixins.breakpoints-bpMinWide {
+    max-width: calc(map.get($container-sizes, "wide") + (map.get($gutters, "large") * 2));
   }
 }
