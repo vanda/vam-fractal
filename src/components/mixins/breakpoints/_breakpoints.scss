@@ -4,7 +4,8 @@ $breakpoints: (
   "x-small": 500px,
   "small": 768px,
   "medium": 992px,
-  "large": 1200px
+  "large": 1200px,
+  "wide": 1440px,
 );
 
 @function bp($size) {
@@ -35,6 +36,12 @@ $breakpoints: (
   }
 }
 
+@mixin bpMinWide {
+  @media (min-width: bp("wide")) {
+    @content;
+  }
+}
+
 @mixin bpMaxXSmall {
   @media (max-width: (bp("x-small") - 1)) {
     @content;
@@ -55,6 +62,12 @@ $breakpoints: (
 
 @mixin bpMaxLarge {
   @media (max-width: (bp("large") - 1)) {
+    @content;
+  }
+}
+
+@mixin bpMaxWide {
+  @media (max-width: (bp("wide") - 1)) {
     @content;
   }
 }
