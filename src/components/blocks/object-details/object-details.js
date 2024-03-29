@@ -46,20 +46,36 @@ function clickFunction(e) {
 }
 
 function initRevealer() {
+  const maxHiddenContentHeight = 200;
+  const hiddenContentHeightBuffer = 40;
+
   revealEl.className = classes[0];
   revealEl.innerHTML = html[0];
   revealEl.setAttribute('data-tracking-collections', 'read more');
 
   Array.from(document.querySelectorAll('.b-object-details__cell-free')).forEach((e) => {
-    if (e.offsetHeight > 200) {
+    if (e.offsetHeight > maxHiddenContentHeight) {
       const content = e.querySelector('.b-object-details__cell-free-content');
-      content.classList.add('b-object-details__cell-free-content--hidden');
 
-      const clone = revealEl.cloneNode(true);
-      const btn = clone.querySelector('.b-object-details__cell-concealer-button');
-      btn.addEventListener('click', clickFunction, false);
+      // test for significant hidden text
+      e.style.height = `${maxHiddenContentHeight}px`;
+      e.style.overflow = 'hidden';
 
-      e.appendChild(clone);
+      if (e.scrollHeight >= maxHiddenContentHeight + hiddenContentHeightBuffer) {
+        // significant overflow text
+        const clone = revealEl.cloneNode(true);
+        const btn = clone.querySelector('.b-object-details__cell-concealer-button');
+
+        btn.addEventListener('click', clickFunction, false);
+
+        content.classList.add('b-object-details__cell-free-content--hidden');
+
+        e.removeAttribute('style');
+        e.appendChild(clone);
+      } else {
+        // insignificant overflow text
+        e.removeAttribute('style');
+      }
     }
   });
 }
