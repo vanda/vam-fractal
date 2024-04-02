@@ -64,4 +64,11 @@
       @include base.typography-typeSetting(2, "bold");
     }
   }
+
+  &--current-project {
+    @include base.typography-typeSetting(1, "regular");
+    
+    background: base.sitecolors-siteColor("vam-white");
+    margin-top: 18px;
+  }
 }

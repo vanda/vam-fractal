@@ -1,0 +1,35 @@
+<div class="b-card{% for m in modifiers %} b-card--{{ m }}{% endfor %}">
+  <a class="b-card__link" itemprop="url" content="{{ cardUrl }}" href="{{ cardUrl }}">
+    <div class="b-card__media">
+      {% if currentProject %}
+        {%- render "@label-tag--current-project" -%}
+      {% endif %}
+      <img alt="{{ cardTitle }}"
+        class="b-card__media-image"
+        itemprop="image"
+        sizes="(max-width: 499px) calc(100vw - 20px),
+              (min-width: 500px) calc(50vw - 40px),
+              (min-width: 992px) calc(33vw - 80px)"
+        srcset="{% for k, img in cardImage %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+        src="{{ eventImage[640] }}"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="b-card__content">
+      <h2 class="b-card__title" itemprop="name" content="{{ eventTitle }}">
+        {{ cardTitle }}
+      </h2>
+      
+      <div itemprop="description" class="b-card__description">
+        {{ cardDescription }}
+      </div>
+
+      <div class="b-card__buttons">
+        <div class="u-btn u-btn--micro {% if modifiers and 'dark' in modifiers %}u-btn--outlined-inverse{% else %}u-btn--outlined{% endif %}">
+          More info
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

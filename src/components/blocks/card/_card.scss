@@ -1,0 +1,131 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.b-card {
+  color: base.sitecolors-siteColor("vam-black");
+  margin-bottom: 32px;
+  overflow: hidden;
+  padding: 0 10px;
+  position: relative;
+  width: 100%;
+
+  @include mixins.breakpoints-bpMinMedium {
+    width: 50%;
+  }
+
+  @include mixins.breakpoints-bpMinLarge {
+    width: 33.333%;
+  }
+
+  &__link {
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+
+    &:hover h2,
+    &:focus h2 {
+      text-decoration: underline;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      display: block;
+    }
+  }
+
+  &__media {
+    overflow: hidden;
+    padding-top: 66.67%;
+    position: relative;
+    margin-bottom: 16px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-bottom: 0;
+      padding-top: calc(66.67% / 2);
+      width: 50%;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      margin-bottom: 16px;
+      padding-top: 66.67%;
+      width: 100%;
+    }
+
+    &::after {
+      background-image:
+        linear-gradient(
+          rgba(base.sitecolors-siteColor("vam-black"), 0.35),
+          rgba(base.sitecolors-siteColor("vam-black"), 0)
+        );
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transition: opacity 0.35s ease;
+      width: 100%;
+      z-index: 0;
+
+      .b-event-teaser__link:hover &,
+      .b-event-teaser__link:focus & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__media-image {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-7");
+    min-height: 140px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-left: 24px;
+      min-height: auto;
+      width: calc(50% - 24px);
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      margin-left: 0;
+      min-height: 170px;
+      width: 100%;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      min-height: 150px;
+    }
+  }
+
+  &__title {
+    @include base.typography-typeSetting(5, "bold");
+
+    margin-bottom: 8px;
+  }
+
+  &__buttons {
+    margin-top: auto;
+    margin-left: auto;
+    padding: 30px 0 16px;
+
+    .u-btn {
+      margin: 0;
+    }
+  }
+}

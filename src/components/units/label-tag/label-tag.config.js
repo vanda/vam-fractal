@@ -88,6 +88,13 @@ module.exports = {
         text: 'Featured',
         modifier: ['featured']
       }
+    },
+    {
+      name: 'Current project',
+      context: {
+        text: 'Current project',
+        modifier: ['current-project']
+      }
     }
   ]
 };
