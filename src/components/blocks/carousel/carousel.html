@@ -1,0 +1,68 @@
+
+<div class="b-carousel">
+  <p class="b-carousel__subheading">
+    {{ subheading }}
+  </p>
+  <h2 class="b-carousel__heading">
+    {{ heading }}
+  </h2>
+
+  <div class="b-carousel__swiper swiper">
+    <div class="b-carousel__swiper-wrapper swiper-wrapper">
+      {% for item in carouselItems %}
+        <div class="b-carousel__item swiper-slide">
+          <a class="b-carousel__item-link" itemprop="url" content="{{ url }}" href="{{ url }}">
+            <div class="b-carousel__item-media">
+              <img alt="{{ title }}"
+                class="b-carousel__item-media-image"
+                itemprop="image"
+                sizes="(max-width: 499px) calc(100vw - 20px),
+                      (min-width: 500px) calc(50vw - 40px),
+                      (min-width: 992px) calc(33vw - 80px)"
+                srcset="{% for k, img in item.image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+                src="{{ item.image[640] }}"
+                loading="lazy"
+              />
+            </div>
+            <div class="b-carousel__item-content">
+              <h2 class="b-carousel__item-title" itemprop="name" content="{{ item.title }}">
+                {{ item.title }}
+              </h2>
+              
+              <div itemprop="description" class="b-carousel__item-description">
+                {{ item.description }}
+              </div>
+        
+              <div class="b-carousel__item-buttons">
+                <div class="u-btn u-btn--micro {% if modifiers and 'dark' in modifiers %}u-btn--outlined-inverse{% else %}u-btn--outlined{% endif %}">
+                  More info
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="b-carousel__navigation">
+      <button type="button" class="b-carousel__prev swiper-button-prev" title="Previous carousel item" aria-label="Previous">
+        <svg aria-hidden="true">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-left"></use>
+        </svg>
+      </button>
+      <button type="button" class="b-carousel__next swiper-button-next" title="Next carousel item" aria-label="Next">
+        <svg aria-hidden="true">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-right"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  {% if ctaLabel %}
+    <div class="b-carousel__footer">
+      <a href="#" class="u-btn u-btn--outlined b-carousel__cta">
+        {{ ctaLabel }}
+      </a>
+    </div>
+  {% endif %}
+</div>
