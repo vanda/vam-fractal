@@ -1,0 +1,91 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.b-quicklinks {
+  background: black;
+  position: sticky;
+  top: 0;
+
+  &__nav {
+    background-color: base.sitecolors-siteColor("vam-black");
+  }
+
+  &__list {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    padding: 0 12px;
+  }
+
+  &__more-list-wrapper {
+    max-height: calc(100vh - 100px);
+    max-width: calc(100vw - 40px);
+    opacity: 0;
+    overflow: auto;
+    padding: 12px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    transition: opacity .2s ease-out;
+    width: 200px;
+  }
+
+  &__more {
+    order: 1;
+    position: relative;
+    margin-left: auto;
+
+    &--hidden {
+      display: none;
+    }
+
+    &--open {
+      .b-quicklinks__more-list-wrapper {
+        display: block;
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+
+  &__more-list {
+    background-color: base.sitecolors-siteColor("vam-black");
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 0;
+    }
+
+    a {
+      display: block;
+      padding: 8px;
+      transition:
+        border-color .15s ease-out,
+        box-shadow .15s ease-out;
+
+      &:hover {
+        border-color: base.sitecolors-siteColor("vam-white");
+      }
+
+      &:focus,
+      &:active {
+        @include mixins.focus-defaultFocus;
+
+        border-color: transparent;
+        position: relative;
+      }
+    }
+  }
+}

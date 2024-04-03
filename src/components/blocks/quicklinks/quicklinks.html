@@ -1,0 +1,27 @@
+
+{% if preview %}
+<div class="preview-container">
+  {%- render "@promo" -%}
+{% endif %}
+<div class="b-quicklinks">
+  <nav class="b-quicklinks__nav">
+    <ul class="b-quicklinks__list">
+      {% for item in menuItems %}
+        <li class="b-quicklinks__item b-quicklinks__link-item">
+          <a href="#{{ item.url }}" class="u-btn u-btn--quicklink u-btn--outlined-inverse b-quicklinks__link">
+            {{ item.label }}
+          </a>
+        </li>
+      {% endfor %}
+      <li class="b-quicklinks__item b-quicklinks__more">
+        {%- render "@button--quicklink-more" -%}
+        <div class="b-quicklinks__more-list-wrapper">
+          <ul class="b-quicklinks__more-list"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>
+{% if preview %}
+</div>
+{% endif %}
