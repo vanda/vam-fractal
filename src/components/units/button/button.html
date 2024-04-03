@@ -1,11 +1,23 @@
+{% if button %}
+<button type="button" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}{% for t in themed %} s-themed--{{ t }}{% endfor %}">
+  {{ text }}
+</button>
+{% else %}
 <a href="#" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}{% for t in themed %} s-themed--{{ t }}{% endfor %}">
   {{ text }}
 </a>
+{% endif %}
 
 {% for v in variants %}
 <div>
+  {% if button %}
+  <button type="button" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
+    {{ text }}
+  </button>
+  {% else %}
   <a href="#" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
     {{ text }}
   </a>
+  {% endif %}
 </div>
 {% endfor %}

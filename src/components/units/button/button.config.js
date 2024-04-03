@@ -80,6 +80,31 @@ module.exports = {
         text: 'Stop button',
         modifiers: ['stop', 'outlined-inverse', 'micro']
       }
+    },
+    {
+      name: 'navigational',
+      label: 'Navigational',
+      context: {
+        text: 'Navigational button',
+        modifiers: ['navigational', 'outlined-inverse']
+      }
+    },
+    {
+      name: 'quicklink',
+      label: 'Quicklink',
+      context: {
+        text: 'Quicklink button',
+        modifiers: ['quicklink', 'outlined-inverse']
+      }
+    },
+    {
+      name: 'quicklink-more',
+      label: 'Quicklink more',
+      context: {
+        text: 'More',
+        button: true,
+        modifiers: ['quicklink-more', 'outlined-inverse', 'arrowed']
+      }
     }
   ]
 };
