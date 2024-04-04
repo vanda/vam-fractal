@@ -20,21 +20,14 @@ const html = [
 ];
 
 function clickFunction(e) {
-  const detailsEl = e.currentTarget.closest('.b-object-details__cell-free');
+  const detailsEl = e.target.closest('.b-object-details__cell-free');
   const textEl = detailsEl.querySelector('.b-object-details__cell-free-content');
   const controlEl = detailsEl.querySelector('.b-object-details__cell-control');
   const hiddenClass = 'b-object-details__cell-free-content--hidden';
   const textElConcealed = textEl.classList.contains(hiddenClass);
 
-  // At this point the click event is lost as the markup is replaced.
-  // Orig. code got round this by placing the event on the <div> but
-  // we want native keyboard accessibility on the <button>
   controlEl.innerHTML = html[textElConcealed ? 1 : 0];
   controlEl.className = classes[textElConcealed ? 1 : 0];
-
-  // Get a reference to the replaced <button> and add the recursive event call
-  const btnEl = controlEl.querySelector('.b-object-details__cell-concealer-button');
-  btnEl.addEventListener('click', clickFunction, false);
 
   if (textElConcealed) {
     textEl.classList.remove(hiddenClass);
@@ -64,9 +57,6 @@ function initRevealer() {
       if (e.scrollHeight >= maxHiddenContentHeight + hiddenContentHeightBuffer) {
         // significant overflow text
         const clone = revealEl.cloneNode(true);
-        const btn = clone.querySelector('.b-object-details__cell-concealer-button');
-
-        btn.addEventListener('click', clickFunction, false);
 
         content.classList.add('b-object-details__cell-free-content--hidden');
 
@@ -79,5 +69,11 @@ function initRevealer() {
     }
   });
 }
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.b-object-details__cell-concealer-button')) {
+    clickFunction(e);
+  }
+});
 
 initRevealer();
