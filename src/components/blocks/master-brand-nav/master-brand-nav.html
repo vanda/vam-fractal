@@ -1,0 +1,59 @@
+<header class="b-master-brand-nav">
+  <div class="b-master-brand-nav__inner-wrapper">
+    <div class="b-master-brand-nav__logo-vari">
+      <a href="/" class="b-master-brand-nav__logo-link">
+        Research Institute
+      </a>
+    </div>
+    
+    <div class="b-master-brand-nav__menu">
+      <button type="button" class="b-master-brand-nav__menu-button" aria-label="Menu">
+        <svg aria-hidden="true">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#menu-hamburger"></use>
+        </svg>
+      </button> 
+
+      <nav class="b-master-brand-nav__nav">
+        <div class="b-master-brand-nav__nav-header">
+          <a href="/">
+            Research Institute
+          </a>
+
+          <button type="button" class="b-master-brand-nav__menu-close" aria-label="Close">
+            <svg aria-hidden="true">
+              <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+
+        <ul class="b-master-brand-nav__list">
+          {% for item in menuItems %}
+            <li class="b-master-brand-nav__item">
+              <a href="{{ item.url }}" class="u-btn u-btn--navigation u-btn--outlined-inverse b-master-brand-nav__link">
+                <svg aria-hidden="true">
+                  <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#arrow-right"></use>
+                </svg>
+
+                <span>{{ item.label }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="b-master-brand-nav__menu-logo">
+          <svg aria-hidden="true">
+            <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#valogo"></use>
+          </svg>
+        </div>
+      </nav>
+    </div>
+
+    <div class="b-master-brand-nav__logo-va">
+      <a href="https://www.vam.ac.uk">
+        <svg aria-hidden="true">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#valogo"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>

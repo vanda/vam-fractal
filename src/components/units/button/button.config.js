@@ -82,11 +82,11 @@ module.exports = {
       }
     },
     {
-      name: 'navigational',
-      label: 'Navigational',
+      name: 'navigation',
+      label: 'Navigation',
       context: {
-        text: 'Navigational button',
-        modifiers: ['navigational', 'outlined-inverse']
+        text: 'Navigation button',
+        modifiers: ['navigation', 'outlined-inverse']
       }
     },
     {

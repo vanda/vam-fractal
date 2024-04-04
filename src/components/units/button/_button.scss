@@ -122,10 +122,10 @@
     }
   }
 
-  &--navigational {
+  &--navigation {
     @include base.typography-typeSetting(3);
 
-    background-color: base.sitecolors-siteColor("vam-black");
+    background-color: transparent;
     border: none;
     border-bottom: 3px solid transparent;
     border-radius: 0;
@@ -137,6 +137,7 @@
     &:focus {
       box-shadow: none;  
       border-color: rgba(255, 255, 255, 40%);
+      background-color: transparent;
       outline: none;
     }
 

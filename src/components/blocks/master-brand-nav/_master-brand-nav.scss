@@ -1,0 +1,253 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.b-master-brand-nav {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  &::before {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 70%) 0%, rgba(0, 0, 0, 0%) 100%);
+    content: "";
+    height: 190px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  @include mixins.breakpoints-bpMinXSmall {
+    &::before {
+      height: 200px;
+    }
+  }
+
+  @include mixins.breakpoints-bpMinLarge {
+    &::before {
+      height: 230px;
+    }
+  }
+
+  &__inner-wrapper {
+    align-items: center;
+    color: base.sitecolors-siteColor("vam-white");
+    display: flex;
+    padding: 12px 10px;
+    
+    @include mixins.breakpoints-bpMinXSmall {
+      margin: 0 auto;
+      max-width: 640px;
+      padding: 20px 10px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      max-width: 870px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      max-width: 1080px;
+    }
+  }
+
+  &__logo-vari {
+    a {
+      @include base.typography-typeSetting(4, "bold");
+    }
+    
+    @include mixins.breakpoints-bpMinXSmall {
+      a {
+        @include base.typography-typeSetting(5, "bold");
+      }
+    }
+  }
+
+  &__menu {
+    margin-right: 8px;
+    order: -1;
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex-grow: 1;
+      margin-right: 0;
+      order: initial;
+    }
+  }
+
+  &__menu-button {
+    align-items: center;
+    border: 1.5px solid base.sitecolors-siteColor("vam-white");
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+
+    svg {
+      height: 12px;
+      width: 16px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: none;
+    }
+  }
+
+  &__nav {
+    background: base.sitecolors-siteColor("vam-grey-1");;
+    left: 0;
+    opacity: 0;
+    padding: 16px;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: opacity 0.3s ease-out;
+    visibility: hidden;
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      padding: 24px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      align-items: center;
+      background: none;
+      display: flex;
+      justify-content: center;
+      opacity: 1;
+      padding: 0;
+      pointer-events: all;
+      position: relative;
+      visibility: visible;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  &__nav-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      @include base.typography-typeSetting(4, "bold");
+    }
+
+    @include mixins.breakpoints-bpMinXSmall {
+      a {
+        @include base.typography-typeSetting(5, "bold");
+      }
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: none;
+    }
+  }
+
+  &__menu-close {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 28px 0 40px;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      padding-top: 88px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+  }
+
+  &__link {
+    svg {
+      height: 15px;
+      width: 16px;
+    }
+
+    span {
+      @include base.typography-typeSetting(5, "bold");
+    }
+
+    @include mixins.breakpoints-bpMaxSmall {
+      align-items: center;
+      display: flex;
+      padding: 12px 0;
+
+      span {
+        padding-left: 16px;
+      }
+
+      &:hover,
+      &:focus {
+        border-color: transparent;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 0 20px;
+      
+      span {
+        @include base.typography-typeSetting(4, "bold");
+      }
+
+      svg {
+        display: none;
+      }
+    }
+  }
+  
+  &__menu-logo {
+    display: flex;
+    justify-content: flex-end;
+
+    svg {
+      height: 40px;
+      width: 70px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: none;
+    }
+  }
+
+  &__logo-va {
+    margin-left: auto;
+
+    svg {
+      height: 40px;
+      width: 70px;
+    }
+  }
+
+  &--menu-open {
+    .b-master-brand-nav__nav {
+      opacity: 1;
+      pointer-events: all;
+      visibility: visible;
+    }
+  }
+}
