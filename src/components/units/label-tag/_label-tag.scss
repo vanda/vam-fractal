@@ -65,7 +65,7 @@
     }
   }
 
-  &--current-project {
+  &--project {
     @include base.typography-typeSetting(1, "regular");
     
     background: base.sitecolors-siteColor("vam-white");

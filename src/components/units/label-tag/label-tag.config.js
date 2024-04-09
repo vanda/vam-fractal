@@ -90,10 +90,10 @@ module.exports = {
       }
     },
     {
-      name: 'Current project',
+      name: 'Project',
       context: {
         text: 'Current project',
-        modifier: ['current-project']
+        modifier: ['project']
       }
     }
   ]
