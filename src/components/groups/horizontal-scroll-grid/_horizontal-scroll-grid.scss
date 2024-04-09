@@ -7,10 +7,9 @@
   }
 
   &__content {
-    align-content: stretch;
     display: flex;
-    justify-content: space-between;
     margin-bottom: 40px;
+    place-content: stretch space-between;
 
     &--noflex {
       display: inline-flex;
