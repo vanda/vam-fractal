@@ -27,7 +27,6 @@ require('../../components/blocks/video-trailer/_video-trailer');
 require('../../components/blocks/events-featured/_events-featured');
 require('../../components/blocks/quicklinks/_quicklinks');
 require('../../components/blocks/carousel/_carousel');
-require('../../components/blocks/master-brand-nav/_master-brand-nav');
 require('../../components/groups/facet-box-modal/_facet-box-modal');
 require('../../components/groups/image-overlay/_image-overlay');
 require('../../components/groups/story-box-container/_story-box-container');
