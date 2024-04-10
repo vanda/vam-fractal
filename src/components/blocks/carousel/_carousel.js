@@ -5,7 +5,6 @@ if (container) {
   const slideCount = slides.length;
   let activeSlide = slideCount - 1;
 
-  // Loop over each slide and get the 
   const initCarousel = () => {
     let greatestHeight = 0;
 
@@ -30,7 +29,7 @@ if (container) {
     slides[slides.length - 1].classList.add('b-carousel__item--active');
   };
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     initCarousel();
   });
 

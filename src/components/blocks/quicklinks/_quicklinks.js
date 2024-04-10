@@ -68,7 +68,7 @@ if (container) {
   };
 
   // Wait for the page to load before getitng width of menu items
-  window.addEventListener("load", () => {
+  window.addEventListener('load', () => {
     menuItemsWidths = menuItemsArray.map((item) => item.offsetWidth);
     moreButtonWidth = moreButton.offsetWidth;
     moreButtonWrapper.classList.add('b-quicklinks__more--hidden');
@@ -76,7 +76,7 @@ if (container) {
     positionMenuItems();
   });
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     positionMenuItems();
   });
 }
