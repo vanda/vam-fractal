@@ -14,8 +14,7 @@
     "browser-cookies": "^1.2.0",
     "clamp-js": "^0.7.0",
     "openseadragon": "^3.x",
-    "surge": "^0.23.1",
-    "swiper": "^11.1.0"
+    "surge": "^0.23.1"
   },
   "scripts": {
     "dev": "NODE_ENV=development concurrently 'node ./fractal-server' 'npm run build-dev:webpack'",

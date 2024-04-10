@@ -7,10 +7,10 @@
     {{ heading }}
   </h2>
 
-  <div class="b-carousel__swiper swiper">
-    <div class="b-carousel__swiper-wrapper swiper-wrapper">
+  <div class="b-carousel__container">
+    <div class="b-carousel__track">
       {% for item in carouselItems %}
-        <div class="b-carousel__item swiper-slide">
+        <div class="b-carousel__item">
           <a class="b-carousel__item-link" itemprop="url" content="{{ url }}" href="{{ url }}">
             <div class="b-carousel__item-media">
               <img alt="{{ title }}"
@@ -45,14 +45,14 @@
     </div>
 
     <div class="b-carousel__navigation">
-      <button type="button" class="b-carousel__prev swiper-button-prev" title="Previous carousel item" aria-label="Previous">
-        <svg aria-hidden="true">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-left"></use>
+      <button type="button" class="u-btn u-btn--navigation u-btn--navigation--prev u-btn--outlined" aria-label="Prev">
+        <svg aria-hidden="true" class="u-btn__icon">
+          <use xlink:href="../../build/svg/vam-sprite.svg#point-left"></use>
         </svg>
       </button>
-      <button type="button" class="b-carousel__next swiper-button-next" title="Next carousel item" aria-label="Next">
-        <svg aria-hidden="true">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-right"></use>
+      <button type="button" class="u-btn u-btn--navigation u-btn--navigation--next u-btn--outlined" aria-label="Next">
+        <svg aria-hidden="true" class="u-btn__icon">
+          <use xlink:href="../../build/svg/vam-sprite.svg#point-left"></use>
         </svg>
       </button>
     </div>
