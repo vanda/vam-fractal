@@ -123,26 +123,30 @@
   }
 
   &--navigation {
-    @include base.typography-typeSetting(3);
-
-    background-color: transparent;
-    border: none;
-    border-bottom: 3px solid transparent;
-    border-radius: 0;
+    align-items: center;
+    background-color: base.sitecolors-siteColor("vam-grey-6");
+    border: 1px solid base.sitecolors-siteColor("vam-grey-4");
+    border-radius: 50px;
+    display: flex;
+    font-size: 0;
+    height: 28px;
+    line-height: 0;
+    justify-content: center;
     margin: 0;
-    padding: 16px 2px 13px;
-    transition: border-color .15s ease-in;
+    padding: 6px;
+    position: static;
+    width: 28px;
 
-    &:hover,
-    &:focus {
-      box-shadow: none;  
-      border-color: rgba(255, 255, 255, 40%);
-      background-color: transparent;
-      outline: none;
+    svg {
+      color: base.sitecolors-siteColor("vam-black");
+      height: 12px;
+      width: 8px;
     }
 
-    &:active {
-      border-color: base.sitecolors-siteColor("vam-white");
+    &--next {
+      svg {
+        transform: rotate(180deg);
+      }
     }
   }
 

@@ -1,10 +1,18 @@
 {% if button %}
 <button type="button" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}{% for t in themed %} s-themed--{{ t }}{% endfor %}">
-  {{ text }}
-</button>
 {% else %}
 <a href="#" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}{% for t in themed %} s-themed--{{ t }}{% endfor %}">
-  {{ text }}
+{% endif %}
+  <span class="u-btn__text">{{ text }}</span>
+
+  {% if icon %}
+    <svg aria-hidden="true" class="u-btn__icon">
+      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ icon }}"></use>
+    </svg>
+  {% endif %}
+{% if button %}
+</button>
+{% else %}
 </a>
 {% endif %}
 
@@ -12,12 +20,21 @@
 <div>
   {% if button %}
   <button type="button" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
-    {{ text }}
-  </button>
   {% else %}
   <a href="#" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
-    {{ text }}
+  {% endif %}
+    <span class="u-btn__text">{{ text }}</span>
+
+    {% if icon %}
+      <svg aria-hidden="true" class="u-btn__icon">
+        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ icon }}"></use>
+      </svg>
+    {% endif %}
+  {% if button %}
+  </button>
+  {% else %}
   </a>
   {% endif %}
 </div>
 {% endfor %}
+

@@ -85,9 +85,13 @@ module.exports = {
       name: 'navigation',
       label: 'Navigation',
       context: {
-        text: 'Navigation button',
-        modifiers: ['navigation', 'outlined-inverse']
-      }
+        button: true,
+        icon: 'point-left',
+        modifiers: ['navigation', 'navigation--prev', 'outlined'],
+        variants: [
+          ['navigation', 'navigation--next', 'outlined'],
+        ]
+      },
     },
     {
       name: 'quicklink',
