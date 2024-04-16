@@ -87,9 +87,9 @@ module.exports = {
       context: {
         button: true,
         icon: 'point-left',
-        modifiers: ['navigation', 'navigation--prev', 'outlined'],
+        modifiers: ['navigation', 'navigation--prev'],
         variants: [
-          ['navigation', 'navigation--next', 'outlined'],
+          ['navigation', 'navigation--next'],
         ]
       },
     },

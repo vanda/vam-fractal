@@ -1,8 +1,8 @@
 <div class="b-card{% for m in modifiers %} b-card--{{ m }}{% endfor %}">
   <a class="b-card__link" itemprop="url" content="{{ cardUrl }}" href="{{ cardUrl }}">
     <div class="b-card__media">
-      {% if currentProject %}
-        {%- render "@label-tag--current-project" -%}
+      {% if labelled %}
+        {%- render "@label-tag--project" -%}
       {% endif %}
       <img alt="{{ cardTitle }}"
         class="b-card__media-image"

@@ -13,9 +13,9 @@ module.exports = {
   },
   variants: [
     {
-      name: 'Current project',
+      name: 'Labelled',
       context: {
-        currentProject: true
+        labelled: true
       }
     },
   ]
