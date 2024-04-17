@@ -16,7 +16,7 @@
       <label class="b-search-form__label b-search-form__advanced-search-label" for="sel_etc">Focused search</label>
       <select name="sel_etc" id="sel_etc" class="b-search-form__filter-select">
         {% for option in selectOptions %}
-          <option data-focused-category-label="{{ option.textContent }}" value="{{ option.value }}">{{ option.textContent }}</option>
+          <option data-focused-category-label="{{ option.textContent.toLowerCase() }}" value="{{ option.value }}">{{ option.textContent }}</option>
         {% endfor %}
       </select>
     </div>
