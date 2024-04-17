@@ -28,6 +28,10 @@
       text-decoration: underline;
     }
 
+    &:focus {
+      @include mixins.focus-defaultFocus;
+    }
+
     @include mixins.breakpoints-bpMinSmall {
       display: flex;
       flex-direction: row;

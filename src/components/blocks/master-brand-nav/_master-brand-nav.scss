@@ -40,5 +40,9 @@
     &:focus {
       border-bottom-color: base.sitecolors-siteColor("vam-white");
     }
+
+    &:focus {
+      @include mixins.focus-defaultFocus;
+    }
   }
 }
