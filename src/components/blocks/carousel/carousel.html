@@ -11,7 +11,7 @@
     <div class="b-carousel__track">
       {% for item in carouselItems %}
         <div class="b-carousel__item">
-          <a class="b-carousel__item-link" itemprop="url" content="{{ url }}" href="{{ url }}">
+          <a class="b-carousel__item-link" itemprop="url" content="{{ item.url }}" href="{{ item.url }}">
             <div class="b-carousel__item-media">
               <img alt="{{ title }}"
                 class="b-carousel__item-media-image"
@@ -34,7 +34,7 @@
               </div>
         
               <div class="b-carousel__item-buttons">
-                <div class="u-btn u-btn--micro {% if modifiers and 'dark' in modifiers %}u-btn--outlined-inverse{% else %}u-btn--outlined{% endif %}">
+                <div class="u-btn u-btn--micro u-btn--outlined">
                   More info
                 </div>
               </div>
@@ -44,14 +44,14 @@
       {% endfor %}
     </div>
 
-    <div class="b-carousel__navigation">
-      <button type="button" class="u-btn u-btn--navigation u-btn--navigation--prev b-carousel__navigation-prev" aria-label="Prev">
-        <svg aria-hidden="true" class="u-btn__icon">
+    <div class="b-carousel__navigation" aria-hidden="true">
+      <button class="u-btn u-btn--navigation u-btn--navigation--prev b-carousel__navigation-prev" title="Previous item">
+        <svg class="u-btn__icon">
           <use xlink:href="../../build/svg/vam-sprite.svg#point-left"></use>
         </svg>
       </button>
-      <button type="button" class="u-btn u-btn--navigation u-btn--navigation--next b-carousel__navigation-next" aria-label="Next">
-        <svg aria-hidden="true" class="u-btn__icon">
+      <button class="u-btn u-btn--navigation u-btn--navigation--next b-carousel__navigation-next" title="Next item">
+        <svg class="u-btn__icon">
           <use xlink:href="../../build/svg/vam-sprite.svg#point-left"></use>
         </svg>
       </button>
