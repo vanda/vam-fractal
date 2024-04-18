@@ -3,7 +3,6 @@ import oicInit from '../../components/blocks/object-image-overlay/_object-image-
 import contentWarningsInit from '../../components/blocks/object-card/_object-card';
 
 require('../../components/services/imageload/_imageload');
-require('../../components/units/button/_button');
 require('../../components/blocks/accordion/_accordion');
 require('../../components/blocks/background-video/_background-video');
 require('../../components/groups/block-grid/_grid-reveal-more');
