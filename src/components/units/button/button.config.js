@@ -93,22 +93,5 @@ module.exports = {
         ]
       },
     },
-    {
-      name: 'quicklink',
-      label: 'Quicklink',
-      context: {
-        text: 'Quicklink button',
-        modifiers: ['quicklink', 'outlined-inverse']
-      }
-    },
-    {
-      name: 'quicklink-more',
-      label: 'Quicklink more',
-      context: {
-        text: 'More',
-        button: true,
-        modifiers: ['quicklink-more', 'outlined-inverse', 'arrowed']
-      }
-    }
   ]
 };

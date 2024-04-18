@@ -1,5 +1,5 @@
 {% if button %}
-<button type="button" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}{% for t in themed %} s-themed--{{ t }}{% endfor %}">
+<button class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}{% for t in themed %} s-themed--{{ t }}{% endfor %}">
 {% else %}
 <a href="#" class="u-btn{% for m in modifiers %} u-btn--{{ m }}{% endfor %}{% for t in themed %} s-themed--{{ t }}{% endfor %}">
 {% endif %}
@@ -19,7 +19,7 @@
 {% for v in variants %}
 <div>
   {% if button %}
-  <button type="button" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
+  <button class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
   {% else %}
   <a href="#" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
   {% endif %}
@@ -37,4 +37,3 @@
   {% endif %}
 </div>
 {% endfor %}
-
