@@ -32,13 +32,5 @@ module.exports = {
         url: 'opportunities'
       },
     ]
-  },
-  variants: [
-    {
-      name: 'Preview',
-      context: {
-        preview: true
-      }
-    },
-  ]
+  }
 };

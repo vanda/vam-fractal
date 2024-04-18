@@ -25,6 +25,31 @@
     padding: 0 12px;
   }
 
+  &__btn {
+    @include base.typography-typeSetting(3);
+
+    background-color: base.sitecolors-siteColor("vam-black");
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 16px 0 13px;
+    transition: border-color .15s ease-in;
+    text-align: left;
+
+    &:hover,
+    &:active {
+      border-color: base.sitecolors-siteColor("vam-white");
+      background-color: base.sitecolors-siteColor("vam-black"); 
+      box-shadow: none;     
+      outline: none;
+    }
+
+    &:focus {
+      @include mixins.focus-defaultFocus;
+    }
+  }
+
   &__more-list-wrapper {
     max-height: calc(100vh - 100px);
     max-width: calc(100vw - 40px);
@@ -43,6 +68,65 @@
     order: 1;
     position: relative;
     margin-left: auto;
+
+    &-btn {
+      @include base.typography-typeSetting(3);
+
+      background-color: base.sitecolors-siteColor("vam-black");
+      border: none;
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
+      margin: 0;
+      padding: 16px 11px 13px;
+      position: relative;
+      transition: border-color .15s ease-in;
+
+      &::before {
+        content: '';
+        border: 3px solid transparent;
+        border-bottom: none;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      &::after {
+        margin: 7px 0 0 7px;
+        transform: rotate(90deg);
+      }
+
+      &:hover {
+        border-color: transparent;
+        border-bottom-color: base.sitecolors-siteColor("vam-white");
+        background-color: base.sitecolors-siteColor("vam-black"); 
+        box-shadow: none;
+        outline: none;
+      }
+
+      &:focus {
+        @include mixins.focus-defaultFocus;
+      }
+
+      &--active {
+        &,
+        &:hover,
+        &:focus {
+          border-color: base.sitecolors-siteColor("vam-white");
+        }
+        
+        &::before {
+          border-color: base.sitecolors-siteColor("vam-white");
+        }
+
+        &::after {
+          margin: -2px 0 0 7px;
+          transform: rotate(-90deg);
+        }
+      }
+
+    }
 
     &--hidden {
       display: none;

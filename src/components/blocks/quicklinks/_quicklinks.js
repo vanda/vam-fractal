@@ -2,7 +2,7 @@ const container = document.querySelector('.b-quicklinks__list');
 
 if (container) {
   const moreButtonWrapper = document.querySelector('.b-quicklinks__more');
-  const moreButton = document.querySelector('.u-btn--quicklink-more');
+  const moreButton = document.querySelector('.b-quicklinks__more-btn');
   const dropdownParent = document.querySelector('.b-quicklinks__more-list');
   const menuItems = document.querySelectorAll('.b-quicklinks__link-item');
   const menuItemsArray = Array.from(menuItems);
@@ -78,5 +78,9 @@ if (container) {
 
   window.addEventListener('resize', () => {
     positionMenuItems();
+  });
+
+  moreButton.addEventListener('click', () => {
+    moreButton.classList.toggle('u-btn--quicklink-more--active');
   });
 }
