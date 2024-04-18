@@ -16,9 +16,8 @@
               <img alt="{{ title }}"
                 class="b-carousel__item-media-image"
                 itemprop="image"
-                sizes="(max-width: 499px) calc(100vw - 20px),
-                      (min-width: 500px) calc(50vw - 40px),
-                      (min-width: 992px) calc(33vw - 80px)"
+                sizes="(max-width: 991px) 100vw,
+                      (min-width: 992px) 50vw"
                 srcset="{% for k, img in item.image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
                 src="{{ item.image[640] }}"
                 loading="lazy"

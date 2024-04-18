@@ -7,9 +7,9 @@
       <img alt="{{ cardTitle }}"
         class="b-card__media-image"
         itemprop="image"
-        sizes="(max-width: 499px) calc(100vw - 20px),
-              (min-width: 500px) calc(50vw - 40px),
-              (min-width: 992px) calc(33vw - 80px)"
+        sizes="(max-width: 767px) calc(100vw - 20px),
+              (min-width: 768px) calc(50vw - 40px),
+              (min-width: 1200px) calc(33vw - 80px)"
         srcset="{% for k, img in cardImage %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
         src="{{ cardImage[640] }}"
         loading="lazy"
