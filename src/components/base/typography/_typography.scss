@@ -116,6 +116,7 @@ $line-height-bold: (
 );
 $base-font-size: 3;
 $base-font-weight: "regular";
+$browser-default-font-size: 16; // Standard browser default font-size
 
 @function fontFamily($type: text) {
   @return map.get($font-family, $type);
@@ -155,4 +156,10 @@ $base-font-weight: "regular";
   @include fontSize($size);
   @include lineheight($size, $weight);
   @include fontWeight($weight);
+}
+
+// Set the root font-size to our Base font-size. All typography font-sizes will be relative to this
+// Define root font-size as a percentage of the standard browser default font-size, for fully scalable text
+html {
+  font-size: math.div(fontSize($base-font-size), $browser-default-font-size) * 100% !important; // stylelint-disable-line declaration-no-important
 }
