@@ -1,0 +1,71 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-file-download {
+  display: flex;
+  gap: 10px;
+
+  &__icon-container {
+    align-items: center;
+    background-color: base.sitecolors-siteColor("vam-grey-2");
+    border-radius: 50%;
+    color: base.sitecolors-siteColor("vam-white");
+    display: flex;
+    flex: 0 0 45px;
+    height: 45px;
+    justify-content: center;
+    transition: all 0.5s;
+  }
+
+  &__icon {
+    height: 26px;
+    width: 26px;
+  }
+
+  &__info-container {
+    flex: 1;
+
+    // fix for ellipsis in child elements of flex-child elements having a
+    // greater implied width than the flex-child element
+    min-width: 0;
+  }
+
+  &__name {
+    @include base.typography-typeSetting(4);
+
+    text-decoration: underline;
+  }
+
+  &__meta {
+    @include base.typography-typeSetting(1);
+
+    color: base.sitecolors-siteColor("vam-grey-1");
+  }
+
+  & p {
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &--dark {
+    color: base.sitecolors-siteColor("vam-white");
+
+    .b-file-download__meta {
+      color: base.sitecolors-siteColor("vam-white");
+    }
+
+    .b-file-download__icon-container {
+      background-color: base.sitecolors-siteColor("vam-white");
+      color: base.sitecolors-siteColor("vam-black");
+    }
+  }
+
+  &:hover,
+  &:focus {
+    & .b-file-download__icon-container {
+      color: #50e3c2; // not in _site-color.scss
+    }
+  }
+}
