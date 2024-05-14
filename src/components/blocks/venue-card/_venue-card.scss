@@ -68,18 +68,6 @@
     @include mixins.breakpoints-bpMinMedium {
       @include base.typography-typeSetting(2);
     }
-
-    > #{&}-external {
-      color: base.sitecolors-siteColor("vam-white");
-      height: 11px;
-      width: 11px;
-
-      @include mixins.breakpoints-bpMinMedium {
-        height: 13px;
-        width: 13px;
-      }
-    }
-
   }
 
   &__open {
