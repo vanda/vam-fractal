@@ -1,3 +1,13 @@
 <header class="b-section-header{% for m in modifiers %} b-section-header--{{ m }}{% endfor %}">
+  {% if modifiers and 'alternate-image' in modifiers %}
+    <img alt=""
+      class="b-section-header__media-image"
+      itemprop="image"
+      sizes="100vw"
+      srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+      src="{{ image[640] }}"
+      loading="lazy">
+  {% endif %}
+
   <h2 class="b-section-header__title">{{ title }}</h2>
 </header>
