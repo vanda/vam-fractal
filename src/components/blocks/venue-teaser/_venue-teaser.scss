@@ -104,20 +104,13 @@
       &__item {
         margin-bottom: 15px;
 
-        &__content {
-          margin-left: 0;
-          padding-top: 5px;
-
-          @include mixins.breakpoints-bpMinSmall {
-            padding-top: 0;
-          }
-        }
-
         &__heading {
           @include base.typography-typeSetting(1, "regular");
 
           @include mixins.breakpoints-bpMinSmall {
             @include base.typography-typeSetting(4, "regular");
+
+            margin-top: -5px;
           }
         }
       }
