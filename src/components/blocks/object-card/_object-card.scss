@@ -106,18 +106,18 @@
     }
 
     .b-object-card--etc & {
-      @include base.typography-typeSetting(1, "bold");
+      @include base.typography-typeSetting(3, "bold");
 
       color: base.sitecolors-siteColor("vam-white");
       display: block;
       overflow: hidden;
 
-      @include mixins.breakpoints-bpMinXSmall {
-        @include base.typography-typeSetting(3, bold);
+      @include mixins.breakpoints-bpMinSmall {
+        @include base.typography-typeSetting(4, "bold");
       }
 
       &--sub {
-        @include base.typography-fontWeight(regular);
+        @include base.typography-typeSetting(2, "regular");
       }
     }
   }
