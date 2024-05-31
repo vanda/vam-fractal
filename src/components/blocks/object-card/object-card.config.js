@@ -10,8 +10,20 @@ module.exports = {
       1920: 'https://framemark.vam.ac.uk/collections/2020MP2543/full/1920,/0/default.jpg',
       2560: 'https://framemark.vam.ac.uk/collections/2020MP2543/full/2560,/0/default.jpg'
     },
-    caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
-    captionSub: ['Raphael', '1515 – 16'],
+    captions: [
+      {
+        text: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
+        type: 'main'
+      },
+      {
+        text: 'Raphael',
+        type: 'sub'
+      },
+      {
+        text: '1515 – 16',
+        type: 'sub'
+      }
+    ],
     physicalDescription: 'Cartoon for a tapestry'
   },
   variants: [
@@ -20,7 +32,31 @@ module.exports = {
       name: 'etc',
       context: {
         previewClass: 'fr-bg--dark',
-        modifiers: ['etc']
+        modifiers: ['etc'],
+        captions: [
+          {
+            text: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
+            type: 'main'
+          },
+          {
+            text: 'Raphael',
+            type: 'sub'
+          },
+          {
+            text: '1515 – 16',
+            type: 'sub'
+          },
+          {
+            text: 'V&A South Kensington',
+            icon: 'pin',
+            type: 'sub'
+          },
+          {
+            text: 'On display',
+            status: 'displayed',
+            type: 'sub'
+          }
+        ]
       }
     }
   ]

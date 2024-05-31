@@ -13,10 +13,17 @@
          srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
          src="{{ image[320] }}"
          loading="lazy">
-
     <figcaption>
-      <div class="b-object-card__caption">{{ caption | safe }}</div>
-      {% for cs in captionSub %}<div class="b-object-card__caption b-object-card__caption--sub">{{ cs | safe }}</div>{% endfor %}
+      {% for cs in captions %}
+        <p class="b-object-card__caption{% if cs.type == "sub" %} b-object-card__caption--sub{% endif %}{% if modifiers and 'etc' in modifiers and cs.icon %} b-object-card__caption--icon{% endif %}{% if modifiers and 'etc' in modifiers and cs.status %} b-object-card__caption--status{% endif %}">
+          {% if modifiers and 'etc' in modifiers and cs.icon %}
+            <svg role="img" class="b-object-card__caption-icon">
+              <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ cs.icon | safe }}"></use>
+            </svg>
+          {% endif %}
+          {{ cs.text | safe }}
+        </p>
+      {% endfor %}
     </figcaption>
   </a>
 </figure>
