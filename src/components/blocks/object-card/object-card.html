@@ -15,14 +15,14 @@
          loading="lazy">
     <figcaption>
       {% for cs in captions %}
-        <p class="b-object-card__caption{% if cs.type == "sub" %} b-object-card__caption--sub{% endif %}{% if modifiers and 'etc' in modifiers and cs.icon %} b-object-card__caption--icon{% endif %}{% if modifiers and 'etc' in modifiers and cs.status %} b-object-card__caption--status{% endif %}">
+        <div class="b-object-card__caption{% if cs.type == "sub" %} b-object-card__caption--sub{% endif %}{% if modifiers and 'etc' in modifiers and cs.icon %} b-object-card__caption--icon{% endif %}{% if modifiers and 'etc' in modifiers and cs.status %} b-object-card__caption--status{% endif %}">
           {% if modifiers and 'etc' in modifiers and cs.icon %}
             <svg role="img" class="b-object-card__caption-icon">
               <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ cs.icon | safe }}"></use>
             </svg>
           {% endif %}
           {{ cs.text | safe }}
-        </p>
+        </div>
       {% endfor %}
     </figcaption>
   </a>

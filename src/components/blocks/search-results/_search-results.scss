@@ -12,7 +12,13 @@
   }
 
   &__facet-container {
-    flex-basis: 276px;
+    display: none;
+
+    @include mixins.breakpoints-bpMinMedium {
+      display: block;
+      flex-basis: 270px;
+      margin-right: 30px;
+    }
   }
 
   &__count {
@@ -97,17 +103,19 @@
   &__body {
     &-row {
       background-color: #393b3f;
-      border-bottom: 4px solid #1d1e20;
-      display: flex;
+      margin-bottom: 4px;
 
-      &:hover {
-        background-color: #45484d;
-        cursor: pointer;
-      }
+      // border-bottom: 4px solid #1d1e20;
+      // display: flex;
 
-      &:focus {
-        @include mixins.focus-insetFocus;
-      }
+      // &:hover {
+      //   background-color: #45484d;
+      //   cursor: pointer;
+      // }
+
+      // &:focus {
+      //   @include mixins.focus-insetFocus;
+      // }
 
       &--offensive {
         height: 180px;
@@ -145,9 +153,9 @@
   &__cell {
     @include base.typography-typeSetting(1);
 
-    padding: 0 15px;
+    display: flex;
+    gap: 15px;
     position: relative;
-    vertical-align: baseline;
 
     @include mixins.breakpoints-bpMinXSmall {
       @include base.typography-typeSetting(3);
@@ -158,12 +166,6 @@
 
       padding-left: 0;
       padding-right: 20px;
-
-      &--data {
-        display: flex;
-        flex: 1;
-        padding: 0;
-      }
     }
 
     &:focus,
@@ -172,22 +174,15 @@
     }
 
     &-img {
-      align-items: center;
+      background: base.sitecolors-siteColor("vam-grey-2");
       display: flex;
-      height: 100%;
-      justify-content: center;
       min-height: 120px;
       width: 120px;
 
       &-image {
-        flex: 1;
-        max-height: 60px;
-        max-width: 60px;
-
-        @include mixins.breakpoints-bpMinXSmall {
-          max-height: 100px;
-          max-width: 100px;
-        }
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
 
         &.s-lazyload--error {
           max-width: none;
@@ -195,12 +190,23 @@
       }
     }
 
+    &:hover,
+    &:focus {
+      background: #45484d; // not in _site-color.scss
+
+      .b-search-results__cell-img {
+        background: #45484d;
+      }
+    }
+
     &-content-container {
+      flex: 1 1 0;
       padding: 13px 0;
 
       @include mixins.breakpoints-bpMinLarge {
         display: flex;
-        flex: 1;
+
+        // flex: 1;
       }
     }
 

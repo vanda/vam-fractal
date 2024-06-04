@@ -35,13 +35,11 @@
         </div>
 
         {% for item in items %}
-        <div tabindex="0" class="b-search-results__body-row b-search-results__body-row{% if item.offensive %}--offensive{% endif %}" >
-          <div class="b-search-results__cell">
+        <div class="b-search-results__body-row {% if item.offensive %}b-search-results__body-row--offensive{% endif %}" >
+          <a href="#" class="b-search-results__cell">
             <div class="b-search-results__cell-img">
               <img class="b-search-results__cell-img-image" src={{ item.image }} srcset="{{ item.image }}" alt="" loading="lazy">
             </div>
-          </div>
-          <a class="b-search-results__cell b-search-results__cell--data">
             <div class="b-search-results__cell-content-container">
               <div class="b-search-results__cell-content b-search-results__cell-content--title">{{ item.title }}</div>
               <div class="b-search-results__cell-content b-search-results__cell-content--artist">{{ item.artist }}</div>

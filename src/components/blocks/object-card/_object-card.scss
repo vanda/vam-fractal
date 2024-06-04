@@ -8,10 +8,6 @@
     max-height: 586px;
     object-fit: cover;
     width: 100%;
-
-    // .b-object-card--etc & {
-    //   margin-bottom: 8px;
-    // }
   }
 
   &__warning {
@@ -113,10 +109,6 @@
       margin-bottom: 3px;
     }
 
-    // &--sub {
-    //   margin-top: 5px;
-    // }
-
     .b-object-card--etc & {
       @include base.typography-typeSetting(3, "bold");
 
@@ -132,7 +124,6 @@
       &--sub {
         @include base.typography-typeSetting(2, "regular");
 
-        // margin-top: 0;
         margin-bottom: 4px;
       }
 
