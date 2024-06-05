@@ -49,6 +49,7 @@ module.exports = {
           {
             text: 'V&A South Kensington',
             icon: 'pin',
+            iconDefinition: 'Object location',
             type: 'sub'
           },
           {

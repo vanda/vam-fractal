@@ -99,14 +99,14 @@
   }
 
   &__caption {
-    display: none;
+    @include base.typography-typeSetting(2, "regular");
+
+    color: base.sitecolors-siteColor("vam-black");
+    display: block;
+    margin-bottom: 3px;
 
     @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(2, "regular");
-
-      color: base.sitecolors-siteColor("vam-black");
-      display: block;
-      margin-bottom: 3px;
+      @include base.typography-typeSetting(3);
     }
 
     .b-object-card--etc & {
@@ -125,6 +125,10 @@
         @include base.typography-typeSetting(2, "regular");
 
         margin-bottom: 4px;
+
+        @include mixins.breakpoints-bpMinSmall {
+          @include base.typography-typeSetting(3);
+        }
       }
 
       &--icon{

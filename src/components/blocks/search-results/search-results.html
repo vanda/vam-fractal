@@ -41,10 +41,28 @@
               <img class="b-search-results__cell-img-image" src={{ item.image }} srcset="{{ item.image }}" alt="" loading="lazy">
             </div>
             <div class="b-search-results__cell-content-container">
-              <div class="b-search-results__cell-content b-search-results__cell-content--title">{{ item.title }}</div>
+              <div class="b-search-results__cell-content b-search-results__cell-content--title">
+                {{ item.title }}
+                <div class="b-search-results__cell-content--status">
+                  {{ item.status }}
+                </div>
+              </div>
               <div class="b-search-results__cell-content b-search-results__cell-content--artist">{{ item.artist }}</div>
               <div class="b-search-results__cell-content b-search-results__cell-content--date">{{ item.date }}</div>
-              <div class="b-search-results__cell-content b-search-results__cell-content--place">{{ item.place }}</div>
+              <div class="b-search-results__cell-content b-search-results__cell-content--place">
+                <div class="b-search-results__cell-content--site">
+                  <svg aria-label="Site at which object is located" role="graphics-symbol" class="b-search-results__cell-content--icon">
+                    <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#pin"></use>
+                  </svg>
+                  {{ item.site }}
+                </div>
+                <div class="b-search-results__cell-content--location">
+                  <svg aria-label="Location of object within site" role="graphics-symbol" class="b-search-results__cell-content--icon">
+                    <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#signpost"></use>
+                  </svg>
+                  {{ item.location }}
+                </div>
+              </div>
             </div>
           </a>
         </div>
