@@ -14,6 +14,10 @@
     @include mixins.breakpoints-bpMinSmall {
       column-gap: 20px;
     }
+
+    @include mixins.breakpoints-bpMinLarge {
+      column-gap: 30px;
+    }
   }
 
   @include mixins.breakpoints-bpMinMedium {
