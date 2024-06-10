@@ -93,10 +93,6 @@ video {
   vertical-align: baseline;
 }
 
-html {
-  font-size: typography.fontSize(typography.$base-font-size) + px;
-}
-
 body {
   @include typography.typeSetting(typography.$base-font-size);
 

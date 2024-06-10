@@ -7,11 +7,6 @@
     {{text}}
   </p>
       <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}{% if section %}u-link--section{% endif %}">
-        {% if external %}
-          <svg role="img" class="u-link__external-icon">
-            <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#link-external"></use>
-          </svg>
-        {% endif %}
           Link
       </a>
 {% endif %}

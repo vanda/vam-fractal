@@ -21,14 +21,6 @@ module.exports = {
       }
     },
     {
-      name: 'external',
-      label: 'External',
-      context: {
-        external: true,
-        text: 'The following link is for use as a stand alone element'
-      }
-    },
-    {
       name: 'section',
       label: 'Section',
       context: {

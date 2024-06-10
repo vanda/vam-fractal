@@ -121,6 +121,7 @@
     &::before {
       background-image: linear-gradient(rgba(57, 59, 63, 0%), #393b3f);
       content: "";
+      cursor: text;
       height: 100px;
       left: 0;
       position: absolute;
@@ -133,50 +134,32 @@
   &__cell-revealer {
     @include base.typography-typeSetting(1);
 
-    height: 40px;
-    padding: 10px 10px 0 0;
     position: relative;
-    text-align: left;
+  }
 
-    &:hover {
+  &__cell-concealer-button {
+    align-items: center;
+    color: base.sitecolors-siteColor("vam-white");
+    display: flex;
+    padding: 10px 10px 10px 0;
+
+    &:hover,
+    &:focus {
       cursor: pointer;
       text-decoration: underline;
     }
   }
 
   &__cell-concealer-text {
-    color: base.sitecolors-siteColor("vam-white");
-    pointer-events: none;
+    margin-right: 6px;
   }
 
-  &__cell-concealer-button {
-    align-items: center;
+  &__cell-concealer-svg {
     background-color: base.themecolors-themeColor("silent-green");
     border-radius: 100%;
-    display: inline-flex;
+    color: base.sitecolors-siteColor("vam-black");
     height: 14px;
-    justify-content: center;
-    margin-left: 6px;
-    position: relative;
-    vertical-align: middle;
+    padding: 3px;
     width: 14px;
-
-    &::before {
-      background-color: base.sitecolors-siteColor("vam-black");
-      content: "";
-      height: 1.5px;
-      position: absolute;
-      width: 55%;
-    }
-
-    &--more {
-      &::after {
-        background-color: base.sitecolors-siteColor("vam-black");
-        content: "";
-        height: 55%;
-        position: absolute;
-        width: 1.5px;
-      }
-    }
   }
 }
