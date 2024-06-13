@@ -1,4 +1,4 @@
-<ul class="g-object-grid {% if not modifiers %} js-grid-reveal-more{% endif %}" data-reveal-more-theme="light" data-reveal-more-counter="6" data-icon-url="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg" data-reveal-more-tracking="objects">
+<ul class="g-object-grid {% for m in modifiers %} g-object-grid--{{ m }}{% endfor %} {% if not modifiers %} js-grid-reveal-more{% endif %}" data-reveal-more-theme="light" data-reveal-more-counter="6" data-icon-url="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg" data-reveal-more-tracking="objects">
   {% for card in objectCards %}
   <li class="g-object-grid__item">
     {%- render "@object-card", card -%}
