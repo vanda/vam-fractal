@@ -12,6 +12,8 @@
 @use "../../components/blocks/associated-contexts/associated-contexts";
 @use "../../components/blocks/background-image/background-image";
 @use "../../components/blocks/background-video/background-video";
+@use "../../components/blocks/card/card";
+@use "../../components/blocks/carousel/carousel";
 @use "../../components/blocks/collection-card/collection-card";
 @use "../../components/blocks/context-page-title/context-page-title";
 @use "../../components/blocks/cookie-banner/cookie-banner";
@@ -30,6 +32,7 @@
 @use "../../components/blocks/image-row/image-row";
 @use "../../components/blocks/input-select/input-select";
 @use "../../components/blocks/object-image-overlay/object-image-overlay";
+@use "../../components/blocks/master-brand-nav/master-brand-nav";
 @use "../../components/blocks/membership-upsell/membership-upsell";
 @use "../../components/blocks/newsletter-signup/newsletter-signup";
 @use "../../components/blocks/object-card/object-card";
@@ -38,6 +41,7 @@
 @use "../../components/blocks/pagination/pagination";
 @use "../../components/blocks/programme-page-tout/programme-page-tout";
 @use "../../components/blocks/promo/promo";
+@use "../../components/blocks/quicklinks/quicklinks";
 @use "../../components/blocks/review/review";
 @use "../../components/blocks/section-header/section-header";
 @use "../../components/blocks/search-form/search-form";

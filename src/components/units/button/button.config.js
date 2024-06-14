@@ -80,6 +80,18 @@ module.exports = {
         text: 'Stop button',
         modifiers: ['stop', 'outlined-inverse', 'micro']
       }
-    }
+    },
+    {
+      name: 'navigation',
+      label: 'Navigation',
+      context: {
+        button: true,
+        icon: 'point-left',
+        modifiers: ['navigation', 'navigation--prev'],
+        variants: [
+          ['navigation', 'navigation--next'],
+        ]
+      },
+    },
   ]
 };

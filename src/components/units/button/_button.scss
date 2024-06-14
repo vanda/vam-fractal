@@ -121,4 +121,32 @@
       width: 8px;
     }
   }
+
+  &--navigation {
+    align-items: center;
+    background-color: base.sitecolors-siteColor("vam-grey-6");
+    border: 1px solid base.sitecolors-siteColor("vam-grey-4");
+    border-radius: 50px;
+    display: flex;
+    font-size: 0;
+    height: 28px;
+    line-height: 0;
+    justify-content: center;
+    margin: 0;
+    padding: 6px;
+    position: static;
+    width: 28px;
+
+    svg {
+      color: base.sitecolors-siteColor("vam-black");
+      height: 12px;
+      width: 8px;
+    }
+
+    &--next {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }

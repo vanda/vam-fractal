@@ -1,0 +1,22 @@
+
+<div class="b-quicklinks">
+  <nav class="b-quicklinks__nav">
+    <ul class="b-quicklinks__list">
+      {% for item in menuItems %}
+        <li class="b-quicklinks__item b-quicklinks__link-item">
+          <a href="#{{ item.url }}" class="b-quicklinks__btn u-btn u-btn--outlined-inverse">
+            {{ item.label }}
+          </a>
+        </li>
+      {% endfor %}
+      <li class="b-quicklinks__item b-quicklinks__more">
+        <button class="b-quicklinks__more-btn u-btn u-btn--outlined-inverse u-btn--arrowed">
+          <span class="b-quicklinks__more-btn-text">More</span>
+        </button>
+        <div class="b-quicklinks__more-list-wrapper">
+          <ul class="b-quicklinks__more-list"></ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

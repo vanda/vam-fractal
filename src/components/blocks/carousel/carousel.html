@@ -1,0 +1,67 @@
+
+<div class="b-carousel">
+  <p class="b-carousel__subheading">
+    {{ subheading }}
+  </p>
+  <h2 class="b-carousel__heading">
+    {{ heading }}
+  </h2>
+
+  <div class="b-carousel__container">
+    <div class="b-carousel__track">
+      {% for item in carouselItems %}
+        <div class="b-carousel__item">
+          <a class="b-carousel__item-link" itemprop="url" content="{{ item.url }}" href="{{ item.url }}">
+            <div class="b-carousel__item-media">
+              <img alt="{{ title }}"
+                class="b-carousel__item-media-image"
+                itemprop="image"
+                sizes="(max-width: 991px) 100vw,
+                      (min-width: 992px) 50vw"
+                srcset="{% for k, img in item.image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+                src="{{ item.image[640] }}"
+                loading="lazy"
+              />
+            </div>
+            <div class="b-carousel__item-content">
+              <h2 class="b-carousel__item-title" itemprop="name" content="{{ item.title }}">
+                {{ item.title }}
+              </h2>
+              
+              <div itemprop="description" class="b-carousel__item-description">
+                {{ item.description }}
+              </div>
+        
+              <div class="b-carousel__item-buttons">
+                <div class="u-btn u-btn--micro u-btn--outlined">
+                  More info
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="b-carousel__navigation" aria-hidden="true">
+      <button class="u-btn u-btn--navigation u-btn--navigation--prev b-carousel__navigation-prev" title="Previous item">
+        <svg class="u-btn__icon">
+          <use xlink:href="../../build/svg/vam-sprite.svg#point-left"></use>
+        </svg>
+      </button>
+      <button class="u-btn u-btn--navigation u-btn--navigation--next b-carousel__navigation-next" title="Next item">
+        <svg class="u-btn__icon">
+          <use xlink:href="../../build/svg/vam-sprite.svg#point-left"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  {% if ctaLabel %}
+    <div class="b-carousel__footer">
+      <a href="#" class="u-btn u-btn--outlined b-carousel__cta">
+        {{ ctaLabel }}
+      </a>
+    </div>
+  {% endif %}
+</div>
