@@ -121,4 +121,54 @@
       width: 8px;
     }
   }
+
+  &--pill {
+    @include base.typography-typeSetting(2);
+
+    border-radius: 30px;
+    border: none;
+    padding: 8px 8px 8px 12px;
+
+    &-dark {
+      background: base.sitecolors-siteColor("vam-grey-2");
+      color: base.sitecolors-siteColor("vam-white");
+
+      &:hover {
+        background: base.sitecolors-siteColor("vam-grey-1");
+      }
+
+      &:focus {
+        background: base.sitecolors-siteColor("vam-grey-1");
+        border: 3px solid base.sitecolors-siteColor("vam-white");
+        box-shadow: none;
+      }
+    }
+
+    &-light {
+      background: base.sitecolors-siteColor("vam-grey-6");
+      color: base.sitecolors-siteColor("vam-black");
+
+      &:hover {
+        background: base.sitecolors-siteColor("vam-grey-5");
+      }
+
+      &:focus {
+        background: base.sitecolors-siteColor("vam-grey-5");
+        border: 3px solid base.sitecolors-siteColor("vam-white");
+        box-shadow: none;
+        outline: 3px solid base.sitecolors-siteColor("vam-black");
+      }
+    }
+
+    &-close {
+      display: inline-flex;
+      gap: 8px;
+
+      &::after {
+        content: "X";
+
+        @include base.typography-typeSetting(1, "light");
+      }
+    }
+  }
 }

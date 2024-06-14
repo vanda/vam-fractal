@@ -80,6 +80,29 @@ module.exports = {
         text: 'Stop button',
         modifiers: ['stop', 'outlined-inverse', 'micro']
       }
+    },
+    {
+      name: 'pill-light',
+      label: 'Pill light',
+      context: {
+        text: 'Pill light',
+        modifiers: ['pill', 'pill-light'],
+        previewClass: 'fr-bg--light',
+        variants: [
+          ['pill', 'pill-light', 'pill-close']
+        ]
+      }
+    },
+    {
+      name: 'pill-dark',
+      label: 'Pill dark',
+      context: {
+        text: 'Pill dark',
+        modifiers: ['pill', 'pill-dark'],
+        variants: [
+          ['pill', 'pill-dark', 'pill-close']
+        ]
+      }
     }
   ]
 };
