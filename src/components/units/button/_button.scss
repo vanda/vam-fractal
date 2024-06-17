@@ -123,11 +123,12 @@
   }
 
   &--pill {
-    @include base.typography-typeSetting(2);
+    @include base.typography-fontSize(2);
+    @include base.typography-lineheight(2);
 
     border-radius: 30px;
     border: none;
-    padding: 8px 8px 8px 12px;
+    padding: 8px 12px;
 
     &-dark {
       background: base.sitecolors-siteColor("vam-grey-2");
@@ -163,11 +164,12 @@
     &-close {
       display: inline-flex;
       gap: 8px;
+      padding-right: 8px;
 
       &::after {
-        content: "X";
+        content: "✕";
 
-        @include base.typography-typeSetting(1, "light");
+        @include base.typography-fontSize(3);
       }
     }
   }
