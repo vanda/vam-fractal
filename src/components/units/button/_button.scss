@@ -134,14 +134,9 @@
       background: base.sitecolors-siteColor("vam-grey-2");
       color: base.sitecolors-siteColor("vam-white");
 
-      &:hover {
-        background: base.sitecolors-siteColor("vam-grey-1");
-      }
-
+      &:hover,
       &:focus {
         background: base.sitecolors-siteColor("vam-grey-1");
-        border: 3px solid base.sitecolors-siteColor("vam-white");
-        box-shadow: none;
       }
     }
 
@@ -149,22 +144,16 @@
       background: base.sitecolors-siteColor("vam-grey-6");
       color: base.sitecolors-siteColor("vam-black");
 
-      &:hover {
-        background: base.sitecolors-siteColor("vam-grey-5");
-      }
-
+      &:hover,
       &:focus {
         background: base.sitecolors-siteColor("vam-grey-5");
-        border: 3px solid base.sitecolors-siteColor("vam-white");
-        box-shadow: none;
-        outline: 3px solid base.sitecolors-siteColor("vam-black");
       }
     }
 
     &-close {
       display: inline-flex;
-      gap: 8px;
-      padding-right: 8px;
+      gap: 10px;
+      padding-right: 10px;
 
       &::after {
         content: "✕";
