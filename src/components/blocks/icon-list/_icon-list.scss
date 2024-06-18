@@ -33,6 +33,8 @@ $icon-width: 30px;
     }
 
     &__content {
+      flex: 1;
+
       > p {
         margin-bottom: 5px;
       }
