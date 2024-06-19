@@ -126,9 +126,16 @@
     @include base.typography-fontSize(2);
     @include base.typography-lineheight(2);
 
-    border-radius: 30px;
+    background: base.sitecolors-siteColor("vam-grey-6");
     border: none;
+    border-radius: 30px;
+    color: base.sitecolors-siteColor("vam-black");
     padding: 8px 12px;
+
+    &:hover,
+    &:focus {
+      background: base.sitecolors-siteColor("vam-grey-5");
+    }
 
     &-dark {
       background: base.sitecolors-siteColor("vam-grey-2");
@@ -137,16 +144,6 @@
       &:hover,
       &:focus {
         background: base.sitecolors-siteColor("vam-grey-1");
-      }
-    }
-
-    &-light {
-      background: base.sitecolors-siteColor("vam-grey-6");
-      color: base.sitecolors-siteColor("vam-black");
-
-      &:hover,
-      &:focus {
-        background: base.sitecolors-siteColor("vam-grey-5");
       }
     }
 

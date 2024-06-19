@@ -82,24 +82,12 @@ module.exports = {
       }
     },
     {
-      name: 'pill-light',
-      label: 'Pill light',
+      name: 'pill',
       context: {
-        text: 'Pill light',
-        modifiers: ['pill', 'pill-light'],
-        previewClass: 'fr-bg--light',
+        modifiers: ['pill'],
         variants: [
-          ['pill', 'pill-light', 'pill-close']
-        ]
-      }
-    },
-    {
-      name: 'pill-dark',
-      label: 'Pill dark',
-      context: {
-        text: 'Pill dark',
-        modifiers: ['pill', 'pill-dark'],
-        variants: [
+          ['pill', 'pill-close'],
+          ['pill', 'pill-dark'],
           ['pill', 'pill-dark', 'pill-close']
         ]
       }
