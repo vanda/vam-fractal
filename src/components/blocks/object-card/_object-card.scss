@@ -4,7 +4,7 @@
 .b-object-card {
   &__image {
     height: auto;
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     max-height: 586px;
     object-fit: cover;
     width: 100%;
@@ -31,7 +31,7 @@
       z-index: 1;
 
       &__text {
-        @include base.typography-typeSetting(2, "regular");
+        @include base.typography-typeSetting(0, "regular");
 
         margin-bottom: 20px;
         max-width: 224px;
@@ -67,9 +67,16 @@
   }
 
   &__anchor {
+    border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
+    padding-bottom: 5px;
     display: block;
     overflow: hidden;
     position: relative;
+
+    .b-object-card--etc & {
+      border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-2");
+      padding-bottom: 3px;
+    }
 
     &::after {
       background-image: linear-gradient(base.sitecolors-siteColor("vam-black"), transparent 80%);
@@ -92,32 +99,56 @@
   }
 
   &__caption {
-    display: none;
+    @include base.typography-typeSetting(2, "regular");
+
+    color: base.sitecolors-siteColor("vam-black");
+    display: block;
+    margin-bottom: 3px;
 
     @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(3, "light");
-
-      color: base.sitecolors-siteColor("vam-black");
-      display: block;
-    }
-
-    &--sub {
-      margin-top: 5px;
+      @include base.typography-typeSetting(3);
     }
 
     .b-object-card--etc & {
-      @include base.typography-typeSetting(1, "bold");
+      @include base.typography-typeSetting(3, "bold");
 
       color: base.sitecolors-siteColor("vam-white");
       display: block;
+      margin-bottom: 4px;
       overflow: hidden;
 
-      @include mixins.breakpoints-bpMinXSmall {
-        @include base.typography-typeSetting(3, bold);
+      @include mixins.breakpoints-bpMinSmall {
+        @include base.typography-typeSetting(4, "bold");
       }
 
       &--sub {
-        @include base.typography-fontWeight(regular);
+        @include base.typography-typeSetting(2, "regular");
+
+        margin-bottom: 4px;
+
+        @include mixins.breakpoints-bpMinSmall {
+          @include base.typography-typeSetting(3);
+        }
+      }
+
+      &--icon{
+        align-items: center;
+        display: flex;
+        gap: 4px;
+        margin-bottom: 16px;
+        margin-top: 12px;
+      }
+
+      &-icon {
+        height: 16px;
+        width: 16px;
+      }
+
+      &--status {
+        background: base.sitecolors-siteColor("vam-grey-2");
+        display: inline-block;
+        margin-bottom: 0;
+        padding: 2px 4px;
       }
     }
   }
