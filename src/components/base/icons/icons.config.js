@@ -93,6 +93,7 @@ module.exports = {
       'wordmark-southken',
       'wordmark-wedgwood',
       'wordmark-young'
+
     ]
   },
   variants: [
