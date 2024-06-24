@@ -5,23 +5,12 @@ const initRevealers = () => {
     'b-object-details__cell-control b-object-details__cell-concealer',
     'b-object-details__cell-control b-object-details__cell-revealer',
   ];
-  const svgSprite = document.getElementById('vam-svg-sprite-path');
-  /* eslint-disable no-nested-ternary */
-  const icon = (type) => (svgSprite ? `
-    <svg role="presentation" class="b-object-details__cell-concealer-svg">
-    <use xlink:href="${svgSprite.href}#${type}"></use>
-    </svg>`
-    : (type === 'plus' ? '+' : '-')
-  );
-  /* eslint-enable no-nested-ternary */
   const html = [
     `<button class="b-object-details__cell-concealer-button" aria-label="Read more">
     <span class="b-object-details__cell-concealer-text">Read more</span>
-    ${icon('plus')}
     </button>`,
-    `<button class="b-object-details__cell-concealer-button" aria-label="Read less">
+    `<button class="b-object-details__cell-concealer-button b-object-details__cell-concealer-button--minus" aria-label="Read less">
     <span class="b-object-details__cell-concealer-text">Read less</span>
-    ${icon('minus')}
     </button>`,
   ];
 
