@@ -81,38 +81,34 @@ const oicInit = () => {
       const ctaMobile = objectUrl.length > 1
         ? `<a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
         : '';
-      const item = document.createElement('div');
+      const item = document.createElement('figure');
       item.classList.add('b-object-image-overlay__item');
       item.innerHTML += `
-        <div class="b-object-image-overlay__content">
-          <figure class="b-object-image-overlay__figure">
-            ${objectImgHTML}
-            <figcaption class="b-object-image-overlay__figcaption">
-              ${numberCopyright}
-              <div class="b-object-image-overlay__prevnext">
-                <button disabled class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous object" data-tracking-oic="previous object">
-                  <svg aria-hidden="true" viewBox="0 0 100 100">
-                    <path fill="none" d="M-1-1h582v402H-1z"/>
-                    <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
-                  </svg>
-                </button>
-                <button disabled class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next object" data-tracking-oic="next object">
-                  <svg aria-hidden="true" viewBox="0 0 100 100">
-                    <path fill="none" d="M-1-1h582v402H-1z"/>
-                    <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
-                  </svg>
-                </button>
-              </div>
-            </figcaption>
-          </figure>
-          <div class="b-object-image-overlay__details">
-            <div class="b-object-image-overlay__caption">
-              ${seed.querySelector('figcaption').textContent}
-              ${ctaScreen}
-            </div>
-            ${location}
-            ${ctaMobile}
+        ${objectImgHTML}
+        <figcaption class="b-object-image-overlay__figcaption">
+          ${numberCopyright}
+          <div class="b-object-image-overlay__prevnext">
+            <button disabled class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous object" data-tracking-oic="previous object">
+              <svg aria-hidden="true" viewBox="0 0 100 100">
+                <path fill="none" d="M-1-1h582v402H-1z"/>
+                <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
+              </svg>
+            </button>
+            <button disabled class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next object" data-tracking-oic="next object">
+              <svg aria-hidden="true" viewBox="0 0 100 100">
+                <path fill="none" d="M-1-1h582v402H-1z"/>
+                <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
+              </svg>
+            </button>
           </div>
+        </figcaption>
+        <div class="b-object-image-overlay__details">
+          <div class="b-object-image-overlay__caption">
+            ${seed.querySelector('figcaption').textContent}
+            ${ctaScreen}
+          </div>
+          ${location}
+          ${ctaMobile}
         </div>
       `;
 
@@ -139,16 +135,12 @@ const oicInit = () => {
       }
     };
 
-    oic.buttonInit = (rewind) => {
+    oic.buttonInit = (rewind = false) => {
       // need to disable all buttons and links on screen first then re-enable
       // buttons that are on screen
       oic.querySelectorAll('button').forEach((el) => el.setAttribute('disabled', true));
 
       oic.querySelectorAll('a').forEach((el) => el.setAttribute('tabindex', '-1'));
-
-      if (window.innerWidth > 991) {
-        oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
-      }
 
       oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
 
@@ -199,19 +191,11 @@ const oicInit = () => {
         }
       };
 
-      if (!rewind) {
-        focusHierarchy(
-          item.querySelector('.b-object-image-overlay__next:not([disabled]'),
-          item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
-          oic.focusable[0],
-        );
-      } else if (rewind) {
-        focusHierarchy(
-          item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
-          item.querySelector('.b-object-image-overlay__next:not([disabled]'),
-          oic.focusable[0],
-        );
-      }
+      focusHierarchy(
+        item.querySelector('.b-object-image-overlay__next:not([disabled]'),
+        item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
+        oic.focusable[0],
+      );
     };
 
     oic.advance = (rewind = false) => {
