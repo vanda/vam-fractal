@@ -16,7 +16,7 @@ let objectCards = [
     objectImageOverlayData: {
       museumNumber: 'ROYAL LOANS.2',
       copyright: '&copy; Victoria and Albert Museum, London',
-      onDisplay: true,
+      locationType: 'On display',
       locationSite: 'V&A South Kensington',
       locationRoom: 'Room 48a, The Raphael Cartoons',
       visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?zoom=3.8062500330992246&latlng=-4438.82674843744%2C2111.330630666198&highlightId=FAC0000_49790'
@@ -40,7 +40,7 @@ let objectCards = [
     objectImageOverlayData: {
       museumNumber: 'C.21-1998',
       copyright: '&copy; Victoria and Albert Museum, London',
-      onDisplay: false
+      locationType: 'On display'
     }
   },
   {
@@ -57,8 +57,7 @@ let objectCards = [
     captionSub: ['Fallen Fruit', '2019'],
     physicalDescription: 'A wallpaper print design.',
     objectImageOverlayData: {
-      onDisplay: false,
-      storageMessage: 'Some storage message'
+      locationType: 'Not on display'
     }
   },
   {
@@ -78,8 +77,7 @@ let objectCards = [
     objectImageOverlayData: {
       museumNumber: 'CD.51:1 to 6-2014',
       copyright: '&copy; Victoria and Albert Museum, London',
-      onDisplay: true,
-      displayOverride: 'You can see this somewhere else',
+      locationType: 'View by appointment',
       locationSite: 'V&A South Kensington',
       locationRoom: 'Room 74a, Rapid Response Collecting',
       visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?highlightId=FAC0000_263251&latlng=-2869%2C2944&floor=2&zoom=4'
