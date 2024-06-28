@@ -15,11 +15,11 @@ module.exports = {
         },
         caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11, by Raphael, 1515 – 16, Italy.',
         physicalDescription: 'Cartoon for a tapestry.',
-        href: 'https://collections.vam.ac.uk/item/O102006/the-miraculous-draught-of-fishes-cartoon-for-a-raphael',
+        href: '#',
         objectImageOverlayData: {
           museumNumber: 'ROYAL LOANS.2',
           copyright: '&copy; Victoria and Albert Museum, London',
-          onDisplay: true,
+          locationType: 'On display',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 48a, The Raphael Cartoons',
           visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?zoom=3.8062500330992246&latlng=-4438.82674843744%2C2111.330630666198&highlightId=FAC0000_49790'
@@ -41,7 +41,8 @@ module.exports = {
         objectImageOverlayData: {
           museumNumber: 'C.21-1998',
           copyright: '&copy; Victoria and Albert Museum, London',
-          onDisplay: false
+          locationSite: 'V&A South Kensington',
+          locationRoom: 'Room 74a, Rapid Response Collecting'
         }
       },
       {
@@ -57,8 +58,7 @@ module.exports = {
         caption: 'Fruits from the Garden and the Field, rainbow wallpaper (detail). © Fallen Fruit, 2019.',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
+          locationType: 'Request to view'
         }
       },
       {
@@ -71,34 +71,36 @@ module.exports = {
           1920: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/10/80d89a0b-1356-4036-ba41-0311c5f0e03a/Normski_2012FK2755.jpg',
           2560: 'https://assets-cdn.vam.ac.uk/2016/03/11/11/06/10/c63d3199-d391-46a0-b4c4-9bde18c23a9a/Normski_2012FK2755.jpg'
         },
+        caption: 'African Homeboy - Brixton, photograph, Fujifilm C-type print, by Normski, 1987 African Homeboy - Brixton, photograph, Fujifilm C-type print, by Normski, 1987',
+        physicalDescription: 'A wallpaper print design.',
+        objectImageOverlayData: {
+          copyright: '&copy; Victoria and Albert Museum, London',
+          locationType: 'On display',
+          locationSite: 'V&A South Kensington',
+          locationRoom: 'Photography centre'
+        }
+      },
+      {
+        objectImageOverlayItem: true,
+        image: {
+          320: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/00e4d6c7-df8a-4bac-928e-002837524fe1/320.jpg',
+          640: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/ce6a17c4-dfb2-4dad-9d36-9e92187e2ad1/640.jpg',
+          960: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/11/c72bd651-e26f-4765-8f70-764a0e274c55/960.jpg',
+          1280: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/d73d930a-42a8-4acb-ac5f-6c03561bbfa6/1280.jpg',
+          1920: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/c8d09cd6-c361-460f-a388-f2118ee44c1d/1920.jpg',
+          2560: 'https://vanda-production-assets.s3.amazonaws.com/2018/01/31/16/36/12/4f6d683f-854e-4576-a0dd-6f54c78ae7b0/2560.jpg'
+        },
         caption: 'The Research Institute, Lego set, designed by Ellen Kooijman, 2015, Denmark.',
         physicalDescription: 'A Research Institute made of Lego.',
         href: 'http://collections.vam.ac.uk/item/O1298864/the-research-institute-lego-set-kooijman-ellen',
         objectImageOverlayData: {
           museumNumber: 'CD.51:1 to 6-2014',
           copyright: '&copy; Victoria and Albert Museum, London',
-          onDisplay: true,
+          locationType: 'View by appointment',
           displayOverride: 'You can see this somewhere else',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 74a, Rapid Response Collecting',
           visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?highlightId=FAC0000_263251&latlng=-2869%2C2944&floor=2&zoom=4'
-        }
-      },
-      {
-        objectImageOverlayItem: true,
-        image: {
-          320: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/ef8b1e1a-c8e9-420a-b278-a80fe2010c83/320.jpg',
-          640: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/d63b33f5-9500-416a-9d5d-1714015fc097/640.jpg',
-          960: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/65179005-be92-4292-a387-62fb15c5d888/960.jpg',
-          1280: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/f5128c47-1d15-4869-910a-dcbb1ed7378e/1280.jpg',
-          1920: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/40/8e244833-8b78-4701-9b77-2639312dbf94/1920.jpg',
-          2560: 'https://vanda-production-assets.s3.amazonaws.com/2019/05/15/09/26/41/7dfc2083-58d3-4928-ba07-3cf428eadad6/2560.jpg'
-        },
-        caption: 'African Homeboy - Brixton, photograph, Fujifilm C-type print, by Normski, 1987',
-        physicalDescription: 'A wallpaper print design.',
-        objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
         }
       },
       {
@@ -114,8 +116,7 @@ module.exports = {
         caption: 'Papaver Orientale, photograph, by Anna Atkins, cyanotype, 1852 – 54, Britain.',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
+          locationType: 'Not on display'
         }
       },
       {
@@ -131,8 +132,7 @@ module.exports = {
         caption: 'Queen Elizabeth II, photograph, C-type print, by Cecil Beaton, 1953, London, England.  On display at South Kensington Prints & Drawings Study Room, level F',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
+          locationType: 'On loan'
         }
       }
     ]
