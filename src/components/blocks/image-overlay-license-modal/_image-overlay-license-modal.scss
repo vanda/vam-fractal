@@ -50,15 +50,14 @@
   &__content-container {
     height: 250px;
     min-height: 250px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden scroll;
 
-    @media screen and (min-height: 700px) {
+    @media screen and (height >= 700px) {
       height: 400px;
       overflow-y: scroll;
     }
 
-    @media screen and (min-height: 1080px) {
+    @media screen and (height >= 1080px) {
       height: auto;
       overflow-y: hidden;
     }
