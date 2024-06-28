@@ -17,9 +17,8 @@ module.exports = {
         physicalDescription: 'Cartoon for a tapestry.',
         href: 'https://collections.vam.ac.uk/item/O102006/the-miraculous-draught-of-fishes-cartoon-for-a-raphael',
         objectImageOverlayData: {
-          museumNumber: 'ROYAL LOANS.2',
           copyright: '&copy; Victoria and Albert Museum, London',
-          onDisplay: true,
+          locationType: 'On display',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 48a, The Raphael Cartoons',
           visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?zoom=3.8062500330992246&latlng=-4438.82674843744%2C2111.330630666198&highlightId=FAC0000_49790'
@@ -39,9 +38,8 @@ module.exports = {
         physicalDescription: 'An abstract form sculpted from blue glass.',
         href: 'http://collections.vam.ac.uk/item/O8905/form-roubicek-rene',
         objectImageOverlayData: {
-          museumNumber: 'C.21-1998',
           copyright: '&copy; Victoria and Albert Museum, London',
-          onDisplay: false
+          locationType: 'On display'
         }
       },
       {
@@ -57,8 +55,7 @@ module.exports = {
         caption: 'Fruits from the Garden and the Field, rainbow wallpaper (detail). © Fallen Fruit, 2019.',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
+          locationType: 'Request to view'
         }
       },
       {
@@ -75,9 +72,8 @@ module.exports = {
         physicalDescription: 'A Research Institute made of Lego.',
         href: 'http://collections.vam.ac.uk/item/O1298864/the-research-institute-lego-set-kooijman-ellen',
         objectImageOverlayData: {
-          museumNumber: 'CD.51:1 to 6-2014',
           copyright: '&copy; Victoria and Albert Museum, London',
-          onDisplay: true,
+          locationType: 'View by appointment',
           displayOverride: 'You can see this somewhere else',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 74a, Rapid Response Collecting',
@@ -97,8 +93,7 @@ module.exports = {
         caption: 'African Homeboy - Brixton, photograph, Fujifilm C-type print, by Normski, 1987',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
+          locationType: 'Not on display'
         }
       },
       {
@@ -114,8 +109,7 @@ module.exports = {
         caption: 'Papaver Orientale, photograph, by Anna Atkins, cyanotype, 1852 – 54, Britain.',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
+          locationType: 'Not on display'
         }
       },
       {
@@ -131,8 +125,7 @@ module.exports = {
         caption: 'Queen Elizabeth II, photograph, C-type print, by Cecil Beaton, 1953, London, England.  On display at South Kensington Prints & Drawings Study Room, level F',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          onDisplay: false,
-          storageMessage: 'Some storage message'
+          locationType: 'On loan'
         }
       }
     ]

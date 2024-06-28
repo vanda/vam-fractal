@@ -16,52 +16,18 @@ const oicInit = () => {
       const data = seed.dataset.objectImageOverlay
         ? JSON.parse(seed.dataset.objectImageOverlay)
         : null;
-      const museumNumber = data && data.museumNumber
-        ? `Museum number: <span itemprop="identifier">${data.museumNumber}</span>`
-        : '';
       const copyright = data && data.copyright
-        ? `<br/><span itemprop="copyrightHolder">${data.copyright}</span>`
+        ? `<span itemprop="copyrightHolder">${data.copyright}</span>`
         : '';
-      const numberCopyright = museumNumber || copyright
-        ? `<div class="b-object-image-overlay__numbercopyright">
-          ${museumNumber}
-          ${copyright}
-        </div>`
+      const locationType = data && data.locationType
+        ? `<div class="b-object-image-overlay__location-type">${data.locationType}</div>`
         : '';
-      const onDisplay = data && data.onDisplay
-        ? `<div class="b-object-image-overlay__location-status">
-          <svg role="img" viewBox="0 0 52 52">
-            <path d="M51.59 25.348C45.15 15.57 35.838 10 26 10S6.851 15.57.41 25.348L0 26l.41.652C6.85 36.43 16.162 42 26 42s19.149-5.57 25.59-15.348L52 26l-.41-.652zM25.5 35c-5.225 0-9.5-4.275-9.5-9.5s4.275-9.5 9.5-9.5 9.5 4.275 9.5 9.5-4.275 9.5-9.5 9.5z" fill="currentColor"/>
-          </svg>
-          On display
-        </div>`
+      const locationSite = data && data.locationSite ? data.locationSite : null;
+      const locationRoom = data && data.locationRoom
+        ? data && data.visitUrl
+          ? `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">${data.locationRoom}</a>`
+          : data.locationRoom
         : '';
-      let locationCopy = '';
-      if (data && data.onDisplay) {
-        locationCopy = data.displayOverride;
-        if (!locationCopy) {
-          const locationSite = data.locationSite
-            ? `<div class="b-object-image-overlay__location-site">${data.locationSite}</div>`
-            : '';
-          const locationRoom = data.locationRoom
-            ? data.locationRoom
-            : '';
-          locationCopy = locationSite + locationRoom;
-        }
-      } else if (data && data.onDisplay !== null && !data.onDisplay) {
-        locationCopy = data.storageOverride || 'This object is currently not on display';
-      }
-      const visitLink = data && data.visitUrl
-        ? `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">Find out how to visit this object</a>`
-        : '';
-      const location = locationCopy || visitLink
-        ? `<div class="b-object-image-overlay__location">
-          ${onDisplay}
-          <div class="b-object-image-overlay__location-copy">${locationCopy}</div>
-          ${visitLink}
-        </div>
-        ` : '';
-      const objectUrl = seed.querySelector('a').getAttribute('href');
       const objectImg = seed.querySelector('img');
       const objectImgHTML = objectImg
         ? `<img class="b-object-image-overlay__image"
@@ -75,40 +41,43 @@ const oicInit = () => {
            loading="lazy">
         `
         : '<div class="s-lazyload--error"></div>';
-      const ctaScreen = objectUrl.length > 1
-        ? `<br/><a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
+      const objectUrl = seed.querySelector('a').getAttribute('href');
+      const objectLink = objectUrl.length ?
+        `<a tabindex="-1" class="b-object-image-overlay__cta u-btn u-btn--micro u-btn--outlined-inverse" href="${objectUrl}" data-tracking-oic="explore the object">More info</a>`
         : '';
-      const ctaMobile = objectUrl.length > 1
-        ? `<a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
-        : '';
-      const item = document.createElement('figure');
+      const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
       item.innerHTML += `
         ${objectImgHTML}
-        <figcaption class="b-object-image-overlay__figcaption">
-          ${numberCopyright}
-          <div class="b-object-image-overlay__prevnext">
-            <button disabled class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous object" data-tracking-oic="previous object">
-              <svg aria-hidden="true" viewBox="0 0 100 100">
-                <path fill="none" d="M-1-1h582v402H-1z"/>
-                <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
-              </svg>
-            </button>
-            <button disabled class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next object" data-tracking-oic="next object">
-              <svg aria-hidden="true" viewBox="0 0 100 100">
-                <path fill="none" d="M-1-1h582v402H-1z"/>
-                <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
-              </svg>
-            </button>
-          </div>
-        </figcaption>
         <div class="b-object-image-overlay__details">
-          <div class="b-object-image-overlay__caption">
-            ${seed.querySelector('figcaption').textContent}
-            ${ctaScreen}
+          ${seed.querySelector('figcaption').textContent}
+          ${locationSite}
+          ${locationRoom}
+          <div class="b-object-image-overlay__more">
+            ${locationType}
+            ${objectLink}
           </div>
-          ${location}
-          ${ctaMobile}
+          <div class="b-object-image-overlay__footer">
+            <div class="b-object-image-overlay__copyright">
+              ${copyright}
+            </div>
+            <div class="b-object-image-overlay__buttons">
+              <div class="b-object-image-overlay__prevnext">
+                <button disabled class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous object" data-tracking-oic="previous object">
+                  <svg aria-hidden="true" viewBox="0 0 100 100">
+                    <path fill="none" d="M-1-1h582v402H-1z"/>
+                    <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button disabled class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next object" data-tracking-oic="next object">
+                  <svg aria-hidden="true" viewBox="0 0 100 100">
+                    <path fill="none" d="M-1-1h582v402H-1z"/>
+                    <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       `;
 
