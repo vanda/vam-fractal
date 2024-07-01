@@ -23,11 +23,15 @@ const oicInit = () => {
         ? `<div class="b-object-image-overlay__location-type">${data.locationType}</div>`
         : '';
       const locationSite = data && data.locationSite ? data.locationSite : null;
-      const locationRoom = data && data.locationRoom
-        ? data && data.visitUrl
-          ? `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">${data.locationRoom}</a>`
-          : data.locationRoom
-        : '';
+      const locationRoom = () => {
+        if (data && data.locationRoom) {
+          if (data.visitUrl) {
+            return `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">${data.locationRoom}</a>`;
+          }
+          return data.locationRoom;
+        }
+        return '';
+      };
       const objectImg = seed.querySelector('img');
       const objectImgHTML = objectImg
         ? `<img class="b-object-image-overlay__image"
@@ -42,8 +46,8 @@ const oicInit = () => {
         `
         : '<div class="s-lazyload--error"></div>';
       const objectUrl = seed.querySelector('a').getAttribute('href');
-      const objectLink = objectUrl.length ?
-        `<a tabindex="-1" class="b-object-image-overlay__cta u-btn u-btn--micro u-btn--outlined-inverse" href="${objectUrl}" data-tracking-oic="explore the object">More info</a>`
+      const objectLink = objectUrl.length
+        ? `<a tabindex="-1" class="b-object-image-overlay__cta u-btn u-btn--micro u-btn--outlined-inverse" href="${objectUrl}" data-tracking-oic="explore the object">More info</a>`
         : '';
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
@@ -52,7 +56,7 @@ const oicInit = () => {
         <div class="b-object-image-overlay__details">
           ${seed.querySelector('figcaption').textContent}
           ${locationSite}
-          ${locationRoom}
+          ${locationRoom()}
           <div class="b-object-image-overlay__more">
             ${locationType}
             ${objectLink}
@@ -104,7 +108,7 @@ const oicInit = () => {
       }
     };
 
-    oic.buttonInit = (rewind = false) => {
+    oic.buttonInit = () => {
       // need to disable all buttons and links on screen first then re-enable
       // buttons that are on screen
       oic.querySelectorAll('button').forEach((el) => el.setAttribute('disabled', true));
@@ -129,18 +133,6 @@ const oicInit = () => {
       }
 
       item.querySelectorAll('a').forEach((el) => el.removeAttribute('tabindex'));
-
-      // different cta for mobile and desktop which are both
-      // focusable without this step
-      if (window.innerWidth > 991) {
-        if (item.querySelector('.b-object-image-overlay__cta--mobile')) {
-          item.querySelector('.b-object-image-overlay__cta--mobile').setAttribute('tabindex', -1);
-          item.querySelector('.b-object-image-overlay__cta--screen').removeAttribute('tabindex');
-        }
-      } else if (item.querySelector('.b-object-image-overlay__cta--screen')) {
-        item.querySelector('.b-object-image-overlay__cta--screen').setAttribute('tabindex', -1);
-        item.querySelector('.b-object-image-overlay__cta--mobile').removeAttribute('tabindex');
-      }
 
       oic.focusable = [
         document.querySelector('.b-object-image-overlay__dismiss'),
