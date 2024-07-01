@@ -90,21 +90,6 @@
     }
   }
 
-  &__details {
-    @include base.typography-typeSetting(3, "regular");
-
-    @include mixins.breakpoints-bpMinMedium {
-      @include base.typography-typeSetting(4, "regular");
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      display: inline-flex;
-      flex-direction: column;
-      height: 100%;
-      justify-content: space-between;
-    }
-  }
-
   &__image {
     margin: auto;
     max-height: 380px;
@@ -124,26 +109,81 @@
     }
   }
 
-  &__location-type {
-    background-color: base.sitecolors-siteColor("vam-grey-2");
+  &__details {
+    @include base.typography-typeSetting(3);
+
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+    
+    @include mixins.breakpoints-bpMinMedium {
+      justify-content: flex-start;
+    }
   }
 
-  &__cta {
-  }
-
-  &__footer {
-    @include base.typography-typeSetting(2, "regular");
-
-    border-top: 1px solid base.sitecolors-siteColor("vam-grey-3");
+  &__more {
+    align-items: flex-end;
+    align-self: stretch;
     display: flex;
     justify-content: space-between;
 
     @include mixins.breakpoints-bpMinMedium {
-      flex-direction: column;
+      margin: 8px 0 4px;
     }
   }
 
-  &__prevnext {
+  &__location-type {
+    @include base.typography-typeSetting(2);
+    
+    background-color: base.sitecolors-siteColor("vam-grey-2");
+    border-radius: 2px;
+    padding: 2px 4px;
+  }
+  
+  &__cta {
+    @include base.typography-typeSetting(1);
+
+    border-radius: 2px;
+    border: 1px solid base.sitecolors-siteColor("vam-grey-2");
+    margin: 0;
+    padding: 4px 8px;
+  }
+
+  &__footer {
+    @include base.typography-typeSetting(1);
+
+    align-items: center;
+    align-self: stretch;
+    border-top: 1px solid base.sitecolors-siteColor("vam-grey-3");
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding-top: 8px;
+    
+    @include mixins.breakpoints-bpMinMedium {
+      align-items: flex-start;
+      flex-direction: column;
+      height: 100%;
+      padding-top: 12px;
+    }
+  }
+
+  &__copyright {
+    flex-grow: 1;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+    justify-content: flex-end;
+
+    @include mixins.breakpoints-bpMinMedium {
+      width: 100%;
+    }
   }
 
   &__prev,
@@ -154,7 +194,6 @@
     cursor: default;
     display: inline-flex;
     height: 30px;
-    margin: 10px 0 10px 10px;
     opacity: 0.4;
     width: 30px;
 
@@ -176,7 +215,6 @@
   }
 
   &__next {
-    margin-left: 10px;
     padding-left: 2.5px;
   }
 }
