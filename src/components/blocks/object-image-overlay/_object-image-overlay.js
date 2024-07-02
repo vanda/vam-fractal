@@ -65,30 +65,34 @@ const oicInit = () => {
       item.classList.add('b-object-image-overlay__item');
       item.innerHTML += `
         ${objectImgHTML}
-        <div class="b-object-image-overlay__details">
-          ${seed.querySelector('figcaption').textContent}
-          ${locationHTML()}
-          <div class="b-object-image-overlay__more">
-            ${locationType}
-            ${objectLink}
+        <div class="b-object-image-overlay__content">
+          <div class="b-object-image-overlay__details">
+            ${seed.querySelector('figcaption').textContent}
+            ${locationHTML()}
           </div>
-          <div class="b-object-image-overlay__footer">
-            <div class="b-object-image-overlay__copyright" itemprop="copyrightHolder">
-              ${copyright}
+          <div class="b-object-image-overlay__more">
+            <div class="b-object-image-overlay__onward">
+              ${locationType}
+              ${objectLink}
             </div>
-            <div class="b-object-image-overlay__buttons">
-              <button disabled class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous object" data-tracking-oic="previous object">
-                <svg aria-hidden="true" viewBox="0 0 100 100">
-                  <path fill="none" d="M-1-1h582v402H-1z"/>
-                  <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
-                </svg>
-              </button>
-              <button disabled class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next object" data-tracking-oic="next object">
-                <svg aria-hidden="true" viewBox="0 0 100 100">
-                  <path fill="none" d="M-1-1h582v402H-1z"/>
-                  <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
-                </svg>
-              </button>
+            <div class="b-object-image-overlay__footer">
+              <div class="b-object-image-overlay__copyright" itemprop="copyrightHolder">
+                ${copyright}
+              </div>
+              <div class="b-object-image-overlay__buttons">
+                <button disabled class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous object" data-tracking-oic="previous object">
+                  <svg aria-hidden="true" viewBox="0 0 100 100">
+                    <path fill="none" d="M-1-1h582v402H-1z"/>
+                    <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button disabled class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next object" data-tracking-oic="next object">
+                  <svg aria-hidden="true" viewBox="0 0 100 100">
+                    <path fill="none" d="M-1-1h582v402H-1z"/>
+                    <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
