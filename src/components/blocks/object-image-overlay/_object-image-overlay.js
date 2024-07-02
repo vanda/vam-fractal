@@ -16,45 +16,58 @@ const oicInit = () => {
       const data = seed.dataset.objectImageOverlay
         ? JSON.parse(seed.dataset.objectImageOverlay)
         : null;
-      const copyright = data && data.copyright ? data.copyright : '';
-      const locationType = data && data.locationType
-        ? `<div class="b-object-image-overlay__location-type">${data.locationType}</div>`
-        : '';
-      const locationSite = data && data.locationSite ? data.locationSite : null;
-      const locationRoom = () => {
-        if (data && data.locationRoom) {
-          if (data.visitUrl) {
-            return `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">${data.locationRoom}</a>`;
-          }
-          return data.locationRoom;
-        }
-        return '';
-      };
-      const objectImg = seed.querySelector('img');
-      const objectImgHTML = objectImg
-        ? `<img class="b-object-image-overlay__image"
-           itemprop="contentUrl"
-           alt="${objectImg.alt}"
-           sizes="(max-width: 991px) calc(100vw - 20px),
-                  (min-width: 992px) calc(70vw - 145px),
-                  (min-width: 1200px) 710px"
-           srcset="${objectImg.srcset}"
-           src="${objectImg.src}"
-           loading="lazy">
-        `
-        : '<div class="s-lazyload--error"></div>';
       const objectUrl = seed.querySelector('a').getAttribute('href');
       const objectLink = objectUrl.length
         ? `<a tabindex="-1" class="b-object-image-overlay__cta u-btn u-btn--micro u-btn--outlined-inverse" href="${objectUrl}" data-tracking-oic="explore the object">More info</a>`
         : '';
+      const objectImg = seed.querySelector('img');
+      const objectImgHTML = objectImg
+        ? `<img class="b-object-image-overlay__image"
+            itemprop="contentUrl"
+            alt="${objectImg.alt}"
+            sizes="(max-width: 991px) calc(100vw - 20px),
+                  (min-width: 992px) calc(70vw - 145px),
+                  (min-width: 1200px) 710px"
+            srcset="${objectImg.srcset}"
+            src="${objectImg.src}"
+            loading="lazy">
+        `
+        : '<div class="s-lazyload--error"></div>';
+      const copyright = data && data.copyright ? data.copyright : '';
+      const locationType = data && data.locationType
+        ? `<div class="b-object-image-overlay__location-type">${data.locationType}</div>`
+        : '';
+      const locationHTML = () => {
+        let html = data && data.locationSite
+          ? `<div class="b-object-image-overlay__location">
+              <svg aria-label="Object venue" role="graphics-symbol" class="b-object-image-overlay__location-icon">
+                <use xlink:href="../../build/svg/vam-sprite.svg#pin"></use>
+              </svg>
+              <div class="b-object-image-overlay__location-name">${data.locationSite}</div>
+            </div>`
+          : '';
+        if (data && data.locationRoom) {
+          let locationRoom = data.locationRoom;
+          if (data.visitUrl) {
+            locationRoom = `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">${locationRoom}</a>`;
+          }
+          html += `
+            <div class="b-object-image-overlay__location">
+              <svg aria-label="Object location" role="graphics-symbol" class="b-object-image-overlay__location-icon">
+                <use xlink:href="../../build/svg/vam-sprite.svg#signpost"></use>
+              </svg>
+              <div class="b-object-image-overlay__location-name">${locationRoom}</div>
+            </div>`;
+        }
+        return html;
+      };
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
       item.innerHTML += `
         ${objectImgHTML}
         <div class="b-object-image-overlay__details">
           ${seed.querySelector('figcaption').textContent}
-          ${locationSite}
-          ${locationRoom()}
+          ${locationHTML()}
           <div class="b-object-image-overlay__more">
             ${locationType}
             ${objectLink}

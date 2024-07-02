@@ -91,7 +91,6 @@
   }
 
   &__image {
-    margin: auto;
     max-height: 380px;
     max-width: 100%;
     object-fit: contain;
@@ -118,9 +117,29 @@
     flex-direction: column;
     gap: 8px;
     justify-content: space-between;
-    
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(4);
+    }
+
     @include mixins.breakpoints-bpMinMedium {
       justify-content: flex-start;
+    }
+  }
+
+  &__location {
+    align-items: flex-start;
+    display: flex;
+    gap: 4px;
+
+    &-icon {
+      height: 16px;
+      margin-top: 1px;
+      width: 16px;
+    }
+
+    &-name {
+      @include base.typography-typeSetting(2);
     }
   }
 
