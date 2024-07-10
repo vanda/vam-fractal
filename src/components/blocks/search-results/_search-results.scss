@@ -165,6 +165,7 @@
       @include mixins.breakpoints-bpMinSmall {
         min-height: 145px;
         width: 145px;
+        height:145px;
       }
 
       &-image {
