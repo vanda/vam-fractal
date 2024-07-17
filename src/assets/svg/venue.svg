@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon/venue</title>
-    <g id="icon/venue" stroke="currentColor" stroke-width="1" fill="currentColor" fill-rule="evenodd">
-        <path d="M44,41 L56,41 L56,81 L44,81 L44,41 Z M18,41 L30,41 L30,81 L18,81 L18,41 Z M72,41 L84,41 L84,81 L72,81 L72,41 Z M6,89 L95,89 L95,98 L6,98 L6,89 Z M6,35 L95,35 L95,40 L6,40 L6,35 Z M6,26 L95,26 L95,21.3293824 L50.9684211,3 L6,21.3293824 L6,26 Z" id="Combined-Shape" stroke="currentColor" stroke-width="3.35805113" fill="currentColor"></path>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M1 3H15V13H11V7.70117H5V13H1V3ZM10 11.5029H6V12.7529H10V11.5029Z" fill="currentColor"/>
 </svg>
