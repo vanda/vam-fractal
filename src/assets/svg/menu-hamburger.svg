@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="menu-hamburger" fill="currentColor" fill-rule="nonzero">
-            <path d="M0,7.5 C0,6.1192881 1.1158443,5 2.4963344,5 L45.5036656,5 C46.882353,5 48,6.1096621 48,7.5 C48,8.8807119 46.8841557,10 45.5036656,10 L2.4963344,10 C1.117647,10 0,8.8903379 0,7.5 Z M0,24.5 C0,23.1192881 1.1158443,22 2.4963344,22 L45.5036656,22 C46.882353,22 48,23.1096621 48,24.5 C48,25.8807119 46.8841557,27 45.5036656,27 L2.4963344,27 C1.117647,27 0,25.8903379 0,24.5 Z M0,41.5 C0,40.1192881 1.1158443,39 2.4963344,39 L45.5036656,39 C46.882353,39 48,40.1096621 48,41.5 C48,42.8807119 46.8841557,44 45.5036656,44 L2.4963344,44 C1.117647,44 0,42.8903379 0,41.5 Z"></path>
-        </g>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3334 4.66671H2.66675V3.33337H13.3334V4.66671ZM13.3334 8.66671H2.66675V7.33337H13.3334V8.66671ZM2.66675 12.6667H13.3334V11.3334H2.66675V12.6667Z" fill="currentColor"/>
 </svg>
