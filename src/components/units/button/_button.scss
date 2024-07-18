@@ -19,8 +19,7 @@
   text-shadow: none;
   transition: border 0.2s, background-color 0.2s, color 0.2s;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: color.scale(base.sitecolors-siteColor("primary-green"), $lightness: -10%);
     border-color: color.scale(base.sitecolors-siteColor("primary-green"), $lightness: -10%);
     text-decoration: none;
@@ -53,8 +52,7 @@
     border: 1px solid base.sitecolors-siteColor("vam-black");
     color: #fff;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
       border: 1px solid color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
     }
@@ -65,8 +63,7 @@
     border: 1px solid #fff;
     color: base.sitecolors-siteColor("vam-black");
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: color.scale(#fff, $lightness: -10%);
       border: 1px solid color.scale(#fff, $lightness: -10%);
     }
@@ -87,8 +84,7 @@
     border-color: base.sitecolors-siteColor("vam-grey-4");
     color: base.sitecolors-siteColor("vam-black");
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: color.scale(#fff, $lightness: -10%);
       border-color: base.sitecolors-siteColor("vam-grey-4");
     }
@@ -99,8 +95,7 @@
     border-color: #fff;
     color: #fff;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
       border-color: #fff;
     }
@@ -132,8 +127,7 @@
     color: base.sitecolors-siteColor("vam-black");
     padding: 8px 12px;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: base.sitecolors-siteColor("vam-grey-5");
     }
 
@@ -141,8 +135,7 @@
       background: base.sitecolors-siteColor("vam-grey-2");
       color: base.sitecolors-siteColor("vam-white");
 
-      &:hover,
-      &:focus {
+      &:hover {
         background: base.sitecolors-siteColor("vam-grey-1");
       }
     }
