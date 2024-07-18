@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="close" fill="currentColor">
-            <polygon points="50 39.2544694 10.7485167 0 0 10.7417269 39.2514833 49.9961963 1.0556662e-15 89.2506657 10.7485167 100 50 60.7455306 89.2514833 100 100 89.2430582 60.7485167 49.9885888 100 10.7341194 89.2438765 0 49.9923931 39.2544694"></polygon>
-        </g>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.11617 7.9998L2.55812 12.5579L3.44201 13.4417L8.00006 8.88369L12.5581 13.4417L13.442 12.5579L8.88393 7.9998L13.442 3.44174L12.5582 2.55786L8.00006 7.11592L3.442 2.55786L2.55811 3.44174L7.11617 7.9998Z" fill="currentColor"/>
 </svg>
