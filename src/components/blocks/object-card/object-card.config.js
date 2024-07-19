@@ -28,7 +28,7 @@ module.exports = {
   },
   variants: [
     {
-      label: 'EtC Search',
+      label: 'EtC',
       name: 'etc',
       context: {
         previewClass: 'fr-bg--dark',
