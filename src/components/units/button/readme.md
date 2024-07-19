@@ -1,4 +1,5 @@
 # Buttons
+Generally used for styling `<a>` link elements (as buttons), but can be applied to `<button>` elements as appropriate.
 
 ## Background
 

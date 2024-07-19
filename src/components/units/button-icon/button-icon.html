@@ -1,0 +1,19 @@
+{% if not custom_example %}
+
+<div class="fr-button-icon">
+
+  {% for icon in icons %}
+  <button class="u-btn-icon{% for m in modifiers %} u-btn-icon--{{ m }}{% endfor %} u-btn-icon--{{ icon }}" title="{{ label }}">
+    {{ label }}
+  </button>
+  {% endfor %}
+
+</div>
+
+{% else %}
+
+<button class="u-btn-icon fr-custom-icon-button-eg" title="Descriptive button label">
+  Descriptive button label
+</button>
+
+{% endif %}

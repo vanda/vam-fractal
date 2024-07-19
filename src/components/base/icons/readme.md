@@ -44,6 +44,45 @@ In order for Wordmarks to scale properly they need `preserveAspectRatio="xMinYMa
   ### Previewing the new icon
   The new icon should be viewable along with existing icons in the SVG sprite of a local build of vam-fractal at `build/svg/vam-sprite.svg`.
 
-## References
+## Using SVG Icons directly in CSS
+In order to reduce the need for including SVG markup, improving performance, maintainability and flexibility, the SVG Icons are made available to CSS by hard-coding a copy of each SVG Icon's symbol source into a CSS Custom Property in `base/icons/_icons.scss`, as a Data URI, which other styles can access from anywhere without further duplication. 
 
+Currently the copy process is manual (see *ToDo* comment below), and the source of the SVG symbol should be copied from its built sprite-sheet (`build/svg/vam-sprite.svg`) where it will have been optimised by the `svgo` plugin. 
+
+[See a simple useage example here](/components/detail/icons--css-icons)
+styled as follows:
+```css
+.fr-css-icon-example {
+  align-items: flex-start;
+  color: red;
+  display: flex;
+  gap: 4px;
+
+  &::before {
+    background-color: currentColor;
+    content: '';
+    flex: 0 0 auto;
+    height: 20px;
+    mask: var(--icon-svg-pin) no-repeat;
+    width: 20px;
+  }
+}
+```
+In order to allow for dynamic colouring of SVG Icons (which is not possible in the usual way for SVGs, as Data URIs in CSS), the Icon is implemnted as a **mask** on a pseudo-element. In this way the Icon can be coloured via the pseudo-element's background-color, which in turn inherits from it's parent's colour.
+
+Further examples of these in use can be seen in [Button Icon component](/components/detail/button-icon).
+
+CSS transformations can be used to minimise the need for superflous Icon styles. For e.g. a **point-right** SVG Icon can be achieved by rotating the **point-left** SVG Icon, without the need for an additional **point-right** SVG Icon.
+
+  ### Accessibility
+  A `title` attribute should be added to inform screenreader and visible users alike (via hover tooltip) of the Icon's intended meaning.
+
+  ### ToDo
+  Have Fractal write out these SVG Icon CSS Custom Properties automatically on adding new SVG Icon assets, as part of the build process.
+
+  As a further improvement, we aim to make the Icons directly accessible from the SVG sprite-sheet, via the symbols' fragment identifiers (e.g. `vam-sprite.svg#icon-name`), in the same way HTML is able to. This will require adding an extra clever step to the SVG build process to programatically include appropriate `view` & `use` tags into the sprite-sheet for each Icon symbol. 
+  https://stackoverflow.com/a/49338546
+
+## References
 - [SVG 'symbol' a good choice for icons](https://css-tricks.com/svg-symbol-good-choice-icons/)
+- [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)

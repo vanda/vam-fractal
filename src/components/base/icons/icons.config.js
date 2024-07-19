@@ -149,6 +149,13 @@ module.exports = {
           'wordmark-young'
         ]
       }
+    },
+    {
+      name: 'css-icons',
+      label: 'CSS Icon example',
+      context: {
+        css_icon_example: true
+      }
     }
   ]
 };
