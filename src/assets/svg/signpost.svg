@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="signpost" fill="currentColor" fill-rule="nonzero">
-            <path d="M8.10938 2.65202L9.35938 2.65186V3.65186H13.3633L14.7344 4.65186L13.3633 5.65186H9.35938V8.65186H12.3821L13.8282 9.65186L12.3821 10.6519H9.35938V13.4019H14.7754V14.6519H2.70508V13.4019H8.10938V7.65186H4.18438L2.73438 6.65186L4.18438 5.65186H8.10938V2.65202Z"/>
-        </g>
-    </g>
+<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.71875 2.74703L11.2813 2.74683V3.99683H16.2861L18 5.24683L16.2861 6.49683H11.2813V10.2468H15.0596L16.8673 11.4968L15.0596 12.7468H11.2813V16.1843H18.0513V17.7468H2.96338V16.1843H9.71875V8.99683H4.8125L3 7.74683L4.8125 6.49683H9.71875V2.74703Z" fill="currentColor"/>
 </svg>
