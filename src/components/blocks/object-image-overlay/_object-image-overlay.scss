@@ -88,6 +88,11 @@
       max-height: 800px;
       max-width: 1200px;
     }
+
+    > .s-imageload--error {
+      aspect-ratio: 1;
+      height: 60%;
+    }
   }
 
   &__figure {
