@@ -1,29 +1,44 @@
-<figure class="b-object-card{% for m in modifiers %} b-object-card--{{ m }}{% endfor %} {% if objectImageOverlayItem %} js-object-image-overlay-item{% endif %}"
-        {% if objectImageOverlayData %} data-object-image-overlay="{{ objectImageOverlayData | dump | escape }}"{% endif %}
-        itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<figure class="b-object-card{% for m in modifiers %} b-object-card--{{ m }}{% endfor %}
+  {% if objectImageOverlayItem %}js-object-image-overlay-item{% endif %}
+  {% if contentWarning %}b-object-card-warning{% endif %}"
+  {% if objectImageOverlayData %} data-object-image-overlay="{{ objectImageOverlayData | dump | escape }}"{% endif %}
+  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
   <link itemprop="url" href="{{image[960]}}">
-  <a class="b-object-card__anchor {% if contentWarning %}b-object-card__warning{% endif %}" href="{{ href }}">
-    <img class="b-object-card__image"
-         itemprop="contentUrl"
-         alt="{{ physicalDescription }}" 
-         loading="lazy"
-         sizes="(min-width: 1200px) calc(1200px - 340px),
-                (min-width: 992px) calc(34vw - 340px),
-                (min-width: 500px) calc(50vw - 36px),
-                calc(100vw - 24px)"
-         srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-         src="{{ image[320] }}">
+  <a class="b-object-card__anchor" href="{{ href }}">
+    <div class="b-object-card__img-pane">
+      <img class="b-object-card__img" itemprop="contentUrl"
+          alt="{{ physicalDescription }}" 
+          loading="lazy"
+          sizes="(min-width: 1200px) calc(1200px - 340px),
+                  (min-width: 992px) calc(34vw - 340px),
+                  (min-width: 500px) calc(50vw - 36px),
+                  calc(100vw - 24px)"
+          srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+          src="{{ image[320] }}">
+    </div>
     <figcaption>
-      {% for cs in captions %}
-        <div class="b-object-card__caption{% if cs.type == "sub" %} b-object-card__caption--sub{% endif %}{% if modifiers and 'etc' in modifiers and cs.icon %} b-object-card__caption--icon{% endif %}{% if modifiers and 'etc' in modifiers and cs.status %} b-object-card__caption--status{% endif %}">
-          {% if modifiers and 'etc' in modifiers and cs.icon %}
-            <svg aria-label="{{ cs.iconDefinition }}" role="graphics-symbol" class="b-object-card__caption-icon">
-              <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ cs.icon | safe }}"></use>
-            </svg>
-          {% endif %}
-          {{ cs.text | safe }}
-        </div>
+      <div class="b-object-card__caption">
+        {{ caption | safe }}
+      </div>
+      {% for cs in captionSub %}
+      <div class="b-object-card__subcaption">
+        {{ cs | safe }}
+      </div>
       {% endfor %}
+      {% if modifiers and 'etc' in modifiers and locationSite %}
+      <div class="b-object-card__location" title="Object location">
+        {{ locationSite }}
+      </div>
+      {% endif %}
     </figcaption>
   </a>
+  {% if modifiers and 'etc' in modifiers %}
+  <div class="b-object-card__footer">
+    {% if locationType %}
+    <div class="b-object-card__location-type">
+      {{ locationType }}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
 </figure>
