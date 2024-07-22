@@ -2,80 +2,21 @@
 @use "../../base";
 
 .b-object-card {
-  &__image {
-    height: auto;
-    margin: 0 0 8px;
-    max-height: 586px;
-    object-fit: cover;
-    width: 100%;
-  }
+  color: base.sitecolors-siteColor("vam-black");
 
-  &__warning {
-    min-height: 232px;
-    overflow: hidden;
-    position: relative;
-
-    &__banner {
-      align-items: center;
-      background-color: base.sitecolors-siteColor("vam-black");
-      color: base.sitecolors-siteColor("vam-white");
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      inset: 0;
-      justify-content: center;
-      opacity: 0;
-      padding: 20px;
-      position: absolute;
-      transition: opacity 0.4s ease;
-      z-index: 1;
-
-      &__text {
-        @include base.typography-typeSetting(0, "regular");
-
-        margin-bottom: 20px;
-        max-width: 224px;
-        text-align: center;
-      }
-
-      &__dismiss {
-        @include base.typography-typeSetting(1, "medium");
-
-        background-color: base.sitecolors-siteColor("vam-black");
-        border: 1px solid base.sitecolors-siteColor("vam-white");
-        border-radius: 2px;
-        padding: 4px 12px;
-      }
-    }
-
-    & > #{&}__banner {
-      opacity: 0.8;
-    }
-
-    &:hover > #{&}__banner,
-    &:focus > #{&}__banner {
-      opacity: 0.9;
-    }
-
-    & > .b-object-card__image {
-      filter: blur(10px);
-
-      & + figcaption {
-        filter: blur(10px);
-      }
-    }
+  &--etc {
+    border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-2");
+    color: base.sitecolors-siteColor("vam-white");
+    padding-bottom: 8px;
   }
 
   &__anchor {
-    border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
-    padding-bottom: 5px;
     display: block;
     overflow: hidden;
     position: relative;
 
-    .b-object-card--etc & {
-      border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-2");
-      padding-bottom: 3px;
+    &:focus {
+      @include mixins.focus-defaultFocus;
     }
 
     &::after {
@@ -88,68 +29,152 @@
       transition: opacity 0.1s;
     }
 
-    &:focus {
-      @include mixins.focus-defaultFocus;
-    }
-
-    &:hover::after,
-    &:focus::after {
+    &:hover::after {
       opacity: 0.3;
     }
   }
 
-  &__caption {
-    @include base.typography-typeSetting(2, "regular");
+  &__image {
+    height: auto;
+    margin: 0 0 8px;
+    max-height: 586px;
+    object-fit: cover;
+    width: 100%;
+  }
 
-    color: base.sitecolors-siteColor("vam-black");
-    display: block;
-    margin-bottom: 3px;
+  &-warning {
+    overflow: hidden;
+    position: relative;
+
+    &__banner {
+      align-items: center;
+      background-color: base.sitecolors-siteColor("vam-black");
+      color: base.sitecolors-siteColor("vam-white");
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      inset: 0;
+      justify-content: center;
+      opacity: 0;
+      padding: 20px;
+      position: absolute;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+
+      &-text {
+        @include base.typography-typeSetting(0, "regular");
+
+        max-width: 224px;
+        text-align: center;
+      }
+
+      &-dismiss {
+        @include base.typography-typeSetting(1, "medium");
+
+        background-color: base.sitecolors-siteColor("vam-black");
+        border: 1px solid base.sitecolors-siteColor("vam-white");
+        border-radius: 2px;
+        padding: 4px 12px;
+      }
+
+      &:focus > &-dismiss {
+        @include mixins.focus-defaultFocus;
+      }
+    }
+
+    & > #{&}__banner {
+      opacity: 0.8;
+    }
+
+    &:hover > #{&}__banner,
+    &:focus > #{&}__banner {
+      opacity: 0.9;
+    }
+
+    > *:not(#{&}__banner) {
+      filter: blur(10px);
+    }
+  }
+
+  &__caption {
+    display: none;
+    margin-bottom: 4px;
 
     @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(3);
+      @include base.typography-typeSetting(3, "light");
+
+      display: block;
     }
 
     .b-object-card--etc & {
       @include base.typography-typeSetting(3, "bold");
 
-      color: base.sitecolors-siteColor("vam-white");
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
       display: block;
-      margin-bottom: 4px;
+      display: -webkit-box;
+      line-clamp: 3;
       overflow: hidden;
-
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(4, "bold");
-      }
-
-      &--sub {
-        @include base.typography-typeSetting(2, "regular");
-
-        margin-bottom: 4px;
-
-        @include mixins.breakpoints-bpMinSmall {
-          @include base.typography-typeSetting(3);
-        }
-      }
-
-      &--icon{
-        align-items: center;
-        display: flex;
-        gap: 4px;
-        margin-bottom: 16px;
-        margin-top: 12px;
-      }
-
-      &-icon {
-        height: 16px;
-        width: 16px;
-      }
-
-      &--status {
-        background: base.sitecolors-siteColor("vam-grey-2");
-        display: inline-block;
-        margin-bottom: 0;
-        padding: 2px 4px;
-      }
     }
+  }
+
+  &__subcaption {
+    @include base.typography-typeSetting(3);
+
+    display: none;
+    margin-bottom: 2px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: block;
+    }
+
+    .b-object-card--etc & {
+      display: block;
+    }
+  }
+
+  &__location {
+    @include base.typography-typeSetting(2);
+
+    align-items: flex-start;
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+
+    &::before {
+      background-color: currentColor;
+      content: '';
+      flex: 0 0 auto;
+      height: 16px;
+      margin-top: 1px;
+      mask: var(--icon-svg-pin) no-repeat;
+      width: 16px;
+    }
+
+    &--room::before {
+      mask-image: var(--icon-svg-signpost);
+    }
+  }
+
+  &__subcaption + &__location {
+    margin-top: 8px;
+  }
+
+  &__location-type {
+    @include base.typography-typeSetting(2);
+    
+    background-color: base.sitecolors-siteColor("vam-grey-2");
+    border-radius: 2px;
+    color: base.sitecolors-siteColor("vam-white");
+    display: inline-block;
+    padding: 2px 5px 3px;
+  }
+
+  &__footer {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
   }
 }

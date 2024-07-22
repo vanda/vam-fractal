@@ -8,6 +8,10 @@
   margin-bottom: 40px;
   width: 100%;
 
+  @include mixins.breakpoints-bpMinMedium {
+    column-count: 3;
+  }
+
   &--etc {
     column-gap: 10px;
 
@@ -20,25 +24,9 @@
     }
   }
 
-  @include mixins.breakpoints-bpMinMedium {
-    column-count: 3;
-  }
-
   &__item {
     break-inside: avoid;
     margin-bottom: 30px;
     width: 100%;
-
-    .g-object-grid--etc & {
-      margin-bottom: 10px;
-
-      @include mixins.breakpoints-bpMinSmall {
-        margin-bottom: 15px;
-      }
-
-      @include mixins.breakpoints-bpMinMedium {
-        margin-bottom: 30px;
-      }
-    }
   }
 }
