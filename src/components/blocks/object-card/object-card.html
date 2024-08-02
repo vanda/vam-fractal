@@ -1,21 +1,21 @@
 <figure class="b-object-card{% for m in modifiers %} b-object-card--{{ m }}{% endfor %}
   {% if objectImageOverlayItem %}js-object-image-overlay-item{% endif %}
   {% if contentWarning %}b-object-card-warning{% endif %}"
-  {% if contentWarning %}role="mark" aria-details="object-card-uniqueID"{% endif %}
   {% if objectImageOverlayData %} data-object-image-overlay="{{ objectImageOverlayData | dump | escape }}"{% endif %}
   itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
   <link itemprop="url" href="{{image[960]}}">
   <a class="b-object-card__anchor" href="{{ href }}">
-    <img class="b-object-card__image"
-         itemprop="contentUrl"
-         alt="{{ physicalDescription }}" 
-         loading="lazy"
-         sizes="(min-width: 1200px) calc(1200px - 340px),
-                (min-width: 992px) calc(34vw - 340px),
-                (min-width: 500px) calc(50vw - 36px),
-                calc(100vw - 24px)"
-         srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
-         src="{{ image[320] }}">
+    <div class="b-object-card__image">
+      <img itemprop="contentUrl"
+          alt="{{ physicalDescription }}" 
+          loading="lazy"
+          sizes="(min-width: 1200px) calc(1200px - 340px),
+                  (min-width: 992px) calc(34vw - 340px),
+                  (min-width: 500px) calc(50vw - 36px),
+                  calc(100vw - 24px)"
+          srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+          src="{{ image[320] }}">
+    </div>
     <figcaption>
       <div class="b-object-card__caption">
         {{ caption | safe }}
