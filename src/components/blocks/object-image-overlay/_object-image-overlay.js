@@ -236,7 +236,7 @@ const oicInit = () => {
     };
 
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.js-object-image-overlay-item')) {
+      if (e.target.closest('.js-object-image-overlay-item > a')) {
         e.preventDefault();
 
         const seed = e.target.closest('.js-object-image-overlay-item');
