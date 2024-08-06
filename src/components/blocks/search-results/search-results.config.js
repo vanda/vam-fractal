@@ -16,7 +16,7 @@ module.exports = {
       {
         image: 'https://framemark.vam.ac.uk/collections/2023NP7712',
         link: 'https://collections.vam.ac.uk/item/O1274909/',
-        caption: 'Isella, Simplon Pass',
+        caption: 'Isella Simplon Pass, and more words to show how a long title is handled at various widths',
         captionSub: ['Seide', 'ca. 1800-1869'],
         locationSite: 'V&A South Kensington',
         locationRoom: 'Prints & Drawings Study Room, level D',
