@@ -1,7 +1,7 @@
 {% for item in items %}
 <div class="b-search-results-row {% if item.offensive %}b-object-card-warning{% endif %}">
-  <a class="b-search-results-row__image" href="{{ item.link }}">
-    <img alt=""
+  <a class="b-search-results-row__img-pane" href="{{ item.link }}">
+    <img class="b-search-results-row__img" alt=""
       loading="lazy"
       src="{{ item.image }}/full/320,/0/default.jpg">
   </a>

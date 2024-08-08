@@ -7,26 +7,34 @@
   margin-bottom: 10px;
   text-wrap: pretty;
 
-  &__image {
+  &:hover {
+    background: base.sitecolors-siteColor("vam-grey-1");
+  }
+
+  &__img-pane {
     background: base.sitecolors-siteColor("vam-grey-2");
     display: flex;
     flex: 0 0 130px;
-
-    > img {
-      height: 100%;
-      max-height: 130px;
-      margin: auto;
-      object-fit: contain;
-      width: 100%;
-    }
+    overflow: hidden;
   }
 
-  &:hover {
+  &:hover &__img-pane {
     background: base.sitecolors-siteColor("vam-grey-1");
+  }
 
-    .b-search-results-row__image {
-      background: base.sitecolors-siteColor("vam-grey-1");
-    }
+  &__img {
+    height: 100%;
+    max-height: 130px;
+    margin: auto;
+    object-fit: contain;
+    transform: scale(1);
+    transition: 0.25s ease-out;
+    width: 100%;
+  }
+
+  &:hover &__img,
+  &__img-pane:focus &__img {
+    transform: scale(1.1);
   }
 
   &__content {
