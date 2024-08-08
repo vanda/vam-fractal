@@ -23,7 +23,7 @@ const oicInit = () => {
         : '';
       const objectImg = seed.querySelector('img');
       const objectImgHTML = objectImg
-        ? `<img
+        ? `<img class="b-object-image-overlay__img"
             itemprop="contentUrl"
             alt="${objectImg.alt}"
             loading="lazy"
@@ -56,7 +56,7 @@ const oicInit = () => {
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
       item.innerHTML += `
-        <div class="b-object-image-overlay__image">
+        <div class="b-object-image-overlay__img-pane">
           ${objectImgHTML}
         </div>
         <div class="b-object-image-overlay__content" id="object-image-content-${index}">
