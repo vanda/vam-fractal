@@ -6,12 +6,12 @@ export default (() => {
     Array.from(card.querySelectorAll('a, button'), (el) => el.setAttribute('tabindex', '-1'));
     card.innerHTML = `
     <button class="b-object-card-warning__banner" aria-expanded="false" aria-controls="${cardId}">
-    <div class="b-object-card-warning__banner-text">
-    This object, or the text that describes it, is deemed offensive and discriminatory. We are committed to improving our records, and work is ongoing.
-    </div>
-    <div class="b-object-card-warning__banner-dismiss">
-    View record
-    </div>
+      <div class="b-object-card-warning__banner-text">
+        This object, or the text that describes it, is deemed offensive and discriminatory. We are committed to improving our records, and work is ongoing.
+      </div>
+      <div class="b-object-card-warning__banner-dismiss">
+        View record
+      </div>
     </button>
     ${card.innerHTML}
     `;
