@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="14px" height="12px" viewBox="0 0 14 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="tick-mark" transform="translate(-181.000000, -85.000000)" stroke="currentColor" stroke-width="2">
-            <g id="Group" transform="translate(0.000000, 81.000000)">
-                <polyline id="Path-3" points="182 10.7162271 185.207913 14 194 5"></polyline>
-            </g>
-        </g>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.98231 11.1511L12.1297 3.63867L13.1608 4.34521L7.28325 12.9234L2.68359 9.54363L3.42375 8.53632L6.98231 11.1511Z" fill="currentColor"/>
 </svg>
