@@ -1,21 +1,23 @@
-<ul class='b-icon-list{% if modifier %} b-icon-list--{{ modifier }}{% endif %}'>
-  <li class="b-icon-list__item b-icon-list__item--no-icon">
-    <p class="b-icon-list__item__heading">
-      V&A South Kensington
-    </p>
-  </li>
-  {% for item in items %}
-  <li class='b-icon-list__item'>
-    <svg aria-label="{{ item.label }}" role="graphics-symbol" class="b-icon-list__item__icon">
-      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#{{ item.icon }}"></use>
-    </svg>
-    <div class="b-icon-list__item__content">
-      <p class="b-icon-list__item__heading">{{ item.title }}</p>
-      <p>{{ item.body | safe }}</p>
-      {% if item.link %}
-      <p><a class="u-link u-link--arrowed" href="#">{{ item.link }}</a></p>
-      {% endif %}
-    </div>
-  </li>
-  {% endfor %}
-</ul>
+<div class="b-icon-list{% if modifier %} b-icon-list--{{ modifier }}{% endif %}">
+  <h3 class="b-icon-list__heading">Optional heading for list</h3>
+  <ul class="b-icon-list__list">
+    {% for item in items %}
+    <li class='b-icon-list__item{% if htmlClass %} b-icon-list__item--{{ htmlClass }}{% endif %} b-icon-list__icon b-icon-list__icon--{{ item.icon }}' title='{{ item.label }}'>
+      <div class="b-icon-list__content">
+        {% if item.title %}
+          <h4 class="b-icon-list__item-heading{% if htmlClass %} b-icon-list__item-heading--{{ htmlClass }}{% endif %}">{{ item.title }}</h4>
+        {% endif %}
+        {% if item.body %}
+          <p class="b-icon-list__item-text{% if htmlClass %} b-icon-list__item-text--{{ htmlClass }}{% endif %}">{{ item.body | safe }}</p>
+        {% endif %}
+        {% if item.address %}
+          <address class="b-icon-list__item-address{% if htmlClass %} b-icon-list__item-address--{{ htmlClass }}{% endif %}">{{ item.address | safe }}</address>
+        {% endif %}
+        {% if item.link %}
+        <p class="b-icon-list__item-text"><a class="u-link u-link--arrowed" href="#">{{ item.link }}</a></p>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
