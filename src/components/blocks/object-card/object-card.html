@@ -9,10 +9,10 @@
       <img class="b-object-card__img" itemprop="contentUrl"
           alt="{{ physicalDescription }}" 
           loading="lazy"
-          sizes="(min-width: 1200px) calc(1200px - 340px),
-                  (min-width: 992px) calc(34vw - 340px),
-                  (min-width: 500px) calc(50vw - 36px),
-                  calc(100vw - 24px)"
+          sizes="(min-width: 1200px) 340px,
+                  (min-width: 992px) calc((100vw - 180px) / 3),
+                  (min-width: 768px) calc((100vw - 160px) / 2),
+                  calc((100vw - 70px) / 2)"
           srcset="{% for k, img in image %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
           src="{{ image[320] }}">
     </div>
