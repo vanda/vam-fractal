@@ -249,7 +249,7 @@ button,
 [tabindex="0"],
 input,
 select {
-  &:focus {
+  &:focus-visible {
     @include focus.defaultFocus;
   }
 }
