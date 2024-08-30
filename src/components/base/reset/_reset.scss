@@ -246,9 +246,10 @@ strong {
 
 a,
 button,
-[tabindex="0"],
 input,
-select {
+select,
+summary,
+[tabindex="0"] {
   &:focus-visible {
     @include focus.defaultFocus;
   }
