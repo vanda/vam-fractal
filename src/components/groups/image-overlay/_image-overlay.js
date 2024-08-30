@@ -69,7 +69,7 @@ const initObjectOverlay = () => {
     });
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 27) {
+      if (e.key === 'Escape') {
         if (!document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')) {
           closeObjectOverlay();
         } else {
@@ -77,9 +77,8 @@ const initObjectOverlay = () => {
         }
       }
 
-      if (
-        !document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')
-        && e.key === 9
+      if (!document.querySelector('.b-image-overlay').classList.contains('b-image-overlay--unfocus')
+        && e.key === 'Tab'
       ) {
         // stackoverflow answer 60031728
         const focusable = Array.from(document.querySelector('.b-image-overlay__content').querySelectorAll('button')).filter(

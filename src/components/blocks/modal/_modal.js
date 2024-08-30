@@ -25,7 +25,7 @@ Array.from(modals, (modal) => {
   };
 
   const focusHandler = (e) => {
-    if (e.key === 9) {
+    if (e.key === 'Tab') {
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       const shift = e.shiftKey;
