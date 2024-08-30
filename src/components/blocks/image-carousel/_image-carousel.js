@@ -177,13 +177,13 @@ if (imageCarousel && images.length) {
   document.addEventListener('keydown', (e) => {
     if (document.querySelector('.b-image-overlay__container--active')
       && document.activeElement !== osd.canvas) {
-      if (e.key === 37) {
+      if (e.key === 'ArrowLeft') {
         const index = parseInt(imageCarousel.dataset.index, 10) - 1;
         if (index >= 0) {
           changeIndex(index);
         }
       }
-      if (e.key === 39) {
+      if (e.key === 'ArrowRight') {
         const index = parseInt(imageCarousel.dataset.index, 10) + 1;
         if (index < images.length) {
           changeIndex(index);
