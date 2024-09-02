@@ -141,25 +141,36 @@
     align-items: center;
     color: base.sitecolors-siteColor("vam-white");
     display: flex;
+    gap: 6px;
     padding: 10px 10px 10px 0;
 
     &:hover,
     &:focus {
       cursor: pointer;
-      text-decoration: underline;
+
+      .b-object-details__cell-concealer-text {
+        text-decoration: underline;
+      }
     }
-  }
 
-  &__cell-concealer-text {
-    margin-right: 6px;
-  }
+    &::after {
+      @include base.typography-fontSize(3);
 
-  &__cell-concealer-svg {
-    background-color: base.themecolors-themeColor("silent-green");
-    border-radius: 100%;
-    color: base.sitecolors-siteColor("vam-black");
-    height: 14px;
-    padding: 3px;
-    width: 14px;
+      align-items: center;
+      background-color: base.themecolors-themeColor("silent-green");
+      border-radius: 100%;
+      color: base.sitecolors-siteColor("vam-black");
+      content: "\002B";
+      display: inline-flex;
+      height: 14px;
+      justify-content: center;
+      line-height: 1;
+      padding: 2px 3px 3px;
+      width: 14px;
+    }
+
+    &--minus::after {
+      content: "\2212";
+    }
   }
 }

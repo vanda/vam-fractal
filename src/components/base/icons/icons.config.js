@@ -34,6 +34,7 @@ module.exports = {
       'signpost',
       'map',
       'pin',
+      'pin-outline',
       'on-display',
       'price',
       'label',
@@ -74,11 +75,20 @@ module.exports = {
       'tick',
       'delivery',
       'tick-mark',
+      'loud',
+      'lower-subdued-light',
+      'natural-light',
       'person-one',
+      'person-one-outline',
       'person-two',
+      'person-two-outline',
+      'crowded-event',
+      'strong-smells',
+      'induction-loop',
       'padlock',
       'eye-striked',
       'eye',
+      'attention',
       'wordmark-academy',
       'wordmark-americas-foundation',
       'wordmark-directors-circle',
@@ -138,6 +148,13 @@ module.exports = {
           'wordmark-wedgwood',
           'wordmark-young'
         ]
+      }
+    },
+    {
+      name: 'css-icons',
+      label: 'CSS Icon example',
+      context: {
+        css_icon_example: true
       }
     }
   ]

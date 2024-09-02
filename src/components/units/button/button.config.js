@@ -80,6 +80,17 @@ module.exports = {
         text: 'Stop button',
         modifiers: ['stop', 'outlined-inverse', 'micro']
       }
+    },
+    {
+      name: 'pill',
+      context: {
+        modifiers: ['pill'],
+        variants: [
+          ['pill', 'pill-close'],
+          ['pill', 'pill-dark'],
+          ['pill', 'pill-dark', 'pill-close']
+        ]
+      }
     }
   ]
 };

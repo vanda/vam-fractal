@@ -1,3 +1,5 @@
+{% if not css_icon_example %}
+
 <div class="fr-icon-group">
   {% for icon in icons %}
   <div class="fr-icon-box">
@@ -8,3 +10,11 @@
   </div>
   {% endfor %}
 </div>
+
+{% else %}
+
+<div class="fr-css-icon-example" title="Description of Icon's meaning">
+  Look, no SVG element! All done with CSS.
+</div>
+
+{% endif %}

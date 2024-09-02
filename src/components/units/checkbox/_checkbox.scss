@@ -30,11 +30,13 @@
     position: absolute;
   }
   
-  &:checked::before {
+  &:checked::before,
+  &[aria-checked="true"]::before {
     border-color: var(--input-background, #{base.sitecolors-siteColor("vam-white")});
   }
   
-  &:checked::after {
+  &:checked::after,
+  &[aria-checked="true"]::after {
     content: "";
   }
 

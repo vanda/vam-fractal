@@ -2,6 +2,7 @@
 @use "../typography/typography";
 @use "../spacing/spacing";
 @use "../../mixins/element-visibility/element-visibility";
+@use "../../mixins/focus/focus";
 
 // http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 html,
@@ -241,4 +242,14 @@ strong {
 
 .s-hidden {
   @include element-visibility.hidden-all;
+}
+
+a,
+button,
+[tabindex="0"],
+input,
+select {
+  &:focus {
+    @include focus.defaultFocus;
+  }
 }

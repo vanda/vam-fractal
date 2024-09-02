@@ -116,7 +116,7 @@ window.addEventListener('keydown', (e) => {
 
   if (activeModal) {
     // https://stackoverflow.com/a/60031728 w/ modifications
-    if (e.key === 9) {
+    if (e.key === 'Tab') {
       const focusable = activeContent.querySelectorAll(`
         .b-image-overlay-license-modal__close-container,
         .b-image-overlay-license-modal__title-section a,
@@ -143,11 +143,11 @@ window.addEventListener('keydown', (e) => {
     }
   }
 
-  if (e.key === 13 && document.activeElement.classList.contains('b-image-overlay-license-modal__contact-modal-open')) {
+  if (e.key === 'Enter' && document.activeElement.classList.contains('b-image-overlay-license-modal__contact-modal-open')) {
     document.activeElement.click();
   }
 
-  if (activeModal && e.key === 27) {
+  if (activeModal && e.key === 'Escape') {
     modal.classList.remove('b-modal--active');
     modal.dispatchEvent(new CustomEvent('jsModalClosed', { bubbles: true }));
     e.preventDefault();
