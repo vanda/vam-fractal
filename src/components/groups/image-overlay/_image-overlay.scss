@@ -1,10 +1,6 @@
 @use "../../mixins";
 @use "../../base";
 
-.b-modal__description-license-contact:focus {
-  @include mixins.focus-insetFocus;
-}
-
 .b-image-overlay {
   &__preview {
     cursor: pointer;

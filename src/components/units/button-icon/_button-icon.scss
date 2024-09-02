@@ -24,6 +24,10 @@
     --btn-color: var(--btn-light-color);
     --btn-border: var(--btn-light-border);
     --btn-bg-hover: var(--btn-light-bg-hover);
+
+    &:focus-visible {
+      @include mixins.focus-inverseFocus;
+    }
   }
 }
 
@@ -50,10 +54,6 @@
     mask: var(--btn-icon) no-repeat;
     transform: var(--btn-icon-transform);
     width: var(--btn-icon-size);
-  }
-
-  &:focus {
-    @include mixins.focus-defaultFocus;
   }
 
   &:hover,
@@ -84,6 +84,10 @@
     --btn-color: var(--btn-light-color);
     --btn-border: var(--btn-light-border);
     --btn-bg-hover: var(--btn-light-bg-hover);
+
+    &:focus-visible {
+      @include mixins.focus-inverseFocus;
+    }
   }
 
   // specific preset icon types follow

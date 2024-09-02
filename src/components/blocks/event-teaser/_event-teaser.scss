@@ -28,7 +28,7 @@
     position: relative;
 
     &:hover h2,
-    &:focus h2 {
+    &:focus-visible h2 {
       text-decoration: underline;
     }
   }
@@ -61,7 +61,7 @@
       z-index: 0;
 
       .b-event-teaser__link:hover &,
-      .b-event-teaser__link:focus & {
+      .b-event-teaser__link:focus-visible & {
         opacity: 1;
       }
     }
@@ -135,13 +135,13 @@
       }
 
       .b-event-teaser__link:hover &,
-      .b-event-teaser__link:focus & {
+      .b-event-teaser__link:focus-visible & {
         background-color: color.scale(#fff, $lightness: -10%);
         border-color: base.sitecolors-siteColor("vam-grey-4");
       }
 
       .b-event-teaser--dark .b-event-teaser__link:hover &,
-      .b-event-teaser--dark .b-event-teaser__link:focus & {
+      .b-event-teaser--dark .b-event-teaser__link:focus-visible & {
         background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
         border-color: #fff;
       }

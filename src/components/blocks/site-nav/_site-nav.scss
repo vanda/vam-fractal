@@ -286,10 +286,13 @@ $nav-breakpoints: (
       display: none;
     }
 
-    svg {
+    > svg {
       height: 18px;
-      margin: 9px auto;
       width: 18px;
+    }
+
+    > #{&}__icon--hamburger {
+      margin: 9px auto;
     }
 
     &__icon--close {
@@ -299,7 +302,6 @@ $nav-breakpoints: (
     .b-site-nav--open & {
       background: transparent;
       border: none;
-      box-shadow: none;
       color: base.sitecolors-siteColor("vam-white");
     }
 
@@ -309,10 +311,6 @@ $nav-breakpoints: (
 
     .b-site-nav--open &__icon--close {
       display: block;
-    }
-
-    .b-site-nav__mobile-toggle:focus &__icon--close {
-      @include mixins.focus-defaultFocus;
     }
   }
 

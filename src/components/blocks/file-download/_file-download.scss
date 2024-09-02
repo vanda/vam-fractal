@@ -63,7 +63,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     & .b-file-download__icon-container {
       color: #50e3c2; // not in _site-color.scss
     }

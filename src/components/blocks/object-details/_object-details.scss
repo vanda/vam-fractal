@@ -145,7 +145,7 @@
     padding: 10px 10px 10px 0;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       cursor: pointer;
 
       .b-object-details__cell-concealer-text {

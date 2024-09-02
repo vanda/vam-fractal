@@ -108,18 +108,12 @@
     position: relative;
     transition: background-color 0.3s;
 
-    &:focus .u-btn {
-      @include mixins.focus-defaultFocus;
-    }
-
-    &:focus .b-icon-badge {
-      @include mixins.focus-defaultFocus;
-    }
-
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.6);
-      box-shadow: none;
+    }
+
+    &:focus-visible {
+      @include mixins.focus-insetFocus;
     }
 
     .b-promo--white & {
