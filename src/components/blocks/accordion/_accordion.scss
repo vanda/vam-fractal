@@ -36,10 +36,6 @@
       border-top: 1px solid base.sitecolors-siteColor("vam-black");
     }
 
-    &:focus {
-      @include mixins.focus-defaultFocus;
-    }
-
     /* webkit doesn't yet support the list-style rule above */
     &::-webkit-details-marker {
       display: none;
