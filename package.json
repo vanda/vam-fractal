@@ -9,8 +9,6 @@
   },
   "bugs": "https://github.com/vanda/vam-fractal/issues",
   "dependencies": {
-    "@frctl/fractal": "^1.5.14",
-    "@frctl/nunjucks": "^2.0.15",
     "browser-cookies": "^1.2.0",
     "clamp-js": "^0.7.0",
     "openseadragon": "^3.x",
@@ -29,6 +27,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "^7.19.1",
+    "@frctl/fractal": "^1.5.14",
+    "@frctl/nunjucks": "^2.0.15",
     "concurrently": "^8.0.1",
     "css-loader": "^6.7.1",
     "eslint": "^8.27.0",
