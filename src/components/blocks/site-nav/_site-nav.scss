@@ -380,37 +380,6 @@ $nav-breakpoints: (
     }
   }
 
-  &__core__overflowitems {
-    display: none;
-    font-size: 15px;
-    left: -20px;
-    list-style-type: none;
-    margin: 0;
-    min-width: 175px;
-    position: absolute;
-    text-align: left;
-    top: 32px;
-
-    .active & {
-      display: block;
-    }
-
-    a {
-      border: none;
-      display: block;
-      padding: 0;
-
-      &::after {
-        content: "";
-        display: none;
-      }
-    }
-
-    @include bpMinNav("large") {
-      display: none;
-    }
-  }
-
   &__core__item {
     color: base.sitecolors-siteColor("vam-white");
     display: block;
@@ -446,6 +415,12 @@ $nav-breakpoints: (
 
       &.active {
         border-bottom: 2px solid base.sitecolors-siteColor("vam-white");
+      }
+
+      &:focus-visible {
+        @include mixins.focus-inlineFocus;
+
+        text-shadow: none;
       }
     }
 
@@ -505,14 +480,22 @@ $nav-breakpoints: (
     }
   }
 
-  &__core__item__icon {
-    height: 18px;
-    left: -34px;
+  &__core__overflowitems {
+    display: none;
+    font-size: 15px;
+    left: -20px;
+    list-style-type: none;
+    margin: 0;
+    min-width: 175px;
     position: absolute;
-    top: 5px;
-    width: 18px;
+    text-align: left;
+    top: 32px;
 
-    @include bpMinNav("small") {
+    .active & {
+      display: block;
+    }
+
+    @include bpMinNav("large") {
       display: none;
     }
   }
@@ -525,6 +508,38 @@ $nav-breakpoints: (
       &--learning {
         display: none;
       }
+    }
+
+    /* stylelint-disable no-descending-specificity */
+    > a {
+      border: none;
+      display: block;
+      padding: 0;
+
+      &::after {
+        content: "";
+        display: none;
+      }
+
+      &:focus-visible {
+        @include mixins.focus-inlineFocus;
+
+        text-shadow: none;
+      }
+    }
+    /* stylelint-enable no-descending-specificity */
+  }
+
+  &__core__item__icon {
+    color: base.sitecolors-siteColor("vam-white");
+    height: 18px;
+    left: -34px;
+    position: absolute;
+    top: 5px;
+    width: 18px;
+
+    @include bpMinNav("small") {
+      display: none;
     }
   }
 
