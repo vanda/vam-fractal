@@ -29,6 +29,10 @@
     column-gap: 8px;
     display: flex;
     margin-bottom: 12px;
+
+    &--spaced {
+      margin-bottom: 20px;
+    }
   }
 
   &__content {
@@ -38,12 +42,36 @@
   &__item-heading {
     @include base.typography-typeSetting(3, "bold");
     @include base.typography-lineheight(3);
+
+    &--spaced {
+      @include base.typography-typeSetting(4, "bold");
+
+      margin-bottom: 10px;
+    }
+  }
+
+  &__item-address {
+    @include base.typography-typeSetting(3, "regular");
+
+    margin-bottom: 0;
+
+    &--spaced {
+      @include base.typography-typeSetting(2, "regular");
+
+      margin-bottom: 10px;
+    }
   }
 
   &__item-text {
     @include base.typography-typeSetting(3, "regular");
 
     margin-bottom: 0;
+
+    &--spaced {
+      @include base.typography-typeSetting(2);
+
+      margin-bottom: 5px;
+    }
   }
 
   &__icon {

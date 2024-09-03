@@ -1,14 +1,17 @@
 <div class="b-icon-list{% if modifier %} b-icon-list--{{ modifier }}{% endif %}">
-  <h3 class="b-icon-list__heading">V&A South Kensington</h3>
+  <h3 class="b-icon-list__heading">Optional heading for list</h3>
   <ul class="b-icon-list__list">
     {% for item in items %}
-    <li class='b-icon-list__item b-icon-list__icon b-icon-list__icon--{{ item.icon }}'>
+    <li class='b-icon-list__item{% if htmlClass %} b-icon-list__item--{{ htmlClass }}{% endif %} b-icon-list__icon b-icon-list__icon--{{ item.icon }}'>
       <div class="b-icon-list__content">
         {% if item.title %}
-          <h4 class="b-icon-list__item-heading">{{ item.title }}</h4>
+          <h4 class="b-icon-list__item-heading{% if htmlClass %} b-icon-list__item-heading--{{ htmlClass }}{% endif %}">{{ item.title }}</h4>
         {% endif %}
         {% if item.body %}
-          <p class="b-icon-list__item-text">{{ item.body | safe }}</p>
+          <p class="b-icon-list__item-text{% if htmlClass %} b-icon-list__item-text--{{ htmlClass }}{% endif %}">{{ item.body | safe }}</p>
+        {% endif %}
+        {% if item.address %}
+          <address class="b-icon-list__item-address{% if htmlClass %} b-icon-list__item-address--{{ htmlClass }}{% endif %}">{{ item.address | safe }}</address>
         {% endif %}
         {% if item.link %}
         <p class="b-icon-list__item-text"><a class="u-link u-link--arrowed" href="#">{{ item.link }}</a></p>

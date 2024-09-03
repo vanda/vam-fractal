@@ -12,7 +12,8 @@ module.exports = {
       {
         icon: 'pin',
         title: 'Victoria and Albert Museum',
-        body: 'Cromwell Road<br />London, SW7 2RL',
+        address: 'Cromwell Road<br />London, SW7 2RL',
+        body: '',
         label: 'Venue location'
       },
       {
@@ -119,7 +120,43 @@ module.exports = {
       label: 'On dark',
       context: {
         previewClass: 'fr-bg--dark',
-        modifier: 'dark'
+        modifier: ['dark']
+      }
+    },
+    {
+      name: 'spaced',
+      label: 'Extra Spacing',
+      context: {
+        items: [
+          {
+            icon: 'pin',
+            title: 'Victoria and Albert Museum',
+            address: 'Cromwell Road<br />London, SW7 2RL',
+            body: '',
+            label: 'Venue location'
+          },
+          {
+            icon: 'clock',
+            title: 'Opening times',
+            body: 'Daily: <time datetime="10:00–17:45" aria-label="10:00 to 17:45">10.00 – 17.45</time>.<br />Friday: <time datetime="10:00-22:00" aria-label="10:00 to 22:00">10.00 – 22.00</time>.',
+            label: 'Opening times'
+          },
+          {
+            icon: 'ticket',
+            title: 'Admission is free',
+            body: 'Some exhibitions and events carry a separate charge',
+            link: 'Members visit free – join now',
+            label: 'Admission fee'
+          },
+          {
+            icon: 'signpost',
+            title: 'Map of V&A South Kensington',
+            body: '',
+            link: 'Plan your visit with our interactive map',
+            label: 'Exhibition or event location'
+          }
+        ],
+        htmlClass: ['spaced']
       }
     }
   ]
