@@ -3,10 +3,7 @@
 
 .b-collection-card {
   &__anchor {
-    &:focus {
-      box-shadow: none;
-      outline: 0;
-    }
+    display: block;
   }
 
   &__media {
@@ -39,12 +36,8 @@
     transition: opacity 200ms;
     z-index: 1;
 
-    .b-collection-card__anchor:focus & {
-      @include mixins.focus-defaultFocus;
-    }
-
     .b-collection-card__anchor:hover &,
-    .b-collection-card__anchor:focus & {
+    .b-collection-card__anchor:focus-visible & {
       opacity: 1;
     }
   }
