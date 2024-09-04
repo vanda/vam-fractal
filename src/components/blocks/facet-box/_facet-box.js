@@ -496,7 +496,7 @@ const focusHandler = (e) => {
     window.removeEventListener('keydown', focusHandler);
   }
 
-  if (e.keyCode === 9) {
+  if (e.key === 'Tab') {
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     const shift = e.shiftKey;

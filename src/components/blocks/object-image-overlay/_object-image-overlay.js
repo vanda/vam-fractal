@@ -262,7 +262,7 @@ const oicInit = () => {
             /* eslint-disable no-use-before-define */
             closeModal();
             /* eslint-enable no-use-before-define */
-          } else if (e3.keyCode === 9) {
+          } else if (e3.key === 'Tab') {
             const first = oic.focusable[0];
             const last = oic.focusable[oic.focusable.length - 1];
             const shift = e3.shiftKey;
