@@ -1,31 +1,26 @@
-<button class="u-btn u-btn--micro b-image-overlay-license-modal__open-button b-image-overlay-license-modal__download-button">
+<button class="u-btn u-btn--micro b-image-overlay-license-modal__download-button js-image-overlay-license-modal-activate"
+	aria-haspopup="dialog" aria-controls="image-overlay-license-modal-download">
 	Download image
 </button>
 
-<!-- <div class="b-image-overlay-license-modal__contact-button">
-	<button href="#" class="u-btn u-btn--micro">
-		License image
-	</button>
-</div>
- -->
-
 <div class="b-image-overlay-license-modal__image-modal b-modal js-modal" data-not-on-load="true">
-    <section class="b-modal__content-license b-image-overlay-license-modal__modal-content b-image-overlay-license-modal__modal-contact-content">
-    <button class="b-image-overlay-license-modal__close-container js-modal-action" disabled title="Close"></button>
+	<section class="b-modal__content-license b-image-overlay-license-modal__modal-content b-image-overlay-license-modal__modal-contact-content"
+		role="dialog" aria-modal="true" id="image-overlay-license-modal-license">
+		<button class="u-btn-icon u-btn-icon--close b-image-overlay-license-modal__exit" title="Dismiss licensing info">Exit</button>
 		<section class="b-image-overlay-license-modal__title-section">
 			<h1 class="b-modal__title b-image-overlay-license-modal__title">License this image</h1>
-			<section class="js-modal-action b-image-overlay-license-modal__content-section b-image-overlay-license-modal__content-container">
-			    <div class="b-modal__description image-button-description">
+			<section class="b-image-overlay-license-modal__content-section">
+				<div class="b-modal__description">
 					To license this image or for more information please contact our Licensing team.
-			    </div>
-				<button href="#" class="u-btn b-modal__description-license-contact">
-				  Email us
-				</button>
-				</br></br>
-				<div class="b-modal__description image-button-description">
-				    <div class="b-modal__description">
+				</div>
+				<a href="mailto:vaimages@vam.ac.uk" class="u-btn b-modal__description-license-contact">
+					Email us
+				</a>
+				<br><br>
+				<div class="b-modal__description">
+					<p>
 						We can manage your request more quickly if you include the following information:
-				    </div>
+					</p>
 					<ul class="b-image-overlay-license-modal__description-container-bullets">
 						<li>Image reference number: <span class="b-image-overlay__img-ref-number">XXX</span></li>
 						<li>Title and author (if applicable)</li>
@@ -39,69 +34,54 @@
 				</div>
 			</section>
 		</section>
-    </section>
-    <section class="b-modal__content-license b-image-overlay-license-modal__modal-content b-image-overlay-license-modal__modal-download-content">
-    	<div class="b-image-overlay-license-modal__content-content-container-container js-modal-action">
-      <button class="b-image-overlay-license-modal__close-container js-modal-action" disabled title="Close"></button>
-			<section class="b-image-overlay-license-modal__title-section">
-			    <h1 class="b-modal__title b-image-overlay-license-modal__title">Download image</h1>
-			    <div class="b-modal__description image-button-description">
-					By downloading this image you agree that you will not use it commercially, as defined in <a tabindex="3" href="">our full terms and conditions</a>.
-			    </div>
-			</section>
-			<div class="b-image-overlay-license-modal__content-container">
-		        <div class="b-modal__description b-image-overlay-license-modal__description-container">
-		            <p>
-		            	You can use the image for:
-		            </p>
-		            <ul class="b-image-overlay-license-modal__description-container-bullets">
-		                <li>Non-commercial research and private study</li>
-		                <li>Teaching and instruction</i></li>
-		                <li>Non-commercial publishing (up to A5-size, and in print runs of up to 4000 copies)</li>
-		                <li>Non-commercial online use, up to 768 pixels, and for up to 5 years</li>
-		            </ul>
-		            <span class="b-image-overlay-license-modal__agree-to-terms-reminder">
-						Please indicate that you accept all terms to proceed
-					</span>
-		            <div class="b-image-overlay-license-modal__checkbox-container js-modal-action">
-		                <input class="b-image-overlay-license-modal__agree-checkbox js-modal-action" type="checkbox"></input>
-		                <button tabindex="5" class="js-modal-action b-image-overlay-license-modal__agree-to-terms" href="javascript:void(0);">
-			                <svg class="b-image-overlay-license-modal__checkmark" role="img">
-					      		<use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#tick"></use>
-					    	</svg>
-		                </button>
-		                <span class="b-image-overlay-license-modal__agree-to-terms-text">
-				        	I agree to the full terms and conditions
-						</span>
-		            </div>
-		        </div>
-				<section class="b-image-overlay-license-modal__image-container">
-					<div class="b-image-overlay-license-modal__download-link">
-						<button tabindex="5" href="javascript:void(0);" class=" b-icon-link b-icon-link__download js-modal-action">
-						    <div class="b-icon-link__container b-icon-link__container-download  b-image-overlay-license-modal__icon-link-container js-modal-action">
-						        <svg class="b-icon-link__icon js-modal-action b-image-overlay-license-modal__image-icon-link" role="img">
-						      		<use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#download"></use>
-						    	</svg>
-						    </div>
-						</button>
-						<div class="b-image-overlay-license-modal__download-link-text js-modal-action">
-							<button tabindex="5" href="javascript:void(0);" class="u-link b-image-overlay-license-modal__download-link js-modal-action">
-								Download image
-							</button>
-						    <span class="b-image-overlay-license-modal__image-info js-modal-action">
-								JPG
-						   	</span>
-						</div>
-
+	</section>
+	<section class="b-modal__content-license b-image-overlay-license-modal__modal-content b-image-overlay-license-modal__modal-download-content"
+		role="dialog" aria-modal="true" id="image-overlay-license-modal-download">
+		<button class="u-btn-icon u-btn-icon--close b-image-overlay-license-modal__exit" title="Dismiss image download info">Exit</button>
+		<section class="b-image-overlay-license-modal__title-section">
+				<h1 class="b-modal__title b-image-overlay-license-modal__title">Download image</h1>
+				<div class="b-modal__description">
+					By downloading this image you agree that you will not use it commercially, as defined in our full <a class="u-link" href="https://www.vam.ac.uk/info/va-websites-terms-conditions">terms and conditions</a>.
+				</div>
+		</section>
+		<div class="b-modal__description b-image-overlay-license-modal__description-container">
+			<p>
+				You can use the image for:
+			</p>
+			<ul class="b-image-overlay-license-modal__description-container-bullets">
+					<li>Non-commercial research and private study</li>
+					<li>Teaching and instruction</i></li>
+					<li>Non-commercial publishing (up to A5-size, and in print runs of up to 4000 copies)</li>
+					<li>Non-commercial online use, up to 768 pixels, and for up to 5 years</li>
+			</ul>
+			<span class="b-image-overlay-license-modal__agree-to-terms-reminder">
+				Please indicate that you accept all terms to proceed
+			</span>
+			<div class="b-image-overlay-license-modal__checkbox-container">
+				<label class="b-image-overlay-license-modal__agree-to-terms-text">
+					I agree to the full terms and conditions
+					<input type="checkbox" class="u-checkbox b-image-overlay-license-modal__agree-checkbox"/>
+				</label>
+			</div>
+		</div>
+		<section class="b-image-overlay-license-modal__footer-section">
+			<div class="b-modal__description b-image-overlay-license-modal__description b-image-overlay-license-modal__footer-content">
+				Other uses, including exhibition catalogue and display, broadcast, advertising, book jackets and commercial packaging, are covered by our commercial terms.
+				Please <a href="#0" class="u-link b-image-overlay-license-modal__contact-modal-open" aria-haspopup="dialog" aria-controls="image-overlay-license-modal-license">contact our Licensing team</a> for more information.
+			</div>
+		</section>
+		<section class="b-image-overlay-license-modal__image-container">
+			<div class="b-image-overlay-license-modal__download-links">
+				<button class="u-btn-icon u-btn-icon--light b-image-overlay-license-modal__download-icon js-image-overlay-license-modal-download-link" data-tracking-collections="image download" disabled>Download image</button>
+				<div class="b-image-overlay-license-modal__download-link-text">
+					<button class="u-link b-image-overlay-license-modal__download-link js-image-overlay-license-modal-download-link" data-tracking-collections="image download" disabled>
+						Download image
+					</button>
+					<div class="b-image-overlay-license-modal__image-info">
+						JPG
 					</div>
-				</section>
-				<section class="b-image-overlay-license-modal__footer-section">
-				    <div class="b-modal__description b-image-overlay-license-modal__description b-image-overlay-license-modal__footer-content">
-						Other uses, including exhibition catalogue and display, broadcast, advertising, book jackets and commercial packaging, are covered by our commercial terms.</br></br>
-						If you would like a larger file, or to use the image in other ways, contact <a tabindex="8" class="js-modal-action u-link b-image-overlay-license-modal__contact-modal-open">our Licensing team</a>.
-				    </div>
-				</section>
-	    	</div>
-    	</div>
-    </section>
+				</div>
+			</div>
+		</section>
+	</section>
 </div>
