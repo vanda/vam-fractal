@@ -6,6 +6,7 @@
   display: none;
   height: 100%;
   inset: 0;
+  overflow: auto;
   position: fixed;
   width: 100%;
   z-index: 9999;
@@ -15,40 +16,14 @@
     display: block;
   }
 
-  &__close {
-    display: inline-block;
-    height: 100%;
-    width: 22px;
+  &__exit {
+    --btn-size: 32px;
 
-    &-button {
-      border: none;
-      bottom: 10px;
-      cursor: pointer;
-      height: 18px;
-      position: absolute;
-      right: 8px;
-      width: 18px;
+    float: right;
+    margin: -15px -5px;
 
-      @include mixins.breakpoints-bpMinSmall {
-        height: 20px;
-        right: 0;
-        top: -32px;
-        width: 20px;
-      }
-    }
-
-    &-icon {
-      bottom: 0;
-      color: base.sitecolors-siteColor("vam-white");
-      height: 18px;
-      position: absolute;
-      right: 0;
-      width: 18px;
-
-      @include mixins.breakpoints-bpMinSmall {
-        height: 20px;
-        width: 20px;
-      }
+    @include mixins.breakpoints-bpMinSmall {
+      margin: -30px -40px;
     }
   }
 
@@ -60,7 +35,6 @@
     margin: auto;
     max-width: 300px;
     padding: 30px 20px 24px;
-    pointer-events: none;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -73,11 +47,6 @@
 
     @include mixins.breakpoints-bpMinMedium {
       max-width: 820px;
-    }
-
-    a,
-    &::after {
-      pointer-events: all;
     }
 
     &-license {
