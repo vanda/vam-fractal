@@ -2,12 +2,15 @@
 @use "../../base";
 
 .b-image-overlay-license-modal {
-  &__download-button,
-  &__contact-button {
+  &__download-button {
     padding: 13px 10px;
 
     @include mixins.breakpoints-bpMinMedium {
       padding: 6px 10px;
+    }
+
+    .b-image-overlay__figcaption--shut & {
+      display: none;
     }
   }
 
@@ -23,44 +26,17 @@
     width: 100%;
   }
 
-  &__download-button {
-    .b-image-overlay__figcaption--shut & {
-      display: none;
-    }
-  }
+  &__exit {
+    --btn-size: 32px;
 
-  &__close-container {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 39.254 10.749 0 0 10.742l39.251 39.254L0 89.251 10.749 100 50 60.746 89.251 100 100 89.243 60.749 49.99 100 10.734 89.244 0 49.992 39.254z' fill='%23fff'/%3E%3C/svg%3E");
-    cursor: pointer;
-    height: 29px;
-    left: 100%;
-    margin: 10px 10px 50px;
-    pointer-events: all;
-    position: fixed;
-    right: 0;
-    top: -50px;
-    width: 29px;
-    z-index: 99999;
+    float: right;
 
-    &:disabled {
-      display: none;
-    }
-  }
-
-  &__content-container {
-    height: 250px;
-    min-height: 250px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-
-    @media screen and (min-height: 700px) {
-      height: 400px;
-      overflow-y: scroll;
+    @include mixins.breakpoints-bpMinXSmall {
+      margin: -20px -10px;
     }
 
-    @media screen and (min-height: 1080px) {
-      height: auto;
-      overflow-y: hidden;
+    @include mixins.breakpoints-bpMinSmall {
+      margin: -10px -20px;
     }
   }
 
@@ -123,36 +99,35 @@
   }
 
   &__image-container {
-    margin: 0 25px;
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 0 25px;
+    }
   }
 
   &__download-link-text {
     margin-left: 15px;
   }
 
-  &__download-icon-link {
-    border-color: base.sitecolors-siteColor("vam-grey-5");
-    height: 50px;
-    width: 50px;
+  &__download-links {
+    display: none;
+
+    &--active {
+      align-items: center;
+      display: flex;
+    }
   }
 
   &__download-link {
-    align-items: center;
-    display: flex;
-  }
+    @include base.typography-typeSetting(3);
 
-  &__download-link-text a {
-    @include base.typography-typeSetting(2, "light");
-
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(3, "light");
-    }
-
+    cursor: pointer;
     text-underline-position: under;
   }
 
-  a:focus {
-    @include mixins.focus-defaultFocus;
+  &__download-icon {
+    --btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='currentColor'%3E%3Cpath d='M88.6498781,98.5631444 L12.3341873,98.5631444 C9.9440105,98.5631444 8,96.5819534 8,94.13335 L8,68.7656064 C8,66.3223146 9.93869899,64.335812 12.3341873,64.335812 C14.7243642,64.335812 16.6630632,66.3223146 16.6630632,68.7656064 L16.6630632,89.6929326 L84.3316253,89.6929326 L84.3316253,68.7656064 C84.3316253,66.3223146 86.2756358,64.335812 88.6658127,64.335812 C91.0559895,64.335812 93,66.3223146 93,68.7656064 L93,94.13335 C93,96.5766419 91.0666125,98.5684559 88.6711242,98.5684559 L88.6498781,98.5631444 Z M71.9505093,48.1569706 L53.5514591,66.9756296 C53.0628007,67.474911 52.4572893,67.8626508 51.7721052,68.0751109 C51.6499406,68.128226 51.50653,68.1547835 51.3684309,68.181341 C51.0922327,68.245079 50.8001,68.2769481 50.4973442,68.2769481 C49.7643567,68.2769481 49.0791727,68.1016684 48.4895957,67.7670437 C48.3621196,67.6979941 48.2452665,67.6236331 48.1284134,67.5439605 C48.0115603,67.4695995 47.8893957,67.3846154 47.7725426,67.2783853 C47.6503781,67.1880897 47.544148,67.0924827 47.4432294,66.9809411 L29.0335562,48.1569706 C27.3338749,46.4307317 27.3338749,43.6156346 29.0335562,41.8893957 C30.7226145,40.1578454 33.4686621,40.1578454 35.1577204,41.8893957 L46.1525339,53.1497844 L46.1525339,6.43510592 C46.1525339,3.98119103 48.1018559,2 50.4920327,2 C52.8822096,2 54.8209086,3.98119103 54.8209086,6.43510592 L54.8209086,53.1497844 L65.8263451,41.8787727 C67.5154034,40.1525339 70.2561395,40.1525339 71.9558208,41.8787727 C73.6555021,43.6103231 73.6555021,46.4307317 71.9558208,48.1463476 L71.9505093,48.1569706 Z'/%3E%3C/svg%3E");
+    --btn-icon-size: 60%;
+    --btn-size: 45px;
   }
 
   &__image-info {
@@ -182,115 +157,33 @@
     margin-top: 10px;
   }
 
-  &__agree-checkbox {
-    display: none;
-  }
-
-  &__checkbox-container {
-    @include mixins.breakpoints-bpMinSmall {
-      margin-bottom: 0;
-    }
-
-    margin: 15px 0;
-    position: relative;
-  }
-
-  &__image-icon-link {
-    color: base.sitecolors-siteColor("vam-grey-3");
-    height: 60%;
-    inset: 18% 27% 30% 21%;
-    pointer-events: none;
-    position: absolute;
-    width: 60%;
-    z-index: 999;
-
-    &--active {
-      background-color: #12d2a0;
-      color: base.sitecolors-siteColor("vam-black");
-      pointer-events: none;
-    }
-  }
-
-  &__checkmark {
-    cursor: pointer;
-    display: none;
-    height: 20px;
-    left: 0;
-    margin-top: 5px;
-    position: absolute;
-    top: 0;
-    width: 26px;
-    z-index: 99;
-
-    &--active {
-      color: base.sitecolors-siteColor("vam-black");
-      display: block;
-    }
-  }
-
-  &__agree-to-terms-reminder {
-    @include base.typography-typeSetting(2, "light");
-
-    box-shadow: none;
-    color: base.sitecolors-siteColor("alert-red");
-    display: none;
-
-    &:focus svg {
-      @include mixins.focus-defaultFocus;
-    }
-  }
-
   &__agree-to-terms {
-    @include base.typography-typeSetting(4, "regular");
-
-    box-shadow: none;
-    cursor: pointer;
-    margin-left: 40px;
-
     &-text {
-      @include mixins.breakpoints-bpMinXSmall {
-        margin-top: 5px;
-        width: 500px;
-      }
+      @include base.typography-typeSetting(4, "regular");
 
-      @include mixins.breakpoints-bpMinSmall {
-        margin-top: 0;
-      }
-
-      position: absolute;
-      width: 160px;
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 10px;
+      justify-content: flex-end;
+      margin: 15px 0;
     }
-
-    &::before {
-      background-color: base.sitecolors-siteColor("vam-white");
-      border: 1px base.sitecolors-siteColor("vam-black") solid;
-      border-radius: 3px;
-      content: "";
-      cursor: pointer;
-      height: 25px;
-      left: 0;
-      position: absolute;
-      top: 3px;
-      width: 25px;
+    
+    &-reminder {
+      @include base.typography-typeSetting(2, "light");
+      
+      color: base.sitecolors-siteColor("alert-red");
+      display: none;
     }
+  }
 
-    &:focus {
-      &::before {
-        @include mixins.focus-defaultFocus;
-      }
-    }
+  &__agree-checkbox {
+    --input-background: #{base.sitecolors-siteColor("vam-white")};
+    --input-border: #{base.sitecolors-siteColor("vam-black")};
 
     &--warning {
       &::before {
         background-color: rgba(255, 80, 83, 10%);
         border-color: base.sitecolors-siteColor("alert-red");
-      }
-    }
-
-    &--active {
-      &::before {
-        background-color: base.sitecolors-siteColor("secondary-green");
-        border-color: base.sitecolors-siteColor("secondary-green");
       }
     }
   }
