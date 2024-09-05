@@ -52,10 +52,6 @@
     width: var(--btn-icon-size);
   }
 
-  &:focus {
-    @include mixins.focus-defaultFocus;
-  }
-
   &:hover,
   &:active {
     &:enabled {

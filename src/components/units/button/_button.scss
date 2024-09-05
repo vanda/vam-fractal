@@ -25,10 +25,6 @@
     text-decoration: none;
   }
 
-  &:focus {
-    @include mixins.focus-defaultFocus;
-  }
-
   .sir-trevor-text & {
     text-decoration: none;
   }
