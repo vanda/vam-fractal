@@ -13,12 +13,6 @@
     color: base.sitecolors-siteColor("vam-white");
   }
 
-  &__download {
-    border: 1px solid base.sitecolors-siteColor("vam-black");
-    border-radius: 50%;
-    cursor: default;
-  }
-
   &--active {
     background-color: base.sitecolors-siteColor("secondary-green");
     border-color: base.sitecolors-siteColor("secondary-green");
@@ -57,14 +51,6 @@
         border: 1px solid base.sitecolors-siteColor("vam-black");
         opacity: 0.6;
         z-index: 0;
-      }
-    }
-
-    &-download {
-      &::after {
-        content: none;
-        cursor: pointer;
-        opacity: 1;
       }
     }
   }
