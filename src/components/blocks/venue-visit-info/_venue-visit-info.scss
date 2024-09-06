@@ -17,11 +17,51 @@
 
   &__col {
     display: flex;
+    margin-bottom: 0;
 
     &-body {
       font-size: 14px;
       line-height: 1.29;
       margin: 5px 0 20px;
+    }
+  
+    &-svg {
+      height: 18px;
+      margin-right: 15px;
+      width: 18px;
+  
+      &--ticket {
+        height: 21px;
+        width: 21px;
+      }
+    }
+  
+    &-text {
+      @include mixins.breakpoints-bpMinMedium {
+        max-width: 270px;
+      }
+    }
+  
+    &-title {
+      font-size: 17px;
+      line-height: 1.24;
+  
+      @include mixins.breakpoints-bpMinXSmall {
+        margin-bottom: 5px;
+        margin-top: 10px;
+      }
+  
+      @include mixins.breakpoints-bpMinMedium {
+        margin-bottom: 2px;
+        margin-top: 0;
+      }
+    }
+  
+    &-link {
+      font-size: 14px;
+      line-height: 1.29;
+      margin-top: -5px;
+      text-decoration: underline;
     }
 
     &:first-of-type {
@@ -82,44 +122,5 @@
         height: 90px;
       }
     }
-  }
-
-  &__col-svg {
-    height: 18px;
-    margin-right: 15px;
-    width: 18px;
-
-    &--ticket {
-      height: 21px;
-      width: 21px;
-    }
-  }
-
-  &__col-text {
-    @include mixins.breakpoints-bpMinMedium {
-      max-width: 270px;
-    }
-  }
-
-  &__col-title {
-    font-size: 17px;
-    line-height: 1.24;
-
-    @include mixins.breakpoints-bpMinXSmall {
-      margin-bottom: 5px;
-      margin-top: 10px;
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      margin-bottom: 2px;
-      margin-top: 0;
-    }
-  }
-
-  &__col-link {
-    font-size: 14px;
-    line-height: 1.29;
-    margin-top: -5px;
-    text-decoration: underline;
   }
 }
