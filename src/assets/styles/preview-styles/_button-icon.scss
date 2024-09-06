@@ -13,7 +13,7 @@
 
   &:hover,
   &:active {
-    &:not([disabled]) {
+    &:enabled {
       background-color: red;
       color: yellow;
     }

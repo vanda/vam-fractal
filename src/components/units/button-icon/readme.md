@@ -36,7 +36,7 @@ then customising any of its colours, icon, and size, by setting its own CSS Cust
 
   &:hover,
   &:active {
-    &:not([disabled]) {
+    &:enabled {
       background-color: red;
       color: yellow;
     }

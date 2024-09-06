@@ -58,7 +58,7 @@
 
   &:hover,
   &:active {
-    &:not([disabled]) {
+    &:enabled {
       background-color: var(--btn-bg-hover);
     }
   }
