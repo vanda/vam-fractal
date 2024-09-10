@@ -5,6 +5,9 @@ const oicInit = () => {
     const oic = document.querySelector('.b-object-image-overlay') || document.createElement('div');
     document.body.appendChild(oic);
     oic.classList.add('b-object-image-overlay');
+    oic.id = 'object-image-overlay';
+    oic.setAttribute('role', 'dialog');
+    oic.setAttribute('aria-modal', 'true');
     oic.innerHTML = `
       <button class="b-object-image-overlay__dismiss" title="Close" aria-label="Close"></button>
       <div class="b-object-image-overlay__items"></div>
