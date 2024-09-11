@@ -102,19 +102,27 @@
   &__address {
     @include base.typography-typeSetting(3, "light");
 
+    align-items: center;
+    column-gap: 8px;
+    display: flex;
     margin: 20px 0 30px;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      align-items: flex-start;
+    }
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(4, "light");
+
+      align-items: center;
     }
 
     @include mixins.breakpoints-bpMinLarge {
       @include base.typography-typeSetting(5, "light");
     }
 
-    > svg {
+    &::before {
       height: 18px;
-      margin: 0 2px 0 -4px;
       width: 18px;
     }
   }
