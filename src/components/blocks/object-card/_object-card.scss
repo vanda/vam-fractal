@@ -81,12 +81,7 @@
       transition: opacity 0.1s;
     }
 
-    &:focus {
-      @include mixins.focus-defaultFocus;
-    }
-
-    &:hover::after,
-    &:focus::after {
+    &:hover::after {
       opacity: 0.3;
     }
   }
