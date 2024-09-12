@@ -43,14 +43,14 @@
 
       <div class="b-icon-list>
         <ul class="b-icon-list__list">
-          <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--calendar">
+          <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--calendar" title="Calendar timing">
             <div class='b-icon-list__content'>
               <meta itemprop="startDate" content="{{ eventMachineStartDate }}"/>
               <meta itemprop="endDate" content="{{ eventMachineEndDate }}"/>
               <p class="b-icon-list__item-text">{{ eventHumanDates }}</p>
             </div>
           </li>
-          <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--pin">
+          <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--pin" title="Venue location">
             <div class='b-icon-list__content'>
               <p class="b-icon-list__item-text">{{ eventVenue }}</p>
             </div>
@@ -61,7 +61,7 @@
 
     <div class="b-icon-list">
       <ul class="b-icon-list__list b-event-teaser__footer">
-        <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--ticket">
+        <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--ticket" title="Admission fee">
           <div class='b-icon-list__content'>
             <meta itemprop="priceCurrency" content="GBP"/>
             <p class="b-icon-list__item-text" itemprop="price" content="{{ eventPrice }}">{{ eventPrice }}</p>

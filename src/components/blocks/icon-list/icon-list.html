@@ -2,7 +2,7 @@
   <h3 class="b-icon-list__heading">Optional heading for list</h3>
   <ul class="b-icon-list__list">
     {% for item in items %}
-    <li class='b-icon-list__item{% if htmlClass %} b-icon-list__item--{{ htmlClass }}{% endif %} b-icon-list__icon b-icon-list__icon--{{ item.icon }}'>
+    <li class='b-icon-list__item{% if htmlClass %} b-icon-list__item--{{ htmlClass }}{% endif %} b-icon-list__icon b-icon-list__icon--{{ item.icon }}' title='{{ item.label }}'>
       <div class="b-icon-list__content">
         {% if item.title %}
           <h4 class="b-icon-list__item-heading{% if htmlClass %} b-icon-list__item-heading--{{ htmlClass }}{% endif %}">{{ item.title }}</h4>
