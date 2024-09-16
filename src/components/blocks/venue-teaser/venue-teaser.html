@@ -25,24 +25,20 @@
         {{ description }}
       </p>
 
-      <ul class='b-icon-list'>
-        <li class='b-icon-list__item'>
-          <svg aria-label="Venue location" role="graphics-symbol" class="b-icon-list__item__icon">
-            <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#map"></use>
-          </svg>
-          <div class="b-icon-list__item__content">
-            <div itemprop="address" class="b-icon-list__item__heading">{{ address }}</div>
-          </div>
-        </li>
-        <li class='b-icon-list__item'>
-          <svg aria-label="Opening times" role="graphics-symbol" class="b-icon-list__item__icon">
-            <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#clock"></use>
-          </svg>
-          <div class="b-icon-list__item__content" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
-            <div itemprop="description" class="b-icon-list__item__heading">{{ admission_info|safe }}</div>
-          </div>
-        </li>
-      </ul>
+      <div class="b-icon-list">
+        <ul class='b-icon-list__list'>
+          <li class='b-icon-list__item b-icon-list__icon b-icon-list__icon--map'>
+            <div class="b-icon-list__content">
+              <p itemprop="address" class="b-icon-list__item-text">{{ address }}</p>
+            </div>
+          </li>
+          <li class='b-icon-list__item b-icon-list__icon b-icon-list__icon--clock'>
+            <div class="b-icon-list__content" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
+              <p itemprop="description" class="b-icon-list__item-text">{{ admission_info|safe }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>  
     </div>
   </a>
 

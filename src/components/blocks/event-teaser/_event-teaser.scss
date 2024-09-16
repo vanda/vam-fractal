@@ -115,19 +115,6 @@
     }
   }
 
-  &__data {
-    @include base.typography-typeSetting(2, "bold");
-
-    display: flex;
-    margin-bottom: 10px;
-
-    &__icon {
-      height: 20px;
-      margin-right: 10px;
-      width: 20px;
-    }
-  }
-
   &__footer {
     align-items: center;
     border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-7");
