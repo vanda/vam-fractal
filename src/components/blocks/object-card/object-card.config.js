@@ -12,14 +12,17 @@ module.exports = {
     },
     caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
     captionSub: ['Raphael', '1515 – 16'],
-    physicalDescription: 'Cartoon for a tapestry'
+    locationSite: 'V&A South Kensington',
+    locationType: 'On display',
+    physicalDescription: 'Cartoon for a tapestry',
+    href: 'https://collections.vam.ac.uk/item/O102006'
   },
   variants: [
     {
-      label: 'EtC Search',
+      label: 'EtC',
       name: 'etc',
       context: {
-        previewClass: 'fr-bg--dark',
+        previewClass: 'fr-bg--etc',
         modifiers: ['etc']
       }
     }

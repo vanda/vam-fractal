@@ -47,7 +47,6 @@
 @use "../../components/blocks/search-result/search-result";
 @use "../../components/blocks/search-result-auto-suggest/search-result-auto-suggest";
 @use "../../components/blocks/search-result-objects/search-result-objects";
-@use "../../components/blocks/search-results/search-results";
 @use "../../components/blocks/search-sidebar-item/search-sidebar-item";
 @use "../../components/blocks/site-footer/site-footer";
 @use "../../components/blocks/site-nav/site-nav";
@@ -78,9 +77,6 @@
 @use "../../components/groups/image-overlay/image-overlay";
 @use "../../components/groups/image-overlay-details/image-overlay-details";
 @use "../../components/groups/object-grid/object-grid";
-@use "../../components/groups/search-results-page/search-results-page";
-@use "../../components/groups/search-page/search-page";
-@use "../../components/groups/search-box-container/search-box-container";
 @use "../../components/groups/story-box-container/story-box-container";
 @use "../../components/groups/facet-box-modal/facet-box-modal";
 @use "../../components/groups/venue-blog-cards/venue-blog-cards";

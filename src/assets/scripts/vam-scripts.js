@@ -18,7 +18,6 @@ require('../../components/blocks/newsletter-signup/_newsletter-signup');
 require('../../components/blocks/search-form/_search-form');
 require('../../components/blocks/search-pagination/_search-pagination');
 require('../../components/blocks/search-result/_search-result');
-require('../../components/blocks/search-results/_search-results');
 require('../../components/blocks/site-nav/_site-nav');
 require('../../components/blocks/toggle-nav/_toggle-nav');
 require('../../components/blocks/video-thumbnail/_video-thumbnail');
