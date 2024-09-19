@@ -12,6 +12,18 @@
     column-count: 3;
   }
 
+  &--etc {
+    column-gap: 10px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      column-gap: 20px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      column-gap: 30px;
+    }
+  }
+
   &__item {
     break-inside: avoid;
     margin-bottom: 30px;

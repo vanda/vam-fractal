@@ -11,12 +11,14 @@ let objectCards = [
     },
     caption: 'Raphael Cartoon, The Miraculous Draught of Fishes: Luke Chapter 5: Verses 1–11',
     captionSub: ['Raphael', '1515 – 16'],
+    locationSite: 'V&A South Kensington',
+    locationType: 'On display',
     physicalDescription: 'Cartoon for a tapestry.',
-    href: 'https://collections.vam.ac.uk/item/O102006/the-miraculous-draught-of-fishes-cartoon-for-a-raphael',
+    href: 'https://collections.vam.ac.uk/item/O102006',
     objectImageOverlayData: {
       museumNumber: 'ROYAL LOANS.2',
       copyright: '&copy; Victoria and Albert Museum, London',
-      onDisplay: true,
+      locationType: 'On display',
       locationSite: 'V&A South Kensington',
       locationRoom: 'Room 48a, The Raphael Cartoons',
       visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?zoom=3.8062500330992246&latlng=-4438.82674843744%2C2111.330630666198&highlightId=FAC0000_49790'
@@ -35,12 +37,14 @@ let objectCards = [
     },
     caption: 'Blue glass form',
     captionSub: ['René Roubicek', '1959'],
+    locationSite: 'V&A South Kensington',
+    locationType: 'On display',
     physicalDescription: 'An abstract form sculpted from blue glass.',
-    href: 'http://collections.vam.ac.uk/item/O8905/form-roubicek-rene',
+    href: 'http://collections.vam.ac.uk/item/O8905',
     objectImageOverlayData: {
       museumNumber: 'C.21-1998',
       copyright: '&copy; Victoria and Albert Museum, London',
-      onDisplay: false
+      locationType: 'On display'
     }
   },
   {
@@ -55,10 +59,12 @@ let objectCards = [
     },
     caption: 'Fruits from the Garden and the Field, rainbow wallpaper (detail)',
     captionSub: ['Fallen Fruit', '2019'],
+    locationSite: 'V&A South Kensington',
+    locationType: 'Not on display',
     physicalDescription: 'A wallpaper print design.',
+    href: 'https://collections.vam.ac.uk/item/O1432693/',
     objectImageOverlayData: {
-      onDisplay: false,
-      storageMessage: 'Some storage message'
+      locationType: 'Not on display'
     }
   },
   {
@@ -73,20 +79,21 @@ let objectCards = [
     },
     caption: 'The Research Institute, Lego set, designed by Ellen Kooijman',
     captionSub: ['Lego', '2015'],
+    locationSite: 'V&A South Kensington',
+    locationType: 'On display',
     physicalDescription: 'A Research Institute made of Lego.',
-    href: 'http://collections.vam.ac.uk/item/O1298864/the-research-institute-lego-set-kooijman-ellen',
+    href: 'http://collections.vam.ac.uk/item/O1298864',
     objectImageOverlayData: {
       museumNumber: 'CD.51:1 to 6-2014',
       copyright: '&copy; Victoria and Albert Museum, London',
-      onDisplay: true,
-      displayOverride: 'You can see this somewhere else',
+      locationType: 'View by appointment',
       locationSite: 'V&A South Kensington',
       locationRoom: 'Room 74a, Rapid Response Collecting',
       visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?highlightId=FAC0000_263251&latlng=-2869%2C2944&floor=2&zoom=4'
     }
   }
 ];
-objectCards = [...objectCards, ...objectCards, ...objectCards, ...objectCards];
+objectCards = [...objectCards, ...objectCards.splice(2), ...objectCards];
 
 module.exports = {
   title: 'Object Grid',
@@ -100,7 +107,7 @@ module.exports = {
       label: 'EtC Search',
       name: 'etc',
       context: {
-        previewClass: 'fr-content-wrapper fr-bg--dark',
+        previewClass: 'fr-content-wrapper fr-bg--etc',
         modifiers: ['etc'],
         objectCards: objectCards.map((x) => {
           const objectCard = JSON.parse(JSON.stringify(x));

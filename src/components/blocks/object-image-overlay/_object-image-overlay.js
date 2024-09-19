@@ -2,116 +2,96 @@ const oicInit = () => {
   const oicSeeds = Array.from(document.querySelectorAll('.js-object-image-overlay-item'));
 
   if (oicSeeds.length) {
-    const oic = document.querySelector('.b-object-image-overlay') || document.createElement('div');
-    document.body.appendChild(oic);
-    oic.classList.add('b-object-image-overlay');
-    oic.innerHTML = `
-      <button class="b-object-image-overlay__dismiss" title="Close" aria-label="Close"></button>
-      <div class="b-object-image-overlay__items"></div>
-    `;
-    const items = oic.querySelector('.b-object-image-overlay__items');
+    let oic = document.querySelector('.b-object-image-overlay');
+    if (!oic) {
+      oic = document.createElement('div');
+      oic.classList.add('b-object-image-overlay');
+      document.body.appendChild(oic);
+    }
+    const items = document.createElement('div');
+    items.classList.add('b-object-image-overlay__items');
+    oic.appendChild(items);
 
     oic.addItem = (index, prepend = false) => {
       const seed = oicSeeds[index] || oicSeeds[0];
       const data = seed.dataset.objectImageOverlay
         ? JSON.parse(seed.dataset.objectImageOverlay)
         : null;
-      const museumNumber = data && data.museumNumber
-        ? `Museum number: <span itemprop="identifier">${data.museumNumber}</span>`
-        : '';
-      const copyright = data && data.copyright
-        ? `<br/><span itemprop="copyrightHolder">${data.copyright}</span>`
-        : '';
-      const numberCopyright = museumNumber || copyright
-        ? `<div class="b-object-image-overlay__numbercopyright">
-          ${museumNumber}
-          ${copyright}
-        </div>`
-        : '';
-      const onDisplay = data && data.onDisplay
-        ? `<div class="b-object-image-overlay__location-status">
-          <svg role="img" viewBox="0 0 52 52">
-            <path d="M51.59 25.348C45.15 15.57 35.838 10 26 10S6.851 15.57.41 25.348L0 26l.41.652C6.85 36.43 16.162 42 26 42s19.149-5.57 25.59-15.348L52 26l-.41-.652zM25.5 35c-5.225 0-9.5-4.275-9.5-9.5s4.275-9.5 9.5-9.5 9.5 4.275 9.5 9.5-4.275 9.5-9.5 9.5z" fill="currentColor"/>
-          </svg>
-          On display
-        </div>`
-        : '';
-      let locationCopy = '';
-      if (data && data.onDisplay) {
-        locationCopy = data.displayOverride;
-        if (!locationCopy) {
-          const locationSite = data.locationSite
-            ? `<div class="b-object-image-overlay__location-site">${data.locationSite}</div>`
-            : '';
-          const locationRoom = data.locationRoom
-            ? data.locationRoom
-            : '';
-          locationCopy = locationSite + locationRoom;
-        }
-      } else if (data && data.onDisplay !== null && !data.onDisplay) {
-        locationCopy = data.storageOverride || 'This object is currently not on display';
-      }
-      const visitLink = data && data.visitUrl
-        ? `<a tabindex="-1" class="b-object-image-overlay__visit" href="${data.visitUrl}" data-tracking-oic="visit the object">Find out how to visit this object</a>`
-        : '';
-      const location = locationCopy || visitLink
-        ? `<div class="b-object-image-overlay__location">
-          ${onDisplay}
-          <div class="b-object-image-overlay__location-copy">${locationCopy}</div>
-          ${visitLink}
-        </div>
-        ` : '';
       const objectUrl = seed.querySelector('a').getAttribute('href');
+      const objectLink = objectUrl.length > 1
+        ? `<a tabindex="-1" class="b-object-image-overlay__cta u-btn u-btn--micro u-btn--outlined-inverse" href="${objectUrl}" data-tracking-oic="explore the object">More info</a>`
+        : '';
       const objectImg = seed.querySelector('img');
       const objectImgHTML = objectImg
-        ? `<img class="b-object-image-overlay__image"
-           itemprop="contentUrl"
-           alt="${objectImg.alt}"
-           sizes="(max-width: 991px) calc(100vw - 20px),
-                  (min-width: 992px) calc(70vw - 145px),
-                  (min-width: 1200px) 710px"
-           srcset="${objectImg.srcset}"
-           src="${objectImg.src}"
-           loading="lazy">
+        ? `<img class="b-object-image-overlay__img"
+            itemprop="contentUrl"
+            alt="${objectImg.alt}"
+            loading="lazy"
+            sizes="(min-width: 992px) calc(100vw - 210px),
+                  (min-width: 768px) calc(100vw - 80px),
+                  (min-width: 500px) calc(100vw - 40px),
+                  calc(100vw - 20px)"
+            srcset="${objectImg.srcset}"
+            src="${objectImg.src}">
         `
-        : '<div class="s-lazyload--error"></div>';
-      const ctaScreen = objectUrl.length > 1
-        ? `<br/><a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--screen" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
+        : '<img class="b-object-image-overlay__img" src="">';
+      let caption = seed.querySelector('figcaption');
+      if (caption) {
+        caption = caption.firstElementChild
+          ? caption.firstElementChild.textContent
+          : caption.textContent;
+      } else {
+        caption = '';
+      }
+      const copyright = data && data.copyright ? data.copyright : '';
+      const locationType = data && data.locationType
+        ? `<div class="b-object-image-overlay__location-type">${data.locationType}</div>`
         : '';
-      const ctaMobile = objectUrl.length > 1
-        ? `<a tabindex="-1" class="b-object-image-overlay__cta b-object-image-overlay__cta--mobile" href="${objectUrl}" data-tracking-oic="explore the object">Explore object in more depth</a>`
-        : '';
+      const locationHTML = () => {
+        let html = data && data.locationSite
+          ? `<div class="b-object-image-overlay__location" title="Object venue">${data.locationSite}</div>`
+          : '';
+        if (data && data.locationRoom) {
+          let locationRoom = data.locationRoom;
+          if (data.visitUrl) {
+            locationRoom = `<a class="u-link" href="${data.visitUrl}" tabindex="-1" data-tracking-oic="visit the object">${locationRoom}</a>`;
+          }
+          html += `
+            <div class="b-object-image-overlay__location b-object-image-overlay__location--room" title="Object room">${locationRoom}</div>`;
+        }
+        return html;
+      };
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
       item.innerHTML += `
-        <div class="b-object-image-overlay__content">
-          <figure class="b-object-image-overlay__figure">
-            ${objectImgHTML}
-            <figcaption class="b-object-image-overlay__figcaption">
-              ${numberCopyright}
-              <div class="b-object-image-overlay__prevnext">
-                <button disabled class="b-object-image-overlay__prev b-object-image-overlay__prev--disabled" title="Previous object" data-tracking-oic="previous object">
-                  <svg aria-hidden="true" viewBox="0 0 100 100">
-                    <path fill="none" d="M-1-1h582v402H-1z"/>
-                    <path d="M70.173 12.294L57.446.174l-47.62 50 47.62 50 12.727-12.122-36.075-37.879z" fill="currentColor"/>
-                  </svg>
-                </button>
-                <button disabled class="b-object-image-overlay__next b-object-image-overlay__next--disabled" title="Next object" data-tracking-oic="next object">
-                  <svg aria-hidden="true" viewBox="0 0 100 100">
-                    <path fill="none" d="M-1-1h582v402H-1z"/>
-                    <path d="M20 88.052l12.727 12.121 47.62-50-47.62-50L20 12.294l36.075 37.88z" fill="currentColor"/>
-                  </svg>
-                </button>
-              </div>
-            </figcaption>
-          </figure>
+        <div class="b-object-image-overlay__img-pane">
+          ${objectImgHTML}
+        </div>
+        <div class="b-object-image-overlay__content" id="object-image-content-${index}">
           <div class="b-object-image-overlay__details">
-            <div class="b-object-image-overlay__caption">
-              ${seed.querySelector('figcaption').textContent}
-              ${ctaScreen}
+            <div class="b-object-image-overlay__header">
+              <div class="b-object-image-overlay__caption">
+                ${caption}
+              </div>
+              <button class="b-object-image-overlay__dismiss u-btn-icon u-btn-icon--close">Close</button>
             </div>
-            ${location}
-            ${ctaMobile}
+            ${locationHTML()}
+          </div>
+          <div class="b-object-image-overlay__more">
+            <div class="b-object-image-overlay__onward">
+              ${locationType}
+              ${objectLink}
+            </div>
+            <div class="b-object-image-overlay__footer">
+              <div class="b-object-image-overlay__copyright" itemprop="copyrightHolder">
+                ${copyright}
+              </div>
+              <div class="b-object-image-overlay__buttons">
+                <button class="js-btn--info u-btn-icon u-btn-icon--info" data-tracking-oic="hide info" title="Show/hide information" aria-controls="object-image-content-${index}" aria-expanded="true">Show/hide information</button>
+                <button class="js-btn--prev u-btn-icon u-btn-icon--point-left" data-tracking-oic="previous object" title="Previous object">Previous object</button>
+                <button class="js-btn--next u-btn-icon u-btn-icon--point-right" data-tracking-oic="next object" title="Next object">Next object</button>
+              </div>
+            </div>
           </div>
         </div>
       `;
@@ -139,81 +119,6 @@ const oicInit = () => {
       }
     };
 
-    oic.buttonInit = (rewind) => {
-      // need to disable all buttons and links on screen first then re-enable
-      // buttons that are on screen
-      oic.querySelectorAll('button').forEach((el) => el.setAttribute('disabled', true));
-
-      oic.querySelectorAll('a').forEach((el) => el.setAttribute('tabindex', '-1'));
-
-      if (window.innerWidth > 991) {
-        oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
-      }
-
-      oic.querySelector('.b-object-image-overlay__dismiss').removeAttribute('disabled');
-
-      // this logic needs to be here because otherwise the buttons off screen
-      // will be focused by tabbing
-      const item = document.querySelectorAll('.b-object-image-overlay__item')[1];
-      const itemPrev = item.querySelector('.b-object-image-overlay__prev');
-      const itemNext = item.querySelector('.b-object-image-overlay__next');
-
-      if (oic._index > 0) {
-        itemPrev.classList.add('b-object-image-overlay__prev--enabled');
-        itemPrev.removeAttribute('disabled');
-      }
-      if (oic._index < oicSeeds.length - 1) {
-        itemNext.classList.add('b-object-image-overlay__next--enabled');
-        itemNext.removeAttribute('disabled');
-      }
-
-      item.querySelectorAll('a').forEach((el) => el.removeAttribute('tabindex'));
-
-      // different cta for mobile and desktop which are both
-      // focusable without this step
-      if (window.innerWidth > 991) {
-        if (item.querySelector('.b-object-image-overlay__cta--mobile')) {
-          item.querySelector('.b-object-image-overlay__cta--mobile').setAttribute('tabindex', -1);
-          item.querySelector('.b-object-image-overlay__cta--screen').removeAttribute('tabindex');
-        }
-      } else if (item.querySelector('.b-object-image-overlay__cta--screen')) {
-        item.querySelector('.b-object-image-overlay__cta--screen').setAttribute('tabindex', -1);
-        item.querySelector('.b-object-image-overlay__cta--mobile').removeAttribute('tabindex');
-      }
-
-      oic.focusable = [
-        document.querySelector('.b-object-image-overlay__dismiss'),
-      ].concat(Array.from(
-        item.querySelectorAll(
-          'button:not([disabled]), a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])',
-        ),
-      ));
-
-      const focusHierarchy = (first, second, last) => {
-        if (first) {
-          first.focus();
-        } else if (second) {
-          second.focus();
-        } else {
-          last.focus();
-        }
-      };
-
-      if (!rewind) {
-        focusHierarchy(
-          item.querySelector('.b-object-image-overlay__next:not([disabled]'),
-          item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
-          oic.focusable[0],
-        );
-      } else if (rewind) {
-        focusHierarchy(
-          item.querySelector('.b-object-image-overlay__prev:not([disabled]'),
-          item.querySelector('.b-object-image-overlay__next:not([disabled]'),
-          oic.focusable[0],
-        );
-      }
-    };
-
     oic.advance = (rewind = false) => {
       if ((!rewind && oic._index < oicSeeds.length - 1)
         || (rewind && oic._index > 0)) {
@@ -222,8 +127,31 @@ const oicInit = () => {
         oic._index += (1 * (rewind ? -1 : 1));
         oic.track(oic._index);
       }
-
       oic.buttonInit(rewind);
+    };
+
+    oic.infoToggle = (btn, toggleOn = false) => {
+      if (toggleOn) {
+        btn.classList.add('u-btn-icon--active');
+      } else {
+        btn.classList.toggle('u-btn-icon--active');
+      }
+      if (btn.classList.contains('u-btn-icon--active')) {
+        oic.classList.add('b-object-image-overlay--img-only');
+        btn.dataset.trackingOic = 'show info';
+        btn.setAttribute('aria-expanded', false);
+      } else {
+        oic.classList.remove('b-object-image-overlay--img-only');
+        btn.dataset.trackingOic = 'hide info';
+        btn.setAttribute('aria-expanded', true);
+      }
+    };
+
+    oic.exit = () => {
+      oic.classList.remove('b-object-image-overlay--active');
+      document.body.style.overflow = '';
+      items.innerHTML = '';
+      oic.onclick = null;
     };
 
     oic.track = (index) => {
@@ -231,12 +159,77 @@ const oicInit = () => {
       window.dataLayer.push({
         event: 'OIC',
         object: oicSeeds[index].querySelector('figcaption').textContent.trim(),
-        museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber,
+        museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber || null,
+        status: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).locationType || null,
       });
     };
 
+    oic.buttonInit = (rewind = false) => {
+      // disable all buttons and remove all links from tab-index across each of the OIC items
+      // then enable buttons and links only for the OIC item currently visible
+      Array.from(oic.querySelectorAll('button'), (el) => el.setAttribute('disabled', true));
+      Array.from(oic.querySelectorAll('a'), (el) => el.setAttribute('tabindex', '-1'));
+
+      const item = document.querySelectorAll('.b-object-image-overlay__item')[1];
+
+      Array.from(item.querySelectorAll('a'), (el) => el.removeAttribute('tabindex'));
+      Array.from(item.querySelectorAll('button'), (el) => el.removeAttribute('disabled'));
+
+      if (oic._index === oicSeeds.length - 1) {
+        item.querySelector('.js-btn--next').setAttribute('disabled', true);
+      }
+      if (oic._index === 0) {
+        item.querySelector('.js-btn--prev').setAttribute('disabled', true);
+      }
+
+      // set info toggle
+      if (oic.classList.contains('b-object-image-overlay--img-only')) {
+        oic.infoToggle(item.querySelector('.js-btn--info'), true);
+      }
+
+      oic.focusable = item.querySelectorAll('button:not([disabled]), a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])');
+
+      // set initial focus
+      const focusEl = rewind
+        ? item.querySelector('.js-btn--prev:not([disabled]') || item.querySelector('.js-btn--next:not([disabled]') || oic.focusable[0]
+        : item.querySelector('.js-btn--next:not([disabled]') || item.querySelector('.js-btn--prev:not([disabled]') || oic.focusable[0];
+      focusEl.focus();
+    };
+
+    oic.ontouchstart = (e) => {
+      const startXY = [e.touches[0].pageX, e.touches[0].pageY];
+      oic.ontouchmove = (e2) => {
+        const deltaXY = [e2.touches[0].pageX - startXY[0], e2.touches[0].pageY - startXY[1]];
+        if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
+          && (
+            (deltaXY[0] < 0 && oic._index < oicSeeds.length - 1)
+            || (deltaXY[0] > 0 && oic._index > 0)
+          )) {
+          if (Math.abs(deltaXY[0]) < 74) {
+            window.requestAnimationFrame(() => {
+              items.style.marginLeft = `${deltaXY[0]}px`;
+            });
+          } else {
+            oic.ontouchmove = null;
+            if (deltaXY[0] < 0) {
+              oic.advance();
+            } else {
+              oic.advance(true);
+            }
+          }
+        }
+      };
+      oic.ontouchend = () => {
+        window.requestAnimationFrame(() => {
+          items.style.marginLeft = 0;
+          items.style.transition = 'all .35s';
+        });
+      };
+    };
+
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.js-object-image-overlay-item')) {
+      if (e.target.closest('.js-object-image-overlay-item > a')) {
+        // open the OIC when a suitable object-card's main link is clicked
         e.preventDefault();
 
         const seed = e.target.closest('.js-object-image-overlay-item');
@@ -247,93 +240,46 @@ const oicInit = () => {
         oic.addItem(oic._index + 1);
         oic.addItem(oic._index - 1, true);
         oic.focus();
-        oic.track(oic._index);
         oic.buttonInit();
+        oic.track(oic._index);
         document.body.style.overflow = 'hidden';
-
-        const keyHandle = (e3) => {
-          if (e3.key === 'ArrowLeft') {
-            e3.preventDefault();
-            oic.advance(true);
-          } else if (e3.key === 'ArrowRight') {
-            e3.preventDefault();
-            oic.advance();
-          } else if (e3.key === 'Escape' || e3.key === 'Esc') {
-            /* eslint-disable no-use-before-define */
-            closeModal();
-            /* eslint-enable no-use-before-define */
-          } else if (e3.keyCode === 9) {
-            const first = oic.focusable[0];
-            const last = oic.focusable[oic.focusable.length - 1];
-            const shift = e3.shiftKey;
-
-            if (oic.focusable.length) {
-              if (shift && document.activeElement === first) {
-                last.focus();
-                e3.preventDefault();
-              } else if (!shift && document.activeElement === last) {
-                first.focus();
-                e3.preventDefault();
-              }
-            }
-          }
-        };
-
-        const closeModal = () => {
-          oic.classList.remove('b-object-image-overlay--active');
-          document.body.style.overflow = '';
-          items.innerHTML = '';
-          oic.onclick = null;
-          document.removeEventListener('keydown', keyHandle, false);
-        };
-
-        document.addEventListener('keydown', keyHandle, false);
-
-        oic.onclick = (e2) => {
-          if (e2.target.matches('.b-object-image-overlay__item, .b-object-image-overlay__dismiss')) {
-            e2.preventDefault();
-            closeModal();
-          } else if (e2.target.closest('.b-object-image-overlay__next--enabled')) {
-            e2.preventDefault();
-            oic.advance();
-          } else if (e2.target.closest('.b-object-image-overlay__prev--enabled')) {
-            e2.preventDefault();
-            oic.advance(true);
-          }
-        };
-
-        oic.ontouchstart = (e4) => {
-          const startXY = [e4.touches[0].pageX, e4.touches[0].pageY];
-          oic.ontouchmove = (e5) => {
-            const deltaXY = [e5.touches[0].pageX - startXY[0], e5.touches[0].pageY - startXY[1]];
-            if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
-              && (
-                (deltaXY[0] < 0 && oic._index < oicSeeds.length - 1)
-                || (deltaXY[0] > 0 && oic._index > 0)
-              )) {
-              if (Math.abs(deltaXY[0]) < 74) {
-                window.requestAnimationFrame(() => {
-                  items.style.marginLeft = `${deltaXY[0]}px`;
-                });
-              } else {
-                oic.ontouchmove = null;
-                if (deltaXY[0] < 0) {
-                  oic.advance();
-                } else {
-                  oic.advance(true);
-                }
-              }
-            }
-          };
-          oic.ontouchend = () => {
-            window.requestAnimationFrame(() => {
-              items.style.marginLeft = 0;
-              items.style.transition = 'all .35s';
-            });
-          };
-        };
+      } else if (e.target.matches('.b-object-image-overlay__item, .b-object-image-overlay__dismiss')) {
+        oic.exit();
+      } else if (e.target.matches('.js-btn--next:not([disabled])')) {
+        oic.advance();
+      } else if (e.target.matches('.js-btn--prev:not([disabled])')) {
+        oic.advance(true);
+      } else if (e.target.classList.contains('js-btn--info')) {
+        oic.infoToggle(e.target);
       }
-    }, false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.target.closest('.b-object-image-overlay')) {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          oic.advance(true);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          oic.advance();
+        } else if (e.key === 'Escape' || e.key === 'Esc') {
+          oic.exit();
+        } else if (e.key === 'Tab') {
+          // enclose tabbing within the OIC
+          const first = oic.focusable[0];
+          const last = oic.focusable[oic.focusable.length - 1];
+          if (oic.focusable.length) {
+            if (e.shiftKey && document.activeElement === first) {
+              last.focus();
+              e.preventDefault();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              first.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      }
+    });
   }
 };
 
