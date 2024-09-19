@@ -1,0 +1,84 @@
+<div class="b-venue-info">
+  <div class="b-venue-info__core s-themed s-themed--background-color">
+    <div class="b-venue-info__core-img-container">
+      <div class="b-venue-info__core-img-badge">Opening 2023</div>
+      <picture>
+        <source srcset="{% for k, img in imageLandscape %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+            media="(max-width: 768px)">
+        <img class="b-venue-card__image"
+            itemprop="contentUrl"
+            alt="" 
+            sizes="(min-width: 1200px) 480px,
+                        (min-width: 992px) 412px,
+                        (min-width: 768px) 320px,
+                        calc(100vw - 20px)"
+            srcset="{% for k, img in imageSquare %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}" 
+            src="{{ imageSquare[320] }}"
+            loading="lazy">
+      </picture>
+    </div>
+    <div class="b-venue-info__core-content">
+      <div>
+        <p>Wagon Wheels are a delicious sweet snack food sold in the United Kingdom, Australia, Canada, and many other countries like New Zealand and India</p>
+        <p>Wagon Wheels are a delicious sweet snack food sold in the United Kingdom, Australia, Canada, and many other countries like New Zealand and India</p>
+      </div>
+      <div class="b-venue-info__core-content-info">
+        <address class="b-venue-info__core-address">
+          <svg aria-hidden="true" role="img"><use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#pin"></use></svg>
+          Cromwell Road, London
+        </address>
+        <a class="b-venue-info__core-button u-btn u-btn--black u-btn--arrowed" href="#">Plan your visit</a>
+      </div>
+    </div>
+  </div>
+  <div class="b-venue-info__visit">
+    <section title="address" class="b-venue-info__visit-col">
+      <div class="b-venue-info__visit-col-icon" aria-hidden="true">
+        <svg class="b-venue-info__visit-col-svg">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#map"></use>
+        </svg>
+      </div>
+      <div class="b-venue-info__visit-col-text">
+        <h3 class="b-venue-info__visit-col-title">
+          V&A South Kensington
+        </h3>
+        <address class="b-venue-info__visit-col-body">
+          Cromwell Road<br/>
+          London, SW7 2RL
+        </address>
+      </div>
+    </section>
+    <section title="opening times" class="b-venue-info__visit-col">
+      <div class="b-venue-info__visit-col-icon" aria-hidden="true">
+        <svg class="b-venue-info__visit-col-svg">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#clock"></use>
+        </svg>
+      </div>
+      <div class="b-venue-info__visit-col-text">
+        <h3 class="b-venue-info__visit-col-title">
+          Opening Times
+        </h3>
+        <p class="b-venue-info__visit-col-body">
+          Wednesday to Sunday 10:00 – 17:45<br/>
+          Last admission 16:45
+        </p>
+      </div>
+    </section>
+    <section title="admission" class="b-venue-info__visit-col">
+      <div class="b-venue-info__visit-col-icon" aria-hidden="true">
+        <svg class="b-venue-info__visit-col-svg b-venue-info__visit-col-svg--ticket">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#ticket"></use>
+        </svg>
+      </div>
+      <div class="b-venue-info__visit-col-text">
+        <h3 class="b-venue-info__visit-col-title">
+          Admission is free - book online
+        </h3>
+        <p class="b-venue-info__visit-col-body">
+          Some exhibitions and events carry a separate charge
+        </p>
+        <a href="" class="b-venue-info__visit-col-link">Members visit free – join now</a>
+      </div>
+    </section>
+  </div>
+</div>
