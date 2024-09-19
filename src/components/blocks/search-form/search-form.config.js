@@ -12,15 +12,15 @@ module.exports = {
       },
       {
         value: 'q_object_name',
-        textContent: 'Object Type/title'
+        textContent: 'Title  / object type'
       },
       {
         value: 'q_actor',
-        textContent: 'Artist/maker'
+        textContent: 'Artist / maker'
       },
       {
         value: 'q_material_technique',
-        textContent: 'Materials and Techniques'
+        textContent: 'Materials / techniques'
       },
       {
         value: 'q_place_name',
