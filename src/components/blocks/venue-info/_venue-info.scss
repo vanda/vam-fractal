@@ -2,36 +2,43 @@
 @use "../../base";
 
 .b-venue-info {
+  &__item {
+    margin-bottom: 10px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-bottom: 20px;
+    }
+  }
+
   &__core {
     background-color: base.$themecolors-theme-color-default;
+    margin-bottom: 10px;
 
     @include mixins.breakpoints-bpMinSmall {
       display: flex;
+      margin-bottom: 20px;
     }
   }
 
   &__core-img-container {
-    height: 150px;
+    height: 255px;
     position: relative;
 
     @include mixins.breakpoints-bpMinXSmall {
-      height: 200px;
+      height: 320px;
     }
 
     @include mixins.breakpoints-bpMinSmall {
-      flex: 1 0 320px;
+      flex: 0 0 320px;
       height: auto;
-      min-height: 310px;
     }
 
     @include mixins.breakpoints-bpMinMedium {
       flex-basis: 412px;
-      min-height: 400px;
     }
 
     @include mixins.breakpoints-bpMinLarge {
       flex-basis: 480px;
-      min-height: 470px;
     }
   }
 
@@ -60,40 +67,29 @@
   }
 
   &__core-content {
-    @include base.typography-typeSetting(4, "light");
+    @include base.typography-typeSetting(4);
 
     padding: 20px 10px;
 
-    @include mixins.breakpoints-bpMinXSmall {
-      display: flex;
-    }
-
     @include mixins.breakpoints-bpMinSmall {
-      flex: 0 1 auto;
-      flex-direction: column;
       padding: 30px 87px 30px 50px;
     }
 
     @include mixins.breakpoints-bpMinMedium {
-      @include base.typography-typeSetting(5, "light");
+      @include base.typography-typeSetting(5);
 
       padding: 50px 100px 50px 60px;
     }
 
     @include mixins.breakpoints-bpMinLarge {
-      @include base.typography-typeSetting(6, "light");
+      @include base.typography-typeSetting(6);
 
       padding: 50px 94px 50px 70px;
     }
 
     &-info {
-      @include mixins.breakpoints-bpMinXSmall {
-        margin: -17px 0 0 30px;
-      }
-
       @include mixins.breakpoints-bpMinSmall {
         display: flex;
-        flex: 1;
         flex-direction: column;
         justify-content: space-between;
         margin: 0;
@@ -102,27 +98,32 @@
   }
 
   &__core-address {
-    @include base.typography-typeSetting(3, "light");
+    @include base.typography-typeSetting(3);
 
-    margin: 20px 0 30px;
+    align-items: center;
+    display: flex;
+    gap: 4px;
 
     @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(4, "light");
+      @include base.typography-typeSetting(4);
     }
 
     @include mixins.breakpoints-bpMinLarge {
-      @include base.typography-typeSetting(5, "light");
+      @include base.typography-typeSetting(5);
     }
 
-    > svg {
-      height: 18px;
-      margin: 0 2px 0 -4px;
-      width: 18px;
+    &::before {
+      background-color: currentColor;
+      content: '';
+      flex: 0 0 auto;
+      height: 20px;
+      mask: var(--icon-svg-pin) no-repeat;
+      width: 20px;
     }
   }
 
   &__core-button {
-    margin: 0;
+    margin-top: 20px;
     white-space: nowrap;
 
     @include mixins.breakpoints-bpMinSmall {
@@ -134,84 +135,42 @@
     background-color: base.sitecolors-siteColor("vam-black");
     color: base.sitecolors-siteColor("vam-white");
     display: flex;
-    margin: auto;
-    max-width: 1200px;
-    padding: 30px 0;
-    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-evenly;
+    padding: 20px 10px 30px;
 
-    @include mixins.breakpoints-bpMaxXSmall {
-      flex-direction: column;
-      padding: 30px 20px;
+    @include mixins.breakpoints-bpMinXSmall {
+      flex-direction: row;
+      gap: 20px;
+      padding: 20px 10px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 20px 64px;
     }
   }
 
   &__visit-col {
     display: flex;
-    flex-direction: row;
+    gap: 10px;
 
     &-body {
-      font-size: 14px;
-      line-height: 1.29;
-      margin: 5px 0 20px;
-    }
-
-    &:first-of-type {
-      @include mixins.breakpoints-bpMinSmall {
-        padding-left: 75px;
-      }
-    }
-
-    &:last-of-type {
-      @include mixins.breakpoints-bpMinXSmall {
-        &::after {
-          content: none;
-        }
-      }
-
-      &-body {
-        margin-bottom: 5px;
-      }
-
-      @include mixins.breakpoints-bpMinSmall {
-        padding-right: 75px;
-      }
+      margin: 5px 0;
     }
 
     @include mixins.breakpoints-bpMinXSmall {
       flex-direction: column;
       line-height: 18px;
-      padding: 0 20px 0 14px;
-      position: relative;
-      width: 33.33%;
-
-      &::after {
-        background-color: base.sitecolors-siteColor("vam-white-2");
-        content: "";
-        height: 100%;
-        position: absolute;
-        right: 0;
-        width: 1px;
-      }
     }
 
     @include mixins.breakpoints-bpMinSmall {
-      padding: 0 24px;
-
-      &::after {
-        height: 100%;
-      }
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      &::after {
-        height: 90px;
-      }
+      flex-direction: row;
     }
   }
 
   &__visit-col-svg {
     height: 18px;
-    margin-right: 15px;
     width: 18px;
 
     &--ticket {
@@ -221,30 +180,20 @@
   }
 
   &__visit-col-text {
-    @include mixins.breakpoints-bpMinMedium {
-      max-width: 270px;
-    }
+    @include base.typography-typeSetting(2);
+
+    margin-top: -3px;
   }
 
   &__visit-col-title {
-    font-size: 17px;
-    line-height: 1.24;
+    @include base.typography-typeSetting(4, "bold");
 
     @include mixins.breakpoints-bpMinXSmall {
       margin-bottom: 5px;
-      margin-top: 10px;
     }
 
-    @include mixins.breakpoints-bpMinMedium {
+    @include mixins.breakpoints-bpMinSmall {
       margin-bottom: 2px;
-      margin-top: 0;
     }
-  }
-
-  &__visit-col-link {
-    font-size: 14px;
-    line-height: 1.29;
-    margin-top: -5px;
-    text-decoration: underline;
   }
 }
