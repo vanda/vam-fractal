@@ -2,7 +2,7 @@ module.exports = {
   title: 'Venue Info',
   label: 'Venue Info',
   context: {
-    previewClass: 'fr-bg--light',
+    previewClass: 'fr-content-wrapper',
     imageSquare: {
       320: 'https://picsum.photos/id/1040/320/320',
       640: 'https://picsum.photos/id/1040/640/640',
