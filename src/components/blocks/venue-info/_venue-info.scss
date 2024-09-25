@@ -2,21 +2,37 @@
 @use "../../base";
 
 .b-venue-info {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  overflow: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  @include mixins.breakpoints-bpMinSmall {
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
   &__item {
-    margin-bottom: 10px;
+    display: flex;
+    flex: 1 0 86%;
+    flex-direction: column;
+    gap: 10px;
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
 
     @include mixins.breakpoints-bpMinSmall {
-      margin-bottom: 20px;
+      gap: 20px;
     }
   }
 
   &__core {
     background-color: base.$themecolors-theme-color-default;
-    margin-bottom: 10px;
+    flex-grow: 1;
 
     @include mixins.breakpoints-bpMinSmall {
       display: flex;
-      margin-bottom: 20px;
     }
   }
 
