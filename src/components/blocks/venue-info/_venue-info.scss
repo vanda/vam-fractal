@@ -42,6 +42,10 @@
         margin-right: calc((100vw - 1200px) / 2);
       }
     }
+
+    &#{&}:focus {
+      box-shadow: none;
+    }
   }
 
   &__core {
