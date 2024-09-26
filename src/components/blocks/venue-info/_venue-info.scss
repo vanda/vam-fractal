@@ -14,6 +14,11 @@
     margin-bottom: 20px;
   }
 
+  @include mixins.breakpoints-bpMinLarge {
+    margin-left: calc((1200px - 100vw) / 2);
+    width: 100vw;
+  }
+
   &__item {
     display: flex;
     flex: 1 0 86%;
@@ -24,6 +29,18 @@
 
     @include mixins.breakpoints-bpMinSmall {
       gap: 20px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      flex-basis: 1200px;
+
+      &:first-child {
+        margin-left: calc((100vw - 1200px) / 2);
+      }
+
+      &:last-child {
+        margin-right: calc((100vw - 1200px) / 2);
+      }
     }
   }
 
