@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Venue Core Info',
-  label: 'Venue Core Info',
+  title: 'Venue Info',
+  label: 'Venue Info',
   context: {
     previewClass: 'fr-bg--light',
     imageSquare: {
