@@ -1,57 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-  /* function only required because native scrollIntoView() affects vertical scroll too */
-  const scrollIntoViewHorizontally = (container, child) => {
-    const childRight = child.offsetLeft + child.offsetWidth;
+  /* utility function
+   * only required because native scrollIntoView() affects vertical scroll too */
+  const scrollIntoViewHorizontally = (item) => {
+    const itemRight = item.offsetLeft + item.offsetWidth;
+    const container = item.parentElement;
     const containerScrollRight = container.scrollLeft + container.offsetWidth;
 
-    if (container.scrollLeft > child.offsetLeft) {
-      container.scrollLeft = child.offsetLeft;
-    } else if (containerScrollRight < childRight) {
-      container.scrollLeft += childRight - containerScrollRight;
+    if (container.scrollLeft > item.offsetLeft) {
+      container.scrollLeft = item.offsetLeft;
+    } else if (containerScrollRight < itemRight) {
+      container.scrollLeft += itemRight - containerScrollRight;
     }
   };
 
-  /* function for setting an item as the only active item */
-  const setActive = (item) => {
-    Array.from(item.parentNode.querySelectorAll('.js-venue-info__item--active'), (active) => active.classList.remove('js-venue-info__item--active'));
-    item.classList.add('js-venue-info__item--active');
-    scrollIntoViewHorizontally(item.parentNode, item);
-  };
-
-  /* event handling */
-  Array.from(document.querySelectorAll('.b-venue-info'), (block) => {
-    /* on Scroll: set active item */
-    block.addEventListener('scrollend', () => {
-      const viewerLeft = block.getBoundingClientRect().left;
-      let i = 0;
-      while (i < block.children.length) {
-        if (block.children[i].getBoundingClientRect().left >= viewerLeft) {
-          setActive(block.children[i]);
-          break;
-        }
-        i += 1;
-      }
-    });
-
-    /* on Focus: set active item
-     * using key handler since the container element is not focussable itself */
-    block.addEventListener('keyup', (e) => {
-      if (e.key === 'Tab') {
-        setActive(e.target.closest('.b-venue-info__item'));
-      }
-    });
-
-    /* click (all devices):
-     * set active item & scroll it into view
-     * else default hyperlink click is allowed through */
-    block.addEventListener('click', (e) => {
-      if (e.target.closest('.b-venue-info__item')) {
-        const el = e.target.closest('.b-venue-info__item');
-        if (!el.classList.contains('js-venue-info__item--active')) {
-          e.preventDefault();
-          setActive(el);
-        }
-      }
+  Array.from(document.querySelectorAll('.b-venue-info'), (container) => {
+    /* scroll item into view when it receives focus
+     * requires item to be a focusable element
+     * only focusin event is delegated to container (focus event doesn't bubble!) */
+    container.addEventListener('focusin', (e) => {
+      scrollIntoViewHorizontally(e.target.closest('.b-venue-info__item'));
     });
 
     return true;
