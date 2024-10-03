@@ -22,7 +22,8 @@
     "build-prod:webpack": "webpack --config ./webpack.prod.js",
     "pub-prod:surge": "surge --project www --domain vam-design-guide.surge.sh",
     "ci-lint:sass": "node_modules/.bin/stylelint src/**/*.scss",
-    "clean": "node ./fractal-clean"
+    "clean": "node ./fractal-clean",
+    "svg-sprite-update": "node ./fractal-svg-sprite-update"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -35,6 +36,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-webpack-plugin": "^4.0.0",
+    "hook-shell-script-webpack-plugin": "^0.4.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
@@ -49,6 +51,7 @@
     "stylelint-webpack-plugin": "^4.1.0",
     "svg-sprite-loader": "^6.0.11",
     "svgo-loader": "^4.0.0",
+    "svgson": "^5.3.1",
     "terser-webpack-plugin": "^5.3.6",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
