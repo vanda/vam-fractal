@@ -20,6 +20,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Process SVG files
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
+// Run scripts before/after build
+const HookShellScriptPlugin = require('hook-shell-script-webpack-plugin');
+
 // Default configuration
 const config = {
   mode: process.env.NODE_ENV,
@@ -118,7 +121,10 @@ const config = {
       spriteAttrs: {
         class: 's-svg-icon'
       }
-    })
+    }),
+    new HookShellScriptPlugin({
+      afterEmit: ['npm run svg-sprite-update']
+    }),
   ]
 };
 
