@@ -11,23 +11,14 @@ const readSvgSprite = async (path) => {
 let cummulativeSumViewBoxHeight = 0;
 
 // return a modified viewBox set of values
-const getUpdatedViewBoxData = (thisViewBoxData, cummulativeSumViewBoxHeight, i, id) => {
+const getUpdatedViewBoxData = (thisViewBoxData, cummulativeSumViewBoxHeight) => {
   let updatedViewBoxData = thisViewBoxData.split(' ');
 
   // replace the min-y component of the existing viewBox data
-  updatedViewBoxData.splice(1, 1, i == 0 ? cummulativeSumViewBoxHeight : cummulativeSumViewBoxHeight);
+  updatedViewBoxData.splice(1, 1, cummulativeSumViewBoxHeight);
 
   // return the viewBox data to its native state
   updatedViewBoxData = updatedViewBoxData.join(' ').toString();
-
-  if (i <= 12) {
-    console.log('i : ', i);
-    console.log('id : ', id); // this can be removed from the method sig.
-    console.log('thisViewBoxData : ', thisViewBoxData);
-    console.log('updatedViewBoxData : ', updatedViewBoxData);
-    console.log('cummulativeSumViewBoxHeight : ', cummulativeSumViewBoxHeight);
-    console.log('------');
-  }
 
   return updatedViewBoxData;
 };
@@ -39,6 +30,8 @@ readSvgSprite(svgSpritePath).then((result) => {
     // svg-sprite-loader as parent of all <symbol> tags
     const svgSymbolsParent = objSvgSprite.children[0];
 
+    // console.log(svgSymbolsParent);
+
     // exit in event that script is executed having
     // been run already after webpack bundling
     if (svgSymbolsParent.name !== 'defs') {
@@ -47,11 +40,35 @@ readSvgSprite(svgSpritePath).then((result) => {
 
     const arrSymbols = Array.from(svgSymbolsParent.children);
 
+    // console.log(arrSymbols);
+
     // create <view/> and <use/> for each <symbol>
     arrSymbols.map((child, i) => {
+      // if (child.name === 'defs') {
+      //   console.log('oOo');
+      // };
+
+      // console.log('>> ', child.children);
+
       if (child.name === 'symbol') {
-        // vertical position of each SVG icon in the sprite, + 1 is spacing
-        cummulativeSumViewBoxHeight += parseInt(child.attributes.viewBox.split(' ').at(2)) + 1;
+        // vertical position of each SVG icon in the sprite
+        if (i > 0) {
+          const thisSymbol = child.attributes.viewBox;
+          const thisViewBoxDataHeight = thisSymbol.split(' ').at(3);
+          const prevSymbol = arrSymbols[i - 1].attributes.viewBox;
+
+          if (prevSymbol) {
+            const prevViewBoxDataHeight = prevSymbol.split(' ').at(3);
+            const symbolOffset = thisViewBoxDataHeight - prevViewBoxDataHeight;
+
+            // for variable height icons:
+            // height of this icon - height of previous icon = offset
+            // cummulativeSumViewBoxHeight = cummulativeSumViewBoxHeight - offset
+            cummulativeSumViewBoxHeight += parseInt(child.attributes.viewBox.split(' ').at(3));
+            cummulativeSumViewBoxHeight -= symbolOffset;
+            cummulativeSumViewBoxHeight += 10; // vertical spacer
+          }
+        } // else cummulativeSumViewBoxHeight is 0, it's the first member
 
         objSvgSprite.children.push(
           {
@@ -61,7 +78,7 @@ readSvgSprite(svgSpritePath).then((result) => {
             value: '',
             attributes: {
               id: `${child.attributes.id}-view`,
-              viewBox: getUpdatedViewBoxData(child.attributes.viewBox, cummulativeSumViewBoxHeight, i, child.attributes.id),
+              viewBox: getUpdatedViewBoxData(child.attributes.viewBox, cummulativeSumViewBoxHeight),
             },
           },
           {
@@ -78,14 +95,16 @@ readSvgSprite(svgSpritePath).then((result) => {
             },
           }
         );
+
+        // push all <symbol> children of <defs> as children of <svg>
+        objSvgSprite.children.push(child);
       }
 
-      // push all <symbol> children of <defs> as children of <svg>
-      objSvgSprite.children.push(child);
-
-      // remove <defs>
+      // remove the high level <defs> but not any existing inside SVG icons
       delete objSvgSprite.children[0];
     });
+
+    // console.log(objSvgSprite);
 
     // serialize back to SVG
     const svgSprite = stringify(objSvgSprite);

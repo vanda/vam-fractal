@@ -21,9 +21,13 @@
   gap: 4px;
 
   &::before {
-    // background: url('../../../build/svg/vam-sprite.svg#pin-view') no-repeat;
-    // background: red;
-    background-color: currentColor;
+    background: url('http://localhost:8000/build/svg/vam-sprite.svg#pin-view') no-repeat;
+    
+    // compiled as with fonts
+    // background: url('../svg/vam-sprite.svg#pin-view') no-repeat;
+
+    // from here
+    // background: url('../../../../build/svg/vam-sprite.svg#pin-view') no-repeat;
     content: '';
     flex: 0 0 auto;
     height: 20px;
