@@ -11,6 +11,7 @@
 
   @include mixins.breakpoints-bpMinSmall {
     gap: 30px;
+    overflow: hidden;
     margin-bottom: 20px;
   }
 
