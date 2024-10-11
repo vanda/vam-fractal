@@ -87,9 +87,9 @@ const oicInit = () => {
                 ${copyright}
               </div>
               <div class="b-object-image-overlay__buttons">
-                <button class="js-btn--info u-btn-icon u-btn-icon--info" data-tracking-oic="hide info" title="Show/hide information" aria-controls="object-image-content-${index}" aria-expanded="true">Show/hide information</button>
-                <button class="js-btn--prev u-btn-icon u-btn-icon--point-left" data-tracking-oic="previous object" title="Previous object">Previous object</button>
-                <button class="js-btn--next u-btn-icon u-btn-icon--point-right" data-tracking-oic="next object" title="Next object">Next object</button>
+                <button class="js-object-image-overlay-btn--info u-btn-icon u-btn-icon--info" data-tracking-oic="hide info" title="Show/hide information" aria-controls="object-image-content-${index}" aria-expanded="true">Show/hide information</button>
+                <button class="js-object-image-overlay-btn--prev u-btn-icon u-btn-icon--point-left" data-tracking-oic="previous object" title="Previous object">Previous object</button>
+                <button class="js-object-image-overlay-btn--next u-btn-icon u-btn-icon--point-right" data-tracking-oic="next object" title="Next object">Next object</button>
               </div>
             </div>
           </div>
@@ -176,23 +176,23 @@ const oicInit = () => {
       Array.from(item.querySelectorAll('button'), (el) => el.removeAttribute('disabled'));
 
       if (oic._index === oicSeeds.length - 1) {
-        item.querySelector('.js-btn--next').setAttribute('disabled', true);
+        item.querySelector('.js-object-image-overlay-btn--next').setAttribute('disabled', true);
       }
       if (oic._index === 0) {
-        item.querySelector('.js-btn--prev').setAttribute('disabled', true);
+        item.querySelector('.js-object-image-overlay-btn--prev').setAttribute('disabled', true);
       }
 
       // set info toggle
       if (oic.classList.contains('b-object-image-overlay--img-only')) {
-        oic.infoToggle(item.querySelector('.js-btn--info'), true);
+        oic.infoToggle(item.querySelector('.js-object-image-overlay-btn--info'), true);
       }
 
       oic.focusable = item.querySelectorAll('button:not([disabled]), a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])');
 
       // set initial focus
       const focusEl = rewind
-        ? item.querySelector('.js-btn--prev:not([disabled]') || item.querySelector('.js-btn--next:not([disabled]') || oic.focusable[0]
-        : item.querySelector('.js-btn--next:not([disabled]') || item.querySelector('.js-btn--prev:not([disabled]') || oic.focusable[0];
+        ? item.querySelector('.js-object-image-overlay-btn--prev:not([disabled]') || item.querySelector('.js-object-image-overlay-btn--next:not([disabled]') || oic.focusable[0]
+        : item.querySelector('.js-object-image-overlay-btn--next:not([disabled]') || item.querySelector('.js-object-image-overlay-btn--prev:not([disabled]') || oic.focusable[0];
       focusEl.focus();
     };
 
@@ -245,11 +245,11 @@ const oicInit = () => {
         document.body.style.overflow = 'hidden';
       } else if (e.target.matches('.b-object-image-overlay__item, .b-object-image-overlay__dismiss')) {
         oic.exit();
-      } else if (e.target.matches('.js-btn--next:not([disabled])')) {
+      } else if (e.target.matches('.js-object-image-overlay-btn--next:not([disabled])')) {
         oic.advance();
-      } else if (e.target.matches('.js-btn--prev:not([disabled])')) {
+      } else if (e.target.matches('.js-object-image-overlay-btn--prev:not([disabled])')) {
         oic.advance(true);
-      } else if (e.target.classList.contains('js-btn--info')) {
+      } else if (e.target.classList.contains('js-object-image-overlay-btn--info')) {
         oic.infoToggle(e.target);
       }
     });
