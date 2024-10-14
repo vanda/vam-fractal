@@ -40,7 +40,8 @@
       }
 
       &:last-child {
-        margin-right: calc((100vw - 1200px) / 2);
+        // having to use border here to avoid margin-collapse in Safari
+        border-right: calc((100vw - 1200px) / 2) solid transparent;
       }
     }
 
