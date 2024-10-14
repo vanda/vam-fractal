@@ -22,7 +22,7 @@
 
   &__item {
     display: flex;
-    flex: 1 0 86%;
+    flex: 1 0 87%;
     flex-direction: column;
     gap: 10px;
     scroll-snap-align: center;
@@ -33,7 +33,7 @@
     }
 
     @include mixins.breakpoints-bpMinLarge {
-      flex-basis: 1200px;
+      max-width: 1200px;
 
       &:first-child {
         margin-left: calc((100vw - 1200px) / 2);
