@@ -18,6 +18,12 @@
   @include mixins.breakpoints-bpMinLarge {
     margin-left: calc((1200px - 100vw) / 2);
     width: 100vw;
+
+    // hack required to prevent Safari collapsing the margin on &__item:last-child, set below
+    &::after {
+      content: '.';
+      width: 0;
+    }
   }
 
   &__item {
@@ -38,8 +44,7 @@
       }
 
       &:last-child {
-        // having to use border here to avoid margin-collapse in Safari
-        border-right: calc((100vw - 1200px) / 2) solid transparent;
+        margin-right: calc((100vw - 1200px) / 2);
       }
     }
 
