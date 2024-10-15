@@ -6,49 +6,10 @@
   --item-width: 87%;
   --items-offset: 0;
 
-  display: flex;
-  gap: 10px;
   margin-bottom: 10px;
-  overflow: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
 
   @include mixins.breakpoints-bpMinSmall {
-    gap: 30px;
-    overflow: hidden;
     margin-bottom: 20px;
-    position: relative;
-
-    // pseudo el used by JS for non-native scroll animation
-    &::before {
-      content: '';
-      margin-left: var(--items-offset);
-      margin-right: -30px; // eliminate the extra flex gap this pseudo el creates
-      width: 0;
-      transition: margin-left 0.34s ease;
-    }
-  }
-
-  @include mixins.breakpoints-bpMinLarge {
-    margin-left: calc((1200px - 100vw) / 2);
-    width: 100vw;
-
-    // hack required to prevent Safari collapsing the margin on &__item:last-child, set below
-    &::after {
-      content: '.';
-      margin-right: -30px; // eliminate the extra flex gap this pseudo el creates
-      width: 0;
-    }
-  }
-
-  @include mixins.breakpoints-bpMinLarge {
-    > div:nth-child(-n+2) {
-      margin-left: calc((100vw - var(--template-width)) / 2); // applies to 1st __item & __ctrls
-    }
-
-    > div:last-child {
-      margin-right: calc((100vw - var(--template-width)) / 2);
-    }
   }
 
   &__ctrls {
@@ -61,9 +22,30 @@
         justify-content: flex-end;
         margin: auto;
         max-width: var(--template-width);
-        position: absolute;
-        width: var(--item-width);
-        z-index: 1;
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 10px;
+    margin-left: var(--items-offset); // used by JS for non-native scroll animation
+    overflow: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    transition: margin-left 0.34s ease;
+
+    @include mixins.breakpoints-bpMinSmall {
+      gap: 30px;
+      overflow: hidden;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-left: calc((var(--template-width) - 100vw) / 2);
+      width: 100vw;
+
+      > :first-child {
+        margin-left: calc((100vw - var(--template-width)) / 2);
       }
     }
   }

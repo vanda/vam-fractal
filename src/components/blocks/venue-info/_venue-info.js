@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
             * only necessary due to browsers refusing to scroll items already within viewport
             * also affords css control over the animation */
             const index = Array.prototype.indexOf.call(items, item);
-            const itemShift = items[1].offsetLeft - items[0].offsetLeft;
-            container.style.setProperty('--items-offset', `-${index * itemShift}px`);
+            const itemShift = index * (items[1].offsetLeft - (container.getBoundingClientRect().right - items[1].getBoundingClientRect().left)); // eslint-disable-line max-len
+            container.style.setProperty('--items-offset', `-${itemShift}px`);
           }
         }
       });
