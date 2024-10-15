@@ -26,11 +26,9 @@ const getUpdatedViewBoxData = (thisViewBoxData, cummulativeSumViewBoxHeight) => 
 // deserialize SVG
 readSvgSprite(svgSpritePath).then((result) => {
   parse(result).then((objSvgSprite) => {
-    // <defs> - this is being incorrectly written by
-    // svg-sprite-loader as parent of all <symbol> tags
+    // <defs> - this is being written by svg-sprite-loader
+    // as parent of all <symbol> tags
     const svgSymbolsParent = objSvgSprite.children[0];
-
-    // console.log(svgSymbolsParent);
 
     // exit in event that script is executed having
     // been run already after webpack bundling
@@ -40,16 +38,8 @@ readSvgSprite(svgSpritePath).then((result) => {
 
     const arrSymbols = Array.from(svgSymbolsParent.children);
 
-    // console.log(arrSymbols);
-
     // create <view/> and <use/> for each <symbol>
     arrSymbols.map((child, i) => {
-      // if (child.name === 'defs') {
-      //   console.log('oOo');
-      // };
-
-      // console.log('>> ', child.children);
-
       if (child.name === 'symbol') {
         // vertical position of each SVG icon in the sprite
         if (i > 0) {
@@ -58,12 +48,13 @@ readSvgSprite(svgSpritePath).then((result) => {
           const prevSymbol = arrSymbols[i - 1].attributes.viewBox;
 
           if (prevSymbol) {
-            const prevViewBoxDataHeight = prevSymbol.split(' ').at(3);
-            const symbolOffset = thisViewBoxDataHeight - prevViewBoxDataHeight;
-
             // for variable height icons:
             // height of this icon - height of previous icon = offset
             // cummulativeSumViewBoxHeight = cummulativeSumViewBoxHeight - offset
+
+            const prevViewBoxDataHeight = prevSymbol.split(' ').at(3);
+            const symbolOffset = thisViewBoxDataHeight - prevViewBoxDataHeight;
+
             cummulativeSumViewBoxHeight += parseInt(child.attributes.viewBox.split(' ').at(3));
             cummulativeSumViewBoxHeight -= symbolOffset;
             cummulativeSumViewBoxHeight += 10; // vertical spacer
@@ -104,12 +95,10 @@ readSvgSprite(svgSpritePath).then((result) => {
       delete objSvgSprite.children[0];
     });
 
-    // console.log(objSvgSprite);
-
-    // serialize back to SVG
+    // serialize to SVG
     const svgSprite = stringify(objSvgSprite);
 
-    // write SVG back to the file and notify
+    // write back to the file and notify
     fs.writeFile(svgSpritePath, svgSprite, (error) => {
       if (error) {
         console.log(error);
