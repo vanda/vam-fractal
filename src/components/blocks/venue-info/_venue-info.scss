@@ -2,6 +2,10 @@
 @use "../../base";
 
 .b-venue-info {
+  --template-width: 1200px;
+  --item-width: 87%;
+  --items-offset: 0;
+
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
@@ -11,7 +15,18 @@
 
   @include mixins.breakpoints-bpMinSmall {
     gap: 30px;
+    overflow: hidden;
     margin-bottom: 20px;
+    position: relative;
+
+    // pseudo el used by JS for non-native scroll animation
+    &::before {
+      content: '';
+      margin-left: var(--items-offset);
+      margin-right: -30px; // eliminate the extra flex gap this pseudo el creates
+      width: 0;
+      transition: margin-left 0.34s ease;
+    }
   }
 
   @include mixins.breakpoints-bpMinLarge {
@@ -21,14 +36,41 @@
     // hack required to prevent Safari collapsing the margin on &__item:last-child, set below
     &::after {
       content: '.';
-      margin-left: -30px; // required to eliminate the extra gap that flex inserts before this pseudo el
+      margin-right: -30px; // eliminate the extra flex gap this pseudo el creates
       width: 0;
+    }
+  }
+
+  @include mixins.breakpoints-bpMinLarge {
+    > div:nth-child(-n+2) {
+      margin-left: calc((100vw - var(--template-width)) / 2); // applies to 1st __item & __ctrls
+    }
+
+    > div:last-child {
+      margin-right: calc((100vw - var(--template-width)) / 2);
+    }
+  }
+
+  &__ctrls {
+    display: none;
+
+    &--active {
+      @include mixins.breakpoints-bpMinSmall {
+        display: flex;
+        gap: 6px;
+        justify-content: flex-end;
+        margin: auto;
+        max-width: var(--template-width);
+        position: absolute;
+        width: var(--item-width);
+        z-index: 1;
+      }
     }
   }
 
   &__item {
     display: flex;
-    flex: 1 0 87%;
+    flex: 1 0 var(--item-width);
     flex-direction: column;
     gap: 10px;
     scroll-snap-align: center;
@@ -38,18 +80,8 @@
       gap: 20px;
     }
 
-    @include mixins.breakpoints-bpMinLarge {
-      &:first-child {
-        margin-left: calc((100vw - 1200px) / 2);
-      }
-
-      &:last-child {
-        margin-right: calc((100vw - 1200px) / 2);
-      }
-    }
-
     @media (width >= 1400px) {
-      flex-basis: 1200px;
+      flex-basis: var(--template-width);
     }
 
     &#{&}:focus {
