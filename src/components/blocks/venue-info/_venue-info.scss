@@ -29,15 +29,22 @@
   &__items {
     display: flex;
     gap: 10px;
-    margin-left: var(--items-offset); // used by JS for non-native scroll animation
     overflow: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    transition: margin-left 0.34s ease;
 
     @include mixins.breakpoints-bpMinSmall {
       gap: 30px;
       overflow: hidden;
+
+      // pseudo el used by JS for non-native scroll animation
+      &::before {
+        content: '';
+        margin-left: var(--items-offset);
+        margin-right: -30px; // eliminate the extra flex gap this pseudo el creates
+        width: 0;
+        transition: margin-left 0.34s ease;
+      }
     }
 
     @include mixins.breakpoints-bpMinLarge {
