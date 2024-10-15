@@ -70,7 +70,7 @@
 
   &__item {
     display: flex;
-    flex: 1 0 var(--item-width);
+    flex: 0 0 var(--item-width);
     flex-direction: column;
     gap: 10px;
     scroll-snap-align: center;
