@@ -3,7 +3,6 @@
 
 .b-venue-info {
   --template-width: 1200px;
-  --item-width: 87%;
   --items-offset: 0;
 
   margin-bottom: 10px;
@@ -59,13 +58,14 @@
 
   &__item {
     display: flex;
-    flex: 0 0 var(--item-width);
+    flex: 0 0 79%;
     flex-direction: column;
     gap: 10px;
     scroll-snap-align: center;
     scroll-snap-stop: normal;
 
     @include mixins.breakpoints-bpMinSmall {
+      flex-basis: 87%;
       gap: 20px;
     }
 
