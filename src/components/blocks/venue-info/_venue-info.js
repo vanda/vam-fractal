@@ -20,15 +20,20 @@ const venueInfoCtrlsInit = (component, ctrls) => {
     ctrls.addEventListener('click', (e) => {
       if (e.target === prev) {
         itemIndex -= 1;
-        items[itemIndex].focus();
+        component._setActiveItem(items[itemIndex]);
       } else if (e.target === next) {
         itemIndex += 1;
-        items[itemIndex].focus();
+        component._setActiveItem(items[itemIndex]);
+        /* if last item is now active, the next btn becomes disabled,
+        so move lost focus to the active item */
+        if (itemIndex === items.length - 1) {
+          items[itemIndex].focus();
+        }
       }
     });
 
     /* deactivate inapropriate btn based on new state of carousel */
-    component.addEventListener('focusItem', (e) => {
+    component.addEventListener('itemChange', (e) => {
       itemIndex = e.detail.itemIndex;
       prev.removeAttribute('disabled');
       next.removeAttribute('disabled');
@@ -36,6 +41,13 @@ const venueInfoCtrlsInit = (component, ctrls) => {
         prev.setAttribute('disabled', 'true');
       } else if (itemIndex === items.length - 1) {
         next.setAttribute('disabled', 'true');
+      }
+    });
+
+    /* tabbing out of next btn focusses on whichever item is active */
+    next.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        items[itemIndex].focus();
       }
     });
   }
@@ -51,27 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const carousel = component.querySelector('.b-venue-info__items');
       items[0].classList.add('js-venue-info__item--active');
 
-      /* function for setting an item as the only active item */
-      const setActive = (item) => {
+      /* function for setting the active item
+       * and scrolling into view, if required */
+      component._setActiveItem = (item, scrollToItem = true) => {
         carousel.querySelector('.js-venue-info__item--active').classList.remove('js-venue-info__item--active');
         item.classList.add('js-venue-info__item--active');
-        component.dispatchEvent(new CustomEvent('focusItem', { detail: { itemIndex: Array.prototype.indexOf.call(items, item) } }));
-      };
 
-      /* scroll item into view when it receives focus
-      * requires item to be a focusable element
-      * only focusin event is delegated to container (focus event doesn't bubble!) */
-      carousel.addEventListener('focusin', (e) => {
-        if (e.target.closest('.b-venue-info__item:not(.js-venue-info__item--active)')) {
-          const item = e.target.closest('.b-venue-info__item');
-          setActive(item);
+        /* scroll active item into view */
+        if (scrollToItem) {
           const scrollMode = window.getComputedStyle(carousel).getPropertyValue('overflow') !== 'hidden';
-
           if (scrollMode) {
             /* if native scrolling is enabled by CSS, focus item using native scrolling */
             scrollIntoViewHorizontally(item);
           } else {
-            /* else focus item using CSS
+            /* else scroll to item using CSS
             * only necessary due to browsers refusing to scroll items already within viewport
             * also affords css control over the animation */
             const index = Array.prototype.indexOf.call(items, item);
@@ -82,6 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
             component.style.setProperty('--items-offset', `-${itemShift}px`);
           }
         }
+
+        /* dispatch an event to be heard by the detachable buttons
+         * and anything else that needs it */
+        component.dispatchEvent(new CustomEvent('itemChange', { detail: { itemIndex: Array.prototype.indexOf.call(items, item) } }));
+      };
+
+      /* set active item when it receives focus
+      * requires item to be a focusable element
+      * only focusin event is delegated to container (focus event doesn't bubble!) */
+      carousel.addEventListener('focusin', (e) => {
+        if (e.target.closest('.b-venue-info__item:not(.js-venue-info__item--active)')) {
+          component._setActiveItem(e.target.closest('.b-venue-info__item'));
+        }
       });
 
       /* on Scroll: set active item */
@@ -90,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let i = 0;
         while (i < carousel.children.length) {
           if (carousel.children[i].getBoundingClientRect().left >= viewerLeft) {
-            setActive(carousel.children[i]);
+            /* call function without unnecessary scrolling option */
+            component._setActiveItem(carousel.children[i], false);
             break;
           }
           i += 1;
@@ -101,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', () => {
         carousel.scrollLeft = 0;
         component.style.setProperty('--items-offset', 0);
-        setActive(items[0]);
+        component._setActiveItem(items[0]);
       });
 
       // init carousel controls
