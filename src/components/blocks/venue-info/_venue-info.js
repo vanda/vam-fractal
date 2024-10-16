@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const setActive = (item) => {
         carousel.querySelector('.js-venue-info__item--active').classList.remove('js-venue-info__item--active');
         item.classList.add('js-venue-info__item--active');
+        component.dispatchEvent(new CustomEvent('focusItem', { itemIndex: Array.prototype.indexOf.call(items, item) }));
       };
 
       /* scroll item into view when it receives focus
