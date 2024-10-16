@@ -32,7 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
             * only necessary due to browsers refusing to scroll items already within viewport
             * also affords css control over the animation */
             const index = Array.prototype.indexOf.call(items, item);
-            const itemShift = index * (items[0].offsetLeft + items[0].offsetWidth - (carousel.getBoundingClientRect().right - items[index].getBoundingClientRect().left)); // eslint-disable-line max-len
+            let itemShift = index * (items[1].offsetLeft - items[0].offsetLeft);
+            if (index === items.length - 1) {
+              itemShift -= ((1 - (item.offsetWidth / component.offsetWidth)) * component.offsetWidth); // eslint-disable-line max-len
+            }
             component.style.setProperty('--items-offset', `-${itemShift}px`);
           }
         }
@@ -40,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       /* reset native scroll position in case resizing between native/non-native scroll modes */
       window.addEventListener('resize', () => {
-        if (window.getComputedStyle(carousel).getPropertyValue('overflow') === 'hidden') {
-          carousel.scrollLeft = 0;
-        }
+        carousel.scrollLeft = 0;
+        component.style.setProperty('--items-offset', 0);
+        setActive(items[0]);
       });
 
       /* prev/next buttons */
