@@ -41,6 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
+      /* on Scroll: set active item */
+      carousel.addEventListener('scrollend', () => {
+        const viewerLeft = carousel.getBoundingClientRect().left;
+        let i = 0;
+        while (i < carousel.children.length) {
+          if (carousel.children[i].getBoundingClientRect().left >= viewerLeft) {
+            setActive(carousel.children[i]);
+            break;
+          }
+          i += 1;
+        }
+      });
+
       /* reset native scroll position in case resizing between native/non-native scroll modes */
       window.addEventListener('resize', () => {
         carousel.scrollLeft = 0;
