@@ -1,5 +1,47 @@
 import { scrollIntoViewHorizontally } from '../../services/js_utility_functions/js_utility_functions';
 
+/* venueInfo controls
+ * exported separately in case btns are detached from component */
+const venueInfoCtrlsInit = (component, ctrls) => {
+  const items = component.querySelectorAll('.b-venue-info__item');
+
+  /* init if multiple items in carousel */
+  if (items.length > 1) {
+    ctrls.classList.add('b-venue-info__ctrls--active');
+
+    const prev = ctrls.querySelector('.js-venue-info__ctrl--prev');
+    const next = ctrls.querySelector('.js-venue-info__ctrl--next');
+
+    prev.setAttribute('disabled', 'true');
+
+    let itemIndex = 0;
+
+    /* onClick: focus relevant item */
+    ctrls.addEventListener('click', (e) => {
+      if (e.target === prev) {
+        itemIndex -= 1;
+        items[itemIndex].focus();
+      } else if (e.target === next) {
+        itemIndex += 1;
+        items[itemIndex].focus();
+      }
+    });
+
+    /* deactivate inapropriate btn based on new state of carousel */
+    component.addEventListener('focusItem', (e) => {
+      itemIndex = e.detail.itemIndex;
+      prev.removeAttribute('disabled');
+      next.removeAttribute('disabled');
+      if (itemIndex === 0) {
+        prev.setAttribute('disabled', 'true');
+      } else if (itemIndex === items.length - 1) {
+        next.setAttribute('disabled', 'true');
+      }
+    });
+  }
+};
+export default venueInfoCtrlsInit;
+
 document.addEventListener('DOMContentLoaded', () => {
   Array.from(document.querySelectorAll('.b-venue-info'), (component) => {
     const items = component.querySelectorAll('.b-venue-info__item');
@@ -62,10 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setActive(items[0]);
       });
 
-      /* prev/next buttons */
-      const ctrls = component.querySelector('.b-venue-info__ctrls');
-      // only active if multiple items
-      ctrls.classList.add('b-venue-info__ctrls--active');
+      // init carousel controls
+      Array.from(component.querySelectorAll('.b-venue-info__ctrls'), (ctrls) => {
+        venueInfoCtrlsInit(component, ctrls);
+        return true;
+      });
     }
 
     return true;
