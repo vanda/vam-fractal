@@ -4,6 +4,7 @@
 .b-venue-info {
   --template-width: 1200px;
   --items-offset: 0;
+  --transition-speed: 0.5s;
 
   margin-bottom: 10px;
 
@@ -42,7 +43,7 @@
         margin-left: var(--items-offset);
         margin-right: -30px; // eliminate the extra flex gap this pseudo el creates
         width: 0;
-        transition: margin-left 0.34s ease;
+        transition: margin-left var(--transition-speed) ease;
       }
     }
 
