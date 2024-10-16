@@ -27,7 +27,7 @@ const venueInfoCtrlsInit = (component, ctrls) => {
         /* if last item is now active, the next btn becomes disabled,
         so move lost focus to the active item */
         if (itemIndex === items.length - 1) {
-          items[itemIndex].focus();
+          items[itemIndex].focus({ preventScroll: true });
         }
       }
     });
