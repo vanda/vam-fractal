@@ -211,6 +211,7 @@
     @include mixins.breakpoints-bpMinXSmall {
       flex-direction: row;
       gap: 20px;
+      justify-content: space-between;
       padding: 20px 10px;
     }
 
@@ -233,6 +234,7 @@
     }
 
     @include mixins.breakpoints-bpMinSmall {
+      flex: 1 1 33.3%;
       flex-direction: row;
     }
   }
