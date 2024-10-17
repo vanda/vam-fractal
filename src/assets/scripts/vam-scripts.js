@@ -20,6 +20,7 @@ require('../../components/blocks/search-pagination/_search-pagination');
 require('../../components/blocks/search-result/_search-result');
 require('../../components/blocks/site-nav/_site-nav');
 require('../../components/blocks/toggle-nav/_toggle-nav');
+require('../../components/blocks/venue-info/_venue-info');
 require('../../components/blocks/video-thumbnail/_video-thumbnail');
 require('../../components/blocks/video-trailer/_video-trailer');
 require('../../components/blocks/events-featured/_events-featured');

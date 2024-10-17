@@ -90,7 +90,7 @@
   &--close {
     --btn-icon: var(--icon-svg-plus);
     --btn-icon-transform: rotate(45deg);
-    --btn-icon-size: 58%;
+    --btn-icon-size: 52%;
   }
   
   &--info {
@@ -106,12 +106,13 @@
     --btn-icon: var(--icon-svg-plus);
   }
 
-  &--point-left {
+  &--point-left,
+  &--point-right {
     --btn-icon: var(--icon-svg-point-left);
+    --btn-icon-size: 42%;
   }
 
   &--point-right {
-    --btn-icon: var(--icon-svg-point-left);
     --btn-icon-transform: rotate(180deg);
   }
 }
