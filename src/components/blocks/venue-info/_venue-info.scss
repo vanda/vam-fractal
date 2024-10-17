@@ -229,12 +229,12 @@
     }
 
     @include mixins.breakpoints-bpMinXSmall {
+      flex: 1 1 33.3%;
       flex-direction: column;
       line-height: 18px;
     }
 
     @include mixins.breakpoints-bpMinSmall {
-      flex: 1 1 33.3%;
       flex-direction: row;
     }
   }
