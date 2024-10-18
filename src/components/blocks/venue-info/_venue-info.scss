@@ -168,26 +168,31 @@
   &__core-address {
     @include base.typography-typeSetting(3);
 
-    align-items: center;
     display: flex;
     gap: 4px;
 
+    &::before {
+      background-color: currentColor;
+      content: '';
+      flex: 0 0 auto;
+      height: 1.2em;
+      margin-top: .1em;
+      mask: var(--icon-svg-pin) no-repeat;
+      width: 1.2em;
+    }
+
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(4);
+
+      &::before {
+        margin-top: .2em;
+      }
     }
 
     @include mixins.breakpoints-bpMinLarge {
       @include base.typography-typeSetting(5);
     }
 
-    &::before {
-      background-color: currentColor;
-      content: '';
-      flex: 0 0 auto;
-      height: 20px;
-      mask: var(--icon-svg-pin) no-repeat;
-      width: 20px;
-    }
   }
 
   &__core-button {
