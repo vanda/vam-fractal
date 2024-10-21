@@ -1,0 +1,274 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-venue-info {
+  --template-width: 1200px;
+  --items-offset: 0;
+  --transition-speed: 0.5s;
+
+  margin-bottom: 10px;
+
+  @include mixins.breakpoints-bpMinSmall {
+    margin-bottom: 20px;
+  }
+
+  &__ctrls {
+    display: none;
+
+    &--active {
+      @include mixins.breakpoints-bpMinSmall {
+        display: flex;
+        gap: 6px;
+        justify-content: flex-end;
+        margin: auto;
+        max-width: var(--template-width);
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    @include mixins.breakpoints-bpMinSmall {
+      gap: 30px;
+      overflow: hidden;
+
+      // pseudo el used by JS for non-native scroll animation
+      &::before {
+        content: '';
+        margin-left: var(--items-offset);
+        margin-right: -30px; // eliminate the extra flex gap this pseudo el creates
+        width: 0;
+        transition: margin-left var(--transition-speed) ease;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      margin-left: calc((var(--template-width) - 100vw) / 2);
+      width: 100vw;
+
+      > :first-child {
+        margin-left: calc((100vw - var(--template-width)) / 2); // negates parent margin to left align with centred template
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex: 0 0 79%;
+    flex-direction: column;
+    gap: 10px;
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex-basis: 87%;
+      gap: 20px;
+    }
+
+    @media (width >= 1400px) {
+      flex-basis: var(--template-width);
+    }
+
+    &#{&}:focus {
+      box-shadow: none;
+    }
+  }
+
+  &__core {
+    background-color: base.$themecolors-theme-color-default;
+    flex-grow: 1;
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: flex;
+    }
+  }
+
+  &__core-img-container {
+    height: 255px;
+    position: relative;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      height: 320px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex: 0 0 320px;
+      height: auto;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      flex-basis: 412px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      flex-basis: 480px;
+    }
+  }
+
+  &__core-img-badge {
+    @include base.typography-typeSetting(2, "light");
+
+    background-color: rgba(255, 255, 255, 80%);
+    padding: 3px 6px;
+    position: absolute;
+
+    @include mixins.breakpoints-bpMaxSmall {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      right: 20px;
+      top: 20px;
+    }
+  }
+
+  &__core-img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__core-content {
+    @include base.typography-typeSetting(4);
+
+    padding: 20px 10px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 30px 87px 30px 50px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(5);
+
+      padding: 50px 100px 50px 60px;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(6);
+
+      padding: 50px 94px 50px 70px;
+    }
+
+    &-info {
+      @include mixins.breakpoints-bpMinSmall {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0;
+      }
+    }
+  }
+
+  &__core-address {
+    @include base.typography-typeSetting(3);
+
+    display: flex;
+    gap: 4px;
+
+    &::before {
+      background-color: currentColor;
+      content: '';
+      flex: 0 0 auto;
+      height: 1.2em;
+      margin-top: .1em;
+      mask: var(--icon-svg-pin) no-repeat;
+      width: 1.2em;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4);
+
+      &::before {
+        margin-top: .2em;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(5);
+    }
+
+  }
+
+  &__core-button {
+    margin-top: 20px;
+    white-space: nowrap;
+
+    @include mixins.breakpoints-bpMinSmall {
+      align-self: flex-end;
+    }
+  }
+
+  &__visit {
+    background-color: base.sitecolors-siteColor("vam-black");
+    color: base.sitecolors-siteColor("vam-white");
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-evenly;
+    padding: 20px 10px 30px;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      flex-direction: row;
+      gap: 20px;
+      justify-content: space-between;
+      padding: 20px 10px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 20px 64px;
+    }
+  }
+
+  &__visit-col {
+    display: flex;
+    gap: 10px;
+
+    &-body {
+      margin: 5px 0;
+    }
+
+    @include mixins.breakpoints-bpMinXSmall {
+      flex: 1 1 33.3%;
+      flex-direction: column;
+      line-height: 18px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex-direction: row;
+    }
+  }
+
+  &__visit-col-svg {
+    height: 18px;
+    width: 18px;
+
+    &--ticket {
+      height: 21px;
+      width: 21px;
+    }
+  }
+
+  &__visit-col-text {
+    @include base.typography-typeSetting(2);
+
+    margin-top: -3px;
+  }
+
+  &__visit-col-title {
+    @include base.typography-typeSetting(4, "bold");
+
+    @include mixins.breakpoints-bpMinXSmall {
+      margin-bottom: 5px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-bottom: 2px;
+    }
+  }
+}
