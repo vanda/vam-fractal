@@ -1,5 +1,3 @@
-import { scrollIntoViewHorizontally } from '../../services/js_utility_functions/js_utility_functions';
-
 /* venueInfo controls
  * exported separately in case btns are detached from component */
 const venueInfoCtrlsInit = (component, ctrls) => {
@@ -60,34 +58,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Carousel logic only relvant for > 1 item */
     if (items.length > 1) {
-      const carousel = component.querySelector('.b-venue-info__items');
-      items[0].classList.add('js-venue-info__item--active');
+      const carousel = component.querySelector('.b-venue-info__carousel');
+      const list = component.querySelector('.b-venue-info__list');
+      let index = 0;
+      let itemsOffset = 0;
+      items[index].classList.add('js-venue-info__item--active');
 
       /* function for setting the active item
        * and scrolling into view, if required */
-      component._setActiveItem = (item, scrollToItem = true) => {
-        carousel.querySelector('.js-venue-info__item--active').classList.remove('js-venue-info__item--active');
+      component._setActiveItem = (item) => {
+        list.querySelector('.js-venue-info__item--active').classList.remove('js-venue-info__item--active');
         item.classList.add('js-venue-info__item--active');
 
-        /* scroll active item into view */
-        if (scrollToItem) {
-          const scrollMode = window.getComputedStyle(carousel).getPropertyValue('overflow') !== 'hidden';
-          if (scrollMode) {
-            /* if native scrolling is enabled by CSS, focus item using native scrolling */
-            scrollIntoViewHorizontally(item);
-          } else {
-            /* else scroll to item using CSS
-            * only necessary due to browsers refusing to scroll items already within viewport
-            * also affords css control over the animation */
-            const index = Array.prototype.indexOf.call(items, item);
-            let itemShift = index * (items[1].offsetLeft - items[0].offsetLeft);
-            /* last item needs special right-alignment */
-            if (index === items.length - 1) {
-              itemShift -= ((1 - (item.offsetWidth / component.offsetWidth)) * component.offsetWidth); // eslint-disable-line max-len
-            }
-            component.style.setProperty('--items-offset', `-${itemShift}px`);
-          }
+        /* move active item into view */
+        index = Array.prototype.indexOf.call(items, item);
+        itemsOffset = index * (items[1].offsetLeft - items[0].offsetLeft);
+        /* last item needs special right-alignment */
+        if (index === items.length - 1) {
+          itemsOffset -= ((1 - (item.offsetWidth / component.offsetWidth)) * component.offsetWidth); // eslint-disable-line max-len
         }
+        component.style.setProperty('--items-offset', `-${itemsOffset}px`);
 
         /* dispatch an event to be heard by the detachable buttons
          * and anything else that needs it */
@@ -103,28 +93,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      /* on Scroll: set active item */
-      carousel.addEventListener('scrollend', () => {
-        const viewerLeft = carousel.getBoundingClientRect().left;
-        let i = 0;
-        while (i < items.length) {
-          if (items[i].getBoundingClientRect().left >= viewerLeft) {
-            /* call function without unnecessary scrolling option */
-            component._setActiveItem(items[i], false);
-            break;
+      /* add swipe gesture support */
+      carousel.ontouchstart = (e) => {
+        const startXY = [e.touches[0].pageX, e.touches[0].pageY];
+        carousel.ontouchmove = (e2) => {
+          const deltaXY = [e2.touches[0].pageX - startXY[0], e2.touches[0].pageY - startXY[1]];
+          if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
+            && (
+              (deltaXY[0] < 0 && index < items.length - 1)
+              || (deltaXY[0] > 0 && index > 0)
+            )) {
+            /* if touch move significantly horizontally
+             * activate prev/next item swipe, depending on touch move direction */
+            if (Math.abs(deltaXY[0]) > 50) {
+              carousel.ontouchmove = null;
+              if (deltaXY[0] < 0) {
+                component._setActiveItem(items[index + 1]);
+              } else {
+                component._setActiveItem(items[index - 1]);
+              }
+            } else {
+              /* else just drag */
+              component.style.setProperty('--items-offset', `${deltaXY[0] - itemsOffset}px`);
+              carousel.ontouchend = () => {
+                component._setActiveItem(items[index]);
+                carousel.ontouchend = null;
+              }
+            }
           }
-          i += 1;
-        }
-      });
+        };
+      };
 
-      /* reset native scroll position in case resizing between native/non-native scroll modes */
+      /* re-centre active item on resize */
       window.addEventListener('resize', () => {
-        carousel.scrollLeft = 0;
-        component.style.setProperty('--items-offset', 0);
-        component._setActiveItem(items[0]);
+        component._setActiveItem(items[index]);
       });
 
-      // init carousel controls
+      /* initialise carousel controls */
       Array.from(component.querySelectorAll('.b-venue-info__ctrls'), (ctrls) => {
         venueInfoCtrlsInit(component, ctrls);
         return true;
