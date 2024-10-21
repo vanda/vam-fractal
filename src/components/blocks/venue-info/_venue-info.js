@@ -106,10 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
       carousel.addEventListener('scrollend', () => {
         const viewerLeft = carousel.getBoundingClientRect().left;
         let i = 0;
-        while (i < carousel.children.length) {
-          if (carousel.children[i].getBoundingClientRect().left >= viewerLeft) {
+        while (i < items.length) {
+          if (items[i].getBoundingClientRect().left >= viewerLeft) {
             /* call function without unnecessary scrolling option */
-            component._setActiveItem(carousel.children[i], false);
+            component._setActiveItem(items[i], false);
             break;
           }
           i += 1;
