@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
               carousel.ontouchend = () => {
                 component._setActiveItem(items[index]);
                 carousel.ontouchend = null;
-              }
+              };
             }
           }
         };
