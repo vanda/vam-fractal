@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             * also affords css control over the animation */
             const index = Array.prototype.indexOf.call(items, item);
             let itemShift = index * (items[1].offsetLeft - items[0].offsetLeft);
+            /* last item needs special right-alignment */
             if (index === items.length - 1) {
               itemShift -= ((1 - (item.offsetWidth / component.offsetWidth)) * component.offsetWidth); // eslint-disable-line max-len
             }
