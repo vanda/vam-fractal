@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             )) {
             /* if touch moves significantly horizontally
              * activate prev/next item swipe */
-            if (Math.abs(deltaXY[0]) > 50) {
+            if (Math.abs(deltaXY[0]) > 74) {
               carousel.ontouchmove = null;
               if (deltaXY[0] < 0) {
                 component._setActiveItem(items[index + 1]);
