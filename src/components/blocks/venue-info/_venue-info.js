@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
               (deltaXY[0] < 0 && index < items.length - 1)
               || (deltaXY[0] > 0 && index > 0)
             )) {
-            /* if touch move significantly horizontally
-             * activate prev/next item swipe, depending on touch move direction */
+            /* if touch moves significantly horizontally
+             * activate prev/next item swipe */
             if (Math.abs(deltaXY[0]) > 50) {
               carousel.ontouchmove = null;
               if (deltaXY[0] < 0) {
