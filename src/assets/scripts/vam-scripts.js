@@ -1,7 +1,7 @@
 // V&A front-end component scripts
 import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
 import contentWarningsInit from '../../components/blocks/object-card/_object-card';
-import venueInfoInit from '../../components/blocks/venue-info/_venue-info';
+import carouselInit from '../../components/blocks/venue-info/_venue-info';
 
 require('../../components/services/imageload/_imageload');
 require('../../components/blocks/accordion/_accordion');
@@ -31,6 +31,6 @@ require('../../components/groups/story-box-container/_story-box-container');
 contentWarningsInit();
 oicInit();
 Array.from(document.querySelectorAll('.b-carousel'), (carousel) => {
-  venueInfoInit(carousel);
+  carouselInit(carousel);
   return true;
 });

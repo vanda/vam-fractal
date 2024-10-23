@@ -1,7 +1,7 @@
 /* Carousel initialiser fn.
  * Separate control buttons can be passed in as optional param,
  * otherwise will check for them nested inside the component */
-const venueInfoInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctrls')) => {
+const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctrls')) => {
   const items = carousel.querySelectorAll('.b-carousel__item');
 
   /* Carousel logic only required for > 1 item */
@@ -134,4 +134,4 @@ const venueInfoInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ct
   return true;
 };
 
-export default venueInfoInit;
+export default carouselInit;
