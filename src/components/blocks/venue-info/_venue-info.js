@@ -1,6 +1,7 @@
 /* venueInfo controls
  * exported separately in case btns are detached from component */
 const venueInfoCtrlsInit = (component, ctrls) => {
+  const ctrlsAboveCarousel = (ctrls.compareDocumentPosition(component.querySelector('.b-venue-info__carousel')) === 4);
   const items = component.querySelectorAll('.b-venue-info__item');
 
   /* init if multiple items in carousel */
@@ -22,10 +23,12 @@ const venueInfoCtrlsInit = (component, ctrls) => {
       } else if (e.target === next) {
         itemIndex += 1;
         component._setActiveItem(items[itemIndex]);
-        /* if last item is now active, the next btn becomes disabled,
-        so move lost focus to the active item */
-        if (itemIndex === items.length - 1) {
-          items[itemIndex].focus({ preventScroll: true });
+        if (ctrlsAboveCarousel) {
+          /* if last item is now active, the next btn becomes disabled,
+           * so move lost focus to the active carousel item */
+          if (itemIndex === items.length - 1) {
+            items[itemIndex].focus({ preventScroll: true });
+          }
         }
       }
     });
@@ -42,12 +45,14 @@ const venueInfoCtrlsInit = (component, ctrls) => {
       }
     });
 
-    /* tabbing out of next btn focusses on whichever item is active */
-    next.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab') {
-        items[itemIndex].focus();
-      }
-    });
+    if (ctrlsAboveCarousel) {
+      /* tabbing forward off next btn focusses on whichever item is active */
+      next.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab' && !e.shiftKey) {
+          items[itemIndex].focus();
+        }
+      });
+    }
   }
 };
 export default venueInfoCtrlsInit;
