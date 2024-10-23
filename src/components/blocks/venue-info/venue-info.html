@@ -1,12 +1,8 @@
-<div class="b-venue-info">
-  <div class="b-venue-info__ctrls">
-    <button class="js-venue-info__ctrl--prev u-btn-icon u-btn-icon--light u-btn-icon--point-left" disabled title="Previous">Previous</button>
-    <button class="js-venue-info__ctrl--next u-btn-icon u-btn-icon--light u-btn-icon--point-right" title="Next">Next</button>
-  </div>
-  <div class="b-venue-info__carousel">
-    <div class="b-venue-info__list">
+<div class="b-carousel">
+  <div class="b-carousel__viewport">
+    <div class="b-carousel__list">
       {% for n in [1, 2] %}
-      <div class="b-venue-info__item" tabindex="0">
+      <div class="b-carousel__item" tabindex="0">
         <div class="b-venue-info__core s-themed s-themed--background-color">
           <div class="b-venue-info__core-img-container">
             <div class="b-venue-info__core-img-badge">Opening 2023</div>
@@ -95,5 +91,10 @@
       </div>
       {% endfor %}
     </div>
+  </div>
+
+  <div class="b-carousel__ctrls">
+    <button class="js-carousel__ctrl--prev u-btn-icon u-btn-icon--light u-btn-icon--point-left" disabled title="Previous">Previous</button>
+    <button class="js-carousel__ctrl--next u-btn-icon u-btn-icon--light u-btn-icon--point-right" title="Next">Next</button>
   </div>
 </div>

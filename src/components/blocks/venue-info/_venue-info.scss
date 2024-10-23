@@ -1,7 +1,7 @@
 @use "../../mixins";
 @use "../../base";
 
-.b-venue-info {
+.b-carousel {
   --template-width: 1200px;
   --items-offset: 0;
   --transition-speed: 0.5s;
@@ -26,7 +26,7 @@
     }
   }
 
-  &__carousel {
+  &__viewport {
     overflow: hidden;
 
     @include mixins.breakpoints-bpMinLarge {
@@ -68,7 +68,9 @@
       box-shadow: none;
     }
   }
+}
 
+.b-venue-info {
   &__core {
     background-color: base.$themecolors-theme-color-default;
     flex-grow: 1;

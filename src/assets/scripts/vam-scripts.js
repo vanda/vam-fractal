@@ -30,7 +30,7 @@ require('../../components/groups/story-box-container/_story-box-container');
 
 contentWarningsInit();
 oicInit();
-Array.from(document.querySelectorAll('.b-venue-info'), (component) => {
-  venueInfoInit(component);
+Array.from(document.querySelectorAll('.b-carousel'), (carousel) => {
+  venueInfoInit(carousel);
   return true;
 });
