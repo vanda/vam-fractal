@@ -60,10 +60,12 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       }
     });
 
-    /* onClick set active item if not already active
+    /* onClick set active item if not fully in view
      * else default click is allowed through */
     viewport.addEventListener('click', (e) => {
-      if (e.target.closest('.b-carousel__item:not(.js-carousel__item--active)')) {
+      const item = e.target.closest('.b-carousel__item');
+      if (item.getBoundingClientRect().left < carousel.getBoundingClientRect().left
+        || item.getBoundingClientRect().right > carousel.getBoundingClientRect().right) {
         e.preventDefault();
         carousel._setActiveItem(e.target.closest('.b-carousel__item'));
       }
