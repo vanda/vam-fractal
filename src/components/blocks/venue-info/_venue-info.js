@@ -8,11 +8,11 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
   if (items.length > 1) {
     const viewport = carousel.querySelector('.b-carousel__viewport');
     const list = carousel.querySelector('.b-carousel__list');
-    let index = 0;
+    carousel._activeIndex = 0;
     let itemsOffset = 0;
 
     /* initialise with first item active */
-    items[index].classList.add('js-carousel__item--active');
+    items[carousel._activeIndex].classList.add('js-carousel__item--active');
 
     /* ensure each item is tabbable if it's not by virtue of its contents */
     Array.from(items, (item) => {
@@ -29,17 +29,17 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       item.classList.add('js-carousel__item--active');
 
       /* move active item into view */
-      index = Array.prototype.indexOf.call(items, item);
-      itemsOffset = index * (items[1].offsetLeft - items[0].offsetLeft);
+      carousel._activeIndex = Array.prototype.indexOf.call(items, item);
+      itemsOffset = carousel._activeIndex * (items[1].offsetLeft - items[0].offsetLeft);
       /* last item needs special right-alignment */
-      if (index === items.length - 1) {
+      if (carousel._activeIndex === items.length - 1) {
         itemsOffset -= ((1 - (item.offsetWidth / carousel.offsetWidth)) * carousel.offsetWidth);
       }
       carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
 
       /* dispatch an event to be heard by the detachable buttons
         * and anything else that needs it */
-      carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { itemIndex: Array.prototype.indexOf.call(items, item) } }));
+      carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: Array.prototype.indexOf.call(items, item) } }));
     };
 
     /* on Tabbing into an item set item active, if not already.
@@ -68,23 +68,23 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         const deltaXY = [e2.touches[0].pageX - startXY[0], e2.touches[0].pageY - startXY[1]];
         if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
           && (
-            (deltaXY[0] < 0 && index < items.length - 1)
-            || (deltaXY[0] > 0 && index > 0)
+            (deltaXY[0] < 0 && carousel._activeIndex < items.length - 1)
+            || (deltaXY[0] > 0 && carousel._activeIndex > 0)
           )) {
           /* if touch moves significantly horizontally
             * activate prev/next item swipe */
           if (Math.abs(deltaXY[0]) > 74) {
             viewport.ontouchmove = null;
             if (deltaXY[0] < 0) {
-              carousel._setActiveItem(items[index + 1]);
+              carousel._setActiveItem(items[carousel._activeIndex + 1]);
             } else {
-              carousel._setActiveItem(items[index - 1]);
+              carousel._setActiveItem(items[carousel._activeIndex - 1]);
             }
           } else {
             /* else just drag */
             carousel.style.setProperty('--items-offset', `${deltaXY[0] - itemsOffset}px`);
             viewport.ontouchend = () => {
-              carousel._setActiveItem(items[index]);
+              carousel._setActiveItem(items[carousel._activeIndex]);
               viewport.ontouchend = null;
             };
           }
@@ -94,7 +94,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
     /* re-centre active item on resize */
     window.addEventListener('resize', () => {
-      carousel._setActiveItem(items[index]);
+      carousel._setActiveItem(items[carousel._activeIndex]);
     });
 
     /* initialise carousel control buttons */
@@ -108,34 +108,29 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
       prev.setAttribute('disabled', 'true');
 
-      let itemIndex = 0;
-
       /* onClick: focus relevant item */
       ctrls.addEventListener('click', (e) => {
         if (e.target === prev) {
-          itemIndex -= 1;
-          carousel._setActiveItem(items[itemIndex]);
+          carousel._setActiveItem(items[carousel._activeIndex - 1]);
         } else if (e.target === next) {
-          itemIndex += 1;
-          carousel._setActiveItem(items[itemIndex]);
+          carousel._setActiveItem(items[carousel._activeIndex + 1]);
           if (ctrlsAboveViewport) {
             /* if last item is now active, the next btn becomes disabled,
             * so move lost focus to the active carousel item */
-            if (itemIndex === items.length - 1) {
-              items[itemIndex].focus({ preventScroll: true });
+            if (carousel._activeIndex === items.length - 1) {
+              items[carousel._activeIndex].focus({ preventScroll: true });
             }
           }
         }
       });
 
       /* deactivate inapropriate btn based on new state of carousel */
-      carousel.addEventListener('itemChange', (e) => {
-        itemIndex = e.detail.itemIndex;
+      carousel.addEventListener('itemChange', () => {
         prev.removeAttribute('disabled');
         next.removeAttribute('disabled');
-        if (itemIndex === 0) {
+        if (carousel._activeIndex === 0) {
           prev.setAttribute('disabled', 'true');
-        } else if (itemIndex === items.length - 1) {
+        } else if (carousel._activeIndex === items.length - 1) {
           next.setAttribute('disabled', 'true');
         }
       });
@@ -144,7 +139,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         /* tabbing forward off next btn focusses on whichever item is active */
         next.addEventListener('keydown', (e) => {
           if (e.key === 'Tab' && !e.shiftKey) {
-            items[itemIndex].focus();
+            items[carousel._activeIndex].focus();
           }
         });
       }
