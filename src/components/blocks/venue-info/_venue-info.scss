@@ -2,10 +2,12 @@
 
 .b-carousel {
   --template-width: 1200px;
+  --item-max-width: var(--template-width);
   --items-offset: 0;
   --transition-speed: 0.5s;
 
   margin-bottom: 10px;
+  width: 100%;
 
   @include mixins.breakpoints-bpMinSmall {
     margin-bottom: 20px;
@@ -19,21 +21,18 @@
         display: flex;
         gap: 6px;
         justify-content: flex-end;
-        margin: auto;
+        margin: 20px auto;
         max-width: var(--template-width);
       }
     }
   }
 
   &__viewport {
+    margin-left: calc((var(--template-width) - 100vw) / 2);
     overflow: hidden;
+    padding-left: calc((100vw - var(--template-width)) / 2);
     scroll-behavior: smooth; // necessary to prevent browser jumping instantly when focussing off-screen elements
-
-    @include mixins.breakpoints-bpMinLarge {
-      margin-left: calc((var(--template-width) - 100vw) / 2);
-      padding-left: calc((100vw - var(--template-width)) / 2);
-      width: 100vw;
-    }
+    width: 100vw;
   }
 
   &__list {
@@ -52,16 +51,13 @@
     flex: 0 0 79%;
     flex-direction: column;
     gap: 10px;
+    max-width: var(--item-max-width);
     scroll-snap-align: center;
     scroll-snap-stop: normal;
 
     @include mixins.breakpoints-bpMinSmall {
       flex-basis: 87%;
       gap: 20px;
-    }
-
-    @media (width >= 1400px) {
-      flex-basis: var(--template-width);
     }
 
     &#{&}:focus {

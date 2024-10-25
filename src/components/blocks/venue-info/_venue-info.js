@@ -20,7 +20,11 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       return true;
     });
 
-    /* function for setting the active item
+    /* set template alignment and max-widths
+     * based on parent element width in the document */
+    carousel.style.setProperty('--template-width', `${carousel.offsetWidth}px`);
+
+    /* fn for setting the active item
       * and scrolling into view, if required */
     carousel._setActiveItem = (item) => {
       list.querySelector('.js-carousel__item--active').classList.remove('js-carousel__item--active');
@@ -90,8 +94,10 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       };
     };
 
-    /* re-centre active item on resize */
+    /* onResize
+     * reset template alignment and re-centre active item */
     window.addEventListener('resize', () => {
+      carousel.style.setProperty('--template-width', `${carousel.offsetWidth}px`);
       carousel._setActiveItem(items[carousel._activeIndex]);
     });
 
