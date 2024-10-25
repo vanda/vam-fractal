@@ -23,7 +23,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       itemsOffset = index * (items[1].offsetLeft - items[0].offsetLeft);
       /* last item needs special right-alignment */
       if (index === items.length - 1) {
-        itemsOffset -= ((1 - (item.offsetWidth / carousel.offsetWidth)) * carousel.offsetWidth); // eslint-disable-line max-len
+        itemsOffset -= ((1 - (item.offsetWidth / carousel.offsetWidth)) * carousel.offsetWidth);
       }
       carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
 
@@ -32,11 +32,21 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { itemIndex: Array.prototype.indexOf.call(items, item) } }));
     };
 
-    /* set active item when it receives focus
-    * requires item to be a focusable element
-    * only focusin event is delegated to container (focus event doesn't bubble!) */
-    viewport.addEventListener('focusin', (e) => {
+    /* on Tabbing into an item set item active, if not already.
+     * requires item to be a tabbable element.
+     * can't use focusin listener here, as it would activate the item
+     * before the click listener below does its check */
+    viewport.addEventListener('keyup', (e) => {
+      if (e.key === 'Tab' && e.target.closest('.b-carousel__item:not(.js-carousel__item--active)')) {
+        carousel._setActiveItem(e.target.closest('.b-carousel__item'));
+      }
+    });
+
+    /* onClick set active item if not already active
+     * else default click is allowed through */
+    viewport.addEventListener('click', (e) => {
       if (e.target.closest('.b-carousel__item:not(.js-carousel__item--active)')) {
+        e.preventDefault();
         carousel._setActiveItem(e.target.closest('.b-carousel__item'));
       }
     });
