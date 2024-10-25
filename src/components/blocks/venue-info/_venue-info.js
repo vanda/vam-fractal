@@ -98,7 +98,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     /* on Focussing into the carousel from outside the carousel
      * set focus on the currently active item to improve tab navigation */
     viewport.addEventListener('focusin', (e) => {
-      if (e.relatedTarget && !e.relatedTarget.closest('.b-carousel__viewport')) {
+      if (!e.relatedTarget || !e.relatedTarget.closest('.b-carousel__viewport')) {
         items[carousel._activeIndex].focus();
       }
     });
