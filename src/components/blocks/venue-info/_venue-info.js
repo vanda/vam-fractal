@@ -10,7 +10,17 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     const list = carousel.querySelector('.b-carousel__list');
     let index = 0;
     let itemsOffset = 0;
+
+    /* initialise with first item active */
     items[index].classList.add('js-carousel__item--active');
+
+    /* ensure each item is tabbable if it's not by virtue of its contents */
+    Array.from(items, (item) => {
+      if (!item.querySelector('a[href], button:enabled')) {
+        item.setAttribute('tabindex', 0);
+      }
+      return true;
+    });
 
     /* function for setting the active item
       * and scrolling into view, if required */

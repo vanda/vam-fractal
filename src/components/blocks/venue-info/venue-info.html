@@ -2,12 +2,8 @@
   <div class="b-carousel__viewport">
     <div class="b-carousel__list">
       {% for n in [1, 2, 3, 4, 5] %}
-      <div class="b-carousel__item" tabindex="0">
-        {% if n % 2 === 1 %}
-          {%- render "@object-card", card -%}
-        {% else %}
-          {%- render "@venue-card" -%}
-        {% endif %}
+      <div class="b-carousel__item">
+        {%- render "@object-card" -%}
       </div>
       {% endfor %}
     </div>
