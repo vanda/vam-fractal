@@ -1,7 +1,7 @@
 // V&A front-end component scripts
 import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
 import contentWarningsInit from '../../components/blocks/object-card/_object-card';
-import carouselInit from '../../components/blocks/venue-info/_venue-info';
+import carouselInit from '../../components/blocks/carousel/_carousel';
 
 require('../../components/services/imageload/_imageload');
 require('../../components/blocks/accordion/_accordion');
