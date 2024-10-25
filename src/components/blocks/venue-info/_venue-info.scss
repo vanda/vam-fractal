@@ -27,6 +27,7 @@
 
   &__viewport {
     overflow: hidden;
+    scroll-behavior: smooth; // necessary to prevent browser jumping instantly when focussing off-screen elements
 
     @include mixins.breakpoints-bpMinLarge {
       margin-left: calc((var(--template-width) - 100vw) / 2);

@@ -15,8 +15,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     items[carousel._activeIndex].classList.add('js-carousel__item--active');
 
     /* ensure each item is tabbable if it's not by virtue of its contents */
+    const tabbableContentQry = 'a[href], button:enabled';
     Array.from(items, (item) => {
-      if (!item.querySelector('a[href], button:enabled')) {
+      if (!item.querySelector(tabbableContentQry)) {
         item.setAttribute('tabindex', 0);
       }
       return true;
@@ -118,7 +119,11 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
             /* if last item is now active, the next btn becomes disabled,
             * so move lost focus to the active carousel item */
             if (carousel._activeIndex === items.length - 1) {
-              items[carousel._activeIndex].focus({ preventScroll: true });
+              if (items[carousel._activeIndex].tabIndex > -1) {
+                items[carousel._activeIndex].focus();
+              } else {
+                items[carousel._activeIndex].querySelector(tabbableContentQry).focus();
+              }
             }
           }
         }
