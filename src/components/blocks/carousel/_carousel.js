@@ -11,6 +11,10 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     carousel._activeIndex = 0;
     let itemsOffset = 0;
 
+    /* number of items show per view
+     * is defined in the styles as a CSS Custom Property */
+    let itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
+
     /* initialise with first item active */
     items[carousel._activeIndex].classList.add('js-carousel__item--active');
 
@@ -32,10 +36,12 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
       /* move active item into view */
       carousel._activeIndex = Array.prototype.indexOf.call(items, item);
-      itemsOffset = carousel._activeIndex * (items[1].offsetLeft - items[0].offsetLeft);
-      /* last item needs special right-alignment */
-      if (carousel._activeIndex === items.length - 1) {
+      const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
+      itemsOffset = carousel._activeIndex * itemSpan;
+      /* last items need special right-alignment */
+      if (carousel._activeIndex >= items.length - itemsPerView) {
         itemsOffset -= ((1 - (item.offsetWidth / carousel.offsetWidth)) * carousel.offsetWidth);
+        itemsOffset += (items.length - carousel._activeIndex - 1) * itemSpan;
       }
       carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
 
@@ -95,9 +101,12 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     };
 
     /* onResize
-     * reset template alignment and re-centre active item */
+     * reset template alignment
+     * reset itemsPerView
+     * re-centre active item */
     window.addEventListener('resize', () => {
       carousel.style.setProperty('--template-width', `${carousel.offsetWidth}px`);
+      itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
       carousel._setActiveItem(items[carousel._activeIndex]);
     });
 
@@ -118,12 +127,12 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
       prev.setAttribute('disabled', 'true');
 
-      /* onClick: focus relevant item */
+      /* onClick: focus prev/next item, in steps of number of items per view */
       ctrls.addEventListener('click', (e) => {
         if (e.target === prev) {
-          carousel._setActiveItem(items[carousel._activeIndex - 1]);
+          carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
         } else if (e.target === next) {
-          carousel._setActiveItem(items[carousel._activeIndex + 1]);
+          carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
         }
       });
 
@@ -133,7 +142,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         next.removeAttribute('disabled');
         if (carousel._activeIndex === 0) {
           prev.setAttribute('disabled', 'true');
-        } else if (carousel._activeIndex === items.length - 1) {
+        } else if (carousel._activeIndex >= items.length - itemsPerView) {
           next.setAttribute('disabled', 'true');
         }
       });

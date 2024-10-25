@@ -3,14 +3,23 @@
 .b-carousel {
   --template-width: 1200px;
   --item-max-width: var(--template-width);
+  --items-per-view: 1;
   --items-offset: 0;
   --transition-speed: 0.5s;
 
   margin-bottom: 10px;
   width: 100%;
 
+  @include mixins.breakpoints-bpMinXSmall {
+    --items-per-view: 2;
+  }
+
   @include mixins.breakpoints-bpMinSmall {
     margin-bottom: 20px;
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    --items-per-view: 3;
   }
 
   &__ctrls {
@@ -48,7 +57,7 @@
 
   &__item {
     display: flex;
-    flex: 0 0 79%;
+    flex: 0 0 calc((100% - 100px) / var(--items-per-view));
     flex-direction: column;
     gap: 10px;
     max-width: var(--item-max-width);
@@ -56,7 +65,7 @@
     scroll-snap-stop: normal;
 
     @include mixins.breakpoints-bpMinSmall {
-      flex-basis: 87%;
+      flex: 0 0 calc((100% - 120px) / var(--items-per-view));
       gap: 20px;
     }
 
