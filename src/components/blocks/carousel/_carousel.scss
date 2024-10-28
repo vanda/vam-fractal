@@ -56,7 +56,7 @@
 
   &__item {
     display: flex;
-    flex: 0 0 calc((100% - 100px) / var(--items-per-view));
+    flex: 0 0 calc((100% - 80px) / var(--items-per-view));
     flex-direction: column;
     gap: 10px;
     max-width: var(--item-max-width);
