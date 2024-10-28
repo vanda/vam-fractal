@@ -92,7 +92,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
           if (Math.abs(deltaXY[0]) > 74) {
             viewport.ontouchmove = null;
             if (deltaXY[0] < 0) {
-              carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]);
+              carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
             } else {
               carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
             }
