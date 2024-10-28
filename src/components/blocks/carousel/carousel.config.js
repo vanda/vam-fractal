@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Carousel',
-  label: 'Carouse',
+  label: 'Carousel',
   context: {
     previewClass: 'fr-content-wrapper',
   }
