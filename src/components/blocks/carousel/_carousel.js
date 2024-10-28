@@ -64,10 +64,11 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
      * else default click is allowed through */
     viewport.addEventListener('click', (e) => {
       const item = e.target.closest('.b-carousel__item');
-      if (item.getBoundingClientRect().left < carousel.getBoundingClientRect().left
-        || item.getBoundingClientRect().right > carousel.getBoundingClientRect().right) {
+      const itemBox = item.getBoundingClientRect();
+      const viewBox = carousel.getBoundingClientRect();
+      if (itemBox.left < viewBox.left || itemBox.right > viewBox.right) {
         e.preventDefault();
-        carousel._setActiveItem(e.target.closest('.b-carousel__item'));
+        carousel._setActiveItem(item);
       }
     });
 
