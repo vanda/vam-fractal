@@ -1,11 +1,13 @@
 <div class="b-carousel">
   <div class="b-carousel__viewport">
     <div class="b-carousel__list">
-      {% for n in [1, 2, 3, 4, 5] %}
+      {% for n in [1, 2, 3, 4, 5, 6, 7, 8] %}
       <div class="b-carousel__item">
-        <div style="background:{% if n%2 %}grey{% else %}orange{% endif %}">
-          <div><a href="https://vam.ac.uk">link</a><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p><p>{{ n }}</p></div>
-        </div>
+        {% if n % 2 %}
+          {%- render "@object-card" -%}
+        {% else %}
+          {%- render "@collection-card" -%}
+        {% endif %}
       </div>
       {% endfor %}
     </div>

@@ -37,11 +37,10 @@
   }
 
   &__viewport {
-    margin-left: calc((var(--template-width) - 100vw) / 2);
+    margin: 0 calc((var(--template-width) - 100vw) / 2);
     overflow: hidden;
-    padding-left: calc((100vw - var(--template-width)) / 2);
+    padding: 0 calc((100vw - var(--template-width)) / 2);
     scroll-behavior: smooth; // necessary to prevent browser jumping instantly when focussing off-screen elements
-    width: 100vw;
   }
 
   &__list {
