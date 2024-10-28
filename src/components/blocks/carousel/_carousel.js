@@ -11,10 +11,6 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     carousel._activeIndex = 0;
     let itemsOffset = 0;
 
-    /* number of items show per view
-     * is defined in the styles as a CSS Custom Property */
-    let itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
-
     /* initialise with first item active */
     items[carousel._activeIndex].classList.add('js-carousel__item--active');
 
@@ -24,9 +20,18 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       return true;
     });
 
-    /* set template alignment and max-widths
-     * based on parent element width in the document */
-    carousel.style.setProperty('--template-width', `${carousel.offsetWidth}px`);
+    /* fn to set size & template alignment params */
+    let itemsPerView = 1;
+    const setTemplateParams = () => {
+      /* set template alignment and max-widths in CSS
+      * based on parent element width in the document */
+      carousel.style.setProperty('--template-width', `${carousel.offsetWidth}px`);
+
+      /* derive number of items shown per carousel view
+      * from the CSS variable set in the styles per breakpoint */
+      itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
+    };
+    setTemplateParams();
 
     /* fn for setting the active item
       * and scrolling into view, if required */
@@ -104,12 +109,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     };
 
     /* onResize
-     * reset template alignment
-     * reset itemsPerView
-     * re-centre active item */
+     * reset template params & re-centre active item */
     window.addEventListener('resize', () => {
-      carousel.style.setProperty('--template-width', `${carousel.offsetWidth}px`);
-      itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
+      setTemplateParams();
       carousel._setActiveItem(items[carousel._activeIndex]);
     });
 
