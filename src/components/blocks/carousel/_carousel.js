@@ -53,6 +53,13 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       /* dispatch an event to be heard by the detachable buttons
         * and anything else that needs it */
       carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: Array.prototype.indexOf.call(items, item) } }));
+
+      /* track carousel interaction */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'Carousel interaction',
+        elementId: carousel.dataset.trackingId,
+      });
     };
 
     /* on Tabbing into an item set item active, if not already.
