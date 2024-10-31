@@ -55,10 +55,8 @@
 @use "../../components/blocks/venue-card/venue-card";
 @use "../../components/blocks/video-thumbnail/video-thumbnail";
 @use "../../components/blocks/video-trailer/video-trailer";
-@use "../../components/blocks/search-pagination/search-pagination";
 @use "../../components/blocks/shop-tout/shop-tout";
 @use "../../components/blocks/story-box/story-box";
-@use "../../components/blocks/facet-box/facet-box";
 @use "../../components/blocks/content-warning/content-warning";
 @use "../../components/blocks/venue-blog-card/venue-blog-card";
 @use "../../components/blocks/carousel/carousel";
@@ -76,6 +74,5 @@
 @use "../../components/groups/image-overlay-details/image-overlay-details";
 @use "../../components/groups/object-grid/object-grid";
 @use "../../components/groups/story-box-container/story-box-container";
-@use "../../components/groups/facet-box-modal/facet-box-modal";
 @use "../../components/groups/venue-blog-cards/venue-blog-cards";
 @use "../../components/groups/venue-card-grid/venue-card-grid";
