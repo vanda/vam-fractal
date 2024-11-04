@@ -29,10 +29,12 @@ if (toggleNav) {
         return true;
       });
       Array.from(toggleNavBtns, (el) => {
-        el.classList.remove('b-toggle-nav__button--active');
+        el.classList.add('u-btn--pill-dark');
         return true;
       });
-      tog.classList.add('b-toggle-nav__button--active');
+      tog.classList.remove('u-btn--pill-dark');
+
+      console.log('window.history : ', window.history);
     }, false);
 
     if (tog.dataset.toggleType === qsToggleType) {
