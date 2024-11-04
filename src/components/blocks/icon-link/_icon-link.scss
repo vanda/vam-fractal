@@ -2,6 +2,7 @@
 @use "../../base";
 
 .b-icon-link {
+  border-radius: 50%;
   color: base.sitecolors-siteColor("vam-black");
   cursor: pointer;
   display: inline-block;
@@ -16,7 +17,6 @@
   &--active {
     background-color: base.sitecolors-siteColor("secondary-green");
     border-color: base.sitecolors-siteColor("secondary-green");
-    border-radius: 50%;
     cursor: pointer;
     opacity: 1;
   }
