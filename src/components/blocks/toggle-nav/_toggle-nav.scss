@@ -2,9 +2,8 @@
 @use "../../base";
 
 .b-toggle-nav {
-  background-color: base.sitecolors-siteColor("vam-white");
-  box-shadow: 0 1px 2px base.sitecolors-siteColor("vam-grey-4");
-  margin: 0 0 32px;
+  margin: 0 0 32px 5px;
+  overflow: hidden;
   position: relative;
 
   @include mixins.breakpoints-bpMinSmall {
@@ -15,62 +14,38 @@
     padding: 0 40px;
   }
 
-  &::after {
-    background: linear-gradient(to right, rgba(255, 255, 255, 0%), #fff 23px);
-    content: " ";
-    display: block;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 40px;
-  }
-
   &__list {
     @include mixins.unstyledelements-unstyledList;
 
-    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 0;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    @include mixins.breakpoints-bpMinSmall {
+      justify-content: center;
+    }
 
     &::-webkit-scrollbar {
       display: none;
     }
+  }
 
-    .cssscrollbar & {
-      overflow: auto;
-      white-space: nowrap;
-    }
+  &__button {
+    margin: 6px 5px;
+    white-space: nowrap;
   }
 
   &__item {
     display: inline-block;
     margin: 0;
-    padding: 0 10px;
-  }
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
 
-  &__button {
-    @include base.typography-typeSetting(4);
-    @include mixins.unstyledelements-unstyledInput;
-
-    border-bottom: 3px solid transparent;
-    color: base.sitecolors-siteColor("vam-black");
-    cursor: pointer;
-    padding: 15px 10px 12px;
-
-    @include mixins.breakpoints-bpMinXSmall {
-      padding: 25px 15px 22px;
-    }
-
-    &--active,
-    &:hover {
-      border-color: base.sitecolors-siteColor("vam-grey-2");
-    }
-
-    &:hover {
-      color: base.sitecolors-siteColor("vam-grey-2");
-    }
-
-    &:focus-visible {
-      @include mixins.focus-inlineFocus;
+    &:last-child {
+      margin-right: 5px;
     }
   }
 }

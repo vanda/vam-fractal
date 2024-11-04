@@ -11,6 +11,7 @@ if (toggleNav) {
 
   Array.from(toggleNavBtns, (tog) => {
     const tnToggees = document.querySelectorAll(tog.dataset.toggeesSelector);
+    const isDarkVariation = toggleNav.parentElement.classList.contains('b-toggle-nav--dark');
 
     tog.addEventListener('click', (e) => {
       e.preventDefault();
@@ -29,10 +30,20 @@ if (toggleNav) {
         return true;
       });
       Array.from(toggleNavBtns, (el) => {
-        el.classList.remove('b-toggle-nav__button--active');
+        if (isDarkVariation) {
+          el.classList.add('u-btn--pill-dark');
+        } else {
+          el.classList.add('u-btn--pill-light');
+          el.classList.remove('u-btn--pill-darkest');
+        }
         return true;
       });
-      tog.classList.add('b-toggle-nav__button--active');
+      if (isDarkVariation) {
+        tog.classList.remove('u-btn--pill-dark');
+      } else {
+        tog.classList.remove('u-btn--pill-light');
+        tog.classList.add('u-btn--pill-darkest');
+      }
     }, false);
 
     if (tog.dataset.toggleType === qsToggleType) {
