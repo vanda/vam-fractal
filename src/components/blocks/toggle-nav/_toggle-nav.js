@@ -33,8 +33,6 @@ if (toggleNav) {
         return true;
       });
       tog.classList.remove('u-btn--pill-dark');
-
-      console.log('window.history : ', window.history);
     }, false);
 
     if (tog.dataset.toggleType === qsToggleType) {
