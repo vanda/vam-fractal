@@ -20,7 +20,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       return true;
     });
 
-    /* fn to set size & template alignment params */
+    /* fn to set size & template alignment params
+     * called on Window resize */
+    let carouselEnabled = true;
     let itemsPerView = 1;
     const setTemplateParams = () => {
       /* set template alignment and max-widths in CSS
@@ -30,6 +32,16 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       /* derive number of items shown per carousel view
       * from the CSS variable set in the styles per breakpoint */
       itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
+
+      /* disable carousel if not needed (at current breakpoint!)
+       * i.e. not enough items to over-fill it */
+      if (items.length > itemsPerView) {
+        carouselEnabled = true;
+        ctrls.classList.add('b-carousel__ctrls--active');
+      } else {
+        carouselEnabled = false;
+        ctrls.classList.remove('b-carousel__ctrls--active');
+      }
     };
     setTemplateParams();
 
@@ -75,12 +87,14 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     /* onClick set active item if not fully in view
      * else default click is allowed through */
     viewport.addEventListener('click', (e) => {
-      const item = e.target.closest('.b-carousel__item');
-      const itemBox = item.getBoundingClientRect();
-      const viewBox = carousel.getBoundingClientRect();
-      if (itemBox.left < viewBox.left || itemBox.right > viewBox.right) {
-        e.preventDefault();
-        carousel._setActiveItem(item);
+      if (carouselEnabled) {
+        const item = e.target.closest('.b-carousel__item');
+        const itemBox = item.getBoundingClientRect();
+        const viewBox = carousel.getBoundingClientRect();
+        if (itemBox.left < viewBox.left || itemBox.right > viewBox.right) {
+          e.preventDefault();
+          carousel._setActiveItem(item);
+        }
       }
     });
 
@@ -132,7 +146,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
     /* initialise carousel control buttons */
     if (ctrls) {
-      ctrls.classList.add('b-carousel__ctrls--active');
+      if (carouselEnabled) {
+        ctrls.classList.add('b-carousel__ctrls--active');
+      }
 
       const prev = ctrls.querySelector('.js-carousel__ctrl--prev');
       const next = ctrls.querySelector('.js-carousel__ctrl--next');
