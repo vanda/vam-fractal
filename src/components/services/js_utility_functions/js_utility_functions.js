@@ -8,12 +8,12 @@ const scrollIntoViewHorizontally = (item, container = item.parentElement) => {
   const containerScrollRight = container.scrollLeft + container.offsetWidth;
 
   if (container.scrollLeft > item.offsetLeft) {
-    container.scrollLeft = item.offsetLeft;
+    container.scrollLeft = Math.round(item.offsetLeft);
   } else if (containerScrollRight < itemRight) {
-    container.scrollLeft += itemRight - containerScrollRight;
+    container.scrollLeft += Math.round(itemRight - containerScrollRight);
   }
 };
 
 /* export individual utility functions here as they are added.
- * none are default */
+ * none are default exports */
 export { scrollIntoViewHorizontally }; // eslint-disable-line import/prefer-default-export
