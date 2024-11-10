@@ -2,12 +2,12 @@
 @use "../../base";
 
 .b-toggle-nav {
-  margin: 0 0 32px 4px;
+  margin: 0 0 32px 5px;
   overflow: hidden;
   position: relative;
 
   @include mixins.breakpoints-bpMinSmall {
-    margin: 0 0 64px 4px;
+    margin: 0 0 64px 0;
   }
 
   @include mixins.breakpoints-bpMinLarge {
@@ -34,7 +34,7 @@
   }
 
   &__button {
-    margin: 6px 4px;
+    margin: 6px 5px;
     white-space: nowrap;
   }
 
@@ -45,7 +45,7 @@
     scroll-snap-stop: normal;
 
     &:last-child {
-      margin-right: 10px;
+      margin-right: 5px;
     }
   }
 }
