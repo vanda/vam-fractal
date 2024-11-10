@@ -2,12 +2,12 @@
 @use "../../base";
 
 .b-toggle-nav {
-  margin: 0 0 32px;
+  margin: 0 0 32px 4px;
   overflow: hidden;
   position: relative;
 
   @include mixins.breakpoints-bpMinSmall {
-    margin: 0 0 64px;
+    margin: 0 0 64px 4px;
   }
 
   @include mixins.breakpoints-bpMinLarge {
@@ -19,15 +19,23 @@
 
     display: flex;
     flex-wrap: nowrap;
-    gap: 2px;
     overflow-x: auto;
     padding: 4px 0;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
 
+    @include mixins.breakpoints-bpMinSmall {
+      justify-content: center;
+    }
+
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  &__button {
+    margin: 6px 4px;
+    white-space: nowrap;
   }
 
   &__item {
@@ -35,10 +43,9 @@
     margin: 0;
     scroll-snap-align: center;
     scroll-snap-stop: normal;
-  }
 
-  &__button {
-    margin: 6px;
-    white-space: nowrap;
+    &:last-child {
+      margin-right: 10px;
+    }
   }
 }
