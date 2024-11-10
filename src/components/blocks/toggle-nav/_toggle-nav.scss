@@ -7,7 +7,7 @@
   position: relative;
 
   @include mixins.breakpoints-bpMinSmall {
-    margin: 0 0 64px 0;
+    margin: 0 0 64px;
   }
 
   @include mixins.breakpoints-bpMinLarge {
