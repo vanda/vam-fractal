@@ -41,37 +41,38 @@
         {{ eventTitle }}
       </h2>
 
-      <div class='b-event-teaser__data'>
-        <svg class="b-event-teaser__data__icon" aria-hidden="true">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#calendar"></use>
-        </svg>
-        <meta itemprop="startDate" content="{{ eventMachineStartDate }}"/>
-        <meta itemprop="endDate" content="{{ eventMachineEndDate }}"/>
-        {{ eventHumanDates }}
-      </div>
-      <div class='b-event-teaser__data'>
-        <svg class="b-event-teaser__data__icon" aria-hidden="true">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#pin"></use>
-        </svg>
-        {{ eventVenue }}
+      <div class="b-icon-list>
+        <ul class="b-icon-list__list">
+          <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--calendar" title="Calendar timing">
+            <div class='b-icon-list__content'>
+              <meta itemprop="startDate" content="{{ eventMachineStartDate }}"/>
+              <meta itemprop="endDate" content="{{ eventMachineEndDate }}"/>
+              <p class="b-icon-list__item-text">{{ eventHumanDates }}</p>
+            </div>
+          </li>
+          <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--pin" title="Venue location">
+            <div class='b-icon-list__content'>
+              <p class="b-icon-list__item-text">{{ eventVenue }}</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <div class="b-event-teaser__footer">
-      <div class='b-event-teaser__data'>
-        <svg class="b-event-teaser__data__icon" aria-hidden="true">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#ticket"></use>
-        </svg>
-        <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-          <meta itemprop="priceCurrency" content="GBP"/>
-          <span itemprop="price" content="{{ eventPrice }}">{{ eventPrice }}</span>
-        </span>
-      </div>
-      <div class="b-event-teaser__footer__buttons">
-        <div class="u-btn u-btn--micro {% if modifiers and 'dark' in modifiers %}u-btn--outlined-inverse{% else %}u-btn--outlined{% endif %}" href="#">
-          More info
-        </div>
-      </div>
+    <div class="b-icon-list">
+      <ul class="b-icon-list__list b-event-teaser__footer">
+        <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--ticket" title="Admission fee">
+          <div class='b-icon-list__content'>
+            <meta itemprop="priceCurrency" content="GBP"/>
+            <p class="b-icon-list__item-text" itemprop="price" content="{{ eventPrice }}">{{ eventPrice }}</p>
+          </div>
+        </li>
+        <li class="b-icon-list__item">
+          <div class="u-btn u-btn--micro {% if modifiers and 'dark' in modifiers %}u-btn--outlined-inverse{% else %}u-btn--outlined{% endif %}">
+            More info
+          </div>
+        </li>
+      </ul>
     </div>
   </a>
 </div>

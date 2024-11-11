@@ -103,15 +103,17 @@
     .b-icon-list {
       &__item {
         margin-bottom: 15px;
+      }
 
-        &__heading {
-          @include base.typography-typeSetting(1, "regular");
+      &__item-text {
+        @include base.typography-typeSetting(1, "regular");
 
-          @include mixins.breakpoints-bpMinSmall {
-            @include base.typography-typeSetting(4, "regular");
+        margin-bottom: 10px;
 
-            margin-top: -5px;
-          }
+        @include mixins.breakpoints-bpMinSmall {
+          @include base.typography-typeSetting(4, "regular");
+
+          margin-top: -5px;
         }
       }
     }
