@@ -131,12 +131,30 @@
       background: base.sitecolors-siteColor("vam-grey-5");
     }
 
+    &-light {
+      background: base.sitecolors-siteColor("vam-grey-6");
+      color: base.sitecolors-siteColor("vam-black");
+
+      &:hover {
+        background: base.sitecolors-siteColor("vam-grey-4");
+      }
+    }
+
     &-dark {
       background: base.sitecolors-siteColor("vam-grey-2");
       color: base.sitecolors-siteColor("vam-white");
 
       &:hover {
         background: base.sitecolors-siteColor("vam-grey-1");
+      }
+    }
+
+    &-darkest {
+      background: base.sitecolors-siteColor("vam-black");
+      color: base.sitecolors-siteColor("vam-white");
+
+      &:hover {
+        background: base.sitecolors-siteColor("vam-grey-0");
       }
     }
 
