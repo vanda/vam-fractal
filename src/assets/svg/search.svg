@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="search" stroke="currentColor" stroke-width="9.44444444" fill-rule="nonzero">
-            <path d="M39.9875812,69.9751624 C22.8736127,69.9751624 9,56.1015497 9,38.9875812 C9,21.8736127 22.8736127,8 39.9875812,8 C57.1015497,8 70.9751624,21.8736127 70.9751624,38.9875812 C70.9751624,56.1015497 57.1015497,69.9751624 39.9875812,69.9751624 Z M62.5240038,61.5240038 L75.2557556,74.2557556 L94,93 L62.5240038,61.5240038 Z" id="Combined-Shape"></path>
-        </g>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 7C10.75 9.07107 9.07107 10.75 7 10.75C4.92893 10.75 3.25 9.07107 3.25 7C3.25 4.92893 4.92893 3.25 7 3.25C9.07107 3.25 10.75 4.92893 10.75 7ZM10.066 10.9499C9.21933 11.6081 8.15544 12 7 12C4.23858 12 2 9.76142 2 7C2 4.23858 4.23858 2 7 2C9.76142 2 12 4.23858 12 7C12 8.15545 11.6081 9.21937 10.9499 10.066L14.4463 13.5625L13.6887 14.5726L10.066 10.9499Z" fill="currentColor"/>
 </svg>

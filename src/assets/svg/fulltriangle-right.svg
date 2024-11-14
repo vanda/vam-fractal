@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="fulltriangle-right" fill-rule="nonzero" fill="currentColor">
-            <polygon transform="translate(50.000000, 50.000000) scale(1, -1) rotate(-270.000000) translate(-50.000000, -50.000000) " points="50 25 100 75 1.42108547e-14 75"></polygon>
-        </g>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M6.1543 3.32104L11.3335 8.00016L6.1543 12.6793V3.32104Z" fill="currentColor"/>
 </svg>
