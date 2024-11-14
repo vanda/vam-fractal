@@ -5,7 +5,6 @@
 .b-event-teaser {
   color: base.sitecolors-siteColor("vam-black");
   margin-bottom: 32px;
-  overflow: hidden;
   padding: 0 10px;
   position: relative;
   width: 100%;
@@ -124,27 +123,23 @@
     .b-event-teaser--dark & {
       border-color: base.sitecolors-siteColor("vam-grey-2");
     }
+  }
 
-    &__buttons > .u-btn {
-      @include base.typography-typeSetting(3);
+  &__cta {
+    .b-event-teaser--dark & {
+      border-color: base.sitecolors-siteColor("vam-grey-2");
+    }
 
-      margin: 0 0 10px 10px;
+    .b-event-teaser__link:hover &,
+    .b-event-teaser__link:focus-visible & {
+      background-color: color.scale(#fff, $lightness: -10%);
+      border-color: base.sitecolors-siteColor("vam-grey-4");
+    }
 
-      .b-event-teaser--dark & {
-        border-color: base.sitecolors-siteColor("vam-grey-2");
-      }
-
-      .b-event-teaser__link:hover &,
-      .b-event-teaser__link:focus-visible & {
-        background-color: color.scale(#fff, $lightness: -10%);
-        border-color: base.sitecolors-siteColor("vam-grey-4");
-      }
-
-      .b-event-teaser--dark .b-event-teaser__link:hover &,
-      .b-event-teaser--dark .b-event-teaser__link:focus-visible & {
-        background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
-        border-color: #fff;
-      }
+    .b-event-teaser--dark .b-event-teaser__link:hover &,
+    .b-event-teaser--dark .b-event-teaser__link:focus-visible & {
+      background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
+      border-color: #fff;
     }
   }
 }
