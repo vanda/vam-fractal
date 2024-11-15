@@ -34,7 +34,7 @@ if (toggleNav) {
           el.classList.add('u-btn--pill-dark');
         } else {
           el.classList.add('u-btn--pill-light');
-          el.classList.remove('u-btn--pill-dark');
+          el.classList.remove('u-btn--pill-darkest');
         }
         return true;
       });
@@ -42,7 +42,7 @@ if (toggleNav) {
         tog.classList.remove('u-btn--pill-dark');
       } else {
         tog.classList.remove('u-btn--pill-light');
-        tog.classList.add('u-btn--pill-dark');
+        tog.classList.add('u-btn--pill-darkest');
       }
     }, false);
 
