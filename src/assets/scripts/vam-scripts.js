@@ -11,6 +11,7 @@ require('../../components/blocks/cookie-banner/_cookie-banner');
 require('../../components/blocks/image-carousel/_image-carousel');
 require('../../components/blocks/image-overlay-license-modal/_image-overlay-license-modal');
 require('../../components/blocks/image-row/_image-row');
+require('../../components/blocks/list-promo/_list-promo');
 require('../../components/blocks/object-details/object-details');
 require('../../components/blocks/object-shuffler/_object-shuffler');
 require('../../components/blocks/modal/_modal');
