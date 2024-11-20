@@ -1,8 +1,8 @@
 module.exports = {
   title: 'Toggle Nav',
-  label: 'Toggle Nav',
+  default: 'on-light',
   context: {
-    previewClass: 'fr-bg--dark',
+    modifier: ['light'],
     toggles: [
       'Galleries',
       'Periods and styles',
@@ -11,5 +11,15 @@ module.exports = {
       'Materials and techniques',
       'Places'
     ]
-  }
+  },
+  variants: [
+    {
+      name: 'on-dark',
+      label: 'On dark',
+      context: {
+        previewClass: 'fr-bg--dark',
+        modifier: ['dark']
+      }
+    }
+  ]
 };
