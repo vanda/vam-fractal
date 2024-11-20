@@ -1,0 +1,42 @@
+<div class="b-list-promo" aria-label="Promotion: {{ promoTitle }}">
+  <div class="b-list-promo__image-container">
+    <ul class="b-list-promo__image-list">
+      {% for img in promoItems %}
+        <li class="b-list-promo__image-list-item {% if loop.first == true %}b-list-promo__image-list-item--active {% endif %}">
+          <img
+            alt="{{ promoTitle }}"
+            class="b-list-promo__image"
+            srcset="{{ img.image["320"] }} 320w,
+                    {{ img.image["640"] }} 640w,
+                    {{ img.image[960] }} 960w,
+                    {{ img.image[1280] }} 1280w"
+            sizes="(max-width: 499px) 100vw,
+                  (min-width: 500px) 50vw"
+            src="{{ img.image["640"] }}"
+            loading="lazy">
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="b-list-promo__info-container">
+    <h2 class="b-list-promo__title">{{ promoTitle }}</h2>
+    <p class="b-list-promo__strapline">{{ promoDescription }}</p>
+    <ul class="b-list-promo__info-list">
+      {% for item in promoItems %}
+        <li class="b-list-promo__list-item b-icon-list__item b-icon-list__icon b-icon-list__icon--{{ item.listIcon }}">
+          {{ item.listText }}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul class="b-list-promo__cta-list">
+      <li>
+        <a href="{{ urlPrimary.url }}" class="b-list-promo__cta-btn u-btn u-btn--outlined">{{ urlPrimary.text }}</a>
+      </li>
+      {% if urlSecondary %}
+        <li>
+          <a href="{{ urlSecondary.url }}" class="b-list-promo__cta-btn u-btn u-btn--black">{{ urlSecondary.text }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
