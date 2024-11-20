@@ -14,7 +14,7 @@
 
   @include mixins.breakpoints-bpMinXSmall {
     height: 210px;
-    overflow: hidden;
+    overflow: visible;
   }
 
   @include mixins.breakpoints-bpMinSmall {
