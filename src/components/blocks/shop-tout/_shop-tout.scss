@@ -38,8 +38,13 @@
       flex: 0 0 33.3333%;
     }
 
-    > a:hover h2 {
-      text-decoration: underline;
+    > a {
+      display: block;
+
+      &:hover h2,
+      &:focus h2 {
+        text-decoration: underline;
+      }
     }
 
     > a > img {
