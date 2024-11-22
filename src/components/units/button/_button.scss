@@ -25,6 +25,10 @@
     text-decoration: none;
   }
 
+  &:focus-visible {
+    @include mixins.focus-defaultFocus;
+  }
+
   .sir-trevor-text & {
     text-decoration: none;
   }
@@ -51,6 +55,10 @@
     &:hover {
       background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
       border: 1px solid color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
+    }
+
+    &:focus-visible {
+      @include mixins.focus-inverseFocus;
     }
   }
 
