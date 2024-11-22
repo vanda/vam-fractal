@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       /* if this is the final img, style the row */
       if (imgRowImagesLoaded.length === imgRowImgs.length) {
         styleImgRow();
+        styleImgRow(); // Safari needs a kicking!
       }
     };
 
