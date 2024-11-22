@@ -148,6 +148,11 @@
     &::-ms-clear {
       display: none;
     }
+
+    &:focus-visible {
+      position: relative;
+      z-index: 1;
+    }
   }
 
   &__underscore {
@@ -179,11 +184,6 @@
       color: base.sitecolors-siteColor("vam-black");
       margin: 0;
       padding: 8px 16px;
-
-      &:focus-visible {
-        position: relative;
-        z-index: 1;
-      }
 
       &--validation-error {
         border: 3px solid base.sitecolors-siteColor("alert-red");
@@ -279,12 +279,12 @@
         padding: 16px;
       }
 
-      &:hover {
-        background: base.sitecolors-siteColor("vam-grey-7");
-      }
-
       &::after {
         display: none;
+      }
+
+      &:hover {
+        background: base.sitecolors-siteColor("vam-grey-7");
       }
     }
   }
@@ -414,6 +414,10 @@
 
     &[aria-expanded="true"] svg {
       transform: rotate(180deg);
+    }
+
+    &:focus-visible {
+      @include mixins.focus-inlineFocus;
     }
   }
 
@@ -726,10 +730,6 @@
         display: inline-block;
         margin-left: 4px;
       }
-    }
-
-    a {
-      text-decoration: underline;
     }
   }
 }
