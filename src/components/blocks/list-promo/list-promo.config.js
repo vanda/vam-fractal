@@ -54,15 +54,15 @@ module.exports = {
         },
       }
     ] 
-  }   
-        
-  // listIcon: 'tick-circle'
-  // listIcon: 'tick-mark'
-  // promoTitle: 'Become a Member',
-  // promoDescription: 'Be at the heart of everything we do. Enjoy:'
-  // listText: 'Unlimited free entry to all exhibitions'
-  // listText: 'Exclusive previews and events'
-  // listText: 'Award-winning Members\' Room'
-  // listText: 'Discounts in all V&A shops'
-  // urlPrimary.text: 'Join today'
+  },
+  variants: [
+    {
+      name: 'on-dark',
+      label: 'On dark',
+      context: {
+        previewClass: 'fr-bg--dark',
+        modifier: ['dark']
+      }
+    }
+  ]
 };

@@ -1,5 +1,5 @@
-<div class="b-list-promo" aria-label="Promotion: {{ promoTitle }}">
-  <div class="b-list-promo__image-container">
+<div class="b-list-promo {% for m in modifier %}b-list-promo--{{ m }}{% endfor %}" aria-label="Promotion: {{ promoTitle }}">
+  <div class="b-list-promo__image-list-container">
     <ul class="b-list-promo__image-list">
       {% for img in promoItems %}
         <li class="b-list-promo__image-list-item {% if loop.first == true %}b-list-promo__image-list-item--active {% endif %}">
@@ -30,11 +30,11 @@
     </ul>
     <ul class="b-list-promo__cta-list">
       <li>
-        <a href="{{ urlPrimary.url }}" class="b-list-promo__cta-btn u-btn u-btn--outlined">{{ urlPrimary.text }}</a>
+        <a href="{{ urlPrimary.url }}" class="b-list-promo__cta-btn u-btn u-btn--{% if modifier %}white{% else %}black{% endif %}">{{ urlPrimary.text }}</a>
       </li>
       {% if urlSecondary %}
         <li>
-          <a href="{{ urlSecondary.url }}" class="b-list-promo__cta-btn u-btn u-btn--black">{{ urlSecondary.text }}</a>
+          <a href="{{ urlSecondary.url }}" class="b-list-promo__cta-btn u-btn u-btn--{% if modifier %}outlined-inverse{% else %}outlined{% endif %}">{{ urlSecondary.text }}</a>
         </li>
       {% endif %}
     </ul>
