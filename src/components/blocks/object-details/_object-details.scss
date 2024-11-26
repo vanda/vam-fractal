@@ -144,9 +144,10 @@
     display: flex;
     gap: 6px;
     padding: 10px 10px 10px 0;
+    position: relative;
+    z-index: 1;
 
-    &:hover,
-    &:focus-visible {
+    &:hover {
       cursor: pointer;
 
       .b-object-details__cell-concealer-text {
