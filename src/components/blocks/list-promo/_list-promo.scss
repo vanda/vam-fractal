@@ -77,19 +77,23 @@
   }
 
   &__image-list-item {
-    display: none;
-    height: 190px;
-
-    @include mixins.breakpoints-bpMinSmall {
-      height: 296px;
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      height: 390px;
-    }
+    height: 0;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in;
+    visibility: hidden;
 
     &--active {
-      display: block;
+      height: 190px;
+      opacity: 1;
+      visibility: visible;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 296px;
+      }
+  
+      @include mixins.breakpoints-bpMinMedium {
+        height: 390px;
+      }
     }
   }
 
