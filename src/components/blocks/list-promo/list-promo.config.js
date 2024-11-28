@@ -22,7 +22,7 @@ module.exports = {
           960: 'https://picsum.photos/id/51/960/720',
           1280: 'https://picsum.photos/id/51/1280/960'
         },
-      }, 
+      },
       {
         listText: 'Decide when you visit',
         listIcon: 'calendar',
@@ -32,7 +32,7 @@ module.exports = {
           960: 'https://picsum.photos/id/44/960/720',
           1280: 'https://picsum.photos/id/44/1280/960'
         },
-      }, 
+      },
       {
         listText: 'Book a free appointment',
         listIcon: 'clock',
@@ -42,7 +42,7 @@ module.exports = {
           960: 'https://picsum.photos/id/47/960/720',
           1280: 'https://picsum.photos/id/47/1280/960'
         },
-      }, 
+      },
       {
         listText: 'Arrive at your venue',
         listIcon: 'pin',
