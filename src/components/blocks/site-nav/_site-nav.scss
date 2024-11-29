@@ -172,15 +172,13 @@ $nav-breakpoints: (
       0 0 10px 5px rgba(0, 0, 0, 5%),
       0 0 50px 1px rgba(0, 0, 0, 20%),
       inset 0 0 50px 4px rgba(0, 0, 0, 24%);
-    display: inline-block;
+    display: inline-flex;
     height: 40px;
     margin-left: 10px;
     width: 40px;
 
     > svg {
-      height: 16px;
-      margin: 11px;
-      width: 17px;
+      margin: 9px;
     }
   }
 
@@ -227,16 +225,11 @@ $nav-breakpoints: (
 
   &__core__search-btn {
     > #{&}-open {
-      height: 22px;
       margin: 7px;
-      width: 22px;
     }
 
     > #{&}-close {
       display: none;
-      height: 16px;
-      margin: 10px;
-      width: 16px;
     }
 
     &--active &-open {
@@ -284,15 +277,6 @@ $nav-breakpoints: (
 
     @include bpMinNav("small") {
       display: none;
-    }
-
-    > svg {
-      height: 18px;
-      width: 18px;
-    }
-
-    > #{&}__icon--hamburger {
-      margin: 9px auto;
     }
 
     &__icon--close {
