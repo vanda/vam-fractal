@@ -32,7 +32,7 @@
   }
 
   &__anchor:hover &__img,
-  &__anchor:focus &__img {
+  &__anchor:focus-visible &__img {
     transform: scale(1.1);
   }
 
@@ -72,7 +72,7 @@
         padding: 4px 12px;
       }
 
-      &:focus > &-dismiss {
+      &:focus-visible > &-dismiss {
         @include mixins.focus-defaultFocus;
       }
     }
@@ -82,7 +82,7 @@
     }
 
     &:hover > #{&}__banner,
-    &:focus > #{&}__banner {
+    &:focus-visible > #{&}__banner {
       opacity: 0.9;
     }
 

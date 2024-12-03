@@ -6,7 +6,6 @@
   box-sizing: border-box;
   height: 344px;
   margin: 0 10px 10px;
-  overflow: hidden;
   position: relative;
   width: calc(100% - 20px);
 
@@ -36,6 +35,11 @@
     }
   }
 
+  &__link {
+    display: block;
+    height: 100%;
+  }
+
   &__media {
     height: 100%;
     width: 100%;
@@ -51,8 +55,7 @@
       width: 100%;
       z-index: 0;
 
-      .b-event-feature__link:hover &,
-      .b-event-feature__link:focus & {
+      .b-event-feature__link:hover & {
         opacity: 1;
       }
     }

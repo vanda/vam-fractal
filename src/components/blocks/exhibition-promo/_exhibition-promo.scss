@@ -72,7 +72,7 @@
     }
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       .b-exhibition-promo__title {
         text-decoration: underline;
       }

@@ -68,10 +68,6 @@
           background-color: base.sitecolors-siteColor("vam-grey-2");
         }
 
-        &:focus {
-          @include mixins.focus-defaultFocus;
-        }
-
         > svg {
           height: 23px;
           margin: auto;

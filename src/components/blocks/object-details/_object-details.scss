@@ -80,6 +80,12 @@
       display: flex;
       flex: auto;
       flex-flow: row wrap;
+      gap: 10px;
+      margin: 12px 0 2px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        margin-top: 6px;
+      }
     }
 
     &-content {
@@ -88,8 +94,6 @@
       border: solid base.themecolors-themeColor("silent-green") 1px;
       border-radius: 4px;
       color: base.sitecolors-siteColor("vam-white");
-      margin-right: 10px;
-      margin-top: 12px;
       padding: 9px 10px 10px;
 
       &:hover {
@@ -99,9 +103,6 @@
       }
 
       @include mixins.breakpoints-bpMinSmall {
-        margin-bottom: 2px;
-        margin-right: 10px;
-        margin-top: 6px;
         padding: 3px 9px 5px 11px;
       }
     }
@@ -143,9 +144,10 @@
     display: flex;
     gap: 6px;
     padding: 10px 10px 10px 0;
+    position: relative;
+    z-index: 1;
 
-    &:hover,
-    &:focus {
+    &:hover {
       cursor: pointer;
 
       .b-object-details__cell-concealer-text {

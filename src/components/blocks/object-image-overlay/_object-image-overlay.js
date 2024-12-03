@@ -6,6 +6,9 @@ const oicInit = () => {
     if (!oic) {
       oic = document.createElement('div');
       oic.classList.add('b-object-image-overlay');
+      oic.id = 'object-image-overlay';
+      oic.setAttribute('role', 'dialog');
+      oic.setAttribute('aria-modal', 'true');
       document.body.appendChild(oic);
     }
     const items = document.createElement('div');
@@ -187,12 +190,12 @@ const oicInit = () => {
         oic.infoToggle(item.querySelector('.js-object-image-overlay-btn--info'), true);
       }
 
-      oic.focusable = item.querySelectorAll('button:not([disabled]), a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])');
+      oic.focusable = item.querySelectorAll('button:enabled, a:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])');
 
       // set initial focus
       const focusEl = rewind
-        ? item.querySelector('.js-object-image-overlay-btn--prev:not([disabled]') || item.querySelector('.js-object-image-overlay-btn--next:not([disabled]') || oic.focusable[0]
-        : item.querySelector('.js-object-image-overlay-btn--next:not([disabled]') || item.querySelector('.js-object-image-overlay-btn--prev:not([disabled]') || oic.focusable[0];
+        ? item.querySelector('.js-object-image-overlay-btn--prev:enabled') || item.querySelector('.js-object-image-overlay-btn--next:enabled') || oic.focusable[0]
+        : item.querySelector('.js-object-image-overlay-btn--next:enabled') || item.querySelector('.js-object-image-overlay-btn--prev:enabled') || oic.focusable[0];
       focusEl.focus();
     };
 
@@ -245,9 +248,9 @@ const oicInit = () => {
         document.body.style.overflow = 'hidden';
       } else if (e.target.matches('.b-object-image-overlay__item, .b-object-image-overlay__dismiss')) {
         oic.exit();
-      } else if (e.target.matches('.js-object-image-overlay-btn--next:not([disabled])')) {
+      } else if (e.target.matches('.js-object-image-overlay-btn--next')) {
         oic.advance();
-      } else if (e.target.matches('.js-object-image-overlay-btn--prev:not([disabled])')) {
+      } else if (e.target.matches('.js-object-image-overlay-btn--prev')) {
         oic.advance(true);
       } else if (e.target.classList.contains('js-object-image-overlay-btn--info')) {
         oic.infoToggle(e.target);

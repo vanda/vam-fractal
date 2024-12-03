@@ -178,10 +178,6 @@
       padding: 0 15px;
       width: 100%;
 
-      &:focus {
-        @include mixins.focus-defaultFocus;
-      }
-
       &--component {
         @include base.typography-typeSetting(3, "regular");
 

@@ -59,7 +59,7 @@ if (siteNav) {
     const tabFirst = mobileNavToggleIcon;
     const tabLast = siteNav.querySelector('.b-site-nav__core__item:nth-last-child(2)>a');
     const tabListener = (e) => {
-      const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+      const isTabPressed = e.key === 'Tab';
       if (isTabPressed) {
         if (document.activeElement === tabFirst && e.shiftKey) {
           e.preventDefault();
@@ -91,7 +91,7 @@ if (siteNav) {
     const tabFirst = navSearchInput;
     const tabLast = navSearchBtn;
     const tabListener = (e) => {
-      const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+      const isTabPressed = e.key === 'Tab';
       if (isTabPressed) {
         if (document.activeElement === tabFirst && e.shiftKey) {
           e.preventDefault();

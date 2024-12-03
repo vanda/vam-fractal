@@ -4,7 +4,8 @@
   {% if objectImageOverlayData %} data-object-image-overlay="{{ objectImageOverlayData | dump | escape }}"{% endif %}
   itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
   <link itemprop="url" href="{{image[960]}}">
-  <a class="b-object-card__anchor" href="{{ href }}">
+  <a class="b-object-card__anchor" href="{{ href }}"
+    {% if objectImageOverlayItem %} aria-haspopup="dialog" aria-controls="object-image-overlay"{% endif %}>
     <div class="b-object-card__img-pane">
       <img class="b-object-card__img" itemprop="contentUrl"
           alt="{{ physicalDescription }}" 

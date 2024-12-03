@@ -116,9 +116,9 @@ const initObjectOverlay = () => {
     });
 
     Array.from(document.querySelectorAll('.b-image-overlay__preview')).forEach((el) => {
-      el.onclick = (e) => {
-        e.preventDefault();
-        if (!e.target.classList.contains('b-image-overlay__preview--offensive')) {
+      el.onclick = el.onkeydown = (e) => { // eslint-disable-line no-multi-assign
+        if (!e.target.closest('.b-image-overlay__preview--offensive')) {
+          if (e.key && e.key !== 'Enter' && e.key !== 'Spacebar' && e.key !== ' ') return; // simulate click event for keyboard navigation using Enter/Spacebar, since click event is not fired on div ellemnts
           e.target.dispatchEvent(new CustomEvent('openObjectOverlay', { bubbles: true }));
         }
       };

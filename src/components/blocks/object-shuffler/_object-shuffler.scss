@@ -144,7 +144,7 @@
     transform: translateX(0) rotate(var(--js-rotation, 0));
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       transform: translateX(0) rotate(0);
       z-index: 10;
     }
@@ -189,7 +189,7 @@
     width: 60px;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       transform: scale(1.1);
     }
 
