@@ -10,8 +10,8 @@
                     {{ img.image["640"] }} 640w,
                     {{ img.image[960] }} 960w,
                     {{ img.image[1280] }} 1280w"
-            sizes="(max-width: 499px) 100vw,
-                  (min-width: 500px) 50vw"
+            sizes="(min-width: 768px) 50vw,
+                    100vw"
             src="{{ img.image["640"] }}"
             loading="lazy">
         </li>
