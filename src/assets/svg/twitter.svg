@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    <g id="x" fill-rule="nonzero" fill="currentColor">
-        <path d="M76.4015 10.0342H89.9615L60.3369 43.8929L95.1877 89.9671H67.8998L46.5273 62.0233L22.0717 89.9671H8.50357L40.1899 53.7513L6.75732 10.0342H34.738L54.0573 35.5759L76.4015 10.0342ZM71.6423 81.8509H79.1561L30.6553 17.7242H22.5923L71.6423 81.8509Z" id="x"/>
-    </g>
-  </g>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12.2241 1.60547H14.3937L9.65381 7.02288L15.2299 14.3948H10.8638L7.44421 9.92375L3.53134 14.3948H1.36044L6.43025 8.60023L1.08105 1.60547H5.55795L8.64903 5.69214L12.2241 1.60547ZM11.4626 13.0962H12.6648L4.90472 2.83586H3.61464L11.4626 13.0962Z" fill="currentColor"/>
 </svg>

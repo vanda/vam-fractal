@@ -5,7 +5,6 @@
 .b-event-teaser {
   color: base.sitecolors-siteColor("vam-black");
   margin-bottom: 32px;
-  overflow: hidden;
   padding: 0 10px;
   position: relative;
   width: 100%;
@@ -28,7 +27,7 @@
     position: relative;
 
     &:hover h2,
-    &:focus h2 {
+    &:focus-visible h2 {
       text-decoration: underline;
     }
   }
@@ -61,7 +60,7 @@
       z-index: 0;
 
       .b-event-teaser__link:hover &,
-      .b-event-teaser__link:focus & {
+      .b-event-teaser__link:focus-visible & {
         opacity: 1;
       }
     }
@@ -115,19 +114,6 @@
     }
   }
 
-  &__data {
-    @include base.typography-typeSetting(2, "bold");
-
-    display: flex;
-    margin-bottom: 10px;
-
-    &__icon {
-      height: 20px;
-      margin-right: 10px;
-      width: 20px;
-    }
-  }
-
   &__footer {
     align-items: center;
     border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-7");
@@ -137,27 +123,23 @@
     .b-event-teaser--dark & {
       border-color: base.sitecolors-siteColor("vam-grey-2");
     }
+  }
 
-    &__buttons > .u-btn {
-      @include base.typography-typeSetting(3);
+  &__cta {
+    .b-event-teaser--dark & {
+      border-color: base.sitecolors-siteColor("vam-grey-2");
+    }
 
-      margin: 0 0 10px 10px;
+    .b-event-teaser__link:hover &,
+    .b-event-teaser__link:focus-visible & {
+      background-color: color.scale(#fff, $lightness: -10%);
+      border-color: base.sitecolors-siteColor("vam-grey-4");
+    }
 
-      .b-event-teaser--dark & {
-        border-color: base.sitecolors-siteColor("vam-grey-2");
-      }
-
-      .b-event-teaser__link:hover &,
-      .b-event-teaser__link:focus & {
-        background-color: color.scale(#fff, $lightness: -10%);
-        border-color: base.sitecolors-siteColor("vam-grey-4");
-      }
-
-      .b-event-teaser--dark .b-event-teaser__link:hover &,
-      .b-event-teaser--dark .b-event-teaser__link:focus & {
-        background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
-        border-color: #fff;
-      }
+    .b-event-teaser--dark .b-event-teaser__link:hover &,
+    .b-event-teaser--dark .b-event-teaser__link:focus-visible & {
+      background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
+      border-color: #fff;
     }
   }
 }

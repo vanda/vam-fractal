@@ -3,6 +3,7 @@
 
 .b-section-header {
   background: base.sitecolors-siteColor("vam-white");
+  clear: both;
   padding: 21px base.$spacings-spacing-small 25px;
 
   @include mixins.breakpoints-bpMinXSmall {

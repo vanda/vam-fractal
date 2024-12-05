@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* on Focus: set active item
      * using key handler since the container element is not focussable itself */
     block.addEventListener('keyup', (e) => {
-      if (e.keyCode === 9) {
+      if (e.key === 'Tab') {
         setActive(e.target.closest('.b-events-featured__item'));
       }
     });

@@ -1,9 +1,34 @@
+@use "../../base/site-color/site-color";
+
 @mixin defaultFocus {
-  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1d1e20;
+  box-shadow: 0 0 0 2px #1d1e20, 0 0 0 4px #e6ff02;
+  outline: 0;
+}
+
+@mixin inverseFocus {
+  box-shadow: 0 0 0 2px #e6ff02, 0 0 0 4px #1d1e20;
   outline: 0;
 }
 
 @mixin insetFocus {
-  box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 6px #1d1e20;
+  box-shadow: inset 0 0 0 2px #1d1e20, inset 0 0 0 4px #e6ff02;
+  outline: 0;
+}
+
+@mixin inlineFocus {
+  background-color: #e6ff02;
+  box-shadow: 0 0 0 2px #e6ff02;
+  color: site-color.siteColor("vam-black");
+  outline: 0;
+  text-decoration-thickness: 2px;
+  text-shadow: none;
+
+  &:hover {
+    color: site-color.siteColor("vam-black");
+  }
+}
+
+@mixin disableFocus {
+  box-shadow: none;
   outline: 0;
 }

@@ -244,12 +244,18 @@ strong {
   @include element-visibility.hidden-all;
 }
 
-a,
 button,
-[tabindex="0"],
 input,
-select {
-  &:focus {
+select,
+summary {
+  &:focus-visible {
     @include focus.defaultFocus;
+  }
+}
+
+a,
+[tabindex="0"] {
+  &:focus-visible {
+    @include focus.inverseFocus;
   }
 }

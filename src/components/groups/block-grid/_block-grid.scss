@@ -72,10 +72,6 @@
     &--light {
       background-color: base.sitecolors-siteColor("vam-white");
     }
-
-    > button:focus {
-      @include mixins.focus-defaultFocus;
-    }
   }
 
   &__cols-restarter {

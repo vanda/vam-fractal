@@ -67,10 +67,6 @@
     min-width: 110px;
     position: relative;
 
-    &:focus {
-      @include mixins.focus-defaultFocus;
-    }
-
     &:hover {
       cursor: pointer;
       opacity: 0.3;

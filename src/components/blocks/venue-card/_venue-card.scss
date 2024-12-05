@@ -15,10 +15,6 @@
     transition: opacity 0.4s ease;
   }
 
-  &:focus {
-    @include mixins.focus-defaultFocus;
-  }
-
   &__header {
     color: base.sitecolors-siteColor("vam-white");
     padding: 20px 10px;

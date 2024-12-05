@@ -31,13 +31,9 @@
     z-index: 1;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: base.sitecolors-siteColor("vam-grey-7");
       border-top: 1px solid base.sitecolors-siteColor("vam-black");
-    }
-
-    &:focus {
-      @include mixins.focus-defaultFocus;
     }
 
     /* webkit doesn't yet support the list-style rule above */

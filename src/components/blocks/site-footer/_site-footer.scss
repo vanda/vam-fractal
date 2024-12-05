@@ -142,8 +142,12 @@
     @include base.typography-typeSetting(1, "regular");
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       text-decoration: underline;
+    }
+
+    &:focus-visible {
+      @include mixins.focus-inlineFocus;
     }
 
     &--arrow-right::after {

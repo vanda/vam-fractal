@@ -1,10 +1,7 @@
-<div aria-hidden="true" class="b-modal js-modal" data-modal-campaign="{{modalID}}" data-modal-once-only="{{modalOnceOnly}}" data-modal-domain="{{modalDomain}}">
-  <section class="b-modal__content">
-    <a href="#" class="b-modal__close-button" aria-label="Close message">
-      <svg role="img" class="b-modal__close-icon">
-        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#close"></use>
-      </svg>
-    </a>
+<div class="b-modal js-modal" role="dialog" aria-modal="true"
+  data-modal-campaign="{{modalID}}" data-modal-once-only="{{modalOnceOnly}}" data-modal-domain="{{modalDomain}}">
+  <div class="b-modal__content">
+		<button class="u-btn-icon u-btn-icon--close b-modal__exit js-modal-exit" title="Dismiss modal">Dismiss</button>
     <h1 class="b-modal__title">{{title}}</h1>
     <div class="b-modal__description">
       {{body}}
@@ -13,5 +10,5 @@
     <div>
       <a href="#" class="b-modal__dismiss u-link u-link--arrowed">{{dismiss}}</a>
     </div>
-  </section>
+  </div>
 </div>

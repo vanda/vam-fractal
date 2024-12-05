@@ -14,7 +14,7 @@
 
   @include mixins.breakpoints-bpMinXSmall {
     height: 210px;
-    overflow: hidden;
+    overflow: visible;
   }
 
   @include mixins.breakpoints-bpMinSmall {
@@ -102,8 +102,8 @@
       text-shadow: 0 -1px 2px rgba(29, 30, 32, 50%), 0 1px 2px rgba(29, 30, 32, 50%);
     }
 
-    .b-events-featured__item:hover &,
-    .b-events-featured__item:focus & {
+    .b-events-featured__anchor:hover &,
+    .b-events-featured__anchor:focus-visible & {
       text-decoration: underline;
     }
   }

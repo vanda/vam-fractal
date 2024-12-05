@@ -24,6 +24,10 @@
     --btn-color: var(--btn-light-color);
     --btn-border: var(--btn-light-border);
     --btn-bg-hover: var(--btn-light-bg-hover);
+
+    &:focus-visible {
+      @include mixins.focus-inverseFocus;
+    }
   }
 }
 
@@ -52,13 +56,9 @@
     width: var(--btn-icon-size);
   }
 
-  &:focus {
-    @include mixins.focus-defaultFocus;
-  }
-
   &:hover,
   &:active {
-    &:not([disabled]) {
+    &:enabled {
       background-color: var(--btn-bg-hover);
     }
   }
@@ -84,13 +84,17 @@
     --btn-color: var(--btn-light-color);
     --btn-border: var(--btn-light-border);
     --btn-bg-hover: var(--btn-light-bg-hover);
+
+    &:focus-visible {
+      @include mixins.focus-inverseFocus;
+    }
   }
 
   // specific preset icon types follow
   &--close {
     --btn-icon: var(--icon-svg-plus);
     --btn-icon-transform: rotate(45deg);
-    --btn-icon-size: 58%;
+    --btn-icon-size: 52%;
   }
   
   &--info {
@@ -106,12 +110,13 @@
     --btn-icon: var(--icon-svg-plus);
   }
 
-  &--point-left {
+  &--point-left,
+  &--point-right {
     --btn-icon: var(--icon-svg-point-left);
+    --btn-icon-size: 42%;
   }
 
   &--point-right {
-    --btn-icon: var(--icon-svg-point-left);
     --btn-icon-transform: rotate(180deg);
   }
 }

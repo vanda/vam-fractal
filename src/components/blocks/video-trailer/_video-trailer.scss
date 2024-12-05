@@ -39,19 +39,10 @@
   &__image {
     object-fit: cover;
     width: 100%;
-
-    .b-video-trailer__link:focus & {
-      @include mixins.focus-defaultFocus;
-    }
   }
 
   &__link {
-    height: 100%;
-    width: 100%;
-
-    &:focus {
-      outline: 0;
-    }
+    display: block;
   }
 
   &__icon {

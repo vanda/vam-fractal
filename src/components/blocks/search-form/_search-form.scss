@@ -148,6 +148,11 @@
     &::-ms-clear {
       display: none;
     }
+
+    &:focus-visible {
+      position: relative;
+      z-index: 1;
+    }
   }
 
   &__underscore {
@@ -180,25 +185,13 @@
       margin: 0;
       padding: 8px 16px;
 
-      &:focus {
-        @include mixins.focus-defaultFocus;
-
-        border-radius: 3px;
-        width: calc(100% - 6px);
-      }
-
-      &--validation-error{
-        &, &:focus{
-          box-shadow: 0 0 0 3px  base.sitecolors-siteColor("alert-red"), 0 0 0 6px base.sitecolors-siteColor("vam-black");
-          outline: 0;
-          border-radius: 3px;
-          width: calc(100% - 6px);
-        }
+      &--validation-error {
+        border: 3px solid base.sitecolors-siteColor("alert-red");
       }
 
       &__input-error-label{
         background-color: base.sitecolors-siteColor("alert-red");
-        color:base.sitecolors-siteColor("vam-black");
+        color: base.sitecolors-siteColor("vam-black");
         display: block;
         position: absolute;
         padding: 4px 12px;
@@ -252,10 +245,6 @@
     display: inline-flex;
     margin-top: 15px;
 
-    &:focus {
-      @include mixins.focus-insetFocus;
-    }
-
     &::after {
       border: 6px solid transparent;
       border-left-color: currentColor;
@@ -290,15 +279,12 @@
         padding: 16px;
       }
 
-      &:focus {
-        @include mixins.focus-defaultFocus;
-
-        background: base.sitecolors-siteColor("vam-grey-7");
-        border-radius: 3px;
-      }
-
       &::after {
         display: none;
+      }
+
+      &:hover {
+        background: base.sitecolors-siteColor("vam-grey-7");
       }
     }
   }
@@ -342,8 +328,7 @@
       @include base.typography-typeSetting(4, "bold");
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: base.sitecolors-siteColor("vam-grey-4");
       color: base.sitecolors-siteColor("vam-black");
     }
@@ -421,13 +406,6 @@
 
     margin-bottom: 8px;
 
-    &:focus {
-      @include mixins.focus-defaultFocus;
-
-      border-radius: 3px;
-      width: fit-content;
-    }
-
     svg {
       height: 8px;
       margin-left: 8px;
@@ -436,6 +414,10 @@
 
     &[aria-expanded="true"] svg {
       transform: rotate(180deg);
+    }
+
+    &:focus-visible {
+      @include mixins.focus-inlineFocus;
     }
   }
 
@@ -462,12 +444,6 @@
     @include base.typography-typeSetting(4);
 
     border-radius: 2px;
-
-    &:focus + label {
-      @include mixins.focus-defaultFocus;
-
-      overflow: auto;
-    }
 
     &[type="checkbox"] {
       @include mixins.elementvisibility-visuallyHidden;
@@ -519,12 +495,6 @@
       border: none;
       color: base.sitecolors-siteColor("vam-grey-3");
       padding: 8px 12px;
-
-      &:focus {
-        @include mixins.focus-defaultFocus;
-
-        border-radius: 3px;
-      }
     }
   }
 
@@ -625,6 +595,7 @@
       top: 12%;
       transform: scaleX(1.5);
       width: 10px;
+      z-index: 1;
       
       @include mixins.breakpoints-bpMinSmall {
         top: 12%;
@@ -632,11 +603,6 @@
 
       @include mixins.breakpoints-bpMinMedium {
         top: 24%;
-
-        // when the child <select> gains focus it is stacked above the adjacent
-        // <input> to allow the focus effects to be seen without cropping. Same 
-        // applied to the pseudo-element:
-        z-index: 1;
       }
     }
 
@@ -657,10 +623,9 @@
       color: base.sitecolors-siteColor("vam-black");
       padding: 8px 40px 8px 16px;
 
-      &:focus {
-        @include mixins.focus-defaultFocus;
-
-        border-radius: 3px;
+      &:focus-visible {
+        position: relative;
+        z-index: 1;
       }
 
       @include mixins.breakpoints-bpMinXSmall {
@@ -672,11 +637,6 @@
       @include mixins.breakpoints-bpMinSmall {
         .b-search-form--etc & {
           border-radius: 2px 0 0 2px;
-
-          &:focus {
-            border-radius: 3px;
-            width: calc(100% - 6px);
-          }
         }
       }
 
@@ -685,12 +645,6 @@
 
         .b-search-form--etc & {
           width: 12em;
-
-          &:focus {
-            position: relative;
-            width: 12em;
-            z-index: 1;
-          }
         }
       }
     }
@@ -776,10 +730,6 @@
         display: inline-block;
         margin-left: 4px;
       }
-    }
-
-    a {
-      text-decoration: underline;
     }
   }
 }
