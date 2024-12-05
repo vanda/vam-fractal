@@ -90,7 +90,7 @@
       @include mixins.breakpoints-bpMinSmall {
         height: 296px;
       }
-  
+
       @include mixins.breakpoints-bpMinMedium {
         height: 390px;
       }
@@ -103,10 +103,8 @@
     width: 100%;
   }
 
-  &__ctrls-directional-list {
-    @include mixins.unstyledelements-unstyledList;
-
-    display: flex;
+  &__ctrls {
+    display: none;
     gap: 4px;
     position: absolute;
     right: 10px;
@@ -119,9 +117,13 @@
     @include mixins.breakpoints-bpMinMedium {
       top: 345px;
     }
+
+    &--active {
+      display: flex;
+    }
   }
 
-  &__ctrls-directional-btn {
+  &__ctrls-btn {
     box-shadow: 1px 1px 12px 0 rgba(29, 30, 32, 50%), -1px -1px 12px 0 rgba(29, 30, 32, 50%);
     height: 26px;
     width: 26px;
@@ -179,7 +181,7 @@
           color: base.sitecolors-siteColor("vam-black");
         }
       }
-      
+
       &::after {
         background-color: base.sitecolors-siteColor("vam-black");
         border-radius: 50%;
