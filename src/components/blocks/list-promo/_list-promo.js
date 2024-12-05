@@ -1,112 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const ctrlsDirectional = [
-    {
-      ctrlName: 'Previous',
-      ctrlClasses: ['u-btn-icon', 'u-btn-icon--light', 'u-btn-icon--point-left', 'b-list-promo__ctrls-directional-btn'],
-      ctrlAttr: 'disabled',
-    },
-    {
-      ctrlName: 'Next',
-      ctrlClasses: ['u-btn-icon', 'u-btn-icon--light', 'u-btn-icon--point-right', 'b-list-promo__ctrls-directional-btn'],
-    },
-  ];
+  Array.from(document.querySelectorAll('.b-list-promo'), (promo) => {
+    const listImgs = promo.querySelectorAll('.b-list-promo__image-list-item');
 
-  const setActiveListItem = (listIndex, inst) => {
-    const promoImgListItems = inst.querySelectorAll('.b-list-promo__image-list-item');
-    const promoInfoListItems = inst.querySelectorAll('.b-list-promo__list-item');
+    /* Promo logic only required if > 1 promo img present */
+    if (listImgs.length > 1) {
+      const listItems = promo.querySelectorAll('.b-list-promo__list-item');
 
-    promoImgListItems.forEach((listItem, i) => {
-      if (i !== listIndex) {
-        listItem.classList.remove('b-list-promo__image-list-item--active');
-      } else {
-        listItem.classList.add('b-list-promo__image-list-item--active');
-      }
-    });
+      /* set initial item active state */
+      let activeIndex = 0;
+      listItems[activeIndex].classList.add('b-list-promo__list-item--active');
 
-    promoInfoListItems.forEach((listItem, i) => {
-      if (i !== listIndex) {
-        listItem.classList.remove('b-list-promo__list-item--active');
-      } else {
-        listItem.classList.add('b-list-promo__list-item--active');
-      }
-    });
-  };
+      /* fn to set active item classes */
+      const setActiveItem = (itemIndex) => {
+        promo.querySelector('.b-list-promo__image-list-item--active').classList.remove('b-list-promo__image-list-item--active');
+        listImgs[itemIndex].classList.add('b-list-promo__image-list-item--active');
+        promo.querySelector('.b-list-promo__list-item--active').classList.remove('b-list-promo__list-item--active');
+        listItems[itemIndex].classList.add('b-list-promo__list-item--active');
+      };
 
-  const switchListItem = (e) => {
-    const selectedDirection = e.target.textContent;
+      /* promo ctrls can be shown */
+      const ctrls = promo.querySelector('.b-list-promo__ctrls');
+      ctrls.classList.add('b-list-promo__ctrls--active');
 
-    const promoListItems = Array.from(e.target.inst.querySelectorAll('.b-list-promo__list-item'));
-    const promoListActiveItem = e.target.inst.querySelector('.b-list-promo__list-item--active');
-    const currentListItemIndex = promoListItems.indexOf(promoListActiveItem);
-    const lastListItemIndex = promoListItems.length - 1;
+      /* promo controls setup */
+      const prev = ctrls.querySelector('.js-list-promo__ctrls-btn--prev');
+      const next = ctrls.querySelector('.js-list-promo__ctrls-btn--next');
+      prev.setAttribute('disabled', 'true');
 
-    const ctrlDirectionPrev = e.target.inst.querySelector('.u-btn-icon--point-left.b-list-promo__ctrls-directional-btn');
-    const ctrlDirectionNext = e.target.inst.querySelector('.u-btn-icon--point-right.b-list-promo__ctrls-directional-btn');
-
-    if (selectedDirection === 'Previous') {
-      if (currentListItemIndex > 0) {
-        setActiveListItem(currentListItemIndex - 1, e.target.inst);
-        ctrlDirectionNext.removeAttribute('disabled');
-      }
-      if (currentListItemIndex === 1) {
-        ctrlDirectionPrev.setAttribute('disabled', '');
-      }
+      /* promo controls logic */
+      ctrls.addEventListener('click', (e) => {
+        if (e.target === prev) {
+          activeIndex -= 1;
+          next.removeAttribute('disabled');
+          if (activeIndex === 0) prev.setAttribute('disabled', 'true');
+        } else if (e.target === next) {
+          activeIndex += 1;
+          prev.removeAttribute('disabled');
+          if (activeIndex === listImgs.length - 1) next.setAttribute('disabled', 'true');
+        }
+        setActiveItem(activeIndex);
+      });
     }
 
-    if (selectedDirection === 'Next') {
-      if (currentListItemIndex < lastListItemIndex) {
-        setActiveListItem(currentListItemIndex + 1, e.target.inst);
-        ctrlDirectionPrev.removeAttribute('disabled');
-      }
-      if (currentListItemIndex === lastListItemIndex - 1) {
-        ctrlDirectionNext.setAttribute('disabled', '');
-      }
-    }
-  };
-
-  const buildDirectionCtrls = (inst) => {
-    const ctrlsContainerParent = inst.querySelector('.b-list-promo__image-list-container');
-    const ctrlsContainer = document.createElement('ul');
-
-    ctrlsContainer.classList.add('b-list-promo__ctrls-directional-list');
-
-    ctrlsDirectional.forEach((ctrl) => {
-      const ctrlListItem = document.createElement('li');
-      const ctrlBtn = document.createElement('button');
-
-      ctrlBtn.classList.add(...ctrl.ctrlClasses);
-      ctrlBtn.textContent = ctrl.ctrlName;
-      ctrlBtn.setAttribute('title', `${ctrl.ctrlName} item`);
-      ctrlBtn.setAttribute('type', 'button');
-
-      // disable 'Previous' button on initialisation
-      if (ctrl.ctrlAttr) {
-        ctrlBtn.setAttribute(ctrl.ctrlAttr, '');
-      }
-
-      ctrlBtn.inst = inst;
-      ctrlBtn.addEventListener('click', switchListItem, false);
-
-      ctrlListItem.appendChild(ctrlBtn);
-      ctrlsContainer.appendChild(ctrlListItem);
-      ctrlsContainerParent.appendChild(ctrlsContainer);
-    });
-  };
-
-  const init = () => {
-    // there may be more than one instance on the page
-    const componentContainers = document.querySelectorAll('.b-list-promo');
-
-    componentContainers.forEach((inst) => {
-      const promoInfoListItems = inst.querySelectorAll('.b-list-promo__list-item');
-
-      setActiveListItem(0, inst);
-
-      if (promoInfoListItems.length > 1) {
-        buildDirectionCtrls(inst);
-      }
-    });
-  };
-
-  init();
+    return true;
+  });
 });
