@@ -65,31 +65,27 @@
   }
 
   &__image-list-container {
+    min-height: 190px;
     position: relative;
 
     @include mixins.breakpoints-bpMinSmall {
       flex: 1 1 0;
+      min-height: 296px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      min-height: 390px;
     }
   }
 
   &__image-list-item {
-    height: 0;
+    inset: 0;
     opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in;
-    visibility: hidden;
+    position: absolute;
+    transition: opacity 0.3s ease-in;
 
     &--active {
-      height: 190px;
       opacity: 1;
-      visibility: visible;
-
-      @include mixins.breakpoints-bpMinSmall {
-        height: 296px;
-      }
-
-      @include mixins.breakpoints-bpMinMedium {
-        height: 390px;
-      }
     }
   }
 
@@ -100,19 +96,11 @@
   }
 
   &__ctrls {
+    bottom: 10px;
     display: none;
     gap: 4px;
     position: absolute;
     right: 10px;
-    top: 155px;
-
-    @include mixins.breakpoints-bpMinSmall {
-      top: 250px;
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      top: 345px;
-    }
 
     &--active {
       display: flex;
