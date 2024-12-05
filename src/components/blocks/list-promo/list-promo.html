@@ -1,25 +1,23 @@
 <div class="b-list-promo {% for m in modifier %}b-list-promo--{{ m }}{% endfor %}" aria-label="Promotion: {{ promoTitle }}">
   <div class="b-list-promo__image-list-container">
-    <ul class="b-list-promo__image-list">
-      {% for img in promoItems %}
-        <li class="b-list-promo__image-list-item {% if loop.first == true %}b-list-promo__image-list-item--active {% endif %}">
-          <img
-            alt="{{ promoTitle }}"
-            class="b-list-promo__image"
-            srcset="{{ img.image["320"] }} 320w,
-                    {{ img.image["640"] }} 640w,
-                    {{ img.image[960] }} 960w,
-                    {{ img.image[1280] }} 1280w"
-            sizes="(min-width: 768px) 50vw,
-                    100vw"
-            src="{{ img.image["640"] }}"
-            loading="lazy">
-        </li>
-      {% endfor %}
-    </ul>
+    {% for img in promoItems %}
+    <div class="b-list-promo__image-list-item {% if loop.first == true %}b-list-promo__image-list-item--active {% endif %}">
+      <img
+        alt="{{ promoTitle }}"
+        class="b-list-promo__image"
+        srcset="{{ img.image["320"] }} 320w,
+                {{ img.image["640"] }} 640w,
+                {{ img.image[960] }} 960w,
+                {{ img.image[1280] }} 1280w"
+        sizes="(min-width: 768px) 50vw,
+                100vw"
+        src="{{ img.image["640"] }}"
+        loading="lazy">
+    </div>
+    {% endfor %}
     <div class="b-list-promo__ctrls">
-      <button class="u-btn-icon u-btn-icon--light u-btn-icon--point-left b-list-promo__ctrls-btn  js-list-promo__ctrls-btn--prev" title="Previous item" type="button">Previous</button>
-      <button class="u-btn-icon u-btn-icon--light u-btn-icon--point-right b-list-promo__ctrls-btn  js-list-promo__ctrls-btn--next" title="Next item" type="button">Next</button>
+      <button class="u-btn-icon u-btn-icon--light u-btn-icon--point-left b-list-promo__ctrls-btn js-list-promo__ctrls-btn--prev" title="Previous item" type="button">Previous</button>
+      <button class="u-btn-icon u-btn-icon--light u-btn-icon--point-right b-list-promo__ctrls-btn js-list-promo__ctrls-btn--next" title="Next item" type="button">Next</button>
     </div>
   </div>
   <div class="b-list-promo__info-container">
