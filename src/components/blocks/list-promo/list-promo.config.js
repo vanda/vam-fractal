@@ -57,8 +57,8 @@ module.exports = {
   },
   variants: [
     {
-      name: 'on-dark',
-      label: 'On dark',
+      name: 'dark',
+      label: 'Dark',
       context: {
         previewClass: 'fr-bg--dark',
         modifier: ['dark']
