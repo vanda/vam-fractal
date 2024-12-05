@@ -72,10 +72,6 @@
     }
   }
 
-  &__image-list {
-    @include mixins.unstyledelements-unstyledList;
-  }
-
   &__image-list-item {
     height: 0;
     opacity: 0;
