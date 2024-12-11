@@ -1,0 +1,22 @@
+@use "../../base";
+@use "../../mixins";
+
+.u-icon-label-tag {
+  @include base.typography-typeSetting(2);
+
+  align-items: center;
+  background: base.sitecolors-siteColor(vam-white);
+  border-radius: 2px;
+  color: base.sitecolors-siteColor(vam-black);
+  display: flex;
+  gap: 4px;
+  left: 10px;
+  padding: 2px 4px;
+  position: absolute;
+  top: 10px;
+
+  &.b-icon-list__icon::before {
+    height: 16px;
+    width: 16px;
+  }
+}
