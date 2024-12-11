@@ -88,6 +88,14 @@ module.exports = {
         text: 'Featured',
         modifier: ['featured']
       }
+    },
+    {
+      name: 'Collection',
+      context: {
+        text: 'Collection',
+        modifier: ['collection'],
+        previewClass: 'fr-bg--dark'
+      }
     }
   ]
 };

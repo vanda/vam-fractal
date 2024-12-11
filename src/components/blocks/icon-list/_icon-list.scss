@@ -4,8 +4,6 @@
 .b-icon-list {
   @include base.typography-typeSetting(2);
 
-  color: base.sitecolors-siteColor("vam-black");
-
   &--dark {
     color: base.sitecolors-siteColor("vam-white");
   }
