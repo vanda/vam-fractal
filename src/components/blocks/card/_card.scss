@@ -1,0 +1,147 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-card {
+  color: base.sitecolors-siteColor("vam-white");
+  min-height: 380px;
+  position: relative;
+
+  @include mixins.breakpoints-bpMinSmall {
+    min-height: 480px;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__info-container {
+    max-width: 340px;
+    padding: 8px 10px;
+    position: absolute;
+    top: 160px;
+    z-index: 1;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      max-width: 420px; 
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      max-width: 532px;
+      top: 190px;
+    }
+  }
+
+  &__heading {
+    @include base.typography-typeSetting(4, "bold");
+
+    margin-bottom: 8px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(5, "bold");
+    }
+  }
+
+  &__synopsis {
+    @include base.typography-typeSetting(3);
+    @include base.typography-lineheight(1);
+
+    display: -webkit-box;
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4);
+      @include base.typography-lineheight(3);
+    }
+  }
+
+  &::after {
+    background:
+      linear-gradient(
+        180deg, rgba(0, 0, 0, 0%) 0%,
+        rgba(0, 0, 0, 78%) 57%,
+        rgba(0, 0, 0, 90%) 71%,
+        #000 100%
+      );
+    content: "";
+    inset: 0;
+    opacity: 0.4;
+    position: absolute;
+  }
+
+  .u-icon-label-tag {
+    top: 128px;
+    z-index: 1;
+
+    @include mixins.breakpoints-bpMinSmall {
+      top: 158px;
+    }
+  }
+
+  &--part-background {
+    color: base.sitecolors-siteColor("vam-black");
+
+    &::after {
+      display: none;
+    }
+
+    .b-card__image {
+      height: 160px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 190px;
+      }
+    }
+  }
+
+  &--featured {
+    .b-card__heading {
+      @include mixins.breakpoints-bpMinMedium {
+        @include base.typography-typeSetting(6, "bold");
+        @include base.typography-lineheight(6);
+      }
+    }
+
+    .b-card__synopsis {
+      @include mixins.breakpoints-bpMinMedium {
+        @include base.typography-typeSetting(5);
+        @include base.typography-lineheight(4);
+      }
+    }
+
+    &.b-card--part-background {
+      @include mixins.breakpoints-bpMinMedium {
+        display: flex;
+        gap: 30px;
+
+        .b-card__image-container,
+        .b-card__info-container {
+          flex: 1 1 0;
+        }
+
+        .b-card__info-container {
+          max-width: none;
+          padding-left: 0;
+          position: static;
+        }
+
+        .u-icon-label-tag {
+          bottom: 10px;
+          top: auto;
+        }
+
+        .b-card__image {
+          height: 100%;
+          max-height: 480px;
+          position: static;
+        }
+      }
+    }
+  }
+}
