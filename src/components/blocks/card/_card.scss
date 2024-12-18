@@ -7,7 +7,7 @@
   min-height: 380px;
   position: relative;
 
-  @include mixins.breakpoints-bpMinSmall {
+  @include mixins.breakpoints-bpMinXSmall {
     min-height: 480px;
   }
 
@@ -139,6 +139,7 @@
       }
 
       .b-card__image {
+        border-radius: 2px 0 0 2px;
         height: 100%;
         max-height: 480px;
         position: static;
@@ -156,6 +157,10 @@
     &.b-card--picture-card {
       @include mixins.breakpoints-bpMinMedium {
         display: block;
+
+        .b-card__image {
+          border-radius: 2px;
+        }
 
         .b-card__info-container {
           border-bottom: none;
