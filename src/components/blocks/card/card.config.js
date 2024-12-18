@@ -12,10 +12,10 @@ module.exports = {
   },
   variants: [
     {
-      name: 'part-background',
-      label: 'Part Background',
+      name: 'picture-card',
+      label: 'Picture Card',
       context: {
-        modifier: ['part-background']
+        modifier: ['picture-card']
       }
     },
     {
@@ -26,10 +26,10 @@ module.exports = {
       }
     },
     {
-      name: 'featured-part-background',
-      label: 'Part Background - Featured',
+      name: 'featured-picture-card',
+      label: 'Picture Card - Featured',
       context: {
-        modifier: ['part-background', 'featured']
+        modifier: ['picture-card', 'featured']
       }
     }
   ]
