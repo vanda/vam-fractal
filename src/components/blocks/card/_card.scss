@@ -17,7 +17,7 @@
     object-fit: cover;
     width: 100%;
 
-    @include mixins.breakpoints-bpMinSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       height: 190px;
     }
   }
@@ -30,12 +30,12 @@
     z-index: 1;
 
     @include mixins.breakpoints-bpMinXSmall {
-      max-width: 420px; 
+      max-width: 420px;
+      top: 190px;
     }
 
     @include mixins.breakpoints-bpMinSmall {
       max-width: 532px;
-      top: 190px;
     }
   }
 
@@ -70,7 +70,7 @@
     top: 128px;
     z-index: 1;
 
-    @include mixins.breakpoints-bpMinSmall {
+    @include mixins.breakpoints-bpMinXSmall {
       top: 158px;
     }
   }
