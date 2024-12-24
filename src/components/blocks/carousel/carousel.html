@@ -1,4 +1,4 @@
-<div class="b-carousel" data-tracking-id="Example Carousel">
+<div class="b-carousel {% for m in modifiers %}b-carousel--{{ m }}{% endfor %}" data-tracking-id="Example Carousel">
   <div class="b-carousel__viewport">
     <div class="b-carousel__list">
       {% for n in [1, 2, 3, 4] %}

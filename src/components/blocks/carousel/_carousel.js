@@ -1,3 +1,5 @@
+import { scrollIntoViewHorizontally } from '../../services/js_utility_functions/js_utility_functions';
+
 /* Carousel initialiser fn.
  * Separate control buttons can be passed in as optional param,
  * otherwise will check for them nested inside the component */
@@ -52,16 +54,19 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       item.classList.add('js-carousel__item--active');
 
       /* move active item into view */
-      carousel._activeIndex = Array.prototype.indexOf.call(items, item);
-      const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
-      itemsOffset = carousel._activeIndex * itemSpan;
-      /* last items need special right-alignment */
-      if (carousel._activeIndex >= items.length - itemsPerView) {
-        itemsOffset -= ((1 - (item.offsetWidth / carousel.offsetWidth)) * carousel.offsetWidth);
-        itemsOffset += (items.length - carousel._activeIndex - 1) * itemSpan;
+      if (carousel.classList.contains('b-carousel--unclipped')) {
+        carousel._activeIndex = Array.prototype.indexOf.call(items, item);
+        const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
+        itemsOffset = carousel._activeIndex * itemSpan;
+        /* last items need special right-alignment */
+        if (carousel._activeIndex >= items.length - itemsPerView) {
+          itemsOffset -= ((1 - (item.offsetWidth / carousel.offsetWidth)) * carousel.offsetWidth);
+          itemsOffset += (items.length - carousel._activeIndex - 1) * itemSpan;
+        }
+        carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
+      } else {
+        scrollIntoViewHorizontally(item, viewport);
       }
-      carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
-
       /* dispatch an event to be heard by the detachable buttons
         * and anything else that needs it */
       carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: Array.prototype.indexOf.call(items, item) } }));
@@ -99,35 +104,37 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     });
 
     /* add swipe gesture support */
-    viewport.ontouchstart = (e) => {
-      const startXY = [e.touches[0].pageX, e.touches[0].pageY];
-      viewport.ontouchmove = (e2) => {
-        const deltaXY = [e2.touches[0].pageX - startXY[0], e2.touches[0].pageY - startXY[1]];
-        if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
-          && (
-            (deltaXY[0] < 0 && carousel._activeIndex < items.length - 1)
-            || (deltaXY[0] > 0 && carousel._activeIndex > 0)
-          )) {
-          /* if touch moves significantly horizontally
-            * activate prev/next item swipe */
-          if (Math.abs(deltaXY[0]) > 74) {
-            viewport.ontouchmove = null;
-            if (deltaXY[0] < 0) {
-              carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
+    if (carousel.classList.contains('b-carousel--unclipped')) {
+      viewport.ontouchstart = (e) => {
+        const startXY = [e.touches[0].pageX, e.touches[0].pageY];
+        viewport.ontouchmove = (e2) => {
+          const deltaXY = [e2.touches[0].pageX - startXY[0], e2.touches[0].pageY - startXY[1]];
+          if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
+            && (
+              (deltaXY[0] < 0 && carousel._activeIndex < items.length - 1)
+              || (deltaXY[0] > 0 && carousel._activeIndex > 0)
+            )) {
+            /* if touch moves significantly horizontally
+              * activate prev/next item swipe */
+            if (Math.abs(deltaXY[0]) > 74) {
+              viewport.ontouchmove = null;
+              if (deltaXY[0] < 0) {
+                carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
+              } else {
+                carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
+              }
             } else {
-              carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
+              /* else just drag */
+              carousel.style.setProperty('--items-offset', `${deltaXY[0] - itemsOffset}px`);
+              viewport.ontouchend = () => {
+                carousel._setActiveItem(items[carousel._activeIndex]);
+                viewport.ontouchend = null;
+              };
             }
-          } else {
-            /* else just drag */
-            carousel.style.setProperty('--items-offset', `${deltaXY[0] - itemsOffset}px`);
-            viewport.ontouchend = () => {
-              carousel._setActiveItem(items[carousel._activeIndex]);
-              viewport.ontouchend = null;
-            };
           }
-        }
+        };
       };
-    };
+    }
 
     /* onResize
      * reset template params & re-centre active item */
