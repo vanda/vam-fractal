@@ -209,5 +209,11 @@
         mask-image: var(--icon-svg-person-one);
       }
     }
+
+    &--make {
+      &::before {
+        mask-image: var(--icon-svg-make);
+      }
+    }
   }
 }
