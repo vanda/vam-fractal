@@ -4,17 +4,25 @@
 .b-card {
   border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
   color: base.sitecolors-siteColor("vam-black");
+  display: block;
   min-height: 380px;
+  overflow: hidden;
   position: relative;
 
   @include mixins.breakpoints-bpMinXSmall {
     min-height: 480px;
   }
 
+  &__image-container {
+    overflow: hidden;
+  }
+
   &__image {
     border-radius: 2px 2px 0 0;
     height: 160px;
     object-fit: cover;
+    transform: scale(1);
+    transition: 0.25s ease-out;
     width: 100%;
 
     @include mixins.breakpoints-bpMinXSmall {
@@ -175,5 +183,10 @@
         }
       }
     }
+  }
+
+  &:hover &__image,
+  &:focus-visible &__image {
+    transform: scale(1.1);
   }
 }
