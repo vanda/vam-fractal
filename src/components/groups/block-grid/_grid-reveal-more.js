@@ -25,7 +25,7 @@ if (gridRevealMore.length) {
       const gridFooterMarkup = document.createElement('footer');
       gridFooterMarkup.setAttribute('class', `b-block-grid__footer b-block-grid__footer--${theme}`);
       gridFooterMarkup.innerHTML = `
-        <button aria-label="show more" aria-expanded="false" aria-controls="${ariaControlledId}" data-tracking-showmorebutton="${tracking}" class="js-reveal-more-btn">
+        <button aria-label="show more" aria-expanded="false" aria-controls="${ariaControlledId}" class="js-reveal-more-btn">
           <div class="b-icon-badge b-icon-badge--small b-icon-badge--${theme}">
             <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
               <svg aria-hidden="true">
@@ -66,6 +66,13 @@ if (gridRevealMore.length) {
             gridFooterMarkup.remove();
           }
         }
+
+        // track 'show more' button interaction
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'user event': 'Show more button interaction',
+          'objects type': tracking,
+        });
       }, false);
     }
     return true;
