@@ -53,9 +53,10 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       list.querySelector('.js-carousel__item--active').classList.remove('js-carousel__item--active');
       item.classList.add('js-carousel__item--active');
 
+      carousel._activeIndex = Array.prototype.indexOf.call(items, item);
+
       /* move active item into view */
       if (carousel.classList.contains('b-carousel--unclipped')) {
-        carousel._activeIndex = Array.prototype.indexOf.call(items, item);
         const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
         itemsOffset = carousel._activeIndex * itemSpan;
         /* last items need special right-alignment */
@@ -67,6 +68,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       } else {
         scrollIntoViewHorizontally(item, viewport);
       }
+
       /* dispatch an event to be heard by the detachable buttons
         * and anything else that needs it */
       carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: Array.prototype.indexOf.call(items, item) } }));
