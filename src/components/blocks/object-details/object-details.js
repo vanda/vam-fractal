@@ -55,10 +55,10 @@ const initRevealers = () => {
 
       if (textElConcealed) {
         textEl.classList.remove(hiddenClass);
-        controlEl.querySelector(".b-object-details__cell-concealer-button").setAttribute('data-tracking-collections', 'read less');
+        controlEl.querySelector('.b-object-details__cell-concealer-button').setAttribute('data-tracking-collections', 'read less');
       } else {
         textEl.classList.add(hiddenClass);
-        controlEl.querySelector(".b-object-details__cell-concealer-button").setAttribute('data-tracking-collections', 'read more');
+        controlEl.querySelector('.b-object-details__cell-concealer-button').setAttribute('data-tracking-collections', 'read more');
       }
     };
 
