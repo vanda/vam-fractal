@@ -8,6 +8,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
   /* Carousel logic only required for > 1 item */
   if (items.length > 1) {
+    const carouselUnclipped = carousel.classList.contains('b-carousel--unclipped');
     const viewport = carousel.querySelector('.b-carousel__viewport');
     const list = carousel.querySelector('.b-carousel__list');
     carousel._activeIndex = 0;
@@ -18,7 +19,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
     /* ensure each item is tabbable for keyboard navigation */
     Array.from(items, (item) => {
-      item.setAttribute('tabindex', 0);
+      if (!item.querySelector(':has(button, a)')) {
+        item.setAttribute('tabindex', 0);
+      }
       return true;
     });
 
@@ -56,7 +59,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       carousel._activeIndex = Array.prototype.indexOf.call(items, item);
 
       /* move active item into view */
-      if (carousel.classList.contains('b-carousel--unclipped')) {
+      if (carouselUnclipped) {
         const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
         itemsOffset = carousel._activeIndex * itemSpan;
         /* last items need special right-alignment */
@@ -105,8 +108,8 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       }
     });
 
-    /* add swipe gesture support */
-    if (carousel.classList.contains('b-carousel--unclipped')) {
+    if (carouselUnclipped) {
+      /* add swipe gesture support */
       viewport.ontouchstart = (e) => {
         const startXY = [e.touches[0].pageX, e.touches[0].pageY];
         viewport.ontouchmove = (e2) => {
@@ -136,6 +139,20 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
           }
         };
       };
+    } else {
+      /* onScroll
+       * set active item */
+      viewport.addEventListener('scrollend', () => {
+        const viewBoxLeft = viewport.getBoundingClientRect().left;
+        let i = 0;
+        while (i < items.length) {
+          if (items[i].getBoundingClientRect().left >= viewBoxLeft) {
+            carousel._setActiveItem(items[i]);
+            break;
+          }
+          i += 1;
+        }
+      });
     }
 
     /* onResize
