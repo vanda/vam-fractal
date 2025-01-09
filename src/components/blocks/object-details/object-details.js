@@ -6,10 +6,10 @@ const initRevealers = () => {
     'b-object-details__cell-control b-object-details__cell-revealer',
   ];
   const html = [
-    `<button class="b-object-details__cell-concealer-button" aria-label="Read more">
+    `<button class="b-object-details__cell-concealer-button" data-tracking-collections="read more" aria-label="Read more">
     <span class="b-object-details__cell-concealer-text">Read more</span>
     </button>`,
-    `<button class="b-object-details__cell-concealer-button b-object-details__cell-concealer-button--minus" aria-label="Read less">
+    `<button class="b-object-details__cell-concealer-button b-object-details__cell-concealer-button--minus" data-tracking-collections="read less" aria-label="Read less">
     <span class="b-object-details__cell-concealer-text">Read less</span>
     </button>`,
   ];
@@ -55,10 +55,10 @@ const initRevealers = () => {
 
       if (textElConcealed) {
         textEl.classList.remove(hiddenClass);
-        controlEl.setAttribute('data-tracking-collections', 'read less');
+        controlEl.querySelector(".b-object-details__cell-concealer-button").setAttribute('data-tracking-collections', 'read less');
       } else {
         textEl.classList.add(hiddenClass);
-        controlEl.setAttribute('data-tracking-collections', 'read more');
+        controlEl.querySelector(".b-object-details__cell-concealer-button").setAttribute('data-tracking-collections', 'read more');
       }
     };
 
