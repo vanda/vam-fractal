@@ -19,7 +19,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
     /* ensure each item is tabbable for keyboard navigation */
     Array.from(items, (item) => {
-      if (!item.querySelector(':has(button, a)')) {
+      if (!item.querySelector('a, button')) {
         item.setAttribute('tabindex', 0);
       }
       return true;
@@ -86,8 +86,8 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
     /* on Tabbing into an item set item active, if not already.
      * requires item to be a tabbable element.
-     * can't use focusin listener here, as it would activate the item
-     * before the click listener below can do its check */
+     * can't use focusin listener here, as it would also fire at the start of a click event
+     * and activate the item before the click listener below can do its check */
     viewport.addEventListener('keyup', (e) => {
       if (e.key === 'Tab' && e.target.closest('.b-carousel__item:not(.js-carousel__item--active)')) {
         carousel._setActiveItem(e.target.closest('.b-carousel__item'));
@@ -166,7 +166,11 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
      * set focus on the currently active item to improve tab navigation */
     viewport.addEventListener('focusin', (e) => {
       if (!e.relatedTarget || !e.relatedTarget.closest('.b-carousel__viewport')) {
-        items[carousel._activeIndex].focus();
+        if (items[carousel._activeIndex].tabIndex > -1) {
+          items[carousel._activeIndex].focus();
+        } else {
+          items[carousel._activeIndex].querySelector('a, button').focus();
+        }
       }
     });
 
