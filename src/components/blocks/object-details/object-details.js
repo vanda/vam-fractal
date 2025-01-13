@@ -28,7 +28,6 @@ const initRevealers = () => {
           const revealEl = document.createElement('DIV');
           revealEl.className = classes[0];
           revealEl.innerHTML = html[0];
-          revealEl.setAttribute('data-tracking-collections', 'read more');
 
           content.classList.add('b-object-details__cell-free-content--hidden');
 
