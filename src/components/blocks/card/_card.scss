@@ -33,13 +33,11 @@
   &__info-container {
     max-width: 340px;
     padding: 8px 10px;
-    position: absolute;
-    top: 160px;
+    position: relative;
     z-index: 1;
 
     @include mixins.breakpoints-bpMinXSmall {
       max-width: 420px;
-      top: 190px;
     }
 
     @include mixins.breakpoints-bpMinSmall {
@@ -62,7 +60,7 @@
     @include base.typography-lineheight(1);
 
     display: -webkit-box;
-    margin-bottom: 0;
+    margin-bottom: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
@@ -80,32 +78,6 @@
 
     @include mixins.breakpoints-bpMinXSmall {
       top: 158px;
-    }
-  }
-
-  &--picture-card {
-    border-bottom: none;
-    color: base.sitecolors-siteColor("vam-white");
-
-    &::after {
-      border-radius: 2px;
-      background:
-        linear-gradient(
-          180deg, rgba(0, 0, 0, 0%) 0%,
-          rgba(0, 0, 0, 78%) 57%,
-          rgba(0, 0, 0, 90%) 71%,
-          #000 100%
-        );
-      content: "";
-      inset: 0;
-      opacity: 0.4;
-      position: absolute;
-    }
-
-    .b-card__image {
-      border-radius: 2px;
-      height: 100%;
-      position: absolute;
     }
   }
 
@@ -149,7 +121,6 @@
       .b-card__image {
         border-radius: 2px 0 0 2px;
         height: 100%;
-        max-height: 480px;
         position: static;
       }
     }
@@ -173,8 +144,8 @@
         .b-card__info-container {
           border-bottom: none;
           max-width: 532px;
-          padding: 8px 10px;
-          position: absolute;
+          padding: 198px 10px 8px;
+          position: relative;
         }
 
         .u-icon-label-tag {
@@ -183,6 +154,48 @@
         }
       }
     }
+  }
+
+  &--picture-card {
+    border-bottom: none;
+    color: base.sitecolors-siteColor("vam-white");
+
+    &::after {
+      border-radius: 2px;
+      background:
+        linear-gradient(
+          180deg, rgba(0, 0, 0, 0%) 0%,
+          rgba(0, 0, 0, 78%) 57%,
+          rgba(0, 0, 0, 90%) 71%,
+          #000 100%
+        );
+      content: "";
+      inset: 0;
+      opacity: 0.65;
+      position: absolute;
+    }
+
+    .b-card__image {
+      border-radius: 2px;
+      height: 100%;
+      position: absolute;
+    }
+
+    .b-card__info-container {
+      padding-top: 160px;
+
+      @include mixins.breakpoints-bpMinXSmall {
+        padding-top: 198px;
+      }
+    }
+  }
+
+  &:visited &__info-container {
+    color: base.sitecolors-siteColor("vam-grey-3");
+  }
+
+  &--picture-card:visited .b-card__info-container {
+    color: base.sitecolors-siteColor("vam-white");
   }
 
   &:hover &__image,
