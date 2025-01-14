@@ -65,6 +65,7 @@
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
 
     @include mixins.breakpoints-bpMinXSmall {
       @include base.typography-typeSetting(4);
