@@ -90,8 +90,8 @@
     & .b-section-header__title {
       align-self: center;
       background: base.sitecolors-siteColor("vam-white");
-      position: absolute;
       bottom: -26px;
+      position: absolute;
 
       &::before {
         display: none;
