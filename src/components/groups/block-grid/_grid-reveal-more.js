@@ -70,7 +70,8 @@ if (gridRevealMore.length) {
         // track 'show more' button interaction
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-          event: `Show more button interaction. Type: ${tracking}`,
+          event: 'Show more',
+          type: tracking,
         });
       }, false);
     }
