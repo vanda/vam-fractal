@@ -42,10 +42,10 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
        * i.e. not enough items to over-fill it */
       if (items.length > itemsPerView) {
         carouselEnabled = true;
-        ctrls.classList.add('b-carousel__ctrls--active');
+        if (ctrls) ctrls.classList.add('b-carousel__ctrls--active');
       } else {
         carouselEnabled = false;
-        ctrls.classList.remove('b-carousel__ctrls--active');
+        if (ctrls) ctrls.classList.remove('b-carousel__ctrls--active');
       }
     };
     setTemplateParams();
