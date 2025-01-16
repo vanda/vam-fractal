@@ -6,10 +6,10 @@ const initRevealers = () => {
     'b-object-details__cell-control b-object-details__cell-revealer',
   ];
   const html = [
-    `<button class="b-object-details__cell-concealer-button" data-tracking-collections="read more" aria-label="Read more">
+    `<button type="button" class="b-object-details__cell-concealer-button" data-tracking-collections="read more" aria-label="Read more" >
     <span class="b-object-details__cell-concealer-text">Read more</span>
     </button>`,
-    `<button class="b-object-details__cell-concealer-button b-object-details__cell-concealer-button--minus" data-tracking-collections="read less" aria-label="Read less">
+    `<button type="button" class="b-object-details__cell-concealer-button b-object-details__cell-concealer-button--minus" data-tracking-collections="read less" aria-label="Read less">
     <span class="b-object-details__cell-concealer-text">Read less</span>
     </button>`,
   ];
