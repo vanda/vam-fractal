@@ -42,7 +42,7 @@
     margin-bottom: 0;
     order: 2;
     overflow: hidden;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(7, "bold");
