@@ -4,13 +4,6 @@
 .b-search-result-auto-suggest {
   background-color: base.sitecolors-siteColor("vam-black");
   border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-5");
-  display: block;
-  height: 124px;
-  width: 100%;
-
-  @include mixins.breakpoints-bpMaxLarge {
-    height: 92px;
-  }
 
   &:hover,
   &:focus-visible {
@@ -18,29 +11,17 @@
   }
 
   &-content {
-    display: block;
+    display: flex;
   }
 
   &-content-type {
-    @include base.typography-typeSetting(0, "regular");
+    @include base.typography-typeSetting(1, "regular");
 
     color: base.sitecolors-siteColor("primary-green");
-    height: 13px;
-    margin-bottom: 4px;
-    text-align: left;
+    margin-bottom: 1px;
 
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(2, "regular");
-
-      font-size: 14px;
-      line-height: 0.93;
-    }
-
-    @include mixins.breakpoints-bpMaxLarge {
-      @include base.typography-typeSetting(1, "regular");
-
-      font-size: 13px;
-      line-height: 1;
+    @include mixins.breakpoints-bpMinLarge {
+      @include base.typography-typeSetting(2);
     }
   }
 
@@ -51,42 +32,33 @@
   &-title {
     @include base.typography-typeSetting(3, "light");
 
+    -webkit-box-orient: vertical;
     color: base.sitecolors-siteColor("vam-white");
-    height: 25px;
-    line-height: 1.33;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
     overflow: hidden;
-    text-align: left;
     text-overflow: ellipsis;
-    white-space: nowrap;
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(4, "light");
-
-      height: 20px;
-      line-height: 1.2;
+      @include base.typography-lineheight(3);
     }
 
     @include mixins.breakpoints-bpMinLarge {
       @include base.typography-typeSetting(5, "light");
-
-      height: 40px;
     }
   }
 
   &-text {
-    bottom: 10px;
-    display: inline;
-    margin-left: -2px;
-    position: relative;
-
-    @include mixins.breakpoints-bpMaxLarge {
-      bottom: 14px;
-      margin-left: 4px;
-    }
+    padding: 4px 5px 5px 0;
 
     @include mixins.breakpoints-bpMinSmall {
-      bottom: 8px;
-      margin-left: 2px;
+      padding: 10px 10px 10px 0;
+    }
+
+    @include mixins.breakpoints-bpMinLarge {
+      padding: 11px 10px 10px 0;
     }
 
     & em {
@@ -96,16 +68,15 @@
   }
 
   &-image {
-    float: left;
-    height: 100px;
-    margin: 12px;
+    height: 72px;
+    margin: 10px;
     object-fit: cover;
-    width: 100px;
+    width: 72px;
 
-    @include mixins.breakpoints-bpMaxLarge {
-      height: 72px;
-      margin: 10px;
-      width: 72px;
+    @include mixins.breakpoints-bpMinLarge {
+      height: 100px;
+      margin: 12px;
+      width: 100px;
     }
   }
 }
