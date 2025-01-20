@@ -32,7 +32,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     const setTemplateParams = () => {
       /* set template alignment and max-widths in CSS
       * based on parent element width in the document */
-      carousel.style.setProperty('--template-width', `${carousel.offsetWidth}px`);
+      carousel.style.setProperty('--template-width', `${carousel.parentElement.offsetWidth}px`);
 
       /* derive number of items shown per carousel view
       * from the CSS variable set in the styles per breakpoint */
