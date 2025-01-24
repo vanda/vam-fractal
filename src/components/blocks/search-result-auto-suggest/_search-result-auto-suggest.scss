@@ -12,6 +12,7 @@
 
   &-content {
     display: inline-flex;
+    width: 100%;
   }
 
   &-content-type {
@@ -51,10 +52,6 @@
   }
 
   &-text {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
     padding: 10px 10px 10px 0;
 
     @include mixins.breakpoints-bpMinLarge {
