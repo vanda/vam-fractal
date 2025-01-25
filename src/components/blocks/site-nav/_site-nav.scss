@@ -625,6 +625,10 @@ $nav-breakpoints: (
 
     &__results {
       margin-left: 0;
+
+      li {
+        display: block;
+      }
     }
   }
 }
