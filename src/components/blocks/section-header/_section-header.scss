@@ -55,7 +55,7 @@
 
       &::before {
         color: base.sitecolors-siteColor("vam-grey-4");
-        content: "\\\\";
+        content: "\\\\" / "";
         display: block;
         font-size: 16px;
         letter-spacing: 7px;
