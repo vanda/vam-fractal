@@ -9,7 +9,7 @@ $nav-breakpoints: (
 );
 
 @mixin bpMinNav($breakpoint) {
-  @media (width >= map-get($nav-breakpoints, $breakpoint)) {
+  @media (width >= map.get($nav-breakpoints, $breakpoint)) {
     @content;
   }
 }
