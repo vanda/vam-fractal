@@ -1,0 +1,19 @@
+<a href="#" class="b-card{% for m in modifier %} b-card--{{ m }}{% endfor %}">
+  <div class="b-card__image-container">
+    {%- render "@icon-label-tag--read" -%}
+    <img
+      alt="{{ promoTitle }}"
+      class="b-card__image"
+      srcset="{{ image["320"] }} 320w,
+              {{ image["640"] }} 640w,
+              {{ image[960] }} 960w,
+              {{ image[1280] }} 1280w"
+      sizes="100vw"
+      src="{{ image["640"] }}"
+      loading="lazy">
+  </div>
+  <div class="b-card__info-container">
+    <h2 class="b-card__heading">{{ heading }}</h2>
+    <p class="b-card__synopsis">{{ synopsis }}</p>
+  </div>
+</a>
