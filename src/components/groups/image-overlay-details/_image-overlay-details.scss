@@ -78,29 +78,9 @@
 
   &__zoom-in,
   &__zoom-out {
-    background: #fff;
-    border-radius: 50%;
-    color: base.sitecolors-siteColor("vam-black");
-    cursor: default;
+    --btn-size: 30px;
+
     display: flex !important; /* stylelint-disable-line declaration-no-important */
-    height: 32px;
-    opacity: 0.4;
-    width: 32px;
-
-    > svg {
-      height: 14px;
-      margin: auto;
-      width: 14px;
-    }
-
-    &--enabled {
-      cursor: pointer;
-      opacity: 1;
-
-      &:hover {
-        background: base.sitecolors-siteColor("vam-grey-5");
-      }
-    }
   }
 
   &__zoom-out {
