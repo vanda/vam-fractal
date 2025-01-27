@@ -41,7 +41,7 @@
         {{ eventTitle }}
       </h2>
 
-      <div class="b-icon-list">
+      <div class="b-icon-list{% if modifiers and 'dark' in modifiers %} b-icon-list--dark{% endif %}">
         <ul class="b-icon-list__list">
           <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--calendar" title="Calendar timing">
             <div class='b-icon-list__content'>
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="b-icon-list">
+    <div class="b-icon-list{% if modifiers and 'dark' in modifiers %} b-icon-list--dark{% endif %}">
       <ul class="b-icon-list__list b-event-teaser__footer">
         <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--ticket" title="Admission fee">
           <div class='b-icon-list__content'>
