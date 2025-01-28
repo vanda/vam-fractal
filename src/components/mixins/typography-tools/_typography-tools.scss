@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:meta";
 @use "sass:string";
 @use "sass:list";
 
@@ -14,7 +15,7 @@ $baseline-px: 15px;
   #{$property}: $px-values;
 
   // If there is only one (numeric) value, return the property/value line for it.
-  @if type-of($px-values) == "number" {
+  @if meta.type-of($px-values) == "number" {
     #{$property}: math.div($px-values, $baseline-rem);
   } @else {
     // Create an empty list that we can dump values into

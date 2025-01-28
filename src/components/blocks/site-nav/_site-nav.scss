@@ -9,7 +9,7 @@ $nav-breakpoints: (
 );
 
 @mixin bpMinNav($breakpoint) {
-  @media (min-width: map-get($nav-breakpoints, $breakpoint)) {
+  @media (width >= map.get($nav-breakpoints, $breakpoint)) {
     @content;
   }
 }
@@ -152,7 +152,7 @@ $nav-breakpoints: (
       0 1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%),
       0 -1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%);
 
-    @media (max-width: "286px") {
+    @media (width <= "286px") {
       display: none;
     }
 

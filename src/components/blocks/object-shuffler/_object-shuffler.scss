@@ -97,18 +97,17 @@
   }
 
   &__slide {
-    align-content: space-between;
     display: flex;
     flex-flow: row wrap;
     height: 100%;
-    justify-content: space-between;
     left: 0;
     margin: 0 3% 0 7%;
+    place-content: space-between;
     position: absolute;
     top: 0;
     width: 90%;
 
-    @media (min-width: 1000px) {
+    @media (width >= 1000px) {
       margin: 0 calc((100% - 990px) / 2);
       width: 990px;
     }
