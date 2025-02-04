@@ -9,7 +9,7 @@ $nav-breakpoints: (
 );
 
 @mixin bpMinNav($breakpoint) {
-  @media (min-width: map-get($nav-breakpoints, $breakpoint)) {
+  @media (width >= map.get($nav-breakpoints, $breakpoint)) {
     @content;
   }
 }
@@ -152,7 +152,7 @@ $nav-breakpoints: (
       0 1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%),
       0 -1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%);
 
-    @media (max-width: "286px") {
+    @media (width <= "286px") {
       display: none;
     }
 
@@ -172,15 +172,14 @@ $nav-breakpoints: (
       0 0 10px 5px rgba(0, 0, 0, 5%),
       0 0 50px 1px rgba(0, 0, 0, 20%),
       inset 0 0 50px 4px rgba(0, 0, 0, 24%);
-    display: inline-block;
+    display: inline-flex;
     height: 40px;
     margin-left: 10px;
     width: 40px;
 
     > svg {
-      height: 16px;
-      margin: 11px;
-      width: 17px;
+      flex: 1;
+      margin: 9px;
     }
   }
 
@@ -219,24 +218,17 @@ $nav-breakpoints: (
   &__mobile-bag,
   &__core__bag {
     > svg {
-      height: 26px;
-      margin: 4px 6px;
-      width: 24px;
+      margin: 1px 3px 5px;
     }
   }
 
   &__core__search-btn {
     > #{&}-open {
-      height: 22px;
       margin: 7px;
-      width: 22px;
     }
 
     > #{&}-close {
       display: none;
-      height: 16px;
-      margin: 10px;
-      width: 16px;
     }
 
     &--active &-open {
@@ -257,11 +249,9 @@ $nav-breakpoints: (
   &__bag-total {
     color: base.sitecolors-siteColor("vam-white");
     font-size: 12px;
-    font-weight: 700;
-    inset: 11px 0 0;
-    margin: auto;
+    left: 15px;
     position: absolute;
-    text-align: center;
+    top: 9px;
   }
 
   &__mobile-toggle {
@@ -284,15 +274,6 @@ $nav-breakpoints: (
 
     @include bpMinNav("small") {
       display: none;
-    }
-
-    > svg {
-      height: 18px;
-      width: 18px;
-    }
-
-    > #{&}__icon--hamburger {
-      margin: 9px auto;
     }
 
     &__icon--close {
@@ -625,6 +606,10 @@ $nav-breakpoints: (
 
     &__results {
       margin-left: 0;
+
+      li {
+        display: block;
+      }
     }
   }
 }

@@ -145,9 +145,9 @@
     @include base.typography-typeSetting(3);
 
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
     display: block;
     display: -webkit-box;
+    -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
 
@@ -238,8 +238,8 @@
   &__cta {
     @include base.typography-typeSetting(1);
 
-    border-radius: 2px;
     border: 1px solid base.sitecolors-siteColor("vam-grey-2");
+    border-radius: 2px;
     margin: 0 0 0 auto;
     padding: 4px 8px;
   }

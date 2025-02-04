@@ -5,8 +5,8 @@
   @include mixins.unstyledelements-unstyledList;
 
   display: flex;
-  height: 200px;
   gap: 5px;
+  height: 200px;
   margin: 0 auto;
   overflow: auto;
   scroll-behavior: smooth;

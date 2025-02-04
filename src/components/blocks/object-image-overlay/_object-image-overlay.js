@@ -196,7 +196,7 @@ const oicInit = () => {
       const focusEl = rewind
         ? item.querySelector('.js-object-image-overlay-btn--prev:enabled') || item.querySelector('.js-object-image-overlay-btn--next:enabled') || oic.focusable[0]
         : item.querySelector('.js-object-image-overlay-btn--next:enabled') || item.querySelector('.js-object-image-overlay-btn--prev:enabled') || oic.focusable[0];
-      focusEl.focus();
+      focusEl.focus({ preventScroll: true });
     };
 
     oic.ontouchstart = (e) => {

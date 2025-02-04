@@ -237,11 +237,10 @@
     width: 155px;
 
     @include mixins.breakpoints-bpMinSmall {
-      align-self: end;
       grid-area: logo;
       grid-row: 1 / 5;
-      justify-self: end;
       margin-bottom: 0;
+      place-self: end;
     }
 
     @include mixins.breakpoints-bpMinMedium {

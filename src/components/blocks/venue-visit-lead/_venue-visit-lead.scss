@@ -21,8 +21,8 @@
     width: 100%;
 
     @include mixins.breakpoints-bpMinSmall {
-      margin-bottom: 0;
       flex: 0 0 49%;
+      margin-bottom: 0;
     }
 
     @include mixins.breakpoints-bpMinMedium {

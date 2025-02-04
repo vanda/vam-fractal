@@ -41,11 +41,11 @@
   &__link {
     display: block;
     height: 100%;
-    width: 100%;
 
     /* default focus style is obscured, so employ pseudo element
      * to apply focus style onto */
     position: relative;
+    width: 100%;
 
     &::before {
       content: '';

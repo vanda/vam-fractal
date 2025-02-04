@@ -1,16 +1,8 @@
 <div class="b-image-overlay-detail">
   <div class="b-image-overlay-detail__caption-container">
     <div class="b-image-overlay-detail__navigation-container">
-      <button class="b-image-carousel__prev b-image-carousel__prev--mobile" disabled="true" title="Previous" aria-label="Previous image">
-        <svg aria-hidden="true" role="presentation">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-left"></use>
-        </svg>
-      </button>
-      <button class="b-image-carousel__next b-image-carousel__next--mobile" disabled="true" title="Next" aria-label="Next image">
-        <svg aria-hidden="true" role="presentation">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-right"></use>
-        </svg>
-      </button>
+      <button class="b-image-carousel__prev b-image-carousel__prev--mobile u-btn-icon u-btn-icon--point-left" disabled="true" title="Previous image">Previous image</button>
+      <button class="b-image-carousel__next b-image-carousel__next--mobile u-btn-icon u-btn-icon--point-right" disabled="true" title="Next image">Next image</button>
     </div>
     <div class="b-image-overlay-detail__image-counter">
       Image <span class="b-image-overlay-detail__current-image"></span> of <span class="b-image-overlay-detail__total-number-of-images"></span>
@@ -29,16 +21,8 @@
     {% endif %}
   </div>
   <div class="b-image-overlay-detail__zoom-btns">
-    <button class="b-image-overlay-detail__zoom-in b-image-overlay-detail__zoom-in--enabled" id="js-image-overlay__zoomin" title="Zoom in">
-      <svg role="presentation" aria-hidden="true">
-        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#plus"></use>
-      </svg>
-    </button>
-    <button class="b-image-overlay-detail__zoom-out b-image-overlay-detail__zoom-out--enabled" id="js-image-overlay__zoomout" title="Zoom out">
-      <svg role="presentation" aria-hidden="true">
-        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#minus"></use>
-      </svg>
-    </button>
+    <button class="b-image-overlay-detail__zoom-in b-image-overlay-detail__zoom-in--enabled u-btn-icon u-btn-icon--light u-btn-icon--plus" id="js-image-overlay__zoomin" title="Zoom in">Zoom in</button>
+    <button class="b-image-overlay-detail__zoom-out b-image-overlay-detail__zoom-out--enabled u-btn-icon u-btn-icon--light u-btn-icon--minus" id="js-image-overlay__zoomout" title="Zoom out">Zoom out</button>
   </div>
   <div class="b-image-overlay-detail__zoomnavigator" id="js-image-overlay__zoomnavigator"></div>
 </div>

@@ -17,7 +17,7 @@ The breakpoints can be accessed by the SASS function `bp()` in `src/components/m
 @use "[path]/mixins";
 
 .foo {
-  @media (min-width: mixins.breakpoints-bp("x-small")) {
+  @media (width >= mixins.breakpoints-bp("x-small")) {
     background-color: red;
   }
 }

@@ -6,11 +6,11 @@
 
   &--etc-gateway {
     border-radius: 2px;
+    margin: auto;
+    max-width: 720px;
     padding: 10px 10px 8px;
     position: relative;
-    margin:auto;
     width:100%;
-    max-width: 720px;
     
     &[suggesting] {
       background: base.sitecolors-siteColor("vam-grey-2");
@@ -109,9 +109,9 @@
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(5);
-      
-      margin-top:4px;
+
       margin-bottom: 6px;
+      margin-top:4px;
     }
   }
 
@@ -193,8 +193,8 @@
         background-color: base.sitecolors-siteColor("alert-red");
         color: base.sitecolors-siteColor("vam-black");
         display: block;
-        position: absolute;
         padding: 4px 12px;
+        position: absolute;
       }
     }
   }
@@ -580,9 +580,9 @@
     height: auto;
     margin: 0 0 8px;
     opacity: 1;
+    position: relative;
     visibility: visible;
     width: auto;
-    position: relative;
 
     &::after {
       content: "⌄";
