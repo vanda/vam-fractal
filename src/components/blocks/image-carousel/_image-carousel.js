@@ -99,14 +99,14 @@ if (imageCarousel && images.length) {
   document.addEventListener('click', (e) => {
     if (e.target.closest('.b-image-overlay-detail__zoom-in')) {
       if (osd.viewport.getZoom() === osd.viewport.getMaxZoom()) {
-        zoomIn.classList.remove('b-image-overlay-detail__zoom-in--enabled');
+        zoomIn.setAttribute('disabled', true);
       }
-      zoomOut.classList.add('b-image-overlay-detail__zoom-out--enabled');
+      zoomOut.removeAttribute('disabled');
     } else if (e.target.closest('.b-image-overlay-detail__zoom-out')) {
       if (osd.viewport.getZoom() === osd.viewport.getMinZoom()) {
-        zoomOut.classList.remove('b-image-overlay-detail__zoom-out--enabled');
+        zoomOut.setAttribute('disabled', true);
       }
-      zoomIn.classList.add('b-image-overlay-detail__zoom-in--enabled');
+      zoomIn.removeAttribute('disabled');
     }
   }, false);
 

@@ -16,15 +16,15 @@
   }
 
   &__img-pane {
+    display: flex;
     margin: 0 0 8px;
     overflow: hidden;
-    display: flex;
   }
     
   &__img {
     height: auto;
-    max-height: 586px;
     margin: auto;
+    max-height: 586px;
     object-fit: cover;
     transform: scale(1);
     transition: 0.25s ease-out;
@@ -105,9 +105,9 @@
       @include base.typography-typeSetting(3, "bold");
 
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
       display: block;
       display: -webkit-box;
+      -webkit-line-clamp: 3;
       line-clamp: 3;
       overflow: hidden;
     }

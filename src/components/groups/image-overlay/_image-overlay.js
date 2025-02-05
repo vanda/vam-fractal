@@ -42,7 +42,7 @@ const openObjectOverlay = () => {
   } else {
     figCaption.style.marginBottom = '0px';
   }
-  document.querySelector('.b-image-carousel__image-preview-container').focus();
+  document.querySelector('.b-image-overlay__figure .openseadragon-canvas').focus();
 };
 
 const closeObjectOverlay = () => {

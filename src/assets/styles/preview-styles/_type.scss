@@ -1,4 +1,5 @@
 @use "../../../components/base";
+@use "sass:map";
 
 .fr-type-block {
   margin-bottom: 1em;
@@ -8,7 +9,7 @@
   }
 }
 
-@each $weight in map-keys(base.$typography-font-weight) {
+@each $weight in map.keys(base.$typography-font-weight) {
   .fr-font-weight--#{$weight} {
     font-weight: base.typography-fontWeight(#{$weight});
   }
