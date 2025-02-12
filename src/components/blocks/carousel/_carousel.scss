@@ -9,7 +9,7 @@
   --items-per-view: 1;
   --items-gap: 10px;
   --items-offset: 0;
-  --transition-speed: 0.5s;
+  --transition-time: 500ms;
 
   margin-bottom: 10px;
   width: 100%;
@@ -62,7 +62,7 @@
     display: flex;
     gap: var(--items-gap);
     transform: translateX(var(--items-offset));
-    transition: transform var(--transition-speed) ease;
+    transition: transform var(--transition-time) ease;
 
     // pseudo el used to pad the list so that last item right-aligns w/ ctrls
     &::after {
