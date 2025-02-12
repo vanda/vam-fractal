@@ -29,7 +29,6 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
      * called on Window resize */
     let carouselEnabled = true;
     let itemsPerView = 1;
-    let viewportRect;
     let transitionTime;
     const setTemplateParams = () => {
       /* set template alignment and widths in CSS
@@ -42,9 +41,6 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         - parseInt(window.getComputedStyle(carousel.parentElement.parentElement).paddingRight, 10);
       carousel.style.setProperty('--carousel-width', `${containerWidth}px`);
       carousel.style.setProperty('--carousel-max-width', `${outerContainerWidth}px`);
-
-      /* store the carousel viewport's bounding client rect */
-      viewportRect = viewport.getBoundingClientRect();
 
       /* derive number of items shown per carousel view
       * from the CSS variable set in the styles per breakpoint */
@@ -119,8 +115,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     viewport.addEventListener('click', (e) => {
       if (carouselEnabled) {
         const item = e.target.closest('.b-carousel__item');
-        const itemBox = item.getBoundingClientRect();
-        if (itemBox.left < viewportRect.left || itemBox.right > viewportRect.right) {
+        const itemRect = item.getBoundingClientRect();
+        const viewportRect = viewport.getBoundingClientRect();
+        if (itemRect.left < viewportRect.left || itemRect.right > viewportRect.right) {
           e.preventDefault();
           carousel._setActiveItem(item);
         }
@@ -162,6 +159,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       /* onScrollend set active item.
        * scroll event will do if scrollend not supported (Safari) */
       viewport.addEventListener(('onscrollend' in window ? 'scrollend' : 'scroll'), () => {
+        const viewportRect = viewport.getBoundingClientRect();
         for (let i = 0; i < items.length; i += 1) {
           if (Math.round(items[i].getBoundingClientRect().left) >= Math.round(viewportRect.left)) {
             carousel._setActiveItem(items[i], false);
@@ -212,12 +210,13 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       /* onItemChange: activate apropriate prev/next button(s)
        * if there are now items before/after those currently in view */
       carousel.addEventListener('itemChange', () => {
+        const viewportRect = viewport.getBoundingClientRect();
         prev.setAttribute('disabled', 'true');
         if (Math.round(items[0].getBoundingClientRect().left) < Math.round(viewportRect.left)) {
           prev.removeAttribute('disabled');
         }
         next.setAttribute('disabled', 'true');
-        for (let i = carousel._activeIndex; i < items.length; i += 1) {
+        for (let i = carousel._activeIndex + 1; i < items.length; i += 1) {
           if (Math.round(items[i].getBoundingClientRect().right) > Math.round(viewportRect.right)) {
             next.removeAttribute('disabled');
             break;
