@@ -30,6 +30,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     let carouselEnabled = true;
     let itemsPerView = 1;
     let viewportRect;
+    let transitionTime;
     const setTemplateParams = () => {
       /* set template alignment and widths in CSS
       * based on parent element width in the document */
@@ -48,6 +49,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       /* derive number of items shown per carousel view
       * from the CSS variable set in the styles per breakpoint */
       itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
+
+      /* derive scroll transition time declared in CSS */
+      transitionTime = parseInt(window.getComputedStyle(carousel).getPropertyValue('--transition-time'), 10);
 
       /* disable carousel if not needed (at current breakpoint!)
        * i.e. not enough items to over-fill it */
@@ -69,6 +73,13 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
       carousel._activeIndex = Array.prototype.indexOf.call(items, item);
 
+      /* fn to dispatch an event announcing an item change
+       * to be heard by the detachable buttons
+       * and anything else waiting to react */
+      const announceChange = () => {
+        carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: Array.prototype.indexOf.call(items, item) } }));
+      };
+
       /* move active item into view */
       if (carouselUnclipped) {
         const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
@@ -79,13 +90,11 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
           itemsOffset += (items.length - carousel._activeIndex - 1) * itemSpan;
         }
         carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
+        setTimeout(announceChange, transitionTime);
       } else {
         if (scrollToItem) scrollIntoViewHorizontally(item, viewport); // eslint-disable-line no-lonely-if, max-len
+        announceChange();
       }
-
-      /* dispatch an event to be heard by the detachable buttons
-       * and anything else waiting to react */
-      carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: Array.prototype.indexOf.call(items, item) } }));
 
       /* track carousel interaction */
       window.dataLayer = window.dataLayer || [];
