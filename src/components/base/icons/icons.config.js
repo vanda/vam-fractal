@@ -109,6 +109,8 @@ module.exports = {
       'lockers-key',
       'loud',
       'lower-subdued-light',
+      'lu-about',
+      'lu-home',
       'lunchroom',
       'mail',
       'make',
