@@ -1,11 +1,7 @@
-<nav class="b-toggle-nav{% if modifier %} b-toggle-nav--{{ modifier }}{% endif %}">
-  <ol class="b-toggle-nav__list js-toggle-nav" data-toggle-type-default="type-3">
-    {% for toggle in toggles %}
-      <li class="b-toggle-nav__item">
-        <button class="u-btn u-btn--pill {% if modifier %} u-btn--pill-{{ modifier }}{% endif %} b-toggle-nav__button js-toggle-nav-btn" data-toggle-type="type-{{ loop.index }}" data-toggees-selector=".my-toggleables-common-class" aria-label="Only show: {{ toggle }}">
-          {{ toggle }}
-        </button>
-      </li>
-    {% endfor %}
-  </ol>
+<nav class="b-toggle-nav{% if modifier %} b-toggle-nav--{{ modifier }}{% endif %} js-toggle-nav" data-toggle-type-default="type-3">
+  {% for toggle in toggles %}
+  <button class="u-btn u-btn--pill {% if modifier %} u-btn--pill-{{ modifier }}{% endif %} b-toggle-nav__button js-toggle-nav-btn" data-toggle-type="type-{{ loop.index }}" data-toggees-selector=".my-toggleables-common-class" aria-label="Only show: {{ toggle }}">
+    {{ toggle }}
+  </button>
+  {% endfor %}
 </nav>

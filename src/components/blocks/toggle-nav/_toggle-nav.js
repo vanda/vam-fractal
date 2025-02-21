@@ -44,7 +44,7 @@ if (toggleNav) {
         tog.classList.remove('u-btn--pill-light');
         tog.classList.add('u-btn--pill-darkest');
       }
-    }, false);
+    });
 
     if (tog.dataset.toggleType === qsToggleType) {
       tog.preventHistoryPush = true;

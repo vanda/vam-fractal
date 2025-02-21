@@ -2,50 +2,26 @@
 @use "../../base";
 
 .b-toggle-nav {
-  margin: 0 0 32px 5px;
-  overflow: hidden;
-  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin: 30px auto 20px;
+  max-width: fit-content;
+  overflow: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: base.sitecolors-siteColor("vam-grey-3") transparent;
+  scrollbar-width: thin;
 
   @include mixins.breakpoints-bpMinSmall {
-    margin: 0 0 64px;
-  }
-
-  @include mixins.breakpoints-bpMinLarge {
-    padding: 0 40px;
-  }
-
-  &__list {
-    @include mixins.unstyledelements-unstyledList;
-
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 4px 0;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-
-    @include mixins.breakpoints-bpMinSmall {
-      justify-content: center;
-    }
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    margin: 24px auto 14px;
   }
 
   &__button {
-    margin: 6px 5px;
-    white-space: nowrap;
-  }
-
-  &__item {
-    display: inline-block;
     margin: 0;
     scroll-snap-align: center;
     scroll-snap-stop: normal;
-
-    &:last-child {
-      margin-right: 5px;
-    }
+    white-space: nowrap;
   }
 }
