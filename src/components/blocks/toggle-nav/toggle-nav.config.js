@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Toggle Nav',
-  default: 'on-light',
+  label: 'Toggle Nav',
   context: {
     modifier: ['light'],
     toggles: [
@@ -18,7 +18,7 @@ module.exports = {
       label: 'On dark',
       context: {
         previewClass: 'fr-bg--dark',
-        modifier: ['dark']
+        onDark: true
       }
     }
   ]

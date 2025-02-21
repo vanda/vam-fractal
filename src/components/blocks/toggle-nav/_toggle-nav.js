@@ -11,7 +11,7 @@ if (toggleNav) {
 
   Array.from(toggleNavBtns, (tog) => {
     const tnToggees = document.querySelectorAll(tog.dataset.toggeesSelector);
-    const isDarkVariation = toggleNav.parentElement.classList.contains('b-toggle-nav--dark');
+    const isDarkVariation = tog.classList.contains('u-btn--pill-dark');
 
     tog.addEventListener('click', (e) => {
       e.preventDefault();
