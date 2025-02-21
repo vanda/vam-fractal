@@ -1,7 +1,6 @@
 module.exports = {
   title: 'Icon Buttons',
   context: {
-    previewClass: 'fr-bg--dark',
     label: 'Button label',
     icons: [
       'close',
@@ -13,10 +12,11 @@ module.exports = {
   },
   variants: [
     {
-      name: 'light',
-      label: 'Light',
+      name: 'On Dark',
+      label: 'On Dark',
       context: {
-        modifiers: ['light']
+        previewClass: 'fr-bg--dark',
+        lightDarkTheme: 's-light-dark-theme--dark'
       }
     },
     {
