@@ -84,15 +84,14 @@ module.exports = {
     {
       name: 'pill',
       context: {
+        text: 'Pill',
         modifiers: ['pill'],
         variants: [
+          ['pill', 'pill-active'],
           ['pill', 'pill-close'],
-          ['pill', 'pill-light'],
-          ['pill', 'pill-light', 'pill-close'],
           ['pill', 'pill-dark'],
-          ['pill', 'pill-dark', 'pill-close'],
-          ['pill', 'pill-darkest'],
-          ['pill', 'pill-darkest', 'pill-close']
+          ['pill', 'pill-dark', 'pill-active'],
+          ['pill', 'pill-dark', 'pill-close']
         ]
       }
     }

@@ -125,23 +125,19 @@
     @include base.typography-fontSize(2);
     @include base.typography-lineheight(2);
 
-    background: base.sitecolors-siteColor("vam-white");
+    background: base.sitecolors-siteColor("vam-grey-6");
     border: none;
     border-radius: 30px;
     color: base.sitecolors-siteColor("vam-black");
     padding: 8px 12px;
 
     &:hover {
-      background: base.sitecolors-siteColor("vam-grey-5");
+      background: base.sitecolors-siteColor("vam-grey-4");
     }
 
-    &-light {
-      background: base.sitecolors-siteColor("vam-grey-6");
-      color: base.sitecolors-siteColor("vam-black");
-
-      &:hover {
-        background: base.sitecolors-siteColor("vam-grey-4");
-      }
+    &#{&}-active {
+      background: base.sitecolors-siteColor("vam-black");
+      color: base.sitecolors-siteColor("vam-white");
     }
 
     &-dark {
@@ -153,13 +149,9 @@
       }
     }
 
-    &-darkest {
-      background: base.sitecolors-siteColor("vam-black");
-      color: base.sitecolors-siteColor("vam-white");
-
-      &:hover {
-        background: base.sitecolors-siteColor("vam-grey-0");
-      }
+    &-dark#{&}-active {
+      background: base.sitecolors-siteColor("vam-white");
+      color: base.sitecolors-siteColor("vam-black");
     }
 
     &-close {
