@@ -1,8 +1,7 @@
 module.exports = {
-  title: 'Toggle Nav',
-  label: 'Toggle Nav',
+  title: 'Toggle Set',
+  label: 'Toggle Set',
   context: {
-    modifier: ['light'],
     toggles: [
       'Galleries',
       'Periods and styles',

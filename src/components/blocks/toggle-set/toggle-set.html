@@ -1,0 +1,21 @@
+<div class="b-toggle-set">
+  <nav class="b-toggle-set__nav">
+    {% for toggle in toggles %}
+    <button class="b-toggle-set__button u-btn u-btn--pill {% if onDark %}u-btn--pill-dark{% endif %}"
+      {% if loop.index == 3 %}data-toggle-set-default-type{% endif %}
+      role="tab"
+      aria-label="Only show: {{ toggle }}"
+      aria-controls="toggle-set-target-id-{{ loop.index }}" aria-expanded="false" aria-selected="false"
+      >
+      {{ toggle }}
+    </button>
+    {% endfor %}
+  </nav>
+
+  <!-- example toggleable elements -->
+  {% for toggle in toggles %}
+  <div class="b-toggle-set__target" id="toggle-set-target-id-{{ loop.index }}">
+    {{ toggle }}
+  </div>
+  {% endfor %}
+</div>
