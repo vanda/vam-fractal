@@ -1,3 +1,5 @@
+import carouselInit from '../carousel/_carousel';
+
 document.addEventListener('click', (e) => {
   const toggleNav = e.target.closest('.b-toggle-set__nav');
   if (toggleNav) {
@@ -30,6 +32,13 @@ document.addEventListener('click', (e) => {
     const toggleTargetIds = toggle.getAttribute('aria-controls').split(' ').map((id) => `#${id}`);
     Array.from(toggleSet.querySelectorAll(...toggleTargetIds), (toggleTarget) => {
       toggleTarget.classList.add('b-toggle-set__target--active');
+
+      /* activate any b-carousel components that might be revealed within this toggle target
+       * asycnhronously, once toggle target takes space in the doc */
+      Array.from(toggleTarget.querySelectorAll('.b-carousel'), (carousel) => {
+        setTimeout(() => { carouselInit(carousel); }, 0);
+        return true;
+      });
       return true;
     });
   }
