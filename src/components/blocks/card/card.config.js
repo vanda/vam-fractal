@@ -12,13 +12,6 @@ module.exports = {
   },
   variants: [
     {
-      name: 'picture-card',
-      label: 'Picture Card',
-      context: {
-        modifier: ['picture-card']
-      }
-    },
-    {
       name: 'featured',
       label: 'Default - Featured',
       context: {
@@ -26,10 +19,31 @@ module.exports = {
       }
     },
     {
+      name: 'featured XXL',
+      label: 'Default - Featured - XXL',
+      context: {
+        modifier: ['featured', 'featured-xxl']
+      }
+    },
+    {
+      name: 'picture-card',
+      label: 'Picture Card',
+      context: {
+        modifier: ['picture-card']
+      }
+    },
+    {
       name: 'featured-picture-card',
       label: 'Picture Card - Featured',
       context: {
         modifier: ['picture-card', 'featured']
+      }
+    },
+    {
+      name: 'featured-picture-card XXL',
+      label: 'Picture Card - Featured - XXL',
+      context: {
+        modifier: ['picture-card', 'featured', 'featured-xxl']
       }
     }
   ]
