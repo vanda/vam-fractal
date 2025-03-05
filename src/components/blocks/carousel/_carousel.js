@@ -1,10 +1,8 @@
-import { scrollIntoViewHorizontally } from '../../services/js_utility_functions/js_utility_functions';
-
 /* Carousel initialiser fn.
  * Separate control buttons can be passed in as optional param,
  * otherwise will check for them nested inside the component */
 const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctrls')) => {
-  const items = carousel.querySelectorAll('.b-carousel__item');
+  const items = Array.from(carousel.querySelectorAll('.b-carousel__item'));
 
   /* Carousel logic only required for > 1 item */
   if (items.length > 1) {
@@ -13,12 +11,13 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     const list = carousel.querySelector('.b-carousel__list');
     carousel._activeIndex = 0;
     let itemsOffset = 0;
+    let visibleItemIndexes = [];
 
     /* initialise with first item active */
     items[carousel._activeIndex].classList.add('js-carousel__item--active');
 
     /* ensure each item is tabbable for keyboard navigation */
-    Array.from(items, (item) => {
+    items.forEach((item) => {
       if (!item.querySelector('a, button')) {
         item.setAttribute('tabindex', 0);
       }
@@ -29,25 +28,25 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
      * called on Window resize */
     let carouselEnabled = true;
     let itemsPerView = 1;
-    let transitionTime;
+
     const setTemplateParams = () => {
-      /* set template alignment and widths in CSS
-      * based on parent element width in the document */
-      const containerWidth = carousel.parentElement.offsetWidth
-        - parseInt(window.getComputedStyle(carousel.parentElement).paddingLeft, 10)
-        - parseInt(window.getComputedStyle(carousel.parentElement).paddingRight, 10);
-      const outerContainerWidth = carousel.parentElement.parentElement.offsetWidth
-        - parseInt(window.getComputedStyle(carousel.parentElement.parentElement).paddingLeft, 10)
-        - parseInt(window.getComputedStyle(carousel.parentElement.parentElement).paddingRight, 10);
-      carousel.style.setProperty('--carousel-width', `${containerWidth}px`);
-      carousel.style.setProperty('--carousel-max-width', `${outerContainerWidth}px`);
+      /* set template alignment and widths in CSS */
+
+      /* carousel width takes available rendered width in the document */
+      carousel.style.setProperty('--carousel-width', `${carousel.offsetWidth}px`);
+
+      /* optionally, carousel outer template width can be set
+       * if a container is supplied as a selector via a data-attribute */
+      if (carousel.dataset.carouselTemplateParentSelector) {
+        const carouselTemplateParent = carousel.closest(carousel.dataset.carouselTemplateParentSelector); // eslint-disable-line max-len
+        if (carouselTemplateParent) {
+          carousel.style.setProperty('--carousel-template-width', `${carouselTemplateParent.offsetWidth}px`);
+        }
+      }
 
       /* derive number of items shown per carousel view
       * from the CSS variable set in the styles per breakpoint */
       itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
-
-      /* derive scroll transition time declared in CSS */
-      transitionTime = parseInt(window.getComputedStyle(carousel).getPropertyValue('--transition-time'), 10);
 
       /* disable carousel if not needed (at current breakpoint!)
        * i.e. not enough items to over-fill it */
@@ -62,19 +61,13 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     setTemplateParams();
 
     /* fn for setting the active item
-      * and scrolling into view, if required */
+     * and scrolling into view, if required */
     carousel._setActiveItem = (item, scrollToItem = true) => {
-      list.querySelector('.js-carousel__item--active').classList.remove('js-carousel__item--active');
+      const oldActive = list.querySelector('.js-carousel__item--active');
+      if (oldActive) oldActive.classList.remove('js-carousel__item--active');
       item.classList.add('js-carousel__item--active');
 
-      carousel._activeIndex = Array.prototype.indexOf.call(items, item);
-
-      /* fn to dispatch an event announcing an item change
-       * to be heard by the detachable buttons
-       * and anything else waiting to react */
-      const announceChange = () => {
-        carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: Array.prototype.indexOf.call(items, item) } }));
-      };
+      carousel._activeIndex = items.indexOf(item);
 
       /* move active item into view */
       if (carouselUnclipped) {
@@ -86,11 +79,13 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
           itemsOffset += (items.length - carousel._activeIndex - 1) * itemSpan;
         }
         carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
-        setTimeout(announceChange, transitionTime);
       } else {
-        if (scrollToItem) scrollIntoViewHorizontally(item, viewport); // eslint-disable-line no-lonely-if, max-len
-        announceChange();
+        if (scrollToItem) item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }); // eslint-disable-line no-lonely-if, max-len
       }
+
+      /* dispatch an event to be heard by the detachable buttons
+       * and anything else waiting to react */
+      carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: items.indexOf(item) } }));
 
       /* track carousel interaction */
       window.dataLayer = window.dataLayer || [];
@@ -99,6 +94,38 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         elementId: carousel.dataset.trackingId,
       });
     };
+
+    /* when an item intersects the carousel viewport
+     * set appropriate item as active
+     * can't do this onScrollend due to interaction issues and lack of support (safari)  */
+    const onIntersectionObserved = (entries) => {
+      entries.forEach((entry) => {
+        const intersectingItemIndex = items.indexOf(entry.target);
+        if (entry.isIntersecting) {
+          visibleItemIndexes = [...visibleItemIndexes, intersectingItemIndex];
+        } else {
+          visibleItemIndexes = visibleItemIndexes.filter((id) => id !== intersectingItemIndex); // eslint-disable-line max-len
+        }
+        visibleItemIndexes.sort((a, b) => a - b);
+      });
+      if (visibleItemIndexes.length) {
+        /* set the first of the fully visible items as the active item
+         * without triggering a scroll (since a scroll already triggered this intersection) */
+        carousel._setActiveItem(items[visibleItemIndexes[0]], false);
+      }
+    };
+
+    /* create an observer
+     * to observe items becoming or ceasing to be completely within carousel viewport */
+    const observer = new IntersectionObserver(
+      onIntersectionObserved,
+      { root: viewport, threshold: 0.9 },
+    );
+
+    /* observe each item */
+    items.forEach((item) => {
+      observer.observe(item);
+    });
 
     /* on Tabbing into an item set item active, if not already.
      * requires item to be a tabbable element.
@@ -110,22 +137,78 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       }
     });
 
-    /* onClick set active item if not fully in view
+    /* onClick set item as active if not fully in view
      * else default click is allowed through */
     viewport.addEventListener('click', (e) => {
       if (carouselEnabled) {
         const item = e.target.closest('.b-carousel__item');
-        const itemRect = item.getBoundingClientRect();
-        const viewportRect = viewport.getBoundingClientRect();
-        if (itemRect.left < viewportRect.left || itemRect.right > viewportRect.right) {
+        if (!visibleItemIndexes.includes(items.indexOf(item))) {
           e.preventDefault();
+          e.stopImmediatePropagation();
           carousel._setActiveItem(item);
         }
       }
     });
 
+    /* on Focussing into the carousel from outside the carousel
+     * set focus on the currently active item to improve tab navigation */
+    viewport.addEventListener('focusin', (e) => {
+      if (!e.relatedTarget || !e.relatedTarget.closest('.b-carousel__viewport')) {
+        if (items[carousel._activeIndex].tabIndex > -1) {
+          items[carousel._activeIndex].focus();
+        } else {
+          items[carousel._activeIndex].querySelector('a, button').focus();
+        }
+      }
+    });
+
+    /* onResize reset template params & re-centre active item */
+    window.addEventListener('resize', () => {
+      setTemplateParams();
+      carousel._setActiveItem(items[carousel._activeIndex]);
+    });
+
+    /* initialise carousel control buttons */
+    if (ctrls) {
+      if (carouselEnabled) {
+        ctrls.classList.add('b-carousel__ctrls--active');
+      }
+
+      const prev = ctrls.querySelector('.js-carousel__ctrl--prev');
+      const next = ctrls.querySelector('.js-carousel__ctrl--next');
+
+      prev.setAttribute('disabled', 'true');
+
+      /* onClick focus prev/next item, in steps of number of items per view */
+      ctrls.addEventListener('click', (e) => {
+        e.stopImmediatePropagation();
+        if (e.target === next) {
+          carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
+        } else if (e.target === prev) {
+          carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
+        }
+      });
+
+      /* onItemChange: activate apropriate prev/next button(s)
+       * if there are now items before/after those currently in view */
+      carousel.addEventListener('itemChange', () => {
+        if (carousel._activeIndex > 0) {
+          prev.removeAttribute('disabled');
+        } else {
+          if (document.activeElement === prev) next.focus();
+          prev.setAttribute('disabled', 'true');
+        }
+        if (carousel._activeIndex < items.length - itemsPerView) {
+          next.removeAttribute('disabled');
+        } else {
+          if (document.activeElement === next) prev.focus();
+          next.setAttribute('disabled', 'true');
+        }
+      });
+    }
+
+    /* add swipe/drag gesture support for non-native-scrolling carousels */
     if (carouselUnclipped) {
-      /* add swipe gesture support */
       viewport.ontouchstart = (e) => {
         const startXY = [e.touches[0].pageX, e.touches[0].pageY];
         viewport.ontouchmove = (e2) => {
@@ -155,74 +238,6 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
           }
         };
       };
-    } else {
-      /* onScrollend set active item.
-       * scroll event will do if scrollend not supported (Safari) */
-      viewport.addEventListener(('onscrollend' in window ? 'scrollend' : 'scroll'), () => {
-        const viewportRect = viewport.getBoundingClientRect();
-        for (let i = 0; i < items.length; i += 1) {
-          if (Math.round(items[i].getBoundingClientRect().left) >= Math.round(viewportRect.left)) {
-            carousel._setActiveItem(items[i], false);
-            break;
-          }
-        }
-      });
-    }
-
-    /* onResize reset template params & re-centre active item */
-    window.addEventListener('resize', () => {
-      setTemplateParams();
-      carousel._setActiveItem(items[carousel._activeIndex]);
-    });
-
-    /* on Focussing into the carousel from outside the carousel
-     * set focus on the currently active item to improve tab navigation */
-    viewport.addEventListener('focusin', (e) => {
-      if (!e.relatedTarget || !e.relatedTarget.closest('.b-carousel__viewport')) {
-        if (items[carousel._activeIndex].tabIndex > -1) {
-          items[carousel._activeIndex].focus();
-        } else {
-          items[carousel._activeIndex].querySelector('a, button').focus();
-        }
-      }
-    });
-
-    /* initialise carousel control buttons */
-    if (ctrls) {
-      if (carouselEnabled) {
-        ctrls.classList.add('b-carousel__ctrls--active');
-      }
-
-      const prev = ctrls.querySelector('.js-carousel__ctrl--prev');
-      const next = ctrls.querySelector('.js-carousel__ctrl--next');
-
-      prev.setAttribute('disabled', 'true');
-
-      /* onClick focus prev/next item, in steps of number of items per view */
-      ctrls.addEventListener('click', (e) => {
-        if (e.target === prev) {
-          carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
-        } else if (e.target === next) {
-          carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
-        }
-      });
-
-      /* onItemChange: activate apropriate prev/next button(s)
-       * if there are now items before/after those currently in view */
-      carousel.addEventListener('itemChange', () => {
-        const viewportRect = viewport.getBoundingClientRect();
-        prev.setAttribute('disabled', 'true');
-        if (Math.round(items[0].getBoundingClientRect().left) < Math.round(viewportRect.left)) {
-          prev.removeAttribute('disabled');
-        }
-        next.setAttribute('disabled', 'true');
-        for (let i = carousel._activeIndex + 1; i < items.length; i += 1) {
-          if (Math.round(items[i].getBoundingClientRect().right) > Math.round(viewportRect.right)) {
-            next.removeAttribute('disabled');
-            break;
-          }
-        }
-      });
     }
   }
 

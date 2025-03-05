@@ -2,8 +2,9 @@
 @use "../../mixins";
 
 .b-carousel {
-  --carousel-width: 1200px;
-  --carousel-max-width: 1200px;
+  --carousel-width: 100%;
+  --carousel-template-width: 100%;
+  --carousel-max-width: min(100vw, var(--carousel-template-width));
   --carousel-overflow: calc((var(--carousel-max-width) - var(--carousel-width)) / 2);
   --item-max-width: var(--carousel-width);
   --items-per-view: 1;
@@ -26,6 +27,10 @@
 
   @include mixins.breakpoints-bpMinMedium {
     --items-per-view: 3;
+  }
+
+  &--unclipped {
+    --carousel-max-width: min(100vw, #{mixins.breakpoints-bp("largest")});
   }
 
   &__ctrls {
@@ -59,6 +64,8 @@
   }
 
   &__list {
+    @include mixins.unstyledelements-unstyledList;
+
     display: flex;
     gap: var(--items-gap);
     transform: translateX(var(--items-offset));
