@@ -4,13 +4,16 @@
  * useful when not wanting any vertical scroll that can occur
  * with native scrollIntoView() function */
 const scrollIntoViewHorizontally = (item, container = item.parentElement) => {
-  const itemRight = item.offsetLeft + item.offsetWidth;
-  const containerScrollRight = container.scrollLeft + container.offsetWidth;
+  const itemRightEdge = item.offsetLeft + item.offsetWidth;
+  const containerRightEdge = container.scrollLeft + container.offsetWidth;
 
   if (container.scrollLeft > item.offsetLeft) {
-    container.scrollLeft = Math.round(item.offsetLeft);
-  } else if (containerScrollRight < itemRight) {
-    container.scrollLeft += Math.round(itemRight - containerScrollRight);
+    container.scrollTo(item.offsetLeft, 0);
+  } else if (containerRightEdge < itemRightEdge) {
+    const scrollLeft = Math.min(
+      container.scrollLeft + itemRightEdge - containerRightEdge,
+      container.scrollWidth - container.offsetWidth);
+    container.scrollTo(scrollLeft, 0);
   }
 };
 
