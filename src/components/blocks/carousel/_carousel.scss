@@ -7,19 +7,16 @@
   --carousel-max-width: min(100vw, var(--carousel-template-width));
   --carousel-overflow: calc((var(--carousel-max-width) - var(--carousel-width)) / 2);
   --item-max-width: var(--carousel-width);
-  --items-per-view: 1;
   --items-gap: 10px;
+  --items-per-view: 1;
   --items-offset: 0;
   --transition-time: 500ms;
 
   margin-bottom: 10px;
   width: 100%;
 
-  @include mixins.breakpoints-bpMinXSmall {
-    --items-per-view: 2;
-  }
-
   @include mixins.breakpoints-bpMinSmall {
+    --items-per-view: 2;
     --items-gap: 20px;
 
     margin-bottom: 20px;
@@ -27,6 +24,10 @@
 
   @include mixins.breakpoints-bpMinMedium {
     --items-per-view: 3;
+  }
+
+  @include mixins.breakpoints-bpMinLarge {
+    --items-gap: 30px;
   }
 
   &--unclipped {
@@ -81,13 +82,17 @@
   }
 
   &__item {
-    --item-peek: calc(80px + var(--items-gap));
+    --item-peek: calc(42px + var(--items-gap));
     --item-peek-adjust: min(var(--item-peek) - min(var(--carousel-overflow), var(--item-peek)), var(--item-peek));
 
     flex: 1 0 calc(((var(--carousel-width) - ((var(--items-per-view) - 1) * var(--items-gap)) - var(--item-peek-adjust)) / var(--items-per-view)));
     max-width: var(--item-max-width);
     scroll-snap-align: start;
     scroll-snap-stop: normal;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      --item-peek: calc(170px + var(--items-gap));
+    }
 
     @include mixins.breakpoints-bpMinSmall {
       --item-peek: calc(42px + var(--items-gap));
