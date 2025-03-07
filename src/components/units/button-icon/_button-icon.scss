@@ -19,7 +19,8 @@
     --btn-size: 32px;
   }
 
-  .lightdark-theme--light {
+  // react to any s-light-dark-theme modifying class on a parent element
+  .s-light-dark-theme--dark {
     --btn-bg: var(--btn-light-bg);
     --btn-color: var(--btn-light-color);
     --btn-border: var(--btn-light-border);

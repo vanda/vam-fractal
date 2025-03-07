@@ -71,12 +71,12 @@ $nav-breakpoints: (
   &__extra {
     background: #000;
     margin: 60px auto 0;
-    max-width: 2560px;
+    max-width: mixins.breakpoints-bp("largest");
     width: 100%;
 
     &__inner {
       margin: 0 auto;
-      max-width: map.get(mixins.$breakpoints-breakpoints, "large");
+      max-width: mixins.breakpoints-bp("large");
     }
   }
 
@@ -549,7 +549,7 @@ $nav-breakpoints: (
     }
 
     @include mixins.breakpoints-bpMinLarge {
-      left: calc((#{map.get(mixins.$breakpoints-breakpoints, large)} - 100vw) / 2);
+      left: calc((#{mixins.breakpoints-bp(large)} - 100vw) / 2);
       width: 100vw;
     }
 
