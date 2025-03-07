@@ -10,4 +10,10 @@
   {% endif %}
 
   <h2 class="b-section-header__title">{{ title }}</h2>
+  {% if subtitle %}
+  <h3 class="b-section-header__subtitle">{{ subtitle }}</h3>
+  {% endif %}
+  {% if copy %}
+  <h3 class="b-section-header__copy">{{ copy }}</h3>
+  {% endif %}
 </header>

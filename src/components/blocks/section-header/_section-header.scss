@@ -4,34 +4,41 @@
 .b-section-header {
   background: base.sitecolors-siteColor("vam-white");
   clear: both;
-  padding: 21px base.$spacings-spacing-small 25px;
+  color: base.sitecolors-siteColor("vam-black");
+  margin: 21px base.$spacings-spacing-small 25px;
 
   @include mixins.breakpoints-bpMinXSmall {
-    padding: 28px base.$spacings-spacing-small 32px;
+    margin: 28px base.$spacings-spacing-small 32px;
   }
 
   @include mixins.breakpoints-bpMinSmall {
-    padding: 47px base.$spacings-spacing-small base.$spacings-spacing-medium;
+    margin: 47px base.$spacings-spacing-small base.$spacings-spacing-medium;
   }
 
   &__title {
-    @include base.typography-typeSetting(5, "bold");
+    @include base.typography-typeSetting(6, "bold");
 
-    color: base.sitecolors-siteColor("vam-black");
     display: block;
     text-align: center;
+  }
 
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(6, "bold");
-    }
+  &__subtitle {
+    @include base.typography-typeSetting(5, "bold");
 
-    .b-section-header--transparent & {
-      color: base.sitecolors-siteColor("vam-white");
-    }
+    margin-top: 13px;
+    text-align: center;
+  }
+
+  &__copy {
+    @include base.typography-typeSetting(4);
+
+    margin-top: 13px;
+    text-align: center;
   }
 
   &--transparent {
     background: transparent;
+    color: base.sitecolors-siteColor("vam-white");
   }
 
   &--compact {
@@ -39,8 +46,7 @@
   }
 
   &--alternate {
-    margin-bottom: 20px;
-    padding: 0;
+    margin: 0 0 20px;
 
     @include mixins.breakpoints-bpMinSmall {
       margin-bottom: 40px;
