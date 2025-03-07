@@ -1,0 +1,33 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-toggle-set {
+  &__nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 30px auto 20px;
+    max-width: fit-content;
+    overflow: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: base.sitecolors-siteColor("vam-grey-3") transparent;
+    scrollbar-width: thin;
+  }
+
+  &__button {
+    margin: 0;
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+    white-space: nowrap;
+  }
+
+  &__target {
+    display: none;
+    
+    &--active {
+      display: block;
+    }
+  }
+}

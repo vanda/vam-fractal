@@ -5,7 +5,7 @@
 {% for v in variants %}
 <div>
   <a href="#" class="u-btn{% for m in v %} u-btn--{{ m }}{% endfor %}">
-    {{ text }}
+    {{ text }} [{% for m in v %} u-btn--{{ m }}{% endfor %}]
   </a>
 </div>
 {% endfor %}

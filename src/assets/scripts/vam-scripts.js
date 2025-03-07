@@ -18,7 +18,7 @@ require('../../components/blocks/newsletter-signup/_newsletter-signup');
 require('../../components/blocks/search-form/_search-form');
 require('../../components/blocks/search-result/_search-result');
 require('../../components/blocks/site-nav/_site-nav');
-require('../../components/blocks/toggle-nav/_toggle-nav');
+require('../../components/blocks/toggle-set/_toggle-set');
 require('../../components/blocks/video-thumbnail/_video-thumbnail');
 require('../../components/blocks/video-trailer/_video-trailer');
 require('../../components/blocks/events-featured/_events-featured');
