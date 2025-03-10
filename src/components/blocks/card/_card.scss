@@ -172,10 +172,6 @@
 
   &--featured-xxl {
     @include mixins.breakpoints-bpMinMedium {
-      &--reduced {
-        transform: scale(0.75);
-      }
-      
       .b-card__info-container {
         padding-bottom: 10px;
         padding-top: 32px;
@@ -199,7 +195,7 @@
           &::before {
             height: 40px;
             position: relative;
-            top: 5px;
+            top: 8px;
             width: 40px;
           }
         }
