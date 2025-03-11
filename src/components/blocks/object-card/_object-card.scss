@@ -9,6 +9,10 @@
     border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-2");
     color: base.sitecolors-siteColor("vam-white");
     padding-bottom: 8px;
+
+    .b-carousel__item > & {
+      border-bottom: none;
+    }
   }
 
   &__anchor {
