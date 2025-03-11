@@ -13,6 +13,9 @@
     min-height: 480px;
   }
 
+  /* default focus style can be clipped if inside a carousel */
+  @include mixins.focus-raisedPseudoFocus;
+
   &__image-container {
     overflow: hidden;
   }

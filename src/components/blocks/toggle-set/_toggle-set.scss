@@ -21,6 +21,10 @@
     scroll-snap-align: center;
     scroll-snap-stop: normal;
     white-space: nowrap;
+
+    &:focus-visible {
+      @include mixins.focus-insetFocus;
+    }
   }
 
   &__target {
