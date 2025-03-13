@@ -1,5 +1,5 @@
 <div class="b-toggle-set">
-  <nav class="b-toggle-set__nav">
+  <nav class="b-toggle-set__nav" role="tablist">
     {% for toggle in toggles %}
     <button class="b-toggle-set__button u-btn u-btn--pill {% if onDark %}u-btn--pill-dark{% endif %}"
       {% if loop.index == 3 %}data-toggle-set-default-type{% endif %}
