@@ -38,13 +38,11 @@
     display: none;
 
     &--active {
-      @include mixins.breakpoints-bpMinSmall {
-        display: flex;
-        gap: 6px;
-        justify-content: flex-end;
-        margin: 20px auto;
-        max-width: var(--carousel-width);
-      }
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+      margin: 20px auto;
+      max-width: var(--carousel-width);
     }
   }
 

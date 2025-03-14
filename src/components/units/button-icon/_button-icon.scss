@@ -6,7 +6,7 @@
   --btn-color: #{base.sitecolors-siteColor("vam-white")};
   --btn-border: #{base.sitecolors-siteColor("vam-white")};
   --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-1")};
-  --btn-size: 40px;
+  --btn-size: 32px;
   --btn-icon-size: 48%;
   --btn-icon: none;
   --btn-icon-transform: none;
@@ -14,10 +14,6 @@
   --btn-light-color: #{base.sitecolors-siteColor("vam-black")};
   --btn-light-border: #{base.sitecolors-siteColor("vam-black")};
   --btn-light-bg-hover: #{base.sitecolors-siteColor("vam-grey-5")};
-
-  @include mixins.breakpoints-bpMinSmall {
-    --btn-size: 32px;
-  }
 
   // react to any s-light-dark-theme modifying class on a parent element
   .s-light-dark-theme--dark {
