@@ -54,7 +54,7 @@
     scroll-behavior: smooth; // necessary to prevent browser jumping instantly when focussing off-screen elements
     scroll-snap-type: x mandatory;
     scrollbar-color: base.sitecolors-siteColor("vam-grey-3") transparent;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     
     .b-carousel--unclipped > & {
       margin: 0 calc(-1 * var(--carousel-overflow));
