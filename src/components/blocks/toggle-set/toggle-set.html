@@ -12,10 +12,11 @@
     {% endfor %}
   </nav>
 
-  <!-- example toggleable elements -->
+  
   {% for toggle in toggles %}
   <div class="b-toggle-set__target" id="toggle-set-target-id-{{ loop.index }}">
-    {{ toggle }}
+    <!-- example toggleable content -->
+    {%- render "@carousel" -%}
   </div>
   {% endfor %}
 </div>

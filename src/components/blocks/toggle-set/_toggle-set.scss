@@ -29,9 +29,18 @@
 
   &__target {
     display: none;
-    
+    height: 0;
+    opacity: 0;
+
+    &--pre-loaded,
     &--active {
       display: block;
+    }
+
+    &--active {
+      height: auto;
+      opacity: 1;
+      transition: opacity 0.4s ease-out;
     }
   }
 }

@@ -44,11 +44,32 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* activate each toogleNav by clicking its default toggle
- * either supplied as its data-toggle-set-default-type attribute
- * else default to its first toggle */
-Array.from(document.querySelectorAll('.b-toggle-set__nav'), (toggleNav) => {
-  const toggleTypeDefault = toggleNav.querySelector('[data-toggle-set-default-type]') || toggleNav.querySelector('.b-toggle-set__button');
-  toggleTypeDefault.click();
-  return true;
+/* initialise toggleSets */
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleSets = Array.from(document.querySelectorAll('.b-toggle-set'));
+
+  /* activate each toogleNav by clicking its default toggle
+  * supplied as its data-toggle-set-default-type attribute else default to its first toggle */
+  toggleSets.forEach((toggleSet) => {
+    const toggleTypeDefault = toggleSet.querySelector('[data-toggle-set-default-type]') || toggleSet.querySelector('.b-toggle-set__button');
+    toggleTypeDefault.click();
+  });
+
+  /* Pre-load remaining inactive tabs on intersection with the viewport
+   * enabling visibility transitions on switching between tabs */
+  const onIntersectionObserved = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const toggleSet = entry.target;
+        Array.from(toggleSet.querySelectorAll('.b-toggle-set__target'), (toggleSetTarget) => {
+          toggleSetTarget.classList.add('b-toggle-set__target--pre-loaded');
+          return true;
+        });
+      }
+    });
+  };
+  /* create an observer
+   * and observe each toggleSet */
+  const observer = new IntersectionObserver(onIntersectionObserved, { threshold: 0.5 });
+  toggleSets.forEach((toggleSet) => observer.observe(toggleSet));
 });
