@@ -32,7 +32,8 @@
   &__copy {
     @include base.typography-typeSetting(4);
 
-    margin-top: 13px;
+    margin: 13px auto 0;
+    max-width: 720px;
     text-align: center;
   }
 
