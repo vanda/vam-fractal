@@ -1,10 +1,10 @@
 import carouselInit from '../carousel/_carousel';
 
 document.addEventListener('click', (e) => {
-  const toggleNav = e.target.closest('.b-toggle-set__nav');
-  if (toggleNav) {
-    const toggle = e.target;
-    const toggleSet = toggleNav.closest('.b-toggle-set');
+  const toggle = e.target.closest('.b-toggle-set__button');
+  if (toggle) {
+    const toggleSet = toggle.closest('.b-toggle-set');
+    const toggleNav = toggleSet.querySelector('.b-toggle-set__nav');
 
     /* move active class to new active toggle */
     const toggleActive = toggleNav.querySelector('.u-btn--pill-active');
