@@ -58,28 +58,33 @@
 
   {% if modifiers and 'etc-gateway' in modifiers %}
   <div class="b-search-form__suggestions"></div>
-  <div class="b-search-form__filters" aria-label="search filters">
-    <div class="b-search-form__filter-date">
-      <button type="button" aria-expanded="false" class="b-search-form__filter-date-btn-show" aria-controls="search-form__filter-date-container" id="search-form__filter-date-control">
-        By dates
-        <svg role="presentation">
-          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-down"></use>
-        </svg>
-      </button>
-      <div class="b-search-form__filter-date-container" id="search-form__filter-date-container" aria-labelledby="search-form__filter-date-control">
-        <div class="b-search-form__filter-detail">
-          <label for="year_made_from">From</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_from" name="year_made_from" min="-4000" max="2050" step="1" placeholder="Year" value="">
-        </div>
-        <div class="b-search-form__filter-detail">
-          <label for="year_made_to">To</label>
-          <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_to" name="year_made_to" min="-4000" max="2050" step="1" placeholder="Year" value="">
-        </div>
-        <div class="b-search-form__filter-info">
-          Use a hyphen to indicate dates BC.
-          <br>For example -800 is 800BC
+  <div class="b-search-form__footer">
+    <div class="b-search-form__filters" aria-label="search filters">
+      <div class="b-search-form__filter-date">
+        <button type="button" aria-expanded="false" class="b-search-form__filter-date-btn-show" aria-controls="search-form__filter-date-container" id="search-form__filter-date-control">
+          By dates
+          <svg role="presentation">
+            <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-down"></use>
+          </svg>
+        </button>
+        <div class="b-search-form__filter-date-container" id="search-form__filter-date-container" aria-labelledby="search-form__filter-date-control">
+          <div class="b-search-form__filter-detail">
+            <label for="year_made_from">From</label>
+            <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_from" name="year_made_from" min="-4000" max="2050" step="1" placeholder="Year" value="">
+          </div>
+          <div class="b-search-form__filter-detail">
+            <label for="year_made_to">To</label>
+            <input class="b-search-form__filter-input b-search-form__filter-input--date" type="number" id="year_made_to" name="year_made_to" min="-4000" max="2050" step="1" placeholder="Year" value="">
+          </div>
+          <div class="b-search-form__filter-info">
+            Use a hyphen to indicate dates BC.
+            <br>For example -800 is 800BC
+          </div>
         </div>
       </div>
+    </div>
+    <div class="b-search-form__links">Explore by:
+      <a class="u-link" href="https://collections.vam.ac.uk/context/organisation/a-z/a">Organisations</a>
     </div>
   </div>
   {% endif %}
