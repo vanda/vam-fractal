@@ -1,3 +1,5 @@
+import { scrollIntoViewHorizontally } from '../../services/js_utility_functions/js_utility_functions';
+
 /* Carousel initialiser fn.
  * Separate control buttons can be passed in as optional param,
  * otherwise will check for them nested inside the component */
@@ -8,13 +10,10 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
   if (items.length > 1) {
     const carouselUnclipped = carousel.classList.contains('b-carousel--unclipped');
     const viewport = carousel.querySelector('.b-carousel__viewport');
-    const list = carousel.querySelector('.b-carousel__list');
     carousel._activeIndex = 0;
+    carousel._oldActiveIndex = 0;
     let itemsOffset = 0;
     let visibleItemIndexes = [];
-
-    /* initialise with first item active */
-    items[carousel._activeIndex].classList.add('js-carousel__item--active');
 
     /* ensure each item is tabbable for keyboard navigation */
     items.forEach((item) => {
@@ -45,7 +44,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       }
 
       /* derive number of items shown per carousel view
-      * from the CSS variable set in the styles per breakpoint */
+       * from the CSS variable set in the styles per breakpoint */
       itemsPerView = parseInt(window.getComputedStyle(carousel).getPropertyValue('--items-per-view'), 10);
 
       /* disable carousel if not needed (at current breakpoint!)
@@ -63,14 +62,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     /* fn for setting the active item
      * and scrolling into view, if required */
     carousel._setActiveItem = (item, scrollToItem = true) => {
-      const oldActive = list.querySelector('.js-carousel__item--active');
-      if (oldActive) oldActive.classList.remove('js-carousel__item--active');
-      item.classList.add('js-carousel__item--active');
-
-      carousel._activeIndex = items.indexOf(item);
-
       /* move active item into view */
       if (carouselUnclipped) {
+        carousel._activeIndex = items.indexOf(item);
         const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
         itemsOffset = carousel._activeIndex * itemSpan;
         /* last items need special right-alignment */
@@ -80,19 +74,22 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         }
         carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
       } else {
-        if (scrollToItem) item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }); // eslint-disable-line no-lonely-if, max-len
+        if (scrollToItem) scrollIntoViewHorizontally(item, viewport, carousel); // eslint-disable-line no-lonely-if, max-len
       }
 
       /* dispatch an event to be heard by the detachable buttons
-       * and anything else waiting to react */
+      * and anything else waiting to react */
       carousel.dispatchEvent(new CustomEvent('itemChange', { detail: { activeIndex: items.indexOf(item) } }));
 
-      /* track carousel interaction */
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'Carousel interaction',
-        elementId: carousel.dataset.trackingId,
-      });
+      /* track carousel interaction, if scrolling enough to change active item */
+      if (carousel._activeIndex !== carousel._oldActiveIndex) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'Carousel interaction',
+          elementId: carousel.dataset.trackingId,
+          interactionType: `scroll ${carousel._activeIndex > carousel._oldActiveIndex ? 'forward' : 'back'}`,
+        });
+      }
     };
 
     /* when an item intersects the carousel viewport
@@ -108,32 +105,27 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         }
         visibleItemIndexes.sort((a, b) => a - b);
       });
+      /* set the first fully visible item in the carousel viewport as the active item
+       * without triggering a scroll (since a scroll already triggered this intersection) */
       if (visibleItemIndexes.length) {
-        /* set the first of the fully visible items as the active item
-         * without triggering a scroll (since a scroll already triggered this intersection) */
+        carousel._oldActiveIndex = carousel._activeIndex;
+        carousel._activeIndex = visibleItemIndexes[0];
         carousel._setActiveItem(items[visibleItemIndexes[0]], false);
       }
     };
+    /* create an observer to observe items intersecting carousel viewport
+     * and observe each item */
+    const observer = new IntersectionObserver(onIntersectionObserved, { root: carousel, threshold: 0.9 }); // eslint-disable-line max-len
+    items.forEach((item) => observer.observe(item));
 
-    /* create an observer
-     * to observe items becoming or ceasing to be completely within carousel viewport */
-    const observer = new IntersectionObserver(
-      onIntersectionObserved,
-      { root: viewport, threshold: 0.9 },
-    );
-
-    /* observe each item */
-    items.forEach((item) => {
-      observer.observe(item);
-    });
-
-    /* on Tabbing into an item set item active, if not already.
+    /* on Tabbing into an item set item active.
      * requires item to be a tabbable element.
      * can't use focusin listener here, as it would also fire at the start of a click event
      * and activate the item before the click listener below can do its check */
     viewport.addEventListener('keyup', (e) => {
-      if (e.key === 'Tab' && e.target.closest('.b-carousel__item:not(.js-carousel__item--active)')) {
-        carousel._setActiveItem(e.target.closest('.b-carousel__item'));
+      if (e.key === 'Tab') {
+        const item = e.target.closest('.b-carousel__item');
+        if (item) carousel._setActiveItem(item);
       }
     });
 
@@ -183,7 +175,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       ctrls.addEventListener('click', (e) => {
         e.stopImmediatePropagation();
         if (e.target === next) {
-          carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
+          carousel._setActiveItem(items[carousel._activeIndex + (2 * itemsPerView) - 1] || items[items.length - 1]); // eslint-disable-line max-len
         } else if (e.target === prev) {
           carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
         }
@@ -219,7 +211,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
               || (deltaXY[0] > 0 && carousel._activeIndex > 0)
             )) {
             /* if touch moves significantly horizontally
-              * activate prev/next item swipe */
+             * activate prev/next item swipe */
             if (Math.abs(deltaXY[0]) > 74) {
               viewport.ontouchmove = null;
               if (deltaXY[0] < 0) {
