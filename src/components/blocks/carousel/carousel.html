@@ -1,5 +1,5 @@
 <div class="b-carousel {% for m in modifiers %}b-carousel--{{ m }}{% endfor %} {% if lightDarkTheme %}{{ lightDarkTheme }}{% endif %}"data-carousel-template-parent-selector="html" data-tracking-id="Example Carousel">
-  <div class="b-carousel__viewport">
+  <div class="b-carousel__viewport" tabindex="-1">
     <ol class="b-carousel__list">
       {% for n in [1, 2, 3, 4, 5, 6, 7, 8, 9] %}
       <li class="b-carousel__item">
