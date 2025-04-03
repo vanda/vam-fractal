@@ -19,13 +19,6 @@ module.exports = {
       }
     },
     {
-      name: 'featured XXL',
-      label: 'Default - Featured - XXL',
-      context: {
-        modifier: ['featured', 'featured-xxl']
-      }
-    },
-    {
       name: 'picture-card',
       label: 'Picture Card',
       context: {
@@ -37,13 +30,6 @@ module.exports = {
       label: 'Picture Card - Featured',
       context: {
         modifier: ['picture-card', 'featured']
-      }
-    },
-    {
-      name: 'featured-picture-card XXL',
-      label: 'Picture Card - Featured - XXL',
-      context: {
-        modifier: ['picture-card', 'featured', 'featured-xxl']
       }
     }
   ]

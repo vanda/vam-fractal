@@ -1,10 +1,6 @@
 <a href="#" class="b-card{% for m in modifier %} b-card--{{ m }}{% endfor %}">
   <div class="b-card__image-container">
-    {% if modifier and 'featured-xxl' in modifier %}
-      {%- render "@label-tag--members-only" -%}
-    {% else %}
-      {%- render "@icon-label-tag--read" -%}
-    {% endif %}
+    {%- render "@icon-label-tag--read" -%}
     <img
       alt="{{ promoTitle }}"
       class="b-card__image"
@@ -17,39 +13,7 @@
       loading="lazy">
   </div>
   <div class="b-card__info-container">
-    {% if modifier and 'featured-xxl' in modifier %}
-      <p class="b-card__text">Talk</p>
-    {% endif %}
-
     <h2 class="b-card__heading">{{ heading }}</h2>
-
-    {% if modifier and not 'featured-xxl' in modifier %}
-      <p class="b-card__text">{{ synopsis }}</p>
-    {% endif %}
-
-    {% if modifier and 'featured-xxl' in modifier %}
-      <ul class="b-icon-list__list">
-        <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--calendar" title="Calendar timing">
-          <div class="b-icon-list__content">
-            <p class="b-icon-list__item-text b-card__text">Wednesday, 18 September 2024 – Sunday, 26 January 2025</p>
-          </div>
-        </li>
-        <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--clock" title="Time of day">
-          <div class="b-icon-list__content">
-              <p class="b-icon-list__item-text b-card__text">10.30 / 13.00 / 14.00</p>
-          </div>
-        </li>
-        <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--signpost" title="Location">
-          <div class="b-icon-list__content">
-              <p class="b-icon-list__item-text b-card__text">Study Centre</p>
-          </div>
-        </li>
-        <li class="b-icon-list__item b-icon-list__icon b-icon-list__icon--ticket" title="Admission charge">
-          <div class="b-icon-list__content">
-              <p class="b-icon-list__item-text b-card__text">Free</p>
-          </div>
-        </li>
-      </ul>  
-    {% endif %}
+    <p class="b-card__text">{{ synopsis }}</p>
   </div>
 </a>
