@@ -1,5 +1,20 @@
+
+<!-- example seeds for object image overlay (aka OIC)
+//-- see object-image-overlay.config.js & blocks/object-card/object-card.html
+//-- for the passing of data -->
 <div style="max-width:340px; margin: 50px">
-{% for card in objectCards %}
-  {%- render "@object-card", card -%}
-{% endfor %}
+  <h1>Opened from any of these seeds, the OIC will cycle through all seeds it finds on the page</h1>
+  {% for card in objectCards %}
+    {%- render "@object-card", card -%}
+  {% endfor %}
+</div>
+
+<!-- a single OIC scans the entire doc for seeds by default
+//-- but OIC can be limited to a contained set
+//-- when opened from within a container with  data-object-image-overlay-contained="true" -->
+<div style="max-width:340px; margin: 50px" data-object-image-overlay-contained="true">
+  <h1>Whereas opened from any of the following seeds, the OIC is contained within this group ↓</h1>
+  {% for card in objectCards %}
+    {%- render "@object-card", card -%}
+  {% endfor %}
 </div>

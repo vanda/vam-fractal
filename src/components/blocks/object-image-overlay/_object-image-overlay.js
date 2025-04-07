@@ -14,9 +14,10 @@ const oicInit = () => {
     const items = document.createElement('div');
     items.classList.add('b-object-image-overlay__items');
     oic.appendChild(items);
+    oic.seeds = oicSeeds;
 
     oic.addItem = (index, prepend = false) => {
-      const seed = oicSeeds[index] || oicSeeds[0];
+      const seed = oic.seeds[index] || oic.seeds[0];
       const data = seed.dataset.objectImageOverlay
         ? JSON.parse(seed.dataset.objectImageOverlay)
         : null;
@@ -107,7 +108,7 @@ const oicInit = () => {
     };
 
     oic.getIndex = (seed) => {
-      const index = oicSeeds.findIndex((el) => {
+      const index = oic.seeds.findIndex((el) => {
         const match = (el === seed);
         return match;
       });
@@ -123,7 +124,7 @@ const oicInit = () => {
     };
 
     oic.advance = (rewind = false) => {
-      if ((!rewind && oic._index < oicSeeds.length - 1)
+      if ((!rewind && oic._index < oic.seeds.length - 1)
         || (rewind && oic._index > 0)) {
         oic.clipItem(rewind);
         oic.addItem(oic._index + (2 * (rewind ? -1 : 1)), rewind);
@@ -161,9 +162,9 @@ const oicInit = () => {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'OIC',
-        object: oicSeeds[index].querySelector('figcaption').textContent.trim(),
-        museumNumber: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).museumNumber || null,
-        status: JSON.parse(oicSeeds[index].dataset.objectImageOverlay).locationType || null,
+        object: oic.seeds[index].querySelector('figcaption').textContent.trim(),
+        museumNumber: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).museumNumber || null,
+        status: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).locationType || null,
       });
     };
 
@@ -178,7 +179,7 @@ const oicInit = () => {
       Array.from(item.querySelectorAll('a'), (el) => el.removeAttribute('tabindex'));
       Array.from(item.querySelectorAll('button'), (el) => el.removeAttribute('disabled'));
 
-      if (oic._index === oicSeeds.length - 1) {
+      if (oic._index === oic.seeds.length - 1) {
         item.querySelector('.js-object-image-overlay-btn--next').setAttribute('disabled', true);
       }
       if (oic._index === 0) {
@@ -205,7 +206,7 @@ const oicInit = () => {
         const deltaXY = [e2.touches[0].pageX - startXY[0], e2.touches[0].pageY - startXY[1]];
         if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
           && (
-            (deltaXY[0] < 0 && oic._index < oicSeeds.length - 1)
+            (deltaXY[0] < 0 && oic._index < oic.seeds.length - 1)
             || (deltaXY[0] > 0 && oic._index > 0)
           )) {
           if (Math.abs(deltaXY[0]) < 74) {
@@ -232,11 +233,15 @@ const oicInit = () => {
 
     document.addEventListener('click', (e) => {
       if (e.target.closest('.js-object-image-overlay-item > a')) {
-        // open the OIC when a suitable object-card's main link is clicked
+        /* open the OIC when a suitable object-card's main link is clicked */
         e.preventDefault();
-
         const seed = e.target.closest('.js-object-image-overlay-item');
-
+        const seedContainer = seed.closest('[data-object-image-overlay-contained="true"]');
+        if (seedContainer) {
+          oic.seeds = Array.from(seedContainer.querySelectorAll('.js-object-image-overlay-item'));
+        } else {
+          oic.seeds = Array.from(document.querySelectorAll('.js-object-image-overlay-item'));
+        }
         oic._index = oic.getIndex(seed);
         oic.addItem(oic._index);
         oic.classList.add('b-object-image-overlay--active');

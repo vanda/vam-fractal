@@ -41,25 +41,10 @@
   &__link {
     display: block;
     height: 100%;
-
-    /* default focus style is obscured, so employ pseudo element
-     * to apply focus style onto */
-    position: relative;
     width: 100%;
 
-    &::before {
-      content: '';
-      inset: 0;
-      position: absolute;
-    }
-
-    &:focus-visible {
-      @include mixins.focus-disableFocus;
-
-      &::before {
-        @include mixins.focus-insetFocus;
-      }
-    }
+    /* default focus style is clipped */
+    @include mixins.focus-raisedPseudoFocus;
   }
 
   &__img {

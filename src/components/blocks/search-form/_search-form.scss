@@ -289,6 +289,44 @@
     }
   }
 
+  &__link-to-collections {
+    @include base.typography-typeSetting(3);
+
+    color: base.sitecolors-siteColor("vam-grey-4");
+    display: inline-block;
+    margin-top: 16px;
+    position: relative;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4);
+    }
+
+    &--mobile {
+      @include mixins.breakpoints-bpMinMedium {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include mixins.breakpoints-bpMinMedium {
+        display: inline;
+      }
+    }
+
+    &--mobile,
+    &--desktop {
+      &::after {
+        border: 4px solid transparent;
+        border-left-color: currentColor;
+        content: "";
+        display: inline-block;
+        margin-left: 4px;
+      }
+    }
+  }
+
   // &--etc-gateway
   &__suggestions {
     background: base.sitecolors-siteColor("vam-grey-2");
@@ -315,7 +353,6 @@
     }
   }
 
-  // &--etc-gateway
   &__suggestion {
     @include base.typography-typeSetting(3);
 
@@ -338,7 +375,6 @@
     }
   }
 
-  // &--etc-gateway
   &__suggestion-type {
     @include base.typography-typeSetting(0, "bold");
 
@@ -350,17 +386,25 @@
     }
   }
 
-  &__filters {
-    align-items: baseline;
+  // &--etc-gateway
+  &__footer {
+    @include base.typography-typeSetting(3, "bold");
+
+    align-items: flex-start;
     color: base.sitecolors-siteColor("vam-white");
     display: flex;
-    flex-flow: row wrap;
+    justify-content: space-between;
     margin: 16px 0 0;
   }
 
-  &__filter {
-    @include base.typography-typeSetting(3, "bold");
+  // &--etc-gateway
+  &__filters {
+    align-items: baseline;
+    display: flex;
+    flex-flow: row wrap;
+  }
 
+  &__filter {
     display: block;
     margin: 20px 44px 0 0;
     text-align: left;
@@ -381,7 +425,6 @@
     }
   }
 
-  // &--etc-gateway
   &__filter-info {
     @include base.typography-typeSetting(2);
 
@@ -400,7 +443,6 @@
     }
   }
 
-  // &--etc-gateway
   &__filter-date-btn-show {
     @include base.typography-typeSetting(3);
 
@@ -692,44 +734,6 @@
 
     @include mixins.breakpoints-bpMinMedium {
       display: none;
-    }
-  }
-
-  &__link-to-collections {
-    @include base.typography-typeSetting(3);
-
-    color: base.sitecolors-siteColor("vam-grey-4");
-    display: inline-block;
-    margin-top: 16px;
-    position: relative;
-
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(4);
-    }
-
-    &--mobile {
-      @include mixins.breakpoints-bpMinMedium {
-        display: none;
-      }
-    }
-
-    &--desktop {
-      display: none;
-
-      @include mixins.breakpoints-bpMinMedium {
-        display: inline;
-      }
-    }
-
-    &--mobile,
-    &--desktop {
-      &::after {
-        border: 4px solid transparent;
-        border-left-color: currentColor;
-        content: "";
-        display: inline-block;
-        margin-left: 4px;
-      }
     }
   }
 }

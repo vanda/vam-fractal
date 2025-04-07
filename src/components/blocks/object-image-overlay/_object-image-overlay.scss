@@ -163,7 +163,6 @@
     --btn-bg: #{base.sitecolors-siteColor("vam-grey-1")};
     --btn-border: #{base.sitecolors-siteColor("vam-grey-1")};
     --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-2")};
-    --btn-size: 30px;
 
     position: absolute;
     right: 10px;
@@ -267,8 +266,6 @@
   }
 
   &__buttons {
-    --btn-size: 30px;
-
     display: flex;
     flex-shrink: 0;
     gap: 8px;

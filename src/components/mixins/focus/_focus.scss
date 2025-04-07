@@ -32,3 +32,24 @@
   box-shadow: none;
   outline: 0;
 }
+
+@mixin raisedPseudoFocus {
+  /* when default focus style is clipped we can employ
+   * a raised pseudo element on which to apply focus style */
+   position: relative;
+
+   &::before {
+     content: '';
+     inset: 0;
+     position: absolute;
+     z-index: 1;
+   }
+
+   &:focus-visible {
+     @include disableFocus;
+
+     &::before {
+       @include insetFocus;
+     }
+   }
+  }

@@ -11,24 +11,8 @@
     display: block;
     height: 100%;
 
-    /* default focus style is obscured, so employ pseudo element
-     * to apply focus style onto */
-    position: relative;
-
-    &::before {
-      content: '';
-      inset: 0;
-      position: absolute;
-      z-index: 1;
-    }
-
-    &:focus-visible {
-      @include mixins.focus-disableFocus;
-
-      &::before {
-        @include mixins.focus-insetFocus;
-      }
-    }
+    /* default focus style is clipped */
+    @include mixins.focus-raisedPseudoFocus;
 
     @include mixins.breakpoints-bpMaxXSmall {
       display: flex;
