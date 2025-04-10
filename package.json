@@ -11,8 +11,7 @@
   "dependencies": {
     "browser-cookies": "^1.2.0",
     "clamp-js": "^0.7.0",
-    "openseadragon": "^3.x",
-    "surge": "^0.24.6"
+    "openseadragon": "^3.x"
   },
   "scripts": {
     "dev": "NODE_ENV=development concurrently 'node ./fractal-server' 'npm run build-dev:webpack'",
@@ -48,6 +47,7 @@
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-order": "^6.0.4",
     "stylelint-webpack-plugin": "^5.0.1",
+    "surge": "^0.x",
     "svg-sprite-loader": "^6.0.11",
     "svgo-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.6",
