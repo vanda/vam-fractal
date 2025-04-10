@@ -5,13 +5,13 @@
       <img
         alt="{{ promoTitle }}"
         class="b-list-promo__image"
-        srcset="{{ img.image["320"] }} 320w,
-                {{ img.image["640"] }} 640w,
+        srcset="{{ img.image[320] }} 320w,
+                {{ img.image[640] }} 640w,
                 {{ img.image[960] }} 960w,
                 {{ img.image[1280] }} 1280w"
         sizes="(min-width: 768px) 50vw,
                 100vw"
-        src="{{ img.image["640"] }}"
+        src="{{ img.image[640] }}"
         loading="lazy">
     </div>
     {% endfor %}
