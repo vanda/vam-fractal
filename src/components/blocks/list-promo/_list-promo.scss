@@ -2,6 +2,7 @@
 @use "../../base";
 
 .b-list-promo {
+  color: base.sitecolors-siteColor("vam-black");
   display: flex;
   flex-direction: column;
 
@@ -14,6 +15,7 @@
   }
 
   &__info-container {
+    background-color: base.sitecolors-siteColor("vam-white");
     display: flex;
     flex-direction: column;
     padding: 8px 10px 16px;
