@@ -52,6 +52,16 @@ module.exports = {
           960: 'https://picsum.photos/id/130/960/720',
           1280: 'https://picsum.photos/id/130/1280/960'
         },
+      },
+      {
+        listText: 'Tick-mark example',
+        listIcon: 'tick-mark',
+        image: {
+          320: 'https://picsum.photos/id/28/320/240',
+          640: 'https://picsum.photos/id/28/640/480',
+          960: 'https://picsum.photos/id/28/960/720',
+          1280: 'https://picsum.photos/id/28/1280/960'
+        },
       }
     ] 
   },
