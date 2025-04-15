@@ -100,75 +100,9 @@
       width: 20px;
     }
 
-    &--clock {
-      &::before {
-        mask-image: var(--icon-svg-clock);
-      }
-    }
-    
-    &--ticket {
-      &::before {
-        mask-image: var(--icon-svg-ticket);
-      }
-    }
-    
-    &--pin {
-      &::before {
-        mask-image: var(--icon-svg-pin);
-      }
-    }
-    
-    &--map {
-      &::before {
-        mask-image: var(--icon-svg-map);
-      }
-    }
-
-    &--signpost{
-      &::before {
-        mask-image: var(--icon-svg-signpost);
-      }
-    }
-
     &--attention {
       &::before {
         mask-image: var(--icon-svg-attention);
-      }
-    }
-    
-    &--crowded-event {
-      &::before {
-        mask-image: var(--icon-svg-crowded-event);
-      }
-    }
-
-    &--lower-subdued-light {
-      &::before {
-        mask-image: var(--icon-svg-lower-subdued-light);
-      }
-    }
-
-    &--natural-light {
-      &::before {
-        mask-image: var(--icon-svg-natural-light);
-      }
-    }
-
-    &--loud {
-      &::before {
-        mask-image: var(--icon-svg-loud);
-      }
-    }
-
-    &--strong-smells {
-      &::before {
-        mask-image: var(--icon-svg-strong-smells);
-      }
-    }
-
-    &--induction-loop {
-      &::before {
-        mask-image: var(--icon-svg-induction-loop);
       }
     }
 
@@ -178,15 +112,15 @@
       }
     }
 
-    &--search {
+    &--clock {
       &::before {
-        mask-image: var(--icon-svg-search);
+        mask-image: var(--icon-svg-clock);
       }
     }
 
-    &--phone {
+    &--crowded-event {
       &::before {
-        mask-image: var(--icon-svg-phone);
+        mask-image: var(--icon-svg-crowded-event);
       }
     }
 
@@ -196,15 +130,93 @@
       }
     }
 
+    &--induction-loop {
+      &::before {
+        mask-image: var(--icon-svg-induction-loop);
+      }
+    }
+
     &--link {
       &::before {
         mask-image: var(--icon-svg-link);
       }
     }
 
+    &--loud {
+      &::before {
+        mask-image: var(--icon-svg-loud);
+      }
+    }
+
+    &--lower-subdued-light {
+      &::before {
+        mask-image: var(--icon-svg-lower-subdued-light);
+      }
+    }
+
+    &--map {
+      &::before {
+        mask-image: var(--icon-svg-map);
+      }
+    }
+
+    &--natural-light {
+      &::before {
+        mask-image: var(--icon-svg-natural-light);
+      }
+    }
+
+    &--object {
+      &::before {
+        mask-image: var(--icon-svg-object);
+      }
+    }
+
     &--person-one {
       &::before {
         mask-image: var(--icon-svg-person-one);
+      }
+    }
+
+    &--phone {
+      &::before {
+        mask-image: var(--icon-svg-phone);
+      }
+    }
+
+    &--pin {
+      &::before {
+        mask-image: var(--icon-svg-pin);
+      }
+    }
+
+    &--search {
+      &::before {
+        mask-image: var(--icon-svg-search);
+      }
+    }
+
+    &--signpost{
+      &::before {
+        mask-image: var(--icon-svg-signpost);
+      }
+    }
+
+    &--strong-smells {
+      &::before {
+        mask-image: var(--icon-svg-strong-smells);
+      }
+    }
+
+    &--tick-mark {
+      &::before {
+        mask-image: var(--icon-svg-tick-mark);
+      }
+    }
+
+    &--ticket {
+      &::before {
+        mask-image: var(--icon-svg-ticket);
       }
     }
   }
