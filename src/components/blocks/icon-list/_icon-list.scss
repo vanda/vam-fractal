@@ -208,6 +208,12 @@
       }
     }
 
+    &--tick-mark {
+      &::before {
+        mask-image: var(--icon-svg-tick-mark);
+      }
+    }
+
     &--ticket {
       &::before {
         mask-image: var(--icon-svg-ticket);
