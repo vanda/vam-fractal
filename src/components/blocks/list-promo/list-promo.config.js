@@ -14,7 +14,7 @@ module.exports = {
     },
     promoItems: [
       {
-        listText: 'Choose your objects',
+        listText: 'Choose your objects, and more copy that may need to wrap',
         listIcon: 'object',
         image: {
           320: 'https://picsum.photos/id/51/320/240',

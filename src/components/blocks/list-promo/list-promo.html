@@ -25,7 +25,8 @@
     <p class="b-list-promo__strapline">{{ promoDescription }}</p>
     <ul class="b-list-promo__info-list">
       {% for item in promoItems %}
-        <li class="b-list-promo__list-item b-icon-list__item b-icon-list__icon b-icon-list__icon--{{ item.listIcon }}">
+        <li class="b-list-promo__list-item">
+          <div class="b-list-promo__icon b-icon-list__icon b-icon-list__icon--{{ item.listIcon }}"></div>
           {{ item.listText }}
         </li>
       {% endfor %}

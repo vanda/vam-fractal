@@ -130,20 +130,16 @@
     @include base.typography-typeSetting(3);
     @include base.typography-lineheight(3);
 
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 8px;
-    padding-left: 2px;
+    align-items: flex-start;
+    display: flex;
+    gap: 4px;
+    margin-bottom: 6px;
 
     @include mixins.breakpoints-bpMinMedium {
       @include base.typography-typeSetting(4);
       @include base.typography-lineheight(4);
 
-      margin-bottom: 10px;
-    }
-
-    &::before {
-      flex: 0 0 20px;
+      margin-bottom: 8px;
     }
 
     &:last-child {
@@ -151,37 +147,45 @@
     }
 
     &--active {
-      font-variation-settings: "wght" 600;
-      padding-left: 0;
-
-      &::before {
-        color: base.sitecolors-siteColor("vam-white");
-        height: 16px;
-        left: 4px;
-        margin-right: 2px;
-        position: relative;
-        width: 16px;
-        z-index: 2;
-
-        .b-list-promo--dark & {
-          color: base.sitecolors-siteColor("vam-black");
-        }
-      }
-
-      &::after {
-        background-color: base.sitecolors-siteColor("vam-black");
-        border-radius: 50%;
-        content: "";
-        height: 24px;
-        position: absolute;
-        width: 24px;
-        z-index: 1;
-
-        .b-list-promo--dark & {
-          background-color: base.sitecolors-siteColor("vam-white");
-        }
-      }
+      @include base.typography-fontWeight("x-bold");
     }
+  }
+
+  &__icon {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    color: base.sitecolors-siteColor("vam-black");
+    display: flex;
+    flex: 0 0 24px;
+    margin-top: -1px;
+
+    @include mixins.breakpoints-bpMinMedium {
+      flex: 0 0 30px;
+    }
+
+    .b-list-promo--dark & {
+      color: base.sitecolors-siteColor("vam-white");
+    }
+
+    &.b-icon-list__icon::before {
+      height: 83%;
+      margin: auto;
+      width: 83%;
+    }
+  }
+
+  &__list-item--active > &__icon {
+    background-color: base.sitecolors-siteColor("vam-black");
+    color: base.sitecolors-siteColor("vam-white");
+
+    .b-list-promo--dark & {
+      background-color: base.sitecolors-siteColor("vam-white");
+      color: base.sitecolors-siteColor("vam-black");
+    }
+  }
+
+  &__list-item--active > &__icon.b-icon-list__icon::before {
+    scale: 0.86;
   }
 
   &__cta-list {
