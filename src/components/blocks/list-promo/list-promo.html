@@ -1,0 +1,45 @@
+<div class="b-list-promo {% for m in modifier %}b-list-promo--{{ m }}{% endfor %}" aria-label="Promotion: {{ promoTitle }}">
+  <div class="b-list-promo__image-list-container">
+    {% for img in promoItems %}
+    <div class="b-list-promo__image-list-item {% if loop.first == true %}b-list-promo__image-list-item--active {% endif %}">
+      <img
+        alt="{{ promoTitle }}"
+        class="b-list-promo__image"
+        srcset="{{ img.image[320] }} 320w,
+                {{ img.image[640] }} 640w,
+                {{ img.image[960] }} 960w,
+                {{ img.image[1280] }} 1280w"
+        sizes="(min-width: 768px) 50vw,
+                100vw"
+        src="{{ img.image[640] }}"
+        loading="lazy">
+    </div>
+    {% endfor %}
+    <div class="b-list-promo__ctrls">
+      <button class="u-btn-icon u-btn-icon--light u-btn-icon--point-left b-list-promo__ctrls-btn js-list-promo__ctrls-btn--prev" title="Previous item" type="button">Previous</button>
+      <button class="u-btn-icon u-btn-icon--light u-btn-icon--point-right b-list-promo__ctrls-btn js-list-promo__ctrls-btn--next" title="Next item" type="button">Next</button>
+    </div>
+  </div>
+  <div class="b-list-promo__info-container">
+    <h2 class="b-list-promo__title">{{ promoTitle }}</h2>
+    <p class="b-list-promo__strapline">{{ promoDescription }}</p>
+    <ul class="b-list-promo__info-list">
+      {% for item in promoItems %}
+        <li class="b-list-promo__list-item">
+          <div class="b-list-promo__icon b-icon-list__icon b-icon-list__icon--{{ item.listIcon }}"></div>
+          {{ item.listText }}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul class="b-list-promo__cta-list">
+      <li>
+        <a href="{{ urlPrimary.url }}" class="b-list-promo__cta-btn u-btn u-btn--{% if modifier %}white{% else %}black{% endif %}">{{ urlPrimary.text }}</a>
+      </li>
+      {% if urlSecondary %}
+        <li>
+          <a href="{{ urlSecondary.url }}" class="b-list-promo__cta-btn u-btn u-btn--{% if modifier %}outlined-inverse{% else %}outlined{% endif %}">{{ urlSecondary.text }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
