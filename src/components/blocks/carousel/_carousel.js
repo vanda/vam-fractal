@@ -8,11 +8,9 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
 
   /* Carousel logic only required for > 1 item */
   if (items.length > 1) {
-    const carouselUnclipped = carousel.classList.contains('b-carousel--unclipped');
     const viewport = carousel.querySelector('.b-carousel__viewport');
     carousel._activeIndex = 0;
     carousel._oldActiveIndex = 0;
-    let itemsOffset = 0;
     let visibleItemIndexes = [];
 
     /* ensure each item is tabbable for keyboard navigation */
@@ -63,19 +61,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
      * and scrolling into view, if required */
     carousel._setActiveItem = (item, scrollToItem = true) => {
       /* move active item into view */
-      if (carouselUnclipped) {
-        carousel._activeIndex = items.indexOf(item);
-        const itemSpan = items[1].offsetLeft - items[0].offsetLeft;
-        itemsOffset = carousel._activeIndex * itemSpan;
-        /* last items need special right-alignment */
-        if (carousel._activeIndex >= items.length - itemsPerView) {
-          itemsOffset -= ((1 - (item.offsetWidth / carousel.offsetWidth)) * carousel.offsetWidth);
-          itemsOffset += (items.length - carousel._activeIndex - 1) * itemSpan;
-        }
-        carousel.style.setProperty('--items-offset', `-${itemsOffset}px`);
-      } else {
-        if (scrollToItem) scrollIntoViewHorizontally(item, viewport, carousel); // eslint-disable-line no-lonely-if, max-len
-      }
+      if (scrollToItem) scrollIntoViewHorizontally(item, viewport, carousel); // eslint-disable-line no-lonely-if, max-len
 
       /* dispatch an event to be heard by the detachable buttons
       * and anything else waiting to react */
@@ -197,39 +183,6 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
           next.setAttribute('disabled', 'true');
         }
       });
-    }
-
-    /* add swipe/drag gesture support for non-native-scrolling carousels */
-    if (carouselUnclipped) {
-      viewport.ontouchstart = (e) => {
-        const startXY = [e.touches[0].pageX, e.touches[0].pageY];
-        viewport.ontouchmove = (e2) => {
-          const deltaXY = [e2.touches[0].pageX - startXY[0], e2.touches[0].pageY - startXY[1]];
-          if (Math.abs(deltaXY[0]) > Math.abs(deltaXY[1])
-            && (
-              (deltaXY[0] < 0 && carousel._activeIndex < items.length - 1)
-              || (deltaXY[0] > 0 && carousel._activeIndex > 0)
-            )) {
-            /* if touch moves significantly horizontally
-             * activate prev/next item swipe */
-            if (Math.abs(deltaXY[0]) > 74) {
-              viewport.ontouchmove = null;
-              if (deltaXY[0] < 0) {
-                carousel._setActiveItem(items[carousel._activeIndex + itemsPerView] || items[items.length - 1]); // eslint-disable-line max-len
-              } else {
-                carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
-              }
-            } else {
-              /* else just drag */
-              carousel.style.setProperty('--items-offset', `${deltaXY[0] - itemsOffset}px`);
-              viewport.ontouchend = () => {
-                carousel._setActiveItem(items[carousel._activeIndex]);
-                viewport.ontouchend = null;
-              };
-            }
-          }
-        };
-      };
     }
   }
 
