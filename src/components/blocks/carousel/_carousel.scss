@@ -43,7 +43,7 @@
   &__viewport {
     margin: 0 calc(-1 * var(--carousel-overflow));
     overflow-x: auto;
-    padding: 0 var(--carousel-overflow); // ensures scripted scrolling to each end aligns w/ carousel width
+    padding-left: var(--carousel-overflow); // pad the list so that first item aligns w/ carousel width
     scroll-behavior: smooth; // necessary to prevent browser jumping instantly when focussing off-screen elements
     scroll-padding: 0 var(--carousel-overflow);
     scroll-snap-type: x;
@@ -59,7 +59,7 @@
     gap: var(--items-gap);
     transform: translateX(0); // ensures browser can't cause any unwanted shifting
 
-    // pseudo el used to pad the list so that end items align w/ carousel width
+    // pseudo el used to pad the list so that end item aligns w/ carousel width
     &::after {
       color: transparent;
       content: '.';
