@@ -4,13 +4,11 @@
 .b-carousel {
   --carousel-width: 100%;
   --carousel-template-width: 100%;
-  --carousel-max-width: min(100vw, var(--carousel-template-width));
-  --carousel-overflow: calc((var(--carousel-max-width) - var(--carousel-width)) / 2);
+  --carousel-outer-width: min(100vw, var(--carousel-template-width));
+  --carousel-overflow: calc((var(--carousel-outer-width) - var(--carousel-width)) / 2);
   --item-max-width: var(--carousel-width);
   --items-gap: 10px;
   --items-per-view: 1;
-  --items-offset: 0;
-  --transition-time: 500ms;
 
   margin-bottom: 10px;
   width: 100%;
@@ -30,10 +28,6 @@
     --items-gap: 30px;
   }
 
-  &--unclipped {
-    --carousel-max-width: min(100vw, #{mixins.breakpoints-bp("largest")});
-  }
-
   &__ctrls {
     display: none;
 
@@ -47,19 +41,15 @@
   }
 
   &__viewport {
-    margin: 0 calc(-1 * var(--carousel-overflow)) 0 0;
+    margin: 0 calc(-1 * var(--carousel-overflow));
     overflow-x: auto;
+    padding-left: var(--carousel-overflow); // pad the list so that first item aligns w/ carousel width
     scroll-behavior: smooth; // necessary to prevent browser jumping instantly when focussing off-screen elements
-    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--carousel-overflow);
+    scroll-snap-type: x;
     scrollbar-color: base.sitecolors-siteColor("vam-grey-3") transparent;
     scrollbar-width: none;
-    
-    .b-carousel--unclipped > & {
-      margin: 0 calc(-1 * var(--carousel-overflow));
-      overflow: hidden;
-      padding: 0 var(--carousel-overflow);
-      scroll-snap-type: none;
-    }
+    width: var(--carousel-outer-width);
   }
 
   &__list {
@@ -67,10 +57,9 @@
 
     display: flex;
     gap: var(--items-gap);
-    transform: translateX(var(--items-offset));
-    transition: transform var(--transition-time) ease;
+    transform: translateX(0); // ensures browser can't cause any unwanted shifting
 
-    // pseudo el used to pad the list so that last item right-aligns w/ ctrls
+    // pseudo el used to pad the list so that end item aligns w/ carousel width
     &::after {
       color: transparent;
       content: '.';

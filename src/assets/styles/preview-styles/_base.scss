@@ -40,8 +40,7 @@ h2 {
 
 .fr-content-wrapper,
 .fr-content-bg {
-  margin: auto;
-  max-width: 1200px;
+  padding: 0 calc((100vw - 1200px) / 2);
 }
 
 .fr-content-bg {

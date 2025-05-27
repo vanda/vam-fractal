@@ -12,13 +12,6 @@ module.exports = {
         previewClass: 'fr-content-wrapper fr-bg--dark',
         lightDarkTheme: 's-light-dark-theme--dark'
       }
-    },
-    {
-      name: 'Unclipped',
-      label: 'Unclipped',
-      context: {
-        modifiers: ['unclipped']
-      }
     }
   ]
 };
