@@ -196,6 +196,12 @@
       }
     }
 
+    &--shop-bag {
+      &::before {
+        mask-image: var(--icon-svg-shop-bag);
+      }
+    }
+
     &--signpost{
       &::before {
         mask-image: var(--icon-svg-signpost);
