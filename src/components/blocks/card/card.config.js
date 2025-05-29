@@ -12,17 +12,17 @@ module.exports = {
   },
   variants: [
     {
-      name: 'picture-card',
-      label: 'Picture Card',
-      context: {
-        modifier: ['picture-card']
-      }
-    },
-    {
       name: 'featured',
       label: 'Default - Featured',
       context: {
         modifier: ['featured']
+      }
+    },
+    {
+      name: 'picture-card',
+      label: 'Picture Card',
+      context: {
+        modifier: ['picture-card']
       }
     },
     {
