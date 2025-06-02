@@ -3,9 +3,8 @@
 @use "sass:map";
 
 $nav-breakpoints: (
-  "small": 768px,
-  "medium": 992px,
-  "large": 1050px
+  "small": 992px,
+  "large": 1150px
 );
 
 @mixin bpMinNav($breakpoint) {
@@ -136,8 +135,7 @@ $nav-breakpoints: (
 
   &__mobile-toggle,
   &__mobile-toggle-text,
-  &__mobile-bag,
-  &__core__bag,
+  &__bag,
   &__core__search-btn {
     cursor: pointer;
   }
@@ -162,8 +160,7 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle,
-  &__mobile-bag,
-  &__core__bag,
+  &__bag,
   &__core__search-btn {
     background: transparent;
     border: 2px solid currentColor;
@@ -184,45 +181,33 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle,
-  &__mobile-bag,
+  &__mobile-extras,
   &__core__rhs {
     @include bpMinNav("small") {
       display: none;
     }
   }
 
-  &__mobile-bag {
+  &__mobile-extras {
+    align-items: center;
+    display: flex;
     float: right;
     margin: 20px 60px 0 0;
-    position: relative;
   }
 
   &__core__rhs {
     display: none;
 
     @include bpMinNav("small") {
-      display: inline-block;
-    }
-
-    @include mixins.breakpoints-bpMinLarge {
-      right: calc(50% - 590px);
+      align-items: center;
+      display: inline-flex;
     }
   }
 
-  &__core__bag,
   &__core__search-btn {
     float: left;
     position: relative;
-  }
 
-  &__mobile-bag,
-  &__core__bag {
-    > svg {
-      margin: 1px 3px 5px;
-    }
-  }
-
-  &__core__search-btn {
     > #{&}-open {
       margin: 7px;
     }
@@ -240,9 +225,19 @@ $nav-breakpoints: (
     }
   }
 
+  .u-btn {
+    margin: 0;
+  }
+
   &__bag {
+    position: relative;
+
     &--hidden {
       display: none;
+    }
+
+    > svg {
+      margin: 1px 3px 5px;
     }
   }
 
@@ -325,10 +320,6 @@ $nav-breakpoints: (
       padding: 0 10px;
       position: relative;
       top: 0;
-    }
-
-    @include mixins.breakpoints-bpMinSmall {
-      padding: 0 65px;
     }
   }
 
@@ -441,12 +432,8 @@ $nav-breakpoints: (
       }
     }
 
-    @include bpMinNav("medium") {
+    @include bpMinNav("small") {
       margin: 23px 16px;
-
-      &--learning {
-        display: inline;
-      }
     }
 
     @include bpMinNav("large") {
@@ -454,6 +441,7 @@ $nav-breakpoints: (
         display: none;
       }
 
+      &--learning,
       &--join,
       &--shop {
         display: inline;
@@ -483,13 +471,6 @@ $nav-breakpoints: (
 
   &__core__overflowitem {
     margin: 0 0 8px 20px;
-
-    @include bpMinNav("medium") {
-      &--collections,
-      &--learning {
-        display: none;
-      }
-    }
 
     /* stylelint-disable no-descending-specificity */
     > a {
