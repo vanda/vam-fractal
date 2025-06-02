@@ -145,14 +145,9 @@ $nav-breakpoints: (
     float: right;
     font-size: 18px;
     font-weight: 500;
-    margin: 26px 62px 0 0;
     text-shadow:
       0 1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%),
       0 -1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%);
-
-    @media (width <= "286px") {
-      display: none;
-    }
 
     &--hidden {
       display: none;
@@ -171,7 +166,6 @@ $nav-breakpoints: (
       inset 0 0 50px 4px rgba(0, 0, 0, 24%);
     display: inline-flex;
     height: 40px;
-    margin-left: 10px;
     width: 40px;
 
     > svg {
@@ -192,7 +186,13 @@ $nav-breakpoints: (
     align-items: center;
     display: flex;
     float: right;
+    gap: 10px;
+    height: 40px;
     margin: 20px 60px 0 0;
+
+    @media (width <= "370px") {
+      display: none;
+    }
   }
 
   &__core__rhs {
@@ -201,6 +201,7 @@ $nav-breakpoints: (
     @include bpMinNav("small") {
       align-items: center;
       display: inline-flex;
+      gap: 10px;
     }
   }
 
