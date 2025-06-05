@@ -29,32 +29,36 @@ In order for Wordmarks to scale properly they need `preserveAspectRatio="xMinYMa
   
      If a development build has been run and Webpack is watching files in `src/assets` then the new SVG icon will be bundled immediately into the SVG sprite at `build/svg/vam-sprite.svg`
 
-     Running either the development build or creating a Fractal 'static build' will incorporate the new SVG icon into the SVG sprite. 
+     Running either the development build or creating a Fractal 'static build' will incorporate the new SVG icon into the SVG sprite in the format detailed below. 
 
-     The SVG icon is optimised before addition into the sprite and processed in a `<symbol>` container with the icon `Id` and a `viewbox` attribute (position and dimensional information). Eg. 
+     The SVG icon is optimised before addition into the sprite and processed in a `<symbol>` container with the icon `id` and a `viewbox` attribute (position and dimensional information). Note that the associated `view` and `use` elements also contain vertical, incremental positional data for the icon within the SVG sprite. The `id` of the `<view>` is the symbol fragment identifier or reference used in the CSS, `calendar-view` in this case.
+     
+     Eg. 
 
      ```html
-     <symbol id="south-kensington" viewBox="0 0 100 100"><path d="..." fill="currentColor"/></symbol>
+     <view xmlns="http://www.w3.org/2000/svg" id="calendar-view" viewBox="0 975 16 16"/>
+     <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#calendar" x="0" y="975" width="16" height="16"/>
+     <symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" id="calendar">
+      <path fill="currentColor" fill-rule="evenodd" d="..." clip-rule="evenodd"/>
+     </symbol>
      ```
 
-     The SVG icon is optimised before addition into the sprite and the sprite itself is then minified for distribution.
   
   2. Edit `src/components/base/icons/icons.config.js`, adding the name of the icon taken from the `<symbol>` 'id' attribute to the array
 
   ### Previewing the new icon
   The new icon should be viewable along with existing icons in the SVG sprite of a local build of vam-fractal at `build/svg/vam-sprite.svg`.
 
+  It may also be previewed within Fractal at [http://localhost:8000/components/detail/icons--all](http://localhost:8000/components/detail/icons--all) during development or at [https://vam-fractal-main.surge.sh/components/detail/icons--all](https://vam-fractal-main.surge.sh/components/detail/icons--all) when deployed to Surge.
+
 ## Using SVG Icons directly in CSS
-In order to reduce the need for including SVG markup, improving performance, maintainability and flexibility, the SVG Icons are made available to CSS by hard-coding a copy of each SVG Icon's symbol source into a CSS Custom Property in `base/icons/_icons.scss`, as a Data URI, which other styles can access from anywhere without further duplication. 
+In order to reduce the need for including SVG markup, improving performance, maintainability and flexibility, the SVG Icons are made available to CSS through the sprite symbol fragment identifier.
 
-Currently the copy process is manual (see *ToDo* comment below), and the source of the SVG symbol should be copied from its built sprite-sheet (`build/svg/vam-sprite.svg`) where it will have been optimised by the `svgo` plugin. 
-
-[See a simple useage example here](/components/detail/icons--css-icons)
-styled as follows:
+See a simple locally served useage example here: [http://localhost:8000/components/detail/icons--css-icons](http://localhost:8000/components/detail/icons--css-icons) styled as follows:
 ```css
-.fr-css-icon-example {
+.fr-css-icon-fragment-identifier-example {
   align-items: flex-start;
-  color: red;
+  color: rebeccapurple;
   display: flex;
   gap: 4px;
 
@@ -63,12 +67,19 @@ styled as follows:
     content: '';
     flex: 0 0 auto;
     height: 20px;
-    mask: var(--icon-svg-pin) no-repeat;
     width: 20px;
+  }
+
+  &--pin {
+    &::before {
+      mask: url('../svg/vam-sprite.svg#pin-view') no-repeat;
+    }
   }
 }
 ```
-In order to allow for dynamic colouring of SVG Icons (which is not possible in the usual way for SVGs, as Data URIs in CSS), the Icon is implemnted as a **mask** on a pseudo-element. In this way the Icon can be coloured via the pseudo-element's background-color, which in turn inherits from it's parent's colour.
+In this particular example we are targeting the `pin-view` symbol fragment identifier in the SVG sprite.
+
+In order to allow for dynamic colouring of SVG icons, the icon is implemented as a **mask** on a pseudo-element. In this way the icon can be coloured via the pseudo-element's `background-color` property, which in turn inherits from its parent's colour.
 
 Further examples of these in use can be seen in [Button Icon component](/components/detail/button-icon).
 
@@ -76,12 +87,6 @@ CSS transformations can be used to minimise the need for superflous Icon styles.
 
   ### Accessibility
   A `title` attribute should be added to inform screenreader and visible users alike (via hover tooltip) of the Icon's intended meaning.
-
-  ### ToDo
-  Have Fractal write out these SVG Icon CSS Custom Properties automatically on adding new SVG Icon assets, as part of the build process.
-
-  As a further improvement, we aim to make the Icons directly accessible from the SVG sprite-sheet, via the symbols' fragment identifiers (e.g. `vam-sprite.svg#icon-name`), in the same way HTML is able to. This will require adding an extra clever step to the SVG build process to programatically include appropriate `view` & `use` tags into the sprite-sheet for each Icon symbol. 
-  https://stackoverflow.com/a/49338546
 
 ## References
 - [SVG 'symbol' a good choice for icons](https://css-tricks.com/svg-symbol-good-choice-icons/)

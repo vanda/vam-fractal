@@ -31,3 +31,5 @@
   --icon-svg-view: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3E%3Cpath fill='currentColor' fill-rule='evenodd' d='M15.667 8s-2 5-7.334 5C3 13 1 8 1 8s2.333-5 7.333-5 7.334 5 7.334 5Zm-5.25-.013a2.083 2.083 0 1 1-4.167 0 2.083 2.083 0 0 1 4.167 0Zm1.25 0a3.333 3.333 0 1 1-6.667 0 3.333 3.333 0 0 1 6.667 0Z' clip-rule='evenodd'/%3E%3C/svg%3E");
   --icon-svg-watch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3E%3Cpath fill='currentColor' d='M13 8 5 3v10l8-5Z'/%3E%3C/svg%3E");
 }
+
+$svgSpritePath: '../svg/vam-sprite.svg';

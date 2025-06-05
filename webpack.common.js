@@ -19,6 +19,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Process SVG files
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const ProcessSvgSpritePlugin = require(path.resolve(__dirname, 'src/assets/scripts/webpack-plugins/ProcessSvgSpritePlugin.js'));
 
 // Default configuration
 const config = {
@@ -52,7 +53,18 @@ const config = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              url: {
+                filter: (url) => {
+                  if (url.includes('vam-sprite.svg')) {
+                    return false;
+                  }
+
+                  return true;
+                },
+              },
+            },
           }, 
           {
             loader: 'postcss-loader',
@@ -92,7 +104,7 @@ const config = {
             options: {
               extract: true,
               spriteFilename: 'svg/vam-sprite.svg',
-              esModule: false
+              esModule: false,
             }
           },
           {
@@ -118,7 +130,8 @@ const config = {
       spriteAttrs: {
         class: 's-svg-icon'
       }
-    })
+    }),
+    new ProcessSvgSpritePlugin(),
   ]
 };
 
