@@ -115,6 +115,9 @@
     &--clock {
       &::before {
         mask-image: var(--icon-svg-clock);
+
+        // ToDo: new format to access the sprite SVG directly:
+        // mask-image: url("#{base.$icons-svgSpritePath}#clock-view");
       }
     }
 
@@ -187,6 +190,9 @@
     &--pin {
       &::before {
         mask-image: var(--icon-svg-pin);
+
+        // ToDo: new format to access the sprite SVG directly:
+        // mask-image: url("#{base.$icons-svgSpritePath}#pin-view");
       }
     }
 
