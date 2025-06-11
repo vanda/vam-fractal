@@ -5,7 +5,6 @@ const siteNav = document.querySelector('.b-site-nav');
 if (siteNav) {
   const mobileNavToggle = siteNav.querySelectorAll('.js-site-nav__mobile-toggle');
   const mobileNavToggleIcon = siteNav.querySelector('.js-site-nav__mobile-toggle--icon');
-  const mobileNavToggleText = siteNav.querySelector('.js-site-nav__mobile-toggle-text');
   const navBags = siteNav.querySelectorAll('.js-site-nav-bag');
   const navSearchBtn = siteNav.querySelector('.js-site-nav-search-btn');
   const navSearch = siteNav.querySelector('.js-site-nav-search');
@@ -21,7 +20,6 @@ if (siteNav) {
       navBag.querySelector('.js-site-nav-bag-total').innerHTML = shopCookieBagTotal < 100 ? shopCookieBagTotal : '';
       return true;
     });
-    mobileNavToggleText.classList.add('b-site-nav__mobile-toggle-text--hidden');
   }
 
   if (mobileNavToggleIcon && window.getComputedStyle(mobileNavToggleIcon).display !== 'none') {
