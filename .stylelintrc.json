@@ -34,6 +34,7 @@
         {
           "message": "Expected class selector to be lowercase, hyphen-delimited words and/or in BEM format: block-name__elem-name--mod-name"
         }
-      ]
+      ],
+      "color-function-alias-notation": null
   }
 }
