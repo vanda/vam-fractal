@@ -120,7 +120,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     carousel._viewport.addEventListener('click', (e) => {
       if (carouselEnabled) {
         const item = e.target.closest('.b-carousel__item');
-        if (!visibleItemIndexes.includes(items.indexOf(item))) {
+        if (item && !visibleItemIndexes.includes(items.indexOf(item))) {
           e.preventDefault();
           e.stopImmediatePropagation();
           carousel._setActiveItem(item);
@@ -143,7 +143,6 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     /* onResize reset template params & re-centre active item */
     window.addEventListener('resize', () => {
       setTemplateParams();
-      carousel._setActiveItem(items[carousel._activeIndex]);
     });
 
     /* initialise carousel control buttons */
