@@ -120,7 +120,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     carousel._viewport.addEventListener('click', (e) => {
       if (carouselEnabled) {
         const item = e.target.closest('.b-carousel__item');
-        if (!visibleItemIndexes.includes(items.indexOf(item))) {
+        if (item && !visibleItemIndexes.includes(items.indexOf(item))) {
           e.preventDefault();
           e.stopImmediatePropagation();
           carousel._setActiveItem(item);
