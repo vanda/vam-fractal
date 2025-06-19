@@ -186,6 +186,12 @@
       }
     }
 
+    &--shop-bag {
+      &::before {
+        mask-image: var(--icon-svg-shop-bag);
+      }
+    }
+
     &--phone {
       &::before {
         mask-image: var(--icon-svg-phone);
