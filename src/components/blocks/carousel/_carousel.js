@@ -143,7 +143,6 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     /* onResize reset template params & re-centre active item */
     window.addEventListener('resize', () => {
       setTemplateParams();
-      carousel._setActiveItem(items[carousel._activeIndex]);
     });
 
     /* initialise carousel control buttons */
