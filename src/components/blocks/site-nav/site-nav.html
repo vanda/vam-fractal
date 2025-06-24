@@ -1,6 +1,6 @@
 <a class="b-site-nav__access-nav-link b-site-nav__access-nav-link--home" href="#main-content">Skip to main content</a>
 
-<nav class="b-site-nav" id="vam_nav" aria-label="Main">
+<nav class="b-site-nav" id="vam_nav">
 
   <div class="b-site-nav__mobile" aria-hidden="true">
     <a class="b-site-nav__logo b-site-nav__logo--mobile" href="https://www.vam.ac.uk" title="All V&A">
@@ -9,18 +9,20 @@
       </svg>
     </a>
 
-    <span id="b-site-nav__mobile-toggle-text" class="b-site-nav__mobile-toggle-text js-site-nav__mobile-toggle-text js-site-nav__mobile-toggle">
-      Menu
-    </span>
-    <a class="b-site-nav__mobile-bag b-site-nav__bag--hidden js-site-nav-bag" href="https://www.vam.ac.uk/shop/basket/" title="view your shopping bag" aria-label="view your shopping bag">
-      <svg aria-hidden="true">
-        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#bag"></use>
-      </svg>
-      <span class="b-site-nav__bag-total js-site-nav-bag-total"></span>
-    </a>
+    <div class="b-site-nav__mobile-extras">
+      <a class="u-btn u-btn--micro theme-young-chartreuse-yellow s-themed--background-color s-themed--border-color s-themed--background-color--hover s-themed--border-color--hover" href="https://www.vam.ac.uk/shop/membership">
+        Become a Member
+      </a>
+      <a class="b-site-nav__bag b-site-nav__bag--hidden js-site-nav-bag" href="https://www.vam.ac.uk/shop/basket/" title="view your shopping bag" aria-label="view your shopping bag">
+        <svg aria-hidden="true">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#bag"></use>
+        </svg>
+        <span class="b-site-nav__bag-total js-site-nav-bag-total"></span>
+      </a>
+    </div>
   </div>
 
-  <a title="Menu" aria-labelledby="b-site-nav__mobile-toggle-text" aria-expanded="false" class="b-site-nav__mobile-toggle js-site-nav__mobile-toggle js-site-nav__mobile-toggle--icon" href="#vam_nav">
+  <a title="Menu" aria-expanded="false" class="b-site-nav__mobile-toggle js-site-nav__mobile-toggle js-site-nav__mobile-toggle--icon" href="#vam_nav">
     <svg aria-hidden="true" class="b-site-nav__mobile-toggle__icon--hamburger">
       <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#menu-hamburger"></use>
     </svg>
@@ -104,7 +106,7 @@
         <ul class="b-site-nav__core__overflowitems">
           <li class="b-site-nav__core__overflowitem b-site-nav__core__overflowitem--learning">
             <a id="more-learn" href="https://www.vam.ac.uk/info/learn/">
-              Learning
+              Learn
             </a>
           </li>
           <li class="b-site-nav__core__overflowitem b-site-nav__core__overflowitem--join">
@@ -121,7 +123,10 @@
       </li>
     </ul>
     <div class="b-site-nav__core__rhs">
-      <a class="b-site-nav__core__bag b-site-nav__bag--hidden js-site-nav-bag" href="https://www.vam.ac.uk/shop/basket/" title="View your shopping bag" aria-label="View your shopping bag">
+      <a class="u-btn u-btn--micro theme-young-chartreuse-yellow s-themed--background-color s-themed--border-color s-themed--background-color--hover s-themed--border-color--hover" href="https://www.vam.ac.uk/shop/membership">
+        Become a Member
+      </a>
+      <a class="b-site-nav__bag b-site-nav__bag--hidden js-site-nav-bag" href="https://www.vam.ac.uk/shop/basket/" title="View your shopping bag" aria-label="View your shopping bag">
         <svg aria-hidden="true">
           <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#bag"></use>
         </svg>
