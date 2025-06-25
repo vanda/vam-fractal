@@ -100,7 +100,6 @@ body {
   background-color: site-color.siteColor("vam-white");
   color: site-color.siteColor("vam-black");
   font-family: typography.fontFamily("text");
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -135,7 +134,7 @@ table {
 html,
 body {
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 *,
