@@ -1,20 +1,20 @@
-<div class="b-carousel" data-tracking-id="Example Carousel">
-  <div class="b-carousel__viewport">
-    <div class="b-carousel__list">
-      {% for n in [1, 2, 3, 4, 5, 6, 7, 8] %}
-      <div class="b-carousel__item">
+<div class="b-carousel {% if lightDarkTheme %}{{ lightDarkTheme }}{% endif %}" data-carousel-template-parent-selector="html" data-tracking-id="Example Carousel">
+  <div class="b-carousel__viewport" tabindex="-1">
+    <ol class="b-carousel__list">
+      {% for n in [1, 2, 3, 4, 5, 6, 7, 8, 9] %}
+      <li class="b-carousel__item">
         {% if n % 2 %}
-          {%- render "@object-card" -%}
+          {%- render "@card" -%}
         {% else %}
-          {%- render "@collection-card" -%}
-        {% endif %}
-      </div>
+          {%- render "@card--picture-card" -%}
+        {% endif %}{{ n-1 }}
+      </li>
       {% endfor %}
-    </div>
+    </ol>
   </div>
 
   <div class="b-carousel__ctrls">
-    <button class="js-carousel__ctrl--prev u-btn-icon u-btn-icon--light u-btn-icon--point-left" disabled title="Previous">Previous</button>
-    <button class="js-carousel__ctrl--next u-btn-icon u-btn-icon--light u-btn-icon--point-right" title="Next">Next</button>
+    <button class="js-carousel__ctrl--prev u-btn-icon u-btn-icon--point-left" disabled title="Previous">Previous</button>
+    <button class="js-carousel__ctrl--next u-btn-icon u-btn-icon--point-right" title="Next">Next</button>
   </div>
 </div>

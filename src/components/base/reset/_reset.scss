@@ -100,7 +100,6 @@ body {
   background-color: site-color.siteColor("vam-white");
   color: site-color.siteColor("vam-black");
   font-family: typography.fontFamily("text");
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -128,11 +127,14 @@ table {
 }
 
 // end resets, start defaults
+:root {
+  interpolate-size: allow-keywords;
+}
 
 html,
 body {
   box-sizing: border-box;
-  height: 100%;
+  overflow-x: clip;
 }
 
 *,

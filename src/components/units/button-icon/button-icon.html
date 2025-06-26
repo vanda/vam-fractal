@@ -3,7 +3,7 @@
 <div class="fr-button-icon">
 
   {% for icon in icons %}
-  <button class="u-btn-icon{% for m in modifiers %} u-btn-icon--{{ m }}{% endfor %} u-btn-icon--{{ icon }}" title="{{ label }}">
+  <button class="u-btn-icon{% for m in modifiers %} u-btn-icon--{{ m }}{% endfor %} u-btn-icon--{{ icon }} {% if lightDarkTheme %}{{ lightDarkTheme }}{% endif %}" title="{{ label }}">
     {{ label }}
   </button>
   {% endfor %}

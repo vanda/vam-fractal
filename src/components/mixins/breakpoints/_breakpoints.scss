@@ -5,7 +5,8 @@ $breakpoints: (
   "small": 768px,
   "medium": 992px,
   "large": 1200px,
-  "x-large": 1600px
+  "x-large": 1600px,
+  "largest": 2560px
 );
 
 @function bp($size) {

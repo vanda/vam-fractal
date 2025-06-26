@@ -1,0 +1,78 @@
+@use "../../base";
+@use "../../mixins";
+
+.u-icon-label-tag {
+  @include base.typography-typeSetting(2);
+
+  align-items: center;
+  background: base.sitecolors-siteColor(vam-white);
+  border-radius: 2px;
+  color: base.sitecolors-siteColor(vam-black);
+  display: flex;
+  gap: 4px;
+  left: 10px;
+  padding: 2px 4px;
+  position: absolute;
+  top: 10px;
+
+  &__icon {
+    &::before {
+      align-items: center;
+      background-color: currentColor;
+      content: '';
+      display: flex;
+      height: 16px;
+      justify-content: center;
+      mask-repeat: no-repeat;
+      width: 16px;
+    }
+
+    &--read {
+      &::before {
+        mask-image: var(--icon-svg-quote);
+      }
+    }
+
+    &--interact {
+      &::before {
+        mask-image: var(--icon-svg-interact);
+      }
+    }
+
+    &--view {
+      &::before {
+        mask-image: var(--icon-svg-view);
+      }
+    }
+
+    &--download {
+      &::before {
+        mask-image: var(--icon-svg-download);
+      }
+    }
+
+    &--visit {
+      &::before {
+        mask-image: var(--icon-svg-pin);
+      }
+    }
+
+    &--watch {
+      &::before {
+        mask-image: var(--icon-svg-watch);
+      }
+    }
+
+    &--listen {
+      &::before {
+        mask-image: var(--icon-svg-listen);
+      }
+    }
+
+    &--make {
+      &::before {
+        mask-image: var(--icon-svg-make);
+      }
+    }
+  }
+}
