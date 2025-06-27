@@ -109,12 +109,12 @@
   }
 
   &__cell-free-content {
-    word-break: break-word;
+    overflow-wrap: anywhere;
 
     &--hidden {
       height: 200px;
       overflow: hidden;
-      word-break: break-word;
+      overflow-wrap: anywhere;
     }
   }
 

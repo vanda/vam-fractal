@@ -15,6 +15,7 @@
 @use "../../components/blocks/associated-contexts/associated-contexts";
 @use "../../components/blocks/background-image/background-image";
 @use "../../components/blocks/background-video/background-video";
+@use "../../components/blocks/card/card";
 @use "../../components/blocks/collection-card/collection-card";
 @use "../../components/blocks/context-page-title/context-page-title";
 @use "../../components/blocks/cookie-banner/cookie-banner";
@@ -28,6 +29,7 @@
 @use "../../components/blocks/icon-list/icon-list";
 @use "../../components/blocks/image-carousel/image-carousel";
 @use "../../components/blocks/image-credit/image-credit";
+@use "../../components/blocks/list-promo/list-promo";
 @use "../../components/blocks/modal/modal";
 @use "../../components/blocks/image-overlay-license-modal/image-overlay-license-modal";
 @use "../../components/blocks/image-row/image-row";
@@ -50,7 +52,7 @@
 @use "../../components/blocks/search-sidebar-item/search-sidebar-item";
 @use "../../components/blocks/site-footer/site-footer";
 @use "../../components/blocks/site-nav/site-nav";
-@use "../../components/blocks/toggle-nav/toggle-nav";
+@use "../../components/blocks/toggle-set/toggle-set";
 @use "../../components/blocks/top-header-bar/top-header-bar";
 @use "../../components/blocks/venue-card/venue-card";
 @use "../../components/blocks/video-thumbnail/video-thumbnail";

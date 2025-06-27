@@ -27,8 +27,6 @@
   }
 
   &__exit {
-    --btn-size: 32px;
-
     float: right;
 
     @include mixins.breakpoints-bpMinXSmall {

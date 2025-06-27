@@ -1,20 +1,22 @@
+@use "../../base";
 @use "../../mixins";
 
 .b-carousel {
-  --template-width: 1200px;
-  --item-max-width: var(--template-width);
+  --carousel-width: 100%;
+  --carousel-template-width: 100%;
+  --carousel-outer-width: min(100vw, var(--carousel-template-width));
+  --carousel-overflow: calc((var(--carousel-outer-width) - var(--carousel-width)) / 2);
+  --item-max-width: var(--carousel-width);
+  --items-gap: 10px;
   --items-per-view: 1;
-  --items-offset: 0;
-  --transition-speed: 0.5s;
 
   margin-bottom: 10px;
   width: 100%;
 
-  @include mixins.breakpoints-bpMinXSmall {
-    --items-per-view: 2;
-  }
-
   @include mixins.breakpoints-bpMinSmall {
+    --items-per-view: 2;
+    --items-gap: 20px;
+
     margin-bottom: 20px;
   }
 
@@ -22,50 +24,65 @@
     --items-per-view: 3;
   }
 
+  @include mixins.breakpoints-bpMinLarge {
+    --items-gap: 30px;
+  }
+
   &__ctrls {
     display: none;
 
     &--active {
-      @include mixins.breakpoints-bpMinSmall {
-        display: flex;
-        gap: 6px;
-        justify-content: flex-end;
-        margin: 20px auto;
-        max-width: var(--template-width);
-      }
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+      margin: 20px auto;
+      max-width: var(--carousel-width);
     }
   }
 
   &__viewport {
-    margin: 0 calc((var(--template-width) - 100vw) / 2);
-    overflow: hidden;
-    padding: 0 calc((100vw - var(--template-width)) / 2);
+    margin: 0 calc(-1 * var(--carousel-overflow));
+    overflow-x: auto;
+    padding-left: var(--carousel-overflow); // pad the list so that first item aligns w/ carousel width
     scroll-behavior: smooth; // necessary to prevent browser jumping instantly when focussing off-screen elements
+    scroll-padding: 0 var(--carousel-overflow);
+    scroll-snap-type: x;
+    scrollbar-color: base.sitecolors-siteColor("vam-grey-3") transparent;
+    scrollbar-width: none;
+    width: var(--carousel-outer-width);
   }
 
   &__list {
-    display: flex;
-    gap: 10px;
-    transform: translateX(var(--items-offset));
-    transition: transform var(--transition-speed) ease;
+    @include mixins.unstyledelements-unstyledList;
 
-    @include mixins.breakpoints-bpMinSmall {
-      gap: 30px;
+    display: flex;
+    gap: var(--items-gap);
+    transform: translateX(0); // ensures browser can't cause any unwanted shifting
+
+    // pseudo el used to pad the list so that end item aligns w/ carousel width
+    &::after {
+      color: transparent;
+      content: '.';
+      flex: 0 0 var(--carousel-overflow);
+      margin-left: calc(-1 * var(--items-gap)); // eliminate the extra flex gap this pseudo el creates
     }
   }
 
   &__item {
-    display: flex;
-    flex: 0 0 calc((100% - 80px) / var(--items-per-view));
-    flex-direction: column;
-    gap: 10px;
+    --item-peek: calc(42px + var(--items-gap));
+    --item-peek-adjust: min(var(--item-peek) - min(var(--carousel-overflow), var(--item-peek)), var(--item-peek));
+
+    flex: 1 0 calc(((var(--carousel-width) - ((var(--items-per-view) - 1) * var(--items-gap)) - var(--item-peek-adjust)) / var(--items-per-view)));
     max-width: var(--item-max-width);
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     scroll-snap-stop: normal;
 
+    @include mixins.breakpoints-bpMinXSmall {
+      --item-peek: calc(170px + var(--items-gap));
+    }
+
     @include mixins.breakpoints-bpMinSmall {
-      flex: 0 0 calc((100% - 120px) / var(--items-per-view));
-      gap: 20px;
+      --item-peek: calc(42px + var(--items-gap));
     }
 
     &#{&}:focus-visible {
