@@ -13,15 +13,15 @@
   &__container {
     width: 100%;
 
-    // @include mixins.breakpoints-bpMinXSmall {
-    //   align-items: stretch;
-    //   display: flex;
-    //   flex-flow: row wrap;
-    // }
+    @include mixins.breakpoints-bpMinXSmall {
+      align-items: stretch;
+      display: flex;
+      flex-flow: row wrap;
+    }
 
-    // @include mixins.breakpoints-bpMinSmall {
-    //   flex-wrap: nowrap;
-    // }
+    @include mixins.breakpoints-bpMinSmall {
+      flex-wrap: nowrap;
+    }
   }
 
   &__item {
@@ -34,9 +34,9 @@
       padding: 1px 15px 50px;
     }
 
-    // @include mixins.breakpoints-bpMinSmall {
-    //   flex: 0 0 33.3333%;
-    // }
+    @include mixins.breakpoints-bpMinSmall {
+      flex: 0 0 33.3333%;
+    }
 
     > a {
       display: block;
@@ -52,21 +52,21 @@
       object-fit: contain;
       width: 100%;
 
-      // @include mixins.breakpoints-bpMinXSmall {
-      //   height: 235px;
-      // }
+      @include mixins.breakpoints-bpMinXSmall {
+        height: 235px;
+      }
 
-      // @include mixins.breakpoints-bpMinSmall {
-      //   height: 199px;
-      // }
+      @include mixins.breakpoints-bpMinSmall {
+        height: 199px;
+      }
 
-      // @include mixins.breakpoints-bpMinMedium {
-      //   height: 274px;
-      // }
+      @include mixins.breakpoints-bpMinMedium {
+        height: 274px;
+      }
 
-      // @include mixins.breakpoints-bpMinLarge {
-      //   height: 366px;
-      // }
+      @include mixins.breakpoints-bpMinLarge {
+        height: 366px;
+      }
     }
   }
 
