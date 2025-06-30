@@ -14,12 +14,18 @@
     flex: 0 0 45px;
     height: 45px;
     justify-content: center;
+    overflow: hidden;
+    text-indent: -9999px;
     transition: all 0.5s;
-  }
 
-  &__icon {
-    height: 26px;
-    width: 26px;
+    &::before {
+      background-color: currentColor;
+      content: "";
+      display: block;
+      height: 26px;
+      mask: url("#{base.$icons-svgSpritePath}#download-view") no-repeat;
+      width: 26px;
+    }
   }
 
   &__info-container {

@@ -90,27 +90,27 @@
 
   // specific preset icon types follow
   &--close {
-    --btn-icon: var(--icon-svg-plus);
+    --btn-icon: url("#{base.$icons-svgSpritePath}#plus-view");
     --btn-icon-transform: rotate(45deg);
     --btn-icon-size: 52%;
   }
   
   &--info {
-    --btn-icon: var(--icon-svg-info);
+    --btn-icon: url("#{base.$icons-svgSpritePath}#info-view");
     --btn-icon-size: 90%;
   }
   
   &--minus {
-    --btn-icon: var(--icon-svg-minus);
+    --btn-icon: url("#{base.$icons-svgSpritePath}#minus-view");
   }
   
   &--plus {
-    --btn-icon: var(--icon-svg-plus);
+    --btn-icon: url("#{base.$icons-svgSpritePath}#plus-view");
   }
 
   &--point-left,
   &--point-right {
-    --btn-icon: var(--icon-svg-point-left);
+    --btn-icon: url("#{base.$icons-svgSpritePath}#point-left-view");
     --btn-icon-size: 42%;
   }
 
