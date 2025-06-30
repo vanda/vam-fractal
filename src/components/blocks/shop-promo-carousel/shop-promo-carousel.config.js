@@ -110,16 +110,6 @@ module.exports = {
             description: 'This magnet features a design for the decoration of the South Kensington Museum by Godfrey Sykes and Francis Fowke.',
             price: '£15.00',
             url: 'https://www.vam.ac.uk/shop/homeware/home-accessories/va-building-magnet-160609.html'
-          },
-          {
-            image: {
-              320: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dw5a1014c7/pdp-images/products/168699%20V&A%20SK%20GUIDEBOOK.png?sw=320&sh=320',
-              640: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dw5a1014c7/pdp-images/products/168699%20V&A%20SK%20GUIDEBOOK.png?sw=640&sh=640',
-            },
-            title: 'V&A South Kensington Guidebook',
-            description: 'V&A South Kensington is a world of extraordinary global creativity with unmissable exhibitions and experiences for all. ',
-            price: '£6.00',
-            url: 'https://www.vam.ac.uk/shop/books/about-the-museum/va-south-kensington-guidebook-168699.html'
           }
         ]
       }
@@ -147,6 +137,16 @@ module.exports = {
             description: 'This magnet features a design for the decoration of the South Kensington Museum by Godfrey Sykes and Francis Fowke.',
             price: '£15.00',
             url: 'https://www.vam.ac.uk/shop/homeware/home-accessories/va-building-magnet-160609.html'
+          },
+          {
+            image: {
+              320: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dw5a1014c7/pdp-images/products/168699%20V&A%20SK%20GUIDEBOOK.png?sw=320&sh=320',
+              640: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dw5a1014c7/pdp-images/products/168699%20V&A%20SK%20GUIDEBOOK.png?sw=640&sh=640',
+            },
+            title: 'V&A South Kensington Guidebook',
+            description: 'V&A South Kensington is a world of extraordinary global creativity with unmissable exhibitions and experiences for all. ',
+            price: '£6.00',
+            url: 'https://www.vam.ac.uk/shop/books/about-the-museum/va-south-kensington-guidebook-168699.html'
           }
         ]
       }
