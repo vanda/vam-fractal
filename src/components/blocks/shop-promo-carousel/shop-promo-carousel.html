@@ -1,4 +1,4 @@
-<section class="b-shop-touts b-block-grid" id="shop-items">
+<section class="b-shop-promo-carousel b-block-grid" id="shop-items">
   <div class="b-block-grid__header b-block-grid__header--black">
     <h2 class="b-block-grid__title">V&A shop</h2>
   </div>
@@ -6,9 +6,9 @@
   <div class="b-carousel">
     <div class="b-carousel__viewport" tabindex="-1">
 
-      <div class="b-shop-touts__container b-carousel__list">
+      <div class="b-shop-promo-carousel__container b-carousel__list">
         {% for shopitem in promoitems %}
-          <figure class="b-shop-touts__item  b-carousel__item">
+          <figure class="b-shop-promo-carousel__item  b-carousel__item">
             <a href="{{ shopitem.url }}">
               <img
                 alt="{{ shopitem.title }}"
@@ -18,10 +18,10 @@
                 src="{{ shopitem.image["960"] }}"
                 loading="lazy">
             <figcaption>
-              <h2 class="b-shop-touts__title">
+              <h2 class="b-shop-promo-carousel__title">
                 {{ shopitem.title }}
               </h2>
-              <p class="b-shop-touts__description">
+              <p class="b-shop-promo-carousel__description">
                 {{ shopitem.price }}
               </p>
             </figcaption>
@@ -41,7 +41,7 @@
 </div>
 
 
-  <footer class="b-shop-touts__footer">
+  <footer class="b-shop-promo-carousel__footer">
     <a href="#" class="u-btn u-btn--block u-btn--black u-btn--arrowed">
       Browse the V&A Shop
     </a>

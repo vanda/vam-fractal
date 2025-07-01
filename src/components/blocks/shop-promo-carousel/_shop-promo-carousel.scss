@@ -12,6 +12,7 @@
 
   &__container {
     width: 100%;
+    display: flex;
   }
 
   &__item {
@@ -29,10 +30,8 @@
     }
 
     > a > img {
-      height: 355px;
       object-fit: contain;
       width: 100%;
-
     }
   }
 
