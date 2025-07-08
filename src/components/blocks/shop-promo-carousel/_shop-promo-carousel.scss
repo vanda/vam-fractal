@@ -30,9 +30,28 @@
     }
 
     > a > img {
+      height: 355px;
       object-fit: contain;
       width: 100%;
+
+      @include mixins.breakpoints-bpMinXSmall {
+        height: 235px;
+      }
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 199px;
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        height: 274px;
+      }
+
+      @include mixins.breakpoints-bpMinLarge {
+        height: 366px;
+      }
     }
+
+
   }
 
   &__title {
