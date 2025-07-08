@@ -1,0 +1,16 @@
+@use "../../base";
+
+// setup default light theme colours
+// available globally for styling whole containers and their children
+// with basic light/dark theme colours
+:root {
+  --s-light-dark-theme-background-color: #{base.sitecolors-siteColor("vam-white")};
+  --s-light-dark-theme-color: #{base.sitecolors-siteColor("vam-black")};
+
+  // override light theme colours to dark theme
+  // for elements within a s-light-dark-theme--dark modified parent
+  .s-light-dark-theme--dark {
+      --s-light-dark-theme-background-color: #{base.sitecolors-siteColor("vam-black")};
+      --s-light-dark-theme-color: #{base.sitecolors-siteColor("vam-white")};
+  }
+}
