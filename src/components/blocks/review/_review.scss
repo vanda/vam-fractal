@@ -1,27 +1,25 @@
 @use "../../base";
+@use "../../mixins";
 
-.review {
-  @include base.typography-typeSetting(4, "regular");
 
+.b-review {
+  border-left: 3px solid base.sitecolors-siteColor("vam-grey-2");
   color: base.sitecolors-siteColor("vam-white");
-  line-height: 1.5em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 50%);
+  padding-left: 20px;
 
   &__body {
+    @include base.typography-typeSetting(5, "bold");
+
     font-style: italic;
-    margin: 0 0 0.5em;
 
-    &::before {
-      content: "‘";
-    }
-
-    &::after {
-      content: "’";
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(6, "bold");
     }
   }
 
   &__credit {
-    font-weight: 700;
-    text-indent: 0.45em;
+    @include base.typography-typeSetting(4);
+
+    margin-top: 8px;
   }
 }
