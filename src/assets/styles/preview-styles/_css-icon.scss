@@ -1,6 +1,6 @@
-.fr-css-icon-example {
+.fr-css-icon-fragment-identifier-example {
   align-items: flex-start;
-  color: red;
+  color: rebeccapurple;
   display: flex;
   gap: 4px;
 
@@ -9,7 +9,12 @@
     content: '';
     flex: 0 0 auto;
     height: 20px;
-    mask: var(--icon-svg-pin) no-repeat;
     width: 20px;
+  }
+
+  &--pin {
+    &::before {
+      mask: url('../svg/vam-sprite.svg#pin-view') no-repeat;
+    }
   }
 }

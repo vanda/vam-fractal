@@ -234,7 +234,18 @@
     color: base.sitecolors-siteColor("vam-grey-1");
     height: 90px;
     margin-bottom: 20px;
+    overflow: hidden;
+    text-indent: -9999px;
     width: 155px;
+
+    &::before {
+      background-color: currentColor;
+      content: "";
+      display: block;
+      height: 100%;
+      mask: url("#{base.$icons-svgSpritePath}#valogo-clipped-view") no-repeat;
+      width: 100%;
+    }
 
     @include mixins.breakpoints-bpMinSmall {
       grid-area: logo;
