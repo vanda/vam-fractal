@@ -1,26 +1,14 @@
 @use "../../mixins";
 @use "../../base";
 
-.b-shop-promo-carousel {
-  background-color: white;
-  overflow: hidden;
-  padding-bottom: 50px;
-
-  @include mixins.breakpoints-bpMinSmall {
-    padding: 0 30px 50px;
-  }
-
-  &__container {
-    display: flex;
-    width: 100%;
-  }
-
+.b-shop-product {
   &__item {
     color: base.sitecolors-siteColor("vam-black");
     padding: 0 10px 40px;
+    text-align: center;
     width: 100%;
 
-    > a {
+    a {
       display: block;
 
       &:hover h2,
@@ -29,7 +17,7 @@
       }
     }
 
-    > a > img {
+    img {
       height: 355px;
       object-fit: contain;
       width: 100%;
@@ -51,17 +39,21 @@
       }
     }
 
-
+    figcaption {
+      margin-top:15px;
+    }
   }
 
-  &__title {
-    @include base.typography-typeSetting(4, "bold");
 
-    margin: 12px 0 5px;
+  &__label,
+  &__title{
+    @include base.typography-typeSetting(3, "regular");
+
+    margin-bottom:4px;
   }
 
   &__description {
-    @include base.typography-typeSetting(3);
+    @include base.typography-typeSetting(4, "regular");
 
     color: base.sitecolors-siteColor("vam-black");
     margin: 0;
@@ -70,4 +62,19 @@
   &__footer {
     text-align: center;
   }
+
+}
+
+.s-strike-through,
+.s-strike-through * {
+  text-decoration: line-through
+}
+
+.u-priceinfo--custom {
+  color: base.themecolors-themeColor("electric-indigo");
+}
+
+.u-sale-price,
+.u-priceinfo--promotion {
+  color: base.themecolors-themeColor("sale-red");
 }

@@ -1,0 +1,29 @@
+
+{% set shopitem = promoitems | random %}
+<figure class="b-shop-product__item b-carousel__item">
+  <a href="{{ shopitem.url }}">
+    <img alt="{{ shopitem.title }}" itemprop="image" sizes="100vw" srcset="{{ shopitem.image["320"] }} 320w, {{ shopitem.image["640"] }} 640w," src="{{ shopitem.image["960"] }}" loading="lazy">
+    <figcaption>
+      {% if shopitem.customlabel %}
+        <div class="b-label b-shop-product__label">
+          <span class="u-priceinfo u-priceinfo--custom">{{ shopitem.customlabel }}</span>
+        </div>
+      {% elif shopitem.onsale  %}
+        <div class="b-label b-shop-product__label">
+          <span class="u-priceinfo u-priceinfo--promotion">Sale</span>
+        </div>
+      {% endif %}
+
+      <h2 class="b-shop-product__title">{{ shopitem.title }}</h2>
+      <p class="b-shop-product__description">
+
+        <meta itemprop="priceCurrency" content="GBP">
+        <span class="u-value{% if shopitem.onsale %} s-strike-through{% endif %}" itemprop="price" content="{{ shopitem.price }}">{{ shopitem.price }}</span>
+        {% if shopitem.onsale %}
+          <span class="u-value u-sale-price" itemprop="price" content="{{ shopitem.saleprice }}">{{ shopitem.saleprice }}</span>
+        {% endif %}
+      </p>
+
+    </figcaption>
+  </a>
+</figure>
