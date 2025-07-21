@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Shop product item',
-  label: 'Shop product item',
+  title: 'Shop product card',
+  label: 'Shop product card',
   context: {
     previewClass: 'fr-bg--light',
     promoitems: [
@@ -22,8 +22,6 @@ module.exports = {
         title: 'V&A building magnet',
         description: 'This magnet features a design for the decoration of the South Kensington Museum by Godfrey Sykes and Francis Fowke.',
         price: '£15.00',
-        saleprice: '£10.00',
-        onsale: true,
         url: 'https://www.vam.ac.uk/shop/homeware/home-accessories/va-building-magnet-160609.html'
       },
       {
@@ -34,7 +32,6 @@ module.exports = {
         title: 'V&A South Kensington Guidebook',
         description: 'V&A South Kensington is a world of extraordinary global creativity with unmissable exhibitions and experiences for all. ',
         price: '£6.00',
-        customlabel: 'V&A EXCLUSIVE',
         url: 'https://www.vam.ac.uk/shop/books/about-the-museum/va-south-kensington-guidebook-168699.html'
       },
       {

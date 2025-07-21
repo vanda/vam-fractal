@@ -1,0 +1,45 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-shop-product-card {
+  &__item {
+    color: base.sitecolors-siteColor("vam-black");
+    padding: 0 10px 40px;
+    text-align: center;
+    width: 100%;
+
+    a {
+      display: block;
+    }
+
+    img {
+      max-height:500px;
+      object-fit: contain;
+      width: 100%;
+    }
+
+    figcaption {
+      margin-top:15px;
+    }
+  }
+
+  &__label,
+  &__title {
+    @include base.typography-typeSetting(3, "bold");
+
+    margin-bottom:4px;
+  }
+
+  &__title {
+    a:hover &,
+    a:focus &{
+      text-decoration: underline;
+    }
+  }
+
+  &__description {
+    @include base.typography-typeSetting(4, "bold");
+
+    margin: 0;
+  }
+}
