@@ -1,15 +1,6 @@
 module.exports = {
   title: 'Shop product item',
   label: 'Shop product item',
-  variants: [
-    {
-      name: 'carousel',
-      context: {
-        title: 'V&A Shop',
-        previewClass: 'fr-bg--light',
-      }
-    }
-  ],
   context: {
     previewClass: 'fr-bg--light',
     promoitems: [
