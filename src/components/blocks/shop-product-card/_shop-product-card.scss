@@ -2,7 +2,6 @@
 @use "../../base";
 
 .b-shop-product-card {
-  &__item {
     color: base.sitecolors-siteColor("vam-black");
     padding: 0 10px 40px;
     text-align: center;
@@ -21,7 +20,7 @@
     figcaption {
       margin-top:15px;
     }
-  }
+
 
   &__label,
   &__title {
