@@ -9,17 +9,8 @@
     a {
       display: block;
 
-      &:focus-visible {
-        box-shadow: none;
-        outline: 0;
+      @include mixins.focus-raisedPseudoFocus;
 
-        &::before {
-          content: "";
-          inset: 0;
-          position: absolute;
-          z-index: 1;
-        }
-      }
     }
 
     img {
