@@ -3,12 +3,24 @@
 
 .b-shop-product-card {
     color: base.sitecolors-siteColor("vam-black");
-    padding: 0 10px 40px;
     text-align: center;
     width: 100%;
 
     a {
       display: block;
+
+      &:focus-visible {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: 0;
+
+        &::before {
+          content: "";
+          inset: 0;
+          position: absolute;
+          z-index: 1;
+        }
+      }
     }
 
     img {
@@ -20,6 +32,7 @@
     figcaption {
       margin-top:15px;
     }
+
 
 
   &__label,
