@@ -14,6 +14,11 @@
   <h3 class="b-section-header__subtitle">{{ subtitle }}</h3>
   {% endif %}
   {% if copy %}
-  <h3 class="b-section-header__copy">{{ copy }}</h3>
+  <p class="b-section-header__copy">{{ copy }}</p>
+  {% endif %}
+  {% if cta %}
+  <div class="b-section-header__cta">
+    <a class="u-btn u-btn--outlined-inverse u-btn--micro" href="#0">{{ cta }}</a>
+  </div>
   {% endif %}
 </header>
