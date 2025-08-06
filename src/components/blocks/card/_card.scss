@@ -34,6 +34,10 @@
     }
   }
 
+  &--picture-card-top-aligned &__image {
+    object-position: center top;
+  }
+
   &__info-container {
     max-width: 340px;
     padding: 8px 10px;
