@@ -65,5 +65,40 @@ module.exports = {
         url: 'https://www.vam.ac.uk/shop/homeware/home-fragrance/va-lavender-soap-160455.html'
       }
     ]
-  }
+  },
+  variants: [
+    {
+      name: 'additional labels',
+      label: 'Shop product labels',
+      context: {
+        previewClass: 'fr-bg--light',
+        promoitems: [
+        {
+          image: {
+            320: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dwa3aee1a0/pdp-images/products/169894-V&A-EAST-GREEN-TOTE.jpg?sw=320&sh=320',
+            640: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dwa3aee1a0/pdp-images/products/169894-V&A-EAST-GREEN-TOTE.jpg?sw=640&sh=640',
+          },
+          title: 'V&A East tote bag',
+          description: 'Inspired by V&A East Museum and Storehouse, this all-new tote bag celebrates the bold creativity of East London.',
+          price: '£15.00',
+          saleprice: '£10.00',
+          onsale: true,
+          url: 'https://www.vam.ac.uk/shop/fashion/bags-totes/va-east-tote-bag-169894.html'
+        },
+        {
+          image: {
+            320: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dw8ed14ee7/pdp-images/products/160455.jpg?sw=320&sh=320',
+            640: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dw8ed14ee7/pdp-images/products/160455.jpg?sw=640&sh=640',
+          },
+          title: 'V&A Lavender soap',
+          description: 'This beautiful bar of luxury soap makes a perfect little gift or treat for the home. Breathe deep and relax with the soothing scent of lavender. Both bar and paper wrapper are UK-made, exclusively for the V&A, with a design adapted from a furnishing fabric produced by George Haité, c.1903.',
+          price: '£5.00',
+          customlabel: 'V&A EXCLUSIVE',
+          url: 'https://www.vam.ac.uk/shop/homeware/home-fragrance/va-lavender-soap-160455.html'
+        }
+      ],
+      },
+
+    }
+  ]
 };

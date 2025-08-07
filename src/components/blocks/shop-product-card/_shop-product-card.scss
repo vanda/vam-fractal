@@ -45,3 +45,18 @@
     margin: 0;
   }
 }
+
+
+.s-strike-through,
+.s-strike-through * {
+  text-decoration: line-through
+}
+
+.u-priceinfo--custom {
+  color: base.themecolors-themeColor("electric-indigo");
+}
+
+.u-sale-price,
+.u-priceinfo--promotion {
+  color: base.themecolors-themeColor("sale-red");
+}
