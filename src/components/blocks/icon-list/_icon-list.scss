@@ -24,6 +24,8 @@
   }
 
   &__item {
+    @include base.typography-typeSetting(3, "regular");
+
     column-gap: 8px;
     display: flex;
     margin-bottom: 12px;
@@ -49,8 +51,6 @@
   }
 
   &__item-text {
-    @include base.typography-typeSetting(3, "regular");
-
     margin-bottom: 0;
 
     // visually the same as heading
@@ -91,13 +91,14 @@
   &__icon {
     &::before {
       align-items: center;
+      aspect-ratio: 1;
       background-color: currentColor;
       content: '';
       display: flex;
-      height: 20px;
+      height: 1lh;
       justify-content: center;
       mask-repeat: no-repeat;
-      width: 20px;
+      width: auto;
     }
 
     &--attention {
