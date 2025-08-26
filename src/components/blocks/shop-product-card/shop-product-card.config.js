@@ -65,5 +65,45 @@ module.exports = {
         url: 'https://www.vam.ac.uk/shop/homeware/home-fragrance/va-lavender-soap-160455.html'
       }
     ]
-  }
+  },
+  variants: [
+    {
+      name: 'sale',
+      label: 'Sale',
+      context: {
+        promoitems: [
+          {
+            image: {
+              320: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dwa3aee1a0/pdp-images/products/169894-V&A-EAST-GREEN-TOTE.jpg?sw=320&sh=320',
+              640: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dwa3aee1a0/pdp-images/products/169894-V&A-EAST-GREEN-TOTE.jpg?sw=640&sh=640',
+            },
+            label: '<em>Sale</em>',
+            title: 'V&A East tote bag',
+            description: 'Inspired by V&A East Museum and Storehouse, this all-new tote bag celebrates the bold creativity of East London.',
+            price: '<s>£30.00</s> <em>£15.00</em>',
+            url: 'https://www.vam.ac.uk/shop/fashion/bags-totes/va-east-tote-bag-169894.html'
+          }
+        ]
+      }
+    },
+    {
+      name: 'exclusive',
+      label: 'Exclusive',
+      context: {
+        promoitems: [
+          {
+            image: {
+              320: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dwa3aee1a0/pdp-images/products/169894-V&A-EAST-GREEN-TOTE.jpg?sw=320&sh=320',
+              640: 'https://www.vam.ac.uk/dw/image/v2/BDFC_PRD/on/demandware.static/-/Sites-VAM_MasterShop/default/dwa3aee1a0/pdp-images/products/169894-V&A-EAST-GREEN-TOTE.jpg?sw=640&sh=640',
+            },
+            label: '<b>V&A EXCLUSIVE</b>',
+            title: 'V&A East tote bag',
+            description: 'Inspired by V&A East Museum and Storehouse, this all-new tote bag celebrates the bold creativity of East London.',
+            price: '£15.00',
+            url: 'https://www.vam.ac.uk/shop/fashion/bags-totes/va-east-tote-bag-169894.html'
+          }
+        ]
+      }
+    }
+  ]
 };
