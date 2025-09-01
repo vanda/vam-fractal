@@ -164,7 +164,7 @@ const oicInit = () => {
         event: 'OIC',
         object: oic.seeds[index].querySelector('figcaption').textContent.trim(),
         museumNumber: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).museumNumber || null,
-        status: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).locationType || null,
+        status: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).locationTypeRaw || null,
       });
     };
 
