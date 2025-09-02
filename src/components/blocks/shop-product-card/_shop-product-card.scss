@@ -2,37 +2,37 @@
 @use "../../base";
 
 .b-shop-product-card {
-    color: base.sitecolors-siteColor("vam-black");
-    text-align: center;
+  color: base.sitecolors-siteColor("vam-black");
+  text-align: center;
+  width: 100%;
+
+  a {
+    @include mixins.focus-raisedPseudoFocus;
+
+    display: block;
+  }
+
+  img {
+    max-height: 500px;
+    object-fit: contain;
     width: 100%;
+  }
 
-    a {
-      display: block;
+  figcaption {
+    margin-top: 15px;
+  }
 
-      @include mixins.focus-raisedPseudoFocus;
+  &__label {
+    @include base.typography-typeSetting(2, "bold");
 
-    }
-
-    img {
-      max-height:500px;
-      object-fit: contain;
-      width: 100%;
-    }
-
-    figcaption {
-      margin-top:15px;
-    }
-
-
-
-  &__label,
-  &__title {
-    @include base.typography-typeSetting(3, "bold");
-
-    margin-bottom:4px;
+    margin-bottom: 4px;
   }
 
   &__title {
+    @include base.typography-typeSetting(3, "bold");
+
+    margin-bottom: 6px;
+
     a:hover &,
     a:focus &{
       text-decoration: underline;
@@ -43,5 +43,16 @@
     @include base.typography-typeSetting(4, "bold");
 
     margin: 0;
+  }
+
+  b {
+    @include base.typography-fontWeight("bold");
+
+    color: base.themecolors-themeColor("electric-indigo");
+  }
+
+  em {
+    color: base.themecolors-themeColor("sale-red");
+    font-style: normal;
   }
 }
