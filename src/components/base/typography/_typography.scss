@@ -61,6 +61,12 @@
   src: url("../fonts/SpillerSerif-Italic-weight-VF-Web.woff2") format("woff2");
 }
 
+@font-face {
+  font-display: swap;
+  font-family: "SpillerYoung";
+  src: url("../fonts/SpillerYoung-Extrabold.woff2") format("woff2");
+}
+
 $font-family: (
   text: ("Spiller", "Arial", "Helvetica", sans-serif),
   code: ("Consolas", "Menlo", "Monaco", "Courier New", monospace),
@@ -70,7 +76,8 @@ $font-family: (
   SpillerWidthItalic: ("SpillerWidthItalic", "Spiller", arial, helvetica, sans-serif),
   SpillerRounded: ("SpillerRounded", "Spiller", arial, helvetica, sans-serif),
   SpillerSerif: ("SpillerSerif", "Spiller", arial, helvetica, sans-serif),
-  SpillerSerifItalic: ("SpillerSerifItalic", "Spiller", arial, helvetica, sans-serif)
+  SpillerSerifItalic: ("SpillerSerifItalic", "Spiller", arial, helvetica, sans-serif),
+  SpillerYoung: ("SpillerYoung", "Spiller", arial, helvetica, sans-serif)
 );
 $font-weight: (
   light: 300,
