@@ -20,6 +20,7 @@ module.exports = {
           museumNumber: 'ROYAL LOANS.2',
           copyright: '&copy; Victoria and Albert Museum, London',
           locationType: 'On display',
+          locationTypeRaw: 'display',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 48a, The Raphael Cartoons',
           visitUrl: 'https://www.vam.ac.uk/features/digitalmap/?zoom=3.8062500330992246&latlng=-4438.82674843744%2C2111.330630666198&highlightId=FAC0000_49790'
@@ -58,7 +59,8 @@ module.exports = {
         caption: 'Fruits from the Garden and the Field, rainbow wallpaper (detail). © Fallen Fruit, 2019.',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          locationType: 'Request to view'
+          locationType: 'Request to view',
+          locationTypeRaw: 'request to view'
         }
       },
       {
@@ -97,6 +99,7 @@ module.exports = {
           museumNumber: 'CD.51:1 to 6-2014',
           copyright: '&copy; Victoria and Albert Museum, London',
           locationType: 'View by appointment',
+          locationTypeRaw: 'request to view',
           displayOverride: 'You can see this somewhere else',
           locationSite: 'V&A South Kensington',
           locationRoom: 'Room 74a, Rapid Response Collecting',
@@ -116,7 +119,8 @@ module.exports = {
         caption: 'Papaver Orientale, photograph, by Anna Atkins, cyanotype, 1852 – 54, Britain.',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          locationType: 'Not on display'
+          locationType: 'Not on display',
+          locationTypeRaw: 'in store'
         }
       },
       {
@@ -132,7 +136,8 @@ module.exports = {
         caption: 'Queen Elizabeth II, photograph, C-type print, by Cecil Beaton, 1953, London, England.  On display at South Kensington Prints & Drawings Study Room, level F',
         physicalDescription: 'A wallpaper print design.',
         objectImageOverlayData: {
-          locationType: 'On loan'
+          locationType: 'On loan',
+          locationTypeRaw: 'loan'
         }
       }
     ]

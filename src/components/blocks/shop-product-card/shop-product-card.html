@@ -1,0 +1,17 @@
+{% set shopitem = promoitems | random %}
+<figure class="b-shop-product-card">
+  <a href="{{ shopitem.url }}" aria-label="{{ shopitem.title }}">
+    <img alt="{{ shopitem.title }}" itemprop="image" sizes="100vw" srcset="{{ shopitem.image["320"] }} 320w,
+     {{ shopitem.image["640"] }} 640w," src="{{ shopitem.image["960"] }}" loading="lazy">
+    <figcaption>
+      {% if shopitem.label %}
+        <p class="b-shop-product-card__label">{{ shopitem.label | safe }}</p>
+      {% endif %}
+      <p class="b-shop-product-card__title">{{ shopitem.title }}</p>
+      <p class="b-shop-product-card__description">
+        <meta itemprop="priceCurrency" content="GBP">
+        <span itemprop="price" content="{{ shopitem.price }}">{{ shopitem.price | safe }}</span>
+      </p>
+    </figcaption>
+  </a>
+</figure>

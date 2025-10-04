@@ -47,7 +47,9 @@ const oicInit = () => {
       } else {
         caption = '';
       }
-      const copyright = data && data.copyright ? data.copyright : '';
+      const museumNumber = data && data.museumNumber
+        ? `<div class="b-object-image-overlay__number">Museum no. ${data.museumNumber}</div>`
+        : '';
       const locationType = data && data.locationType
         ? `<div class="b-object-image-overlay__location-type">${data.locationType}</div>`
         : '';
@@ -65,6 +67,7 @@ const oicInit = () => {
         }
         return html;
       };
+      const copyright = data && data.copyright ? data.copyright : '';
       const item = document.createElement('div');
       item.classList.add('b-object-image-overlay__item');
       item.innerHTML += `
@@ -79,6 +82,7 @@ const oicInit = () => {
               </div>
               <button class="b-object-image-overlay__dismiss u-btn-icon u-btn-icon--close">Close</button>
             </div>
+            ${museumNumber}
             ${locationHTML()}
           </div>
           <div class="b-object-image-overlay__more">
@@ -164,7 +168,7 @@ const oicInit = () => {
         event: 'OIC',
         object: oic.seeds[index].querySelector('figcaption').textContent.trim(),
         museumNumber: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).museumNumber || null,
-        status: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).locationType || null,
+        status: JSON.parse(oic.seeds[index].dataset.objectImageOverlay).locationTypeRaw || null,
       });
     };
 

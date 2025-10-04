@@ -41,7 +41,7 @@
       <!-- ReturnURL - when the user hits submit, they'll get sent here -->
       <input type="hidden" name="ReturnURL" value="http://www.vam.ac.uk/content/email/confirmation/?result=success">
       <!-- Email - the user's email address -->
-      <input aria-invalid="false" type="text" placeholder="name@example.com" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field--{{ modifier }}{% endif %}">
+      <input aria-invalid="false" type="text" placeholder="name@example.com" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field--{{ modifier }}{% endif %}" autocomplete="email">
       
       {% if modifier === "footer" %}
         <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--outlined-inverse b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit--{{ modifier }}{% endif %} js-newsletter__submit">

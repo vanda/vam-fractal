@@ -8,6 +8,7 @@ const handleImageError = (el) => {
     const imgFiller = el.parentNode.insertBefore(document.createElement('div'), el);
     imgFiller.classList.add(...Array.from(el.classList.values()), 's-imageload--error');
     imgFiller.dataset.imageFail = el.src;
+    imgFiller.setAttribute('aria-label', 'No image available');
     el.remove();
   }
 };

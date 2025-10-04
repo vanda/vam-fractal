@@ -5,7 +5,8 @@ module.exports = {
     previewClass: 'fr-content-wrapper fr-bg--dark',
     title: 'Section header',
     subtitle: 'Section sub-header',
-    copy: 'Lorem ipsum dolor sit amet, V&A consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna V&A.'
+    copy: 'Lorem ipsum dolor sit amet, V&A consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna V&A.',
+    cta: 'Optional Link'
   },
   variants: [
     {
@@ -28,7 +29,8 @@ module.exports = {
       context: {
         modifiers: ['alternate'],
         subtitle: null,
-        copy: null
+        copy: null,
+        cta: null
       }
     },
     {
@@ -38,6 +40,7 @@ module.exports = {
         modifiers: ['alternate', 'alternate-image'],
         subtitle: null,
         copy: null,
+        cta: null,
         image: {
           320: 'https://vanda-production-assets.s3.amazonaws.com/2016/10/03/12/01/01/eb6a15f5-8301-45ec-96c4-ceb793abba55/plans_2006AA6445.jpg',
           640: 'https://vanda-production-assets.s3.amazonaws.com/2016/10/03/12/01/01/4845b9ce-8cb3-4af5-9251-a92bc76df4e9/plans_2006AA6445.jpg',
