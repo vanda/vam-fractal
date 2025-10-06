@@ -5,7 +5,7 @@
   background-color: #fff;
   color: #444;
   display: grid;
-  grid-gap: 10px;
+  gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
 
