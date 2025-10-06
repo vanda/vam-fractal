@@ -47,7 +47,7 @@ const openObjectOverlay = () => {
 
 const closeObjectOverlay = () => {
   document.querySelector('.b-image-overlay__container').classList.remove('b-image-overlay__container--active');
-  document.querySelector('body').style.overflowY = 'auto';
+  document.querySelector('body').style.overflowY = 'initial';
   document.querySelector('body').style.position = 'relative';
 };
 
