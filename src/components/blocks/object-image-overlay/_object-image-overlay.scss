@@ -130,7 +130,7 @@
     margin-bottom: 8px;
 
     @include mixins.breakpoints-bpMinMedium {
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
   }
 
@@ -142,20 +142,17 @@
   }
 
   &__caption {
-    @include base.typography-typeSetting(3);
+    @include base.typography-typeSetting(4);
 
-    -webkit-box-orient: vertical;
-    display: block;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
+    @include mixins.breakpoints-bpMaxSmall {
+      @include base.typography-typeSetting(3);
 
-    @include mixins.breakpoints-bpMinMedium {
-      @include base.typography-typeSetting(4);
-
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
     }
   }
 
@@ -181,6 +178,17 @@
       position: relative;
       right: 0;
       top: 0;
+    }
+  }
+
+  &__number {
+    display: none;
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(2);
+
+      display: block;
+      margin-top: 12px;
     }
   }
 

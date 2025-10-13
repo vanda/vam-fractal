@@ -26,7 +26,7 @@
       "value-keyword-case": [
         "lower", {
         "camelCaseSvgKeywords": true,
-        "ignoreKeywords": ["SpillerContrast", "SpillerContrastItalic", "SpillerWidth", "SpillerWidthItalic", "SpillerRounded", "SpillerSerif", "SpillerSerifItalic"]
+        "ignoreKeywords": ["SpillerContrast", "SpillerContrastItalic", "SpillerWidth", "SpillerWidthItalic", "SpillerRounded", "SpillerSerif", "SpillerSerifItalic", "SpillerYoung"]
         }
       ],
       "selector-class-pattern": [
