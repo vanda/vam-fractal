@@ -13,6 +13,14 @@
     @include mixins.focus-inlineFocus;
   }
 
+  &--no-decor {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &--arrowed {
     padding-right: 14px;
 
