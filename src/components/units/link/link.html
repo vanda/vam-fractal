@@ -1,12 +1,14 @@
 {% if inBody %}
   <p>
-    This <a href="#" class="u-link">link</a> is for use inside a body of text 
+    This <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}">link</a> is for use inside a body of text 
   </p>
 {% else %}
   <p>
     {{text}}
   </p>
-      <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}{% if section %}u-link--section{% endif %}">
-          Link
-      </a>
+  <p>
+    <a href="#" class="u-link {% for m in modifiers %} u-link--{{ m }}{% endfor %}{% if section %}u-link--section{% endif %}">
+        Link
+    </a>
+  </p>
 {% endif %}

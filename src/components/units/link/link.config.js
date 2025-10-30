@@ -13,6 +13,14 @@ module.exports = {
       }
     },
     {
+      name: 'no-decor',
+      label: 'No decoration',
+      context: {
+        text: 'The following unstyled link may be used in other components',
+        modifiers: ['no-decor']
+      }
+    },
+    {
       name: 'arrowed',
       label: 'Arrowed',
       context: {
