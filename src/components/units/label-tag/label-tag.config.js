@@ -96,6 +96,13 @@ module.exports = {
         modifier: ['collection'],
         previewClass: 'fr-bg--dark'
       }
+    },
+    {
+      name: 'Archive',
+      context: {
+        text: '1845 - Onward',
+        modifier: ['archive']
+      }
     }
   ]
 };

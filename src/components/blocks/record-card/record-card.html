@@ -1,0 +1,31 @@
+<a href="#" class="b-record-card{% for m in modifier %} b-record-card--{{ m }}{% endfor %}">
+  {% if image %}
+    <div class="b-record-card__image-container">
+      {% if not modifier %}
+        {%- render "@label-tag--archive" -%}
+      {% endif %}
+      <img
+        alt=""
+        class="b-record-card__image"
+        srcset="{{ image[320] }} 320w,
+                {{ image[640] }} 640w"
+        sizes="100vw"
+        src="{{ image[320] }}"
+        loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="b-record-card__info-container">
+    <h2 class="b-record-card__heading">{{ heading }}</h2>
+    {% if not modifier %}
+      <p class="b-record-card__synopsis">{{ synopsis }}</p>
+    {% endif %}
+    {% for m in modifier %}
+      {% if m === "archive-series" %}
+        <p class="b-record-card__extent">{{ extent }}</p>
+        <p class="b-record-card__date">{{ date }}</p>
+        <p class="b-record-card__reference">{{ reference }}</p>
+      {% endif %}
+    {% endfor %}
+  </div>
+</a>
