@@ -34,6 +34,19 @@ module.exports = {
       }
     },
     {
+      name: 'archive-series-label',
+      label: 'Archive Series (label)',
+      context: {
+        modifier: ['archive-series'],
+        image: '',
+        heading: 'Vivien Leigh Archive',
+        date: '1925-1967',
+        reference: 'THM/433',
+        extent: '90 Boxes',
+        flag: 'label',
+      }
+    },
+    {
       name: 'archive-series-thumbnail',
       label: 'Archive Series - Thumbnail',
       context: {
@@ -46,6 +59,22 @@ module.exports = {
         date: '1925-1967',
         reference: 'THM/433',
         extent: '90 Boxes',
+      }
+    },
+    {
+      name: 'archive-series-thumbnail-label',
+      label: 'Archive Series - Thumbnail (label)',
+      context: {
+        modifier: ['archive-series', 'archive-series-thumbnail'],
+        image: {
+          320: 'https://picsum.photos/id/25/320/240',
+          640: 'https://picsum.photos/id/25/640/480',
+        },
+        heading: 'Vivien Leigh Archive',
+        date: '1925-1967',
+        reference: 'THM/433',
+        extent: '90 Boxes',
+        flag: 'label',
       }
     }
   ]

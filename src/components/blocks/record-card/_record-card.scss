@@ -3,6 +3,7 @@
 
 .b-record-card {
   background: base.sitecolors-siteColor("vam-white");
+  border-radius: 2px;
   color: base.sitecolors-siteColor("vam-black");
   display: block;
 
@@ -53,6 +54,7 @@
 
   &--archive-series {
     padding: 8px;
+    position: relative;
 
     .b-record-card__info-container {
       border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
@@ -73,6 +75,26 @@
       }
     }
 
+    .b-record-card__distribution {
+      display: flex;
+      flex: 100%;
+      gap: 10px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        align-items: baseline;
+        flex: 0 0 auto;
+        justify-content: flex-end
+      }
+    }
+
+    .u-label-tag {
+      flex: 0 0 auto;
+      height: fit-content;
+      margin-bottom: 8px;
+      margin-top: 2px;
+      position: static;
+    }
+
     .b-record-card__extent,
     .b-record-card__reference {
       @include base.typography-typeSetting(2);
@@ -90,6 +112,7 @@
 
     .b-record-card__reference {
       align-self: flex-end;
+      color: base.sitecolors-siteColor("vam-grey-2");
       margin-bottom: 8px;
       text-align: right;
     }
@@ -97,17 +120,6 @@
     .b-record-card__extent {
       @include mixins.breakpoints-bpMaxSmall {
         @include mixins.elementvisibility-visuallyHidden;
-      }
-    }
-
-    &:not(.b-record-card--archive-series-thumbnail):hover,
-    &:not(.b-record-card--archive-series-thumbnail):focus {
-      background: base.sitecolors-siteColor("vam-grey-6");
-
-      &#{&} { // linter: no descending specificity
-        .b-record-card__info-container {
-          border-bottom: none;
-        }
       }
     }
   }
@@ -121,7 +133,7 @@
     }
 
     .b-record-card__image {
-      height: 100%;
+      height: 94px;
     }
 
     .b-record-card__info-container {
@@ -137,15 +149,6 @@
         margin-bottom: 0;
       }
     }
-
-    .b-record-card__date,
-    .b-record-card__reference {
-      margin-bottom: 4px;
-
-      @include mixins.breakpoints-bpMinSmall {
-        margin-bottom: 8px;
-      }
-    }
   }
 
   &--archive-collection {
@@ -158,7 +161,7 @@
     }
 
     .b-record-card__image {
-      height: 100%;
+      height: 78px;
     }
 
     .b-record-card__info-container {
@@ -168,16 +171,36 @@
     }
 
     .b-record-card__heading {
-      @include base.typography-typeSetting(3, "bold");
+      @include base.typography-typeSetting(3);
     }
+  }
 
+  &:where(.b-record-card--archive-series, .b-record-card--archive-collection) {
     &:hover,
     &:focus,
     &.selected {
       background: base.sitecolors-siteColor("vam-grey-6");
 
       .b-record-card__info-container {
-        border-bottom: none;
+        border-bottom-color: transparent;
+      }
+
+      .u-label-tag--archive-collection {
+        background-color: base.sitecolors-siteColor("vam-grey-4");
+      }
+    }
+
+    &:hover,
+    &:focus {
+      .b-record-card__heading {
+        text-decoration: underline;
+      }
+    }
+
+    &.selected {
+      .b-record-card__heading {
+        font-variation-settings: "wght" 500;
+        text-decoration: none;
       }
     }
   }

@@ -103,6 +103,13 @@ module.exports = {
         text: '1845 - Onward',
         modifier: ['archive']
       }
+    },
+    {
+      name: 'Archive Collection',
+      context: {
+        text: 'Archive Collection',
+        modifier: ['archive-collection']
+      }
     }
   ]
 };

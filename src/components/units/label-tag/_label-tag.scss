@@ -76,7 +76,15 @@
   &--archive {
     @include base.typography-typeSetting(2);
 
-    background: base.sitecolors-siteColor("vam-grey-6");;
+    background: base.sitecolors-siteColor("vam-grey-6");
+    border-radius: 2px;
+    padding: 2px 4px;
+  }
+
+  &--archive-collection {
+    @include base.typography-typeSetting(2);
+
+    background: base.sitecolors-siteColor("vam-grey-6");
     border-radius: 2px;
     padding: 2px 4px;
   }

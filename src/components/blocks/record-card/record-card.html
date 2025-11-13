@@ -22,7 +22,12 @@
     {% endif %}
     {% for m in modifier %}
       {% if m === "archive-series" %}
-        <p class="b-record-card__extent">{{ extent }}</p>
+        <div class="b-record-card__distribution">
+          {% if flag === "label" %}
+            {%- render "@label-tag--archive-collection" -%}
+          {% endif %}
+          <p class="b-record-card__extent">{{ extent }}</p>
+        </div>
         <p class="b-record-card__date">{{ date }}</p>
         <p class="b-record-card__reference">{{ reference }}</p>
       {% endif %}
