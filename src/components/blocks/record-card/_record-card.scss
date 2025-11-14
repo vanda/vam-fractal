@@ -205,6 +205,13 @@
     }
   }
 
+  // NB. if we want all text altered to vam-grey-3 as per the ordinary card component
+  // the setting of .b-record-card__reference to vam-grey-2 is problematic as CSS properties 
+  // cannot be applied to the anchor's child elements.
+  &:visited {
+    color: base.sitecolors-siteColor("vam-grey-3");
+  }
+
   &:hover &__image,
   &:focus-visible &__image {
     transform: scale(1.1);
