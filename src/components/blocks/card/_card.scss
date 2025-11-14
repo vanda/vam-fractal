@@ -211,11 +211,11 @@
     }
   }
 
-  &:visited &__info-container {
+  &:visited {
     color: base.sitecolors-siteColor("vam-grey-3");
   }
 
-  &--picture-card:visited .b-card__info-container {
+  &--picture-card:visited {
     color: base.sitecolors-siteColor("vam-white");
   }
 
