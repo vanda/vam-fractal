@@ -1,11 +1,8 @@
 @use "../../base";
 @use "../../mixins";
 
-:root {
-  --btn-bg: #{base.sitecolors-siteColor("vam-black")};
-  --btn-color: #{base.sitecolors-siteColor("vam-white")};
-  --btn-border: #{base.sitecolors-siteColor("vam-white")};
-  --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-1")};
+.u-btn-icon {
+  // setup any default vars that might be useful to override in special instances
   --btn-size: 34px;
   --btn-icon-size: 48%;
   --btn-icon: none;
@@ -15,20 +12,30 @@
   --btn-light-border: #{base.sitecolors-siteColor("vam-black")};
   --btn-light-bg-hover: #{base.sitecolors-siteColor("vam-grey-5")};
 
-  // react to any s-light-dark-theme modifying class on a parent element
-  .s-light-dark-theme--dark {
+  // setup default light/dark theme variable properties
+  --btn-bg: #{base.sitecolors-siteColor("vam-black")};
+  --btn-color: #{base.sitecolors-siteColor("vam-white")};
+  --btn-border: #{base.sitecolors-siteColor("vam-white")};
+  --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-1")};
+
+  // react to any s-light-dark-theme--dark modifying class on a parent element
+  .s-light-dark-theme--dark & {
     --btn-bg: var(--btn-light-bg);
     --btn-color: var(--btn-light-color);
     --btn-border: var(--btn-light-border);
     --btn-bg-hover: var(--btn-light-bg-hover);
+  }
 
-    &:focus-visible {
-      @include mixins.focus-inverseFocus;
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --btn-bg: var(--btn-light-bg);
+      --btn-color: var(--btn-light-color);
+      --btn-border: var(--btn-light-border);
+      --btn-bg-hover: var(--btn-light-bg-hover);
     }
   }
-}
 
-.u-btn-icon {
   align-items: center;
   appearance: none;
   background-color: var(--btn-bg);
@@ -76,16 +83,12 @@
     opacity: 0.4;
   }
 
-  // general light theme
+  // specifically use light colours (same as for when in dark theme context, i.e. light-dark-theme--dark)
   &--light {
     --btn-bg: var(--btn-light-bg);
     --btn-color: var(--btn-light-color);
     --btn-border: var(--btn-light-border);
     --btn-bg-hover: var(--btn-light-bg-hover);
-
-    &:focus-visible {
-      @include mixins.focus-inverseFocus;
-    }
   }
 
   // specific preset icon types follow

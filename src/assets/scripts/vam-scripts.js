@@ -4,6 +4,7 @@ import contentWarningsInit from '../../components/blocks/object-card/_object-car
 import carouselInit from '../../components/blocks/carousel/_carousel';
 
 require('../../components/services/imageload/_imageload');
+require('../../components/services/light-dark-theme/_light-dark-theme');
 require('../../components/blocks/accordion/_accordion');
 require('../../components/blocks/background-video/_background-video');
 require('../../components/groups/block-grid/_grid-reveal-more');
