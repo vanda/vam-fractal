@@ -3,14 +3,39 @@
 // setup default light theme colours
 // available globally for styling whole containers and their children
 // with basic light/dark theme colours
+// light theme being default as per common design patterns
 :root {
+  --s-light-dark-theme-background-color: #{base.sitecolors-siteColor("vam-white")};
+  --s-light-dark-theme-color: #{base.sitecolors-siteColor("vam-black")};
+}
+
+.s-light-dark-theme {
   --s-light-dark-theme-background-color: #{base.sitecolors-siteColor("vam-white")};
   --s-light-dark-theme-color: #{base.sitecolors-siteColor("vam-black")};
 
   // override light theme colours to dark theme
   // for elements within a s-light-dark-theme--dark modified parent
-  .s-light-dark-theme--dark {
+  &--dark {
+    --s-light-dark-theme-background-color: #{base.sitecolors-siteColor("vam-black")};
+    --s-light-dark-theme-color: #{base.sitecolors-siteColor("vam-white")};
+  }
+
+  // override light theme colours to dark theme
+  // for elements within a s-light-dark-theme--auto modified parent
+  // when user prefs are for dark
+  &--auto {
+    @media (prefers-color-scheme: dark) {
       --s-light-dark-theme-background-color: #{base.sitecolors-siteColor("vam-black")};
       --s-light-dark-theme-color: #{base.sitecolors-siteColor("vam-white")};
+    }
+  }
+  
+  // style for theme toggle UI
+  &-toggle {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px;
   }
 }
