@@ -5,6 +5,7 @@
   $bullet-gap: 12px;
   $bullet-width: 0.29lh;
 
+  // setup default light/dark theme variable properties
   --breadcrumb-decor-color: #{base.sitecolors-siteColor("vam-grey-3")};
 
   // react to any s-light-dark-theme modifying class on a parent element
