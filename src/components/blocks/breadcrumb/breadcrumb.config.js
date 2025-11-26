@@ -1,8 +1,8 @@
 module.exports = {
-  name: 'checkbox',
-  label: 'Checkbox',
+  title: 'Breadcrumb',
+  label: 'Breadcrumb',
   context: {
-    previewClass: 'fr-padded',
+    previewClass: 'fr-padded'
   },
   variants: [
     {

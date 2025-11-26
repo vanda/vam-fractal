@@ -1,0 +1,139 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-breadcrumb {
+  $bullet-gap: 12px;
+  $bullet-width: 0.29lh;
+
+  // setup default light/dark theme variable properties
+  --breadcrumb-decor-color: #{base.sitecolors-siteColor("vam-grey-3")};
+
+  // react to any s-light-dark-theme modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --breadcrumb-decor-color: #{base.sitecolors-siteColor("vam-grey-4")};
+  }
+
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --breadcrumb-decor-color: #{base.sitecolors-siteColor("vam-grey-4")};
+    }
+  }
+
+  background-color: var(--s-light-dark-theme-background-color);
+  color: var(--s-light-dark-theme-color);
+
+  // desktop view overflow fade
+  @include mixins.breakpoints-bpMinSmall {
+    position: relative;
+
+    &::after {
+      background: linear-gradient(to left, var(--s-light-dark-theme-background-color), transparent);
+      content: '';
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1.7rem;
+    }
+  }
+
+  &__section {
+    @include base.typography-typeSetting(3);
+
+    display: flex;
+	  gap: $bullet-gap;
+    
+    // mobile view underline
+    @include mixins.breakpoints-bpMaxSmall {
+      position: relative;
+
+      &:has(#{&}) {
+        &::after {
+          border-bottom: 1px solid var(--breadcrumb-decor-color);
+          bottom: 0;
+          content: '';
+          position: absolute;
+          transform: translateX(calc($bullet-width / 2));
+          width: calc($bullet-gap + 1px);
+        }
+      }
+    }
+
+    // highlight deepest section
+    &:not(:has(&)) {
+      @include base.typography-fontWeight('bold');
+    }
+  }
+
+  // desktop view overflow scrolling
+  @include mixins.breakpoints-bpMinSmall {
+    & > &__section {
+      overflow-x: auto;
+      padding-right: 1.7rem;
+      scrollbar-width: none;
+    }
+  }
+
+  // mobile/desktop bullet decoration
+  &__section-decor {
+    align-items: center;
+    color: var(--breadcrumb-decor-color);
+    display: flex;
+
+    @include mixins.breakpoints-bpMaxSmall {
+      flex-direction: column;
+      margin-top: calc((1lh - $bullet-width) / 2);
+    }
+
+    &::before {
+      background-color: currentColor;
+      border-radius: 50%;
+      content: '';
+      flex-grow: 0;
+      height: $bullet-width;
+      width: $bullet-width;
+
+      @include mixins.breakpoints-bpMinSmall {
+        background-color: transparent;
+        border-radius: 0;
+        border-right: 1px solid currentColor;
+        border-top: 1px solid currentColor;
+        transform: rotate(45deg);
+      }
+    }
+
+    @include mixins.breakpoints-bpMaxSmall {
+      &::after {
+        background-color: currentColor;
+        content: '';
+        flex-grow: 1;
+        padding-bottom: 10px;
+        width: 1px;
+      }
+    }
+  }
+
+  // hide decor for top-level section without children
+  & > &__section:not(:has(&__section)) &__section-decor {
+    display: none;
+  }
+
+  // hide decor for top-level section with/without children at breakpoint
+  @include mixins.breakpoints-bpMinSmall {
+    & > &__section > &__section-decor {
+      display: none;
+    }
+  }
+
+  &__section-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex-direction: row;
+      text-wrap: nowrap;
+    }
+  }
+}
