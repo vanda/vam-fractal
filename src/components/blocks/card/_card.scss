@@ -17,6 +17,10 @@
   /* default focus style can be clipped if inside a carousel */
   @include mixins.focus-raisedPseudoFocus;
 
+  &:visited {
+    color: base.sitecolors-siteColor("vam-grey-3");
+  }
+
   &__image-container {
     overflow: hidden;
   }
@@ -183,6 +187,10 @@
     border-bottom: none;
     color: base.sitecolors-siteColor("vam-white");
 
+    &:visited {
+      color: base.sitecolors-siteColor("vam-white");
+    }
+
     &::after {
       background:
         linear-gradient(
@@ -211,14 +219,6 @@
         padding-top: 198px;
       }
     }
-  }
-
-  &:visited {
-    color: base.sitecolors-siteColor("vam-grey-3");
-  }
-
-  &--picture-card:visited {
-    color: base.sitecolors-siteColor("vam-white");
   }
 
   &:hover &__image,
