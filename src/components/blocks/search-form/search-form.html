@@ -1,16 +1,16 @@
 {% if modifiers and 'etc-gateway' in modifiers %}
-  <p class="b-search-form__label" id="etc-gateway-search-input">Search more than 1.2 million objects</p>
+{# Collections Landing pg #}
+<p class="b-search-form__label" id="etc-gateway-search-input">Search more than 1.2 million objects</p>
 {% endif %}
 <form class="b-search-form {% for m in modifiers %} b-search-form--{{ m }}{% endfor %} {{ jsHook }}" name="search" action="{{ action }}" method="get" role="search">
-  {# Collections Landing pg #}
   <div class="b-search-form__inner">
-    {# SiteSearch #}
     {% if not modifiers %}
+    {# SiteSearch pg #}
     <svg class="b-search-form__icon" aria-hidden="true" role="img">
       <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
     </svg>
     {% endif %}
-    {# Collections Landing and Collections search pages #}
+    {# Collections Landing and Collections Search pgs #}
     {% if modifiers and 'etc' in modifiers %}
     <div class="b-search-form__advanced-search-wrapper">
       <label class="b-search-form__label b-search-form__advanced-search-label" for="sel_etc">Focused search</label>
@@ -24,28 +24,33 @@
     <div class="b-search-form__input-wrapper">
       <input type="text" class="b-search-form__input" name="q" {% if modifiers and 'etc-gateway' in modifiers %} aria-labelledby="etc-gateway-search-input"{% endif %} placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" value="" {% if not modifiers or (modifiers and 'etc-gateway' in modifiers) %}autocomplete="off"{% endif %}>
       {% if not modifiers %}
+      {# SiteSearch #}
       <div class="b-search-form__underscore" aria-hidden="true"></div>
       {% endif %}
     </div>
 
     <button class="b-search-form__submit {% if modifiers and 'etc' in modifiers %}b-search-form__submit--etc{% endif %}" aria-label="Search submit">
       {% if not modifiers %}
+      {# SiteSearch #}
       Search
       {% endif %}
       {% if modifiers and 'etc' in modifiers %}
-      <svg class="b-search-form__icon b-search-form__icon--etc" aria-hidden="true" role="img">
+      {# Collections Landing & Collections Search #}
+      <svg class="b-search-form__icon b-search-form__icon--etc" aria-hidden="true">
         <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#search"></use>
       </svg>
       {% endif %}
-    </button>    
+    </button>
     
     {% if not modifiers %}
+    {# SiteSearch #}
     <svg role="img" class="b-search-form__clear b-search-form__clear--hidden" aria-hidden="true">
       <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#close"></use>
     </svg>
     {% endif %}
   </div>
   {% if not modifiers %}
+  {# SiteSearch #}
   <div class="b-search-form__link-to-collections">
     <span class="b-search-form__link-to-collections--desktop">
       Alternatively search more than 1.25 million objects from the <a class="u-link" href="https://collections.vam.ac.uk/">V&A Collections</a>
@@ -57,6 +62,7 @@
   {% endif %}
 
   {% if modifiers and 'etc-gateway' in modifiers %}
+  {# Collections Landing #}
   <div class="b-search-form__suggestions"></div>
   <div class="b-search-form__footer">
     <div class="b-search-form__filters" aria-label="search filters">
