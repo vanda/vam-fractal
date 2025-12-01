@@ -1,15 +1,13 @@
 module.exports = {
-  title: 'Carousel',
-  label: 'Carousel',
   context: {
     previewClass: 'fr-content-wrapper',
   },
   variants: [
     {
-      name: 'On Dark',
-      label: 'On Dark',
+      name: 'dark',
+      label: 'Dark',
       context: {
-        previewClass: 'fr-content-wrapper fr-bg--dark',
+        previewClass: 'fr-content-wrapper',
         lightDarkTheme: 's-light-dark-theme--dark'
       }
     }

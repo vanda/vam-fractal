@@ -1,7 +1,5 @@
 module.exports = {
-  title: 'Icon Buttons',
   context: {
-    label: 'Button label',
     icons: [
       'info',
       'close',
@@ -13,10 +11,9 @@ module.exports = {
   },
   variants: [
     {
-      name: 'On Dark',
+      name: 'on-dark',
       label: 'On Dark',
       context: {
-        previewClass: 'fr-bg--dark',
         lightDarkTheme: 's-light-dark-theme--dark'
       }
     },

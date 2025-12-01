@@ -10,6 +10,8 @@
 }
 
 .s-light-dark-theme {
+  // default colours repeated here as overrides
+  // in case `.s-light-dark-theme` is nested within `.s-light-dark-theme--dark` (i.e. light inside dark)
   --s-light-dark-theme-background-color: #{base.sitecolors-siteColor("vam-white")};
   --s-light-dark-theme-color: #{base.sitecolors-siteColor("vam-black")};
 

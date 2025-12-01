@@ -83,7 +83,7 @@
     opacity: 0.4;
   }
 
-  // specifically use light colours (same as for when in dark theme context, i.e. light-dark-theme--dark)
+  // specifically use light colours (same as for when in dark theme context, i.e. s-light-dark-theme--dark)
   &--light {
     --btn-bg: var(--btn-light-bg);
     --btn-color: var(--btn-light-color);
