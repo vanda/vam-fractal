@@ -1,7 +1,26 @@
+collectionsSearchContext = {
+  modifiers: ['etc', 'etc-search'],
+  jsHook: 'js-search-etc',
+  placeholder: 'Search by object, artist, maker&hellip;',
+  action: 'https://collections.vam.ac.uk/search/',
+  facets: [
+    ...(new Array(2).fill(null)).map((x, i) => ({
+      facet: 'Facet 1',
+      term: `Term ${i}`
+    })),
+    {
+      facet: 'Really Long Facet 1',
+      term: 'Term Long'
+    },
+    ...(new Array(2).fill(null)).map((x, i) => ({
+      facet: 'Facet 1',
+      term: `Term ${i}`
+    }))
+  ]
+};
+
 module.exports = {
-  title: 'Site Search Form',
-  name: 'Search Form',
-  label: 'Search Form',
+  title: 'Site Search',
   context: {
     previewClass: 'fr-bg--dark',
     jsHook: 'js-search-site',
@@ -36,33 +55,29 @@ module.exports = {
   },
   variants: [
     {
-      name: 'Collections Search',
+      name: 'etc-search',
       label: 'Collections Search',
+      title: 'Collections Search',
       context: {
-        modifiers: ['etc', 'etc-search'],
-        jsHook: 'js-search-etc',
-        placeholder: 'Search by object, artist, maker&hellip;',
-        action: 'https://collections.vam.ac.uk/search/',
-        facets: [
-          ...(new Array(2).fill(null)).map((x, i) => ({
-            facet: 'Facet 1',
-            term: `Term ${i}`
-          })),
-          {
-            facet: 'Really Long Facet 1',
-            term: 'Term Long'
-          },
-          ...(new Array(2).fill(null)).map((x, i) => ({
-            facet: 'Facet 1',
-            term: `Term ${i}`
-          }))
-        ]
+        previewClass: '',
+        ...collectionsSearchContext
       }
     },
     {
-      name: 'Collections Landing',
-      label: 'Collections Landing',
+      name: 'etc-search--on-dark',
+      label: 'Collections Search On Dark',
+      title: 'Collections Search On Dark',
       context: {
+        lightDarkTheme: 's-light-dark-theme--dark',
+        ...collectionsSearchContext
+      }
+    },
+    {
+      name: 'etc-gateway',
+      label: 'Collections Landing',
+      title: 'Collections Landing',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark',
         modifiers: ['etc', 'etc-gateway'],
         jsHook: 'js-search-etc-gateway',
         placeholder: 'Search by object, artist, maker&hellip;',

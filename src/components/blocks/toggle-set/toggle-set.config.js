@@ -1,6 +1,4 @@
 module.exports = {
-  title: 'Toggle Set',
-  label: 'Toggle Set',
   context: {
     toggles: [
       'Galleries',
