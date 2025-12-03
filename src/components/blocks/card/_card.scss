@@ -71,7 +71,6 @@
 
   &__synopsis {
     @include base.typography-typeSetting(3);
-    @include base.typography-lineheight(1);
 
     -webkit-box-orient: vertical;
     display: -webkit-box;
@@ -83,7 +82,6 @@
 
     @include mixins.breakpoints-bpMinXSmall {
       @include base.typography-typeSetting(4);
-      @include base.typography-lineheight(3);
     }
   }
 
@@ -118,7 +116,6 @@
     .b-card__synopsis {
       @include mixins.breakpoints-bpMinMedium {
         @include base.typography-typeSetting(5);
-        @include base.typography-lineheight(4);
       }
     }
 
