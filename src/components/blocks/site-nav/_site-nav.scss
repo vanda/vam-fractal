@@ -14,9 +14,33 @@ $nav-breakpoints: (
 }
 
 .b-site-nav {
+  $site-nav-icon-border: base.sitecolors-siteColor("vam-grey-4");
+  $site-nav-solo-shadow: 0 0 5px rgb(base.sitecolors-siteColor("vam-grey-4"), 75%);
+
+  // setup default light/dark theme variable properties
+  --site-nav-bg-img: none;
+  --site-nav-text-shadow: none;
+  --site-nav-icon-shadow: 0 0 50px 1px #{rgb(base.sitecolors-siteColor("vam-white"), 20%)}, inset 0 0 50px 4px #{rgb(base.sitecolors-siteColor("vam-white"), 24%)};
+  
+  // react to any s-light-dark-theme--dark modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --site-nav-bg-img: linear-gradient(rgb(0, 0, 0, 40%), transparent);
+    --site-nav-text-shadow: 0 1px 3px #{rgb(base.sitecolors-siteColor("vam-black"), 80%)}, 0 -1px 3px #{rgb(base.sitecolors-siteColor("vam-black"), 80%)};
+    --site-nav-icon-shadow: 0 0 50px 1px #{rgb(base.sitecolors-siteColor("vam-black"), 20%)}, inset 0 0 50px 4px #{rgb(base.sitecolors-siteColor("vam-black"), 24%)};
+  }
+  
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --site-nav-bg-img: linear-gradient(rgb(0, 0, 0, 40%), transparent);
+      --site-nav-text-shadow: 0 1px 3px #{rgb(base.sitecolors-siteColor("vam-black"), 80%)}, 0 -1px 3px #{rgb(base.sitecolors-siteColor("vam-black"), 80%)};
+      --site-nav-icon-shadow: 0 0 50px 1px #{rgb(base.sitecolors-siteColor("vam-black"), 20%)}, inset 0 0 50px 4px #{rgb(base.sitecolors-siteColor("vam-black"), 24%)};
+    }
+  }
+
   @include base.typography-typeSetting(5);
 
-  background-image: linear-gradient(hsla(0deg, 0%, 0%, 40%), transparent);
+  background-image: var(--site-nav-bg-img);
   height: 150px;
   line-height: 1.7;
   position: relative;
@@ -39,7 +63,6 @@ $nav-breakpoints: (
     &:active {
       background: base.sitecolors-siteColor("vam-white");
       border: 1px solid base.sitecolors-siteColor("vam-black");
-      box-shadow: none;
       color: base.sitecolors-siteColor("vam-black");
       font-size: 13px;
       height: 40px;
@@ -80,7 +103,7 @@ $nav-breakpoints: (
   }
 
   &__logo {
-    color: base.sitecolors-siteColor("vam-white");
+    color: var(--s-light-dark-theme-color);
     display: none;
 
     @include bpMinNav("small") {
@@ -137,12 +160,10 @@ $nav-breakpoints: (
   &__bag,
   &__core__search-btn {
     background: transparent;
-    border: 2px solid currentColor;
+    border: 2px solid $site-nav-icon-border;
     border-radius: 50%;
-    box-shadow:
-      0 0 10px 5px rgba(0, 0, 0, 5%),
-      0 0 50px 1px rgba(0, 0, 0, 20%),
-      inset 0 0 50px 4px rgba(0, 0, 0, 24%);
+    box-shadow: var(--site-nav-icon-shadow);
+    color: var(--s-light-dark-theme-color);
     cursor: pointer;
     display: inline-flex;
     height: 40px;
@@ -227,7 +248,7 @@ $nav-breakpoints: (
   }
 
   &__bag-total {
-    color: base.sitecolors-siteColor("vam-white");
+    color: var(--s-light-dark-theme-color);
     font-size: 12px;
     left: 15px;
     position: absolute;
@@ -235,7 +256,7 @@ $nav-breakpoints: (
   }
 
   &__mobile-toggle {
-    color: base.sitecolors-siteColor("vam-white");
+    color: var(--s-light-dark-theme-color);
     position: absolute;
     right: 10px;
     text-align: center;
@@ -307,11 +328,10 @@ $nav-breakpoints: (
   }
 
   &__core__items {
-    align-items: baseline;
-    display: none;
-
     @include base.typography-typeSetting(5, "bold");
 
+    align-items: baseline;
+    display: none;
     margin: 40px 0 0;
 
     .b-site-nav--open & {
@@ -319,26 +339,23 @@ $nav-breakpoints: (
     }
 
     @include bpMinNav("small") {
+      @include base.typography-typeSetting(4, "regular");
+
       align-items: center;
       display: flex;
       flex-direction: row;
-
-      @include base.typography-typeSetting(4, "regular");
-
       justify-content: center;
       margin: 0;
       padding: 0;
       text-align: center;
-      text-shadow:
-        0 1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%),
-        0 -1px 3px rgba(base.sitecolors-siteColor("vam-black"), 80%);
     }
   }
-
+  
   &__core__item {
-    color: base.sitecolors-siteColor("vam-white");
+    color: var(--s-light-dark-theme-color);
     display: block;
     margin: 0 20px 30px;
+    text-shadow: var(--site-nav-text-shadow);
     width: 100%;
 
     &--more {
@@ -369,7 +386,7 @@ $nav-breakpoints: (
       }
 
       &.active {
-        border-bottom: 2px solid base.sitecolors-siteColor("vam-white");
+        border-bottom: 2px solid var(--s-light-dark-theme-color);
       }
 
       &:focus-visible {
@@ -396,16 +413,16 @@ $nav-breakpoints: (
         padding: 5px 0;
 
         &:hover {
-          color: base.sitecolors-siteColor("vam-grey-5");
           left: initial;
+          opacity: 0.83;
         }
 
         &.active {
           border: none;
 
           &::after {
-            background: base.sitecolors-siteColor("vam-white");
-            box-shadow: 0 1px 3px 0 rgba(base.sitecolors-siteColor("vam-black"), 80%);
+            background: var(--s-light-dark-theme-color);
+            box-shadow: var(--site-nav-text-shadow);
             content: "";
             display: block;
             height: 3px;
@@ -433,6 +450,8 @@ $nav-breakpoints: (
   }
 
   &__core__overflowitems {
+    background: var(--s-light-dark-theme-background-color);
+    border-radius: 2px;
     display: none;
     font-size: 15px;
     left: -20px;
