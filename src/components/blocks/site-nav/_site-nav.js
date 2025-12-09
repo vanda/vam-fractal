@@ -33,9 +33,20 @@ if (siteNav) {
     if (activate) {
       navSearch.classList.add('b-site-nav__core__search--active');
       document.body.style.overflow = 'hidden';
+      /* temporarily set light-dark-theme to dark if not already in dark mode
+        * so nav works against the dark styled Search bg */
+      if (!siteNav.closest('.s-light-dark-theme--dark')) {
+        siteNav.parentElement.classList.add('s-light-dark-theme--overridden', 's-light-dark-theme--dark');
+      }
     } else {
       navSearch.classList.remove('b-site-nav__core__search--active');
       document.body.style.overflow = '';
+      /* if light-dark-theme was temporarily set to dark
+        * the temporary classes can now be removed */
+      const tmpDarkClass = siteNav.closest('.s-light-dark-theme--overridden');
+      if (tmpDarkClass) {
+        tmpDarkClass.classList.remove('s-light-dark-theme--overridden', 's-light-dark-theme--dark');
+      }
     }
   };
 
@@ -56,16 +67,16 @@ if (siteNav) {
     };
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
-      if (siteNav.classList.contains('b-site-nav--open')) {
-        siteNav.classList.remove('b-site-nav--open');
-        siteNav.setAttribute('aria-expanded', 'false');
-        document.removeEventListener('keydown', tabListener, false);
-        navSearchActivate(false);
-      } else {
+      if (!siteNav.classList.contains('b-site-nav--open')) {
         siteNav.classList.add('b-site-nav--open');
         siteNav.setAttribute('aria-expanded', 'true');
         document.addEventListener('keydown', tabListener, false);
         navSearchActivate(true);
+      } else {
+        siteNav.classList.remove('b-site-nav--open');
+        siteNav.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('keydown', tabListener, false);
+        navSearchActivate(false);
       }
     }, false);
     return true;
@@ -88,14 +99,14 @@ if (siteNav) {
     };
     navSearchBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (navSearchBtn.classList.contains('b-site-nav__core__search-btn--active')) {
-        navSearchBtn.classList.remove('b-site-nav__core__search-btn--active');
-        document.removeEventListener('keydown', tabListener, false);
-        navSearchActivate(false);
-      } else {
+      if (!navSearchBtn.classList.contains('b-site-nav__core__search-btn--active')) {
         navSearchBtn.classList.add('b-site-nav__core__search-btn--active');
         document.addEventListener('keydown', tabListener, false);
         navSearchActivate(true);
+      } else {
+        navSearchBtn.classList.remove('b-site-nav__core__search-btn--active');
+        document.removeEventListener('keydown', tabListener, false);
+        navSearchActivate(false);
       }
     }, false);
   }
