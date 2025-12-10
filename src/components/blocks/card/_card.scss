@@ -2,10 +2,28 @@
 @use "../../base";
 
 .b-card {
-  background: base.sitecolors-siteColor("vam-white");
-  border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
+  // setup default light/dark theme variable properties
+  --card-border: #{base.sitecolors-siteColor("vam-grey-4")};
+  --card-color-visited: #{base.sitecolors-siteColor("vam-grey-3")};
+
+  // react to any s-light-dark-theme--dark modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --card-border: #{base.sitecolors-siteColor("vam-grey-2")};
+    --card-color-visited: #{base.sitecolors-siteColor("vam-grey-4")};
+  }
+
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --card-border: #{base.sitecolors-siteColor("vam-grey-2")};
+      --card-color-visited: #{base.sitecolors-siteColor("vam-grey-4")};
+    }
+  }
+
+  background: var(--s-light-dark-theme-background-color);
+  border-bottom: 1px solid var(--card-border);
   border-radius: 2px;
-  color: base.sitecolors-siteColor("vam-black");
+  color: var(--s-light-dark-theme-color);
   display: block;
   min-height: 380px;
   overflow: hidden;
@@ -19,7 +37,7 @@
   @include mixins.focus-raisedPseudoFocus;
 
   &:visited {
-    color: base.sitecolors-siteColor("vam-grey-3");
+    color: var(--card-color-visited);
   }
 
   &__image-container {
