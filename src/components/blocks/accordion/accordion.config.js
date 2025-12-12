@@ -10,6 +10,13 @@ module.exports = {
       context: {
         lightDarkTheme: 's-light-dark-theme--dark'
       }
+    },
+    {
+      name: 'modal',
+      label: 'Modal',
+      context: {
+        modifier: ['modal']
+      }
     }
   ]
 };
