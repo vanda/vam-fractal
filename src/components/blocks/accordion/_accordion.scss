@@ -2,7 +2,26 @@
 @use "../../base";
 
 .b-accordion {
-  background-color: inherit;
+  // setup default light/dark theme variable properties
+  --accordion-bg: #{base.sitecolors-siteColor("vam-white")};
+  --accordion-bg-hover: #{base.sitecolors-siteColor("vam-grey-7")};
+  
+  // react to any s-light-dark-theme--dark modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --accordion-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+    --accordion-bg-hover: #{base.sitecolors-siteColor("vam-grey-2")};
+  }
+  
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --accordion-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+      --accordion-bg-hover: #{base.sitecolors-siteColor("vam-grey-2")};
+    }
+  }
+
+  background-color: var(--accordion-bg);
+  color: var(--s-light-dark-theme-color);
   display: flex;
   flex-direction: column;
   row-gap: 8px;
@@ -11,14 +30,9 @@
     row-gap: 12px;
   }
 
-  &__section {
-    background-color: inherit;
-  }
-
   &__section-header {
     @include base.typography-typeSetting(4, bold);
 
-    background-color: inherit;
     border-top: 1px solid base.sitecolors-siteColor("vam-grey-4");
     column-gap: 15px;
     cursor: pointer;
@@ -32,8 +46,8 @@
 
     &:hover,
     &:focus-visible {
-      background-color: base.sitecolors-siteColor("vam-grey-7");
-      border-top: 1px solid base.sitecolors-siteColor("vam-black");
+      background-color: var(--accordion-bg-hover);
+      border-top: 1px solid var(--s-light-dark-theme-color);
     }
 
     /* webkit doesn't yet support the list-style rule above */
@@ -42,7 +56,7 @@
     }
 
     &::after {
-      border: solid base.sitecolors-siteColor("vam-black");
+      border: solid currentColor;
       border-width: 0 2px 2px 0;
       content: "";
       flex: 0 0 auto;
