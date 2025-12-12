@@ -1,7 +1,15 @@
 module.exports = {
   title: 'Accordion',
-  label: 'Accordion',
   context: {
     previewClass: 'fr-padded'
-  }
+  },
+  variants: [
+    {
+      name: 'dark',
+      label: 'Dark',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark'
+      }
+    }
+  ]
 };
