@@ -2,6 +2,7 @@
 @use "../../base";
 
 .b-breadcrumb {
+  $breadcrumb: &;
   $bullet-gap: 12px;
   $bullet-width: 0.29lh;
 
@@ -22,6 +23,7 @@
 
   background-color: var(--s-light-dark-theme-background-color);
   color: var(--s-light-dark-theme-color);
+  overflow: hidden; // required when nested in flexbox
 
   // desktop view overflow fade
   @include mixins.breakpoints-bpMinSmall {
@@ -67,8 +69,8 @@
   }
 
   // desktop view overflow scrolling
-  @include mixins.breakpoints-bpMinSmall {
-    & > &__section {
+  & > &__section {
+    @include mixins.breakpoints-bpMinSmall {
       overflow-x: auto;
       padding-right: 1.7rem;
       scrollbar-width: none;
@@ -134,6 +136,20 @@
     @include mixins.breakpoints-bpMinSmall {
       flex-direction: row;
       text-wrap: nowrap;
+
+      #{$breadcrumb}--collapse-home > #{$breadcrumb}__section > & > a {
+        display: flex;
+        font-size: 0;
+
+        &::before {
+          background-color: currentColor;
+          content: '';
+          flex: 0 0 auto;
+          height: 1lh;
+          mask: var(--icon-svg-home) no-repeat;
+          width: 1lh;
+        }
+      }
     }
   }
 }

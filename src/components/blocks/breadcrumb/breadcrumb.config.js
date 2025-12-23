@@ -9,6 +9,13 @@ module.exports = {
       context: {
         lightDarkTheme: 's-light-dark-theme--dark'
       }
+    },
+    {
+      name: 'collapse-home',
+      label: 'Collapse Home',
+      context: {
+        modifier: ['collapse-home']
+      }
     }
   ]
 };
