@@ -73,6 +73,26 @@ module.exports = {
       }
     },
     {
+      name: 'etc-search-mini',
+      label: 'Collections Search Mini',
+      title: 'Collections Search Mini',
+      context: {
+        previewClass: '',
+        ...collectionsSearchContext,
+        modifiers: ['etc', 'etc-search', 'etc-search-mini'],
+      }
+    },
+    {
+      name: 'etc-search-mini--ondark',
+      label: 'Collections Search Mini On Dark',
+      title: 'Collections Search Mini On Dark',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark',
+        ...collectionsSearchContext,
+        modifiers: ['etc', 'etc-search', 'etc-search-mini'],
+      }
+    },
+    {
       name: 'etc-gateway',
       label: 'Collections Landing',
       title: 'Collections Landing',
