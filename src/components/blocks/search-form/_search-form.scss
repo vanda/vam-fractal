@@ -21,15 +21,12 @@
     }
   }
 
-  width: 100%;
-
   &--etc-gateway {
     border-radius: 2px;
     margin: auto;
     max-width: 720px;
     padding: 10px 10px 8px;
     position: relative;
-    width:100%;
 
     &[suggesting] {
       background: base.sitecolors-siteColor("vam-grey-2");
@@ -219,9 +216,6 @@
   }
 
   &--etc-search{
-    margin:auto;
-    width:100%;
-
     @include mixins.breakpoints-bpMinSmall {
       padding-left: 12%;
       padding-right: 12%;
