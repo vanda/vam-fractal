@@ -33,6 +33,22 @@
     }
   }
 
+  &--etc-search {
+    @include mixins.breakpoints-bpMinSmall {
+      padding-left: 12%;
+      padding-right: 12%;
+    }
+    
+    @include mixins.breakpoints-bpMinLarge {
+      padding-left: 20%;
+      padding-right: 20%;
+    }
+  }
+  
+  &#{&}--etc-search-mini {
+    padding: 0;
+  }
+
   &__inner {
     border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-5");
     position: relative;
@@ -44,18 +60,18 @@
       flex-wrap: wrap;
       margin: 0;
       padding: 0;
+
+      @include mixins.breakpoints-bpMinSmall {
+        flex-wrap: nowrap;
+      }
     }
 
     .b-search-form--etc-search & {
       margin: 0;
 
-      &--focused-search-validation-error{
+      &--focused-search-validation-error {
         margin-bottom:40px;
       }
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      flex-wrap: nowrap;
     }
   }
 
@@ -77,7 +93,7 @@
       width: 34px;
     }
 
-    &--etc {
+    .b-search-form--etc & {
       color: currentColor;
       height: 20px;
       margin: 0;
@@ -88,6 +104,11 @@
         height: 28px;
         width: 28px;
       }
+    }
+
+    .b-search-form--etc-search-mini & {
+      height: 18px;
+      width: 18px;
     }
   }
 
@@ -102,7 +123,7 @@
     .b-search-form--etc & {
       background: var(--etc-input-bg);
       border-radius: 2px 0 0 2px;
-      flex: 1 0 auto;
+      flex: auto;
       width: auto;
 
       @include mixins.breakpoints-bpMinSmall {
@@ -192,7 +213,7 @@
       @include base.typography-typeSetting(4);
 
       @include mixins.breakpoints-bpMinMedium {
-        @include base.typography-typeSetting(5, "regular");
+        @include base.typography-typeSetting(5);
       }
     }
 
@@ -215,15 +236,11 @@
     }
   }
 
-  &--etc-search{
-    @include mixins.breakpoints-bpMinSmall {
-      padding-left: 12%;
-      padding-right: 12%;
-    }
+  &--etc-search-mini {
+    .b-search-form__input {
+      @include base.typography-typeSetting(2);
 
-    @include mixins.breakpoints-bpMinLarge {
-      padding-left: 20%;
-      padding-right: 20%;
+      padding: 8px 12px;
     }
   }
 
@@ -287,8 +304,6 @@
       padding: 12px;
 
       @include mixins.breakpoints-bpMinMedium {
-        @include base.typography-typeSetting(4, "regular");
-
         padding: 16px;
       }
 
@@ -299,6 +314,10 @@
       &:hover {
         background: $etc-select-bg;
       }
+    }
+
+    .b-search-form--etc-search-mini &#{&} {
+      padding: 6px 8px;
     }
   }
 
@@ -558,31 +577,29 @@
     flex: 0 0 100%;
     height: auto;
     margin-bottom: 8px;
-    opacity: 1;
     position: relative;
     visibility: visible;
     width: auto;
 
     &::after {
-      color: $etc-select-color;
-      content: "⌄";
-      font-size: 20px;
-      font-weight: 100;
-      height: 10px;
+      border: solid $etc-select-color;
+      border-width: 0 2px 2px 0;
+      content: "";
+      height: 9px;
       pointer-events: none;
       position: absolute;
       right: 18px;
-      top: 12%;
-      transform: scaleX(1.5);
-      width: 10px;
+      top: 34%;
+      transform: rotate(45deg);
+      width: 9px;
       z-index: 1;
 
       @include mixins.breakpoints-bpMinSmall {
-        top: 15%;
+        top: 36%;
       }
 
       @include mixins.breakpoints-bpMinMedium {
-        top: 24%;
+        top: 40%;
       }
     }
 
@@ -590,10 +607,26 @@
       flex: 0 0 10em;
       margin: 0 1px 0 0;
     }
+
+    .b-search-form--etc-search-mini & {
+      margin-bottom: 4px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        flex-basis: 7em;
+        margin-bottom: 0;
+      }
+
+      &::after {
+        height: 8px;
+        right: 14px;
+        top: 34%;
+        width: 8px;
+      }
+    }
   }
 
   &__filter-select {
-    @include base.typography-typeSetting(4, "regular");
+    @include base.typography-typeSetting(4);
 
     appearance: none;
     background-color: $etc-select-bg;
@@ -616,6 +649,13 @@
     &:focus-visible {
       position: relative;
       z-index: 1;
+    }
+
+    .b-search-form--etc-search-mini & {
+      @include base.typography-typeSetting(2);
+
+      padding: 6px 28px 6px 8px;
+      width: 100%;
     }
 
     > option {
