@@ -23,7 +23,6 @@
 
   background-color: var(--s-light-dark-theme-background-color);
   color: var(--s-light-dark-theme-color);
-  overflow: hidden; // required when nested in flexbox
 
   // desktop view overflow fade
   @include mixins.breakpoints-bpMinSmall {
@@ -45,7 +44,7 @@
 
     display: flex;
 	  gap: $bullet-gap;
-    
+
     // mobile view underline
     @include mixins.breakpoints-bpMaxSmall {
       position: relative;
