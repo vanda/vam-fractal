@@ -10,5 +10,15 @@ module.exports = {
     date: '1925-1967',
     reference: 'THM/433',
     extent: '90 Boxes',
-  }
+  },
+  variants: [
+    {
+      name: 'dark',
+      label: 'Dark',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark',
+        previewClass: 'fr-bg--light fr-content-edge-space'
+      }
+    }
+  ]
 };
