@@ -120,4 +120,12 @@
   &--point-right {
     --btn-icon-transform: rotate(180deg);
   }
+
+  &--numeric {
+    @include base.typography-typeSetting(2, "bold");
+
+    &::after {
+      display: none;
+    }
+  }
 }
