@@ -1,12 +1,12 @@
 module.exports = {
   context: {
-    icons: [
-      'info',
-      'close',
-      'point-left',
-      'point-right',
-      'plus',
-      'minus'
+    title: 'Button title',
+    modifiers: [
+      ['close'],
+      ['point-left'],
+      ['point-right'],
+      ['plus'],
+      ['minus']
     ]
   },
   variants: [
@@ -18,10 +18,20 @@ module.exports = {
       }
     },
     {
+      name: 'numeric',
+      label: 'Numeric',
+      context: {
+        title: '101',
+        modifiers: [
+          'numeric'
+        ]
+      }
+    },
+    {
       name: 'custom-example',
       label: 'Custom example',
       context: {
-        custom_example: true
+        modifiers: null
       }
     }
   ]
