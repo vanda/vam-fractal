@@ -140,11 +140,11 @@ const oicInit = () => {
 
     oic.infoToggle = (btn, toggleOn = false) => {
       if (toggleOn) {
-        btn.classList.add('u-btn-icon--active');
+        btn.classList.add('u-btn-icon--inverse');
       } else {
-        btn.classList.toggle('u-btn-icon--active');
+        btn.classList.toggle('u-btn-icon--inverse');
       }
-      if (btn.classList.contains('u-btn-icon--active')) {
+      if (btn.classList.contains('u-btn-icon--inverse')) {
         oic.classList.add('b-object-image-overlay--img-only');
         btn.dataset.trackingOic = 'show info';
         btn.setAttribute('aria-expanded', false);

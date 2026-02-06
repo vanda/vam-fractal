@@ -1,22 +1,13 @@
-<div class="b-pagination">
-  <div class="b-pagination__pointer b-pagination__pointer--deactivated">
-    <svg role="img" class="b-pagination__pointer-arrow">
-      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-left"></use>
-    </svg>
+<nav class="b-pagination" data-index="1" data-total="12" aria-label="Pagination">
+  <button class="b-pagination__prevnext" disabled title="Previous">
+    <div class="u-btn-icon u-btn-icon--point-left"></div>
+    Prev
+  </button>
+  <div class="b-pagination__pages">
+    <button class="u-btn-icon u-btn-icon--numeric" selected value="1" title="Page 1">1</button>
   </div>
-  <ul class="b-pagination__options">
-    <li class="b-pagination__option">
-      <span class="b-pagination__option-content--active">{{currentPage}}</span>
-    </li>
-    {% for page in pages %}
-      <li class="b-pagination__option">
-        <a class="b-pagination__option-content" href={{link}}>{{page}}</a>
-      </li>
-    {% endfor %}
-  </ul>
-  <a class="b-pagination__pointer" href={{link}}>
-    <svg role="img" class="b-pagination__pointer-arrow">
-      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-right"></use>
-    </svg>
-  </a>
-</div>
+  <button class="b-pagination__prevnext" disabled title="Next">
+    Next
+    <div class="u-btn-icon u-btn-icon--point-right"></div>
+  </button>
+</nav>
