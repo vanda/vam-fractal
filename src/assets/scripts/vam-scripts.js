@@ -2,6 +2,7 @@
 import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
 import contentWarningsInit from '../../components/blocks/object-card/_object-card';
 import carouselInit from '../../components/blocks/carousel/_carousel';
+import paginationInit from '../../components/blocks/pagination/_pagination';
 
 require('../../components/services/imageload/_imageload');
 require('../../components/services/light-dark-theme/_light-dark-theme');
@@ -27,9 +28,20 @@ require('../../components/blocks/events-featured/_events-featured');
 require('../../components/groups/image-overlay/_image-overlay');
 require('../../components/groups/story-box-container/_story-box-container');
 
+/* initialise object-card content warnings */
 contentWarningsInit();
+
+/* initialise object-image-overlay (aka OIC) */
 oicInit();
+
+/* initialise carousel */
 Array.from(document.querySelectorAll('.b-carousel'), (carousel) => {
   carouselInit(carousel);
+  return true;
+});
+
+/* initialise pagination */
+Array.from(document.querySelectorAll('.b-pagination'), (pagination) => {
+  paginationInit(pagination);
   return true;
 });
