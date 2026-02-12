@@ -1,7 +1,7 @@
 module.exports = {
   context: {
     title: 'Button title',
-    modifiers: [
+    icons: [
       ['close'],
       ['point-left'],
       ['point-right'],
@@ -22,16 +22,31 @@ module.exports = {
       label: 'Numeric',
       context: {
         title: '101',
-        modifiers: [
-          'numeric'
-        ]
+        modifiers: ['numeric'],
+        icons: [1]
+      }
+    },
+    {
+      name: 'outline',
+      label: 'Outline',
+      context: {
+        modifiers: ['outline']
+      }
+    },
+    {
+      name: 'outline--on-dark',
+      label: 'Outline On Dark',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark',
+        modifiers: ['outline']
       }
     },
     {
       name: 'custom-example',
       label: 'Custom example',
       context: {
-        modifiers: null
+        modifiers: null,
+        icons: null
       }
     }
   ]
