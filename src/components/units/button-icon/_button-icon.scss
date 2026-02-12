@@ -67,7 +67,6 @@
   }
 
   &:enabled:hover,
-  &:enabled:active,
   button:enabled:hover > & {
     background-color: var(--btn-bg-hover);
   }
@@ -76,12 +75,29 @@
     background-color: var(--btn-color);
     color: var(--btn-bg);
     
-    &:hover,
-    &:active {
+    &:hover {
       color: var(--btn-color);
     }
   }
 
+  &--numeric {
+    @include base.typography-typeSetting(2, "bold");
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &--outline {
+    background-color: var(--btn-color);
+    border-color: var(--btn-bg);
+    color: var(--btn-bg);
+
+    &:enabled:hover,
+    button:enabled:hover > & {
+      color: var(--btn-color);
+    }
+  }
 
   // specifically use light colours (same as for when in dark theme context, i.e. s-light-dark-theme--dark)
   &--light {
@@ -91,7 +107,7 @@
     --btn-bg-hover: var(--btn-light-bg-hover);
   }
 
-  // specific preset icon types follow
+  // specific preset icon types follow...
   &--close {
     --btn-icon: var(--icon-svg-plus);
     --btn-icon-transform: rotate(45deg);
@@ -119,13 +135,5 @@
 
   &--point-right {
     --btn-icon-transform: rotate(180deg);
-  }
-
-  &--numeric {
-    @include base.typography-typeSetting(2, "bold");
-
-    &::after {
-      display: none;
-    }
   }
 }

@@ -1,12 +1,9 @@
-{% if modifiers %}
-
 <div class="fr-button-icon">
+{% if icons %}
 
-  {% for m in modifiers %}
-  <button class="u-btn-icon u-btn-icon--{{ m }}" title="{{ title }}">{{ title }}</button>
+  {% for icon in icons %}
+  <button class="u-btn-icon {% for m in modifiers %} u-btn-icon--{{ m }}{% endfor %} u-btn-icon--{{ icon }}" title="{{ title }}">{{ title }}</button>
   {% endfor %}
-
-</div>
 
 {% else %}
 
@@ -16,3 +13,4 @@
 </button>
 
 {% endif %}
+</div>
