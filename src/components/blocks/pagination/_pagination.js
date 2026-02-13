@@ -37,8 +37,10 @@ const paginationInit = (pagination) => {
   pages.innerHTML = '';
 
   /* populate pages with new buttons
-   * with space for upto maxBtns including bookends and their spacers */
-  const maxBtns = 7; // odd number >=3 (to centre the index)
+   * with space for upto maxBtns including bookends and their spacers
+   * maxBtns should be at least 3, odd number (to centre the index),
+   * ideally >=7 (to show both bookends plus central range) */
+  const maxBtns = Math.max(parseInt(pagination.dataset.maxBtns, 10) || 7, 3);
   let pageMin;
   let pageMax;
   let bookendMin;
@@ -77,13 +79,13 @@ const paginationInit = (pagination) => {
 
   /* for mid-ranges of ample size
    * add outer page book-ends with thier spacers */
-  if (maxBtns > 5) {
+  if (maxBtns >= 7) {
     if (bookendMin) {
       addSpacer(pages, true);
       addButton(bookendMin, pages, true);
     }
   }
-  if (maxBtns > 3) {
+  if (maxBtns >= 5) {
     if (bookendMax) {
       addSpacer(pages);
       addButton(bookendMax, pages);
