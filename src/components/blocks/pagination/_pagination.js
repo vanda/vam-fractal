@@ -3,6 +3,7 @@ const addButton = (number, container, prepend = false) => {
   const button = document.createElement('button');
   button.classList.add('u-btn-icon', 'u-btn-icon--numeric', 'u-btn-icon--inverse');
   button.innerText = number;
+  button.title = `Page ${number}`;
   button.value = number;
   if (prepend) {
     container.prepend(button);
