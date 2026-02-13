@@ -123,15 +123,19 @@ const paginationInit = (pagination) => {
       paginationInit(button.closest('.b-pagination')); // can't just pass in the pagination var here w/o causing a new evenetListener to be added each time paginationInit() is recalled
       /* for numbered page buttons update focus according to direction of travel */
       if (!button.classList.contains('b-pagination__prevnext')) {
-        let nextFocus;
+        let newFocus;
         if (button.value - oldIndex > 0) {
           /* clicking forward, focus next sibling of type button */
-          nextFocus = pages.querySelector('[selected] ~ button');
+          newFocus = pages.querySelector('[selected] + button');
         } else {
           /* clicking backwards, focus previous sibling of type button */
-          nextFocus = pages.querySelector('button:has( ~ [selected])');
+          newFocus = pages.querySelector('button:has( + [selected])');
         }
-        nextFocus.focus({ preventScroll: true });
+        if (newFocus) {
+          newFocus.focus({ preventScroll: true });
+        } else {
+          selected.focus({ preventScroll: true });
+        }
       } else if (!document.activeElement.closest('.b-pagination')) {
         /* else replace lost focus when prev/next button became deactivated */
         selected.focus({ preventScroll: true });
