@@ -10,7 +10,7 @@
   {% endif %}
 
 
-  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form">
+  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length == 0 %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form"{% if validationMessage.length > 0 %} data-validation-message="{{validationMessage}}"{%endif%}>
     {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container">
     {% endif %}
@@ -23,7 +23,7 @@
     </h2>
 
     <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor--{{ modifier }}{% endif %} js-newsletter__descriptor">
-      Hear about collections, exhibitions, courses and events from the V&A and ways you can support us. 
+      Hear about collections, exhibitions, courses and events from the V&A and ways you can support us.
     </p>
 
     {% if modifier === "footer" %}
@@ -42,7 +42,7 @@
       <input type="hidden" name="ReturnURL" value="http://www.vam.ac.uk/content/email/confirmation/?result=success">
       <!-- Email - the user's email address -->
       <input aria-invalid="false" type="text" placeholder="name@example.com" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field--{{ modifier }}{% endif %}" autocomplete="email">
-      
+
       {% if modifier === "footer" %}
         <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--outlined-inverse b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit--{{ modifier }}{% endif %} js-newsletter__submit">
       {% else %}
