@@ -225,5 +225,26 @@
         mask-image: var(--icon-svg-ticket);
       }
     }
+
+    &--information {
+      &::before {
+        background-color: base.sitecolors-siteColor("vam-grey-4");
+        mask-image: var(--icon-svg-information);
+      }
+    }
+
+    &--warning {
+      &::before {
+        background-color: base.sitecolors-siteColor("warning-yellow");
+        mask-image: var(--icon-svg-information);
+      }
+    }
+
+    &--alert {
+      &::before {
+        background-color: base.sitecolors-siteColor("alert-red");
+        mask-image: var(--icon-svg-information);
+      }
+    }
   }
 }
