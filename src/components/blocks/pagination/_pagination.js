@@ -117,13 +117,15 @@ const paginationInit = (pagination) => {
     }
   }
 
-  pagination.addEventListener('click', (e) => {
-    e.stopImmediatePropagation();
+  function clickHandler(e) {
+    e.preventDefault();
     const button = e.target.closest('button');
     if (button) {
       const oldIndex = selected.value;
       pagination.dataset.index = button.value;
-      paginationInit(button.closest('.b-pagination')); // can't just pass in the pagination var here w/o causing a new evenetListener to be added each time paginationInit() is recalled
+      pagination.removeEventListener('click', clickHandler); // ensure listener only added once, since listener itself adds new listener
+      e.stopImmediatePropagation();
+      paginationInit(pagination);
       /* for numbered page buttons update focus according to direction of travel */
       if (!button.classList.contains('b-pagination__prevnext')) {
         let newFocus;
@@ -144,7 +146,9 @@ const paginationInit = (pagination) => {
         selected.focus({ preventScroll: true });
       }
     }
-  });
+  }
+
+  pagination.addEventListener('click', clickHandler);
 };
 
 export default paginationInit;
