@@ -242,7 +242,7 @@
 
     &--alert {
       &::before {
-        background-color: base.sitecolors-siteColor("alert-red");
+        background-color: #ff9696;
         mask-image: var(--icon-svg-information);
       }
     }
