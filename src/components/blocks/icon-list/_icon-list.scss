@@ -236,14 +236,14 @@
     &--warning {
       &::before {
         background-color: base.sitecolors-siteColor("warning-yellow");
-        mask-image: var(--icon-svg-information);
+        mask-image: var(--icon-svg-attention);
       }
     }
 
     &--alert {
       &::before {
         background-color: #ff9696;
-        mask-image: var(--icon-svg-information);
+        mask-image: var(--icon-svg-attention);
       }
     }
   }
