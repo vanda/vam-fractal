@@ -102,97 +102,97 @@
 
     &--attention {
       &::before {
-        mask-image: var(--icon-svg-attention);
+        mask-image: url("#{base.$icons-svgSpritePath}#attention-view");
       }
     }
 
     &--calendar {
       &::before {
-        mask-image: var(--icon-svg-calendar);
+        mask-image: url("#{base.$icons-svgSpritePath}#calendar-view");
       }
     }
 
     &--clock {
       &::before {
-        mask-image: var(--icon-svg-clock);
+        mask-image: url("#{base.$icons-svgSpritePath}#clock-view");
       }
     }
 
     &--crowded-event {
       &::before {
-        mask-image: var(--icon-svg-crowded-event);
+        mask-image: url("#{base.$icons-svgSpritePath}#crowded-event-view");
       }
     }
 
     &--download {
       &::before {
-        mask-image: var(--icon-svg-download);
+        mask-image: url("#{base.$icons-svgSpritePath}#download-view");
       }
     }
 
     &--induction-loop {
       &::before {
-        mask-image: var(--icon-svg-induction-loop);
+        mask-image: url("#{base.$icons-svgSpritePath}#induction-loop-view");
       }
     }
 
     &--link {
       &::before {
-        mask-image: var(--icon-svg-link);
+        mask-image: url("#{base.$icons-svgSpritePath}#link-view");
       }
     }
 
     &--loud {
       &::before {
-        mask-image: var(--icon-svg-loud);
+        mask-image: url("#{base.$icons-svgSpritePath}#loud-view");
       }
     }
 
     &--lower-subdued-light {
       &::before {
-        mask-image: var(--icon-svg-lower-subdued-light);
+        mask-image: url("#{base.$icons-svgSpritePath}#lower-subdued-light-view");
       }
     }
 
     &--map {
       &::before {
-        mask-image: var(--icon-svg-map);
+        mask-image: url("#{base.$icons-svgSpritePath}#map-view");
       }
     }
 
     &--natural-light {
       &::before {
-        mask-image: var(--icon-svg-natural-light);
+        mask-image: url("#{base.$icons-svgSpritePath}#natural-light-view");
       }
     }
 
     &--object {
       &::before {
-        mask-image: var(--icon-svg-object);
+        mask-image: url("#{base.$icons-svgSpritePath}#object-view");
       }
     }
 
     &--person-one {
       &::before {
-        mask-image: var(--icon-svg-person-one);
+        mask-image: url("#{base.$icons-svgSpritePath}#person-one-view");
       }
     }
 
     &--phone {
       &::before {
-        mask-image: var(--icon-svg-phone);
+        mask-image: url("#{base.$icons-svgSpritePath}#phone-view");
       }
     }
 
     &--pin {
       &::before {
-        mask-image: var(--icon-svg-pin);
+        mask-image: url("#{base.$icons-svgSpritePath}#pin-view");
       }
     }
 
     &--search {
       &::before {
-        mask-image: var(--icon-svg-search);
+        mask-image: url("#{base.$icons-svgSpritePath}#search-view");
       }
     }
 
@@ -204,25 +204,25 @@
 
     &--signpost{
       &::before {
-        mask-image: var(--icon-svg-signpost);
+        mask-image: url("#{base.$icons-svgSpritePath}#signpost-view");
       }
     }
 
     &--strong-smells {
       &::before {
-        mask-image: var(--icon-svg-strong-smells);
+        mask-image: url("#{base.$icons-svgSpritePath}#strong-smells-view");
       }
     }
 
     &--tick-mark {
       &::before {
-        mask-image: var(--icon-svg-tick-mark);
+        mask-image: url("#{base.$icons-svgSpritePath}#tick-mark-view");
       }
     }
 
     &--ticket {
       &::before {
-        mask-image: var(--icon-svg-ticket);
+        mask-image: url("#{base.$icons-svgSpritePath}#ticket-view");
       }
     }
   }

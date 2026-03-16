@@ -40,44 +40,81 @@
     }
   }
 
-  &__socials {
+  &__socials-list {
     @include mixins.unstyledelements-unstyledList;
 
     display: flex;
-    flex-direction: row;
+    gap: 10px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      gap: 25px;
+    }
 
     @include mixins.breakpoints-bpMaxXSmall {
       margin-top: 5px;
     }
+  }
 
-    &__item {
-      #{&} + & {
-        margin-left: 10px;
+  &__socials-list-link {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 45px;
+    justify-content: center;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 45px;
 
-        @include mixins.breakpoints-bpMinSmall {
-          margin-left: 25px;
-        }
+    @include mixins.breakpoints-bpMinSmall {
+      height: 50px;
+      width: 50px;
+    }
+
+    &::before {
+      background-color: currentColor;
+      content: "";
+      display: block;
+      height: 23px;
+      mask-repeat: no-repeat;
+      width: 23px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 28px;
+        width: 28px;
       }
+    }
 
-      &__link {
-        border-radius: 50%;
-        display: flex;
-        padding: 11px;
+    &:hover {
+      background-color: base.sitecolors-siteColor("vam-grey-2");
+    }
 
-        &:hover {
-          background-color: base.sitecolors-siteColor("vam-grey-2");
-        }
+    &--twitter {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#twitter-view");
+      }
+    }
 
-        > svg {
-          height: 23px;
-          margin: auto;
-          width: 23px;
+    &--youtube {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#youtube-view");
+      }
+    }
 
-          @include mixins.breakpoints-bpMinSmall {
-            height: 28px;
-            width: 28px;
-          }
-        }
+    &--instagram {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#instagram-view");
+      }
+    }
+
+    &--facebook {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#facebook-view");
+      }
+    }
+
+    &--tiktok {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#tiktok-view");
       }
     }
   }

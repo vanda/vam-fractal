@@ -1,5 +1,5 @@
 @forward "reset/reset";
-@forward "icons/icons";
+@forward "icons/icons" as icons-*;
 @forward "site-color/site-color" as sitecolors-*;
 @forward "spacing/spacing" as spacings-*;
 @forward "theme-color/theme-color" as themecolors-*;

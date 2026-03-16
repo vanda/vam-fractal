@@ -205,12 +205,12 @@
       flex: 0 0 auto;
       height: 16px;
       margin-top: 1px;
-      mask: var(--icon-svg-pin) no-repeat;
+      mask: url("#{base.$icons-svgSpritePath}#pin-view") no-repeat;
       width: 16px;
     }
   
     &--room::before {
-      mask-image: var(--icon-svg-signpost);
+      mask: url("#{base.$icons-svgSpritePath}#signpost-view") no-repeat;
     }
 
     > a {

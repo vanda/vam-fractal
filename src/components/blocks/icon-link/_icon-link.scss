@@ -58,8 +58,62 @@
   &__icon {
     height: 46%;
     inset: 27%;
+    overflow: hidden;
     position: absolute;
+    text-indent: -9999px;
     width: 46%;
     z-index: 1;
+
+    &::before {
+      background-color: currentColor;
+      content: "";
+      display: block;
+      height: 100%;
+      mask-repeat: no-repeat;
+      width: 100%;
+    }
+
+    &--facebook {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#facebook-view");
+      }
+    }
+
+    &--instagram {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#instagram-view");
+      }
+    }
+
+    &--pinterest {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#pinterest-view");
+      }
+    }
+
+    &--twitter {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#twitter-view");
+      }
+    }
+
+    &--youtube {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#youtube-view");
+      }
+    }
+
+    &--point-left {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#point-left-view");
+      }
+    }
+
+    &--point-right {
+      &::before {
+        mask-image: url("#{base.$icons-svgSpritePath}#point-left-view");
+        transform: rotate(180deg);
+      }
+    }
   }
 }

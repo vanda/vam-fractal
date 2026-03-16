@@ -29,49 +29,49 @@
 
     &--read {
       &::before {
-        mask-image: var(--icon-svg-quote);
+        mask-image: url("#{base.$icons-svgSpritePath}#quote-view");
       }
     }
 
     &--interact {
       &::before {
-        mask-image: var(--icon-svg-interact);
+        mask-image: url("#{base.$icons-svgSpritePath}#interact-view");
       }
     }
 
     &--view {
       &::before {
-        mask-image: var(--icon-svg-view);
+        mask-image: url("#{base.$icons-svgSpritePath}#view-view");
       }
     }
 
     &--download {
       &::before {
-        mask-image: var(--icon-svg-download);
+        mask-image: url("#{base.$icons-svgSpritePath}#download-view");
       }
     }
 
     &--visit {
       &::before {
-        mask-image: var(--icon-svg-pin);
+        mask-image: url("#{base.$icons-svgSpritePath}#pin-view");
       }
     }
 
     &--watch {
       &::before {
-        mask-image: var(--icon-svg-watch);
+        mask-image: url("#{base.$icons-svgSpritePath}#watch-view");
       }
     }
 
     &--listen {
       &::before {
-        mask-image: var(--icon-svg-listen);
+        mask-image: url("#{base.$icons-svgSpritePath}#listen-view");
       }
     }
 
     &--make {
       &::before {
-        mask-image: var(--icon-svg-make);
+        mask-image: url("#{base.$icons-svgSpritePath}#make-view");
       }
     }
   }
