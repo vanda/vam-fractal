@@ -9,15 +9,15 @@
     </div>
   {% endif %}
 
-
-  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length == 0 %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form"{% if validationMessage.length > 0 %} data-validation-message="{{validationMessage}}"{%endif%}>
+  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form"{% if validationMessage.length > 0 %} data-validation-message="{{validationMessage}}"{%endif%}>
     {% if modifier === "footer" %}
-      <div class="b-newsletter__flex-form-container">
+    <div class="b-newsletter__flex-form-container">
     {% endif %}
 
     {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-title">
     {% endif %}
+
     <h2 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline--{{ modifier }}{% endif %}">
         Sign up to our emails
     </h2>
@@ -33,6 +33,7 @@
     {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-form">
     {% endif %}
+
     <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields--{{ modifier }}{% endif %}">
       <input type="hidden" name="addressbookid" value="3410112">
       <input type="hidden" name="ci_isconsentform" value="true">
@@ -52,27 +53,15 @@
 
     <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info--{{ modifier }}{% endif %}">
       You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=/info/privacy-notice class="u-link">privacy notice</a>.
-      {% if modifier === "component" %}
-        </div>
-      {% endif %}
     </div>
+
     {% if modifier === "footer" %}
       </div>
-      </div>
+    {% endif %}
+
+    {% if modifier === "footer" %}
+    </div>
     {% endif %}
   </form>
 
-{% if modifier === "footer" %}
-  </div>
-{% endif %}
-
-{% if not modifier === "component" %}
 </div>
-{% endif %}
-
-{% if modifier === "component" %}
-  </div>
-  </a>
-  </article>
-  </section>
-{% endif %}
