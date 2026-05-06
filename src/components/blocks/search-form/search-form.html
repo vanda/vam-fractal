@@ -23,10 +23,6 @@
     {% endif %}
     <div class="b-search-form__input-wrapper">
       <input type="text" class="b-search-form__input" name="q" {% if modifiers and 'etc-gateway' in modifiers %} aria-labelledby="etc-gateway-search-input"{% endif %} placeholder="{{ placeholder|safe }}" aria-label="{{ placeholder|safe }}" value="" {% if not modifiers or (modifiers and 'etc-gateway' in modifiers) %}autocomplete="off"{% endif %}>
-      {% if not modifiers %}
-      {# SiteSearch #}
-      <div class="b-search-form__underscore" aria-hidden="true"></div>
-      {% endif %}
     </div>
 
     <button class="b-search-form__submit {% if modifiers and 'etc' in modifiers %}b-search-form__submit--etc{% endif %}" aria-label="Search submit">
