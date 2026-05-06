@@ -6,14 +6,8 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     searchForm._props = {
       type: 'siteSearch',
     };
-    const searchUnderscore = searchForm.querySelector('.b-search-form__underscore');
     const searchSubmit = searchForm.querySelector('.b-search-form__submit');
     const searchClear = searchForm.querySelector('.b-search-form__clear');
-
-    const searchDecorate = () => {
-      /* underline input field value */
-      searchUnderscore.innerHTML = searchInput.value.replace(/\s/g, '&nbsp;');
-    };
 
     const searchActivate = () => {
       searchClear.classList.add('b-search-form__clear--hidden');
@@ -27,7 +21,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     const searchReset = () => {
       searchClear.classList.add('b-search-form__clear--hidden');
       searchInput.value = '';
-      searchDecorate();
     };
 
     if (searchInput.value.length) {
@@ -35,9 +28,7 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
     } else {
       searchSubmit.classList.add('b-search-form__submit--hidden');
     }
-    searchDecorate();
     searchInput.addEventListener('input', () => {
-      searchDecorate();
       searchActivate();
     }, false);
     searchClear.addEventListener('click', searchReset, false);
