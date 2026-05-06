@@ -21,33 +21,7 @@
     }
   }
 
-  &--etc-gateway {
-    border-radius: 2px;
-    margin: auto;
-    max-width: 720px;
-    padding: 10px 10px 8px;
-    position: relative;
-
-    &[suggesting] {
-      background: base.sitecolors-siteColor("vam-grey-2");
-    }
-  }
-
-  &--etc-search {
-    @include mixins.breakpoints-bpMinSmall {
-      padding-left: 12%;
-      padding-right: 12%;
-    }
-    
-    @include mixins.breakpoints-bpMinLarge {
-      padding-left: 20%;
-      padding-right: 20%;
-    }
-  }
-  
-  &#{&}--etc-search-mini {
-    padding: 0;
-  }
+  position: relative;
 
   &__inner {
     border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-5");
@@ -141,14 +115,11 @@
 
     color: var(--s-light-dark-theme-color);
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 10px;
     text-align: center;
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(5);
-
-      margin-bottom: 6px;
-      margin-top:4px;
     }
   }
 
@@ -156,77 +127,43 @@
     @include mixins.elementvisibility-visuallyHidden;
   }
 
-  &__input,
-  &__underscore {
+  &__input {
     @include base.typography-typeSetting(5);
 
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(7, "bold");
-    }
-  }
-
-  &__input {
     background-color: transparent;
     border: none;
-    caret-color: base.sitecolors-siteColor("primary-green");
     color: base.sitecolors-siteColor("vam-white");
     height: 100%;
     margin: 4px 0;
     width: 100%;
 
     @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "bold");
+
       padding-left: 10px;
-    }
-
-    &::selection {
-      background-color: base.sitecolors-siteColor("vam-grey-4");
-    }
-
-    &::-ms-clear {
-      display: none;
     }
 
     &:focus-visible {
       position: relative;
       z-index: 1;
     }
-  }
 
-  &__underscore {
-    border-bottom: 3px solid base.sitecolors-siteColor("primary-green");
-    bottom: 0;
-    display: inline-block;
-    height: 3px;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-
-    @include mixins.breakpoints-bpMinSmall {
-      border-width: 5px;
-      height: 5px;
-    }
-  }
-
-  &--etc {
-    .b-search-form__input,
-    .b-search-form__underscore {
+    .b-search-form--etc & {
       @include base.typography-typeSetting(4);
+
+      color: $etc-input-color;
+      margin: 0;
+      padding: 8px 16px;
 
       @include mixins.breakpoints-bpMinMedium {
         @include base.typography-typeSetting(5);
       }
-    }
-
-    .b-search-form__input {
-      color: $etc-input-color;
-      margin: 0;
-      padding: 8px 16px;
 
       &--validation-error {
         border: 3px solid base.sitecolors-siteColor("alert-red");
       }
 
-      &__input-error-label{
+      &__input-error-label {
         background-color: base.sitecolors-siteColor("alert-red");
         color: base.sitecolors-siteColor("vam-black");
         display: block;
@@ -377,7 +314,6 @@
     }
 
     .b-search-form[suggesting] & {
-      margin-top: 6px;
       max-height: 74vh;
       opacity: 1;
       padding: 10px;
