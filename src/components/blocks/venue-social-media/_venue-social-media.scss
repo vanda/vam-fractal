@@ -2,11 +2,7 @@
 @use "../../base";
 
 .b-venue-social-media {
-  background-color: #000;
-
-  .b-promo__anchor {
-    background-color: base.sitecolors-siteColor("vam-black");
-  }
+  background-color: base.sitecolors-siteColor("vam-black");
 
   &__content {
     padding: 20px 0 10px;
