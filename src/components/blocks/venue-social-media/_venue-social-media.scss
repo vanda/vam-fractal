@@ -1,79 +1,110 @@
 @use "../../mixins";
 @use "../../base";
 
-.b-venue-social-media {
+.b-venue-soc-med {
+  align-items: center;
   background-color: base.sitecolors-siteColor("vam-black");
+  color: base.sitecolors-siteColor("vam-grey-6");
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 10px;
 
-  &__content {
-    padding: 20px 0 10px;
+  @include mixins.breakpoints-bpMinXSmall {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: none;
+    padding: 10px 20px;
+  }
+
+  @include mixins.breakpoints-bpMinSmall {
+    padding: 10px 50px;
+  }
+
+  &__heading {
+    @include base.typography-typeSetting(3, "bold");
+
+    margin-bottom: 15px;
+    text-align: center;
 
     @include mixins.breakpoints-bpMinXSmall {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      max-width: none;
-      padding: 10px 20px;
+      margin-bottom: 0;
     }
 
     @include mixins.breakpoints-bpMinSmall {
-      padding: 10px 50px;
+      @include base.typography-typeSetting(4, "bold");
     }
 
-    > h2 {
-      @include base.typography-typeSetting(3, "bold");
-
-      margin-bottom: 10px;
-
-      @include mixins.breakpoints-bpMinSmall {
-        @include base.typography-typeSetting(4, "bold");
-
-        margin: 0;
-      }
-
-      @include mixins.breakpoints-bpMinMedium {
-        @include base.typography-typeSetting(5, "bold");
-      }
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(5, "bold");
     }
   }
 
-  &__socials {
+  &__list {
     @include mixins.unstyledelements-unstyledList;
 
     display: flex;
     flex-direction: row;
+    gap: 10px;
 
-    @include mixins.breakpoints-bpMaxXSmall {
-      margin-top: 5px;
+    @include mixins.breakpoints-bpMinSmall {
+      gap: 25px;
+    }
+  }
+
+  &__list-anchor {
+    border-radius: 50%;
+    display: flex;
+    padding: 11px;
+
+    &::before {
+      background-color: currentColor;
+      content: '';
+      flex: 0 0 auto;
+      height: 23px;
+      mask-repeat: no-repeat;
+      width: 23px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 28px;
+        width: 28px;
+      }
     }
 
-    &__item {
-      #{&} + & {
-        margin-left: 10px;
+    &:hover {
+      background-color: base.sitecolors-siteColor("vam-grey-2");
+    }
 
-        @include mixins.breakpoints-bpMinSmall {
-          margin-left: 25px;
-        }
+    &-img-only {
+      @include mixins.elementvisibility-visuallyHidden;
+    }
+
+    &--twitter {
+      &::before {
+        mask-image: var(--icon-svg-twitter);
       }
+    }
 
-      &__link {
-        border-radius: 50%;
-        display: flex;
-        padding: 11px;
+    &--youtube {
+      &::before {
+        mask-image: var(--icon-svg-youtube);
+      }
+    }
 
-        &:hover {
-          background-color: base.sitecolors-siteColor("vam-grey-2");
-        }
+    &--instagram {
+      &::before {
+        mask-image: var(--icon-svg-instagram);
+      }
+    }
 
-        > svg {
-          height: 23px;
-          margin: auto;
-          width: 23px;
+    &--facebook {
+      &::before {
+        mask-image: var(--icon-svg-facebook);
+      }
+    }
 
-          @include mixins.breakpoints-bpMinSmall {
-            height: 28px;
-            width: 28px;
-          }
-        }
+    &--tiktok {
+      &::before {
+        mask-image: var(--icon-svg-tiktok);
       }
     }
   }
