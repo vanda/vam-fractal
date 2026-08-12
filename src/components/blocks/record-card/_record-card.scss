@@ -48,6 +48,9 @@
     background: var(--record-card-bg-hover);
   }
 
+  /* default focus style can be clipped by parent overflow` */
+  @include mixins.focus-raisedPseudoFocus;
+
   &:visited {
     color: var(--record-card-color-visted);
   }
