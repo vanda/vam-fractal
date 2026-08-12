@@ -150,5 +150,21 @@
         }
       }
     }
+
+    & > a {
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @include mixins.breakpoints-bpMinSmall {
+        // clamp all links except the last for desktop view
+        #{$breadcrumb}__section:has(#{$breadcrumb}__section) > & {
+          max-width: 200px;
+        }
+      }
+    }
   }
 }
