@@ -236,21 +236,11 @@ $nav-breakpoints: (
 
   &__mobile-toggle {
     color: base.sitecolors-siteColor("vam-white");
-    position: fixed;
+    position: absolute;
     right: 10px;
     text-align: center;
     top: 20px;
-    transition: all 0.5s;
     z-index: 3;
-
-    &--solo {
-      background: base.sitecolors-siteColor("vam-black");
-      box-shadow: 0 0 3px rgba(base.sitecolors-siteColor("vam-white"), 75%);
-    }
-
-    &--static {
-      position: absolute;
-    }
 
     @include bpMinNav("small") {
       display: none;

@@ -38,6 +38,10 @@ h2 {
   background-color: base.sitecolors-siteColor("vam-white");
 }
 
+.fr-content-edge-space {
+  padding: 10px 10px 20px;
+}
+
 .fr-content-wrapper,
 .fr-content-bg {
   padding: 0 calc((100vw - 1200px) / 2);

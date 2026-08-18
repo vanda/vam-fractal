@@ -267,6 +267,10 @@ module.exports = {
         {
           name: 'sale-red',
           hex: '#e30613'
+        },
+        {
+          name: 'klein-blue',
+          hex: '#1414aa'
         }
       ]
     }

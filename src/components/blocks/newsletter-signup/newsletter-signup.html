@@ -9,21 +9,21 @@
     </div>
   {% endif %}
 
-
-  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length > 0 %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form">
+  <form name="signup" id="signup{% if modifier.length > 0 %}--{{ modifier }}{% endif %}" action="https://email-vam.org.uk/signup.ashx" method="POST" class="b-newsletter__form {% if modifier.length %}b-newsletter__form--{{ modifier }}{% endif %} js-newsletter_form"{% if validationMessage.length > 0 %} data-validation-message="{{validationMessage}}"{%endif%}>
     {% if modifier === "footer" %}
-      <div class="b-newsletter__flex-form-container">
+    <div class="b-newsletter__flex-form-container">
     {% endif %}
 
     {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-title">
     {% endif %}
+
     <h2 class="b-newsletter__headline {% if modifier.length > 0 %}b-newsletter__headline--{{ modifier }}{% endif %}">
         Sign up to our emails
     </h2>
 
     <p aria-live="polite" class="b-newsletter__descriptor {% if modifier.length > 0 %}b-newsletter__descriptor--{{ modifier }}{% endif %} js-newsletter__descriptor">
-      Hear about collections, exhibitions, courses and events from the V&A and ways you can support us. 
+      Hear about collections, exhibitions, courses and events from the V&A and ways you can support us.
     </p>
 
     {% if modifier === "footer" %}
@@ -33,6 +33,7 @@
     {% if modifier === "footer" %}
       <div class="b-newsletter__flex-form-container-form">
     {% endif %}
+
     <div class="b-newsletter__form-fields {% if modifier.length > 0 %}b-newsletter__form-fields--{{ modifier }}{% endif %}">
       <input type="hidden" name="addressbookid" value="3410112">
       <input type="hidden" name="ci_isconsentform" value="true">
@@ -42,7 +43,7 @@
       <input type="hidden" name="ReturnURL" value="http://www.vam.ac.uk/content/email/confirmation/?result=success">
       <!-- Email - the user's email address -->
       <input aria-invalid="false" type="text" placeholder="name@example.com" name="Email" class="js-emailValidation b-newsletter__form-fields-field {% if modifier.length > 0 %}b-newsletter__form-fields-field--{{ modifier }}{% endif %}" autocomplete="email">
-      
+
       {% if modifier === "footer" %}
         <input type="submit" value="Sign up" name="Submit" class="u-btn u-btn--outlined-inverse b-newsletter__form-submit {% if modifier.length > 0 %}b-newsletter__form-submit--{{ modifier }}{% endif %} js-newsletter__submit">
       {% else %}
@@ -52,27 +53,15 @@
 
     <div class="b-newsletter__info {% if modifier.length > 0 %}b-newsletter__info--{{ modifier }}{% endif %}">
       You can change your preferences or opt out of hearing from us at any time using the unsubscribe link in our emails. Read our full <a href=/info/privacy-notice class="u-link">privacy notice</a>.
-      {% if modifier === "component" %}
-        </div>
-      {% endif %}
     </div>
+
     {% if modifier === "footer" %}
       </div>
-      </div>
+    {% endif %}
+
+    {% if modifier === "footer" %}
+    </div>
     {% endif %}
   </form>
 
-{% if modifier === "footer" %}
-  </div>
-{% endif %}
-
-{% if not modifier === "component" %}
 </div>
-{% endif %}
-
-{% if modifier === "component" %}
-  </div>
-  </a>
-  </article>
-  </section>
-{% endif %}
