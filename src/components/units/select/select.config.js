@@ -1,6 +1,6 @@
 module.exports = {
   context: {
-    previewClass: 'fr-padded'
+    previewClass: 'fr-padded',
   },
   variants: [
     {

@@ -4,10 +4,17 @@ module.exports = {
   },
   variants: [
     {
-      name: 'on-dark',
-      label: 'On Dark',
+      name: 'dark',
+      label: 'Dark',
       context: {
         lightDarkTheme: 's-light-dark-theme--dark'
+      }
+    },
+    {
+      name: 'collapse-home',
+      label: 'Collapse Home',
+      context: {
+        modifier: ['collapse-home']
       }
     }
   ]

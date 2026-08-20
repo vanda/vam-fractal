@@ -8,6 +8,8 @@
   },
   "extends": "airbnb-base",
   "rules": {
+    "default-case": "off",
+    "no-multiple-empty-lines": "off",
     "no-underscore-dangle": "off",
     "prefer-destructuring": ["error", 
       {
