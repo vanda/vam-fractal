@@ -74,7 +74,9 @@ if (imageCarousel && images.length) {
 
       container.appendChild(thumbs[index]);
 
-      container.addEventListener('click', () => { changeIndex(index); }, false);
+      container.addEventListener('click', () => {
+        changeIndex(index);
+      }, false);
     });
   };
 
