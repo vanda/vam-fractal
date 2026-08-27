@@ -49,7 +49,6 @@ Array.from(document.querySelectorAll('.js-search-site, .js-search-etc-gateway'),
       suggestionsAPI: 'https://api.vam.ac.uk/v2/sayt/search',
     };
 
-    // eslint-disable-next-line consistent-return
     const loadSuggestions = (formEl) => {
       formEl._props.storedSuggestions = JSON.parse(sessionStorage.getItem(`storedSuggestions_${formEl._props.type}`));
       const now = new Date();
