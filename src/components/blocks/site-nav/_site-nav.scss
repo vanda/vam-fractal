@@ -38,8 +38,6 @@ $nav-breakpoints: (
     &:focus-visible,
     &:active {
       background: base.sitecolors-siteColor("vam-white");
-      border: 1px solid base.sitecolors-siteColor("vam-black");
-      box-shadow: none;
       color: base.sitecolors-siteColor("vam-black");
       font-size: 13px;
       height: 40px;
