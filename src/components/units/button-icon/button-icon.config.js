@@ -3,6 +3,7 @@ module.exports = {
   context: {
     label: 'Button label',
     icons: [
+      'info',
       'close',
       'point-left',
       'point-right',

@@ -36,7 +36,7 @@ Array.from(document.querySelectorAll('.js-newsletter_form'), (signupForm) => {
       httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       httpRequest.send(formInputs);
     } else {
-      emailDescriptor.innerHTML = "That doesn't look like an email address&hellip;";
+      emailDescriptor.innerHTML = signupForm.dataset.validationMessage || "That doesn't look like an email address&hellip;";
       signupForm.classList.add('invalid');
       signupForm.querySelector('.b-newsletter__form-fields-field').setAttribute('aria-invalid', 'true');
     }

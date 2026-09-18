@@ -83,6 +83,24 @@ module.exports = {
         title: '',
         body: 'Headset experience not compatible with hearing aids and cochlear implants',
         label: 'Headset incompatibility warning'
+      },
+      {
+        icon: 'information',
+        title: '',
+        body: 'Minor alert',
+        label: 'Information alert'
+      },
+      {
+        icon: 'warning',
+        title: '',
+        body: 'Medium alert',
+        label: 'Information alert'
+      },
+      {
+        icon: 'alert',
+        title: '',
+        body: 'Major alert',
+        label: 'Information alert'
       }
     ]
   },
