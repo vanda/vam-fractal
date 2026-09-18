@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 (() => {
   const shuffler = {
     init: (el) => {
@@ -218,11 +217,10 @@
     Array.from(document.querySelectorAll('.js-object-shuffler'), (myComponent) => {
       try {
         observer.observe(myComponent);
-      } catch (e) {
+      } catch {
         shuffler.init(myComponent);
       }
       return true;
     });
   }, true);
 })();
-/* eslint-enable no-underscore-dangle */

@@ -35,7 +35,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       /* optionally, carousel outer template width can be set
        * if a container is supplied as a selector via a data-attribute */
       if (carousel.dataset.carouselTemplateParentSelector) {
-        const carouselTemplateParent = carousel.closest(carousel.dataset.carouselTemplateParentSelector); // eslint-disable-line max-len
+        const carouselTemplateParent = carousel.closest(carousel.dataset.carouselTemplateParentSelector);
         if (carouselTemplateParent) {
           carousel.style.setProperty('--carousel-template-width', `${carouselTemplateParent.offsetWidth}px`);
         }
@@ -61,7 +61,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
      * and scrolling into view, if required */
     carousel._setActiveItem = (item, scrollToItem = true) => {
       /* move active item into view */
-      if (scrollToItem) scrollIntoViewHorizontally(item, carousel._viewport, carousel); // eslint-disable-line no-lonely-if, max-len
+      if (scrollToItem) scrollIntoViewHorizontally(item, carousel._viewport, carousel);
 
       /* dispatch an event to be heard by the detachable buttons
       * and anything else waiting to react */
@@ -87,7 +87,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
         if (entry.isIntersecting) {
           visibleItemIndexes = [...visibleItemIndexes, intersectingItemIndex];
         } else {
-          visibleItemIndexes = visibleItemIndexes.filter((id) => id !== intersectingItemIndex); // eslint-disable-line max-len
+          visibleItemIndexes = visibleItemIndexes.filter((id) => id !== intersectingItemIndex);
         }
         visibleItemIndexes.sort((a, b) => a - b);
       });
@@ -101,7 +101,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
     };
     /* create an observer to observe items intersecting carousel viewport
      * and observe each item */
-    const observer = new IntersectionObserver(onIntersectionObserved, { root: carousel, threshold: 0.9 }); // eslint-disable-line max-len
+    const observer = new IntersectionObserver(onIntersectionObserved, { root: carousel, threshold: 0.9 });
     items.forEach((item) => observer.observe(item));
 
     /* on Tabbing into an item set item active.
@@ -160,7 +160,7 @@ const carouselInit = (carousel, ctrls = carousel.querySelector('.b-carousel__ctr
       ctrls.addEventListener('click', (e) => {
         e.stopImmediatePropagation();
         if (e.target === next) {
-          carousel._setActiveItem(items[carousel._activeIndex + (2 * itemsPerView) - 1] || items[items.length - 1]); // eslint-disable-line max-len
+          carousel._setActiveItem(items[carousel._activeIndex + (2 * itemsPerView) - 1] || items[items.length - 1]);
         } else if (e.target === prev) {
           carousel._setActiveItem(items[carousel._activeIndex - itemsPerView] || items[0]);
         }

@@ -147,7 +147,9 @@ if (siteNav) {
             imgSrc = 'https://s3-eu-west-1.amazonaws.com/vanda-production-assets/static/search/result_placeholder.jpg';
           }
           const suggestion = document.createElement('li');
-          if (liveResult) { suggestion.classList.add('js-live-result'); }
+          if (liveResult) {
+            suggestion.classList.add('js-live-result');
+          }
           const venue = (result.suggestions[i].venue) ? `
             <div class="b-search-result-auto-suggest-content-type b-search-result-auto-suggest-content-venue">
               ${result.suggestions[i].venue}

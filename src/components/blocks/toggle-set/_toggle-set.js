@@ -70,7 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
           /* activate any b-carousel components that might be revealed within this toggle target
            * asycnhronously, once toggle target takes space in the doc */
           Array.from(toggleSetTarget.querySelectorAll('.b-carousel'), (carousel) => {
-            setTimeout(() => { carouselInit(carousel); }, 0);
+            setTimeout(() => {
+              carouselInit(carousel);
+            }, 0);
             return true;
           });
           return true;
