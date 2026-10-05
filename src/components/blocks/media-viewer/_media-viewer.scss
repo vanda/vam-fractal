@@ -1,0 +1,137 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-media-viewer {
+  $media-viewer: &;
+
+  --media-viewer-bg: #{base.sitecolors-siteColor("vam-grey-6")};
+  --media-viewer-bg-dark: #{base.sitecolors-siteColor("vam-grey-1")};
+  --media-viewer-grid-gap: 8px;
+  --media-viewer-img-max: 450px;
+  --media-viewer-img-max-fitted: min(100vh - var(--media-viewer-page-save) - (var(--media-viewer-padding) * 2), var(--media-viewer-img-max));
+  --media-viewer-img-thumb-max: 70px;
+  --media-viewer-img-thumb-fit: cover;
+  --media-viewer-padding: 0px;
+  --media-viewer-page-save: 0px; // available space to be left beneath viewer, e.g. in case of floating OaO el
+
+  @include mixins.breakpoints-bpMinXSmall {
+      --media-viewer-img-max: 500px;
+  }
+
+  @include mixins.breakpoints-bpMinSmall {
+      --media-viewer-img-max: 720px;
+  }
+
+  // react to s-light-dark-theme--dark modifying class
+  .s-light-dark-theme--dark & {
+    --media-viewer-bg: var(--media-viewer-bg-dark);
+  }
+
+  // react to s-light-dark-theme--auto modifying class when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --media-viewer-bg: var(--media-viewer-bg-dark);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: var(--media-viewer-grid-gap);
+    grid-auto-flow: dense;
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--media-viewer-img-max-fitted);
+    
+    &:has(#{$media-viewer}__grid-block--thumbs > :nth-child(2)) {
+      grid-template-rows: var(--media-viewer-img-max-fitted) var(--media-viewer-img-thumb-max);
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      background-color: var(--media-viewer-bg);
+      grid-template-columns: 1fr;
+      grid-template-rows: var(--media-viewer-img-max-fitted);
+      max-height: calc(var(--media-viewer-img-max-fitted) + (2 * var(--media-viewer-padding)));
+      padding: var(--media-viewer-padding);
+   
+      &:has(#{$media-viewer}__grid-block--thumbs > :nth-child(2)) {
+        grid-template-columns: var(--media-viewer-img-thumb-max) 1fr;
+      }
+    }
+  }
+
+  &__grid-block {
+    &--thumbs {
+      display: none;
+
+      &:has(> :nth-child(2)) {
+        @include mixins.unstyledelements-unstyledList;
+
+        align-items: center;
+        align-self: flex-start;
+        display: flex;
+        gap: var(--media-viewer-grid-gap);
+        grid-row: 2;
+        overflow: auto;
+        scrollbar-width: none;
+
+        @include mixins.breakpoints-bpMinSmall {
+          flex-direction: column;
+          grid-row: 1;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &__link {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    @include mixins.focus-raisedPseudoFocus;
+  }
+
+  &__main {
+    max-height: var(--media-viewer-img-max-fitted);
+    object-fit: contain;
+    position: absolute;
+    transition: all 0.3s ease-out;
+    transition-behavior: allow-discrete;
+    width: 100%;
+
+    // only first img in DOM is active
+    & ~ & {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  &__thumb {
+    height: var(--media-viewer-img-thumb-max);
+    object-fit: var(--media-viewer-img-thumb-fit);
+    width: var(--media-viewer-img-thumb-max);
+    
+    @include mixins.breakpoints-bpMinSmall {
+      height: auto;
+    }
+  }
+
+  &__prevnext {
+    align-items: center;
+    display: flex;
+    gap: var(--media-viewer-grid-gap);
+    justify-content: flex-end;
+
+    // hide whole block if both btns remain disabled
+    &:has([disabled]+[disabled]) {
+      display: none;
+    }
+  }
+
+  // &__uv {
+  //   &:not(:fullscreen) {
+  //     display: none;
+  //   }
+  // }
+}

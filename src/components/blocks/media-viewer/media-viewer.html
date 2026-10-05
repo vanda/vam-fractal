@@ -1,0 +1,38 @@
+<section class="b-media-viewer">
+  <div class="b-media-viewer__grid">
+    <ul class="b-media-viewer__grid-block b-media-viewer__grid-block--thumbs js-media-viewer-thumbs">
+      {% for imgId in images %}
+      <li>
+        <a class="b-media-viewer__link js-media-viewer-link-thumb" title="Preview image" href="https://framemark.vam.ac.uk/collections/{{ imgId }}/full/768,/0/default.jpg"
+          data-image-id="{{ imgId }}">
+          <img class="b-media-viewer__thumb" alt=""
+            loading="lazy"
+            srcset="{% for w in [150, 300, 450] %}https://framemark.vam.ac.uk/collections/{{ imgId }}/full/{{ w }},/0/default.jpg {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}"
+            sizes="150px"
+            src="https://framemark.vam.ac.uk/collections/{{ imgId }}/full/150,/0/default.jpg">
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="b-media-viewer__grid-block">
+      <a class="b-media-viewer__link js-media-viewer-link" title="View image at full size" href="https://framemark.vam.ac.uk/collections/{{ images[0] }}/full/768,/0/default.jpg"
+        data-iiif-manifest="/archives/images/{{ $.Params.content.systemNumber }}.manifest.json" data-image-id="{{ images[0] }}">
+        <img class="b-media-viewer__main" alt=""
+          loading="lazy"
+          srcset="{% for w in [320, 640, 960, 1280, 1920, 2560] %}https://framemark.vam.ac.uk/collections/{{ images[0] }}/full/{{ w }},/0/default.jpg {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}"
+          sizes="(min-width: 1600px) 865px,
+                (min-width: 768px) calc((100vw - 40px - 24px) * (5 / 9)),
+                calc(100vw - 20px)"
+          src="https://framemark.vam.ac.uk/collections/{{ images[0] }}/full/640,/0/default.jpg">
+      </a>
+    </div>
+  </div>
+
+  <nav class="b-media-viewer__prevnext" aria-label="Image selector">
+    <button class="u-btn-icon u-btn-icon--outline u-btn-icon--point-left js-media-viewer-prev" disabled title="Previous">Previous</button>
+    <button class="u-btn-icon u-btn-icon--outline u-btn-icon--point-right js-media-viewer-next" disabled title="Next">Next</button>
+  </nav>
+
+  <!-- UV instantiation div for fullscreen viewer on img click -->
+  <!-- <div class="uv b-media-viewer__uv" id="js-uv-primary"></div> -->
+</section>

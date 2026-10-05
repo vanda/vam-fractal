@@ -1,7 +1,8 @@
 // V&A front-end component scripts
-import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
-import contentWarningsInit from '../../components/blocks/object-card/_object-card';
 import carouselInit from '../../components/blocks/carousel/_carousel';
+import contentWarningsInit from '../../components/blocks/object-card/_object-card';
+import mediaViewerInit from '../../components/blocks/media-viewer/_media-viewer';
+import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
 import paginationInit from '../../components/blocks/pagination/_pagination';
 
 require('../../components/services/imageload/_imageload');
@@ -43,5 +44,11 @@ Array.from(document.querySelectorAll('.b-carousel'), (carousel) => {
 /* initialise pagination */
 Array.from(document.querySelectorAll('.b-pagination'), (pagination) => {
   paginationInit(pagination);
+  return true;
+});
+
+/* initialise media-viewer */
+Array.from(document.querySelectorAll('.b-media-viewer'), (mediaViewer) => {
+  mediaViewerInit(mediaViewer);
   return true;
 });
