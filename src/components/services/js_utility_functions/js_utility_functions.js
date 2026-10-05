@@ -20,12 +20,12 @@ const scrollIntoViewHorizontally = (el, container = el.parentElement, visualCont
  * by switching to Arrow key navigation within long lists of links
  * using a roving tabindex to manage keyboard focus
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex */
-const rovingTabindex = (el) => {
+const rovingTabindex = (el, specificTab) => {
   /* Remove all links in the list from the tabindex
    * leaving one link tabbable to allow tabbing into the list.
    * the tabbable link will be the first, by default,
    * unless a particular link has already been set as tabbable */
-  const defaultTab = el.querySelector('a[tabindex="0"]');
+  const defaultTab = specificTab || el.querySelector('a[tabindex="0"]');
   el._rovingTabindex_links = [...el.querySelectorAll('a')];
   el._rovingTabindex_links.forEach((link) => link.setAttribute('tabindex', -1));
   if (defaultTab) defaultTab.setAttribute('tabindex', 0);
