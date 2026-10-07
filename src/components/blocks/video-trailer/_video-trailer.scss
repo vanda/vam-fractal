@@ -4,13 +4,6 @@
 .b-video-trailer {
   background-color: base.sitecolors-siteColor("vam-white");
   overflow: hidden;
-  padding: 0 10px;
-
-
- @include mixins.breakpoints-bpMinSmall {
-    padding: 0 40px 60px;
-  }
-
 
   &--venue {
     padding: 0;
@@ -32,7 +25,6 @@
 
   &__content {
     height: 100%;
-    margin: 40px 0 50px;
     position: relative;
     width: 100%;
   }
