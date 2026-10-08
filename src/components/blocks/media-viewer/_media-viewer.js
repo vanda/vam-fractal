@@ -37,11 +37,10 @@ const mediaViewerInit = (mediaViewer) => {
 
   /* handle image viewer thumbnail menu focus */
   menu.addEventListener('focusin', (e) => {
-    /* if refocussing on menu from another mediaViewer el
+    /* if this focus event is not between thumbnails
      * switch rovingTabindex and focus to current thumb index */
-    if (mediaViewer.contains(e.relatedTarget)) {
-      menu.querySelector('[tabindex="0"]').setAttribute('tabindex', -1);
-      thumbs[index].setAttribute('tabindex', 0);
+    if (!menu.contains(e.relatedTarget)) {
+      rovingTabindex(menu, thumbs[index]);
       thumbs[index].focus();
     }
 
