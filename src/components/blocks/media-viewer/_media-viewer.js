@@ -12,6 +12,7 @@ const mediaViewerInit = (mediaViewer) => {
   const setPrevNext = () => {
     prevBtn.toggleAttribute('disabled', index === 0);
     nextBtn.toggleAttribute('disabled', index === thumbs.length - 1);
+    thumbs[index].scrollIntoView({ block: 'nearest', inline: 'nearest' });
   };
 
   /* fn to populate main preview img from selected img thumb el data */

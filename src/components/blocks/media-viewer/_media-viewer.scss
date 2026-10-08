@@ -62,6 +62,7 @@
     &--thumbs {
       display: none;
 
+      // only display thumb menu if more than 1 img
       &:has(> :nth-child(2)) {
         @include mixins.unstyledelements-unstyledList;
 
@@ -71,6 +72,7 @@
         gap: var(--media-viewer-grid-gap);
         grid-row: 2;
         overflow: auto;
+        scroll-behavior: smooth;
         scrollbar-width: none;
 
         @include mixins.breakpoints-bpMinSmall {
