@@ -12,6 +12,8 @@ const mediaViewerInit = (mediaViewer) => {
   const setPrevNext = () => {
     prevBtn.toggleAttribute('disabled', index === 0);
     nextBtn.toggleAttribute('disabled', index === thumbs.length - 1);
+
+    /* ensure correct thumb is in view */
     thumbs[index].scrollIntoView({ block: 'nearest', inline: 'nearest' });
   };
 
@@ -33,12 +35,22 @@ const mediaViewerInit = (mediaViewer) => {
   /* set initial prev/next btn states */
   setPrevNext();
 
-  /* handle image viewer thumbnail events.
-   * focussing on a thumb switches the main img preview */
-  menu.addEventListener('focusin', () => {
+  /* handle image viewer thumbnail menu focus */
+  menu.addEventListener('focusin', (e) => {
+    /* if refocussing on menu from another mediaViewer el
+     * switch rovingTabindex and focus to current thumb index */
+    if (mediaViewer.contains(e.relatedTarget)) {
+      menu.querySelector('[tabindex="0"]').setAttribute('tabindex', -1);
+      thumbs[index].setAttribute('tabindex', 0);
+      thumbs[index].focus();
+    }
+
+    /* switch the main img preview in case this focus event is between thumbnails */
     index = thumbs.indexOf(document.activeElement);
-    setPrevNext();
     previewImage();
+
+    /* update prev/next btns in case this focus event is between thumbnails */
+    setPrevNext();
   });
 
   document.addEventListener('click', (e) => {
