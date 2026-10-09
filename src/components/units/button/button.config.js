@@ -2,7 +2,6 @@ module.exports = {
   default: 'default',
   title: 'Buttons',
   context: {
-    previewClass: 'fr-bg--dark',
     text: 'Click me'
   },
   variants: [
@@ -20,14 +19,28 @@ module.exports = {
     {
       name: 'black',
       context: {
-        modifiers: ['black'],
-        previewClass: 'fr-bg--light'
+        modifiers: ['black']
       }
     },
     {
       name: 'white',
       context: {
-        modifiers: ['white']
+        modifiers: ['white'],
+        previewClass: 'fr-bg--dark'
+      }
+    },
+    {
+      name: 'grey',
+      context: {
+        modifiers: ['grey']
+      }
+    },
+    {
+      name: 'grey-on-dark',
+      label: 'Grey on Dark',
+      context: {
+        modifiers: ['grey'],
+        lightDarkTheme: 's-light-dark-theme--dark'
       }
     },
     {
@@ -38,6 +51,7 @@ module.exports = {
           ['micro', 'arrowed'],
           ['micro', 'black'],
           ['micro', 'white'],
+          ['micro', 'grey'],
           ['micro', 'outlined', 'arrowed']
         ]
       }
@@ -47,7 +61,6 @@ module.exports = {
       context: {
         text: 'Book now',
         modifiers: ['outlined'],
-        previewClass: 'fr-bg--light',
         variants: [
           ['outlined', 'arrowed'],
           ['outlined', 'micro']
@@ -59,6 +72,7 @@ module.exports = {
       context: {
         text: 'Book now',
         modifiers: ['outlined-inverse'],
+        previewClass: 'fr-bg--dark',
         variants: [
           ['outlined-inverse', 'arrowed'],
           ['outlined-inverse', 'micro']
@@ -86,6 +100,7 @@ module.exports = {
       context: {
         text: 'Pill',
         modifiers: ['pill'],
+        previewClass: 'fr-bg--dark',
         variants: [
           ['pill', 'pill-active'],
           ['pill', 'pill-close'],

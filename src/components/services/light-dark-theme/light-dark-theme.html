@@ -1,0 +1,17 @@
+<h1>Light/Dark Theme</h1>
+<p>Light theme is default as per common design patterns.</p>
+<p>Some basic light/dark colors are setup globally as CSS Custom Properties.</p>
+<p>Components should be coded to respond to light/dark colors using their own additional CSS Custom Properties as needed. e.g. <a class="u-link" href="../detail/breadcrumb">Breadcrumb component</a></p>
+<p>Dark theme can be applied as an override using <em>s-light-dark-theme--dark</em> class on any element and will be inherited by its children.</p>
+<p>Or, Auto theme can be applied using <em>s-light-dark-theme--auto</em> which will similarly override Light to Dark theme when System prefs are set to dark.</p>
+
+<div class="s-light-dark-theme--auto fr-light-dark-theme">
+  <p>
+    Users may set their preferred theme manually (on any <em>s-light-dark-theme--auto</em> elements, such as this one)
+    by overriding their system prefs, if we provide a Light/Dark Theme Toggle...
+  </p>
+  <div class="s-light-dark-theme-toggle">
+    <input class="u-checkbox u-checkbox--toggle" type="checkbox" id="light-dark-theme-toggle" title="toggle between light/dark themes" aria-label="toggle between light/dark themes" />
+    <label for="light-dark-theme-toggle">Dark theme</label>
+  </div>
+</div>

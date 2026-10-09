@@ -1,4 +1,4 @@
-<div class="b-accordion">
+<div class="b-accordion{% for m in modifier %} b-accordion--{{ m }}{% endfor %}">
   {% for n in [1, 2, 3] %}
   <details class="b-accordion__section">
     <summary class="b-accordion__section-header">

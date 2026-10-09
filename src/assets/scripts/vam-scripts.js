@@ -1,9 +1,12 @@
 // V&A front-end component scripts
-import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
-import contentWarningsInit from '../../components/blocks/object-card/_object-card';
 import carouselInit from '../../components/blocks/carousel/_carousel';
+import contentWarningsInit from '../../components/blocks/object-card/_object-card';
+import mediaViewerInit from '../../components/blocks/media-viewer/_media-viewer';
+import oicInit from '../../components/blocks/object-image-overlay/_object-image-overlay';
+import paginationInit from '../../components/blocks/pagination/_pagination';
 
 require('../../components/services/imageload/_imageload');
+require('../../components/services/light-dark-theme/_light-dark-theme');
 require('../../components/blocks/accordion/_accordion');
 require('../../components/blocks/background-video/_background-video');
 require('../../components/groups/block-grid/_grid-reveal-more');
@@ -26,9 +29,26 @@ require('../../components/blocks/events-featured/_events-featured');
 require('../../components/groups/image-overlay/_image-overlay');
 require('../../components/groups/story-box-container/_story-box-container');
 
+/* initialise object-card content warnings */
 contentWarningsInit();
+
+/* initialise object-image-overlay (aka OIC) */
 oicInit();
+
+/* initialise carousel */
 Array.from(document.querySelectorAll('.b-carousel'), (carousel) => {
   carouselInit(carousel);
+  return true;
+});
+
+/* initialise pagination */
+Array.from(document.querySelectorAll('.b-pagination'), (pagination) => {
+  paginationInit(pagination);
+  return true;
+});
+
+/* initialise media-viewer */
+Array.from(document.querySelectorAll('.b-media-viewer'), (mediaViewer) => {
+  mediaViewerInit(mediaViewer);
   return true;
 });

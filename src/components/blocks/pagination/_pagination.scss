@@ -1,70 +1,55 @@
+@use "../../mixins";
 @use "../../base";
 
 .b-pagination {
-  text-align: center;
+  --gap: 4px;
 
-  &__option {
-    display: inline-block;
+  @include base.typography-typeSetting(2, "bold");
 
-    &-content {
-      @include base.typography-typeSetting(4, "normal");
+  align-items: center;
+  color: var(--s-light-dark-theme-color);
+  display: flex;
+  gap: var(--gap);
+  justify-content: space-between;
 
-      color: base.sitecolors-siteColor("vam-grey-2");
-      margin: 0 4px;
-      text-decoration: underline;
-      transition: color 0.2s;
+  @include mixins.breakpoints-bpMinXSmall {
+    --gap: 6px;
+  }
 
-      &--active {
-        @include base.typography-typeSetting(4, "normal");
+  @include mixins.breakpoints-bpMinSmall {
+    --gap: 8px;
+  }
 
-        color: base.sitecolors-siteColor("vam-grey-2");
-        margin: 0 4px;
-        transition: color 0.2s;
-      }
+  &__prevnext {
+    @include base.typography-typeSetting(2, "bold");
 
-      &:hover {
-        color: base.sitecolors-siteColor("vam-grey-4");
-      }
+    align-items: center;
+    display: flex;
+    gap: var(--gap);
+
+    @include mixins.breakpoints-bpMaxSmall {
+      font-size: 0;
+    }
+
+    &[disabled] {
+      font-size: 0;
     }
   }
 
-  &__options {
-    display: inline-block;
+  &__pages {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    justify-content: center;
   }
 
-  &__pointer {
-    background-color: base.sitecolors-siteColor("vam-grey-2");
-    border-radius: 50%;
-    display: inline-block;
-    height: 52px;
-    margin: 0 20px;
-    position: relative;
-    top: 4px;
-    transition: all 0.2s;
-    width: 52px;
-
-    &:not(&--deactivated):hover {
-      background-color: base.sitecolors-siteColor("vam-grey-3");
-    }
-
-    &--deactivated {
-      background-color: base.sitecolors-siteColor("vam-grey-5");
-      height: 40px;
-      top: 2px;
-      width: 40px;
-    }
-
-    &-arrow {
-      color: base.sitecolors-siteColor("vam-white");
-      height: 40%;
-      margin-left: 1px;
-      margin-top: 15px;
-      width: 100%;
-
-      .b-pagination__pointer--deactivated & {
-        color: base.sitecolors-siteColor("vam-grey-4");
-        margin-top: 12px;
-      }
+  &__spacer {
+    &::after {
+      content: '...';
+      display: block;
+      font-size: 20px;
+      margin-top: -8px;
     }
   }
 }

@@ -1,6 +1,7 @@
 // V&A site styles
 
 // Base
+@use "../../components/base/reset/reset";
 @use "../../components/base";
 
 // Services
@@ -15,8 +16,11 @@
 @use "../../components/blocks/associated-contexts/associated-contexts";
 @use "../../components/blocks/background-image/background-image";
 @use "../../components/blocks/background-video/background-video";
+@use "../../components/blocks/breadcrumb/breadcrumb";
 @use "../../components/blocks/card/card";
+@use "../../components/blocks/carousel/carousel";
 @use "../../components/blocks/collection-card/collection-card";
+@use "../../components/blocks/content-warning/content-warning";
 @use "../../components/blocks/context-page-title/context-page-title";
 @use "../../components/blocks/cookie-banner/cookie-banner";
 @use "../../components/blocks/event-feature/event-feature";
@@ -29,16 +33,17 @@
 @use "../../components/blocks/icon-list/icon-list";
 @use "../../components/blocks/image-carousel/image-carousel";
 @use "../../components/blocks/image-credit/image-credit";
-@use "../../components/blocks/list-promo/list-promo";
-@use "../../components/blocks/modal/modal";
 @use "../../components/blocks/image-overlay-license-modal/image-overlay-license-modal";
 @use "../../components/blocks/image-row/image-row";
 @use "../../components/blocks/input-select/input-select";
-@use "../../components/blocks/object-image-overlay/object-image-overlay";
+@use "../../components/blocks/list-promo/list-promo";
+@use "../../components/blocks/media-viewer/media-viewer";
 @use "../../components/blocks/membership-upsell/membership-upsell";
+@use "../../components/blocks/modal/modal";
 @use "../../components/blocks/newsletter-signup/newsletter-signup";
 @use "../../components/blocks/object-card/object-card";
 @use "../../components/blocks/object-details/object-details";
+@use "../../components/blocks/object-image-overlay/object-image-overlay";
 @use "../../components/blocks/object-shuffler/object-shuffler";
 @use "../../components/blocks/pagination/pagination";
 @use "../../components/blocks/programme-page-tout/programme-page-tout";
@@ -51,21 +56,19 @@
 @use "../../components/blocks/search-result-auto-suggest/search-result-auto-suggest";
 @use "../../components/blocks/search-result-objects/search-result-objects";
 @use "../../components/blocks/search-sidebar-item/search-sidebar-item";
+@use "../../components/blocks/shop-product-card/shop-product-card";
+@use "../../components/blocks/shop-tout/shop-tout";
 @use "../../components/blocks/site-footer/site-footer";
 @use "../../components/blocks/site-nav/site-nav";
+@use "../../components/blocks/story-box/story-box";
 @use "../../components/blocks/toggle-set/toggle-set";
 @use "../../components/blocks/top-header-bar/top-header-bar";
 @use "../../components/blocks/venue-card/venue-card";
-@use "../../components/blocks/video-thumbnail/video-thumbnail";
-@use "../../components/blocks/video-trailer/video-trailer";
-@use "../../components/blocks/shop-tout/shop-tout";
-@use "../../components/blocks/shop-product-card/shop-product-card";
-@use "../../components/blocks/story-box/story-box";
-@use "../../components/blocks/content-warning/content-warning";
 @use "../../components/blocks/venue-blog-card/venue-blog-card";
-@use "../../components/blocks/carousel/carousel";
 @use "../../components/blocks/venue-teaser/venue-teaser";
 @use "../../components/blocks/venue-visit-lead/venue-visit-lead";
+@use "../../components/blocks/video-thumbnail/video-thumbnail";
+@use "../../components/blocks/video-trailer/video-trailer";
 
 // Groups
 @use "../../components/groups/block-grid/block-grid";

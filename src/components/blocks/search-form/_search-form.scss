@@ -2,20 +2,26 @@
 @use "../../base";
 
 .b-search-form {
-  width: 100%;
+  $etc-input-color: base.sitecolors-siteColor("vam-black");
+  $etc-select-bg: base.sitecolors-siteColor("vam-grey-6");
+  $etc-select-color: base.sitecolors-siteColor("vam-black");
 
-  &--etc-gateway {
-    border-radius: 2px;
-    margin: auto;
-    max-width: 720px;
-    padding: 10px 10px 8px;
-    position: relative;
-    width:100%;
-    
-    &[suggesting] {
-      background: base.sitecolors-siteColor("vam-grey-2");
+  // setup default light/dark theme variable properties
+  --etc-input-bg: #{base.sitecolors-siteColor("vam-grey-6")};
+
+  // react to any s-light-dark-theme--dark modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --etc-input-bg: #{base.sitecolors-siteColor("vam-white")};
+  }
+
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --etc-input-bg: #{base.sitecolors-siteColor("vam-white")};
     }
   }
+
+  position: relative;
 
   &__inner {
     border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-5");
@@ -28,18 +34,18 @@
       flex-wrap: wrap;
       margin: 0;
       padding: 0;
+
+      @include mixins.breakpoints-bpMinSmall {
+        flex-wrap: nowrap;
+      }
     }
 
     .b-search-form--etc-search & {
       margin: 0;
 
-      &--focused-search-validation-error{
+      &--focused-search-validation-error {
         margin-bottom:40px;
       }
-    }
-
-    @include mixins.breakpoints-bpMinMedium {
-      flex-wrap: nowrap;
     }
   }
 
@@ -61,8 +67,8 @@
       width: 34px;
     }
 
-    &--etc {
-      color: base.sitecolors-siteColor("vam-black");
+    .b-search-form--etc & {
+      color: currentColor;
       height: 20px;
       margin: 0;
       opacity: 1;
@@ -72,6 +78,11 @@
         height: 28px;
         width: 28px;
       }
+    }
+
+    .b-search-form--etc-search-mini & {
+      height: 18px;
+      width: 18px;
     }
   }
 
@@ -84,9 +95,9 @@
     }
 
     .b-search-form--etc & {
-      background: base.sitecolors-siteColor("vam-white");
+      background: var(--etc-input-bg);
       border-radius: 2px 0 0 2px;
-      flex: 1 0 auto;
+      flex: auto;
       width: auto;
 
       @include mixins.breakpoints-bpMinSmall {
@@ -102,16 +113,13 @@
   &__label {
     @include base.typography-typeSetting(4);
 
-    color: base.sitecolors-siteColor("vam-grey-5");
+    color: var(--s-light-dark-theme-color);
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 10px;
     text-align: center;
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(5);
-
-      margin-bottom: 6px;
-      margin-top:4px;
     }
   }
 
@@ -119,77 +127,43 @@
     @include mixins.elementvisibility-visuallyHidden;
   }
 
-  &__input,
-  &__underscore {
+  &__input {
     @include base.typography-typeSetting(5);
 
-    @include mixins.breakpoints-bpMinSmall {
-      @include base.typography-typeSetting(7, "bold");
-    }
-  }
-
-  &__input {
     background-color: transparent;
     border: none;
-    caret-color: base.sitecolors-siteColor("primary-green");
     color: base.sitecolors-siteColor("vam-white");
     height: 100%;
     margin: 4px 0;
     width: 100%;
 
     @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "bold");
+
       padding-left: 10px;
-    }
-
-    &::selection {
-      background-color: base.sitecolors-siteColor("vam-grey-4");
-    }
-
-    &::-ms-clear {
-      display: none;
     }
 
     &:focus-visible {
       position: relative;
       z-index: 1;
     }
-  }
 
-  &__underscore {
-    border-bottom: 3px solid base.sitecolors-siteColor("primary-green");
-    bottom: 0;
-    display: inline-block;
-    height: 3px;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-
-    @include mixins.breakpoints-bpMinSmall {
-      border-width: 5px;
-      height: 5px;
-    }
-  }
-
-  &--etc {
-    .b-search-form__input,
-    .b-search-form__underscore {
+    .b-search-form--etc & {
       @include base.typography-typeSetting(4);
 
-      @include mixins.breakpoints-bpMinMedium {
-        @include base.typography-typeSetting(5, "regular");
-      }
-    }
-
-    .b-search-form__input {
-      color: base.sitecolors-siteColor("vam-black");
+      color: $etc-input-color;
       margin: 0;
       padding: 8px 16px;
+
+      @include mixins.breakpoints-bpMinMedium {
+        @include base.typography-typeSetting(5);
+      }
 
       &--validation-error {
         border: 3px solid base.sitecolors-siteColor("alert-red");
       }
 
-      &__input-error-label{
+      &__input-error-label {
         background-color: base.sitecolors-siteColor("alert-red");
         color: base.sitecolors-siteColor("vam-black");
         display: block;
@@ -199,18 +173,11 @@
     }
   }
 
-  &--etc-search{
-    margin:auto;
-    width:100%;
+  &--etc-search-mini {
+    .b-search-form__input {
+      @include base.typography-typeSetting(2);
 
-    @include mixins.breakpoints-bpMinSmall {
-      padding-left: 12%;
-      padding-right: 12%;
-    }
-
-    @include mixins.breakpoints-bpMinLarge {
-      padding-left: 20%;
-      padding-right: 20%;
+      padding: 8px 12px;
     }
   }
 
@@ -266,16 +233,14 @@
     }
 
     .b-search-form--etc & {
-      background: base.sitecolors-siteColor("vam-white");
+      background: var(--etc-input-bg);
       border-radius: 0 2px 2px 0;
-      color: base.sitecolors-siteColor("vam-black");
+      color: $etc-input-color;
       float: none;
       margin: 0;
       padding: 12px;
 
       @include mixins.breakpoints-bpMinMedium {
-        @include base.typography-typeSetting(4, "regular");
-
         padding: 16px;
       }
 
@@ -284,8 +249,12 @@
       }
 
       &:hover {
-        background: base.sitecolors-siteColor("vam-grey-7");
+        background: $etc-select-bg;
       }
+    }
+
+    .b-search-form--etc-search-mini &#{&} {
+      padding: 6px 8px;
     }
   }
 
@@ -345,7 +314,6 @@
     }
 
     .b-search-form[suggesting] & {
-      margin-top: 6px;
       max-height: 74vh;
       opacity: 1;
       padding: 10px;
@@ -540,27 +508,97 @@
     }
   }
 
+  &__advanced-search-wrapper {
+    display: block;
+    flex: 0 0 100%;
+    height: auto;
+    margin-bottom: 8px;
+    position: relative;
+    visibility: visible;
+    width: auto;
+
+    &::after {
+      border: solid $etc-select-color;
+      border-width: 0 2px 2px 0;
+      content: "";
+      height: 9px;
+      pointer-events: none;
+      position: absolute;
+      right: 18px;
+      top: 34%;
+      transform: rotate(45deg);
+      width: 9px;
+      z-index: 1;
+
+      @include mixins.breakpoints-bpMinSmall {
+        top: 36%;
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        top: 40%;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex: 0 0 10em;
+      margin: 0 1px 0 0;
+    }
+
+    .b-search-form--etc-search-mini & {
+      margin-bottom: 4px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        flex-basis: 7em;
+        margin-bottom: 0;
+      }
+
+      &::after {
+        height: 8px;
+        right: 14px;
+        top: 34%;
+        width: 8px;
+      }
+    }
+  }
+
   &__filter-select {
-    @include base.typography-typeSetting(2, "regular");
+    @include base.typography-typeSetting(4);
 
     appearance: none;
-    background: transparent;
-    border: 2px solid base.sitecolors-siteColor("vam-white");
+    background-color: $etc-select-bg;
+    border: 2px solid $etc-select-bg;
     border-radius: 2px;
-    color: base.sitecolors-siteColor("vam-white");
-    padding: 10px 40px 10px 20px;
+    color: $etc-select-color;
+    padding: 8px 40px 8px 16px;
     text-overflow: ellipsis;
     width: 100%;
 
-    @include mixins.breakpoints-bpMinXSmall {
-      width: auto;
+    @include mixins.breakpoints-bpMinSmall {
+      border-radius: 2px 0 0 2px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 15px 48px 15px 20px;
+      width: 12em;
+    }
+
+    &:focus-visible {
+      position: relative;
+      z-index: 1;
+    }
+
+    .b-search-form--etc-search-mini & {
+      @include base.typography-typeSetting(2);
+
+      padding: 6px 28px 6px 8px;
+      width: 100%;
     }
 
     > option {
-      background: base.sitecolors-siteColor("vam-black");
+      background: $etc-select-bg;
       border: 4px solid transparent;
-      color: base.sitecolors-siteColor("vam-white");
-    }
+      color: $etc-select-color;
+    } 
   }
 
   &__location-wrapper {
@@ -612,83 +650,6 @@
 
     @include mixins.breakpoints-bpMinXSmall {
       margin: 0 20px 10px;
-    }
-  }
-  
-  &__advanced-search-wrapper {
-    color: base.sitecolors-siteColor("vam-black");
-    display: block;
-    flex: 0 0 100%;
-    height: auto;
-    margin: 0 0 8px;
-    opacity: 1;
-    position: relative;
-    visibility: visible;
-    width: auto;
-
-    &::after {
-      content: "⌄";
-      font-size: 20px;
-      font-weight: 100;
-      height: 10px;
-      pointer-events: none;
-      position: absolute;
-      right: 18px;
-      top: 12%;
-      transform: scaleX(1.5);
-      width: 10px;
-      z-index: 1;
-      
-      @include mixins.breakpoints-bpMinSmall {
-        top: 12%;
-      }
-
-      @include mixins.breakpoints-bpMinMedium {
-        top: 24%;
-      }
-    }
-
-    @include mixins.breakpoints-bpMinXSmall {
-      margin-left: 0;
-    }
-
-    @include mixins.breakpoints-bpMinSmall {
-      flex: 0 0 10em;
-      margin-bottom: 0;
-    }
-
-    .b-search-form__filter-select {
-      @include base.typography-typeSetting(4, "regular");
-
-      background-color:base.sitecolors-siteColor("vam-grey-6");
-      border: 2px solid base.sitecolors-siteColor("vam-grey-6");
-      color: base.sitecolors-siteColor("vam-black");
-      padding: 8px 40px 8px 16px;
-
-      &:focus-visible {
-        position: relative;
-        z-index: 1;
-      }
-
-      @include mixins.breakpoints-bpMinXSmall {
-        .b-search-form--etc & {
-          width: 100%;
-        }
-      }
-
-      @include mixins.breakpoints-bpMinSmall {
-        .b-search-form--etc & {
-          border-radius: 2px 0 0 2px;
-        }
-      }
-
-      @include mixins.breakpoints-bpMinMedium {
-        padding: 15px 48px 15px 20px;
-
-        .b-search-form--etc & {
-          width: 12em;
-        }
-      }
     }
   }
 
