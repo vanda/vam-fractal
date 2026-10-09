@@ -11,16 +11,8 @@
   --media-viewer-img-max-fitted: min(100vh - var(--media-viewer-page-save) - (var(--media-viewer-padding) * 2), var(--media-viewer-img-max));
   --media-viewer-img-thumb-max: 70px;
   --media-viewer-img-thumb-fit: cover;
-  --media-viewer-padding: 0px;
+  --media-viewer-padding: 8px;
   --media-viewer-page-save: 0px; // available space to be left beneath viewer, e.g. in case of floating OaO el
-
-  @include mixins.breakpoints-bpMinXSmall {
-      --media-viewer-img-max: 500px;
-  }
-
-  @include mixins.breakpoints-bpMinSmall {
-      --media-viewer-img-max: 720px;
-  }
 
   // react to s-light-dark-theme--dark modifying class
   .s-light-dark-theme--dark & {
@@ -32,6 +24,17 @@
     @media (prefers-color-scheme: dark) {
       --media-viewer-bg: var(--media-viewer-bg-dark);
     }
+  }
+
+  @include mixins.breakpoints-bpMinXSmall {
+    --media-viewer-img-max: 500px;
+  }
+
+  @include mixins.breakpoints-bpMinSmall {
+    --media-viewer-img-max: 720px;
+
+    background-color: var(--media-viewer-bg);
+    padding: var(--media-viewer-padding);
   }
 
   &__imgs {
@@ -46,11 +49,9 @@
     }
 
     @include mixins.breakpoints-bpMinSmall {
-      background-color: var(--media-viewer-bg);
       grid-template-columns: 1fr;
       grid-template-rows: var(--media-viewer-img-max-fitted);
       max-height: calc(var(--media-viewer-img-max-fitted) + (2 * var(--media-viewer-padding)));
-      padding: var(--media-viewer-padding);
    
       &:has(#{$media-viewer}__imgs-block--thumbs > :nth-child(2)) {
         grid-template-columns: var(--media-viewer-img-thumb-max) 1fr;
@@ -119,11 +120,21 @@
     }
   }
 
-  &__prevnext {
+  &__footer {
     align-items: center;
     display: flex;
     gap: var(--media-viewer-grid-gap);
-    justify-content: flex-end;
+    justify-content: space-between;
+    margin-top: var(--media-viewer-grid-gap);
+  }
+
+  &__info {
+    @include base.typography-typeSetting(0);
+  }
+
+  &__prevnext {
+    display: flex;
+    gap: var(--media-viewer-grid-gap);
 
     // hide whole block if both btns remain disabled
     &:has([disabled]+[disabled]) {
