@@ -16,7 +16,7 @@
     </ul>
     <div class="b-media-viewer__imgs-block">
       <a class="b-media-viewer__link js-media-viewer-link" title="View image at full size" href="https://framemark.vam.ac.uk/collections/{{ images[0] }}/full/768,/0/default.jpg"
-        data-iiif-manifest="/archives/images/{{ $.Params.content.systemNumber }}.manifest.json" data-image-id="{{ images[0] }}">
+        data-image-id="{{ images[0] }}">
         <img class="b-media-viewer__main" alt=""
           loading="lazy"
           srcset="{% for w in [320, 640, 960, 1280, 1920, 2560] %}https://framemark.vam.ac.uk/collections/{{ images[0] }}/full/{{ w }},/0/default.jpg {{ w }}w{% if not loop.last %}, {% endif %}{% endfor %}"

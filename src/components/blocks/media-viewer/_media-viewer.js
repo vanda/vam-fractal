@@ -70,8 +70,7 @@ const mediaViewerInit = (mediaViewer) => {
       /* handle main img click
        * to open into a fullscreen UV */
       e.preventDefault();
-      // const imgLink = e.target.closest('.js-media-viewer-link');
-      // const iiifManifest = imgLink.dataset.iiifManifest;
+      // const iiifManifest = thumbs[index].dataset.iiifManifest;
       // if (iiifManifest) {
       //   const imagesUV = document.querySelector('#js-uv-primary');
       //   const uv = UV.init(imagesUV, {
