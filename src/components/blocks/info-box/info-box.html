@@ -1,0 +1,9 @@
+<div class="b-info-box {% for m in modifier %} b-info-box--{{ m }}{% endfor %}">
+  <div class="b-info-box__content">
+    <h2 class="b-info-box__heading">{{ optionalHeading | safe }}</h2>
+    <p>
+      {{ optionalCopy | safe }}
+      <a class="u-link" href="mailto:{{ exampleLink }}">{{ exampleLink }}</a>
+    </p>
+  </div>
+</div>
