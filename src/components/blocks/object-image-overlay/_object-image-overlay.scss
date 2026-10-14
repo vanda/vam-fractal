@@ -157,10 +157,6 @@
   }
 
   &__dismiss {
-    --btn-bg: #{base.sitecolors-siteColor("vam-grey-1")};
-    --btn-border: #{base.sitecolors-siteColor("vam-grey-1")};
-    --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-2")};
-
     position: absolute;
     right: 10px;
     top: 10px;

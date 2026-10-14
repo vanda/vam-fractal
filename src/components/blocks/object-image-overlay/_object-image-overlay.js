@@ -5,7 +5,7 @@ const oicInit = () => {
     let oic = document.querySelector('.b-object-image-overlay');
     if (!oic) {
       oic = document.createElement('div');
-      oic.classList.add('b-object-image-overlay');
+      oic.classList.add('b-object-image-overlay', 's-light-dark-theme--dark');
       oic.id = 'object-image-overlay';
       oic.setAttribute('role', 'dialog');
       oic.setAttribute('aria-modal', 'true');
@@ -80,7 +80,7 @@ const oicInit = () => {
               <div class="b-object-image-overlay__caption">
                 ${caption}
               </div>
-              <button class="b-object-image-overlay__dismiss u-btn-icon u-btn-icon--close">Close</button>
+              <button class="b-object-image-overlay__dismiss u-btn-icon u-btn-icon--outline u-btn-icon--close">Close</button>
             </div>
             ${museumNumber}
             ${locationHTML()}
@@ -95,9 +95,9 @@ const oicInit = () => {
                 ${copyright}
               </div>
               <div class="b-object-image-overlay__buttons">
-                <button class="js-object-image-overlay-btn--info u-btn-icon u-btn-icon--info" data-tracking-oic="hide info" title="Show/hide information" aria-controls="object-image-content-${index}" aria-expanded="true">Show/hide information</button>
-                <button class="js-object-image-overlay-btn--prev u-btn-icon u-btn-icon--point-left" data-tracking-oic="previous object" title="Previous object">Previous object</button>
-                <button class="js-object-image-overlay-btn--next u-btn-icon u-btn-icon--point-right" data-tracking-oic="next object" title="Next object">Next object</button>
+                <button class="js-object-image-overlay-btn--info u-btn-icon u-btn-icon--outline u-btn-icon--info" data-tracking-oic="hide info" title="Show/hide information" aria-controls="object-image-content-${index}" aria-expanded="true">Show/hide information</button>
+                <button class="js-object-image-overlay-btn--prev u-btn-icon u-btn-icon--outline u-btn-icon--point-left" data-tracking-oic="previous object" title="Previous object">Previous object</button>
+                <button class="js-object-image-overlay-btn--next u-btn-icon u-btn-icon--outline u-btn-icon--point-right" data-tracking-oic="next object" title="Next object">Next object</button>
               </div>
             </div>
           </div>
@@ -140,18 +140,18 @@ const oicInit = () => {
 
     oic.infoToggle = (btn, toggleOn = false) => {
       if (toggleOn) {
-        btn.classList.add('u-btn-icon--active');
+        btn.classList.remove('u-btn-icon--outline');
       } else {
-        btn.classList.toggle('u-btn-icon--active');
+        btn.classList.toggle('u-btn-icon--outline');
       }
-      if (btn.classList.contains('u-btn-icon--active')) {
-        oic.classList.add('b-object-image-overlay--img-only');
-        btn.dataset.trackingOic = 'show info';
-        btn.setAttribute('aria-expanded', false);
-      } else {
+      if (btn.classList.contains('u-btn-icon--outline')) {
         oic.classList.remove('b-object-image-overlay--img-only');
         btn.dataset.trackingOic = 'hide info';
         btn.setAttribute('aria-expanded', true);
+      } else {
+        oic.classList.add('b-object-image-overlay--img-only');
+        btn.dataset.trackingOic = 'show info';
+        btn.setAttribute('aria-expanded', false);
       }
     };
 

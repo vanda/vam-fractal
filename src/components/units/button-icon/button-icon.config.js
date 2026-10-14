@@ -1,30 +1,52 @@
 module.exports = {
-  title: 'Icon Buttons',
   context: {
-    label: 'Button label',
+    title: 'Button title',
     icons: [
-      'info',
-      'close',
-      'point-left',
-      'point-right',
-      'plus',
-      'minus'
+      ['close'],
+      ['point-left'],
+      ['point-right'],
+      ['plus'],
+      ['minus']
     ]
   },
   variants: [
     {
-      name: 'On Dark',
+      name: 'on-dark',
       label: 'On Dark',
       context: {
-        previewClass: 'fr-bg--dark',
         lightDarkTheme: 's-light-dark-theme--dark'
+      }
+    },
+    {
+      name: 'numeric',
+      label: 'Numeric',
+      context: {
+        title: '101',
+        modifiers: ['numeric'],
+        icons: [1]
+      }
+    },
+    {
+      name: 'outline',
+      label: 'Outline',
+      context: {
+        modifiers: ['outline']
+      }
+    },
+    {
+      name: 'outline--on-dark',
+      label: 'Outline On Dark',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark',
+        modifiers: ['outline']
       }
     },
     {
       name: 'custom-example',
       label: 'Custom example',
       context: {
-        custom_example: true
+        modifiers: null,
+        icons: null
       }
     }
   ]

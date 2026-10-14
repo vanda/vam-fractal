@@ -2,7 +2,28 @@
 @use "../../base";
 
 .b-accordion {
-  background-color: inherit;
+  $accordion: &;
+
+  // setup default light/dark theme variable properties
+  --accordion-bg: #{base.sitecolors-siteColor("vam-white")};
+  --accordion-bg-hover: #{base.sitecolors-siteColor("vam-grey-7")};
+
+  // react to any s-light-dark-theme--dark modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --accordion-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+    --accordion-bg-hover: #{base.sitecolors-siteColor("vam-grey-2")};
+  }
+
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --accordion-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+      --accordion-bg-hover: #{base.sitecolors-siteColor("vam-grey-2")};
+    }
+  }
+
+  background-color: var(--accordion-bg);
+  color: var(--s-light-dark-theme-color);
   display: flex;
   flex-direction: column;
   row-gap: 8px;
@@ -11,18 +32,23 @@
     row-gap: 12px;
   }
 
+  &--modal {
+    width: fit-content;
+  }
+
   &__section {
-    background-color: inherit;
+    position: relative;
   }
 
   &__section-header {
     @include base.typography-typeSetting(4, bold);
 
-    background-color: inherit;
-    border-top: 1px solid base.sitecolors-siteColor("vam-grey-4");
-    column-gap: 15px;
+    align-items: center;
+    border: solid base.sitecolors-siteColor("vam-grey-4");
+    border-width: 1px 0 0;
     cursor: pointer;
     display: flex;
+    gap: 15px;
     justify-content: space-between;
     list-style: none;
     padding: 8px 12px;
@@ -30,32 +56,35 @@
     transition: background-color 0.2s ease;
     z-index: 1;
 
-    &:hover,
-    &:focus-visible {
-      background-color: base.sitecolors-siteColor("vam-grey-7");
-      border-top: 1px solid base.sitecolors-siteColor("vam-black");
-    }
-
     /* webkit doesn't yet support the list-style rule above */
     &::-webkit-details-marker {
       display: none;
     }
 
     &::after {
-      border: solid base.sitecolors-siteColor("vam-black");
+      border: solid currentColor;
       border-width: 0 2px 2px 0;
       content: "";
       flex: 0 0 auto;
-      height: 6px;
-      margin-top: .35em;
+      height: .3em;
       transform: rotate(45deg);
-      width: 6px;
+      width: .3em;
     }
 
     @include mixins.breakpoints-bpMinSmall {
       @include base.typography-typeSetting(5, bold);
 
       padding: 12px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--accordion-bg-hover);
+      border-color: var(--s-light-dark-theme-color);
+    }
+
+    #{$accordion}--modal & {
+      border-width: 1px;
     }
   }
 
@@ -66,9 +95,8 @@
   &__section-content {
     @include base.typography-typeSetting(3);
 
-    margin: 0 12px;
     opacity: 0;
-    padding: 0;
+    padding: 0 12px;
     transform: translateY(-5%);
     transition: transform 0.2s ease, opacity 0.2s ease, padding 0.2s ease-out;
 
@@ -79,11 +107,20 @@
     & > :last-child {
       margin-bottom: 0;
     }
+
+    #{$accordion}--modal & {
+      background-color: var(--accordion-bg);
+      border: 1px solid var(--s-light-dark-theme-color);
+      left: 0;
+      position: absolute;
+      z-index: 2;
+    }
   }
 
   &__section--open > &__section-content {
     opacity: 1;
-    padding: 16px 0;
+    padding-bottom: 16px;
+    padding-top: 16px;
     transform: translateY(0);
   }
 }

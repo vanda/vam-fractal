@@ -12,6 +12,13 @@ module.exports = {
   },
   variants: [
     {
+      name: 'dark',
+      label: 'Default - Dark',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark'
+      }
+    },
+    {
       name: 'featured',
       label: 'Default - Featured',
       context: {
@@ -26,7 +33,7 @@ module.exports = {
       }
     },
     {
-      name: 'featured-picture-card',
+      name: 'picture-card--featured',
       label: 'Picture Card - Featured',
       context: {
         modifier: ['picture-card', 'featured']

@@ -1,0 +1,50 @@
+@use "../../base";
+
+.u-select {
+  $padding: 8px;
+  $decorSize: 8px;
+
+  // setup default light/dark theme variable properties
+  --select-bg: #{base.sitecolors-siteColor("vam-grey-6")};
+
+  // react to any s-light-dark-theme modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --select-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+  }
+  
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --select-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+    }
+  }
+
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-right: $padding;
+  width: fit-content;
+  
+  &::after {
+    border: solid var(--s-light-dark-theme-color);
+    border-width: 0 1px 1px 0;
+    content: "";
+    height: $decorSize;
+    margin-left: -($padding + $decorSize + 2px);
+    margin-top: -2px;
+    pointer-events: none;
+    transform: rotate(45deg);
+    width: $decorSize;
+  } 
+
+  > select {
+    @include base.typography-typeSetting(2);
+
+    appearance: none;
+    background-color: var(--select-bg);
+    border: none;
+    border-radius: 2px;
+    color: var(--s-light-dark-theme-color);
+    padding: $padding ($padding + $padding + $decorSize) $padding $padding;
+  }
+}

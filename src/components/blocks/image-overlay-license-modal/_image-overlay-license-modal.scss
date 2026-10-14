@@ -174,14 +174,14 @@
     }
   }
 
-  &__agree-checkbox {
-    --input-background: #{base.sitecolors-siteColor("vam-white")};
-    --input-border: #{base.sitecolors-siteColor("vam-black")};
+  &__agree-checkbox.u-checkbox {
+    --checkbox-border: #{base.sitecolors-siteColor("vam-black")};
 
     &--warning {
       &::before {
+        --checkbox-border: #{base.sitecolors-siteColor("alert-red")};
+
         background-color: rgba(255, 80, 83, 10%);
-        border-color: base.sitecolors-siteColor("alert-red");
       }
     }
   }
