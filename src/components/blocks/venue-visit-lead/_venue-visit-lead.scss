@@ -5,15 +5,9 @@
   background-color: base.sitecolors-siteColor("vam-white");
   display: flex;
   flex-direction: column;
-  padding: 10px;
 
   @include mixins.breakpoints-bpMinSmall {
     flex-direction: row;
-    padding: 30px;
-  }
-
-  @include mixins.breakpoints-bpMinMedium {
-    padding: 40px;
   }
 
   &__img-link {
