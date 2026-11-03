@@ -5,7 +5,8 @@ module.exports = {
       label: 'Default',
       context: {
         title: 'Signup',
-        modifier: ''
+        modifier: '',
+        validationMessage:""
       }
     },
     {
@@ -13,7 +14,8 @@ module.exports = {
       label: 'Footer',
       context: {
         title: 'Signup',
-        modifier: 'footer'
+        modifier: 'footer',
+        validationMessage:"Invalid Email address"
       }
     },
     {
@@ -21,7 +23,8 @@ module.exports = {
       label: 'Component',
       context: {
         title: 'Signup',
-        modifier: 'component'
+        modifier: 'component',
+        validationMessage:"Incorrect format"
       }
     }
   ]

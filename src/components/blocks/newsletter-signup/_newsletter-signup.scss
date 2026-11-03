@@ -57,10 +57,6 @@
       margin: 0;
       max-width: none;
       padding: 0 0 31px;
-
-      &-main {
-        border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
-      }
     }
 
     @include mixins.breakpoints-bpMinSmall {

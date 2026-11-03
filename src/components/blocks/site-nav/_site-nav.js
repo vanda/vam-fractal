@@ -22,19 +22,6 @@ if (siteNav) {
     });
   }
 
-  if (mobileNavToggleIcon && window.getComputedStyle(mobileNavToggleIcon).display !== 'none') {
-    const mobileNavToggleobserver = new IntersectionObserver(
-      (entries) => {
-        mobileNavToggleIcon.classList.toggle('b-site-nav__mobile-toggle--solo', !entries[0].isIntersecting);
-      },
-      {
-        rootMargin: '-90px',
-      },
-    );
-
-    mobileNavToggleobserver.observe(siteNav);
-  }
-
   if (tabletNavToggle) {
     tabletNavToggle.addEventListener('click', (e) => {
       e.preventDefault();
