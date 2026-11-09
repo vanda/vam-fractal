@@ -33,9 +33,11 @@ if (siteNav) {
     if (activate) {
       navSearch.classList.add('b-site-nav__core__search--active');
       document.body.style.overflow = 'hidden';
+      document.body.style.height = '100vh';
     } else {
       navSearch.classList.remove('b-site-nav__core__search--active');
       document.body.style.overflow = '';
+      document.body.style.height = '';
     }
   };
 
@@ -61,11 +63,13 @@ if (siteNav) {
         siteNav.setAttribute('aria-expanded', 'false');
         document.removeEventListener('keydown', tabListener, false);
         navSearchActivate(false);
+        e.target.closest('a').title = 'Open Menu';
       } else {
         siteNav.classList.add('b-site-nav--open');
         siteNav.setAttribute('aria-expanded', 'true');
         document.addEventListener('keydown', tabListener, false);
         navSearchActivate(true);
+        e.target.closest('a').title = 'Close Menu';
       }
     }, false);
     return true;

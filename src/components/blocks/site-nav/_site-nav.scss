@@ -19,11 +19,16 @@ $nav-breakpoints: (
   background-image: linear-gradient(hsla(0deg, 0%, 0%, 40%), transparent);
   height: 150px;
   line-height: 1.7;
+  overflow:hidden;
   position: relative;
   z-index: 100;
 
   @media print {
     display: none;
+  }
+
+  &:has(&__core__search--active) {
+    overflow: initial;
   }
 
   &--mini {
@@ -252,6 +257,8 @@ $nav-breakpoints: (
       background: transparent;
       border: none;
       color: base.sitecolors-siteColor("vam-white");
+      position:fixed;
+      top:20px;
     }
 
     .b-site-nav--open &__icon--hamburger {
@@ -574,4 +581,5 @@ $nav-breakpoints: (
       }
     }
   }
+
 }
