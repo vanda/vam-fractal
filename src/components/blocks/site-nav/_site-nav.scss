@@ -286,9 +286,11 @@ $nav-breakpoints: (
     z-index: 2;
 
     .b-site-nav--open & {
-      height: 100vh;
-      overflow: auto;
-      top: 0;
+      @include mixins.breakpoints-bpMaxMedium {
+        height: 100vh;
+        overflow: auto;
+        top: 0;
+      }
     }
 
     @include bpMinNav("small") {
@@ -515,6 +517,7 @@ $nav-breakpoints: (
         top: 0;
         transition: top 0.2s ease-out;
       }
+
     }
 
     @include mixins.breakpoints-bpMinLarge {
@@ -528,6 +531,8 @@ $nav-breakpoints: (
       // All files in the site-nav component contain non-standard BEM classes and
       // should be refactored. NB, 28/9/2022
       /* stylelint-disable selector-class-pattern */
+
+      .b-site-nav--open &,
       .b-site-nav__core__search--active & {
         display: block;
       }
