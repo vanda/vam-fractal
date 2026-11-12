@@ -19,7 +19,7 @@ $nav-breakpoints: (
   background-image: linear-gradient(hsla(0deg, 0%, 0%, 40%), transparent);
   height: 150px;
   line-height: 1.7;
-  overflow:hidden;
+  overflow: hidden;
   position: relative;
   z-index: 100;
 
@@ -29,14 +29,6 @@ $nav-breakpoints: (
 
   &:has(&__core__search--active) {
     overflow: initial;
-  }
-
-  &__core:has(&__core__search--active) {
-  @include mixins.breakpoints-bpMaxMedium {
-    height: 100vh;
-    overflow: auto;
-    top: 0;
-  }
   }
 
   &--mini {
@@ -265,8 +257,8 @@ $nav-breakpoints: (
       background: transparent;
       border: none;
       color: base.sitecolors-siteColor("vam-white");
-      position:fixed;
-      top:20px;
+      position: fixed;
+      top: 20px;
     }
 
     .b-site-nav--open &__icon--hamburger {
@@ -293,14 +285,6 @@ $nav-breakpoints: (
     width: 100%;
     z-index: 2;
 
-    .b-site-nav--open & {
-      @include mixins.breakpoints-bpMaxMedium {
-        height: 100vh;
-        overflow: auto;
-        top: 0;
-      }
-    }
-
     @include bpMinNav("small") {
       align-items: center;
       background: none;
@@ -318,6 +302,23 @@ $nav-breakpoints: (
       .b-site-nav--open & {
         padding: 0;
       }
+    }
+
+    // Modified behavior to keep search panel open between desktop and mobile
+    &:has(&__search--active) {
+      @include mixins.breakpoints-bpMaxMedium {
+        height: 100vh;
+        overflow: auto;
+        top: 0;
+      }
+    }
+  }
+
+  &--open &__core {
+    @include mixins.breakpoints-bpMaxMedium {
+      height: 100vh;
+      overflow: auto;
+      top: 0;
     }
   }
 
