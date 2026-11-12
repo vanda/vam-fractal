@@ -34,6 +34,11 @@ $nav-breakpoints: (
   &--mini {
     background: none;
     height: auto;
+
+    @include mixins.breakpoints-bpMaxMedium {
+    // change for ETC+ New Archives mobile nav
+    position: static;
+    }
   }
 
   &__access-nav-link {
