@@ -58,6 +58,13 @@
     }
   }
 
+  &__event-type-label {
+    @include base.typography-typeSetting(2);
+    @include base.typography-lineheight(0);
+
+    margin-bottom: 8px;
+  }
+
   &__heading {
     @include base.typography-typeSetting(4, "bold");
     @include base.typography-lineheight(3);

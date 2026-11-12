@@ -7,6 +7,7 @@ module.exports = {
       960: 'https://picsum.photos/id/403/960/720',
       1280: 'https://picsum.photos/id/403/1280/960'
     },
+    type: 'Display',
     heading: 'Fashion unpicked: The \'Bar\' suit by Christian Dior',
     synopsis: 'Watch dressmaking expert and V&A volunteer, Sue Clark, as she examines Christian Dior\'s \'Bar\' suit.'
   },
