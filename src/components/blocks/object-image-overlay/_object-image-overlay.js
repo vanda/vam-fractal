@@ -158,6 +158,7 @@ const oicInit = () => {
     oic.exit = () => {
       oic.classList.remove('b-object-image-overlay--active');
       document.body.style.overflow = '';
+      document.body.style.height = '';
       items.innerHTML = '';
       oic.onclick = null;
     };
@@ -255,6 +256,7 @@ const oicInit = () => {
         oic.buttonInit();
         oic.track(oic._index);
         document.body.style.overflow = 'hidden';
+        document.body.style.height = '100vh';
       } else if (e.target.matches('.b-object-image-overlay__item, .b-object-image-overlay__dismiss')) {
         oic.exit();
       } else if (e.target.matches('.js-object-image-overlay-btn--next')) {
