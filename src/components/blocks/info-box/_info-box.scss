@@ -1,0 +1,74 @@
+@use "../../base";
+
+.b-info-box {
+    --info-box-bg: #{base.sitecolors-siteColor("vam-grey-4")};
+    --info-box-bg-dark: #{base.sitecolors-siteColor("vam-grey-2")};
+
+    // react to s-light-dark-theme--dark modifying class
+    .s-light-dark-theme--dark & {
+      --info-box-bg: var(--info-box-bg-dark);
+    }
+
+    // react to s-light-dark-theme--auto modifying class when user prefs are for dark
+    .s-light-dark-theme--auto & {
+      @media (prefers-color-scheme: dark) {
+        --info-box-bg: var(--info-box-bg-dark);
+      }
+    }
+
+    align-items: baseline;
+    border: 1px solid var(--info-box-bg);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    padding: 8px 10px 6px;
+
+    &--solid {
+      background-color: var(--info-box-bg);
+    }
+
+    &--info,
+    &--attention {
+      gap: 10px;
+
+      &::before {
+        align-items: center;
+        aspect-ratio: 1;
+        background-color: var(--info-box-bg);
+        content: '';
+        display: flex;
+        height: 1.2em;
+        justify-content: center;
+        mask-repeat: no-repeat;
+        transform: translateY(-33%);
+      }
+    }
+
+    &--info {
+      &::before {
+        background-color: currentColor;
+        mask-image: var(--icon-svg-attention);
+      }
+    }
+
+    &--attention {
+      --info-box-bg: #{base.sitecolors-siteColor("warning-amber")};
+      --info-box-bg-dark: #{base.sitecolors-siteColor("warning-amber")};
+
+      &::before {
+        mask-image: var(--icon-svg-attention);
+      }
+    }
+
+    &__heading {
+      @include base.typography-typeSetting(4);
+
+      margin-bottom: 6px;
+    }
+
+    &__content {
+      @include base.typography-typeSetting(3);
+
+      max-width: 800px;
+    }
+  }

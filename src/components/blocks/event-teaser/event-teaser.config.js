@@ -1,5 +1,4 @@
 module.exports = {
-  title: 'Event teaser',
   context: {
     eventUrl: 'https://www.vam.ac.uk/exhibitions/pink-floyd',
     eventType: 'Exhibition',
@@ -33,8 +32,8 @@ module.exports = {
       }
     },
     {
-      label: 'On dark',
-      name: 'dark',
+      name: 'on-dark',
+      label: 'On Dark',
       context: {
         previewClass: 'fr-bg--dark',
         modifiers: ['dark'],

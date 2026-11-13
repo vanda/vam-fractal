@@ -7,7 +7,6 @@
 
   appearance: none;
   background-color: base.sitecolors-siteColor("primary-green");
-  border: 1px solid base.sitecolors-siteColor("primary-green");
   border-radius: 2px;
   color: base.sitecolors-siteColor("vam-black");
   cursor: pointer;
@@ -21,7 +20,6 @@
 
   &:hover {
     background-color: color.scale(base.sitecolors-siteColor("primary-green"), $lightness: -10%);
-    border-color: color.scale(base.sitecolors-siteColor("primary-green"), $lightness: -10%);
     text-decoration: none;
   }
 
@@ -49,12 +47,10 @@
 
   &--black {
     background-color: base.sitecolors-siteColor("vam-black");
-    border: 1px solid base.sitecolors-siteColor("vam-black");
     color: #fff;
 
     &:hover {
       background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
-      border: 1px solid color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
     }
 
     &:focus-visible {
@@ -64,12 +60,40 @@
 
   &--white {
     background-color: #fff;
-    border: 1px solid #fff;
     color: base.sitecolors-siteColor("vam-black");
 
     &:hover {
       background-color: color.scale(#fff, $lightness: -10%);
-      border: 1px solid color.scale(#fff, $lightness: -10%);
+    }
+  }
+
+  &--grey {
+    // setup default light/dark theme variable properties
+    --btn-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+    --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-2")};
+
+    // react to any s-light-dark-theme modifying class on a parent element
+    .s-light-dark-theme--dark & {
+      --btn-bg: #{base.sitecolors-siteColor("vam-grey-6")};
+      --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-5")};
+    }
+
+    // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+    .s-light-dark-theme--auto & {
+      @media (prefers-color-scheme: dark) {
+        --btn-bg: #{base.sitecolors-siteColor("vam-grey-6")};
+        --btn-bg-hover: #{base.sitecolors-siteColor("vam-grey-5")};
+      }
+    }
+
+    background: var(--btn-bg);
+    border: 0;
+    color: var(--s-light-dark-theme-background-color);
+    margin: 0;
+    padding: 8px;
+
+    &:hover {
+      background-color: var(--btn-bg-hover);
     }
   }
 
@@ -85,23 +109,21 @@
 
   &--outlined {
     background-color: #fff;
-    border-color: base.sitecolors-siteColor("vam-grey-4");
+    border: 1px solid base.sitecolors-siteColor("vam-grey-4");
     color: base.sitecolors-siteColor("vam-black");
 
     &:hover {
       background-color: color.scale(#fff, $lightness: -10%);
-      border-color: base.sitecolors-siteColor("vam-grey-4");
     }
   }
 
   &--outlined-inverse {
     background-color: base.sitecolors-siteColor("vam-black");
-    border-color: #fff;
+    border: 1px solid #fff;
     color: #fff;
 
     &:hover {
       background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
-      border-color: #fff;
     }
   }
 
@@ -126,7 +148,6 @@
     @include base.typography-lineheight(2);
 
     background: base.sitecolors-siteColor("vam-grey-6");
-    border: none;
     border-radius: 30px;
     color: base.sitecolors-siteColor("vam-black");
     padding: 8px 12px;
