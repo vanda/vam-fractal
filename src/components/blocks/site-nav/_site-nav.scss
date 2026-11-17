@@ -302,8 +302,6 @@ $nav-breakpoints: (
     }
 
     @include mixins.breakpoints-bpMinSmall {
-      padding: 0 65px;
-
       .b-site-nav--open & {
         padding: 0;
       }

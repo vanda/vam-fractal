@@ -64,12 +64,14 @@ if (siteNav) {
         document.removeEventListener('keydown', tabListener, false);
         navSearchActivate(false);
         e.target.closest('a').title = 'Open Menu';
+        navSearchBtn.classList.remove('b-site-nav__core__search-btn--active');
       } else {
         siteNav.classList.add('b-site-nav--open');
         siteNav.setAttribute('aria-expanded', 'true');
         document.addEventListener('keydown', tabListener, false);
         navSearchActivate(true);
         e.target.closest('a').title = 'Close Menu';
+        navSearchBtn.classList.add('b-site-nav__core__search-btn--active');
       }
     }, false);
     return true;
