@@ -28,8 +28,12 @@ const mediaViewerInit = (mediaViewer) => {
     imgLinkMain.dataset.imageId = seed.dataset.imageId;
     imgLinkMain.prepend(imgMainNew);
 
-    /* and make selected img addressable in URL */
-    if (seed.id) window.history.replaceState({}, '', `#${seed.id}`);
+    /* and make selected img addressable in URL, if thumb has id set */
+    if (seed.id) {
+      const urlSearch = new URLSearchParams(window.location.search);
+      urlSearch.set('mvid', seed.id);
+      window.history.replaceState({}, '', `?${urlSearch.toString()}`);
+    }
   };
 
   /* apply rovingTabIndex alternative keyboard navigation to viewer thumbnail list */
@@ -88,6 +92,19 @@ const mediaViewerInit = (mediaViewer) => {
       //   });
       //   imagesUV.requestFullscreen();
       // }
+    }
+  });
+
+  /* onLoad set selected image if in URL */
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlSearch = new URLSearchParams(window.location.search);
+    const thumb = document.getElementById(urlSearch.get('mvid'));
+    if (thumb) {
+      index = thumbs.indexOf(thumb);
+      previewImage();
+      setPrevNext();
+      rovingTabindex(menu, thumb);
+      setTimeout(() => thumb.scrollIntoView({ block: 'center', container: 'nearest' }), 1000);
     }
   });
 
