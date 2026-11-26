@@ -36,6 +36,16 @@ const mediaViewerInit = (mediaViewer) => {
     }
   };
 
+  /* fn to track interaction */
+  const trackInteraction = (interactionType) => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: mediaViewer.dataset.trackingId,
+      interactionType,
+      imageNumber: `Image ${index + 1} of ${thumbs.length}`,
+    });
+  };
+
   /* apply rovingTabIndex alternative keyboard navigation to viewer thumbnail list */
   rovingTabindex(menu);
 
@@ -58,6 +68,8 @@ const mediaViewerInit = (mediaViewer) => {
 
     /* update prev/next btns in case the related focus switch is between thumbnails */
     setPrevNext();
+
+    trackInteraction('Thumbnail click');
   });
 
   document.addEventListener('click', (e) => {
@@ -68,11 +80,13 @@ const mediaViewerInit = (mediaViewer) => {
       index -= 1;
       setPrevNext();
       previewImage();
+      trackInteraction('Previous arrow');
     } else
     if (e.target.closest('.js-media-viewer-next')) {
       index += 1;
       setPrevNext();
       previewImage();
+      trackInteraction('Next arrow');
     } else
     if (e.target.closest('.js-media-viewer-link')) {
       /* handle main img click
