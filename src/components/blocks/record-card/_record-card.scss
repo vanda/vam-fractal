@@ -2,16 +2,67 @@
 @use "../../base";
 
 .b-record-card {
+  $block: &;
+
+  // setup default light/dark theme variable properties
+  --record-card-bg-hover: #{base.sitecolors-siteColor("vam-grey-6")};
+  --record-card-color-visted: #{base.sitecolors-siteColor("vam-grey-3")};
+  --record-card-border: #{base.sitecolors-siteColor("vam-grey-4")};
+  --record-card-label-bg: #{base.sitecolors-siteColor("vam-grey-6")};
+  --record-card-label-bg-hover: #{base.sitecolors-siteColor("vam-grey-4")};
+  --record-card-reference-color: #{base.sitecolors-siteColor("vam-grey-2")};
+
+  // react to any s-light-dark-theme modifying class on a parent element
+  .s-light-dark-theme--dark & {
+    --record-card-bg-hover: #{base.sitecolors-siteColor("vam-grey-1")};
+    --record-card-color-visted: #{base.sitecolors-siteColor("vam-grey-4")};
+    --record-card-border: #{base.sitecolors-siteColor("vam-grey-2")};
+    --record-card-label-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+    --record-card-label-bg-hover: #{base.sitecolors-siteColor("vam-grey-3")};
+    --record-card-reference-color: #{base.sitecolors-siteColor("vam-grey-4")};
+  }
+
+  // react to any s-light-dark-theme--auto modifying class on a parent element when user prefs are for dark
+  .s-light-dark-theme--auto & {
+    @media (prefers-color-scheme: dark) {
+      --record-card-bg-hover: #{base.sitecolors-siteColor("vam-grey-1")};
+      --record-card-color-visted: #{base.sitecolors-siteColor("vam-grey-4")};
+      --record-card-border: #{base.sitecolors-siteColor("vam-grey-2")};
+      --record-card-label-bg: #{base.sitecolors-siteColor("vam-grey-1")};
+      --record-card-label-bg-hover: #{base.sitecolors-siteColor("vam-grey-3")};
+      --record-card-reference-color: #{base.sitecolors-siteColor("vam-grey-4")};
+    }
+  }
+
   @include base.typography-typeSetting(2);
 
-  background: base.sitecolors-siteColor("vam-white");
+  background: var(--s-light-dark-theme-background-color);
   border-radius: 2px;
-  color: base.sitecolors-siteColor("vam-black");
+  color: var(--s-light-dark-theme-color);
   display: block;
   padding: 8px;
 
+  &:hover,
+  &:focus-visible,
+  &.selected {
+    background: var(--record-card-bg-hover);
+  }
+
+  /* default focus style can be clipped by parent overflow` */
+  @include mixins.focus-raisedPseudoFocus;
+
+  &:visited {
+    color: var(--record-card-color-visted);
+  }
+
   &__info-container {
-    border-bottom: 1px solid base.sitecolors-siteColor("vam-grey-4");
+    border-bottom: 1px solid var(--record-card-border);
+
+    #{$block}:hover &,
+    #{$block}:focus-visible &,
+    #{$block}.selected & {
+      border-bottom-color: transparent;
+    }
 
     > p {
       margin-bottom: 8px;
@@ -22,42 +73,26 @@
     @include base.typography-typeSetting(3);
 
     margin-bottom: 8px;
+
+    #{$block}:hover &,
+    #{$block}:focus-visible & {
+      text-decoration: underline;
+    }
   }
 
   &__label-tag {
-    background: base.sitecolors-siteColor("vam-grey-6");
+    background: var(--record-card-label-bg);
     border-radius: 2px;
     flex: 0 0 auto;
     margin-bottom: 8px;
     margin-top: 2px;
     padding: 2px 4px;
-  }
 
-  &:hover,
-  &:focus-visible,
-  &.selected {
-    background: base.sitecolors-siteColor("vam-grey-6");
-
-    .b-record-card__info-container {
-      border-bottom-color: transparent;
+    #{$block}:hover &,
+    #{$block}:focus-visible,
+    #{$block}.selected & {
+      background-color: var(--record-card-label-bg-hover);
     }
-
-    .b-record-card__label-tag {
-      background-color: base.sitecolors-siteColor("vam-grey-4");
-    }
-  }
-
-  &:hover,
-  &:focus-visible {
-    .b-record-card__heading {
-      text-decoration: underline;
-    }
-  }
-
-  // :visited property on the anchor cannot override child element property where set
-  // i.e., colour property on .b-record-card__reference
-  &:visited {
-    color: base.sitecolors-siteColor("vam-grey-3");
   }
 
   &__image-container {
@@ -72,11 +107,11 @@
     transform: scale(1);
     transition: 0.25s ease-out;
     width: 100%;
-  }
 
-  &:hover &__image,
-  &:focus-visible &__image {
-    transform: scale(1.1);
+    #{$block}:hover &,
+    #{$block}:focus-visible & {
+      transform: scale(1.1);
+    }
   }
 
   &__distribution {
@@ -106,9 +141,13 @@
 
   &__reference {
     align-self: flex-end;
-    color: base.sitecolors-siteColor("vam-grey-2");
+    color: var(--record-card-reference-color);
     margin-bottom: 8px;
     text-align: right;
+
+    #{$block}:visited & {
+      color: var(--record-card-color-visted);
+    }
   }
 
   &__extent {

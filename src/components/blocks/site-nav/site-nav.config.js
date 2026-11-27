@@ -1,7 +1,16 @@
 module.exports = {
-  title: 'Site nav',
-  label: 'Site nav',
+  title: 'Site Nav',
   context: {
-    title: 'Site nav'
-  }
+    previewClass: 'fr-content-bg'
+  },
+  variants: [
+    {
+      name: 'on-dark',
+      label: 'Site Nav On Dark',
+      title: 'Site Nav On Dark',
+      context: {
+        lightDarkTheme: 's-light-dark-theme--dark'
+      }
+    }
+  ]
 };

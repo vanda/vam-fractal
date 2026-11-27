@@ -1,6 +1,4 @@
 module.exports = {
-  title: 'Icon List',
-  default: 'on-light',
   context: {
     items: [
       {
@@ -106,12 +104,8 @@ module.exports = {
   },
   variants: [
     {
-      name: 'on-light',
-      label: 'On light'
-    },
-    {
-      name: 'on-dark',
-      label: 'On dark',
+      name: '--dark',
+      label: 'Dark',
       context: {
         previewClass: 'fr-bg--dark',
         modifier: ['dark']
